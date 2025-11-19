@@ -23,18 +23,18 @@ final class ProductInfo extends TdObject {
 
   /// Parses a [ProductInfo] from TDLib JSON.
   factory ProductInfo.fromJson(Map<String, dynamic> json) => ProductInfo(
-        title: _readString(json['title']),
-        description: _readObject(json['description'], FormattedText.fromJson),
-        photo: _readOptional(json['photo'], Photo.fromJson),
-      );
+    title: _readString(json['title']),
+    description: _readObject(json['description'], FormattedText.fromJson),
+    photo: _readOptional(json['photo'], Photo.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-        'description': description.toJson(),
-        'photo': photo?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'title': title,
+    'description': description.toJson(),
+    'photo': photo?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -42,12 +42,11 @@ final class ProductInfo extends TdObject {
     String? title,
     FormattedText? description,
     Photo? Function()? photo,
-  }) =>
-      ProductInfo(
-        title: title ?? this.title,
-        description: description ?? this.description,
-        photo: photo != null ? photo() : this.photo,
-      );
+  }) => ProductInfo(
+    title: title ?? this.title,
+    description: description ?? this.description,
+    photo: photo != null ? photo() : this.photo,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'productInfo';

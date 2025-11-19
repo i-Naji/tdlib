@@ -21,22 +21,21 @@ final class SetCustomEmojiStickerSetThumbnail extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        'custom_emoji_id': customEmojiId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    'custom_emoji_id': customEmojiId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetCustomEmojiStickerSetThumbnail copyWith({
     String? name,
     int? customEmojiId,
-  }) =>
-      SetCustomEmojiStickerSetThumbnail(
-        name: name ?? this.name,
-        customEmojiId: customEmojiId ?? this.customEmojiId,
-      );
+  }) => SetCustomEmojiStickerSetThumbnail(
+    name: name ?? this.name,
+    customEmojiId: customEmojiId ?? this.customEmojiId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setCustomEmojiStickerSetThumbnail';

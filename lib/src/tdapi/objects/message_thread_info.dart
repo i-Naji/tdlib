@@ -51,23 +51,27 @@ final class MessageThreadInfo extends TdObject {
         replyInfo: _readOptional(json['reply_info'], MessageReplyInfo.fromJson),
         unreadMessageCount: _readInt(json['unread_message_count']),
         messages: _readList<Message>(
-            json['messages'], (e) => _readObject(e, Message.fromJson)),
-        draftMessage:
-            _readOptional(json['draft_message'], DraftMessage.fromJson),
+          json['messages'],
+          (e) => _readObject(e, Message.fromJson),
+        ),
+        draftMessage: _readOptional(
+          json['draft_message'],
+          DraftMessage.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_thread_id': messageThreadId,
-        'reply_info': replyInfo?.toJson(),
-        'unread_message_count': unreadMessageCount,
-        'messages': [for (final e in messages) e.toJson()],
-        'draft_message': draftMessage?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_thread_id': messageThreadId,
+    'reply_info': replyInfo?.toJson(),
+    'unread_message_count': unreadMessageCount,
+    'messages': [for (final e in messages) e.toJson()],
+    'draft_message': draftMessage?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -80,17 +84,16 @@ final class MessageThreadInfo extends TdObject {
     DraftMessage? Function()? draftMessage,
     dynamic extra,
     int? clientId,
-  }) =>
-      MessageThreadInfo(
-        chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
-        replyInfo: replyInfo != null ? replyInfo() : this.replyInfo,
-        unreadMessageCount: unreadMessageCount ?? this.unreadMessageCount,
-        messages: messages ?? this.messages,
-        draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => MessageThreadInfo(
+    chatId: chatId ?? this.chatId,
+    messageThreadId: messageThreadId ?? this.messageThreadId,
+    replyInfo: replyInfo != null ? replyInfo() : this.replyInfo,
+    unreadMessageCount: unreadMessageCount ?? this.unreadMessageCount,
+    messages: messages ?? this.messages,
+    draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageThreadInfo';

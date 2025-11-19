@@ -13,14 +13,13 @@ import 'dart:typed_data';
 
 import 'package:ffi/ffi.dart';
 
-import '../tdclient/tdjson_bindings.dart' show loadTdJson, tdReceiveRaw;
+import '../tdclient/tdjson_bindings.dart' show tdReceiveRaw;
 
 /// Start-up settings for [tdReceiveWorkerMain].
 final class TdReceiveWorkerConfig {
   /// Creates worker settings.
   const TdReceiveWorkerConfig({
     required this.events,
-    this.libraryPath,
     this.idleTimeoutSeconds = 1.0,
     this.batchLimit = 16,
     this.batchWindowMicros = 2000,
@@ -31,9 +30,6 @@ final class TdReceiveWorkerConfig {
   /// `String` for an event that wasn't valid JSON), and finally a
   /// `{'@type': '_tdReceiveFatal'}` map if td_receive throws.
   final SendPort events;
-
-  /// Path of libtdjson, or null for the platform default (see [loadTdJson]).
-  final String? libraryPath;
 
   /// How long td_receive may block while nothing is buffered. Also the
   /// longest a stop request waits.
@@ -85,8 +81,9 @@ final class _WorkerState {
   }
 }
 
-final Converter<List<int>, Object?> _utf8Json =
-    const Utf8Decoder().fuse(const JsonDecoder());
+final Converter<List<int>, Object?> _utf8Json = const Utf8Decoder().fuse(
+  const JsonDecoder(),
+);
 
 // `{"@type":"` as bytes. TDLib writes "@type" first; an event that doesn't
 // start this way is simply decoded in full (no filtering).
@@ -126,7 +123,6 @@ Object? coalesceKey(String type, Map<String, dynamic> event) {
 
 /// Isolate entry point: `Isolate.spawn(tdReceiveWorkerMain, config)`.
 Future<void> tdReceiveWorkerMain(TdReceiveWorkerConfig config) async {
-  loadTdJson(config.libraryPath);
   final state = _WorkerState();
   final control = ReceivePort('TDLib receive control');
   control.listen(state.apply);

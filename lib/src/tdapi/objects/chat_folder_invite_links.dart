@@ -26,17 +26,19 @@ final class ChatFolderInviteLinks extends TdObject {
   /// Parses a [ChatFolderInviteLinks] from TDLib JSON.
   factory ChatFolderInviteLinks.fromJson(Map<String, dynamic> json) =>
       ChatFolderInviteLinks(
-        inviteLinks: _readList<ChatFolderInviteLink>(json['invite_links'],
-            (e) => _readObject(e, ChatFolderInviteLink.fromJson)),
+        inviteLinks: _readList<ChatFolderInviteLink>(
+          json['invite_links'],
+          (e) => _readObject(e, ChatFolderInviteLink.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'invite_links': [for (final e in inviteLinks) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'invite_links': [for (final e in inviteLinks) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +46,11 @@ final class ChatFolderInviteLinks extends TdObject {
     List<ChatFolderInviteLink>? inviteLinks,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatFolderInviteLinks(
-        inviteLinks: inviteLinks ?? this.inviteLinks,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatFolderInviteLinks(
+    inviteLinks: inviteLinks ?? this.inviteLinks,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatFolderInviteLinks';

@@ -8,28 +8,25 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetBusinessOpeningHours extends TdFunction<Ok> {
   /// Changes the business opening hours of the current user. Requires Telegram Business subscription
-  const SetBusinessOpeningHours({
-    this.openingHours,
-  });
+  const SetBusinessOpeningHours({this.openingHours});
 
   /// The new opening hours of the business; pass null to remove the opening hours; up to 28 time intervals can be specified
   final BusinessOpeningHours? openingHours;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'opening_hours': openingHours?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'opening_hours': openingHours?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetBusinessOpeningHours copyWith({
     BusinessOpeningHours? Function()? openingHours,
-  }) =>
-      SetBusinessOpeningHours(
-        openingHours: openingHours != null ? openingHours() : this.openingHours,
-      );
+  }) => SetBusinessOpeningHours(
+    openingHours: openingHours != null ? openingHours() : this.openingHours,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setBusinessOpeningHours';

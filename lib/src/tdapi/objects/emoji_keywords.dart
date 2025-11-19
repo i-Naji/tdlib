@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Represents a list of emojis with their keywords
 final class EmojiKeywords extends TdObject {
   /// Represents a list of emojis with their keywords
-  const EmojiKeywords({
-    required this.emojiKeywords,
-    this.extra,
-    this.clientId,
-  });
+  const EmojiKeywords({required this.emojiKeywords, this.extra, this.clientId});
 
   /// List of emojis with their keywords
   final List<EmojiKeyword> emojiKeywords;
@@ -25,17 +21,19 @@ final class EmojiKeywords extends TdObject {
 
   /// Parses a [EmojiKeywords] from TDLib JSON.
   factory EmojiKeywords.fromJson(Map<String, dynamic> json) => EmojiKeywords(
-        emojiKeywords: _readList<EmojiKeyword>(json['emoji_keywords'],
-            (e) => _readObject(e, EmojiKeyword.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    emojiKeywords: _readList<EmojiKeyword>(
+      json['emoji_keywords'],
+      (e) => _readObject(e, EmojiKeyword.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'emoji_keywords': [for (final e in emojiKeywords) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'emoji_keywords': [for (final e in emojiKeywords) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +41,11 @@ final class EmojiKeywords extends TdObject {
     List<EmojiKeyword>? emojiKeywords,
     dynamic extra,
     int? clientId,
-  }) =>
-      EmojiKeywords(
-        emojiKeywords: emojiKeywords ?? this.emojiKeywords,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => EmojiKeywords(
+    emojiKeywords: emojiKeywords ?? this.emojiKeywords,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'emojiKeywords';

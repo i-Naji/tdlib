@@ -33,14 +33,14 @@ final class EditStory extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'story_id': storyId,
-        'content': content?.toJson(),
-        'areas': areas?.toJson(),
-        'caption': caption?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+    'content': content?.toJson(),
+    'areas': areas?.toJson(),
+    'caption': caption?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class EditStory extends TdFunction<Ok> {
     InputStoryContent? Function()? content,
     InputStoryAreas? Function()? areas,
     FormattedText? Function()? caption,
-  }) =>
-      EditStory(
-        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-        storyId: storyId ?? this.storyId,
-        content: content != null ? content() : this.content,
-        areas: areas != null ? areas() : this.areas,
-        caption: caption != null ? caption() : this.caption,
-      );
+  }) => EditStory(
+    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+    storyId: storyId ?? this.storyId,
+    content: content != null ? content() : this.content,
+    areas: areas != null ? areas() : this.areas,
+    caption: caption != null ? caption() : this.caption,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'editStory';

@@ -54,9 +54,7 @@ final class ChatMembersFilterContacts extends ChatMembersFilter {
       const ChatMembersFilterContacts();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -80,9 +78,7 @@ final class ChatMembersFilterAdministrators extends ChatMembersFilter {
       const ChatMembersFilterAdministrators();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -107,9 +103,7 @@ final class ChatMembersFilterMembers extends ChatMembersFilter {
       const ChatMembersFilterMembers();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -126,9 +120,7 @@ final class ChatMembersFilterMembers extends ChatMembersFilter {
 /// Returns users which can be mentioned in the chat
 final class ChatMembersFilterMention extends ChatMembersFilter {
   /// Returns users which can be mentioned in the chat
-  const ChatMembersFilterMention({
-    this.topicId,
-  });
+  const ChatMembersFilterMention({this.topicId});
 
   /// Identifier of the topic in which the users will be mentioned; pass null if none
   final MessageTopic? topicId;
@@ -141,16 +133,14 @@ final class ChatMembersFilterMention extends ChatMembersFilter {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'topic_id': topicId?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'topic_id': topicId?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatMembersFilterMention copyWith({
-    MessageTopic? Function()? topicId,
-  }) =>
+  ChatMembersFilterMention copyWith({MessageTopic? Function()? topicId}) =>
       ChatMembersFilterMention(
         topicId: topicId != null ? topicId() : this.topicId,
       );
@@ -172,9 +162,7 @@ final class ChatMembersFilterRestricted extends ChatMembersFilter {
       const ChatMembersFilterRestricted();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -198,9 +186,7 @@ final class ChatMembersFilterBanned extends ChatMembersFilter {
       const ChatMembersFilterBanned();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -224,9 +210,7 @@ final class ChatMembersFilterBots extends ChatMembersFilter {
       const ChatMembersFilterBots();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

@@ -52,9 +52,7 @@ final class UserStatusEmpty extends UserStatus {
       const UserStatusEmpty();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -71,34 +69,23 @@ final class UserStatusEmpty extends UserStatus {
 /// The user is online
 final class UserStatusOnline extends UserStatus {
   /// The user is online
-  const UserStatusOnline({
-    required this.expires,
-  });
+  const UserStatusOnline({required this.expires});
 
   /// Point in time (Unix timestamp) when the user's online status will expire
   final int expires;
 
   /// Parses a [UserStatusOnline] from TDLib JSON.
   factory UserStatusOnline.fromJson(Map<String, dynamic> json) =>
-      UserStatusOnline(
-        expires: _readInt(json['expires']),
-      );
+      UserStatusOnline(expires: _readInt(json['expires']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'expires': expires,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'expires': expires};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UserStatusOnline copyWith({
-    int? expires,
-  }) =>
-      UserStatusOnline(
-        expires: expires ?? this.expires,
-      );
+  UserStatusOnline copyWith({int? expires}) =>
+      UserStatusOnline(expires: expires ?? this.expires);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userStatusOnline';
@@ -110,34 +97,26 @@ final class UserStatusOnline extends UserStatus {
 /// The user is offline
 final class UserStatusOffline extends UserStatus {
   /// The user is offline
-  const UserStatusOffline({
-    required this.wasOnline,
-  });
+  const UserStatusOffline({required this.wasOnline});
 
   /// Point in time (Unix timestamp) when the user was last online
   final int wasOnline;
 
   /// Parses a [UserStatusOffline] from TDLib JSON.
   factory UserStatusOffline.fromJson(Map<String, dynamic> json) =>
-      UserStatusOffline(
-        wasOnline: _readInt(json['was_online']),
-      );
+      UserStatusOffline(wasOnline: _readInt(json['was_online']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'was_online': wasOnline,
-      };
+    '@type': CONSTRUCTOR,
+    'was_online': wasOnline,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UserStatusOffline copyWith({
-    int? wasOnline,
-  }) =>
-      UserStatusOffline(
-        wasOnline: wasOnline ?? this.wasOnline,
-      );
+  UserStatusOffline copyWith({int? wasOnline}) =>
+      UserStatusOffline(wasOnline: wasOnline ?? this.wasOnline);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userStatusOffline';
@@ -149,9 +128,7 @@ final class UserStatusOffline extends UserStatus {
 /// The user was online recently
 final class UserStatusRecently extends UserStatus {
   /// The user was online recently
-  const UserStatusRecently({
-    required this.byMyPrivacySettings,
-  });
+  const UserStatusRecently({required this.byMyPrivacySettings});
 
   /// Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium
   final bool byMyPrivacySettings;
@@ -164,16 +141,14 @@ final class UserStatusRecently extends UserStatus {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'by_my_privacy_settings': byMyPrivacySettings,
-      };
+    '@type': CONSTRUCTOR,
+    'by_my_privacy_settings': byMyPrivacySettings,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UserStatusRecently copyWith({
-    bool? byMyPrivacySettings,
-  }) =>
+  UserStatusRecently copyWith({bool? byMyPrivacySettings}) =>
       UserStatusRecently(
         byMyPrivacySettings: byMyPrivacySettings ?? this.byMyPrivacySettings,
       );
@@ -188,9 +163,7 @@ final class UserStatusRecently extends UserStatus {
 /// The user is offline, but was online last week
 final class UserStatusLastWeek extends UserStatus {
   /// The user is offline, but was online last week
-  const UserStatusLastWeek({
-    required this.byMyPrivacySettings,
-  });
+  const UserStatusLastWeek({required this.byMyPrivacySettings});
 
   /// Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium
   final bool byMyPrivacySettings;
@@ -203,16 +176,14 @@ final class UserStatusLastWeek extends UserStatus {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'by_my_privacy_settings': byMyPrivacySettings,
-      };
+    '@type': CONSTRUCTOR,
+    'by_my_privacy_settings': byMyPrivacySettings,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UserStatusLastWeek copyWith({
-    bool? byMyPrivacySettings,
-  }) =>
+  UserStatusLastWeek copyWith({bool? byMyPrivacySettings}) =>
       UserStatusLastWeek(
         byMyPrivacySettings: byMyPrivacySettings ?? this.byMyPrivacySettings,
       );
@@ -227,9 +198,7 @@ final class UserStatusLastWeek extends UserStatus {
 /// The user is offline, but was online last month
 final class UserStatusLastMonth extends UserStatus {
   /// The user is offline, but was online last month
-  const UserStatusLastMonth({
-    required this.byMyPrivacySettings,
-  });
+  const UserStatusLastMonth({required this.byMyPrivacySettings});
 
   /// Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium
   final bool byMyPrivacySettings;
@@ -242,16 +211,14 @@ final class UserStatusLastMonth extends UserStatus {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'by_my_privacy_settings': byMyPrivacySettings,
-      };
+    '@type': CONSTRUCTOR,
+    'by_my_privacy_settings': byMyPrivacySettings,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UserStatusLastMonth copyWith({
-    bool? byMyPrivacySettings,
-  }) =>
+  UserStatusLastMonth copyWith({bool? byMyPrivacySettings}) =>
       UserStatusLastMonth(
         byMyPrivacySettings: byMyPrivacySettings ?? this.byMyPrivacySettings,
       );

@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of chat events
 final class ChatEvents extends TdObject {
   /// Contains a list of chat events
-  const ChatEvents({
-    required this.events,
-    this.extra,
-    this.clientId,
-  });
+  const ChatEvents({required this.events, this.extra, this.clientId});
 
   /// List of events
   final List<ChatEvent> events;
@@ -25,17 +21,19 @@ final class ChatEvents extends TdObject {
 
   /// Parses a [ChatEvents] from TDLib JSON.
   factory ChatEvents.fromJson(Map<String, dynamic> json) => ChatEvents(
-        events: _readList<ChatEvent>(
-            json['events'], (e) => _readObject(e, ChatEvent.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    events: _readList<ChatEvent>(
+      json['events'],
+      (e) => _readObject(e, ChatEvent.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'events': [for (final e in events) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'events': [for (final e in events) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +41,11 @@ final class ChatEvents extends TdObject {
     List<ChatEvent>? events,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatEvents(
-        events: events ?? this.events,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatEvents(
+    events: events ?? this.events,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEvents';

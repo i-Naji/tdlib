@@ -29,18 +29,18 @@ final class WebAppInfo extends TdObject {
 
   /// Parses a [WebAppInfo] from TDLib JSON.
   factory WebAppInfo.fromJson(Map<String, dynamic> json) => WebAppInfo(
-        launchId: _readInt(json['launch_id']),
-        url: _readString(json['url']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    launchId: _readInt(json['launch_id']),
+    url: _readString(json['url']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'launch_id': launchId.toString(),
-        'url': url,
-      };
+    '@type': CONSTRUCTOR,
+    'launch_id': launchId.toString(),
+    'url': url,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class WebAppInfo extends TdObject {
     String? url,
     dynamic extra,
     int? clientId,
-  }) =>
-      WebAppInfo(
-        launchId: launchId ?? this.launchId,
-        url: url ?? this.url,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => WebAppInfo(
+    launchId: launchId ?? this.launchId,
+    url: url ?? this.url,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'webAppInfo';

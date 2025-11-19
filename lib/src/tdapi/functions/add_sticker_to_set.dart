@@ -25,12 +25,12 @@ final class AddStickerToSet extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'name': name,
-        'sticker': sticker.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'name': name,
+    'sticker': sticker.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class AddStickerToSet extends TdFunction<Ok> {
     int? userId,
     String? name,
     InputSticker? sticker,
-  }) =>
-      AddStickerToSet(
-        userId: userId ?? this.userId,
-        name: name ?? this.name,
-        sticker: sticker ?? this.sticker,
-      );
+  }) => AddStickerToSet(
+    userId: userId ?? this.userId,
+    name: name ?? this.name,
+    sticker: sticker ?? this.sticker,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addStickerToSet';

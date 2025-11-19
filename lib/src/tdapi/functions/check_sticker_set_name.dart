@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [CheckStickerSetNameResult].
 final class CheckStickerSetName extends TdFunction<CheckStickerSetNameResult> {
   /// Checks whether a name can be used for a new sticker set
-  const CheckStickerSetName({
-    required this.name,
-  });
+  const CheckStickerSetName({required this.name});
 
   /// Name to be checked
   final String name;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CheckStickerSetName copyWith({
-    String? name,
-  }) =>
-      CheckStickerSetName(
-        name: name ?? this.name,
-      );
+  CheckStickerSetName copyWith({String? name}) =>
+      CheckStickerSetName(name: name ?? this.name);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkStickerSetName';

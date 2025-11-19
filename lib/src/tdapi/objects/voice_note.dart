@@ -31,24 +31,25 @@ final class VoiceNote extends TdObject {
 
   /// Parses a [VoiceNote] from TDLib JSON.
   factory VoiceNote.fromJson(Map<String, dynamic> json) => VoiceNote(
-        duration: _readInt(json['duration']),
-        waveform: _readString(json['waveform']),
-        mimeType: _readString(json['mime_type']),
-        speechRecognitionResult: _readOptional(
-            json['speech_recognition_result'],
-            SpeechRecognitionResult.fromJson),
-        voice: _readObject(json['voice'], File.fromJson),
-      );
+    duration: _readInt(json['duration']),
+    waveform: _readString(json['waveform']),
+    mimeType: _readString(json['mime_type']),
+    speechRecognitionResult: _readOptional(
+      json['speech_recognition_result'],
+      SpeechRecognitionResult.fromJson,
+    ),
+    voice: _readObject(json['voice'], File.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'duration': duration,
-        'waveform': waveform,
-        'mime_type': mimeType,
-        'speech_recognition_result': speechRecognitionResult?.toJson(),
-        'voice': voice.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'duration': duration,
+    'waveform': waveform,
+    'mime_type': mimeType,
+    'speech_recognition_result': speechRecognitionResult?.toJson(),
+    'voice': voice.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -58,16 +59,15 @@ final class VoiceNote extends TdObject {
     String? mimeType,
     SpeechRecognitionResult? Function()? speechRecognitionResult,
     File? voice,
-  }) =>
-      VoiceNote(
-        duration: duration ?? this.duration,
-        waveform: waveform ?? this.waveform,
-        mimeType: mimeType ?? this.mimeType,
-        speechRecognitionResult: speechRecognitionResult != null
-            ? speechRecognitionResult()
-            : this.speechRecognitionResult,
-        voice: voice ?? this.voice,
-      );
+  }) => VoiceNote(
+    duration: duration ?? this.duration,
+    waveform: waveform ?? this.waveform,
+    mimeType: mimeType ?? this.mimeType,
+    speechRecognitionResult: speechRecognitionResult != null
+        ? speechRecognitionResult()
+        : this.speechRecognitionResult,
+    voice: voice ?? this.voice,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'voiceNote';

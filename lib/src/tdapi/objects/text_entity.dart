@@ -23,26 +23,22 @@ final class TextEntity extends TdObject {
 
   /// Parses a [TextEntity] from TDLib JSON.
   factory TextEntity.fromJson(Map<String, dynamic> json) => TextEntity(
-        offset: _readInt(json['offset']),
-        length: _readInt(json['length']),
-        type: _readObject(json['type'], TextEntityType.fromJson),
-      );
+    offset: _readInt(json['offset']),
+    length: _readInt(json['length']),
+    type: _readObject(json['type'], TextEntityType.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'offset': offset,
-        'length': length,
-        'type': type.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'offset': offset,
+    'length': length,
+    'type': type.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TextEntity copyWith({
-    int? offset,
-    int? length,
-    TextEntityType? type,
-  }) =>
+  TextEntity copyWith({int? offset, int? length, TextEntityType? type}) =>
       TextEntity(
         offset: offset ?? this.offset,
         length: length ?? this.length,

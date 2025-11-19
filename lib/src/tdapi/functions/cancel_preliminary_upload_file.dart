@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class CancelPreliminaryUploadFile extends TdFunction<Ok> {
   /// Stops the preliminary uploading of a file. Supported only for files uploaded by using preliminaryUploadFile
-  const CancelPreliminaryUploadFile({
-    required this.fileId,
-  });
+  const CancelPreliminaryUploadFile({required this.fileId});
 
   /// Identifier of the file to stop uploading
   final int fileId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'file_id': fileId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'file_id': fileId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CancelPreliminaryUploadFile copyWith({
-    int? fileId,
-  }) =>
-      CancelPreliminaryUploadFile(
-        fileId: fileId ?? this.fileId,
-      );
+  CancelPreliminaryUploadFile copyWith({int? fileId}) =>
+      CancelPreliminaryUploadFile(fileId: fileId ?? this.fileId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'cancelPreliminaryUploadFile';

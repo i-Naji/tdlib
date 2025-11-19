@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [FoundChatBoosts].
 final class GetUserChatBoosts extends TdFunction<FoundChatBoosts> {
   /// Returns the list of boosts applied to a chat by a given user; requires administrator rights in the chat; for bots only
-  const GetUserChatBoosts({
-    required this.chatId,
-    required this.userId,
-  });
+  const GetUserChatBoosts({required this.chatId, required this.userId});
 
   /// Identifier of the chat
   final int chatId;
@@ -21,22 +18,18 @@ final class GetUserChatBoosts extends TdFunction<FoundChatBoosts> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'user_id': userId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'user_id': userId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetUserChatBoosts copyWith({
-    int? chatId,
-    int? userId,
-  }) =>
-      GetUserChatBoosts(
-        chatId: chatId ?? this.chatId,
-        userId: userId ?? this.userId,
-      );
+  GetUserChatBoosts copyWith({int? chatId, int? userId}) => GetUserChatBoosts(
+    chatId: chatId ?? this.chatId,
+    userId: userId ?? this.userId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getUserChatBoosts';

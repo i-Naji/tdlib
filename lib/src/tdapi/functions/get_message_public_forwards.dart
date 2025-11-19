@@ -29,13 +29,13 @@ final class GetMessagePublicForwards extends TdFunction<PublicForwards> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class GetMessagePublicForwards extends TdFunction<PublicForwards> {
     int? messageId,
     String? offset,
     int? limit,
-  }) =>
-      GetMessagePublicForwards(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => GetMessagePublicForwards(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getMessagePublicForwards';

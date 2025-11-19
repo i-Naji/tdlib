@@ -21,23 +21,21 @@ final class SetChatMessageAutoDeleteTime extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_auto_delete_time': messageAutoDeleteTime,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_auto_delete_time': messageAutoDeleteTime,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetChatMessageAutoDeleteTime copyWith({
     int? chatId,
     int? messageAutoDeleteTime,
-  }) =>
-      SetChatMessageAutoDeleteTime(
-        chatId: chatId ?? this.chatId,
-        messageAutoDeleteTime:
-            messageAutoDeleteTime ?? this.messageAutoDeleteTime,
-      );
+  }) => SetChatMessageAutoDeleteTime(
+    chatId: chatId ?? this.chatId,
+    messageAutoDeleteTime: messageAutoDeleteTime ?? this.messageAutoDeleteTime,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setChatMessageAutoDeleteTime';

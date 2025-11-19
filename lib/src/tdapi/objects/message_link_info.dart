@@ -58,14 +58,14 @@ final class MessageLinkInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_public': isPublic,
-        'chat_id': chatId,
-        'topic_id': topicId?.toJson(),
-        'message': message?.toJson(),
-        'media_timestamp': mediaTimestamp,
-        'for_album': forAlbum,
-      };
+    '@type': CONSTRUCTOR,
+    'is_public': isPublic,
+    'chat_id': chatId,
+    'topic_id': topicId?.toJson(),
+    'message': message?.toJson(),
+    'media_timestamp': mediaTimestamp,
+    'for_album': forAlbum,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -78,17 +78,16 @@ final class MessageLinkInfo extends TdObject {
     bool? forAlbum,
     dynamic extra,
     int? clientId,
-  }) =>
-      MessageLinkInfo(
-        isPublic: isPublic ?? this.isPublic,
-        chatId: chatId ?? this.chatId,
-        topicId: topicId != null ? topicId() : this.topicId,
-        message: message != null ? message() : this.message,
-        mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
-        forAlbum: forAlbum ?? this.forAlbum,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => MessageLinkInfo(
+    isPublic: isPublic ?? this.isPublic,
+    chatId: chatId ?? this.chatId,
+    topicId: topicId != null ? topicId() : this.topicId,
+    message: message != null ? message() : this.message,
+    mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
+    forAlbum: forAlbum ?? this.forAlbum,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageLinkInfo';

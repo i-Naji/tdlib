@@ -52,9 +52,7 @@ final class ThumbnailFormatJpeg extends ThumbnailFormat {
       const ThumbnailFormatJpeg();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -78,9 +76,7 @@ final class ThumbnailFormatGif extends ThumbnailFormat {
       const ThumbnailFormatGif();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -104,9 +100,7 @@ final class ThumbnailFormatMpeg4 extends ThumbnailFormat {
       const ThumbnailFormatMpeg4();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -130,9 +124,7 @@ final class ThumbnailFormatPng extends ThumbnailFormat {
       const ThumbnailFormatPng();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -156,9 +148,7 @@ final class ThumbnailFormatTgs extends ThumbnailFormat {
       const ThumbnailFormatTgs();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -182,9 +172,7 @@ final class ThumbnailFormatWebm extends ThumbnailFormat {
       const ThumbnailFormatWebm();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -208,9 +196,7 @@ final class ThumbnailFormatWebp extends ThumbnailFormat {
       const ThumbnailFormatWebp();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

@@ -41,16 +41,16 @@ final class CreateNewStickerSet extends TdFunction<StickerSet> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'title': title,
-        'name': name,
-        'sticker_type': stickerType.toJson(),
-        'needs_repainting': needsRepainting,
-        'stickers': [for (final e in stickers) e.toJson()],
-        'source': source,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'title': title,
+    'name': name,
+    'sticker_type': stickerType.toJson(),
+    'needs_repainting': needsRepainting,
+    'stickers': [for (final e in stickers) e.toJson()],
+    'source': source,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -62,16 +62,15 @@ final class CreateNewStickerSet extends TdFunction<StickerSet> {
     bool? needsRepainting,
     List<InputSticker>? stickers,
     String? source,
-  }) =>
-      CreateNewStickerSet(
-        userId: userId ?? this.userId,
-        title: title ?? this.title,
-        name: name ?? this.name,
-        stickerType: stickerType ?? this.stickerType,
-        needsRepainting: needsRepainting ?? this.needsRepainting,
-        stickers: stickers ?? this.stickers,
-        source: source ?? this.source,
-      );
+  }) => CreateNewStickerSet(
+    userId: userId ?? this.userId,
+    title: title ?? this.title,
+    name: name ?? this.name,
+    stickerType: stickerType ?? this.stickerType,
+    needsRepainting: needsRepainting ?? this.needsRepainting,
+    stickers: stickers ?? this.stickers,
+    source: source ?? this.source,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'createNewStickerSet';

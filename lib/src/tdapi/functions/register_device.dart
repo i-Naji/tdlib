@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [PushReceiverId].
 final class RegisterDevice extends TdFunction<PushReceiverId> {
   /// Registers the currently used device for receiving push notifications. Returns a globally unique identifier of the push notification subscription
-  const RegisterDevice({
-    required this.deviceToken,
-    required this.otherUserIds,
-  });
+  const RegisterDevice({required this.deviceToken, required this.otherUserIds});
 
   /// Device token
   final DeviceToken deviceToken;
@@ -21,22 +18,21 @@ final class RegisterDevice extends TdFunction<PushReceiverId> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'device_token': deviceToken.toJson(),
-        'other_user_ids': otherUserIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'device_token': deviceToken.toJson(),
+    'other_user_ids': otherUserIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   RegisterDevice copyWith({
     DeviceToken? deviceToken,
     List<int>? otherUserIds,
-  }) =>
-      RegisterDevice(
-        deviceToken: deviceToken ?? this.deviceToken,
-        otherUserIds: otherUserIds ?? this.otherUserIds,
-      );
+  }) => RegisterDevice(
+    deviceToken: deviceToken ?? this.deviceToken,
+    otherUserIds: otherUserIds ?? this.otherUserIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'registerDevice';

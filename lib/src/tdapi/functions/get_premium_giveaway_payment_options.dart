@@ -9,25 +9,21 @@ part of '../tdapi.dart';
 final class GetPremiumGiveawayPaymentOptions
     extends TdFunction<PremiumGiveawayPaymentOptions> {
   /// Returns available options for creating of Telegram Premium giveaway or manual distribution of Telegram Premium among chat members
-  const GetPremiumGiveawayPaymentOptions({
-    required this.boostedChatId,
-  });
+  const GetPremiumGiveawayPaymentOptions({required this.boostedChatId});
 
   /// Identifier of the supergroup or channel chat, which will be automatically boosted by receivers of the gift codes and which is administered by the user
   final int boostedChatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'boosted_chat_id': boostedChatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'boosted_chat_id': boostedChatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetPremiumGiveawayPaymentOptions copyWith({
-    int? boostedChatId,
-  }) =>
+  GetPremiumGiveawayPaymentOptions copyWith({int? boostedChatId}) =>
       GetPremiumGiveawayPaymentOptions(
         boostedChatId: boostedChatId ?? this.boostedChatId,
       );

@@ -25,12 +25,12 @@ final class SetCommands extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'scope': scope?.toJson(),
-        'language_code': languageCode,
-        'commands': [for (final e in commands) e.toJson()],
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'scope': scope?.toJson(),
+    'language_code': languageCode,
+    'commands': [for (final e in commands) e.toJson()],
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SetCommands extends TdFunction<Ok> {
     BotCommandScope? Function()? scope,
     String? languageCode,
     List<BotCommand>? commands,
-  }) =>
-      SetCommands(
-        scope: scope != null ? scope() : this.scope,
-        languageCode: languageCode ?? this.languageCode,
-        commands: commands ?? this.commands,
-      );
+  }) => SetCommands(
+    scope: scope != null ? scope() : this.scope,
+    languageCode: languageCode ?? this.languageCode,
+    commands: commands ?? this.commands,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setCommands';

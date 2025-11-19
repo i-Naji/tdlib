@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Represents outline of an image
 final class Outline extends TdObject {
   /// Represents outline of an image
-  const Outline({
-    required this.paths,
-    this.extra,
-    this.clientId,
-  });
+  const Outline({required this.paths, this.extra, this.clientId});
 
   /// The list of closed vector paths
   final List<ClosedVectorPath> paths;
@@ -25,17 +21,19 @@ final class Outline extends TdObject {
 
   /// Parses a [Outline] from TDLib JSON.
   factory Outline.fromJson(Map<String, dynamic> json) => Outline(
-        paths: _readList<ClosedVectorPath>(
-            json['paths'], (e) => _readObject(e, ClosedVectorPath.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    paths: _readList<ClosedVectorPath>(
+      json['paths'],
+      (e) => _readObject(e, ClosedVectorPath.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'paths': [for (final e in paths) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'paths': [for (final e in paths) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +41,11 @@ final class Outline extends TdObject {
     List<ClosedVectorPath>? paths,
     dynamic extra,
     int? clientId,
-  }) =>
-      Outline(
-        paths: paths ?? this.paths,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => Outline(
+    paths: paths ?? this.paths,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'outline';

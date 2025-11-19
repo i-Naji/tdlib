@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// A point on a Cartesian plane
 final class Point extends TdObject {
   /// A point on a Cartesian plane
-  const Point({
-    required this.x,
-    required this.y,
-  });
+  const Point({required this.x, required this.y});
 
   /// The point's first coordinate
   final double x;
@@ -18,28 +15,16 @@ final class Point extends TdObject {
   final double y;
 
   /// Parses a [Point] from TDLib JSON.
-  factory Point.fromJson(Map<String, dynamic> json) => Point(
-        x: _readDouble(json['x']),
-        y: _readDouble(json['y']),
-      );
+  factory Point.fromJson(Map<String, dynamic> json) =>
+      Point(x: _readDouble(json['x']), y: _readDouble(json['y']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'x': x,
-        'y': y,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'x': x, 'y': y};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  Point copyWith({
-    double? x,
-    double? y,
-  }) =>
-      Point(
-        x: x ?? this.x,
-        y: y ?? this.y,
-      );
+  Point copyWith({double? x, double? y}) =>
+      Point(x: x ?? this.x, y: y ?? this.y);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'point';

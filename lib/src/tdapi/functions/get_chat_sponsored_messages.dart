@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [SponsoredMessages].
 final class GetChatSponsoredMessages extends TdFunction<SponsoredMessages> {
   /// Returns sponsored messages to be shown in a chat; for channel chats and chats with bots only
-  const GetChatSponsoredMessages({
-    required this.chatId,
-  });
+  const GetChatSponsoredMessages({required this.chatId});
 
   /// Identifier of the chat
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatSponsoredMessages copyWith({
-    int? chatId,
-  }) =>
-      GetChatSponsoredMessages(
-        chatId: chatId ?? this.chatId,
-      );
+  GetChatSponsoredMessages copyWith({int? chatId}) =>
+      GetChatSponsoredMessages(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatSponsoredMessages';

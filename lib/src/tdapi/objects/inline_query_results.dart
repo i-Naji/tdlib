@@ -39,10 +39,14 @@ final class InlineQueryResults extends TdObject {
   factory InlineQueryResults.fromJson(Map<String, dynamic> json) =>
       InlineQueryResults(
         inlineQueryId: _readInt(json['inline_query_id']),
-        button:
-            _readOptional(json['button'], InlineQueryResultsButton.fromJson),
+        button: _readOptional(
+          json['button'],
+          InlineQueryResultsButton.fromJson,
+        ),
         results: _readList<InlineQueryResult>(
-            json['results'], (e) => _readObject(e, InlineQueryResult.fromJson)),
+          json['results'],
+          (e) => _readObject(e, InlineQueryResult.fromJson),
+        ),
         nextOffset: _readString(json['next_offset']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -50,12 +54,12 @@ final class InlineQueryResults extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'inline_query_id': inlineQueryId.toString(),
-        'button': button?.toJson(),
-        'results': [for (final e in results) e.toJson()],
-        'next_offset': nextOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'inline_query_id': inlineQueryId.toString(),
+    'button': button?.toJson(),
+    'results': [for (final e in results) e.toJson()],
+    'next_offset': nextOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -66,15 +70,14 @@ final class InlineQueryResults extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) =>
-      InlineQueryResults(
-        inlineQueryId: inlineQueryId ?? this.inlineQueryId,
-        button: button != null ? button() : this.button,
-        results: results ?? this.results,
-        nextOffset: nextOffset ?? this.nextOffset,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InlineQueryResults(
+    inlineQueryId: inlineQueryId ?? this.inlineQueryId,
+    button: button != null ? button() : this.button,
+    results: results ?? this.results,
+    nextOffset: nextOffset ?? this.nextOffset,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineQueryResults';

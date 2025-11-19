@@ -65,17 +65,19 @@ final class PassportElementPersonalDetails extends PassportElement {
   /// Parses a [PassportElementPersonalDetails] from TDLib JSON.
   factory PassportElementPersonalDetails.fromJson(Map<String, dynamic> json) =>
       PassportElementPersonalDetails(
-        personalDetails:
-            _readObject(json['personal_details'], PersonalDetails.fromJson),
+        personalDetails: _readObject(
+          json['personal_details'],
+          PersonalDetails.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'personal_details': personalDetails.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'personal_details': personalDetails.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -84,12 +86,11 @@ final class PassportElementPersonalDetails extends PassportElement {
     PersonalDetails? personalDetails,
     dynamic extra,
     int? clientId,
-  }) =>
-      PassportElementPersonalDetails(
-        personalDetails: personalDetails ?? this.personalDetails,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PassportElementPersonalDetails(
+    personalDetails: personalDetails ?? this.personalDetails,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportElementPersonalDetails';
@@ -128,9 +129,9 @@ final class PassportElementPassport extends PassportElement {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'passport': passport.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'passport': passport.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -139,12 +140,11 @@ final class PassportElementPassport extends PassportElement {
     IdentityDocument? passport,
     dynamic extra,
     int? clientId,
-  }) =>
-      PassportElementPassport(
-        passport: passport ?? this.passport,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PassportElementPassport(
+    passport: passport ?? this.passport,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportElementPassport';
@@ -176,17 +176,19 @@ final class PassportElementDriverLicense extends PassportElement {
   /// Parses a [PassportElementDriverLicense] from TDLib JSON.
   factory PassportElementDriverLicense.fromJson(Map<String, dynamic> json) =>
       PassportElementDriverLicense(
-        driverLicense:
-            _readObject(json['driver_license'], IdentityDocument.fromJson),
+        driverLicense: _readObject(
+          json['driver_license'],
+          IdentityDocument.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'driver_license': driverLicense.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'driver_license': driverLicense.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -195,12 +197,11 @@ final class PassportElementDriverLicense extends PassportElement {
     IdentityDocument? driverLicense,
     dynamic extra,
     int? clientId,
-  }) =>
-      PassportElementDriverLicense(
-        driverLicense: driverLicense ?? this.driverLicense,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PassportElementDriverLicense(
+    driverLicense: driverLicense ?? this.driverLicense,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportElementDriverLicense';
@@ -232,17 +233,19 @@ final class PassportElementIdentityCard extends PassportElement {
   /// Parses a [PassportElementIdentityCard] from TDLib JSON.
   factory PassportElementIdentityCard.fromJson(Map<String, dynamic> json) =>
       PassportElementIdentityCard(
-        identityCard:
-            _readObject(json['identity_card'], IdentityDocument.fromJson),
+        identityCard: _readObject(
+          json['identity_card'],
+          IdentityDocument.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'identity_card': identityCard.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'identity_card': identityCard.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -251,12 +254,11 @@ final class PassportElementIdentityCard extends PassportElement {
     IdentityDocument? identityCard,
     dynamic extra,
     int? clientId,
-  }) =>
-      PassportElementIdentityCard(
-        identityCard: identityCard ?? this.identityCard,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PassportElementIdentityCard(
+    identityCard: identityCard ?? this.identityCard,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportElementIdentityCard';
@@ -288,17 +290,19 @@ final class PassportElementInternalPassport extends PassportElement {
   /// Parses a [PassportElementInternalPassport] from TDLib JSON.
   factory PassportElementInternalPassport.fromJson(Map<String, dynamic> json) =>
       PassportElementInternalPassport(
-        internalPassport:
-            _readObject(json['internal_passport'], IdentityDocument.fromJson),
+        internalPassport: _readObject(
+          json['internal_passport'],
+          IdentityDocument.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'internal_passport': internalPassport.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'internal_passport': internalPassport.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -307,12 +311,11 @@ final class PassportElementInternalPassport extends PassportElement {
     IdentityDocument? internalPassport,
     dynamic extra,
     int? clientId,
-  }) =>
-      PassportElementInternalPassport(
-        internalPassport: internalPassport ?? this.internalPassport,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PassportElementInternalPassport(
+    internalPassport: internalPassport ?? this.internalPassport,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportElementInternalPassport';
@@ -351,9 +354,9 @@ final class PassportElementAddress extends PassportElement {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'address': address.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'address': address.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -362,12 +365,11 @@ final class PassportElementAddress extends PassportElement {
     Address? address,
     dynamic extra,
     int? clientId,
-  }) =>
-      PassportElementAddress(
-        address: address ?? this.address,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PassportElementAddress(
+    address: address ?? this.address,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportElementAddress';
@@ -399,17 +401,19 @@ final class PassportElementUtilityBill extends PassportElement {
   /// Parses a [PassportElementUtilityBill] from TDLib JSON.
   factory PassportElementUtilityBill.fromJson(Map<String, dynamic> json) =>
       PassportElementUtilityBill(
-        utilityBill:
-            _readObject(json['utility_bill'], PersonalDocument.fromJson),
+        utilityBill: _readObject(
+          json['utility_bill'],
+          PersonalDocument.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'utility_bill': utilityBill.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'utility_bill': utilityBill.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -418,12 +422,11 @@ final class PassportElementUtilityBill extends PassportElement {
     PersonalDocument? utilityBill,
     dynamic extra,
     int? clientId,
-  }) =>
-      PassportElementUtilityBill(
-        utilityBill: utilityBill ?? this.utilityBill,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PassportElementUtilityBill(
+    utilityBill: utilityBill ?? this.utilityBill,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportElementUtilityBill';
@@ -455,17 +458,19 @@ final class PassportElementBankStatement extends PassportElement {
   /// Parses a [PassportElementBankStatement] from TDLib JSON.
   factory PassportElementBankStatement.fromJson(Map<String, dynamic> json) =>
       PassportElementBankStatement(
-        bankStatement:
-            _readObject(json['bank_statement'], PersonalDocument.fromJson),
+        bankStatement: _readObject(
+          json['bank_statement'],
+          PersonalDocument.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'bank_statement': bankStatement.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'bank_statement': bankStatement.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -474,12 +479,11 @@ final class PassportElementBankStatement extends PassportElement {
     PersonalDocument? bankStatement,
     dynamic extra,
     int? clientId,
-  }) =>
-      PassportElementBankStatement(
-        bankStatement: bankStatement ?? this.bankStatement,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PassportElementBankStatement(
+    bankStatement: bankStatement ?? this.bankStatement,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportElementBankStatement';
@@ -511,17 +515,19 @@ final class PassportElementRentalAgreement extends PassportElement {
   /// Parses a [PassportElementRentalAgreement] from TDLib JSON.
   factory PassportElementRentalAgreement.fromJson(Map<String, dynamic> json) =>
       PassportElementRentalAgreement(
-        rentalAgreement:
-            _readObject(json['rental_agreement'], PersonalDocument.fromJson),
+        rentalAgreement: _readObject(
+          json['rental_agreement'],
+          PersonalDocument.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'rental_agreement': rentalAgreement.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'rental_agreement': rentalAgreement.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -530,12 +536,11 @@ final class PassportElementRentalAgreement extends PassportElement {
     PersonalDocument? rentalAgreement,
     dynamic extra,
     int? clientId,
-  }) =>
-      PassportElementRentalAgreement(
-        rentalAgreement: rentalAgreement ?? this.rentalAgreement,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PassportElementRentalAgreement(
+    rentalAgreement: rentalAgreement ?? this.rentalAgreement,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportElementRentalAgreement';
@@ -566,19 +571,21 @@ final class PassportElementPassportRegistration extends PassportElement {
 
   /// Parses a [PassportElementPassportRegistration] from TDLib JSON.
   factory PassportElementPassportRegistration.fromJson(
-          Map<String, dynamic> json) =>
-      PassportElementPassportRegistration(
-        passportRegistration: _readObject(
-            json['passport_registration'], PersonalDocument.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => PassportElementPassportRegistration(
+    passportRegistration: _readObject(
+      json['passport_registration'],
+      PersonalDocument.fromJson,
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'passport_registration': passportRegistration.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'passport_registration': passportRegistration.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -587,12 +594,11 @@ final class PassportElementPassportRegistration extends PassportElement {
     PersonalDocument? passportRegistration,
     dynamic extra,
     int? clientId,
-  }) =>
-      PassportElementPassportRegistration(
-        passportRegistration: passportRegistration ?? this.passportRegistration,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PassportElementPassportRegistration(
+    passportRegistration: passportRegistration ?? this.passportRegistration,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportElementPassportRegistration';
@@ -623,19 +629,21 @@ final class PassportElementTemporaryRegistration extends PassportElement {
 
   /// Parses a [PassportElementTemporaryRegistration] from TDLib JSON.
   factory PassportElementTemporaryRegistration.fromJson(
-          Map<String, dynamic> json) =>
-      PassportElementTemporaryRegistration(
-        temporaryRegistration: _readObject(
-            json['temporary_registration'], PersonalDocument.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => PassportElementTemporaryRegistration(
+    temporaryRegistration: _readObject(
+      json['temporary_registration'],
+      PersonalDocument.fromJson,
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'temporary_registration': temporaryRegistration.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'temporary_registration': temporaryRegistration.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -644,13 +652,11 @@ final class PassportElementTemporaryRegistration extends PassportElement {
     PersonalDocument? temporaryRegistration,
     dynamic extra,
     int? clientId,
-  }) =>
-      PassportElementTemporaryRegistration(
-        temporaryRegistration:
-            temporaryRegistration ?? this.temporaryRegistration,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PassportElementTemporaryRegistration(
+    temporaryRegistration: temporaryRegistration ?? this.temporaryRegistration,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportElementTemporaryRegistration';
@@ -689,9 +695,9 @@ final class PassportElementPhoneNumber extends PassportElement {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'phone_number': phoneNumber,
-      };
+    '@type': CONSTRUCTOR,
+    'phone_number': phoneNumber,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -700,12 +706,11 @@ final class PassportElementPhoneNumber extends PassportElement {
     String? phoneNumber,
     dynamic extra,
     int? clientId,
-  }) =>
-      PassportElementPhoneNumber(
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PassportElementPhoneNumber(
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportElementPhoneNumber';
@@ -744,9 +749,9 @@ final class PassportElementEmailAddress extends PassportElement {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'email_address': emailAddress,
-      };
+    '@type': CONSTRUCTOR,
+    'email_address': emailAddress,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -755,12 +760,11 @@ final class PassportElementEmailAddress extends PassportElement {
     String? emailAddress,
     dynamic extra,
     int? clientId,
-  }) =>
-      PassportElementEmailAddress(
-        emailAddress: emailAddress ?? this.emailAddress,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PassportElementEmailAddress(
+    emailAddress: emailAddress ?? this.emailAddress,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportElementEmailAddress';

@@ -22,27 +22,27 @@ final class BusinessOpeningHours extends TdObject {
       BusinessOpeningHours(
         timeZoneId: _readString(json['time_zone_id']),
         openingHours: _readList<BusinessOpeningHoursInterval>(
-            json['opening_hours'],
-            (e) => _readObject(e, BusinessOpeningHoursInterval.fromJson)),
+          json['opening_hours'],
+          (e) => _readObject(e, BusinessOpeningHoursInterval.fromJson),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'time_zone_id': timeZoneId,
-        'opening_hours': [for (final e in openingHours) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'time_zone_id': timeZoneId,
+    'opening_hours': [for (final e in openingHours) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   BusinessOpeningHours copyWith({
     String? timeZoneId,
     List<BusinessOpeningHoursInterval>? openingHours,
-  }) =>
-      BusinessOpeningHours(
-        timeZoneId: timeZoneId ?? this.timeZoneId,
-        openingHours: openingHours ?? this.openingHours,
-      );
+  }) => BusinessOpeningHours(
+    timeZoneId: timeZoneId ?? this.timeZoneId,
+    openingHours: openingHours ?? this.openingHours,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'businessOpeningHours';

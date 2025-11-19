@@ -48,12 +48,12 @@ final class PhoneNumberInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'country': country?.toJson(),
-        'country_calling_code': countryCallingCode,
-        'formatted_phone_number': formattedPhoneNumber,
-        'is_anonymous': isAnonymous,
-      };
+    '@type': CONSTRUCTOR,
+    'country': country?.toJson(),
+    'country_calling_code': countryCallingCode,
+    'formatted_phone_number': formattedPhoneNumber,
+    'is_anonymous': isAnonymous,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -64,15 +64,14 @@ final class PhoneNumberInfo extends TdObject {
     bool? isAnonymous,
     dynamic extra,
     int? clientId,
-  }) =>
-      PhoneNumberInfo(
-        country: country != null ? country() : this.country,
-        countryCallingCode: countryCallingCode ?? this.countryCallingCode,
-        formattedPhoneNumber: formattedPhoneNumber ?? this.formattedPhoneNumber,
-        isAnonymous: isAnonymous ?? this.isAnonymous,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PhoneNumberInfo(
+    country: country != null ? country() : this.country,
+    countryCallingCode: countryCallingCode ?? this.countryCallingCode,
+    formattedPhoneNumber: formattedPhoneNumber ?? this.formattedPhoneNumber,
+    isAnonymous: isAnonymous ?? this.isAnonymous,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'phoneNumberInfo';

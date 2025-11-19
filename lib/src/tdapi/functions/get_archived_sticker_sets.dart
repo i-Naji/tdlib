@@ -25,12 +25,12 @@ final class GetArchivedStickerSets extends TdFunction<StickerSets> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker_type': stickerType.toJson(),
-        'offset_sticker_set_id': offsetStickerSetId.toString(),
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_type': stickerType.toJson(),
+    'offset_sticker_set_id': offsetStickerSetId.toString(),
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class GetArchivedStickerSets extends TdFunction<StickerSets> {
     StickerType? stickerType,
     int? offsetStickerSetId,
     int? limit,
-  }) =>
-      GetArchivedStickerSets(
-        stickerType: stickerType ?? this.stickerType,
-        offsetStickerSetId: offsetStickerSetId ?? this.offsetStickerSetId,
-        limit: limit ?? this.limit,
-      );
+  }) => GetArchivedStickerSets(
+    stickerType: stickerType ?? this.stickerType,
+    offsetStickerSetId: offsetStickerSetId ?? this.offsetStickerSetId,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getArchivedStickerSets';

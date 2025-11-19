@@ -33,14 +33,14 @@ final class GetMessageLink extends TdFunction<MessageLink> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'media_timestamp': mediaTimestamp,
-        'for_album': forAlbum,
-        'in_message_thread': inMessageThread,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'media_timestamp': mediaTimestamp,
+    'for_album': forAlbum,
+    'in_message_thread': inMessageThread,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class GetMessageLink extends TdFunction<MessageLink> {
     int? mediaTimestamp,
     bool? forAlbum,
     bool? inMessageThread,
-  }) =>
-      GetMessageLink(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
-        forAlbum: forAlbum ?? this.forAlbum,
-        inMessageThread: inMessageThread ?? this.inMessageThread,
-      );
+  }) => GetMessageLink(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
+    forAlbum: forAlbum ?? this.forAlbum,
+    inMessageThread: inMessageThread ?? this.inMessageThread,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getMessageLink';

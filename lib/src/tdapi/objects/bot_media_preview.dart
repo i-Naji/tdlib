@@ -38,10 +38,10 @@ final class BotMediaPreview extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'date': date,
-        'content': content.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'date': date,
+    'content': content.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class BotMediaPreview extends TdObject {
     StoryContent? content,
     dynamic extra,
     int? clientId,
-  }) =>
-      BotMediaPreview(
-        date: date ?? this.date,
-        content: content ?? this.content,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => BotMediaPreview(
+    date: date ?? this.date,
+    content: content ?? this.content,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'botMediaPreview';

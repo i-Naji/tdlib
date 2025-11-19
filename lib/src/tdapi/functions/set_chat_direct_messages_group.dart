@@ -25,12 +25,12 @@ final class SetChatDirectMessagesGroup extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'is_enabled': isEnabled,
-        'paid_message_star_count': paidMessageStarCount,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'is_enabled': isEnabled,
+    'paid_message_star_count': paidMessageStarCount,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SetChatDirectMessagesGroup extends TdFunction<Ok> {
     int? chatId,
     bool? isEnabled,
     int? paidMessageStarCount,
-  }) =>
-      SetChatDirectMessagesGroup(
-        chatId: chatId ?? this.chatId,
-        isEnabled: isEnabled ?? this.isEnabled,
-        paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
-      );
+  }) => SetChatDirectMessagesGroup(
+    chatId: chatId ?? this.chatId,
+    isEnabled: isEnabled ?? this.isEnabled,
+    paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setChatDirectMessagesGroup';

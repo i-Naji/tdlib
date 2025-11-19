@@ -57,32 +57,32 @@ final class Sticker extends TdObject {
 
   /// Parses a [Sticker] from TDLib JSON.
   factory Sticker.fromJson(Map<String, dynamic> json) => Sticker(
-        id: _readInt(json['id']),
-        setId: _readInt(json['set_id']),
-        width: _readInt(json['width']),
-        height: _readInt(json['height']),
-        emoji: _readString(json['emoji']),
-        format: _readObject(json['format'], StickerFormat.fromJson),
-        fullType: _readObject(json['full_type'], StickerFullType.fromJson),
-        thumbnail: _readOptional(json['thumbnail'], Thumbnail.fromJson),
-        sticker: _readObject(json['sticker'], File.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    id: _readInt(json['id']),
+    setId: _readInt(json['set_id']),
+    width: _readInt(json['width']),
+    height: _readInt(json['height']),
+    emoji: _readString(json['emoji']),
+    format: _readObject(json['format'], StickerFormat.fromJson),
+    fullType: _readObject(json['full_type'], StickerFullType.fromJson),
+    thumbnail: _readOptional(json['thumbnail'], Thumbnail.fromJson),
+    sticker: _readObject(json['sticker'], File.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'set_id': setId.toString(),
-        'width': width,
-        'height': height,
-        'emoji': emoji,
-        'format': format.toJson(),
-        'full_type': fullType.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'sticker': sticker.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'set_id': setId.toString(),
+    'width': width,
+    'height': height,
+    'emoji': emoji,
+    'format': format.toJson(),
+    'full_type': fullType.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'sticker': sticker.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -98,20 +98,19 @@ final class Sticker extends TdObject {
     File? sticker,
     dynamic extra,
     int? clientId,
-  }) =>
-      Sticker(
-        id: id ?? this.id,
-        setId: setId ?? this.setId,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        emoji: emoji ?? this.emoji,
-        format: format ?? this.format,
-        fullType: fullType ?? this.fullType,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        sticker: sticker ?? this.sticker,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => Sticker(
+    id: id ?? this.id,
+    setId: setId ?? this.setId,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    emoji: emoji ?? this.emoji,
+    format: format ?? this.format,
+    fullType: fullType ?? this.fullType,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    sticker: sticker ?? this.sticker,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sticker';

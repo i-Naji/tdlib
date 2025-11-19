@@ -52,9 +52,7 @@ final class BlockListMain extends BlockList {
       const BlockListMain();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -78,9 +76,7 @@ final class BlockListStories extends BlockList {
       const BlockListStories();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

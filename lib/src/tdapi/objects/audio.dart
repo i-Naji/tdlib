@@ -47,35 +47,39 @@ final class Audio extends TdObject {
 
   /// Parses a [Audio] from TDLib JSON.
   factory Audio.fromJson(Map<String, dynamic> json) => Audio(
-        duration: _readInt(json['duration']),
-        title: _readString(json['title']),
-        performer: _readString(json['performer']),
-        fileName: _readString(json['file_name']),
-        mimeType: _readString(json['mime_type']),
-        albumCoverMinithumbnail: _readOptional(
-            json['album_cover_minithumbnail'], Minithumbnail.fromJson),
-        albumCoverThumbnail:
-            _readOptional(json['album_cover_thumbnail'], Thumbnail.fromJson),
-        externalAlbumCovers: _readList<Thumbnail>(json['external_album_covers'],
-            (e) => _readObject(e, Thumbnail.fromJson)),
-        audio: _readObject(json['audio'], File.fromJson),
-      );
+    duration: _readInt(json['duration']),
+    title: _readString(json['title']),
+    performer: _readString(json['performer']),
+    fileName: _readString(json['file_name']),
+    mimeType: _readString(json['mime_type']),
+    albumCoverMinithumbnail: _readOptional(
+      json['album_cover_minithumbnail'],
+      Minithumbnail.fromJson,
+    ),
+    albumCoverThumbnail: _readOptional(
+      json['album_cover_thumbnail'],
+      Thumbnail.fromJson,
+    ),
+    externalAlbumCovers: _readList<Thumbnail>(
+      json['external_album_covers'],
+      (e) => _readObject(e, Thumbnail.fromJson),
+    ),
+    audio: _readObject(json['audio'], File.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'duration': duration,
-        'title': title,
-        'performer': performer,
-        'file_name': fileName,
-        'mime_type': mimeType,
-        'album_cover_minithumbnail': albumCoverMinithumbnail?.toJson(),
-        'album_cover_thumbnail': albumCoverThumbnail?.toJson(),
-        'external_album_covers': [
-          for (final e in externalAlbumCovers) e.toJson()
-        ],
-        'audio': audio.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'duration': duration,
+    'title': title,
+    'performer': performer,
+    'file_name': fileName,
+    'mime_type': mimeType,
+    'album_cover_minithumbnail': albumCoverMinithumbnail?.toJson(),
+    'album_cover_thumbnail': albumCoverThumbnail?.toJson(),
+    'external_album_covers': [for (final e in externalAlbumCovers) e.toJson()],
+    'audio': audio.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -89,22 +93,21 @@ final class Audio extends TdObject {
     Thumbnail? Function()? albumCoverThumbnail,
     List<Thumbnail>? externalAlbumCovers,
     File? audio,
-  }) =>
-      Audio(
-        duration: duration ?? this.duration,
-        title: title ?? this.title,
-        performer: performer ?? this.performer,
-        fileName: fileName ?? this.fileName,
-        mimeType: mimeType ?? this.mimeType,
-        albumCoverMinithumbnail: albumCoverMinithumbnail != null
-            ? albumCoverMinithumbnail()
-            : this.albumCoverMinithumbnail,
-        albumCoverThumbnail: albumCoverThumbnail != null
-            ? albumCoverThumbnail()
-            : this.albumCoverThumbnail,
-        externalAlbumCovers: externalAlbumCovers ?? this.externalAlbumCovers,
-        audio: audio ?? this.audio,
-      );
+  }) => Audio(
+    duration: duration ?? this.duration,
+    title: title ?? this.title,
+    performer: performer ?? this.performer,
+    fileName: fileName ?? this.fileName,
+    mimeType: mimeType ?? this.mimeType,
+    albumCoverMinithumbnail: albumCoverMinithumbnail != null
+        ? albumCoverMinithumbnail()
+        : this.albumCoverMinithumbnail,
+    albumCoverThumbnail: albumCoverThumbnail != null
+        ? albumCoverThumbnail()
+        : this.albumCoverThumbnail,
+    externalAlbumCovers: externalAlbumCovers ?? this.externalAlbumCovers,
+    audio: audio ?? this.audio,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'audio';

@@ -58,14 +58,14 @@ final class NotificationSound extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'duration': duration,
-        'date': date,
-        'title': title,
-        'data': data,
-        'sound': sound.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'duration': duration,
+    'date': date,
+    'title': title,
+    'data': data,
+    'sound': sound.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -78,17 +78,16 @@ final class NotificationSound extends TdObject {
     File? sound,
     dynamic extra,
     int? clientId,
-  }) =>
-      NotificationSound(
-        id: id ?? this.id,
-        duration: duration ?? this.duration,
-        date: date ?? this.date,
-        title: title ?? this.title,
-        data: data ?? this.data,
-        sound: sound ?? this.sound,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => NotificationSound(
+    id: id ?? this.id,
+    duration: duration ?? this.duration,
+    date: date ?? this.date,
+    title: title ?? this.title,
+    data: data ?? this.data,
+    sound: sound ?? this.sound,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'notificationSound';

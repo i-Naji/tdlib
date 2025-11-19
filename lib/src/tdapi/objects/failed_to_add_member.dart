@@ -26,17 +26,18 @@ final class FailedToAddMember extends TdObject {
       FailedToAddMember(
         userId: _readInt(json['user_id']),
         premiumWouldAllowInvite: _readBool(json['premium_would_allow_invite']),
-        premiumRequiredToSendMessages:
-            _readBool(json['premium_required_to_send_messages']),
+        premiumRequiredToSendMessages: _readBool(
+          json['premium_required_to_send_messages'],
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'premium_would_allow_invite': premiumWouldAllowInvite,
-        'premium_required_to_send_messages': premiumRequiredToSendMessages,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'premium_would_allow_invite': premiumWouldAllowInvite,
+    'premium_required_to_send_messages': premiumRequiredToSendMessages,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,14 +45,13 @@ final class FailedToAddMember extends TdObject {
     int? userId,
     bool? premiumWouldAllowInvite,
     bool? premiumRequiredToSendMessages,
-  }) =>
-      FailedToAddMember(
-        userId: userId ?? this.userId,
-        premiumWouldAllowInvite:
-            premiumWouldAllowInvite ?? this.premiumWouldAllowInvite,
-        premiumRequiredToSendMessages:
-            premiumRequiredToSendMessages ?? this.premiumRequiredToSendMessages,
-      );
+  }) => FailedToAddMember(
+    userId: userId ?? this.userId,
+    premiumWouldAllowInvite:
+        premiumWouldAllowInvite ?? this.premiumWouldAllowInvite,
+    premiumRequiredToSendMessages:
+        premiumRequiredToSendMessages ?? this.premiumRequiredToSendMessages,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'failedToAddMember';

@@ -47,9 +47,7 @@ final class UndecodedSpeechRecognitionResult extends SpeechRecognitionResult {
 /// The speech recognition is ongoing
 final class SpeechRecognitionResultPending extends SpeechRecognitionResult {
   /// The speech recognition is ongoing
-  const SpeechRecognitionResultPending({
-    required this.partialText,
-  });
+  const SpeechRecognitionResultPending({required this.partialText});
 
   /// Partially recognized text
   final String partialText;
@@ -62,16 +60,14 @@ final class SpeechRecognitionResultPending extends SpeechRecognitionResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'partial_text': partialText,
-      };
+    '@type': CONSTRUCTOR,
+    'partial_text': partialText,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  SpeechRecognitionResultPending copyWith({
-    String? partialText,
-  }) =>
+  SpeechRecognitionResultPending copyWith({String? partialText}) =>
       SpeechRecognitionResultPending(
         partialText: partialText ?? this.partialText,
       );
@@ -86,34 +82,23 @@ final class SpeechRecognitionResultPending extends SpeechRecognitionResult {
 /// The speech recognition successfully finished
 final class SpeechRecognitionResultText extends SpeechRecognitionResult {
   /// The speech recognition successfully finished
-  const SpeechRecognitionResultText({
-    required this.text,
-  });
+  const SpeechRecognitionResultText({required this.text});
 
   /// Recognized text
   final String text;
 
   /// Parses a [SpeechRecognitionResultText] from TDLib JSON.
   factory SpeechRecognitionResultText.fromJson(Map<String, dynamic> json) =>
-      SpeechRecognitionResultText(
-        text: _readString(json['text']),
-      );
+      SpeechRecognitionResultText(text: _readString(json['text']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'text': text};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  SpeechRecognitionResultText copyWith({
-    String? text,
-  }) =>
-      SpeechRecognitionResultText(
-        text: text ?? this.text,
-      );
+  SpeechRecognitionResultText copyWith({String? text}) =>
+      SpeechRecognitionResultText(text: text ?? this.text);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'speechRecognitionResultText';
@@ -125,9 +110,7 @@ final class SpeechRecognitionResultText extends SpeechRecognitionResult {
 /// The speech recognition failed
 final class SpeechRecognitionResultError extends SpeechRecognitionResult {
   /// The speech recognition failed
-  const SpeechRecognitionResultError({
-    required this.error,
-  });
+  const SpeechRecognitionResultError({required this.error});
 
   /// Recognition error. An error with a message "MSG_VOICE_TOO_LONG" is returned when media duration is too big to be recognized
   final TdError error;
@@ -140,19 +123,15 @@ final class SpeechRecognitionResultError extends SpeechRecognitionResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'error': error.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'error': error.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  SpeechRecognitionResultError copyWith({
-    TdError? error,
-  }) =>
-      SpeechRecognitionResultError(
-        error: error ?? this.error,
-      );
+  SpeechRecognitionResultError copyWith({TdError? error}) =>
+      SpeechRecognitionResultError(error: error ?? this.error);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'speechRecognitionResultError';

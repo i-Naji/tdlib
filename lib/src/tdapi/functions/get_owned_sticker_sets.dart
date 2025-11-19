@@ -21,18 +21,15 @@ final class GetOwnedStickerSets extends TdFunction<StickerSets> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'offset_sticker_set_id': offsetStickerSetId.toString(),
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'offset_sticker_set_id': offsetStickerSetId.toString(),
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetOwnedStickerSets copyWith({
-    int? offsetStickerSetId,
-    int? limit,
-  }) =>
+  GetOwnedStickerSets copyWith({int? offsetStickerSetId, int? limit}) =>
       GetOwnedStickerSets(
         offsetStickerSetId: offsetStickerSetId ?? this.offsetStickerSetId,
         limit: limit ?? this.limit,

@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Chats].
 final class GetTopChats extends TdFunction<Chats> {
   /// Returns a list of frequently used chats
-  const GetTopChats({
-    required this.category,
-    required this.limit,
-  });
+  const GetTopChats({required this.category, required this.limit});
 
   /// Category of chats to be returned
   final TopChatCategory category;
@@ -21,22 +18,18 @@ final class GetTopChats extends TdFunction<Chats> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'category': category.toJson(),
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'category': category.toJson(),
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetTopChats copyWith({
-    TopChatCategory? category,
-    int? limit,
-  }) =>
-      GetTopChats(
-        category: category ?? this.category,
-        limit: limit ?? this.limit,
-      );
+  GetTopChats copyWith({TopChatCategory? category, int? limit}) => GetTopChats(
+    category: category ?? this.category,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getTopChats';

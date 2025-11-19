@@ -37,15 +37,15 @@ final class SetGameScore extends TdFunction<Message> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'edit_message': editMessage,
-        'user_id': userId,
-        'score': score,
-        'force': force,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'edit_message': editMessage,
+    'user_id': userId,
+    'score': score,
+    'force': force,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class SetGameScore extends TdFunction<Message> {
     int? userId,
     int? score,
     bool? force,
-  }) =>
-      SetGameScore(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        editMessage: editMessage ?? this.editMessage,
-        userId: userId ?? this.userId,
-        score: score ?? this.score,
-        force: force ?? this.force,
-      );
+  }) => SetGameScore(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    editMessage: editMessage ?? this.editMessage,
+    userId: userId ?? this.userId,
+    score: score ?? this.score,
+    force: force ?? this.force,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setGameScore';

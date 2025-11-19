@@ -47,9 +47,7 @@ final class UndecodedVectorPathCommand extends VectorPathCommand {
 /// A straight line to a given point
 final class VectorPathCommandLine extends VectorPathCommand {
   /// A straight line to a given point
-  const VectorPathCommandLine({
-    required this.endPoint,
-  });
+  const VectorPathCommandLine({required this.endPoint});
 
   /// The end point of the straight line
   final Point endPoint;
@@ -62,19 +60,15 @@ final class VectorPathCommandLine extends VectorPathCommand {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'end_point': endPoint.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'end_point': endPoint.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  VectorPathCommandLine copyWith({
-    Point? endPoint,
-  }) =>
-      VectorPathCommandLine(
-        endPoint: endPoint ?? this.endPoint,
-      );
+  VectorPathCommandLine copyWith({Point? endPoint}) =>
+      VectorPathCommandLine(endPoint: endPoint ?? this.endPoint);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'vectorPathCommandLine';
@@ -103,21 +97,20 @@ final class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
 
   /// Parses a [VectorPathCommandCubicBezierCurve] from TDLib JSON.
   factory VectorPathCommandCubicBezierCurve.fromJson(
-          Map<String, dynamic> json) =>
-      VectorPathCommandCubicBezierCurve(
-        startControlPoint:
-            _readObject(json['start_control_point'], Point.fromJson),
-        endControlPoint: _readObject(json['end_control_point'], Point.fromJson),
-        endPoint: _readObject(json['end_point'], Point.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => VectorPathCommandCubicBezierCurve(
+    startControlPoint: _readObject(json['start_control_point'], Point.fromJson),
+    endControlPoint: _readObject(json['end_control_point'], Point.fromJson),
+    endPoint: _readObject(json['end_point'], Point.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'start_control_point': startControlPoint.toJson(),
-        'end_control_point': endControlPoint.toJson(),
-        'end_point': endPoint.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'start_control_point': startControlPoint.toJson(),
+    'end_control_point': endControlPoint.toJson(),
+    'end_point': endPoint.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -126,12 +119,11 @@ final class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
     Point? startControlPoint,
     Point? endControlPoint,
     Point? endPoint,
-  }) =>
-      VectorPathCommandCubicBezierCurve(
-        startControlPoint: startControlPoint ?? this.startControlPoint,
-        endControlPoint: endControlPoint ?? this.endControlPoint,
-        endPoint: endPoint ?? this.endPoint,
-      );
+  }) => VectorPathCommandCubicBezierCurve(
+    startControlPoint: startControlPoint ?? this.startControlPoint,
+    endControlPoint: endControlPoint ?? this.endControlPoint,
+    endPoint: endPoint ?? this.endPoint,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'vectorPathCommandCubicBezierCurve';

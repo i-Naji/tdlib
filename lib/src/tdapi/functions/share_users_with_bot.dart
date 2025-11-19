@@ -33,14 +33,14 @@ final class ShareUsersWithBot extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'button_id': buttonId,
-        'shared_user_ids': sharedUserIds,
-        'only_check': onlyCheck,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'button_id': buttonId,
+    'shared_user_ids': sharedUserIds,
+    'only_check': onlyCheck,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class ShareUsersWithBot extends TdFunction<Ok> {
     int? buttonId,
     List<int>? sharedUserIds,
     bool? onlyCheck,
-  }) =>
-      ShareUsersWithBot(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        buttonId: buttonId ?? this.buttonId,
-        sharedUserIds: sharedUserIds ?? this.sharedUserIds,
-        onlyCheck: onlyCheck ?? this.onlyCheck,
-      );
+  }) => ShareUsersWithBot(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    buttonId: buttonId ?? this.buttonId,
+    sharedUserIds: sharedUserIds ?? this.sharedUserIds,
+    onlyCheck: onlyCheck ?? this.onlyCheck,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'shareUsersWithBot';

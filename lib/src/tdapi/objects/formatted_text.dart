@@ -29,19 +29,21 @@ final class FormattedText extends TdObject {
 
   /// Parses a [FormattedText] from TDLib JSON.
   factory FormattedText.fromJson(Map<String, dynamic> json) => FormattedText(
-        text: _readString(json['text']),
-        entities: _readList<TextEntity>(
-            json['entities'], (e) => _readObject(e, TextEntity.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    text: _readString(json['text']),
+    entities: _readList<TextEntity>(
+      json['entities'],
+      (e) => _readObject(e, TextEntity.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text,
-        'entities': [for (final e in entities) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'text': text,
+    'entities': [for (final e in entities) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +52,12 @@ final class FormattedText extends TdObject {
     List<TextEntity>? entities,
     dynamic extra,
     int? clientId,
-  }) =>
-      FormattedText(
-        text: text ?? this.text,
-        entities: entities ?? this.entities,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => FormattedText(
+    text: text ?? this.text,
+    entities: entities ?? this.entities,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'formattedText';

@@ -21,18 +21,15 @@ final class EditStarSubscription extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'subscription_id': subscriptionId,
-        'is_canceled': isCanceled,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'subscription_id': subscriptionId,
+    'is_canceled': isCanceled,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  EditStarSubscription copyWith({
-    String? subscriptionId,
-    bool? isCanceled,
-  }) =>
+  EditStarSubscription copyWith({String? subscriptionId, bool? isCanceled}) =>
       EditStarSubscription(
         subscriptionId: subscriptionId ?? this.subscriptionId,
         isCanceled: isCanceled ?? this.isCanceled,

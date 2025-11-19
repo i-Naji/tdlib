@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SendGroupCallMessage extends TdFunction<Ok> {
   /// Sends a message to other participants of a group call. Requires groupCall.can_send_messages right
-  const SendGroupCallMessage({
-    required this.groupCallId,
-    required this.text,
-  });
+  const SendGroupCallMessage({required this.groupCallId, required this.text});
 
   /// Group call identifier
   final int groupCallId;
@@ -21,18 +18,15 @@ final class SendGroupCallMessage extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'text': text.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'text': text.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SendGroupCallMessage copyWith({
-    int? groupCallId,
-    FormattedText? text,
-  }) =>
+  SendGroupCallMessage copyWith({int? groupCallId, FormattedText? text}) =>
       SendGroupCallMessage(
         groupCallId: groupCallId ?? this.groupCallId,
         text: text ?? this.text,

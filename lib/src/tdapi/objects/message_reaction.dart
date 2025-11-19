@@ -35,21 +35,25 @@ final class MessageReaction extends TdObject {
         type: _readObject(json['type'], ReactionType.fromJson),
         totalCount: _readInt(json['total_count']),
         isChosen: _readBool(json['is_chosen']),
-        usedSenderId:
-            _readOptional(json['used_sender_id'], MessageSender.fromJson),
-        recentSenderIds: _readList<MessageSender>(json['recent_sender_ids'],
-            (e) => _readObject(e, MessageSender.fromJson)),
+        usedSenderId: _readOptional(
+          json['used_sender_id'],
+          MessageSender.fromJson,
+        ),
+        recentSenderIds: _readList<MessageSender>(
+          json['recent_sender_ids'],
+          (e) => _readObject(e, MessageSender.fromJson),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-        'total_count': totalCount,
-        'is_chosen': isChosen,
-        'used_sender_id': usedSenderId?.toJson(),
-        'recent_sender_ids': [for (final e in recentSenderIds) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+    'total_count': totalCount,
+    'is_chosen': isChosen,
+    'used_sender_id': usedSenderId?.toJson(),
+    'recent_sender_ids': [for (final e in recentSenderIds) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -59,14 +63,13 @@ final class MessageReaction extends TdObject {
     bool? isChosen,
     MessageSender? Function()? usedSenderId,
     List<MessageSender>? recentSenderIds,
-  }) =>
-      MessageReaction(
-        type: type ?? this.type,
-        totalCount: totalCount ?? this.totalCount,
-        isChosen: isChosen ?? this.isChosen,
-        usedSenderId: usedSenderId != null ? usedSenderId() : this.usedSenderId,
-        recentSenderIds: recentSenderIds ?? this.recentSenderIds,
-      );
+  }) => MessageReaction(
+    type: type ?? this.type,
+    totalCount: totalCount ?? this.totalCount,
+    isChosen: isChosen ?? this.isChosen,
+    usedSenderId: usedSenderId != null ? usedSenderId() : this.usedSenderId,
+    recentSenderIds: recentSenderIds ?? this.recentSenderIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageReaction';

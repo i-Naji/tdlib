@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [ReceivedGift].
 final class GetReceivedGift extends TdFunction<ReceivedGift> {
   /// Returns information about a received gift
-  const GetReceivedGift({
-    required this.receivedGiftId,
-  });
+  const GetReceivedGift({required this.receivedGiftId});
 
   /// Identifier of the gift
   final String receivedGiftId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'received_gift_id': receivedGiftId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'received_gift_id': receivedGiftId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetReceivedGift copyWith({
-    String? receivedGiftId,
-  }) =>
-      GetReceivedGift(
-        receivedGiftId: receivedGiftId ?? this.receivedGiftId,
-      );
+  GetReceivedGift copyWith({String? receivedGiftId}) =>
+      GetReceivedGift(receivedGiftId: receivedGiftId ?? this.receivedGiftId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getReceivedGift';

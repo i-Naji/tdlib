@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class RemoveTopChat extends TdFunction<Ok> {
   /// Removes a chat from the list of frequently used chats. Supported only if the chat info database is enabled
-  const RemoveTopChat({
-    required this.category,
-    required this.chatId,
-  });
+  const RemoveTopChat({required this.category, required this.chatId});
 
   /// Category of frequently used chats
   final TopChatCategory category;
@@ -21,18 +18,15 @@ final class RemoveTopChat extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'category': category.toJson(),
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'category': category.toJson(),
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RemoveTopChat copyWith({
-    TopChatCategory? category,
-    int? chatId,
-  }) =>
+  RemoveTopChat copyWith({TopChatCategory? category, int? chatId}) =>
       RemoveTopChat(
         category: category ?? this.category,
         chatId: chatId ?? this.chatId,

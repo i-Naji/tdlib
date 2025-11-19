@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a globally unique push receiver identifier, which can be used to identify which account has received a push notification
 final class PushReceiverId extends TdObject {
   /// Contains a globally unique push receiver identifier, which can be used to identify which account has received a push notification
-  const PushReceiverId({
-    required this.id,
-    this.extra,
-    this.clientId,
-  });
+  const PushReceiverId({required this.id, this.extra, this.clientId});
 
   /// The globally unique identifier of push notification subscription
   final int id;
@@ -25,24 +21,17 @@ final class PushReceiverId extends TdObject {
 
   /// Parses a [PushReceiverId] from TDLib JSON.
   factory PushReceiverId.fromJson(Map<String, dynamic> json) => PushReceiverId(
-        id: _readInt(json['id']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    id: _readInt(json['id']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'id': id.toString()};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  PushReceiverId copyWith({
-    int? id,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  PushReceiverId copyWith({int? id, dynamic extra, int? clientId}) =>
       PushReceiverId(
         id: id ?? this.id,
         extra: extra ?? this.extra,

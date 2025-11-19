@@ -35,26 +35,27 @@ final class Checklist extends TdObject {
 
   /// Parses a [Checklist] from TDLib JSON.
   factory Checklist.fromJson(Map<String, dynamic> json) => Checklist(
-        title: _readObject(json['title'], FormattedText.fromJson),
-        tasks: _readList<ChecklistTask>(
-            json['tasks'], (e) => _readObject(e, ChecklistTask.fromJson)),
-        othersCanAddTasks: _readBool(json['others_can_add_tasks']),
-        canAddTasks: _readBool(json['can_add_tasks']),
-        othersCanMarkTasksAsDone:
-            _readBool(json['others_can_mark_tasks_as_done']),
-        canMarkTasksAsDone: _readBool(json['can_mark_tasks_as_done']),
-      );
+    title: _readObject(json['title'], FormattedText.fromJson),
+    tasks: _readList<ChecklistTask>(
+      json['tasks'],
+      (e) => _readObject(e, ChecklistTask.fromJson),
+    ),
+    othersCanAddTasks: _readBool(json['others_can_add_tasks']),
+    canAddTasks: _readBool(json['can_add_tasks']),
+    othersCanMarkTasksAsDone: _readBool(json['others_can_mark_tasks_as_done']),
+    canMarkTasksAsDone: _readBool(json['can_mark_tasks_as_done']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title.toJson(),
-        'tasks': [for (final e in tasks) e.toJson()],
-        'others_can_add_tasks': othersCanAddTasks,
-        'can_add_tasks': canAddTasks,
-        'others_can_mark_tasks_as_done': othersCanMarkTasksAsDone,
-        'can_mark_tasks_as_done': canMarkTasksAsDone,
-      };
+    '@type': CONSTRUCTOR,
+    'title': title.toJson(),
+    'tasks': [for (final e in tasks) e.toJson()],
+    'others_can_add_tasks': othersCanAddTasks,
+    'can_add_tasks': canAddTasks,
+    'others_can_mark_tasks_as_done': othersCanMarkTasksAsDone,
+    'can_mark_tasks_as_done': canMarkTasksAsDone,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -65,16 +66,15 @@ final class Checklist extends TdObject {
     bool? canAddTasks,
     bool? othersCanMarkTasksAsDone,
     bool? canMarkTasksAsDone,
-  }) =>
-      Checklist(
-        title: title ?? this.title,
-        tasks: tasks ?? this.tasks,
-        othersCanAddTasks: othersCanAddTasks ?? this.othersCanAddTasks,
-        canAddTasks: canAddTasks ?? this.canAddTasks,
-        othersCanMarkTasksAsDone:
-            othersCanMarkTasksAsDone ?? this.othersCanMarkTasksAsDone,
-        canMarkTasksAsDone: canMarkTasksAsDone ?? this.canMarkTasksAsDone,
-      );
+  }) => Checklist(
+    title: title ?? this.title,
+    tasks: tasks ?? this.tasks,
+    othersCanAddTasks: othersCanAddTasks ?? this.othersCanAddTasks,
+    canAddTasks: canAddTasks ?? this.canAddTasks,
+    othersCanMarkTasksAsDone:
+        othersCanMarkTasksAsDone ?? this.othersCanMarkTasksAsDone,
+    canMarkTasksAsDone: canMarkTasksAsDone ?? this.canMarkTasksAsDone,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checklist';

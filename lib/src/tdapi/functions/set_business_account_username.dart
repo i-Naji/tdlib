@@ -21,22 +21,21 @@ final class SetBusinessAccountUsername extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'business_connection_id': businessConnectionId,
-        'username': username,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'business_connection_id': businessConnectionId,
+    'username': username,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetBusinessAccountUsername copyWith({
     String? businessConnectionId,
     String? username,
-  }) =>
-      SetBusinessAccountUsername(
-        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-        username: username ?? this.username,
-      );
+  }) => SetBusinessAccountUsername(
+    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+    username: username ?? this.username,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setBusinessAccountUsername';

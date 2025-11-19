@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Message].
 final class GetMessage extends TdFunction<Message> {
   /// Returns information about a message. Returns a 404 error if the message doesn't exist
-  const GetMessage({
-    required this.chatId,
-    required this.messageId,
-  });
+  const GetMessage({required this.chatId, required this.messageId});
 
   /// Identifier of the chat the message belongs to
   final int chatId;
@@ -21,22 +18,18 @@ final class GetMessage extends TdFunction<Message> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetMessage copyWith({
-    int? chatId,
-    int? messageId,
-  }) =>
-      GetMessage(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-      );
+  GetMessage copyWith({int? chatId, int? messageId}) => GetMessage(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getMessage';

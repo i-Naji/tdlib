@@ -22,23 +22,22 @@ final class ToggleSupergroupHasAggressiveAntiSpamEnabled
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleSupergroupHasAggressiveAntiSpamEnabled copyWith({
     int? supergroupId,
     bool? hasAggressiveAntiSpamEnabled,
-  }) =>
-      ToggleSupergroupHasAggressiveAntiSpamEnabled(
-        supergroupId: supergroupId ?? this.supergroupId,
-        hasAggressiveAntiSpamEnabled:
-            hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
-      );
+  }) => ToggleSupergroupHasAggressiveAntiSpamEnabled(
+    supergroupId: supergroupId ?? this.supergroupId,
+    hasAggressiveAntiSpamEnabled:
+        hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =

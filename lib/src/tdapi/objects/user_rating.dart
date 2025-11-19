@@ -31,22 +31,22 @@ final class UserRating extends TdObject {
 
   /// Parses a [UserRating] from TDLib JSON.
   factory UserRating.fromJson(Map<String, dynamic> json) => UserRating(
-        level: _readInt(json['level']),
-        isMaximumLevelReached: _readBool(json['is_maximum_level_reached']),
-        rating: _readInt(json['rating']),
-        currentLevelRating: _readInt(json['current_level_rating']),
-        nextLevelRating: _readInt(json['next_level_rating']),
-      );
+    level: _readInt(json['level']),
+    isMaximumLevelReached: _readBool(json['is_maximum_level_reached']),
+    rating: _readInt(json['rating']),
+    currentLevelRating: _readInt(json['current_level_rating']),
+    nextLevelRating: _readInt(json['next_level_rating']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'level': level,
-        'is_maximum_level_reached': isMaximumLevelReached,
-        'rating': rating,
-        'current_level_rating': currentLevelRating,
-        'next_level_rating': nextLevelRating,
-      };
+    '@type': CONSTRUCTOR,
+    'level': level,
+    'is_maximum_level_reached': isMaximumLevelReached,
+    'rating': rating,
+    'current_level_rating': currentLevelRating,
+    'next_level_rating': nextLevelRating,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,13 @@ final class UserRating extends TdObject {
     int? rating,
     int? currentLevelRating,
     int? nextLevelRating,
-  }) =>
-      UserRating(
-        level: level ?? this.level,
-        isMaximumLevelReached:
-            isMaximumLevelReached ?? this.isMaximumLevelReached,
-        rating: rating ?? this.rating,
-        currentLevelRating: currentLevelRating ?? this.currentLevelRating,
-        nextLevelRating: nextLevelRating ?? this.nextLevelRating,
-      );
+  }) => UserRating(
+    level: level ?? this.level,
+    isMaximumLevelReached: isMaximumLevelReached ?? this.isMaximumLevelReached,
+    rating: rating ?? this.rating,
+    currentLevelRating: currentLevelRating ?? this.currentLevelRating,
+    nextLevelRating: nextLevelRating ?? this.nextLevelRating,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userRating';

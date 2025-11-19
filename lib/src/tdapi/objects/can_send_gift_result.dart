@@ -47,10 +47,7 @@ final class UndecodedCanSendGiftResult extends CanSendGiftResult {
 /// The gift can be sent now by the current user
 final class CanSendGiftResultOk extends CanSendGiftResult {
   /// The gift can be sent now by the current user
-  const CanSendGiftResultOk({
-    this.extra,
-    this.clientId,
-  });
+  const CanSendGiftResultOk({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -68,17 +65,12 @@ final class CanSendGiftResultOk extends CanSendGiftResult {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  CanSendGiftResultOk copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  CanSendGiftResultOk copyWith({dynamic extra, int? clientId}) =>
       CanSendGiftResultOk(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -121,9 +113,9 @@ final class CanSendGiftResultFail extends CanSendGiftResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'reason': reason.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'reason': reason.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -132,12 +124,11 @@ final class CanSendGiftResultFail extends CanSendGiftResult {
     FormattedText? reason,
     dynamic extra,
     int? clientId,
-  }) =>
-      CanSendGiftResultFail(
-        reason: reason ?? this.reason,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CanSendGiftResultFail(
+    reason: reason ?? this.reason,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'canSendGiftResultFail';

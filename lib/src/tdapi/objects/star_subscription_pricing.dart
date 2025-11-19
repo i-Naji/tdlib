@@ -26,17 +26,14 @@ final class StarSubscriptionPricing extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'period': period,
-        'star_count': starCount,
-      };
+    '@type': CONSTRUCTOR,
+    'period': period,
+    'star_count': starCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  StarSubscriptionPricing copyWith({
-    int? period,
-    int? starCount,
-  }) =>
+  StarSubscriptionPricing copyWith({int? period, int? starCount}) =>
       StarSubscriptionPricing(
         period: period ?? this.period,
         starCount: starCount ?? this.starCount,

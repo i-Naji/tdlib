@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetStickerEmojis extends TdFunction<Ok> {
   /// Changes the list of emojis corresponding to a sticker. The sticker must belong to a regular or custom emoji sticker set that is owned by the current user
-  const SetStickerEmojis({
-    required this.sticker,
-    required this.emojis,
-  });
+  const SetStickerEmojis({required this.sticker, required this.emojis});
 
   /// Sticker
   final InputFile sticker;
@@ -21,18 +18,15 @@ final class SetStickerEmojis extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker': sticker.toJson(),
-        'emojis': emojis,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker': sticker.toJson(),
+    'emojis': emojis,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetStickerEmojis copyWith({
-    InputFile? sticker,
-    String? emojis,
-  }) =>
+  SetStickerEmojis copyWith({InputFile? sticker, String? emojis}) =>
       SetStickerEmojis(
         sticker: sticker ?? this.sticker,
         emojis: emojis ?? this.emojis,

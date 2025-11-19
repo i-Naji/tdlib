@@ -29,18 +29,18 @@ final class BotMenuButton extends TdObject {
 
   /// Parses a [BotMenuButton] from TDLib JSON.
   factory BotMenuButton.fromJson(Map<String, dynamic> json) => BotMenuButton(
-        text: _readString(json['text']),
-        url: _readString(json['url']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    text: _readString(json['text']),
+    url: _readString(json['url']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text,
-        'url': url,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text,
+    'url': url,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class BotMenuButton extends TdObject {
     String? url,
     dynamic extra,
     int? clientId,
-  }) =>
-      BotMenuButton(
-        text: text ?? this.text,
-        url: url ?? this.url,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => BotMenuButton(
+    text: text ?? this.text,
+    url: url ?? this.url,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'botMenuButton';

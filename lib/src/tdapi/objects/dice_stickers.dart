@@ -45,9 +45,7 @@ final class UndecodedDiceStickers extends DiceStickers {
 /// A regular animated sticker
 final class DiceStickersRegular extends DiceStickers {
   /// A regular animated sticker
-  const DiceStickersRegular({
-    required this.sticker,
-  });
+  const DiceStickersRegular({required this.sticker});
 
   /// The animated sticker with the dice animation
   final Sticker sticker;
@@ -60,19 +58,15 @@ final class DiceStickersRegular extends DiceStickers {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker': sticker.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'sticker': sticker.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  DiceStickersRegular copyWith({
-    Sticker? sticker,
-  }) =>
-      DiceStickersRegular(
-        sticker: sticker ?? this.sticker,
-      );
+  DiceStickersRegular copyWith({Sticker? sticker}) =>
+      DiceStickersRegular(sticker: sticker ?? this.sticker);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'diceStickersRegular';
@@ -119,13 +113,13 @@ final class DiceStickersSlotMachine extends DiceStickers {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'background': background.toJson(),
-        'lever': lever.toJson(),
-        'left_reel': leftReel.toJson(),
-        'center_reel': centerReel.toJson(),
-        'right_reel': rightReel.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'background': background.toJson(),
+    'lever': lever.toJson(),
+    'left_reel': leftReel.toJson(),
+    'center_reel': centerReel.toJson(),
+    'right_reel': rightReel.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -136,14 +130,13 @@ final class DiceStickersSlotMachine extends DiceStickers {
     Sticker? leftReel,
     Sticker? centerReel,
     Sticker? rightReel,
-  }) =>
-      DiceStickersSlotMachine(
-        background: background ?? this.background,
-        lever: lever ?? this.lever,
-        leftReel: leftReel ?? this.leftReel,
-        centerReel: centerReel ?? this.centerReel,
-        rightReel: rightReel ?? this.rightReel,
-      );
+  }) => DiceStickersSlotMachine(
+    background: background ?? this.background,
+    lever: lever ?? this.lever,
+    leftReel: leftReel ?? this.leftReel,
+    centerReel: centerReel ?? this.centerReel,
+    rightReel: rightReel ?? this.rightReel,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'diceStickersSlotMachine';

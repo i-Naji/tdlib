@@ -21,18 +21,15 @@ final class SendCallDebugInformation extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'call_id': callId,
-        'debug_information': debugInformation,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'call_id': callId,
+    'debug_information': debugInformation,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SendCallDebugInformation copyWith({
-    int? callId,
-    String? debugInformation,
-  }) =>
+  SendCallDebugInformation copyWith({int? callId, String? debugInformation}) =>
       SendCallDebugInformation(
         callId: callId ?? this.callId,
         debugInformation: debugInformation ?? this.debugInformation,

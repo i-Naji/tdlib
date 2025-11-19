@@ -39,26 +39,26 @@ final class Game extends TdObject {
 
   /// Parses a [Game] from TDLib JSON.
   factory Game.fromJson(Map<String, dynamic> json) => Game(
-        id: _readInt(json['id']),
-        shortName: _readString(json['short_name']),
-        title: _readString(json['title']),
-        text: _readObject(json['text'], FormattedText.fromJson),
-        description: _readString(json['description']),
-        photo: _readObject(json['photo'], Photo.fromJson),
-        animation: _readOptional(json['animation'], Animation.fromJson),
-      );
+    id: _readInt(json['id']),
+    shortName: _readString(json['short_name']),
+    title: _readString(json['title']),
+    text: _readObject(json['text'], FormattedText.fromJson),
+    description: _readString(json['description']),
+    photo: _readObject(json['photo'], Photo.fromJson),
+    animation: _readOptional(json['animation'], Animation.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'short_name': shortName,
-        'title': title,
-        'text': text.toJson(),
-        'description': description,
-        'photo': photo.toJson(),
-        'animation': animation?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'short_name': shortName,
+    'title': title,
+    'text': text.toJson(),
+    'description': description,
+    'photo': photo.toJson(),
+    'animation': animation?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -70,16 +70,15 @@ final class Game extends TdObject {
     String? description,
     Photo? photo,
     Animation? Function()? animation,
-  }) =>
-      Game(
-        id: id ?? this.id,
-        shortName: shortName ?? this.shortName,
-        title: title ?? this.title,
-        text: text ?? this.text,
-        description: description ?? this.description,
-        photo: photo ?? this.photo,
-        animation: animation != null ? animation() : this.animation,
-      );
+  }) => Game(
+    id: id ?? this.id,
+    shortName: shortName ?? this.shortName,
+    title: title ?? this.title,
+    text: text ?? this.text,
+    description: description ?? this.description,
+    photo: photo ?? this.photo,
+    animation: animation != null ? animation() : this.animation,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'game';

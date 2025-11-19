@@ -21,22 +21,21 @@ final class ToggleSupergroupJoinToSendMessages extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'join_to_send_messages': joinToSendMessages,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'join_to_send_messages': joinToSendMessages,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleSupergroupJoinToSendMessages copyWith({
     int? supergroupId,
     bool? joinToSendMessages,
-  }) =>
-      ToggleSupergroupJoinToSendMessages(
-        supergroupId: supergroupId ?? this.supergroupId,
-        joinToSendMessages: joinToSendMessages ?? this.joinToSendMessages,
-      );
+  }) => ToggleSupergroupJoinToSendMessages(
+    supergroupId: supergroupId ?? this.supergroupId,
+    joinToSendMessages: joinToSendMessages ?? this.joinToSendMessages,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleSupergroupJoinToSendMessages';

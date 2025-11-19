@@ -21,18 +21,15 @@ final class SetPinnedForumTopics extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'forum_topic_ids': forumTopicIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'forum_topic_ids': forumTopicIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetPinnedForumTopics copyWith({
-    int? chatId,
-    List<int>? forumTopicIds,
-  }) =>
+  SetPinnedForumTopics copyWith({int? chatId, List<int>? forumTopicIds}) =>
       SetPinnedForumTopics(
         chatId: chatId ?? this.chatId,
         forumTopicIds: forumTopicIds ?? this.forumTopicIds,

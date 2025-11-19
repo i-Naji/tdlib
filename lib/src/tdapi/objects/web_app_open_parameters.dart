@@ -31,11 +31,11 @@ final class WebAppOpenParameters extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'theme': theme?.toJson(),
-        'application_name': applicationName,
-        'mode': mode?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'theme': theme?.toJson(),
+    'application_name': applicationName,
+    'mode': mode?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class WebAppOpenParameters extends TdObject {
     ThemeParameters? Function()? theme,
     String? applicationName,
     WebAppOpenMode? Function()? mode,
-  }) =>
-      WebAppOpenParameters(
-        theme: theme != null ? theme() : this.theme,
-        applicationName: applicationName ?? this.applicationName,
-        mode: mode != null ? mode() : this.mode,
-      );
+  }) => WebAppOpenParameters(
+    theme: theme != null ? theme() : this.theme,
+    applicationName: applicationName ?? this.applicationName,
+    mode: mode != null ? mode() : this.mode,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'webAppOpenParameters';

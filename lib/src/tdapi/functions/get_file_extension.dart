@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Text].
 final class GetFileExtension extends TdFunction<Text> {
   /// Returns the extension of a file, guessed by its MIME type. Returns an empty string on failure. Can be called synchronously
-  const GetFileExtension({
-    required this.mimeType,
-  });
+  const GetFileExtension({required this.mimeType});
 
   /// The MIME type of the file
   final String mimeType;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'mime_type': mimeType,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'mime_type': mimeType,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetFileExtension copyWith({
-    String? mimeType,
-  }) =>
-      GetFileExtension(
-        mimeType: mimeType ?? this.mimeType,
-      );
+  GetFileExtension copyWith({String? mimeType}) =>
+      GetFileExtension(mimeType: mimeType ?? this.mimeType);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getFileExtension';

@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [LinkPreview].
 final class GetLinkPreview extends TdFunction<LinkPreview> {
   /// Returns a link preview by the text of a message. Do not call this function too often. Returns a 404 error if the text has no link preview
-  const GetLinkPreview({
-    required this.text,
-    this.linkPreviewOptions,
-  });
+  const GetLinkPreview({required this.text, this.linkPreviewOptions});
 
   /// Message text with formatting
   final FormattedText text;
@@ -21,24 +18,23 @@ final class GetLinkPreview extends TdFunction<LinkPreview> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'link_preview_options': linkPreviewOptions?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'link_preview_options': linkPreviewOptions?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetLinkPreview copyWith({
     FormattedText? text,
     LinkPreviewOptions? Function()? linkPreviewOptions,
-  }) =>
-      GetLinkPreview(
-        text: text ?? this.text,
-        linkPreviewOptions: linkPreviewOptions != null
-            ? linkPreviewOptions()
-            : this.linkPreviewOptions,
-      );
+  }) => GetLinkPreview(
+    text: text ?? this.text,
+    linkPreviewOptions: linkPreviewOptions != null
+        ? linkPreviewOptions()
+        : this.linkPreviewOptions,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getLinkPreview';

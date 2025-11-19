@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Describes an option to report an entity to Telegram
 final class ReportOption extends TdObject {
   /// Describes an option to report an entity to Telegram
-  const ReportOption({
-    required this.id,
-    required this.text,
-  });
+  const ReportOption({required this.id, required this.text});
 
   /// Unique identifier of the option
   final String id;
@@ -19,27 +16,21 @@ final class ReportOption extends TdObject {
 
   /// Parses a [ReportOption] from TDLib JSON.
   factory ReportOption.fromJson(Map<String, dynamic> json) => ReportOption(
-        id: _readString(json['id']),
-        text: _readString(json['text']),
-      );
+    id: _readString(json['id']),
+    text: _readString(json['text']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'text': text,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'text': text,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ReportOption copyWith({
-    String? id,
-    String? text,
-  }) =>
-      ReportOption(
-        id: id ?? this.id,
-        text: text ?? this.text,
-      );
+  ReportOption copyWith({String? id, String? text}) =>
+      ReportOption(id: id ?? this.id, text: text ?? this.text);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reportOption';

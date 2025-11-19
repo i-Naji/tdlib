@@ -21,18 +21,15 @@ final class SetBusinessAccountBio extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'business_connection_id': businessConnectionId,
-        'bio': bio,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'business_connection_id': businessConnectionId,
+    'bio': bio,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetBusinessAccountBio copyWith({
-    String? businessConnectionId,
-    String? bio,
-  }) =>
+  SetBusinessAccountBio copyWith({String? businessConnectionId, String? bio}) =>
       SetBusinessAccountBio(
         businessConnectionId: businessConnectionId ?? this.businessConnectionId,
         bio: bio ?? this.bio,

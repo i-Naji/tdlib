@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [HttpUrl].
 final class GetInternalLink extends TdFunction<HttpUrl> {
   /// Returns an HTTPS or a tg: link with the given type. Can be called before authorization
-  const GetInternalLink({
-    required this.type,
-    required this.isHttp,
-  });
+  const GetInternalLink({required this.type, required this.isHttp});
 
   /// Expected type of the link
   final InternalLinkType type;
@@ -21,22 +18,16 @@ final class GetInternalLink extends TdFunction<HttpUrl> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-        'is_http': isHttp,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+    'is_http': isHttp,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetInternalLink copyWith({
-    InternalLinkType? type,
-    bool? isHttp,
-  }) =>
-      GetInternalLink(
-        type: type ?? this.type,
-        isHttp: isHttp ?? this.isHttp,
-      );
+  GetInternalLink copyWith({InternalLinkType? type, bool? isHttp}) =>
+      GetInternalLink(type: type ?? this.type, isHttp: isHttp ?? this.isHttp);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getInternalLink';

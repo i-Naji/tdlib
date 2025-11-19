@@ -26,17 +26,14 @@ final class GiftPurchaseLimits extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'remaining_count': remainingCount,
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'remaining_count': remainingCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GiftPurchaseLimits copyWith({
-    int? totalCount,
-    int? remainingCount,
-  }) =>
+  GiftPurchaseLimits copyWith({int? totalCount, int? remainingCount}) =>
       GiftPurchaseLimits(
         totalCount: totalCount ?? this.totalCount,
         remainingCount: remainingCount ?? this.remainingCount,

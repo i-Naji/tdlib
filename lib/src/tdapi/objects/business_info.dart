@@ -43,34 +43,40 @@ final class BusinessInfo extends TdObject {
 
   /// Parses a [BusinessInfo] from TDLib JSON.
   factory BusinessInfo.fromJson(Map<String, dynamic> json) => BusinessInfo(
-        location: _readOptional(json['location'], BusinessLocation.fromJson),
-        openingHours:
-            _readOptional(json['opening_hours'], BusinessOpeningHours.fromJson),
-        localOpeningHours: _readOptional(
-            json['local_opening_hours'], BusinessOpeningHours.fromJson),
-        nextOpenIn: _readInt(json['next_open_in']),
-        nextCloseIn: _readInt(json['next_close_in']),
-        greetingMessageSettings: _readOptional(
-            json['greeting_message_settings'],
-            BusinessGreetingMessageSettings.fromJson),
-        awayMessageSettings: _readOptional(json['away_message_settings'],
-            BusinessAwayMessageSettings.fromJson),
-        startPage:
-            _readOptional(json['start_page'], BusinessStartPage.fromJson),
-      );
+    location: _readOptional(json['location'], BusinessLocation.fromJson),
+    openingHours: _readOptional(
+      json['opening_hours'],
+      BusinessOpeningHours.fromJson,
+    ),
+    localOpeningHours: _readOptional(
+      json['local_opening_hours'],
+      BusinessOpeningHours.fromJson,
+    ),
+    nextOpenIn: _readInt(json['next_open_in']),
+    nextCloseIn: _readInt(json['next_close_in']),
+    greetingMessageSettings: _readOptional(
+      json['greeting_message_settings'],
+      BusinessGreetingMessageSettings.fromJson,
+    ),
+    awayMessageSettings: _readOptional(
+      json['away_message_settings'],
+      BusinessAwayMessageSettings.fromJson,
+    ),
+    startPage: _readOptional(json['start_page'], BusinessStartPage.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'location': location?.toJson(),
-        'opening_hours': openingHours?.toJson(),
-        'local_opening_hours': localOpeningHours?.toJson(),
-        'next_open_in': nextOpenIn,
-        'next_close_in': nextCloseIn,
-        'greeting_message_settings': greetingMessageSettings?.toJson(),
-        'away_message_settings': awayMessageSettings?.toJson(),
-        'start_page': startPage?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'location': location?.toJson(),
+    'opening_hours': openingHours?.toJson(),
+    'local_opening_hours': localOpeningHours?.toJson(),
+    'next_open_in': nextOpenIn,
+    'next_close_in': nextCloseIn,
+    'greeting_message_settings': greetingMessageSettings?.toJson(),
+    'away_message_settings': awayMessageSettings?.toJson(),
+    'start_page': startPage?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -83,23 +89,22 @@ final class BusinessInfo extends TdObject {
     BusinessGreetingMessageSettings? Function()? greetingMessageSettings,
     BusinessAwayMessageSettings? Function()? awayMessageSettings,
     BusinessStartPage? Function()? startPage,
-  }) =>
-      BusinessInfo(
-        location: location != null ? location() : this.location,
-        openingHours: openingHours != null ? openingHours() : this.openingHours,
-        localOpeningHours: localOpeningHours != null
-            ? localOpeningHours()
-            : this.localOpeningHours,
-        nextOpenIn: nextOpenIn ?? this.nextOpenIn,
-        nextCloseIn: nextCloseIn ?? this.nextCloseIn,
-        greetingMessageSettings: greetingMessageSettings != null
-            ? greetingMessageSettings()
-            : this.greetingMessageSettings,
-        awayMessageSettings: awayMessageSettings != null
-            ? awayMessageSettings()
-            : this.awayMessageSettings,
-        startPage: startPage != null ? startPage() : this.startPage,
-      );
+  }) => BusinessInfo(
+    location: location != null ? location() : this.location,
+    openingHours: openingHours != null ? openingHours() : this.openingHours,
+    localOpeningHours: localOpeningHours != null
+        ? localOpeningHours()
+        : this.localOpeningHours,
+    nextOpenIn: nextOpenIn ?? this.nextOpenIn,
+    nextCloseIn: nextCloseIn ?? this.nextCloseIn,
+    greetingMessageSettings: greetingMessageSettings != null
+        ? greetingMessageSettings()
+        : this.greetingMessageSettings,
+    awayMessageSettings: awayMessageSettings != null
+        ? awayMessageSettings()
+        : this.awayMessageSettings,
+    startPage: startPage != null ? startPage() : this.startPage,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'businessInfo';

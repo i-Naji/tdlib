@@ -51,33 +51,32 @@ final class StoryVideo extends TdObject {
 
   /// Parses a [StoryVideo] from TDLib JSON.
   factory StoryVideo.fromJson(Map<String, dynamic> json) => StoryVideo(
-        duration: _readDouble(json['duration']),
-        width: _readInt(json['width']),
-        height: _readInt(json['height']),
-        hasStickers: _readBool(json['has_stickers']),
-        isAnimation: _readBool(json['is_animation']),
-        minithumbnail:
-            _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
-        thumbnail: _readOptional(json['thumbnail'], Thumbnail.fromJson),
-        preloadPrefixSize: _readInt(json['preload_prefix_size']),
-        coverFrameTimestamp: _readDouble(json['cover_frame_timestamp']),
-        video: _readObject(json['video'], File.fromJson),
-      );
+    duration: _readDouble(json['duration']),
+    width: _readInt(json['width']),
+    height: _readInt(json['height']),
+    hasStickers: _readBool(json['has_stickers']),
+    isAnimation: _readBool(json['is_animation']),
+    minithumbnail: _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
+    thumbnail: _readOptional(json['thumbnail'], Thumbnail.fromJson),
+    preloadPrefixSize: _readInt(json['preload_prefix_size']),
+    coverFrameTimestamp: _readDouble(json['cover_frame_timestamp']),
+    video: _readObject(json['video'], File.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'duration': duration,
-        'width': width,
-        'height': height,
-        'has_stickers': hasStickers,
-        'is_animation': isAnimation,
-        'minithumbnail': minithumbnail?.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'preload_prefix_size': preloadPrefixSize,
-        'cover_frame_timestamp': coverFrameTimestamp,
-        'video': video.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'duration': duration,
+    'width': width,
+    'height': height,
+    'has_stickers': hasStickers,
+    'is_animation': isAnimation,
+    'minithumbnail': minithumbnail?.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'preload_prefix_size': preloadPrefixSize,
+    'cover_frame_timestamp': coverFrameTimestamp,
+    'video': video.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -92,20 +91,18 @@ final class StoryVideo extends TdObject {
     int? preloadPrefixSize,
     double? coverFrameTimestamp,
     File? video,
-  }) =>
-      StoryVideo(
-        duration: duration ?? this.duration,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        hasStickers: hasStickers ?? this.hasStickers,
-        isAnimation: isAnimation ?? this.isAnimation,
-        minithumbnail:
-            minithumbnail != null ? minithumbnail() : this.minithumbnail,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        preloadPrefixSize: preloadPrefixSize ?? this.preloadPrefixSize,
-        coverFrameTimestamp: coverFrameTimestamp ?? this.coverFrameTimestamp,
-        video: video ?? this.video,
-      );
+  }) => StoryVideo(
+    duration: duration ?? this.duration,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    hasStickers: hasStickers ?? this.hasStickers,
+    isAnimation: isAnimation ?? this.isAnimation,
+    minithumbnail: minithumbnail != null ? minithumbnail() : this.minithumbnail,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    preloadPrefixSize: preloadPrefixSize ?? this.preloadPrefixSize,
+    coverFrameTimestamp: coverFrameTimestamp ?? this.coverFrameTimestamp,
+    video: video ?? this.video,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyVideo';

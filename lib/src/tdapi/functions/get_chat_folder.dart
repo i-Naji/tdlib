@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [ChatFolder].
 final class GetChatFolder extends TdFunction<ChatFolder> {
   /// Returns information about a chat folder by its identifier
-  const GetChatFolder({
-    required this.chatFolderId,
-  });
+  const GetChatFolder({required this.chatFolderId});
 
   /// Chat folder identifier
   final int chatFolderId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_folder_id': chatFolderId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_folder_id': chatFolderId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatFolder copyWith({
-    int? chatFolderId,
-  }) =>
-      GetChatFolder(
-        chatFolderId: chatFolderId ?? this.chatFolderId,
-      );
+  GetChatFolder copyWith({int? chatFolderId}) =>
+      GetChatFolder(chatFolderId: chatFolderId ?? this.chatFolderId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatFolder';

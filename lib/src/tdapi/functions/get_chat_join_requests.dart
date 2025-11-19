@@ -33,14 +33,14 @@ final class GetChatJoinRequests extends TdFunction<ChatJoinRequests> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'invite_link': inviteLink,
-        'query': query,
-        'offset_request': offsetRequest?.toJson(),
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'invite_link': inviteLink,
+    'query': query,
+    'offset_request': offsetRequest?.toJson(),
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,15 +50,13 @@ final class GetChatJoinRequests extends TdFunction<ChatJoinRequests> {
     String? query,
     ChatJoinRequest? Function()? offsetRequest,
     int? limit,
-  }) =>
-      GetChatJoinRequests(
-        chatId: chatId ?? this.chatId,
-        inviteLink: inviteLink ?? this.inviteLink,
-        query: query ?? this.query,
-        offsetRequest:
-            offsetRequest != null ? offsetRequest() : this.offsetRequest,
-        limit: limit ?? this.limit,
-      );
+  }) => GetChatJoinRequests(
+    chatId: chatId ?? this.chatId,
+    inviteLink: inviteLink ?? this.inviteLink,
+    query: query ?? this.query,
+    offsetRequest: offsetRequest != null ? offsetRequest() : this.offsetRequest,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatJoinRequests';

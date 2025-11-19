@@ -41,20 +41,22 @@ final class PremiumPaymentOption extends TdObject {
         discountPercentage: _readInt(json['discount_percentage']),
         monthCount: _readInt(json['month_count']),
         storeProductId: _readString(json['store_product_id']),
-        paymentLink:
-            _readOptional(json['payment_link'], InternalLinkType.fromJson),
+        paymentLink: _readOptional(
+          json['payment_link'],
+          InternalLinkType.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'currency': currency,
-        'amount': amount,
-        'discount_percentage': discountPercentage,
-        'month_count': monthCount,
-        'store_product_id': storeProductId,
-        'payment_link': paymentLink?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'currency': currency,
+    'amount': amount,
+    'discount_percentage': discountPercentage,
+    'month_count': monthCount,
+    'store_product_id': storeProductId,
+    'payment_link': paymentLink?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -65,15 +67,14 @@ final class PremiumPaymentOption extends TdObject {
     int? monthCount,
     String? storeProductId,
     InternalLinkType? Function()? paymentLink,
-  }) =>
-      PremiumPaymentOption(
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        discountPercentage: discountPercentage ?? this.discountPercentage,
-        monthCount: monthCount ?? this.monthCount,
-        storeProductId: storeProductId ?? this.storeProductId,
-        paymentLink: paymentLink != null ? paymentLink() : this.paymentLink,
-      );
+  }) => PremiumPaymentOption(
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    discountPercentage: discountPercentage ?? this.discountPercentage,
+    monthCount: monthCount ?? this.monthCount,
+    storeProductId: storeProductId ?? this.storeProductId,
+    paymentLink: paymentLink != null ? paymentLink() : this.paymentLink,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumPaymentOption';

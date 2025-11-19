@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetPinnedSavedMessagesTopics extends TdFunction<Ok> {
   /// Changes the order of pinned Saved Messages topics
-  const SetPinnedSavedMessagesTopics({
-    required this.savedMessagesTopicIds,
-  });
+  const SetPinnedSavedMessagesTopics({required this.savedMessagesTopicIds});
 
   /// Identifiers of the new pinned Saved Messages topics
   final List<int> savedMessagesTopicIds;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'saved_messages_topic_ids': savedMessagesTopicIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'saved_messages_topic_ids': savedMessagesTopicIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetPinnedSavedMessagesTopics copyWith({
-    List<int>? savedMessagesTopicIds,
-  }) =>
+  SetPinnedSavedMessagesTopics copyWith({List<int>? savedMessagesTopicIds}) =>
       SetPinnedSavedMessagesTopics(
         savedMessagesTopicIds:
             savedMessagesTopicIds ?? this.savedMessagesTopicIds,

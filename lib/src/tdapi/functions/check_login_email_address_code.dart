@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class CheckLoginEmailAddressCode extends TdFunction<Ok> {
   /// Checks the login email address authentication
-  const CheckLoginEmailAddressCode({
-    required this.code,
-  });
+  const CheckLoginEmailAddressCode({required this.code});
 
   /// Email address authentication to check
   final EmailAddressAuthentication code;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'code': code.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'code': code.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CheckLoginEmailAddressCode copyWith({
-    EmailAddressAuthentication? code,
-  }) =>
-      CheckLoginEmailAddressCode(
-        code: code ?? this.code,
-      );
+  CheckLoginEmailAddressCode copyWith({EmailAddressAuthentication? code}) =>
+      CheckLoginEmailAddressCode(code: code ?? this.code);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkLoginEmailAddressCode';

@@ -21,22 +21,21 @@ final class SendPassportAuthorizationForm extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'authorization_form_id': authorizationFormId,
-        'types': [for (final e in types) e.toJson()],
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'authorization_form_id': authorizationFormId,
+    'types': [for (final e in types) e.toJson()],
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SendPassportAuthorizationForm copyWith({
     int? authorizationFormId,
     List<PassportElementType>? types,
-  }) =>
-      SendPassportAuthorizationForm(
-        authorizationFormId: authorizationFormId ?? this.authorizationFormId,
-        types: types ?? this.types,
-      );
+  }) => SendPassportAuthorizationForm(
+    authorizationFormId: authorizationFormId ?? this.authorizationFormId,
+    types: types ?? this.types,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sendPassportAuthorizationForm';

@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Represents a button to be shown above inline query results
 final class InlineQueryResultsButton extends TdObject {
   /// Represents a button to be shown above inline query results
-  const InlineQueryResultsButton({
-    required this.text,
-    required this.type,
-  });
+  const InlineQueryResultsButton({required this.text, required this.type});
 
   /// The text of the button
   final String text;
@@ -26,21 +23,20 @@ final class InlineQueryResultsButton extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text,
-        'type': type.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'text': text,
+    'type': type.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   InlineQueryResultsButton copyWith({
     String? text,
     InlineQueryResultsButtonType? type,
-  }) =>
-      InlineQueryResultsButton(
-        text: text ?? this.text,
-        type: type ?? this.type,
-      );
+  }) => InlineQueryResultsButton(
+    text: text ?? this.text,
+    type: type ?? this.type,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineQueryResultsButton';

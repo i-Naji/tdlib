@@ -21,22 +21,21 @@ final class ToggleBusinessConnectedBotChatIsPaused extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'is_paused': isPaused,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'is_paused': isPaused,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleBusinessConnectedBotChatIsPaused copyWith({
     int? chatId,
     bool? isPaused,
-  }) =>
-      ToggleBusinessConnectedBotChatIsPaused(
-        chatId: chatId ?? this.chatId,
-        isPaused: isPaused ?? this.isPaused,
-      );
+  }) => ToggleBusinessConnectedBotChatIsPaused(
+    chatId: chatId ?? this.chatId,
+    isPaused: isPaused ?? this.isPaused,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleBusinessConnectedBotChatIsPaused';

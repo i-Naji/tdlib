@@ -29,13 +29,13 @@ final class GetStickers extends TdFunction<Stickers> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker_type': stickerType.toJson(),
-        'query': query,
-        'limit': limit,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_type': stickerType.toJson(),
+    'query': query,
+    'limit': limit,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class GetStickers extends TdFunction<Stickers> {
     String? query,
     int? limit,
     int? chatId,
-  }) =>
-      GetStickers(
-        stickerType: stickerType ?? this.stickerType,
-        query: query ?? this.query,
-        limit: limit ?? this.limit,
-        chatId: chatId ?? this.chatId,
-      );
+  }) => GetStickers(
+    stickerType: stickerType ?? this.stickerType,
+    query: query ?? this.query,
+    limit: limit ?? this.limit,
+    chatId: chatId ?? this.chatId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getStickers';

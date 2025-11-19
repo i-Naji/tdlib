@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [User].
 final class SearchUserByToken extends TdFunction<User> {
   /// Searches a user by a token from the user's link
-  const SearchUserByToken({
-    required this.token,
-  });
+  const SearchUserByToken({required this.token});
 
   /// Token to search for
   final String token;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'token': token,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'token': token,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchUserByToken copyWith({
-    String? token,
-  }) =>
-      SearchUserByToken(
-        token: token ?? this.token,
-      );
+  SearchUserByToken copyWith({String? token}) =>
+      SearchUserByToken(token: token ?? this.token);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchUserByToken';

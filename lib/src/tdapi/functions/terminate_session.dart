@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class TerminateSession extends TdFunction<Ok> {
   /// Terminates a session of the current user
-  const TerminateSession({
-    required this.sessionId,
-  });
+  const TerminateSession({required this.sessionId});
 
   /// Session identifier
   final int sessionId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'session_id': sessionId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'session_id': sessionId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TerminateSession copyWith({
-    int? sessionId,
-  }) =>
-      TerminateSession(
-        sessionId: sessionId ?? this.sessionId,
-      );
+  TerminateSession copyWith({int? sessionId}) =>
+      TerminateSession(sessionId: sessionId ?? this.sessionId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'terminateSession';

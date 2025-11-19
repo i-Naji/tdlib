@@ -47,36 +47,35 @@ final class UndecodedInputPassportElement extends InputPassportElement {
 /// A Telegram Passport element to be saved containing the user's personal details
 final class InputPassportElementPersonalDetails extends InputPassportElement {
   /// A Telegram Passport element to be saved containing the user's personal details
-  const InputPassportElementPersonalDetails({
-    required this.personalDetails,
-  });
+  const InputPassportElementPersonalDetails({required this.personalDetails});
 
   /// Personal details of the user
   final PersonalDetails personalDetails;
 
   /// Parses a [InputPassportElementPersonalDetails] from TDLib JSON.
   factory InputPassportElementPersonalDetails.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementPersonalDetails(
-        personalDetails:
-            _readObject(json['personal_details'], PersonalDetails.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementPersonalDetails(
+    personalDetails: _readObject(
+      json['personal_details'],
+      PersonalDetails.fromJson,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'personal_details': personalDetails.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'personal_details': personalDetails.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementPersonalDetails copyWith({
     PersonalDetails? personalDetails,
-  }) =>
-      InputPassportElementPersonalDetails(
-        personalDetails: personalDetails ?? this.personalDetails,
-      );
+  }) => InputPassportElementPersonalDetails(
+    personalDetails: personalDetails ?? this.personalDetails,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPassportElementPersonalDetails';
@@ -88,9 +87,7 @@ final class InputPassportElementPersonalDetails extends InputPassportElement {
 /// A Telegram Passport element to be saved containing the user's passport
 final class InputPassportElementPassport extends InputPassportElement {
   /// A Telegram Passport element to be saved containing the user's passport
-  const InputPassportElementPassport({
-    required this.passport,
-  });
+  const InputPassportElementPassport({required this.passport});
 
   /// The passport to be saved
   final InputIdentityDocument passport;
@@ -103,19 +100,15 @@ final class InputPassportElementPassport extends InputPassportElement {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'passport': passport.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'passport': passport.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputPassportElementPassport copyWith({
-    InputIdentityDocument? passport,
-  }) =>
-      InputPassportElementPassport(
-        passport: passport ?? this.passport,
-      );
+  InputPassportElementPassport copyWith({InputIdentityDocument? passport}) =>
+      InputPassportElementPassport(passport: passport ?? this.passport);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPassportElementPassport';
@@ -127,36 +120,35 @@ final class InputPassportElementPassport extends InputPassportElement {
 /// A Telegram Passport element to be saved containing the user's driver license
 final class InputPassportElementDriverLicense extends InputPassportElement {
   /// A Telegram Passport element to be saved containing the user's driver license
-  const InputPassportElementDriverLicense({
-    required this.driverLicense,
-  });
+  const InputPassportElementDriverLicense({required this.driverLicense});
 
   /// The driver license to be saved
   final InputIdentityDocument driverLicense;
 
   /// Parses a [InputPassportElementDriverLicense] from TDLib JSON.
   factory InputPassportElementDriverLicense.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementDriverLicense(
-        driverLicense:
-            _readObject(json['driver_license'], InputIdentityDocument.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementDriverLicense(
+    driverLicense: _readObject(
+      json['driver_license'],
+      InputIdentityDocument.fromJson,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'driver_license': driverLicense.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'driver_license': driverLicense.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementDriverLicense copyWith({
     InputIdentityDocument? driverLicense,
-  }) =>
-      InputPassportElementDriverLicense(
-        driverLicense: driverLicense ?? this.driverLicense,
-      );
+  }) => InputPassportElementDriverLicense(
+    driverLicense: driverLicense ?? this.driverLicense,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPassportElementDriverLicense';
@@ -168,36 +160,35 @@ final class InputPassportElementDriverLicense extends InputPassportElement {
 /// A Telegram Passport element to be saved containing the user's identity card
 final class InputPassportElementIdentityCard extends InputPassportElement {
   /// A Telegram Passport element to be saved containing the user's identity card
-  const InputPassportElementIdentityCard({
-    required this.identityCard,
-  });
+  const InputPassportElementIdentityCard({required this.identityCard});
 
   /// The identity card to be saved
   final InputIdentityDocument identityCard;
 
   /// Parses a [InputPassportElementIdentityCard] from TDLib JSON.
   factory InputPassportElementIdentityCard.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementIdentityCard(
-        identityCard:
-            _readObject(json['identity_card'], InputIdentityDocument.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementIdentityCard(
+    identityCard: _readObject(
+      json['identity_card'],
+      InputIdentityDocument.fromJson,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'identity_card': identityCard.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'identity_card': identityCard.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementIdentityCard copyWith({
     InputIdentityDocument? identityCard,
-  }) =>
-      InputPassportElementIdentityCard(
-        identityCard: identityCard ?? this.identityCard,
-      );
+  }) => InputPassportElementIdentityCard(
+    identityCard: identityCard ?? this.identityCard,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPassportElementIdentityCard';
@@ -209,36 +200,35 @@ final class InputPassportElementIdentityCard extends InputPassportElement {
 /// A Telegram Passport element to be saved containing the user's internal passport
 final class InputPassportElementInternalPassport extends InputPassportElement {
   /// A Telegram Passport element to be saved containing the user's internal passport
-  const InputPassportElementInternalPassport({
-    required this.internalPassport,
-  });
+  const InputPassportElementInternalPassport({required this.internalPassport});
 
   /// The internal passport to be saved
   final InputIdentityDocument internalPassport;
 
   /// Parses a [InputPassportElementInternalPassport] from TDLib JSON.
   factory InputPassportElementInternalPassport.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementInternalPassport(
-        internalPassport: _readObject(
-            json['internal_passport'], InputIdentityDocument.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementInternalPassport(
+    internalPassport: _readObject(
+      json['internal_passport'],
+      InputIdentityDocument.fromJson,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'internal_passport': internalPassport.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'internal_passport': internalPassport.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementInternalPassport copyWith({
     InputIdentityDocument? internalPassport,
-  }) =>
-      InputPassportElementInternalPassport(
-        internalPassport: internalPassport ?? this.internalPassport,
-      );
+  }) => InputPassportElementInternalPassport(
+    internalPassport: internalPassport ?? this.internalPassport,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPassportElementInternalPassport';
@@ -250,9 +240,7 @@ final class InputPassportElementInternalPassport extends InputPassportElement {
 /// A Telegram Passport element to be saved containing the user's address
 final class InputPassportElementAddress extends InputPassportElement {
   /// A Telegram Passport element to be saved containing the user's address
-  const InputPassportElementAddress({
-    required this.address,
-  });
+  const InputPassportElementAddress({required this.address});
 
   /// The address to be saved
   final Address address;
@@ -265,19 +253,15 @@ final class InputPassportElementAddress extends InputPassportElement {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'address': address.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'address': address.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputPassportElementAddress copyWith({
-    Address? address,
-  }) =>
-      InputPassportElementAddress(
-        address: address ?? this.address,
-      );
+  InputPassportElementAddress copyWith({Address? address}) =>
+      InputPassportElementAddress(address: address ?? this.address);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPassportElementAddress';
@@ -289,9 +273,7 @@ final class InputPassportElementAddress extends InputPassportElement {
 /// A Telegram Passport element to be saved containing the user's utility bill
 final class InputPassportElementUtilityBill extends InputPassportElement {
   /// A Telegram Passport element to be saved containing the user's utility bill
-  const InputPassportElementUtilityBill({
-    required this.utilityBill,
-  });
+  const InputPassportElementUtilityBill({required this.utilityBill});
 
   /// The utility bill to be saved
   final InputPersonalDocument utilityBill;
@@ -299,25 +281,26 @@ final class InputPassportElementUtilityBill extends InputPassportElement {
   /// Parses a [InputPassportElementUtilityBill] from TDLib JSON.
   factory InputPassportElementUtilityBill.fromJson(Map<String, dynamic> json) =>
       InputPassportElementUtilityBill(
-        utilityBill:
-            _readObject(json['utility_bill'], InputPersonalDocument.fromJson),
+        utilityBill: _readObject(
+          json['utility_bill'],
+          InputPersonalDocument.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'utility_bill': utilityBill.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'utility_bill': utilityBill.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementUtilityBill copyWith({
     InputPersonalDocument? utilityBill,
-  }) =>
-      InputPassportElementUtilityBill(
-        utilityBill: utilityBill ?? this.utilityBill,
-      );
+  }) => InputPassportElementUtilityBill(
+    utilityBill: utilityBill ?? this.utilityBill,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPassportElementUtilityBill';
@@ -329,36 +312,35 @@ final class InputPassportElementUtilityBill extends InputPassportElement {
 /// A Telegram Passport element to be saved containing the user's bank statement
 final class InputPassportElementBankStatement extends InputPassportElement {
   /// A Telegram Passport element to be saved containing the user's bank statement
-  const InputPassportElementBankStatement({
-    required this.bankStatement,
-  });
+  const InputPassportElementBankStatement({required this.bankStatement});
 
   /// The bank statement to be saved
   final InputPersonalDocument bankStatement;
 
   /// Parses a [InputPassportElementBankStatement] from TDLib JSON.
   factory InputPassportElementBankStatement.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementBankStatement(
-        bankStatement:
-            _readObject(json['bank_statement'], InputPersonalDocument.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementBankStatement(
+    bankStatement: _readObject(
+      json['bank_statement'],
+      InputPersonalDocument.fromJson,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'bank_statement': bankStatement.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'bank_statement': bankStatement.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementBankStatement copyWith({
     InputPersonalDocument? bankStatement,
-  }) =>
-      InputPassportElementBankStatement(
-        bankStatement: bankStatement ?? this.bankStatement,
-      );
+  }) => InputPassportElementBankStatement(
+    bankStatement: bankStatement ?? this.bankStatement,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPassportElementBankStatement';
@@ -370,36 +352,35 @@ final class InputPassportElementBankStatement extends InputPassportElement {
 /// A Telegram Passport element to be saved containing the user's rental agreement
 final class InputPassportElementRentalAgreement extends InputPassportElement {
   /// A Telegram Passport element to be saved containing the user's rental agreement
-  const InputPassportElementRentalAgreement({
-    required this.rentalAgreement,
-  });
+  const InputPassportElementRentalAgreement({required this.rentalAgreement});
 
   /// The rental agreement to be saved
   final InputPersonalDocument rentalAgreement;
 
   /// Parses a [InputPassportElementRentalAgreement] from TDLib JSON.
   factory InputPassportElementRentalAgreement.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementRentalAgreement(
-        rentalAgreement: _readObject(
-            json['rental_agreement'], InputPersonalDocument.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementRentalAgreement(
+    rentalAgreement: _readObject(
+      json['rental_agreement'],
+      InputPersonalDocument.fromJson,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'rental_agreement': rentalAgreement.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'rental_agreement': rentalAgreement.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementRentalAgreement copyWith({
     InputPersonalDocument? rentalAgreement,
-  }) =>
-      InputPassportElementRentalAgreement(
-        rentalAgreement: rentalAgreement ?? this.rentalAgreement,
-      );
+  }) => InputPassportElementRentalAgreement(
+    rentalAgreement: rentalAgreement ?? this.rentalAgreement,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPassportElementRentalAgreement';
@@ -421,27 +402,28 @@ final class InputPassportElementPassportRegistration
 
   /// Parses a [InputPassportElementPassportRegistration] from TDLib JSON.
   factory InputPassportElementPassportRegistration.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementPassportRegistration(
-        passportRegistration: _readObject(
-            json['passport_registration'], InputPersonalDocument.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementPassportRegistration(
+    passportRegistration: _readObject(
+      json['passport_registration'],
+      InputPersonalDocument.fromJson,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'passport_registration': passportRegistration.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'passport_registration': passportRegistration.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementPassportRegistration copyWith({
     InputPersonalDocument? passportRegistration,
-  }) =>
-      InputPassportElementPassportRegistration(
-        passportRegistration: passportRegistration ?? this.passportRegistration,
-      );
+  }) => InputPassportElementPassportRegistration(
+    passportRegistration: passportRegistration ?? this.passportRegistration,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPassportElementPassportRegistration';
@@ -463,28 +445,28 @@ final class InputPassportElementTemporaryRegistration
 
   /// Parses a [InputPassportElementTemporaryRegistration] from TDLib JSON.
   factory InputPassportElementTemporaryRegistration.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementTemporaryRegistration(
-        temporaryRegistration: _readObject(
-            json['temporary_registration'], InputPersonalDocument.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementTemporaryRegistration(
+    temporaryRegistration: _readObject(
+      json['temporary_registration'],
+      InputPersonalDocument.fromJson,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'temporary_registration': temporaryRegistration.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'temporary_registration': temporaryRegistration.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementTemporaryRegistration copyWith({
     InputPersonalDocument? temporaryRegistration,
-  }) =>
-      InputPassportElementTemporaryRegistration(
-        temporaryRegistration:
-            temporaryRegistration ?? this.temporaryRegistration,
-      );
+  }) => InputPassportElementTemporaryRegistration(
+    temporaryRegistration: temporaryRegistration ?? this.temporaryRegistration,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPassportElementTemporaryRegistration';
@@ -496,9 +478,7 @@ final class InputPassportElementTemporaryRegistration
 /// A Telegram Passport element to be saved containing the user's phone number
 final class InputPassportElementPhoneNumber extends InputPassportElement {
   /// A Telegram Passport element to be saved containing the user's phone number
-  const InputPassportElementPhoneNumber({
-    required this.phoneNumber,
-  });
+  const InputPassportElementPhoneNumber({required this.phoneNumber});
 
   /// The phone number to be saved
   final String phoneNumber;
@@ -511,16 +491,14 @@ final class InputPassportElementPhoneNumber extends InputPassportElement {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'phone_number': phoneNumber,
-      };
+    '@type': CONSTRUCTOR,
+    'phone_number': phoneNumber,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputPassportElementPhoneNumber copyWith({
-    String? phoneNumber,
-  }) =>
+  InputPassportElementPhoneNumber copyWith({String? phoneNumber}) =>
       InputPassportElementPhoneNumber(
         phoneNumber: phoneNumber ?? this.phoneNumber,
       );
@@ -535,32 +513,28 @@ final class InputPassportElementPhoneNumber extends InputPassportElement {
 /// A Telegram Passport element to be saved containing the user's email address
 final class InputPassportElementEmailAddress extends InputPassportElement {
   /// A Telegram Passport element to be saved containing the user's email address
-  const InputPassportElementEmailAddress({
-    required this.emailAddress,
-  });
+  const InputPassportElementEmailAddress({required this.emailAddress});
 
   /// The email address to be saved
   final String emailAddress;
 
   /// Parses a [InputPassportElementEmailAddress] from TDLib JSON.
   factory InputPassportElementEmailAddress.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementEmailAddress(
-        emailAddress: _readString(json['email_address']),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementEmailAddress(
+    emailAddress: _readString(json['email_address']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'email_address': emailAddress,
-      };
+    '@type': CONSTRUCTOR,
+    'email_address': emailAddress,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputPassportElementEmailAddress copyWith({
-    String? emailAddress,
-  }) =>
+  InputPassportElementEmailAddress copyWith({String? emailAddress}) =>
       InputPassportElementEmailAddress(
         emailAddress: emailAddress ?? this.emailAddress,
       );

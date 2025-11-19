@@ -38,10 +38,10 @@ final class PreparedInlineMessageId extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'expiration_date': expirationDate,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'expiration_date': expirationDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class PreparedInlineMessageId extends TdObject {
     int? expirationDate,
     dynamic extra,
     int? clientId,
-  }) =>
-      PreparedInlineMessageId(
-        id: id ?? this.id,
-        expirationDate: expirationDate ?? this.expirationDate,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PreparedInlineMessageId(
+    id: id ?? this.id,
+    expirationDate: expirationDate ?? this.expirationDate,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'preparedInlineMessageId';

@@ -47,34 +47,26 @@ final class UndecodedPushMessageContent extends PushMessageContent {
 /// A general message with hidden content
 final class PushMessageContentHidden extends PushMessageContent {
   /// A general message with hidden content
-  const PushMessageContentHidden({
-    required this.isPinned,
-  });
+  const PushMessageContentHidden({required this.isPinned});
 
   /// True, if the message is a pinned message with the specified content
   final bool isPinned;
 
   /// Parses a [PushMessageContentHidden] from TDLib JSON.
   factory PushMessageContentHidden.fromJson(Map<String, dynamic> json) =>
-      PushMessageContentHidden(
-        isPinned: _readBool(json['is_pinned']),
-      );
+      PushMessageContentHidden(isPinned: _readBool(json['is_pinned']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentHidden copyWith({
-    bool? isPinned,
-  }) =>
-      PushMessageContentHidden(
-        isPinned: isPinned ?? this.isPinned,
-      );
+  PushMessageContentHidden copyWith({bool? isPinned}) =>
+      PushMessageContentHidden(isPinned: isPinned ?? this.isPinned);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentHidden';
@@ -111,11 +103,11 @@ final class PushMessageContentAnimation extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'animation': animation?.toJson(),
-        'caption': caption,
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'animation': animation?.toJson(),
+    'caption': caption,
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -124,12 +116,11 @@ final class PushMessageContentAnimation extends PushMessageContent {
     Animation? Function()? animation,
     String? caption,
     bool? isPinned,
-  }) =>
-      PushMessageContentAnimation(
-        animation: animation != null ? animation() : this.animation,
-        caption: caption ?? this.caption,
-        isPinned: isPinned ?? this.isPinned,
-      );
+  }) => PushMessageContentAnimation(
+    animation: animation != null ? animation() : this.animation,
+    caption: caption ?? this.caption,
+    isPinned: isPinned ?? this.isPinned,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentAnimation';
@@ -141,10 +132,7 @@ final class PushMessageContentAnimation extends PushMessageContent {
 /// An audio message
 final class PushMessageContentAudio extends PushMessageContent {
   /// An audio message
-  const PushMessageContentAudio({
-    this.audio,
-    required this.isPinned,
-  });
+  const PushMessageContentAudio({this.audio, required this.isPinned});
 
   /// Message content; may be null
   final Audio? audio;
@@ -161,10 +149,10 @@ final class PushMessageContentAudio extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'audio': audio?.toJson(),
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'audio': audio?.toJson(),
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -172,11 +160,10 @@ final class PushMessageContentAudio extends PushMessageContent {
   PushMessageContentAudio copyWith({
     Audio? Function()? audio,
     bool? isPinned,
-  }) =>
-      PushMessageContentAudio(
-        audio: audio != null ? audio() : this.audio,
-        isPinned: isPinned ?? this.isPinned,
-      );
+  }) => PushMessageContentAudio(
+    audio: audio != null ? audio() : this.audio,
+    isPinned: isPinned ?? this.isPinned,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentAudio';
@@ -188,10 +175,7 @@ final class PushMessageContentAudio extends PushMessageContent {
 /// A message with a user contact
 final class PushMessageContentContact extends PushMessageContent {
   /// A message with a user contact
-  const PushMessageContentContact({
-    required this.name,
-    required this.isPinned,
-  });
+  const PushMessageContentContact({required this.name, required this.isPinned});
 
   /// Contact's name
   final String name;
@@ -208,18 +192,15 @@ final class PushMessageContentContact extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentContact copyWith({
-    String? name,
-    bool? isPinned,
-  }) =>
+  PushMessageContentContact copyWith({String? name, bool? isPinned}) =>
       PushMessageContentContact(
         name: name ?? this.name,
         isPinned: isPinned ?? this.isPinned,
@@ -235,32 +216,28 @@ final class PushMessageContentContact extends PushMessageContent {
 /// A contact has registered with Telegram
 final class PushMessageContentContactRegistered extends PushMessageContent {
   /// A contact has registered with Telegram
-  const PushMessageContentContactRegistered({
-    required this.asPremiumAccount,
-  });
+  const PushMessageContentContactRegistered({required this.asPremiumAccount});
 
   /// True, if the user joined Telegram as a Telegram Premium account
   final bool asPremiumAccount;
 
   /// Parses a [PushMessageContentContactRegistered] from TDLib JSON.
   factory PushMessageContentContactRegistered.fromJson(
-          Map<String, dynamic> json) =>
-      PushMessageContentContactRegistered(
-        asPremiumAccount: _readBool(json['as_premium_account']),
-      );
+    Map<String, dynamic> json,
+  ) => PushMessageContentContactRegistered(
+    asPremiumAccount: _readBool(json['as_premium_account']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'as_premium_account': asPremiumAccount,
-      };
+    '@type': CONSTRUCTOR,
+    'as_premium_account': asPremiumAccount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentContactRegistered copyWith({
-    bool? asPremiumAccount,
-  }) =>
+  PushMessageContentContactRegistered copyWith({bool? asPremiumAccount}) =>
       PushMessageContentContactRegistered(
         asPremiumAccount: asPremiumAccount ?? this.asPremiumAccount,
       );
@@ -275,10 +252,7 @@ final class PushMessageContentContactRegistered extends PushMessageContent {
 /// A document message (a general file)
 final class PushMessageContentDocument extends PushMessageContent {
   /// A document message (a general file)
-  const PushMessageContentDocument({
-    this.document,
-    required this.isPinned,
-  });
+  const PushMessageContentDocument({this.document, required this.isPinned});
 
   /// Message content; may be null
   final Document? document;
@@ -295,10 +269,10 @@ final class PushMessageContentDocument extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'document': document?.toJson(),
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'document': document?.toJson(),
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -306,11 +280,10 @@ final class PushMessageContentDocument extends PushMessageContent {
   PushMessageContentDocument copyWith({
     Document? Function()? document,
     bool? isPinned,
-  }) =>
-      PushMessageContentDocument(
-        document: document != null ? document() : this.document,
-        isPinned: isPinned ?? this.isPinned,
-      );
+  }) => PushMessageContentDocument(
+    document: document != null ? document() : this.document,
+    isPinned: isPinned ?? this.isPinned,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentDocument';
@@ -322,10 +295,7 @@ final class PushMessageContentDocument extends PushMessageContent {
 /// A message with a game
 final class PushMessageContentGame extends PushMessageContent {
   /// A message with a game
-  const PushMessageContentGame({
-    required this.title,
-    required this.isPinned,
-  });
+  const PushMessageContentGame({required this.title, required this.isPinned});
 
   /// Game title, empty for pinned game message
   final String title;
@@ -342,18 +312,15 @@ final class PushMessageContentGame extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'title': title,
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentGame copyWith({
-    String? title,
-    bool? isPinned,
-  }) =>
+  PushMessageContentGame copyWith({String? title, bool? isPinned}) =>
       PushMessageContentGame(
         title: title ?? this.title,
         isPinned: isPinned ?? this.isPinned,
@@ -394,11 +361,11 @@ final class PushMessageContentGameScore extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-        'score': score,
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'title': title,
+    'score': score,
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -407,12 +374,11 @@ final class PushMessageContentGameScore extends PushMessageContent {
     String? title,
     int? score,
     bool? isPinned,
-  }) =>
-      PushMessageContentGameScore(
-        title: title ?? this.title,
-        score: score ?? this.score,
-        isPinned: isPinned ?? this.isPinned,
-      );
+  }) => PushMessageContentGameScore(
+    title: title ?? this.title,
+    score: score ?? this.score,
+    isPinned: isPinned ?? this.isPinned,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentGameScore';
@@ -444,18 +410,15 @@ final class PushMessageContentInvoice extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'price': price,
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'price': price,
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentInvoice copyWith({
-    String? price,
-    bool? isPinned,
-  }) =>
+  PushMessageContentInvoice copyWith({String? price, bool? isPinned}) =>
       PushMessageContentInvoice(
         price: price ?? this.price,
         isPinned: isPinned ?? this.isPinned,
@@ -491,18 +454,15 @@ final class PushMessageContentLocation extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_live': isLive,
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'is_live': isLive,
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentLocation copyWith({
-    bool? isLive,
-    bool? isPinned,
-  }) =>
+  PushMessageContentLocation copyWith({bool? isLive, bool? isPinned}) =>
       PushMessageContentLocation(
         isLive: isLive ?? this.isLive,
         isPinned: isPinned ?? this.isPinned,
@@ -538,18 +498,15 @@ final class PushMessageContentPaidMedia extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_count': starCount,
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'star_count': starCount,
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentPaidMedia copyWith({
-    int? starCount,
-    bool? isPinned,
-  }) =>
+  PushMessageContentPaidMedia copyWith({int? starCount, bool? isPinned}) =>
       PushMessageContentPaidMedia(
         starCount: starCount ?? this.starCount,
         isPinned: isPinned ?? this.isPinned,
@@ -595,12 +552,12 @@ final class PushMessageContentPhoto extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo?.toJson(),
-        'caption': caption,
-        'is_secret': isSecret,
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo?.toJson(),
+    'caption': caption,
+    'is_secret': isSecret,
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -610,13 +567,12 @@ final class PushMessageContentPhoto extends PushMessageContent {
     String? caption,
     bool? isSecret,
     bool? isPinned,
-  }) =>
-      PushMessageContentPhoto(
-        photo: photo != null ? photo() : this.photo,
-        caption: caption ?? this.caption,
-        isSecret: isSecret ?? this.isSecret,
-        isPinned: isPinned ?? this.isPinned,
-      );
+  }) => PushMessageContentPhoto(
+    photo: photo != null ? photo() : this.photo,
+    caption: caption ?? this.caption,
+    isSecret: isSecret ?? this.isSecret,
+    isPinned: isPinned ?? this.isPinned,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentPhoto';
@@ -653,11 +609,11 @@ final class PushMessageContentPoll extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'question': question,
-        'is_regular': isRegular,
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'question': question,
+    'is_regular': isRegular,
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -666,12 +622,11 @@ final class PushMessageContentPoll extends PushMessageContent {
     String? question,
     bool? isRegular,
     bool? isPinned,
-  }) =>
-      PushMessageContentPoll(
-        question: question ?? this.question,
-        isRegular: isRegular ?? this.isRegular,
-        isPinned: isPinned ?? this.isPinned,
-      );
+  }) => PushMessageContentPoll(
+    question: question ?? this.question,
+    isRegular: isRegular ?? this.isRegular,
+    isPinned: isPinned ?? this.isPinned,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentPoll';
@@ -683,32 +638,28 @@ final class PushMessageContentPoll extends PushMessageContent {
 /// A message with a Telegram Premium gift code created for the user
 final class PushMessageContentPremiumGiftCode extends PushMessageContent {
   /// A message with a Telegram Premium gift code created for the user
-  const PushMessageContentPremiumGiftCode({
-    required this.monthCount,
-  });
+  const PushMessageContentPremiumGiftCode({required this.monthCount});
 
   /// Number of months the Telegram Premium subscription will be active after code activation
   final int monthCount;
 
   /// Parses a [PushMessageContentPremiumGiftCode] from TDLib JSON.
   factory PushMessageContentPremiumGiftCode.fromJson(
-          Map<String, dynamic> json) =>
-      PushMessageContentPremiumGiftCode(
-        monthCount: _readInt(json['month_count']),
-      );
+    Map<String, dynamic> json,
+  ) => PushMessageContentPremiumGiftCode(
+    monthCount: _readInt(json['month_count']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'month_count': monthCount,
-      };
+    '@type': CONSTRUCTOR,
+    'month_count': monthCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentPremiumGiftCode copyWith({
-    int? monthCount,
-  }) =>
+  PushMessageContentPremiumGiftCode copyWith({int? monthCount}) =>
       PushMessageContentPremiumGiftCode(
         monthCount: monthCount ?? this.monthCount,
       );
@@ -748,11 +699,11 @@ final class PushMessageContentGiveaway extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'winner_count': winnerCount,
-        'prize': prize?.toJson(),
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'winner_count': winnerCount,
+    'prize': prize?.toJson(),
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -761,12 +712,11 @@ final class PushMessageContentGiveaway extends PushMessageContent {
     int? winnerCount,
     GiveawayPrize? Function()? prize,
     bool? isPinned,
-  }) =>
-      PushMessageContentGiveaway(
-        winnerCount: winnerCount ?? this.winnerCount,
-        prize: prize != null ? prize() : this.prize,
-        isPinned: isPinned ?? this.isPinned,
-      );
+  }) => PushMessageContentGiveaway(
+    winnerCount: winnerCount ?? this.winnerCount,
+    prize: prize != null ? prize() : this.prize,
+    isPinned: isPinned ?? this.isPinned,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentGiveaway';
@@ -798,18 +748,15 @@ final class PushMessageContentGift extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_count': starCount,
-        'is_prepaid_upgrade': isPrepaidUpgrade,
-      };
+    '@type': CONSTRUCTOR,
+    'star_count': starCount,
+    'is_prepaid_upgrade': isPrepaidUpgrade,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentGift copyWith({
-    int? starCount,
-    bool? isPrepaidUpgrade,
-  }) =>
+  PushMessageContentGift copyWith({int? starCount, bool? isPrepaidUpgrade}) =>
       PushMessageContentGift(
         starCount: starCount ?? this.starCount,
         isPrepaidUpgrade: isPrepaidUpgrade ?? this.isPrepaidUpgrade,
@@ -845,10 +792,10 @@ final class PushMessageContentUpgradedGift extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_upgrade': isUpgrade,
-        'is_prepaid_upgrade': isPrepaidUpgrade,
-      };
+    '@type': CONSTRUCTOR,
+    'is_upgrade': isUpgrade,
+    'is_prepaid_upgrade': isPrepaidUpgrade,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -856,11 +803,10 @@ final class PushMessageContentUpgradedGift extends PushMessageContent {
   PushMessageContentUpgradedGift copyWith({
     bool? isUpgrade,
     bool? isPrepaidUpgrade,
-  }) =>
-      PushMessageContentUpgradedGift(
-        isUpgrade: isUpgrade ?? this.isUpgrade,
-        isPrepaidUpgrade: isPrepaidUpgrade ?? this.isPrepaidUpgrade,
-      );
+  }) => PushMessageContentUpgradedGift(
+    isUpgrade: isUpgrade ?? this.isUpgrade,
+    isPrepaidUpgrade: isPrepaidUpgrade ?? this.isPrepaidUpgrade,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentUpgradedGift';
@@ -876,13 +822,11 @@ final class PushMessageContentScreenshotTaken extends PushMessageContent {
 
   /// Parses a [PushMessageContentScreenshotTaken] from TDLib JSON.
   factory PushMessageContentScreenshotTaken.fromJson(
-          Map<String, dynamic> json) =>
-      const PushMessageContentScreenshotTaken();
+    Map<String, dynamic> json,
+  ) => const PushMessageContentScreenshotTaken();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -925,11 +869,11 @@ final class PushMessageContentSticker extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker': sticker?.toJson(),
-        'emoji': emoji,
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker': sticker?.toJson(),
+    'emoji': emoji,
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -938,12 +882,11 @@ final class PushMessageContentSticker extends PushMessageContent {
     Sticker? Function()? sticker,
     String? emoji,
     bool? isPinned,
-  }) =>
-      PushMessageContentSticker(
-        sticker: sticker != null ? sticker() : this.sticker,
-        emoji: emoji ?? this.emoji,
-        isPinned: isPinned ?? this.isPinned,
-      );
+  }) => PushMessageContentSticker(
+    sticker: sticker != null ? sticker() : this.sticker,
+    emoji: emoji ?? this.emoji,
+    isPinned: isPinned ?? this.isPinned,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentSticker';
@@ -975,18 +918,15 @@ final class PushMessageContentStory extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_mention': isMention,
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'is_mention': isMention,
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentStory copyWith({
-    bool? isMention,
-    bool? isPinned,
-  }) =>
+  PushMessageContentStory copyWith({bool? isMention, bool? isPinned}) =>
       PushMessageContentStory(
         isMention: isMention ?? this.isMention,
         isPinned: isPinned ?? this.isPinned,
@@ -1002,10 +942,7 @@ final class PushMessageContentStory extends PushMessageContent {
 /// A text message
 final class PushMessageContentText extends PushMessageContent {
   /// A text message
-  const PushMessageContentText({
-    required this.text,
-    required this.isPinned,
-  });
+  const PushMessageContentText({required this.text, required this.isPinned});
 
   /// Message text
   final String text;
@@ -1022,18 +959,15 @@ final class PushMessageContentText extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text,
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text,
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentText copyWith({
-    String? text,
-    bool? isPinned,
-  }) =>
+  PushMessageContentText copyWith({String? text, bool? isPinned}) =>
       PushMessageContentText(
         text: text ?? this.text,
         isPinned: isPinned ?? this.isPinned,
@@ -1069,18 +1003,15 @@ final class PushMessageContentChecklist extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'title': title,
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentChecklist copyWith({
-    String? title,
-    bool? isPinned,
-  }) =>
+  PushMessageContentChecklist copyWith({String? title, bool? isPinned}) =>
       PushMessageContentChecklist(
         title: title ?? this.title,
         isPinned: isPinned ?? this.isPinned,
@@ -1126,12 +1057,12 @@ final class PushMessageContentVideo extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'video': video?.toJson(),
-        'caption': caption,
-        'is_secret': isSecret,
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'video': video?.toJson(),
+    'caption': caption,
+    'is_secret': isSecret,
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1141,13 +1072,12 @@ final class PushMessageContentVideo extends PushMessageContent {
     String? caption,
     bool? isSecret,
     bool? isPinned,
-  }) =>
-      PushMessageContentVideo(
-        video: video != null ? video() : this.video,
-        caption: caption ?? this.caption,
-        isSecret: isSecret ?? this.isSecret,
-        isPinned: isPinned ?? this.isPinned,
-      );
+  }) => PushMessageContentVideo(
+    video: video != null ? video() : this.video,
+    caption: caption ?? this.caption,
+    isSecret: isSecret ?? this.isSecret,
+    isPinned: isPinned ?? this.isPinned,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentVideo';
@@ -1159,10 +1089,7 @@ final class PushMessageContentVideo extends PushMessageContent {
 /// A video note message
 final class PushMessageContentVideoNote extends PushMessageContent {
   /// A video note message
-  const PushMessageContentVideoNote({
-    this.videoNote,
-    required this.isPinned,
-  });
+  const PushMessageContentVideoNote({this.videoNote, required this.isPinned});
 
   /// Message content; may be null
   final VideoNote? videoNote;
@@ -1179,10 +1106,10 @@ final class PushMessageContentVideoNote extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'video_note': videoNote?.toJson(),
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'video_note': videoNote?.toJson(),
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1190,11 +1117,10 @@ final class PushMessageContentVideoNote extends PushMessageContent {
   PushMessageContentVideoNote copyWith({
     VideoNote? Function()? videoNote,
     bool? isPinned,
-  }) =>
-      PushMessageContentVideoNote(
-        videoNote: videoNote != null ? videoNote() : this.videoNote,
-        isPinned: isPinned ?? this.isPinned,
-      );
+  }) => PushMessageContentVideoNote(
+    videoNote: videoNote != null ? videoNote() : this.videoNote,
+    isPinned: isPinned ?? this.isPinned,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentVideoNote';
@@ -1206,10 +1132,7 @@ final class PushMessageContentVideoNote extends PushMessageContent {
 /// A voice note message
 final class PushMessageContentVoiceNote extends PushMessageContent {
   /// A voice note message
-  const PushMessageContentVoiceNote({
-    this.voiceNote,
-    required this.isPinned,
-  });
+  const PushMessageContentVoiceNote({this.voiceNote, required this.isPinned});
 
   /// Message content; may be null
   final VoiceNote? voiceNote;
@@ -1226,10 +1149,10 @@ final class PushMessageContentVoiceNote extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'voice_note': voiceNote?.toJson(),
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'voice_note': voiceNote?.toJson(),
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1237,11 +1160,10 @@ final class PushMessageContentVoiceNote extends PushMessageContent {
   PushMessageContentVoiceNote copyWith({
     VoiceNote? Function()? voiceNote,
     bool? isPinned,
-  }) =>
-      PushMessageContentVoiceNote(
-        voiceNote: voiceNote != null ? voiceNote() : this.voiceNote,
-        isPinned: isPinned ?? this.isPinned,
-      );
+  }) => PushMessageContentVoiceNote(
+    voiceNote: voiceNote != null ? voiceNote() : this.voiceNote,
+    isPinned: isPinned ?? this.isPinned,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentVoiceNote';
@@ -1257,13 +1179,11 @@ final class PushMessageContentBasicGroupChatCreate extends PushMessageContent {
 
   /// Parses a [PushMessageContentBasicGroupChatCreate] from TDLib JSON.
   factory PushMessageContentBasicGroupChatCreate.fromJson(
-          Map<String, dynamic> json) =>
-      const PushMessageContentBasicGroupChatCreate();
+    Map<String, dynamic> json,
+  ) => const PushMessageContentBasicGroupChatCreate();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1285,13 +1205,11 @@ final class PushMessageContentVideoChatStarted extends PushMessageContent {
 
   /// Parses a [PushMessageContentVideoChatStarted] from TDLib JSON.
   factory PushMessageContentVideoChatStarted.fromJson(
-          Map<String, dynamic> json) =>
-      const PushMessageContentVideoChatStarted();
+    Map<String, dynamic> json,
+  ) => const PushMessageContentVideoChatStarted();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1313,13 +1231,11 @@ final class PushMessageContentVideoChatEnded extends PushMessageContent {
 
   /// Parses a [PushMessageContentVideoChatEnded] from TDLib JSON.
   factory PushMessageContentVideoChatEnded.fromJson(
-          Map<String, dynamic> json) =>
-      const PushMessageContentVideoChatEnded();
+    Map<String, dynamic> json,
+  ) => const PushMessageContentVideoChatEnded();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1347,26 +1263,25 @@ final class PushMessageContentInviteVideoChatParticipants
 
   /// Parses a [PushMessageContentInviteVideoChatParticipants] from TDLib JSON.
   factory PushMessageContentInviteVideoChatParticipants.fromJson(
-          Map<String, dynamic> json) =>
-      PushMessageContentInviteVideoChatParticipants(
-        isCurrentUser: _readBool(json['is_current_user']),
-      );
+    Map<String, dynamic> json,
+  ) => PushMessageContentInviteVideoChatParticipants(
+    isCurrentUser: _readBool(json['is_current_user']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_current_user': isCurrentUser,
-      };
+    '@type': CONSTRUCTOR,
+    'is_current_user': isCurrentUser,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentInviteVideoChatParticipants copyWith({
     bool? isCurrentUser,
-  }) =>
-      PushMessageContentInviteVideoChatParticipants(
-        isCurrentUser: isCurrentUser ?? this.isCurrentUser,
-      );
+  }) => PushMessageContentInviteVideoChatParticipants(
+    isCurrentUser: isCurrentUser ?? this.isCurrentUser,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -1396,20 +1311,20 @@ final class PushMessageContentChatAddMembers extends PushMessageContent {
 
   /// Parses a [PushMessageContentChatAddMembers] from TDLib JSON.
   factory PushMessageContentChatAddMembers.fromJson(
-          Map<String, dynamic> json) =>
-      PushMessageContentChatAddMembers(
-        memberName: _readString(json['member_name']),
-        isCurrentUser: _readBool(json['is_current_user']),
-        isReturned: _readBool(json['is_returned']),
-      );
+    Map<String, dynamic> json,
+  ) => PushMessageContentChatAddMembers(
+    memberName: _readString(json['member_name']),
+    isCurrentUser: _readBool(json['is_current_user']),
+    isReturned: _readBool(json['is_returned']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'member_name': memberName,
-        'is_current_user': isCurrentUser,
-        'is_returned': isReturned,
-      };
+    '@type': CONSTRUCTOR,
+    'member_name': memberName,
+    'is_current_user': isCurrentUser,
+    'is_returned': isReturned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1418,12 +1333,11 @@ final class PushMessageContentChatAddMembers extends PushMessageContent {
     String? memberName,
     bool? isCurrentUser,
     bool? isReturned,
-  }) =>
-      PushMessageContentChatAddMembers(
-        memberName: memberName ?? this.memberName,
-        isCurrentUser: isCurrentUser ?? this.isCurrentUser,
-        isReturned: isReturned ?? this.isReturned,
-      );
+  }) => PushMessageContentChatAddMembers(
+    memberName: memberName ?? this.memberName,
+    isCurrentUser: isCurrentUser ?? this.isCurrentUser,
+    isReturned: isReturned ?? this.isReturned,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentChatAddMembers';
@@ -1439,13 +1353,11 @@ final class PushMessageContentChatChangePhoto extends PushMessageContent {
 
   /// Parses a [PushMessageContentChatChangePhoto] from TDLib JSON.
   factory PushMessageContentChatChangePhoto.fromJson(
-          Map<String, dynamic> json) =>
-      const PushMessageContentChatChangePhoto();
+    Map<String, dynamic> json,
+  ) => const PushMessageContentChatChangePhoto();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1463,35 +1375,24 @@ final class PushMessageContentChatChangePhoto extends PushMessageContent {
 /// A chat title was edited
 final class PushMessageContentChatChangeTitle extends PushMessageContent {
   /// A chat title was edited
-  const PushMessageContentChatChangeTitle({
-    required this.title,
-  });
+  const PushMessageContentChatChangeTitle({required this.title});
 
   /// New chat title
   final String title;
 
   /// Parses a [PushMessageContentChatChangeTitle] from TDLib JSON.
   factory PushMessageContentChatChangeTitle.fromJson(
-          Map<String, dynamic> json) =>
-      PushMessageContentChatChangeTitle(
-        title: _readString(json['title']),
-      );
+    Map<String, dynamic> json,
+  ) => PushMessageContentChatChangeTitle(title: _readString(json['title']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'title': title};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentChatChangeTitle copyWith({
-    String? title,
-  }) =>
-      PushMessageContentChatChangeTitle(
-        title: title ?? this.title,
-      );
+  PushMessageContentChatChangeTitle copyWith({String? title}) =>
+      PushMessageContentChatChangeTitle(title: title ?? this.title);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentChatChangeTitle';
@@ -1503,35 +1404,24 @@ final class PushMessageContentChatChangeTitle extends PushMessageContent {
 /// A chat background was edited
 final class PushMessageContentChatSetBackground extends PushMessageContent {
   /// A chat background was edited
-  const PushMessageContentChatSetBackground({
-    required this.isSame,
-  });
+  const PushMessageContentChatSetBackground({required this.isSame});
 
   /// True, if the set background is the same as the background of the current user
   final bool isSame;
 
   /// Parses a [PushMessageContentChatSetBackground] from TDLib JSON.
   factory PushMessageContentChatSetBackground.fromJson(
-          Map<String, dynamic> json) =>
-      PushMessageContentChatSetBackground(
-        isSame: _readBool(json['is_same']),
-      );
+    Map<String, dynamic> json,
+  ) => PushMessageContentChatSetBackground(isSame: _readBool(json['is_same']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_same': isSame,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'is_same': isSame};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentChatSetBackground copyWith({
-    bool? isSame,
-  }) =>
-      PushMessageContentChatSetBackground(
-        isSame: isSame ?? this.isSame,
-      );
+  PushMessageContentChatSetBackground copyWith({bool? isSame}) =>
+      PushMessageContentChatSetBackground(isSame: isSame ?? this.isSame);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentChatSetBackground';
@@ -1543,34 +1433,23 @@ final class PushMessageContentChatSetBackground extends PushMessageContent {
 /// A chat theme was edited
 final class PushMessageContentChatSetTheme extends PushMessageContent {
   /// A chat theme was edited
-  const PushMessageContentChatSetTheme({
-    required this.name,
-  });
+  const PushMessageContentChatSetTheme({required this.name});
 
   /// If non-empty, human-readable name of the new theme. Otherwise, the chat theme was reset to the default one
   final String name;
 
   /// Parses a [PushMessageContentChatSetTheme] from TDLib JSON.
   factory PushMessageContentChatSetTheme.fromJson(Map<String, dynamic> json) =>
-      PushMessageContentChatSetTheme(
-        name: _readString(json['name']),
-      );
+      PushMessageContentChatSetTheme(name: _readString(json['name']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'name': name};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentChatSetTheme copyWith({
-    String? name,
-  }) =>
-      PushMessageContentChatSetTheme(
-        name: name ?? this.name,
-      );
+  PushMessageContentChatSetTheme copyWith({String? name}) =>
+      PushMessageContentChatSetTheme(name: name ?? this.name);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentChatSetTheme';
@@ -1599,20 +1478,20 @@ final class PushMessageContentChatDeleteMember extends PushMessageContent {
 
   /// Parses a [PushMessageContentChatDeleteMember] from TDLib JSON.
   factory PushMessageContentChatDeleteMember.fromJson(
-          Map<String, dynamic> json) =>
-      PushMessageContentChatDeleteMember(
-        memberName: _readString(json['member_name']),
-        isCurrentUser: _readBool(json['is_current_user']),
-        isLeft: _readBool(json['is_left']),
-      );
+    Map<String, dynamic> json,
+  ) => PushMessageContentChatDeleteMember(
+    memberName: _readString(json['member_name']),
+    isCurrentUser: _readBool(json['is_current_user']),
+    isLeft: _readBool(json['is_left']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'member_name': memberName,
-        'is_current_user': isCurrentUser,
-        'is_left': isLeft,
-      };
+    '@type': CONSTRUCTOR,
+    'member_name': memberName,
+    'is_current_user': isCurrentUser,
+    'is_left': isLeft,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1621,12 +1500,11 @@ final class PushMessageContentChatDeleteMember extends PushMessageContent {
     String? memberName,
     bool? isCurrentUser,
     bool? isLeft,
-  }) =>
-      PushMessageContentChatDeleteMember(
-        memberName: memberName ?? this.memberName,
-        isCurrentUser: isCurrentUser ?? this.isCurrentUser,
-        isLeft: isLeft ?? this.isLeft,
-      );
+  }) => PushMessageContentChatDeleteMember(
+    memberName: memberName ?? this.memberName,
+    isCurrentUser: isCurrentUser ?? this.isCurrentUser,
+    isLeft: isLeft ?? this.isLeft,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentChatDeleteMember';
@@ -1642,13 +1520,11 @@ final class PushMessageContentChatJoinByLink extends PushMessageContent {
 
   /// Parses a [PushMessageContentChatJoinByLink] from TDLib JSON.
   factory PushMessageContentChatJoinByLink.fromJson(
-          Map<String, dynamic> json) =>
-      const PushMessageContentChatJoinByLink();
+    Map<String, dynamic> json,
+  ) => const PushMessageContentChatJoinByLink();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1670,13 +1546,11 @@ final class PushMessageContentChatJoinByRequest extends PushMessageContent {
 
   /// Parses a [PushMessageContentChatJoinByRequest] from TDLib JSON.
   factory PushMessageContentChatJoinByRequest.fromJson(
-          Map<String, dynamic> json) =>
-      const PushMessageContentChatJoinByRequest();
+    Map<String, dynamic> json,
+  ) => const PushMessageContentChatJoinByRequest();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1694,35 +1568,24 @@ final class PushMessageContentChatJoinByRequest extends PushMessageContent {
 /// A new recurring payment was made by the current user
 final class PushMessageContentRecurringPayment extends PushMessageContent {
   /// A new recurring payment was made by the current user
-  const PushMessageContentRecurringPayment({
-    required this.amount,
-  });
+  const PushMessageContentRecurringPayment({required this.amount});
 
   /// The paid amount
   final String amount;
 
   /// Parses a [PushMessageContentRecurringPayment] from TDLib JSON.
   factory PushMessageContentRecurringPayment.fromJson(
-          Map<String, dynamic> json) =>
-      PushMessageContentRecurringPayment(
-        amount: _readString(json['amount']),
-      );
+    Map<String, dynamic> json,
+  ) => PushMessageContentRecurringPayment(amount: _readString(json['amount']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'amount': amount,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'amount': amount};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentRecurringPayment copyWith({
-    String? amount,
-  }) =>
-      PushMessageContentRecurringPayment(
-        amount: amount ?? this.amount,
-      );
+  PushMessageContentRecurringPayment copyWith({String? amount}) =>
+      PushMessageContentRecurringPayment(amount: amount ?? this.amount);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentRecurringPayment';
@@ -1738,13 +1601,11 @@ final class PushMessageContentSuggestProfilePhoto extends PushMessageContent {
 
   /// Parses a [PushMessageContentSuggestProfilePhoto] from TDLib JSON.
   factory PushMessageContentSuggestProfilePhoto.fromJson(
-          Map<String, dynamic> json) =>
-      const PushMessageContentSuggestProfilePhoto();
+    Map<String, dynamic> json,
+  ) => const PushMessageContentSuggestProfilePhoto();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1766,13 +1627,11 @@ final class PushMessageContentSuggestBirthdate extends PushMessageContent {
 
   /// Parses a [PushMessageContentSuggestBirthdate] from TDLib JSON.
   factory PushMessageContentSuggestBirthdate.fromJson(
-          Map<String, dynamic> json) =>
-      const PushMessageContentSuggestBirthdate();
+    Map<String, dynamic> json,
+  ) => const PushMessageContentSuggestBirthdate();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1791,32 +1650,25 @@ final class PushMessageContentSuggestBirthdate extends PushMessageContent {
 final class PushMessageContentProximityAlertTriggered
     extends PushMessageContent {
   /// A user in the chat came within proximity alert range from the current user
-  const PushMessageContentProximityAlertTriggered({
-    required this.distance,
-  });
+  const PushMessageContentProximityAlertTriggered({required this.distance});
 
   /// The distance to the user
   final int distance;
 
   /// Parses a [PushMessageContentProximityAlertTriggered] from TDLib JSON.
   factory PushMessageContentProximityAlertTriggered.fromJson(
-          Map<String, dynamic> json) =>
-      PushMessageContentProximityAlertTriggered(
-        distance: _readInt(json['distance']),
-      );
+    Map<String, dynamic> json,
+  ) => PushMessageContentProximityAlertTriggered(
+    distance: _readInt(json['distance']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'distance': distance,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'distance': distance};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentProximityAlertTriggered copyWith({
-    int? distance,
-  }) =>
+  PushMessageContentProximityAlertTriggered copyWith({int? distance}) =>
       PushMessageContentProximityAlertTriggered(
         distance: distance ?? this.distance,
       );
@@ -1831,32 +1683,28 @@ final class PushMessageContentProximityAlertTriggered
 /// Some tasks were added to a checklist
 final class PushMessageContentChecklistTasksAdded extends PushMessageContent {
   /// Some tasks were added to a checklist
-  const PushMessageContentChecklistTasksAdded({
-    required this.taskCount,
-  });
+  const PushMessageContentChecklistTasksAdded({required this.taskCount});
 
   /// Number of added tasks
   final int taskCount;
 
   /// Parses a [PushMessageContentChecklistTasksAdded] from TDLib JSON.
   factory PushMessageContentChecklistTasksAdded.fromJson(
-          Map<String, dynamic> json) =>
-      PushMessageContentChecklistTasksAdded(
-        taskCount: _readInt(json['task_count']),
-      );
+    Map<String, dynamic> json,
+  ) => PushMessageContentChecklistTasksAdded(
+    taskCount: _readInt(json['task_count']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'task_count': taskCount,
-      };
+    '@type': CONSTRUCTOR,
+    'task_count': taskCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentChecklistTasksAdded copyWith({
-    int? taskCount,
-  }) =>
+  PushMessageContentChecklistTasksAdded copyWith({int? taskCount}) =>
       PushMessageContentChecklistTasksAdded(
         taskCount: taskCount ?? this.taskCount,
       );
@@ -1871,32 +1719,28 @@ final class PushMessageContentChecklistTasksAdded extends PushMessageContent {
 /// Some tasks from a checklist were marked as done or not done
 final class PushMessageContentChecklistTasksDone extends PushMessageContent {
   /// Some tasks from a checklist were marked as done or not done
-  const PushMessageContentChecklistTasksDone({
-    required this.taskCount,
-  });
+  const PushMessageContentChecklistTasksDone({required this.taskCount});
 
   /// Number of changed tasks
   final int taskCount;
 
   /// Parses a [PushMessageContentChecklistTasksDone] from TDLib JSON.
   factory PushMessageContentChecklistTasksDone.fromJson(
-          Map<String, dynamic> json) =>
-      PushMessageContentChecklistTasksDone(
-        taskCount: _readInt(json['task_count']),
-      );
+    Map<String, dynamic> json,
+  ) => PushMessageContentChecklistTasksDone(
+    taskCount: _readInt(json['task_count']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'task_count': taskCount,
-      };
+    '@type': CONSTRUCTOR,
+    'task_count': taskCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentChecklistTasksDone copyWith({
-    int? taskCount,
-  }) =>
+  PushMessageContentChecklistTasksDone copyWith({int? taskCount}) =>
       PushMessageContentChecklistTasksDone(
         taskCount: taskCount ?? this.taskCount,
       );
@@ -1911,32 +1755,28 @@ final class PushMessageContentChecklistTasksDone extends PushMessageContent {
 /// A forwarded messages
 final class PushMessageContentMessageForwards extends PushMessageContent {
   /// A forwarded messages
-  const PushMessageContentMessageForwards({
-    required this.totalCount,
-  });
+  const PushMessageContentMessageForwards({required this.totalCount});
 
   /// Number of forwarded messages
   final int totalCount;
 
   /// Parses a [PushMessageContentMessageForwards] from TDLib JSON.
   factory PushMessageContentMessageForwards.fromJson(
-          Map<String, dynamic> json) =>
-      PushMessageContentMessageForwards(
-        totalCount: _readInt(json['total_count']),
-      );
+    Map<String, dynamic> json,
+  ) => PushMessageContentMessageForwards(
+    totalCount: _readInt(json['total_count']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentMessageForwards copyWith({
-    int? totalCount,
-  }) =>
+  PushMessageContentMessageForwards copyWith({int? totalCount}) =>
       PushMessageContentMessageForwards(
         totalCount: totalCount ?? this.totalCount,
       );
@@ -1986,13 +1826,13 @@ final class PushMessageContentMediaAlbum extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'has_photos': hasPhotos,
-        'has_videos': hasVideos,
-        'has_audios': hasAudios,
-        'has_documents': hasDocuments,
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'has_photos': hasPhotos,
+    'has_videos': hasVideos,
+    'has_audios': hasAudios,
+    'has_documents': hasDocuments,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2003,14 +1843,13 @@ final class PushMessageContentMediaAlbum extends PushMessageContent {
     bool? hasVideos,
     bool? hasAudios,
     bool? hasDocuments,
-  }) =>
-      PushMessageContentMediaAlbum(
-        totalCount: totalCount ?? this.totalCount,
-        hasPhotos: hasPhotos ?? this.hasPhotos,
-        hasVideos: hasVideos ?? this.hasVideos,
-        hasAudios: hasAudios ?? this.hasAudios,
-        hasDocuments: hasDocuments ?? this.hasDocuments,
-      );
+  }) => PushMessageContentMediaAlbum(
+    totalCount: totalCount ?? this.totalCount,
+    hasPhotos: hasPhotos ?? this.hasPhotos,
+    hasVideos: hasVideos ?? this.hasVideos,
+    hasAudios: hasAudios ?? this.hasAudios,
+    hasDocuments: hasDocuments ?? this.hasDocuments,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentMediaAlbum';

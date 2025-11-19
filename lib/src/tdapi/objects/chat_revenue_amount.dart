@@ -41,13 +41,13 @@ final class ChatRevenueAmount extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'cryptocurrency': cryptocurrency,
-        'total_amount': totalAmount.toString(),
-        'balance_amount': balanceAmount.toString(),
-        'available_amount': availableAmount.toString(),
-        'withdrawal_enabled': withdrawalEnabled,
-      };
+    '@type': CONSTRUCTOR,
+    'cryptocurrency': cryptocurrency,
+    'total_amount': totalAmount.toString(),
+    'balance_amount': balanceAmount.toString(),
+    'available_amount': availableAmount.toString(),
+    'withdrawal_enabled': withdrawalEnabled,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,14 +57,13 @@ final class ChatRevenueAmount extends TdObject {
     int? balanceAmount,
     int? availableAmount,
     bool? withdrawalEnabled,
-  }) =>
-      ChatRevenueAmount(
-        cryptocurrency: cryptocurrency ?? this.cryptocurrency,
-        totalAmount: totalAmount ?? this.totalAmount,
-        balanceAmount: balanceAmount ?? this.balanceAmount,
-        availableAmount: availableAmount ?? this.availableAmount,
-        withdrawalEnabled: withdrawalEnabled ?? this.withdrawalEnabled,
-      );
+  }) => ChatRevenueAmount(
+    cryptocurrency: cryptocurrency ?? this.cryptocurrency,
+    totalAmount: totalAmount ?? this.totalAmount,
+    balanceAmount: balanceAmount ?? this.balanceAmount,
+    availableAmount: availableAmount ?? this.availableAmount,
+    withdrawalEnabled: withdrawalEnabled ?? this.withdrawalEnabled,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatRevenueAmount';

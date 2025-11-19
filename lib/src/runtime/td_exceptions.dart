@@ -76,7 +76,7 @@ final class TdDecodeException implements Exception {
   String toString() => 'TdDecodeException: $raw';
 }
 
-/// The native TDLib isn't the version this package's API was generated for.
+/// The bundled TDLib isn't the version this package's API was generated for.
 final class TdVersionMismatchException implements Exception {
   /// Creates the exception.
   const TdVersionMismatchException({
@@ -91,9 +91,10 @@ final class TdVersionMismatchException implements Exception {
   final String nativeCommit;
 
   @override
-  String toString() => 'TdVersionMismatchException: native TDLib '
+  String toString() =>
+      'TdVersionMismatchException: native TDLib '
       '$nativeVersion ($nativeCommit), but this API was generated for '
-      '$tdlibVersion ($tdlibSchemaCommit). Build libtdjson from that '
-      'commit, or start with checkVersion: false if you know the schemas '
-      'match.';
+      '$tdlibVersion ($tdlibSchemaCommit). Use the binaries from '
+      'hook/tdjson_sources.json, or start with checkVersion: false if you '
+      'know the schemas match.';
 }

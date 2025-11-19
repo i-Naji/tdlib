@@ -21,22 +21,21 @@ final class ReorderChatFolders extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_folder_ids': chatFolderIds,
-        'main_chat_list_position': mainChatListPosition,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_folder_ids': chatFolderIds,
+    'main_chat_list_position': mainChatListPosition,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ReorderChatFolders copyWith({
     List<int>? chatFolderIds,
     int? mainChatListPosition,
-  }) =>
-      ReorderChatFolders(
-        chatFolderIds: chatFolderIds ?? this.chatFolderIds,
-        mainChatListPosition: mainChatListPosition ?? this.mainChatListPosition,
-      );
+  }) => ReorderChatFolders(
+    chatFolderIds: chatFolderIds ?? this.chatFolderIds,
+    mainChatListPosition: mainChatListPosition ?? this.mainChatListPosition,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reorderChatFolders';

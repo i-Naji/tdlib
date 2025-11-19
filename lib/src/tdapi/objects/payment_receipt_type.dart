@@ -80,22 +80,24 @@ final class PaymentReceiptTypeRegular extends PaymentReceiptType {
         paymentProviderUserId: _readInt(json['payment_provider_user_id']),
         invoice: _readObject(json['invoice'], Invoice.fromJson),
         orderInfo: _readOptional(json['order_info'], OrderInfo.fromJson),
-        shippingOption:
-            _readOptional(json['shipping_option'], ShippingOption.fromJson),
+        shippingOption: _readOptional(
+          json['shipping_option'],
+          ShippingOption.fromJson,
+        ),
         credentialsTitle: _readString(json['credentials_title']),
         tipAmount: _readInt(json['tip_amount']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'payment_provider_user_id': paymentProviderUserId,
-        'invoice': invoice.toJson(),
-        'order_info': orderInfo?.toJson(),
-        'shipping_option': shippingOption?.toJson(),
-        'credentials_title': credentialsTitle,
-        'tip_amount': tipAmount,
-      };
+    '@type': CONSTRUCTOR,
+    'payment_provider_user_id': paymentProviderUserId,
+    'invoice': invoice.toJson(),
+    'order_info': orderInfo?.toJson(),
+    'shipping_option': shippingOption?.toJson(),
+    'credentials_title': credentialsTitle,
+    'tip_amount': tipAmount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -107,17 +109,16 @@ final class PaymentReceiptTypeRegular extends PaymentReceiptType {
     ShippingOption? Function()? shippingOption,
     String? credentialsTitle,
     int? tipAmount,
-  }) =>
-      PaymentReceiptTypeRegular(
-        paymentProviderUserId:
-            paymentProviderUserId ?? this.paymentProviderUserId,
-        invoice: invoice ?? this.invoice,
-        orderInfo: orderInfo != null ? orderInfo() : this.orderInfo,
-        shippingOption:
-            shippingOption != null ? shippingOption() : this.shippingOption,
-        credentialsTitle: credentialsTitle ?? this.credentialsTitle,
-        tipAmount: tipAmount ?? this.tipAmount,
-      );
+  }) => PaymentReceiptTypeRegular(
+    paymentProviderUserId: paymentProviderUserId ?? this.paymentProviderUserId,
+    invoice: invoice ?? this.invoice,
+    orderInfo: orderInfo != null ? orderInfo() : this.orderInfo,
+    shippingOption: shippingOption != null
+        ? shippingOption()
+        : this.shippingOption,
+    credentialsTitle: credentialsTitle ?? this.credentialsTitle,
+    tipAmount: tipAmount ?? this.tipAmount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'paymentReceiptTypeRegular';
@@ -149,18 +150,15 @@ final class PaymentReceiptTypeStars extends PaymentReceiptType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_count': starCount,
-        'transaction_id': transactionId,
-      };
+    '@type': CONSTRUCTOR,
+    'star_count': starCount,
+    'transaction_id': transactionId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PaymentReceiptTypeStars copyWith({
-    int? starCount,
-    String? transactionId,
-  }) =>
+  PaymentReceiptTypeStars copyWith({int? starCount, String? transactionId}) =>
       PaymentReceiptTypeStars(
         starCount: starCount ?? this.starCount,
         transactionId: transactionId ?? this.transactionId,

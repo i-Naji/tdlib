@@ -21,22 +21,21 @@ final class SetBotUpdatesStatus extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'pending_update_count': pendingUpdateCount,
-        'error_message': errorMessage,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'pending_update_count': pendingUpdateCount,
+    'error_message': errorMessage,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetBotUpdatesStatus copyWith({
     int? pendingUpdateCount,
     String? errorMessage,
-  }) =>
-      SetBotUpdatesStatus(
-        pendingUpdateCount: pendingUpdateCount ?? this.pendingUpdateCount,
-        errorMessage: errorMessage ?? this.errorMessage,
-      );
+  }) => SetBotUpdatesStatus(
+    pendingUpdateCount: pendingUpdateCount ?? this.pendingUpdateCount,
+    errorMessage: errorMessage ?? this.errorMessage,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setBotUpdatesStatus';

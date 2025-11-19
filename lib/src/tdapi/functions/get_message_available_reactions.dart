@@ -26,12 +26,12 @@ final class GetMessageAvailableReactions
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'row_size': rowSize,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'row_size': rowSize,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -39,12 +39,11 @@ final class GetMessageAvailableReactions
     int? chatId,
     int? messageId,
     int? rowSize,
-  }) =>
-      GetMessageAvailableReactions(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        rowSize: rowSize ?? this.rowSize,
-      );
+  }) => GetMessageAvailableReactions(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    rowSize: rowSize ?? this.rowSize,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getMessageAvailableReactions';

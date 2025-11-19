@@ -31,19 +31,23 @@ final class PassportElementsWithErrors extends TdObject {
   factory PassportElementsWithErrors.fromJson(Map<String, dynamic> json) =>
       PassportElementsWithErrors(
         elements: _readList<PassportElement>(
-            json['elements'], (e) => _readObject(e, PassportElement.fromJson)),
-        errors: _readList<PassportElementError>(json['errors'],
-            (e) => _readObject(e, PassportElementError.fromJson)),
+          json['elements'],
+          (e) => _readObject(e, PassportElement.fromJson),
+        ),
+        errors: _readList<PassportElementError>(
+          json['errors'],
+          (e) => _readObject(e, PassportElementError.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'elements': [for (final e in elements) e.toJson()],
-        'errors': [for (final e in errors) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'elements': [for (final e in elements) e.toJson()],
+    'errors': [for (final e in errors) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -52,13 +56,12 @@ final class PassportElementsWithErrors extends TdObject {
     List<PassportElementError>? errors,
     dynamic extra,
     int? clientId,
-  }) =>
-      PassportElementsWithErrors(
-        elements: elements ?? this.elements,
-        errors: errors ?? this.errors,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PassportElementsWithErrors(
+    elements: elements ?? this.elements,
+    errors: errors ?? this.errors,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportElementsWithErrors';

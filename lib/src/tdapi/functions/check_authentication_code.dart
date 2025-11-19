@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class CheckAuthenticationCode extends TdFunction<Ok> {
   /// Checks the authentication code. Works only when the current authorization state is authorizationStateWaitCode
-  const CheckAuthenticationCode({
-    required this.code,
-  });
+  const CheckAuthenticationCode({required this.code});
 
   /// Authentication code to check
   final String code;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'code': code,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'code': code,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CheckAuthenticationCode copyWith({
-    String? code,
-  }) =>
-      CheckAuthenticationCode(
-        code: code ?? this.code,
-      );
+  CheckAuthenticationCode copyWith({String? code}) =>
+      CheckAuthenticationCode(code: code ?? this.code);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkAuthenticationCode';

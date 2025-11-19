@@ -52,9 +52,7 @@ final class ChatActionTyping extends ChatAction {
       const ChatActionTyping();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -78,9 +76,7 @@ final class ChatActionRecordingVideo extends ChatAction {
       const ChatActionRecordingVideo();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -97,34 +93,23 @@ final class ChatActionRecordingVideo extends ChatAction {
 /// The user is uploading a video
 final class ChatActionUploadingVideo extends ChatAction {
   /// The user is uploading a video
-  const ChatActionUploadingVideo({
-    required this.progress,
-  });
+  const ChatActionUploadingVideo({required this.progress});
 
   /// Upload progress, as a percentage
   final int progress;
 
   /// Parses a [ChatActionUploadingVideo] from TDLib JSON.
   factory ChatActionUploadingVideo.fromJson(Map<String, dynamic> json) =>
-      ChatActionUploadingVideo(
-        progress: _readInt(json['progress']),
-      );
+      ChatActionUploadingVideo(progress: _readInt(json['progress']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'progress': progress,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'progress': progress};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatActionUploadingVideo copyWith({
-    int? progress,
-  }) =>
-      ChatActionUploadingVideo(
-        progress: progress ?? this.progress,
-      );
+  ChatActionUploadingVideo copyWith({int? progress}) =>
+      ChatActionUploadingVideo(progress: progress ?? this.progress);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatActionUploadingVideo';
@@ -143,9 +128,7 @@ final class ChatActionRecordingVoiceNote extends ChatAction {
       const ChatActionRecordingVoiceNote();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -163,34 +146,23 @@ final class ChatActionRecordingVoiceNote extends ChatAction {
 /// The user is uploading a voice note
 final class ChatActionUploadingVoiceNote extends ChatAction {
   /// The user is uploading a voice note
-  const ChatActionUploadingVoiceNote({
-    required this.progress,
-  });
+  const ChatActionUploadingVoiceNote({required this.progress});
 
   /// Upload progress, as a percentage
   final int progress;
 
   /// Parses a [ChatActionUploadingVoiceNote] from TDLib JSON.
   factory ChatActionUploadingVoiceNote.fromJson(Map<String, dynamic> json) =>
-      ChatActionUploadingVoiceNote(
-        progress: _readInt(json['progress']),
-      );
+      ChatActionUploadingVoiceNote(progress: _readInt(json['progress']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'progress': progress,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'progress': progress};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatActionUploadingVoiceNote copyWith({
-    int? progress,
-  }) =>
-      ChatActionUploadingVoiceNote(
-        progress: progress ?? this.progress,
-      );
+  ChatActionUploadingVoiceNote copyWith({int? progress}) =>
+      ChatActionUploadingVoiceNote(progress: progress ?? this.progress);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatActionUploadingVoiceNote';
@@ -202,34 +174,23 @@ final class ChatActionUploadingVoiceNote extends ChatAction {
 /// The user is uploading a photo
 final class ChatActionUploadingPhoto extends ChatAction {
   /// The user is uploading a photo
-  const ChatActionUploadingPhoto({
-    required this.progress,
-  });
+  const ChatActionUploadingPhoto({required this.progress});
 
   /// Upload progress, as a percentage
   final int progress;
 
   /// Parses a [ChatActionUploadingPhoto] from TDLib JSON.
   factory ChatActionUploadingPhoto.fromJson(Map<String, dynamic> json) =>
-      ChatActionUploadingPhoto(
-        progress: _readInt(json['progress']),
-      );
+      ChatActionUploadingPhoto(progress: _readInt(json['progress']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'progress': progress,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'progress': progress};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatActionUploadingPhoto copyWith({
-    int? progress,
-  }) =>
-      ChatActionUploadingPhoto(
-        progress: progress ?? this.progress,
-      );
+  ChatActionUploadingPhoto copyWith({int? progress}) =>
+      ChatActionUploadingPhoto(progress: progress ?? this.progress);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatActionUploadingPhoto';
@@ -241,34 +202,23 @@ final class ChatActionUploadingPhoto extends ChatAction {
 /// The user is uploading a document
 final class ChatActionUploadingDocument extends ChatAction {
   /// The user is uploading a document
-  const ChatActionUploadingDocument({
-    required this.progress,
-  });
+  const ChatActionUploadingDocument({required this.progress});
 
   /// Upload progress, as a percentage
   final int progress;
 
   /// Parses a [ChatActionUploadingDocument] from TDLib JSON.
   factory ChatActionUploadingDocument.fromJson(Map<String, dynamic> json) =>
-      ChatActionUploadingDocument(
-        progress: _readInt(json['progress']),
-      );
+      ChatActionUploadingDocument(progress: _readInt(json['progress']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'progress': progress,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'progress': progress};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatActionUploadingDocument copyWith({
-    int? progress,
-  }) =>
-      ChatActionUploadingDocument(
-        progress: progress ?? this.progress,
-      );
+  ChatActionUploadingDocument copyWith({int? progress}) =>
+      ChatActionUploadingDocument(progress: progress ?? this.progress);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatActionUploadingDocument';
@@ -287,9 +237,7 @@ final class ChatActionChoosingSticker extends ChatAction {
       const ChatActionChoosingSticker();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -313,9 +261,7 @@ final class ChatActionChoosingLocation extends ChatAction {
       const ChatActionChoosingLocation();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -339,9 +285,7 @@ final class ChatActionChoosingContact extends ChatAction {
       const ChatActionChoosingContact();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -365,9 +309,7 @@ final class ChatActionStartPlayingGame extends ChatAction {
       const ChatActionStartPlayingGame();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -391,9 +333,7 @@ final class ChatActionRecordingVideoNote extends ChatAction {
       const ChatActionRecordingVideoNote();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -411,34 +351,23 @@ final class ChatActionRecordingVideoNote extends ChatAction {
 /// The user is uploading a video note
 final class ChatActionUploadingVideoNote extends ChatAction {
   /// The user is uploading a video note
-  const ChatActionUploadingVideoNote({
-    required this.progress,
-  });
+  const ChatActionUploadingVideoNote({required this.progress});
 
   /// Upload progress, as a percentage
   final int progress;
 
   /// Parses a [ChatActionUploadingVideoNote] from TDLib JSON.
   factory ChatActionUploadingVideoNote.fromJson(Map<String, dynamic> json) =>
-      ChatActionUploadingVideoNote(
-        progress: _readInt(json['progress']),
-      );
+      ChatActionUploadingVideoNote(progress: _readInt(json['progress']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'progress': progress,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'progress': progress};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatActionUploadingVideoNote copyWith({
-    int? progress,
-  }) =>
-      ChatActionUploadingVideoNote(
-        progress: progress ?? this.progress,
-      );
+  ChatActionUploadingVideoNote copyWith({int? progress}) =>
+      ChatActionUploadingVideoNote(progress: progress ?? this.progress);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatActionUploadingVideoNote';
@@ -450,34 +379,23 @@ final class ChatActionUploadingVideoNote extends ChatAction {
 /// The user is watching animations sent by the other party by clicking on an animated emoji
 final class ChatActionWatchingAnimations extends ChatAction {
   /// The user is watching animations sent by the other party by clicking on an animated emoji
-  const ChatActionWatchingAnimations({
-    required this.emoji,
-  });
+  const ChatActionWatchingAnimations({required this.emoji});
 
   /// The animated emoji
   final String emoji;
 
   /// Parses a [ChatActionWatchingAnimations] from TDLib JSON.
   factory ChatActionWatchingAnimations.fromJson(Map<String, dynamic> json) =>
-      ChatActionWatchingAnimations(
-        emoji: _readString(json['emoji']),
-      );
+      ChatActionWatchingAnimations(emoji: _readString(json['emoji']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'emoji': emoji,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'emoji': emoji};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatActionWatchingAnimations copyWith({
-    String? emoji,
-  }) =>
-      ChatActionWatchingAnimations(
-        emoji: emoji ?? this.emoji,
-      );
+  ChatActionWatchingAnimations copyWith({String? emoji}) =>
+      ChatActionWatchingAnimations(emoji: emoji ?? this.emoji);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatActionWatchingAnimations';
@@ -496,9 +414,7 @@ final class ChatActionCancel extends ChatAction {
       const ChatActionCancel();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

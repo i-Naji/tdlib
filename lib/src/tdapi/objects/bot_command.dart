@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Represents a command supported by a bot
 final class BotCommand extends TdObject {
   /// Represents a command supported by a bot
-  const BotCommand({
-    required this.command,
-    required this.description,
-  });
+  const BotCommand({required this.command, required this.description});
 
   /// Text of the bot command
   final String command;
@@ -19,27 +16,23 @@ final class BotCommand extends TdObject {
 
   /// Parses a [BotCommand] from TDLib JSON.
   factory BotCommand.fromJson(Map<String, dynamic> json) => BotCommand(
-        command: _readString(json['command']),
-        description: _readString(json['description']),
-      );
+    command: _readString(json['command']),
+    description: _readString(json['description']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'command': command,
-        'description': description,
-      };
+    '@type': CONSTRUCTOR,
+    'command': command,
+    'description': description,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  BotCommand copyWith({
-    String? command,
-    String? description,
-  }) =>
-      BotCommand(
-        command: command ?? this.command,
-        description: description ?? this.description,
-      );
+  BotCommand copyWith({String? command, String? description}) => BotCommand(
+    command: command ?? this.command,
+    description: description ?? this.description,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'botCommand';

@@ -6,9 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of story areas to be added
 final class InputStoryAreas extends TdObject {
   /// Contains a list of story areas to be added
-  const InputStoryAreas({
-    required this.areas,
-  });
+  const InputStoryAreas({required this.areas});
 
   /// List of input story areas. Currently, a story can have up to 10 inputStoryAreaTypeLocation, inputStoryAreaTypeFoundVenue, and inputStoryAreaTypePreviousVenue areas, up to getOption("story_suggested_reaction_area_count_max") inputStoryAreaTypeSuggestedReaction areas, up to 1 inputStoryAreaTypeMessage area, up to getOption("story_link_area_count_max") inputStoryAreaTypeLink areas if the current user is a Telegram Premium user, up to 3 inputStoryAreaTypeWeather areas, and up to 1 inputStoryAreaTypeUpgradedGift area
   final List<InputStoryArea> areas;
@@ -17,23 +15,21 @@ final class InputStoryAreas extends TdObject {
   factory InputStoryAreas.fromJson(Map<String, dynamic> json) =>
       InputStoryAreas(
         areas: _readList<InputStoryArea>(
-            json['areas'], (e) => _readObject(e, InputStoryArea.fromJson)),
+          json['areas'],
+          (e) => _readObject(e, InputStoryArea.fromJson),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'areas': [for (final e in areas) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'areas': [for (final e in areas) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  InputStoryAreas copyWith({
-    List<InputStoryArea>? areas,
-  }) =>
-      InputStoryAreas(
-        areas: areas ?? this.areas,
-      );
+  InputStoryAreas copyWith({List<InputStoryArea>? areas}) =>
+      InputStoryAreas(areas: areas ?? this.areas);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputStoryAreas';

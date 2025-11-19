@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [PassportElement].
 final class SetPassportElement extends TdFunction<PassportElement> {
   /// Adds an element to the user's Telegram Passport. May return an error with a message "PHONE_VERIFICATION_NEEDED" or "EMAIL_VERIFICATION_NEEDED" if the chosen phone number or the chosen email address must be verified first
-  const SetPassportElement({
-    required this.element,
-    required this.password,
-  });
+  const SetPassportElement({required this.element, required this.password});
 
   /// Input Telegram Passport element
   final InputPassportElement element;
@@ -21,22 +18,21 @@ final class SetPassportElement extends TdFunction<PassportElement> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'element': element.toJson(),
-        'password': password,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'element': element.toJson(),
+    'password': password,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetPassportElement copyWith({
     InputPassportElement? element,
     String? password,
-  }) =>
-      SetPassportElement(
-        element: element ?? this.element,
-        password: password ?? this.password,
-      );
+  }) => SetPassportElement(
+    element: element ?? this.element,
+    password: password ?? this.password,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setPassportElement';

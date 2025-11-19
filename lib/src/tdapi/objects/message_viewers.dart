@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Represents a list of message viewers
 final class MessageViewers extends TdObject {
   /// Represents a list of message viewers
-  const MessageViewers({
-    required this.viewers,
-    this.extra,
-    this.clientId,
-  });
+  const MessageViewers({required this.viewers, this.extra, this.clientId});
 
   /// List of message viewers
   final List<MessageViewer> viewers;
@@ -25,17 +21,19 @@ final class MessageViewers extends TdObject {
 
   /// Parses a [MessageViewers] from TDLib JSON.
   factory MessageViewers.fromJson(Map<String, dynamic> json) => MessageViewers(
-        viewers: _readList<MessageViewer>(
-            json['viewers'], (e) => _readObject(e, MessageViewer.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    viewers: _readList<MessageViewer>(
+      json['viewers'],
+      (e) => _readObject(e, MessageViewer.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'viewers': [for (final e in viewers) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'viewers': [for (final e in viewers) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +41,11 @@ final class MessageViewers extends TdObject {
     List<MessageViewer>? viewers,
     dynamic extra,
     int? clientId,
-  }) =>
-      MessageViewers(
-        viewers: viewers ?? this.viewers,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => MessageViewers(
+    viewers: viewers ?? this.viewers,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageViewers';

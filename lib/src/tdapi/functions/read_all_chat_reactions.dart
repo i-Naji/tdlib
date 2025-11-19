@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ReadAllChatReactions extends TdFunction<Ok> {
   /// Marks all reactions in a chat as read
-  const ReadAllChatReactions({
-    required this.chatId,
-  });
+  const ReadAllChatReactions({required this.chatId});
 
   /// Chat identifier
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ReadAllChatReactions copyWith({
-    int? chatId,
-  }) =>
-      ReadAllChatReactions(
-        chatId: chatId ?? this.chatId,
-      );
+  ReadAllChatReactions copyWith({int? chatId}) =>
+      ReadAllChatReactions(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'readAllChatReactions';

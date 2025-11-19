@@ -82,57 +82,61 @@ final class GroupCallParticipant extends TdObject {
   final String order;
 
   /// Parses a [GroupCallParticipant] from TDLib JSON.
-  factory GroupCallParticipant.fromJson(Map<String, dynamic> json) =>
-      GroupCallParticipant(
-        participantId:
-            _readObject(json['participant_id'], MessageSender.fromJson),
-        audioSourceId: _readInt(json['audio_source_id']),
-        screenSharingAudioSourceId:
-            _readInt(json['screen_sharing_audio_source_id']),
-        videoInfo: _readOptional(
-            json['video_info'], GroupCallParticipantVideoInfo.fromJson),
-        screenSharingVideoInfo: _readOptional(json['screen_sharing_video_info'],
-            GroupCallParticipantVideoInfo.fromJson),
-        bio: _readString(json['bio']),
-        isCurrentUser: _readBool(json['is_current_user']),
-        isSpeaking: _readBool(json['is_speaking']),
-        isHandRaised: _readBool(json['is_hand_raised']),
-        canBeMutedForAllUsers: _readBool(json['can_be_muted_for_all_users']),
-        canBeUnmutedForAllUsers:
-            _readBool(json['can_be_unmuted_for_all_users']),
-        canBeMutedForCurrentUser:
-            _readBool(json['can_be_muted_for_current_user']),
-        canBeUnmutedForCurrentUser:
-            _readBool(json['can_be_unmuted_for_current_user']),
-        isMutedForAllUsers: _readBool(json['is_muted_for_all_users']),
-        isMutedForCurrentUser: _readBool(json['is_muted_for_current_user']),
-        canUnmuteSelf: _readBool(json['can_unmute_self']),
-        volumeLevel: _readInt(json['volume_level']),
-        order: _readString(json['order']),
-      );
+  factory GroupCallParticipant.fromJson(
+    Map<String, dynamic> json,
+  ) => GroupCallParticipant(
+    participantId: _readObject(json['participant_id'], MessageSender.fromJson),
+    audioSourceId: _readInt(json['audio_source_id']),
+    screenSharingAudioSourceId: _readInt(
+      json['screen_sharing_audio_source_id'],
+    ),
+    videoInfo: _readOptional(
+      json['video_info'],
+      GroupCallParticipantVideoInfo.fromJson,
+    ),
+    screenSharingVideoInfo: _readOptional(
+      json['screen_sharing_video_info'],
+      GroupCallParticipantVideoInfo.fromJson,
+    ),
+    bio: _readString(json['bio']),
+    isCurrentUser: _readBool(json['is_current_user']),
+    isSpeaking: _readBool(json['is_speaking']),
+    isHandRaised: _readBool(json['is_hand_raised']),
+    canBeMutedForAllUsers: _readBool(json['can_be_muted_for_all_users']),
+    canBeUnmutedForAllUsers: _readBool(json['can_be_unmuted_for_all_users']),
+    canBeMutedForCurrentUser: _readBool(json['can_be_muted_for_current_user']),
+    canBeUnmutedForCurrentUser: _readBool(
+      json['can_be_unmuted_for_current_user'],
+    ),
+    isMutedForAllUsers: _readBool(json['is_muted_for_all_users']),
+    isMutedForCurrentUser: _readBool(json['is_muted_for_current_user']),
+    canUnmuteSelf: _readBool(json['can_unmute_self']),
+    volumeLevel: _readInt(json['volume_level']),
+    order: _readString(json['order']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'participant_id': participantId.toJson(),
-        'audio_source_id': audioSourceId,
-        'screen_sharing_audio_source_id': screenSharingAudioSourceId,
-        'video_info': videoInfo?.toJson(),
-        'screen_sharing_video_info': screenSharingVideoInfo?.toJson(),
-        'bio': bio,
-        'is_current_user': isCurrentUser,
-        'is_speaking': isSpeaking,
-        'is_hand_raised': isHandRaised,
-        'can_be_muted_for_all_users': canBeMutedForAllUsers,
-        'can_be_unmuted_for_all_users': canBeUnmutedForAllUsers,
-        'can_be_muted_for_current_user': canBeMutedForCurrentUser,
-        'can_be_unmuted_for_current_user': canBeUnmutedForCurrentUser,
-        'is_muted_for_all_users': isMutedForAllUsers,
-        'is_muted_for_current_user': isMutedForCurrentUser,
-        'can_unmute_self': canUnmuteSelf,
-        'volume_level': volumeLevel,
-        'order': order,
-      };
+    '@type': CONSTRUCTOR,
+    'participant_id': participantId.toJson(),
+    'audio_source_id': audioSourceId,
+    'screen_sharing_audio_source_id': screenSharingAudioSourceId,
+    'video_info': videoInfo?.toJson(),
+    'screen_sharing_video_info': screenSharingVideoInfo?.toJson(),
+    'bio': bio,
+    'is_current_user': isCurrentUser,
+    'is_speaking': isSpeaking,
+    'is_hand_raised': isHandRaised,
+    'can_be_muted_for_all_users': canBeMutedForAllUsers,
+    'can_be_unmuted_for_all_users': canBeUnmutedForAllUsers,
+    'can_be_muted_for_current_user': canBeMutedForCurrentUser,
+    'can_be_unmuted_for_current_user': canBeUnmutedForCurrentUser,
+    'is_muted_for_all_users': isMutedForAllUsers,
+    'is_muted_for_current_user': isMutedForCurrentUser,
+    'can_unmute_self': canUnmuteSelf,
+    'volume_level': volumeLevel,
+    'order': order,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -155,35 +159,32 @@ final class GroupCallParticipant extends TdObject {
     bool? canUnmuteSelf,
     int? volumeLevel,
     String? order,
-  }) =>
-      GroupCallParticipant(
-        participantId: participantId ?? this.participantId,
-        audioSourceId: audioSourceId ?? this.audioSourceId,
-        screenSharingAudioSourceId:
-            screenSharingAudioSourceId ?? this.screenSharingAudioSourceId,
-        videoInfo: videoInfo != null ? videoInfo() : this.videoInfo,
-        screenSharingVideoInfo: screenSharingVideoInfo != null
-            ? screenSharingVideoInfo()
-            : this.screenSharingVideoInfo,
-        bio: bio ?? this.bio,
-        isCurrentUser: isCurrentUser ?? this.isCurrentUser,
-        isSpeaking: isSpeaking ?? this.isSpeaking,
-        isHandRaised: isHandRaised ?? this.isHandRaised,
-        canBeMutedForAllUsers:
-            canBeMutedForAllUsers ?? this.canBeMutedForAllUsers,
-        canBeUnmutedForAllUsers:
-            canBeUnmutedForAllUsers ?? this.canBeUnmutedForAllUsers,
-        canBeMutedForCurrentUser:
-            canBeMutedForCurrentUser ?? this.canBeMutedForCurrentUser,
-        canBeUnmutedForCurrentUser:
-            canBeUnmutedForCurrentUser ?? this.canBeUnmutedForCurrentUser,
-        isMutedForAllUsers: isMutedForAllUsers ?? this.isMutedForAllUsers,
-        isMutedForCurrentUser:
-            isMutedForCurrentUser ?? this.isMutedForCurrentUser,
-        canUnmuteSelf: canUnmuteSelf ?? this.canUnmuteSelf,
-        volumeLevel: volumeLevel ?? this.volumeLevel,
-        order: order ?? this.order,
-      );
+  }) => GroupCallParticipant(
+    participantId: participantId ?? this.participantId,
+    audioSourceId: audioSourceId ?? this.audioSourceId,
+    screenSharingAudioSourceId:
+        screenSharingAudioSourceId ?? this.screenSharingAudioSourceId,
+    videoInfo: videoInfo != null ? videoInfo() : this.videoInfo,
+    screenSharingVideoInfo: screenSharingVideoInfo != null
+        ? screenSharingVideoInfo()
+        : this.screenSharingVideoInfo,
+    bio: bio ?? this.bio,
+    isCurrentUser: isCurrentUser ?? this.isCurrentUser,
+    isSpeaking: isSpeaking ?? this.isSpeaking,
+    isHandRaised: isHandRaised ?? this.isHandRaised,
+    canBeMutedForAllUsers: canBeMutedForAllUsers ?? this.canBeMutedForAllUsers,
+    canBeUnmutedForAllUsers:
+        canBeUnmutedForAllUsers ?? this.canBeUnmutedForAllUsers,
+    canBeMutedForCurrentUser:
+        canBeMutedForCurrentUser ?? this.canBeMutedForCurrentUser,
+    canBeUnmutedForCurrentUser:
+        canBeUnmutedForCurrentUser ?? this.canBeUnmutedForCurrentUser,
+    isMutedForAllUsers: isMutedForAllUsers ?? this.isMutedForAllUsers,
+    isMutedForCurrentUser: isMutedForCurrentUser ?? this.isMutedForCurrentUser,
+    canUnmuteSelf: canUnmuteSelf ?? this.canUnmuteSelf,
+    volumeLevel: volumeLevel ?? this.volumeLevel,
+    order: order ?? this.order,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'groupCallParticipant';

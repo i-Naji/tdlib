@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains information about the period of inactivity after which the current user's account will automatically be deleted
 final class AccountTtl extends TdObject {
   /// Contains information about the period of inactivity after which the current user's account will automatically be deleted
-  const AccountTtl({
-    required this.days,
-    this.extra,
-    this.clientId,
-  });
+  const AccountTtl({required this.days, this.extra, this.clientId});
 
   /// Number of days of inactivity before the account will be flagged for deletion; 30-730 days
   final int days;
@@ -25,29 +21,21 @@ final class AccountTtl extends TdObject {
 
   /// Parses a [AccountTtl] from TDLib JSON.
   factory AccountTtl.fromJson(Map<String, dynamic> json) => AccountTtl(
-        days: _readInt(json['days']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    days: _readInt(json['days']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'days': days,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'days': days};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  AccountTtl copyWith({
-    int? days,
-    dynamic extra,
-    int? clientId,
-  }) =>
-      AccountTtl(
-        days: days ?? this.days,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  AccountTtl copyWith({int? days, dynamic extra, int? clientId}) => AccountTtl(
+    days: days ?? this.days,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'accountTtl';

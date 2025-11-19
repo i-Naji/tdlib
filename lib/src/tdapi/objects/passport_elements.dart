@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains information about saved Telegram Passport elements
 final class PassportElements extends TdObject {
   /// Contains information about saved Telegram Passport elements
-  const PassportElements({
-    required this.elements,
-    this.extra,
-    this.clientId,
-  });
+  const PassportElements({required this.elements, this.extra, this.clientId});
 
   /// Telegram Passport elements
   final List<PassportElement> elements;
@@ -27,16 +23,18 @@ final class PassportElements extends TdObject {
   factory PassportElements.fromJson(Map<String, dynamic> json) =>
       PassportElements(
         elements: _readList<PassportElement>(
-            json['elements'], (e) => _readObject(e, PassportElement.fromJson)),
+          json['elements'],
+          (e) => _readObject(e, PassportElement.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'elements': [for (final e in elements) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'elements': [for (final e in elements) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +42,11 @@ final class PassportElements extends TdObject {
     List<PassportElement>? elements,
     dynamic extra,
     int? clientId,
-  }) =>
-      PassportElements(
-        elements: elements ?? this.elements,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PassportElements(
+    elements: elements ?? this.elements,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportElements';

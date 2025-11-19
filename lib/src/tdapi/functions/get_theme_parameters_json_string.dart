@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Text].
 final class GetThemeParametersJsonString extends TdFunction<Text> {
   /// Converts a themeParameters object to corresponding JSON-serialized string. Can be called synchronously
-  const GetThemeParametersJsonString({
-    required this.theme,
-  });
+  const GetThemeParametersJsonString({required this.theme});
 
   /// Theme parameters to convert to JSON
   final ThemeParameters theme;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'theme': theme.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'theme': theme.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetThemeParametersJsonString copyWith({
-    ThemeParameters? theme,
-  }) =>
-      GetThemeParametersJsonString(
-        theme: theme ?? this.theme,
-      );
+  GetThemeParametersJsonString copyWith({ThemeParameters? theme}) =>
+      GetThemeParametersJsonString(theme: theme ?? this.theme);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getThemeParametersJsonString';

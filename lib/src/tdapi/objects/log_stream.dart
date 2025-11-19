@@ -45,10 +45,7 @@ final class UndecodedLogStream extends LogStream {
 /// The log is written to stderr or an OS specific log
 final class LogStreamDefault extends LogStream {
   /// The log is written to stderr or an OS specific log
-  const LogStreamDefault({
-    this.extra,
-    this.clientId,
-  });
+  const LogStreamDefault({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -66,21 +63,15 @@ final class LogStreamDefault extends LogStream {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LogStreamDefault copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
-      LogStreamDefault(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  LogStreamDefault copyWith({dynamic extra, int? clientId}) => LogStreamDefault(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'logStreamDefault';
@@ -119,20 +110,20 @@ final class LogStreamFile extends LogStream {
 
   /// Parses a [LogStreamFile] from TDLib JSON.
   factory LogStreamFile.fromJson(Map<String, dynamic> json) => LogStreamFile(
-        path: _readString(json['path']),
-        maxFileSize: _readInt(json['max_file_size']),
-        redirectStderr: _readBool(json['redirect_stderr']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    path: _readString(json['path']),
+    maxFileSize: _readInt(json['max_file_size']),
+    redirectStderr: _readBool(json['redirect_stderr']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'path': path,
-        'max_file_size': maxFileSize,
-        'redirect_stderr': redirectStderr,
-      };
+    '@type': CONSTRUCTOR,
+    'path': path,
+    'max_file_size': maxFileSize,
+    'redirect_stderr': redirectStderr,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -143,14 +134,13 @@ final class LogStreamFile extends LogStream {
     bool? redirectStderr,
     dynamic extra,
     int? clientId,
-  }) =>
-      LogStreamFile(
-        path: path ?? this.path,
-        maxFileSize: maxFileSize ?? this.maxFileSize,
-        redirectStderr: redirectStderr ?? this.redirectStderr,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => LogStreamFile(
+    path: path ?? this.path,
+    maxFileSize: maxFileSize ?? this.maxFileSize,
+    redirectStderr: redirectStderr ?? this.redirectStderr,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'logStreamFile';
@@ -162,10 +152,7 @@ final class LogStreamFile extends LogStream {
 /// The log is written nowhere
 final class LogStreamEmpty extends LogStream {
   /// The log is written nowhere
-  const LogStreamEmpty({
-    this.extra,
-    this.clientId,
-  });
+  const LogStreamEmpty({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -177,26 +164,20 @@ final class LogStreamEmpty extends LogStream {
 
   /// Parses a [LogStreamEmpty] from TDLib JSON.
   factory LogStreamEmpty.fromJson(Map<String, dynamic> json) => LogStreamEmpty(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LogStreamEmpty copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
-      LogStreamEmpty(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  LogStreamEmpty copyWith({dynamic extra, int? clientId}) => LogStreamEmpty(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'logStreamEmpty';

@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// A simple object containing a vector of strings; for testing only
 final class TestVectorString extends TdObject {
   /// A simple object containing a vector of strings; for testing only
-  const TestVectorString({
-    required this.value,
-    this.extra,
-    this.clientId,
-  });
+  const TestVectorString({required this.value, this.extra, this.clientId});
 
   /// Vector of strings
   final List<String> value;
@@ -32,10 +28,7 @@ final class TestVectorString extends TdObject {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'value': value,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'value': value};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +36,11 @@ final class TestVectorString extends TdObject {
     List<String>? value,
     dynamic extra,
     int? clientId,
-  }) =>
-      TestVectorString(
-        value: value ?? this.value,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => TestVectorString(
+    value: value ?? this.value,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'testVectorString';

@@ -45,9 +45,7 @@ final class UndecodedPremiumSource extends PremiumSource {
 /// A limit was exceeded
 final class PremiumSourceLimitExceeded extends PremiumSource {
   /// A limit was exceeded
-  const PremiumSourceLimitExceeded({
-    required this.limitType,
-  });
+  const PremiumSourceLimitExceeded({required this.limitType});
 
   /// Type of the exceeded limit
   final PremiumLimitType limitType;
@@ -60,19 +58,15 @@ final class PremiumSourceLimitExceeded extends PremiumSource {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'limit_type': limitType.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'limit_type': limitType.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PremiumSourceLimitExceeded copyWith({
-    PremiumLimitType? limitType,
-  }) =>
-      PremiumSourceLimitExceeded(
-        limitType: limitType ?? this.limitType,
-      );
+  PremiumSourceLimitExceeded copyWith({PremiumLimitType? limitType}) =>
+      PremiumSourceLimitExceeded(limitType: limitType ?? this.limitType);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumSourceLimitExceeded';
@@ -84,9 +78,7 @@ final class PremiumSourceLimitExceeded extends PremiumSource {
 /// A user tried to use a Premium feature
 final class PremiumSourceFeature extends PremiumSource {
   /// A user tried to use a Premium feature
-  const PremiumSourceFeature({
-    required this.feature,
-  });
+  const PremiumSourceFeature({required this.feature});
 
   /// The used feature
   final PremiumFeature feature;
@@ -99,19 +91,15 @@ final class PremiumSourceFeature extends PremiumSource {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'feature': feature.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'feature': feature.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PremiumSourceFeature copyWith({
-    PremiumFeature? feature,
-  }) =>
-      PremiumSourceFeature(
-        feature: feature ?? this.feature,
-      );
+  PremiumSourceFeature copyWith({PremiumFeature? feature}) =>
+      PremiumSourceFeature(feature: feature ?? this.feature);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumSourceFeature';
@@ -123,9 +111,7 @@ final class PremiumSourceFeature extends PremiumSource {
 /// A user tried to use a Business feature
 final class PremiumSourceBusinessFeature extends PremiumSource {
   /// A user tried to use a Business feature
-  const PremiumSourceBusinessFeature({
-    this.feature,
-  });
+  const PremiumSourceBusinessFeature({this.feature});
 
   /// The used feature; pass null if none specific feature was used
   final BusinessFeature? feature;
@@ -138,19 +124,18 @@ final class PremiumSourceBusinessFeature extends PremiumSource {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'feature': feature?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'feature': feature?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumSourceBusinessFeature copyWith({
     BusinessFeature? Function()? feature,
-  }) =>
-      PremiumSourceBusinessFeature(
-        feature: feature != null ? feature() : this.feature,
-      );
+  }) => PremiumSourceBusinessFeature(
+    feature: feature != null ? feature() : this.feature,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumSourceBusinessFeature';
@@ -162,9 +147,7 @@ final class PremiumSourceBusinessFeature extends PremiumSource {
 /// A user tried to use a Premium story feature
 final class PremiumSourceStoryFeature extends PremiumSource {
   /// A user tried to use a Premium story feature
-  const PremiumSourceStoryFeature({
-    required this.feature,
-  });
+  const PremiumSourceStoryFeature({required this.feature});
 
   /// The used feature
   final PremiumStoryFeature feature;
@@ -177,19 +160,15 @@ final class PremiumSourceStoryFeature extends PremiumSource {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'feature': feature.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'feature': feature.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PremiumSourceStoryFeature copyWith({
-    PremiumStoryFeature? feature,
-  }) =>
-      PremiumSourceStoryFeature(
-        feature: feature ?? this.feature,
-      );
+  PremiumSourceStoryFeature copyWith({PremiumStoryFeature? feature}) =>
+      PremiumSourceStoryFeature(feature: feature ?? this.feature);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumSourceStoryFeature';
@@ -201,34 +180,23 @@ final class PremiumSourceStoryFeature extends PremiumSource {
 /// A user opened an internal link of the type internalLinkTypePremiumFeatures
 final class PremiumSourceLink extends PremiumSource {
   /// A user opened an internal link of the type internalLinkTypePremiumFeatures
-  const PremiumSourceLink({
-    required this.referrer,
-  });
+  const PremiumSourceLink({required this.referrer});
 
   /// The referrer from the link
   final String referrer;
 
   /// Parses a [PremiumSourceLink] from TDLib JSON.
   factory PremiumSourceLink.fromJson(Map<String, dynamic> json) =>
-      PremiumSourceLink(
-        referrer: _readString(json['referrer']),
-      );
+      PremiumSourceLink(referrer: _readString(json['referrer']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'referrer': referrer,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'referrer': referrer};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PremiumSourceLink copyWith({
-    String? referrer,
-  }) =>
-      PremiumSourceLink(
-        referrer: referrer ?? this.referrer,
-      );
+  PremiumSourceLink copyWith({String? referrer}) =>
+      PremiumSourceLink(referrer: referrer ?? this.referrer);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumSourceLink';
@@ -247,9 +215,7 @@ final class PremiumSourceSettings extends PremiumSource {
       const PremiumSourceSettings();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

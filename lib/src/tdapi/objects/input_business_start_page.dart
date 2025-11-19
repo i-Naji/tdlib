@@ -31,11 +31,11 @@ final class InputBusinessStartPage extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-        'message': message,
-        'sticker': sticker?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'title': title,
+    'message': message,
+    'sticker': sticker?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class InputBusinessStartPage extends TdObject {
     String? title,
     String? message,
     InputFile? Function()? sticker,
-  }) =>
-      InputBusinessStartPage(
-        title: title ?? this.title,
-        message: message ?? this.message,
-        sticker: sticker != null ? sticker() : this.sticker,
-      );
+  }) => InputBusinessStartPage(
+    title: title ?? this.title,
+    message: message ?? this.message,
+    sticker: sticker != null ? sticker() : this.sticker,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputBusinessStartPage';

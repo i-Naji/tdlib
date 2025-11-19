@@ -25,12 +25,12 @@ final class ChangeStickerSet extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'set_id': setId.toString(),
-        'is_installed': isInstalled,
-        'is_archived': isArchived,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'set_id': setId.toString(),
+    'is_installed': isInstalled,
+    'is_archived': isArchived,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class ChangeStickerSet extends TdFunction<Ok> {
     int? setId,
     bool? isInstalled,
     bool? isArchived,
-  }) =>
-      ChangeStickerSet(
-        setId: setId ?? this.setId,
-        isInstalled: isInstalled ?? this.isInstalled,
-        isArchived: isArchived ?? this.isArchived,
-      );
+  }) => ChangeStickerSet(
+    setId: setId ?? this.setId,
+    isInstalled: isInstalled ?? this.isInstalled,
+    isArchived: isArchived ?? this.isArchived,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'changeStickerSet';

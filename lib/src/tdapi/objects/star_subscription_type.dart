@@ -67,18 +67,15 @@ final class StarSubscriptionTypeChannel extends StarSubscriptionType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'can_reuse': canReuse,
-        'invite_link': inviteLink,
-      };
+    '@type': CONSTRUCTOR,
+    'can_reuse': canReuse,
+    'invite_link': inviteLink,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StarSubscriptionTypeChannel copyWith({
-    bool? canReuse,
-    String? inviteLink,
-  }) =>
+  StarSubscriptionTypeChannel copyWith({bool? canReuse, String? inviteLink}) =>
       StarSubscriptionTypeChannel(
         canReuse: canReuse ?? this.canReuse,
         inviteLink: inviteLink ?? this.inviteLink,
@@ -124,12 +121,12 @@ final class StarSubscriptionTypeBot extends StarSubscriptionType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_canceled_by_bot': isCanceledByBot,
-        'title': title,
-        'photo': photo.toJson(),
-        'invoice_link': invoiceLink,
-      };
+    '@type': CONSTRUCTOR,
+    'is_canceled_by_bot': isCanceledByBot,
+    'title': title,
+    'photo': photo.toJson(),
+    'invoice_link': invoiceLink,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -139,13 +136,12 @@ final class StarSubscriptionTypeBot extends StarSubscriptionType {
     String? title,
     Photo? photo,
     String? invoiceLink,
-  }) =>
-      StarSubscriptionTypeBot(
-        isCanceledByBot: isCanceledByBot ?? this.isCanceledByBot,
-        title: title ?? this.title,
-        photo: photo ?? this.photo,
-        invoiceLink: invoiceLink ?? this.invoiceLink,
-      );
+  }) => StarSubscriptionTypeBot(
+    isCanceledByBot: isCanceledByBot ?? this.isCanceledByBot,
+    title: title ?? this.title,
+    photo: photo ?? this.photo,
+    invoiceLink: invoiceLink ?? this.invoiceLink,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starSubscriptionTypeBot';

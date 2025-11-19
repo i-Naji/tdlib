@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetCloseFriends extends TdFunction<Ok> {
   /// Changes the list of close friends of the current user
-  const SetCloseFriends({
-    required this.userIds,
-  });
+  const SetCloseFriends({required this.userIds});
 
   /// User identifiers of close friends; the users must be contacts of the current user
   final List<int> userIds;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_ids': userIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_ids': userIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetCloseFriends copyWith({
-    List<int>? userIds,
-  }) =>
-      SetCloseFriends(
-        userIds: userIds ?? this.userIds,
-      );
+  SetCloseFriends copyWith({List<int>? userIds}) =>
+      SetCloseFriends(userIds: userIds ?? this.userIds);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setCloseFriends';

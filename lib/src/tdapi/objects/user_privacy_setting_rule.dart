@@ -54,9 +54,7 @@ final class UserPrivacySettingRuleAllowAll extends UserPrivacySettingRule {
       const UserPrivacySettingRuleAllowAll();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -78,13 +76,11 @@ final class UserPrivacySettingRuleAllowContacts extends UserPrivacySettingRule {
 
   /// Parses a [UserPrivacySettingRuleAllowContacts] from TDLib JSON.
   factory UserPrivacySettingRuleAllowContacts.fromJson(
-          Map<String, dynamic> json) =>
-      const UserPrivacySettingRuleAllowContacts();
+    Map<String, dynamic> json,
+  ) => const UserPrivacySettingRuleAllowContacts();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -109,9 +105,7 @@ final class UserPrivacySettingRuleAllowBots extends UserPrivacySettingRule {
       const UserPrivacySettingRuleAllowBots();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -134,13 +128,11 @@ final class UserPrivacySettingRuleAllowPremiumUsers
 
   /// Parses a [UserPrivacySettingRuleAllowPremiumUsers] from TDLib JSON.
   factory UserPrivacySettingRuleAllowPremiumUsers.fromJson(
-          Map<String, dynamic> json) =>
-      const UserPrivacySettingRuleAllowPremiumUsers();
+    Map<String, dynamic> json,
+  ) => const UserPrivacySettingRuleAllowPremiumUsers();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -158,35 +150,26 @@ final class UserPrivacySettingRuleAllowPremiumUsers
 /// A rule to allow certain specified users to do something
 final class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
   /// A rule to allow certain specified users to do something
-  const UserPrivacySettingRuleAllowUsers({
-    required this.userIds,
-  });
+  const UserPrivacySettingRuleAllowUsers({required this.userIds});
 
   /// The user identifiers, total number of users in all rules must not exceed 1000
   final List<int> userIds;
 
   /// Parses a [UserPrivacySettingRuleAllowUsers] from TDLib JSON.
   factory UserPrivacySettingRuleAllowUsers.fromJson(
-          Map<String, dynamic> json) =>
-      UserPrivacySettingRuleAllowUsers(
-        userIds: _readList<int>(json['user_ids'], _readInt),
-      );
+    Map<String, dynamic> json,
+  ) => UserPrivacySettingRuleAllowUsers(
+    userIds: _readList<int>(json['user_ids'], _readInt),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_ids': userIds,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'user_ids': userIds};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UserPrivacySettingRuleAllowUsers copyWith({
-    List<int>? userIds,
-  }) =>
-      UserPrivacySettingRuleAllowUsers(
-        userIds: userIds ?? this.userIds,
-      );
+  UserPrivacySettingRuleAllowUsers copyWith({List<int>? userIds}) =>
+      UserPrivacySettingRuleAllowUsers(userIds: userIds ?? this.userIds);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userPrivacySettingRuleAllowUsers';
@@ -199,35 +182,26 @@ final class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
 final class UserPrivacySettingRuleAllowChatMembers
     extends UserPrivacySettingRule {
   /// A rule to allow all members of certain specified basic groups and supergroups to doing something
-  const UserPrivacySettingRuleAllowChatMembers({
-    required this.chatIds,
-  });
+  const UserPrivacySettingRuleAllowChatMembers({required this.chatIds});
 
   /// The chat identifiers, total number of chats in all rules must not exceed 20
   final List<int> chatIds;
 
   /// Parses a [UserPrivacySettingRuleAllowChatMembers] from TDLib JSON.
   factory UserPrivacySettingRuleAllowChatMembers.fromJson(
-          Map<String, dynamic> json) =>
-      UserPrivacySettingRuleAllowChatMembers(
-        chatIds: _readList<int>(json['chat_ids'], _readInt),
-      );
+    Map<String, dynamic> json,
+  ) => UserPrivacySettingRuleAllowChatMembers(
+    chatIds: _readList<int>(json['chat_ids'], _readInt),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_ids': chatIds,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'chat_ids': chatIds};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UserPrivacySettingRuleAllowChatMembers copyWith({
-    List<int>? chatIds,
-  }) =>
-      UserPrivacySettingRuleAllowChatMembers(
-        chatIds: chatIds ?? this.chatIds,
-      );
+  UserPrivacySettingRuleAllowChatMembers copyWith({List<int>? chatIds}) =>
+      UserPrivacySettingRuleAllowChatMembers(chatIds: chatIds ?? this.chatIds);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userPrivacySettingRuleAllowChatMembers';
@@ -243,13 +217,11 @@ final class UserPrivacySettingRuleRestrictAll extends UserPrivacySettingRule {
 
   /// Parses a [UserPrivacySettingRuleRestrictAll] from TDLib JSON.
   factory UserPrivacySettingRuleRestrictAll.fromJson(
-          Map<String, dynamic> json) =>
-      const UserPrivacySettingRuleRestrictAll();
+    Map<String, dynamic> json,
+  ) => const UserPrivacySettingRuleRestrictAll();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -272,13 +244,11 @@ final class UserPrivacySettingRuleRestrictContacts
 
   /// Parses a [UserPrivacySettingRuleRestrictContacts] from TDLib JSON.
   factory UserPrivacySettingRuleRestrictContacts.fromJson(
-          Map<String, dynamic> json) =>
-      const UserPrivacySettingRuleRestrictContacts();
+    Map<String, dynamic> json,
+  ) => const UserPrivacySettingRuleRestrictContacts();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -300,13 +270,11 @@ final class UserPrivacySettingRuleRestrictBots extends UserPrivacySettingRule {
 
   /// Parses a [UserPrivacySettingRuleRestrictBots] from TDLib JSON.
   factory UserPrivacySettingRuleRestrictBots.fromJson(
-          Map<String, dynamic> json) =>
-      const UserPrivacySettingRuleRestrictBots();
+    Map<String, dynamic> json,
+  ) => const UserPrivacySettingRuleRestrictBots();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -324,35 +292,26 @@ final class UserPrivacySettingRuleRestrictBots extends UserPrivacySettingRule {
 /// A rule to restrict all specified users from doing something
 final class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
   /// A rule to restrict all specified users from doing something
-  const UserPrivacySettingRuleRestrictUsers({
-    required this.userIds,
-  });
+  const UserPrivacySettingRuleRestrictUsers({required this.userIds});
 
   /// The user identifiers, total number of users in all rules must not exceed 1000
   final List<int> userIds;
 
   /// Parses a [UserPrivacySettingRuleRestrictUsers] from TDLib JSON.
   factory UserPrivacySettingRuleRestrictUsers.fromJson(
-          Map<String, dynamic> json) =>
-      UserPrivacySettingRuleRestrictUsers(
-        userIds: _readList<int>(json['user_ids'], _readInt),
-      );
+    Map<String, dynamic> json,
+  ) => UserPrivacySettingRuleRestrictUsers(
+    userIds: _readList<int>(json['user_ids'], _readInt),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_ids': userIds,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'user_ids': userIds};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UserPrivacySettingRuleRestrictUsers copyWith({
-    List<int>? userIds,
-  }) =>
-      UserPrivacySettingRuleRestrictUsers(
-        userIds: userIds ?? this.userIds,
-      );
+  UserPrivacySettingRuleRestrictUsers copyWith({List<int>? userIds}) =>
+      UserPrivacySettingRuleRestrictUsers(userIds: userIds ?? this.userIds);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userPrivacySettingRuleRestrictUsers';
@@ -365,32 +324,25 @@ final class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
 final class UserPrivacySettingRuleRestrictChatMembers
     extends UserPrivacySettingRule {
   /// A rule to restrict all members of specified basic groups and supergroups from doing something
-  const UserPrivacySettingRuleRestrictChatMembers({
-    required this.chatIds,
-  });
+  const UserPrivacySettingRuleRestrictChatMembers({required this.chatIds});
 
   /// The chat identifiers, total number of chats in all rules must not exceed 20
   final List<int> chatIds;
 
   /// Parses a [UserPrivacySettingRuleRestrictChatMembers] from TDLib JSON.
   factory UserPrivacySettingRuleRestrictChatMembers.fromJson(
-          Map<String, dynamic> json) =>
-      UserPrivacySettingRuleRestrictChatMembers(
-        chatIds: _readList<int>(json['chat_ids'], _readInt),
-      );
+    Map<String, dynamic> json,
+  ) => UserPrivacySettingRuleRestrictChatMembers(
+    chatIds: _readList<int>(json['chat_ids'], _readInt),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_ids': chatIds,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'chat_ids': chatIds};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UserPrivacySettingRuleRestrictChatMembers copyWith({
-    List<int>? chatIds,
-  }) =>
+  UserPrivacySettingRuleRestrictChatMembers copyWith({List<int>? chatIds}) =>
       UserPrivacySettingRuleRestrictChatMembers(
         chatIds: chatIds ?? this.chatIds,
       );

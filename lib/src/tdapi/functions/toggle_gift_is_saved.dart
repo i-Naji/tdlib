@@ -21,18 +21,15 @@ final class ToggleGiftIsSaved extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'received_gift_id': receivedGiftId,
-        'is_saved': isSaved,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'received_gift_id': receivedGiftId,
+    'is_saved': isSaved,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ToggleGiftIsSaved copyWith({
-    String? receivedGiftId,
-    bool? isSaved,
-  }) =>
+  ToggleGiftIsSaved copyWith({String? receivedGiftId, bool? isSaved}) =>
       ToggleGiftIsSaved(
         receivedGiftId: receivedGiftId ?? this.receivedGiftId,
         isSaved: isSaved ?? this.isSaved,

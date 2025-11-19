@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SendCallLog extends TdFunction<Ok> {
   /// Sends log file for a call to Telegram servers
-  const SendCallLog({
-    required this.callId,
-    required this.logFile,
-  });
+  const SendCallLog({required this.callId, required this.logFile});
 
   /// Call identifier
   final int callId;
@@ -21,22 +18,18 @@ final class SendCallLog extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'call_id': callId,
-        'log_file': logFile.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'call_id': callId,
+    'log_file': logFile.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SendCallLog copyWith({
-    int? callId,
-    InputFile? logFile,
-  }) =>
-      SendCallLog(
-        callId: callId ?? this.callId,
-        logFile: logFile ?? this.logFile,
-      );
+  SendCallLog copyWith({int? callId, InputFile? logFile}) => SendCallLog(
+    callId: callId ?? this.callId,
+    logFile: logFile ?? this.logFile,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sendCallLog';

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class DeleteDefaultBackground extends TdFunction<Ok> {
   /// Deletes default background for chats
-  const DeleteDefaultBackground({
-    required this.forDarkTheme,
-  });
+  const DeleteDefaultBackground({required this.forDarkTheme});
 
   /// Pass true if the background is deleted for a dark theme
   final bool forDarkTheme;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'for_dark_theme': forDarkTheme,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'for_dark_theme': forDarkTheme,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteDefaultBackground copyWith({
-    bool? forDarkTheme,
-  }) =>
-      DeleteDefaultBackground(
-        forDarkTheme: forDarkTheme ?? this.forDarkTheme,
-      );
+  DeleteDefaultBackground copyWith({bool? forDarkTheme}) =>
+      DeleteDefaultBackground(forDarkTheme: forDarkTheme ?? this.forDarkTheme);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deleteDefaultBackground';

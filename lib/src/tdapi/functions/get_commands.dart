@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [BotCommands].
 final class GetCommands extends TdFunction<BotCommands> {
   /// Returns the list of commands supported by the bot for the given user scope and language; for bots only
-  const GetCommands({
-    this.scope,
-    required this.languageCode,
-  });
+  const GetCommands({this.scope, required this.languageCode});
 
   /// The scope to which the commands are relevant; pass null to get commands in the default bot command scope
   final BotCommandScope? scope;
@@ -21,22 +18,21 @@ final class GetCommands extends TdFunction<BotCommands> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'scope': scope?.toJson(),
-        'language_code': languageCode,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'scope': scope?.toJson(),
+    'language_code': languageCode,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetCommands copyWith({
     BotCommandScope? Function()? scope,
     String? languageCode,
-  }) =>
-      GetCommands(
-        scope: scope != null ? scope() : this.scope,
-        languageCode: languageCode ?? this.languageCode,
-      );
+  }) => GetCommands(
+    scope: scope != null ? scope() : this.scope,
+    languageCode: languageCode ?? this.languageCode,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getCommands';

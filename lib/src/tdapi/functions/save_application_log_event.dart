@@ -25,12 +25,12 @@ final class SaveApplicationLogEvent extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'type': type,
-        'chat_id': chatId,
-        'data': data.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type,
+    'chat_id': chatId,
+    'data': data.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SaveApplicationLogEvent extends TdFunction<Ok> {
     String? type,
     int? chatId,
     JsonValue? data,
-  }) =>
-      SaveApplicationLogEvent(
-        type: type ?? this.type,
-        chatId: chatId ?? this.chatId,
-        data: data ?? this.data,
-      );
+  }) => SaveApplicationLogEvent(
+    type: type ?? this.type,
+    chatId: chatId ?? this.chatId,
+    data: data ?? this.data,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'saveApplicationLogEvent';

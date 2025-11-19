@@ -54,9 +54,7 @@ final class PremiumLimitTypeSupergroupCount extends PremiumLimitType {
       const PremiumLimitTypeSupergroupCount();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -81,9 +79,7 @@ final class PremiumLimitTypePinnedChatCount extends PremiumLimitType {
       const PremiumLimitTypePinnedChatCount();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -105,13 +101,11 @@ final class PremiumLimitTypeCreatedPublicChatCount extends PremiumLimitType {
 
   /// Parses a [PremiumLimitTypeCreatedPublicChatCount] from TDLib JSON.
   factory PremiumLimitTypeCreatedPublicChatCount.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumLimitTypeCreatedPublicChatCount();
+    Map<String, dynamic> json,
+  ) => const PremiumLimitTypeCreatedPublicChatCount();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -133,13 +127,11 @@ final class PremiumLimitTypeSavedAnimationCount extends PremiumLimitType {
 
   /// Parses a [PremiumLimitTypeSavedAnimationCount] from TDLib JSON.
   factory PremiumLimitTypeSavedAnimationCount.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumLimitTypeSavedAnimationCount();
+    Map<String, dynamic> json,
+  ) => const PremiumLimitTypeSavedAnimationCount();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -161,13 +153,11 @@ final class PremiumLimitTypeFavoriteStickerCount extends PremiumLimitType {
 
   /// Parses a [PremiumLimitTypeFavoriteStickerCount] from TDLib JSON.
   factory PremiumLimitTypeFavoriteStickerCount.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumLimitTypeFavoriteStickerCount();
+    Map<String, dynamic> json,
+  ) => const PremiumLimitTypeFavoriteStickerCount();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -192,9 +182,7 @@ final class PremiumLimitTypeChatFolderCount extends PremiumLimitType {
       const PremiumLimitTypeChatFolderCount();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -216,13 +204,11 @@ final class PremiumLimitTypeChatFolderChosenChatCount extends PremiumLimitType {
 
   /// Parses a [PremiumLimitTypeChatFolderChosenChatCount] from TDLib JSON.
   factory PremiumLimitTypeChatFolderChosenChatCount.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumLimitTypeChatFolderChosenChatCount();
+    Map<String, dynamic> json,
+  ) => const PremiumLimitTypeChatFolderChosenChatCount();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -244,13 +230,11 @@ final class PremiumLimitTypePinnedArchivedChatCount extends PremiumLimitType {
 
   /// Parses a [PremiumLimitTypePinnedArchivedChatCount] from TDLib JSON.
   factory PremiumLimitTypePinnedArchivedChatCount.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumLimitTypePinnedArchivedChatCount();
+    Map<String, dynamic> json,
+  ) => const PremiumLimitTypePinnedArchivedChatCount();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -273,13 +257,11 @@ final class PremiumLimitTypePinnedSavedMessagesTopicCount
 
   /// Parses a [PremiumLimitTypePinnedSavedMessagesTopicCount] from TDLib JSON.
   factory PremiumLimitTypePinnedSavedMessagesTopicCount.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumLimitTypePinnedSavedMessagesTopicCount();
+    Map<String, dynamic> json,
+  ) => const PremiumLimitTypePinnedSavedMessagesTopicCount();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -305,9 +287,7 @@ final class PremiumLimitTypeCaptionLength extends PremiumLimitType {
       const PremiumLimitTypeCaptionLength();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -332,9 +312,7 @@ final class PremiumLimitTypeBioLength extends PremiumLimitType {
       const PremiumLimitTypeBioLength();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -355,13 +333,11 @@ final class PremiumLimitTypeChatFolderInviteLinkCount extends PremiumLimitType {
 
   /// Parses a [PremiumLimitTypeChatFolderInviteLinkCount] from TDLib JSON.
   factory PremiumLimitTypeChatFolderInviteLinkCount.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumLimitTypeChatFolderInviteLinkCount();
+    Map<String, dynamic> json,
+  ) => const PremiumLimitTypeChatFolderInviteLinkCount();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -383,13 +359,11 @@ final class PremiumLimitTypeShareableChatFolderCount extends PremiumLimitType {
 
   /// Parses a [PremiumLimitTypeShareableChatFolderCount] from TDLib JSON.
   factory PremiumLimitTypeShareableChatFolderCount.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumLimitTypeShareableChatFolderCount();
+    Map<String, dynamic> json,
+  ) => const PremiumLimitTypeShareableChatFolderCount();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -411,13 +385,11 @@ final class PremiumLimitTypeActiveStoryCount extends PremiumLimitType {
 
   /// Parses a [PremiumLimitTypeActiveStoryCount] from TDLib JSON.
   factory PremiumLimitTypeActiveStoryCount.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumLimitTypeActiveStoryCount();
+    Map<String, dynamic> json,
+  ) => const PremiumLimitTypeActiveStoryCount();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -439,13 +411,11 @@ final class PremiumLimitTypeWeeklyPostedStoryCount extends PremiumLimitType {
 
   /// Parses a [PremiumLimitTypeWeeklyPostedStoryCount] from TDLib JSON.
   factory PremiumLimitTypeWeeklyPostedStoryCount.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumLimitTypeWeeklyPostedStoryCount();
+    Map<String, dynamic> json,
+  ) => const PremiumLimitTypeWeeklyPostedStoryCount();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -467,13 +437,11 @@ final class PremiumLimitTypeMonthlyPostedStoryCount extends PremiumLimitType {
 
   /// Parses a [PremiumLimitTypeMonthlyPostedStoryCount] from TDLib JSON.
   factory PremiumLimitTypeMonthlyPostedStoryCount.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumLimitTypeMonthlyPostedStoryCount();
+    Map<String, dynamic> json,
+  ) => const PremiumLimitTypeMonthlyPostedStoryCount();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -495,13 +463,11 @@ final class PremiumLimitTypeStoryCaptionLength extends PremiumLimitType {
 
   /// Parses a [PremiumLimitTypeStoryCaptionLength] from TDLib JSON.
   factory PremiumLimitTypeStoryCaptionLength.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumLimitTypeStoryCaptionLength();
+    Map<String, dynamic> json,
+  ) => const PremiumLimitTypeStoryCaptionLength();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -524,13 +490,11 @@ final class PremiumLimitTypeStorySuggestedReactionAreaCount
 
   /// Parses a [PremiumLimitTypeStorySuggestedReactionAreaCount] from TDLib JSON.
   factory PremiumLimitTypeStorySuggestedReactionAreaCount.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumLimitTypeStorySuggestedReactionAreaCount();
+    Map<String, dynamic> json,
+  ) => const PremiumLimitTypeStorySuggestedReactionAreaCount();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -553,13 +517,11 @@ final class PremiumLimitTypeSimilarChatCount extends PremiumLimitType {
 
   /// Parses a [PremiumLimitTypeSimilarChatCount] from TDLib JSON.
   factory PremiumLimitTypeSimilarChatCount.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumLimitTypeSimilarChatCount();
+    Map<String, dynamic> json,
+  ) => const PremiumLimitTypeSimilarChatCount();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

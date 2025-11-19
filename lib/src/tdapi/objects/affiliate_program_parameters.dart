@@ -26,21 +26,20 @@ final class AffiliateProgramParameters extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'commission_per_mille': commissionPerMille,
-        'month_count': monthCount,
-      };
+    '@type': CONSTRUCTOR,
+    'commission_per_mille': commissionPerMille,
+    'month_count': monthCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   AffiliateProgramParameters copyWith({
     int? commissionPerMille,
     int? monthCount,
-  }) =>
-      AffiliateProgramParameters(
-        commissionPerMille: commissionPerMille ?? this.commissionPerMille,
-        monthCount: monthCount ?? this.monthCount,
-      );
+  }) => AffiliateProgramParameters(
+    commissionPerMille: commissionPerMille ?? this.commissionPerMille,
+    monthCount: monthCount ?? this.monthCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'affiliateProgramParameters';

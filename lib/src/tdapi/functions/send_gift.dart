@@ -33,14 +33,14 @@ final class SendGift extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'gift_id': giftId.toString(),
-        'owner_id': ownerId.toJson(),
-        'text': text.toJson(),
-        'is_private': isPrivate,
-        'pay_for_upgrade': payForUpgrade,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'gift_id': giftId.toString(),
+    'owner_id': ownerId.toJson(),
+    'text': text.toJson(),
+    'is_private': isPrivate,
+    'pay_for_upgrade': payForUpgrade,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class SendGift extends TdFunction<Ok> {
     FormattedText? text,
     bool? isPrivate,
     bool? payForUpgrade,
-  }) =>
-      SendGift(
-        giftId: giftId ?? this.giftId,
-        ownerId: ownerId ?? this.ownerId,
-        text: text ?? this.text,
-        isPrivate: isPrivate ?? this.isPrivate,
-        payForUpgrade: payForUpgrade ?? this.payForUpgrade,
-      );
+  }) => SendGift(
+    giftId: giftId ?? this.giftId,
+    ownerId: ownerId ?? this.ownerId,
+    text: text ?? this.text,
+    isPrivate: isPrivate ?? this.isPrivate,
+    payForUpgrade: payForUpgrade ?? this.payForUpgrade,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sendGift';

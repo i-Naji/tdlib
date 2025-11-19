@@ -25,12 +25,12 @@ final class RemoveAllFilesFromDownloads extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'only_active': onlyActive,
-        'only_completed': onlyCompleted,
-        'delete_from_cache': deleteFromCache,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'only_active': onlyActive,
+    'only_completed': onlyCompleted,
+    'delete_from_cache': deleteFromCache,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class RemoveAllFilesFromDownloads extends TdFunction<Ok> {
     bool? onlyActive,
     bool? onlyCompleted,
     bool? deleteFromCache,
-  }) =>
-      RemoveAllFilesFromDownloads(
-        onlyActive: onlyActive ?? this.onlyActive,
-        onlyCompleted: onlyCompleted ?? this.onlyCompleted,
-        deleteFromCache: deleteFromCache ?? this.deleteFromCache,
-      );
+  }) => RemoveAllFilesFromDownloads(
+    onlyActive: onlyActive ?? this.onlyActive,
+    onlyCompleted: onlyCompleted ?? this.onlyCompleted,
+    deleteFromCache: deleteFromCache ?? this.deleteFromCache,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'removeAllFilesFromDownloads';

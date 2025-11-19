@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetEmojiStatus extends TdFunction<Ok> {
   /// Changes the emoji status of the current user; for Telegram Premium users only
-  const SetEmojiStatus({
-    this.emojiStatus,
-  });
+  const SetEmojiStatus({this.emojiStatus});
 
   /// New emoji status; pass null to switch to the default badge
   final EmojiStatus? emojiStatus;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'emoji_status': emojiStatus?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'emoji_status': emojiStatus?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetEmojiStatus copyWith({
-    EmojiStatus? Function()? emojiStatus,
-  }) =>
+  SetEmojiStatus copyWith({EmojiStatus? Function()? emojiStatus}) =>
       SetEmojiStatus(
         emojiStatus: emojiStatus != null ? emojiStatus() : this.emojiStatus,
       );

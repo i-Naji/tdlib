@@ -47,34 +47,26 @@ final class UndecodedUpgradedGiftAttributeId extends UpgradedGiftAttributeId {
 /// Identifier of a gift model
 final class UpgradedGiftAttributeIdModel extends UpgradedGiftAttributeId {
   /// Identifier of a gift model
-  const UpgradedGiftAttributeIdModel({
-    required this.stickerId,
-  });
+  const UpgradedGiftAttributeIdModel({required this.stickerId});
 
   /// Identifier of the sticker representing the model
   final int stickerId;
 
   /// Parses a [UpgradedGiftAttributeIdModel] from TDLib JSON.
   factory UpgradedGiftAttributeIdModel.fromJson(Map<String, dynamic> json) =>
-      UpgradedGiftAttributeIdModel(
-        stickerId: _readInt(json['sticker_id']),
-      );
+      UpgradedGiftAttributeIdModel(stickerId: _readInt(json['sticker_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker_id': stickerId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_id': stickerId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UpgradedGiftAttributeIdModel copyWith({
-    int? stickerId,
-  }) =>
-      UpgradedGiftAttributeIdModel(
-        stickerId: stickerId ?? this.stickerId,
-      );
+  UpgradedGiftAttributeIdModel copyWith({int? stickerId}) =>
+      UpgradedGiftAttributeIdModel(stickerId: stickerId ?? this.stickerId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradedGiftAttributeIdModel';
@@ -86,34 +78,26 @@ final class UpgradedGiftAttributeIdModel extends UpgradedGiftAttributeId {
 /// Identifier of a gift symbol
 final class UpgradedGiftAttributeIdSymbol extends UpgradedGiftAttributeId {
   /// Identifier of a gift symbol
-  const UpgradedGiftAttributeIdSymbol({
-    required this.stickerId,
-  });
+  const UpgradedGiftAttributeIdSymbol({required this.stickerId});
 
   /// Identifier of the sticker representing the symbol
   final int stickerId;
 
   /// Parses a [UpgradedGiftAttributeIdSymbol] from TDLib JSON.
   factory UpgradedGiftAttributeIdSymbol.fromJson(Map<String, dynamic> json) =>
-      UpgradedGiftAttributeIdSymbol(
-        stickerId: _readInt(json['sticker_id']),
-      );
+      UpgradedGiftAttributeIdSymbol(stickerId: _readInt(json['sticker_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker_id': stickerId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_id': stickerId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UpgradedGiftAttributeIdSymbol copyWith({
-    int? stickerId,
-  }) =>
-      UpgradedGiftAttributeIdSymbol(
-        stickerId: stickerId ?? this.stickerId,
-      );
+  UpgradedGiftAttributeIdSymbol copyWith({int? stickerId}) =>
+      UpgradedGiftAttributeIdSymbol(stickerId: stickerId ?? this.stickerId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradedGiftAttributeIdSymbol';
@@ -125,9 +109,7 @@ final class UpgradedGiftAttributeIdSymbol extends UpgradedGiftAttributeId {
 /// Identifier of a gift backdrop
 final class UpgradedGiftAttributeIdBackdrop extends UpgradedGiftAttributeId {
   /// Identifier of a gift backdrop
-  const UpgradedGiftAttributeIdBackdrop({
-    required this.backdropId,
-  });
+  const UpgradedGiftAttributeIdBackdrop({required this.backdropId});
 
   /// Identifier of the backdrop
   final int backdropId;
@@ -140,16 +122,14 @@ final class UpgradedGiftAttributeIdBackdrop extends UpgradedGiftAttributeId {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'backdrop_id': backdropId,
-      };
+    '@type': CONSTRUCTOR,
+    'backdrop_id': backdropId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UpgradedGiftAttributeIdBackdrop copyWith({
-    int? backdropId,
-  }) =>
+  UpgradedGiftAttributeIdBackdrop copyWith({int? backdropId}) =>
       UpgradedGiftAttributeIdBackdrop(
         backdropId: backdropId ?? this.backdropId,
       );

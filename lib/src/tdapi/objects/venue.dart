@@ -35,24 +35,24 @@ final class Venue extends TdObject {
 
   /// Parses a [Venue] from TDLib JSON.
   factory Venue.fromJson(Map<String, dynamic> json) => Venue(
-        location: _readObject(json['location'], Location.fromJson),
-        title: _readString(json['title']),
-        address: _readString(json['address']),
-        provider: _readString(json['provider']),
-        id: _readString(json['id']),
-        type: _readString(json['type']),
-      );
+    location: _readObject(json['location'], Location.fromJson),
+    title: _readString(json['title']),
+    address: _readString(json['address']),
+    provider: _readString(json['provider']),
+    id: _readString(json['id']),
+    type: _readString(json['type']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'location': location.toJson(),
-        'title': title,
-        'address': address,
-        'provider': provider,
-        'id': id,
-        'type': type,
-      };
+    '@type': CONSTRUCTOR,
+    'location': location.toJson(),
+    'title': title,
+    'address': address,
+    'provider': provider,
+    'id': id,
+    'type': type,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -63,15 +63,14 @@ final class Venue extends TdObject {
     String? provider,
     String? id,
     String? type,
-  }) =>
-      Venue(
-        location: location ?? this.location,
-        title: title ?? this.title,
-        address: address ?? this.address,
-        provider: provider ?? this.provider,
-        id: id ?? this.id,
-        type: type ?? this.type,
-      );
+  }) => Venue(
+    location: location ?? this.location,
+    title: title ?? this.title,
+    address: address ?? this.address,
+    provider: provider ?? this.provider,
+    id: id ?? this.id,
+    type: type ?? this.type,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'venue';

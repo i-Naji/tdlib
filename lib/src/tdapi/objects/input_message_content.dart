@@ -67,17 +67,19 @@ final class InputMessageText extends InputMessageContent {
       InputMessageText(
         text: _readObject(json['text'], FormattedText.fromJson),
         linkPreviewOptions: _readOptional(
-            json['link_preview_options'], LinkPreviewOptions.fromJson),
+          json['link_preview_options'],
+          LinkPreviewOptions.fromJson,
+        ),
         clearDraft: _readBool(json['clear_draft']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'link_preview_options': linkPreviewOptions?.toJson(),
-        'clear_draft': clearDraft,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'link_preview_options': linkPreviewOptions?.toJson(),
+    'clear_draft': clearDraft,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -86,14 +88,13 @@ final class InputMessageText extends InputMessageContent {
     FormattedText? text,
     LinkPreviewOptions? Function()? linkPreviewOptions,
     bool? clearDraft,
-  }) =>
-      InputMessageText(
-        text: text ?? this.text,
-        linkPreviewOptions: linkPreviewOptions != null
-            ? linkPreviewOptions()
-            : this.linkPreviewOptions,
-        clearDraft: clearDraft ?? this.clearDraft,
-      );
+  }) => InputMessageText(
+    text: text ?? this.text,
+    linkPreviewOptions: linkPreviewOptions != null
+        ? linkPreviewOptions()
+        : this.linkPreviewOptions,
+    clearDraft: clearDraft ?? this.clearDraft,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageText';
@@ -149,8 +150,10 @@ final class InputMessageAnimation extends InputMessageContent {
       InputMessageAnimation(
         animation: _readObject(json['animation'], InputFile.fromJson),
         thumbnail: _readOptional(json['thumbnail'], InputThumbnail.fromJson),
-        addedStickerFileIds:
-            _readList<int>(json['added_sticker_file_ids'], _readInt),
+        addedStickerFileIds: _readList<int>(
+          json['added_sticker_file_ids'],
+          _readInt,
+        ),
         duration: _readInt(json['duration']),
         width: _readInt(json['width']),
         height: _readInt(json['height']),
@@ -161,17 +164,17 @@ final class InputMessageAnimation extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'animation': animation.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'added_sticker_file_ids': addedStickerFileIds,
-        'duration': duration,
-        'width': width,
-        'height': height,
-        'caption': caption?.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        'has_spoiler': hasSpoiler,
-      };
+    '@type': CONSTRUCTOR,
+    'animation': animation.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'added_sticker_file_ids': addedStickerFileIds,
+    'duration': duration,
+    'width': width,
+    'height': height,
+    'caption': caption?.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    'has_spoiler': hasSpoiler,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -186,19 +189,17 @@ final class InputMessageAnimation extends InputMessageContent {
     FormattedText? Function()? caption,
     bool? showCaptionAboveMedia,
     bool? hasSpoiler,
-  }) =>
-      InputMessageAnimation(
-        animation: animation ?? this.animation,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
-        duration: duration ?? this.duration,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        caption: caption != null ? caption() : this.caption,
-        showCaptionAboveMedia:
-            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
-        hasSpoiler: hasSpoiler ?? this.hasSpoiler,
-      );
+  }) => InputMessageAnimation(
+    animation: animation ?? this.animation,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
+    duration: duration ?? this.duration,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    caption: caption != null ? caption() : this.caption,
+    showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+    hasSpoiler: hasSpoiler ?? this.hasSpoiler,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageAnimation';
@@ -242,7 +243,9 @@ final class InputMessageAudio extends InputMessageContent {
       InputMessageAudio(
         audio: _readObject(json['audio'], InputFile.fromJson),
         albumCoverThumbnail: _readOptional(
-            json['album_cover_thumbnail'], InputThumbnail.fromJson),
+          json['album_cover_thumbnail'],
+          InputThumbnail.fromJson,
+        ),
         duration: _readInt(json['duration']),
         title: _readString(json['title']),
         performer: _readString(json['performer']),
@@ -251,14 +254,14 @@ final class InputMessageAudio extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'audio': audio.toJson(),
-        'album_cover_thumbnail': albumCoverThumbnail?.toJson(),
-        'duration': duration,
-        'title': title,
-        'performer': performer,
-        'caption': caption?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'audio': audio.toJson(),
+    'album_cover_thumbnail': albumCoverThumbnail?.toJson(),
+    'duration': duration,
+    'title': title,
+    'performer': performer,
+    'caption': caption?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -270,17 +273,16 @@ final class InputMessageAudio extends InputMessageContent {
     String? title,
     String? performer,
     FormattedText? Function()? caption,
-  }) =>
-      InputMessageAudio(
-        audio: audio ?? this.audio,
-        albumCoverThumbnail: albumCoverThumbnail != null
-            ? albumCoverThumbnail()
-            : this.albumCoverThumbnail,
-        duration: duration ?? this.duration,
-        title: title ?? this.title,
-        performer: performer ?? this.performer,
-        caption: caption != null ? caption() : this.caption,
-      );
+  }) => InputMessageAudio(
+    audio: audio ?? this.audio,
+    albumCoverThumbnail: albumCoverThumbnail != null
+        ? albumCoverThumbnail()
+        : this.albumCoverThumbnail,
+    duration: duration ?? this.duration,
+    title: title ?? this.title,
+    performer: performer ?? this.performer,
+    caption: caption != null ? caption() : this.caption,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageAudio';
@@ -316,19 +318,20 @@ final class InputMessageDocument extends InputMessageContent {
       InputMessageDocument(
         document: _readObject(json['document'], InputFile.fromJson),
         thumbnail: _readOptional(json['thumbnail'], InputThumbnail.fromJson),
-        disableContentTypeDetection:
-            _readBool(json['disable_content_type_detection']),
+        disableContentTypeDetection: _readBool(
+          json['disable_content_type_detection'],
+        ),
         caption: _readOptional(json['caption'], FormattedText.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'document': document.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'disable_content_type_detection': disableContentTypeDetection,
-        'caption': caption?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'document': document.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'disable_content_type_detection': disableContentTypeDetection,
+    'caption': caption?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -338,14 +341,13 @@ final class InputMessageDocument extends InputMessageContent {
     InputThumbnail? Function()? thumbnail,
     bool? disableContentTypeDetection,
     FormattedText? Function()? caption,
-  }) =>
-      InputMessageDocument(
-        document: document ?? this.document,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        disableContentTypeDetection:
-            disableContentTypeDetection ?? this.disableContentTypeDetection,
-        caption: caption != null ? caption() : this.caption,
-      );
+  }) => InputMessageDocument(
+    document: document ?? this.document,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    disableContentTypeDetection:
+        disableContentTypeDetection ?? this.disableContentTypeDetection,
+    caption: caption != null ? caption() : this.caption,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageDocument';
@@ -385,7 +387,9 @@ final class InputMessagePaidMedia extends InputMessageContent {
       InputMessagePaidMedia(
         starCount: _readInt(json['star_count']),
         paidMedia: _readList<InputPaidMedia>(
-            json['paid_media'], (e) => _readObject(e, InputPaidMedia.fromJson)),
+          json['paid_media'],
+          (e) => _readObject(e, InputPaidMedia.fromJson),
+        ),
         caption: _readOptional(json['caption'], FormattedText.fromJson),
         showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
         payload: _readString(json['payload']),
@@ -393,13 +397,13 @@ final class InputMessagePaidMedia extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_count': starCount,
-        'paid_media': [for (final e in paidMedia) e.toJson()],
-        'caption': caption?.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        'payload': payload,
-      };
+    '@type': CONSTRUCTOR,
+    'star_count': starCount,
+    'paid_media': [for (final e in paidMedia) e.toJson()],
+    'caption': caption?.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    'payload': payload,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -410,15 +414,13 @@ final class InputMessagePaidMedia extends InputMessageContent {
     FormattedText? Function()? caption,
     bool? showCaptionAboveMedia,
     String? payload,
-  }) =>
-      InputMessagePaidMedia(
-        starCount: starCount ?? this.starCount,
-        paidMedia: paidMedia ?? this.paidMedia,
-        caption: caption != null ? caption() : this.caption,
-        showCaptionAboveMedia:
-            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
-        payload: payload ?? this.payload,
-      );
+  }) => InputMessagePaidMedia(
+    starCount: starCount ?? this.starCount,
+    paidMedia: paidMedia ?? this.paidMedia,
+    caption: caption != null ? caption() : this.caption,
+    showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+    payload: payload ?? this.payload,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessagePaidMedia';
@@ -474,30 +476,34 @@ final class InputMessagePhoto extends InputMessageContent {
       InputMessagePhoto(
         photo: _readObject(json['photo'], InputFile.fromJson),
         thumbnail: _readOptional(json['thumbnail'], InputThumbnail.fromJson),
-        addedStickerFileIds:
-            _readList<int>(json['added_sticker_file_ids'], _readInt),
+        addedStickerFileIds: _readList<int>(
+          json['added_sticker_file_ids'],
+          _readInt,
+        ),
         width: _readInt(json['width']),
         height: _readInt(json['height']),
         caption: _readOptional(json['caption'], FormattedText.fromJson),
         showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
         selfDestructType: _readOptional(
-            json['self_destruct_type'], MessageSelfDestructType.fromJson),
+          json['self_destruct_type'],
+          MessageSelfDestructType.fromJson,
+        ),
         hasSpoiler: _readBool(json['has_spoiler']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'added_sticker_file_ids': addedStickerFileIds,
-        'width': width,
-        'height': height,
-        'caption': caption?.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        'self_destruct_type': selfDestructType?.toJson(),
-        'has_spoiler': hasSpoiler,
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'added_sticker_file_ids': addedStickerFileIds,
+    'width': width,
+    'height': height,
+    'caption': caption?.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    'self_destruct_type': selfDestructType?.toJson(),
+    'has_spoiler': hasSpoiler,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -512,21 +518,19 @@ final class InputMessagePhoto extends InputMessageContent {
     bool? showCaptionAboveMedia,
     MessageSelfDestructType? Function()? selfDestructType,
     bool? hasSpoiler,
-  }) =>
-      InputMessagePhoto(
-        photo: photo ?? this.photo,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        caption: caption != null ? caption() : this.caption,
-        showCaptionAboveMedia:
-            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
-        selfDestructType: selfDestructType != null
-            ? selfDestructType()
-            : this.selfDestructType,
-        hasSpoiler: hasSpoiler ?? this.hasSpoiler,
-      );
+  }) => InputMessagePhoto(
+    photo: photo ?? this.photo,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    caption: caption != null ? caption() : this.caption,
+    showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+    selfDestructType: selfDestructType != null
+        ? selfDestructType()
+        : this.selfDestructType,
+    hasSpoiler: hasSpoiler ?? this.hasSpoiler,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessagePhoto';
@@ -573,13 +577,13 @@ final class InputMessageSticker extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker': sticker.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'width': width,
-        'height': height,
-        'emoji': emoji,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker': sticker.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'width': width,
+    'height': height,
+    'emoji': emoji,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -590,14 +594,13 @@ final class InputMessageSticker extends InputMessageContent {
     int? width,
     int? height,
     String? emoji,
-  }) =>
-      InputMessageSticker(
-        sticker: sticker ?? this.sticker,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        emoji: emoji ?? this.emoji,
-      );
+  }) => InputMessageSticker(
+    sticker: sticker ?? this.sticker,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    emoji: emoji ?? this.emoji,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageSticker';
@@ -671,8 +674,10 @@ final class InputMessageVideo extends InputMessageContent {
         thumbnail: _readOptional(json['thumbnail'], InputThumbnail.fromJson),
         cover: _readOptional(json['cover'], InputFile.fromJson),
         startTimestamp: _readInt(json['start_timestamp']),
-        addedStickerFileIds:
-            _readList<int>(json['added_sticker_file_ids'], _readInt),
+        addedStickerFileIds: _readList<int>(
+          json['added_sticker_file_ids'],
+          _readInt,
+        ),
         duration: _readInt(json['duration']),
         width: _readInt(json['width']),
         height: _readInt(json['height']),
@@ -680,27 +685,29 @@ final class InputMessageVideo extends InputMessageContent {
         caption: _readOptional(json['caption'], FormattedText.fromJson),
         showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
         selfDestructType: _readOptional(
-            json['self_destruct_type'], MessageSelfDestructType.fromJson),
+          json['self_destruct_type'],
+          MessageSelfDestructType.fromJson,
+        ),
         hasSpoiler: _readBool(json['has_spoiler']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'video': video.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'cover': cover?.toJson(),
-        'start_timestamp': startTimestamp,
-        'added_sticker_file_ids': addedStickerFileIds,
-        'duration': duration,
-        'width': width,
-        'height': height,
-        'supports_streaming': supportsStreaming,
-        'caption': caption?.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        'self_destruct_type': selfDestructType?.toJson(),
-        'has_spoiler': hasSpoiler,
-      };
+    '@type': CONSTRUCTOR,
+    'video': video.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'cover': cover?.toJson(),
+    'start_timestamp': startTimestamp,
+    'added_sticker_file_ids': addedStickerFileIds,
+    'duration': duration,
+    'width': width,
+    'height': height,
+    'supports_streaming': supportsStreaming,
+    'caption': caption?.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    'self_destruct_type': selfDestructType?.toJson(),
+    'has_spoiler': hasSpoiler,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -719,25 +726,23 @@ final class InputMessageVideo extends InputMessageContent {
     bool? showCaptionAboveMedia,
     MessageSelfDestructType? Function()? selfDestructType,
     bool? hasSpoiler,
-  }) =>
-      InputMessageVideo(
-        video: video ?? this.video,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        cover: cover != null ? cover() : this.cover,
-        startTimestamp: startTimestamp ?? this.startTimestamp,
-        addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
-        duration: duration ?? this.duration,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        supportsStreaming: supportsStreaming ?? this.supportsStreaming,
-        caption: caption != null ? caption() : this.caption,
-        showCaptionAboveMedia:
-            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
-        selfDestructType: selfDestructType != null
-            ? selfDestructType()
-            : this.selfDestructType,
-        hasSpoiler: hasSpoiler ?? this.hasSpoiler,
-      );
+  }) => InputMessageVideo(
+    video: video ?? this.video,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    cover: cover != null ? cover() : this.cover,
+    startTimestamp: startTimestamp ?? this.startTimestamp,
+    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
+    duration: duration ?? this.duration,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    supportsStreaming: supportsStreaming ?? this.supportsStreaming,
+    caption: caption != null ? caption() : this.caption,
+    showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+    selfDestructType: selfDestructType != null
+        ? selfDestructType()
+        : this.selfDestructType,
+    hasSpoiler: hasSpoiler ?? this.hasSpoiler,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageVideo';
@@ -780,18 +785,20 @@ final class InputMessageVideoNote extends InputMessageContent {
         duration: _readInt(json['duration']),
         length: _readInt(json['length']),
         selfDestructType: _readOptional(
-            json['self_destruct_type'], MessageSelfDestructType.fromJson),
+          json['self_destruct_type'],
+          MessageSelfDestructType.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'video_note': videoNote.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'duration': duration,
-        'length': length,
-        'self_destruct_type': selfDestructType?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'video_note': videoNote.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'duration': duration,
+    'length': length,
+    'self_destruct_type': selfDestructType?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -802,16 +809,15 @@ final class InputMessageVideoNote extends InputMessageContent {
     int? duration,
     int? length,
     MessageSelfDestructType? Function()? selfDestructType,
-  }) =>
-      InputMessageVideoNote(
-        videoNote: videoNote ?? this.videoNote,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        duration: duration ?? this.duration,
-        length: length ?? this.length,
-        selfDestructType: selfDestructType != null
-            ? selfDestructType()
-            : this.selfDestructType,
-      );
+  }) => InputMessageVideoNote(
+    videoNote: videoNote ?? this.videoNote,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    duration: duration ?? this.duration,
+    length: length ?? this.length,
+    selfDestructType: selfDestructType != null
+        ? selfDestructType()
+        : this.selfDestructType,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageVideoNote';
@@ -854,18 +860,20 @@ final class InputMessageVoiceNote extends InputMessageContent {
         waveform: _readString(json['waveform']),
         caption: _readOptional(json['caption'], FormattedText.fromJson),
         selfDestructType: _readOptional(
-            json['self_destruct_type'], MessageSelfDestructType.fromJson),
+          json['self_destruct_type'],
+          MessageSelfDestructType.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'voice_note': voiceNote.toJson(),
-        'duration': duration,
-        'waveform': waveform,
-        'caption': caption?.toJson(),
-        'self_destruct_type': selfDestructType?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'voice_note': voiceNote.toJson(),
+    'duration': duration,
+    'waveform': waveform,
+    'caption': caption?.toJson(),
+    'self_destruct_type': selfDestructType?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -876,16 +884,15 @@ final class InputMessageVoiceNote extends InputMessageContent {
     String? waveform,
     FormattedText? Function()? caption,
     MessageSelfDestructType? Function()? selfDestructType,
-  }) =>
-      InputMessageVoiceNote(
-        voiceNote: voiceNote ?? this.voiceNote,
-        duration: duration ?? this.duration,
-        waveform: waveform ?? this.waveform,
-        caption: caption != null ? caption() : this.caption,
-        selfDestructType: selfDestructType != null
-            ? selfDestructType()
-            : this.selfDestructType,
-      );
+  }) => InputMessageVoiceNote(
+    voiceNote: voiceNote ?? this.voiceNote,
+    duration: duration ?? this.duration,
+    waveform: waveform ?? this.waveform,
+    caption: caption != null ? caption() : this.caption,
+    selfDestructType: selfDestructType != null
+        ? selfDestructType()
+        : this.selfDestructType,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageVoiceNote';
@@ -927,12 +934,12 @@ final class InputMessageLocation extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'location': location.toJson(),
-        'live_period': livePeriod,
-        'heading': heading,
-        'proximity_alert_radius': proximityAlertRadius,
-      };
+    '@type': CONSTRUCTOR,
+    'location': location.toJson(),
+    'live_period': livePeriod,
+    'heading': heading,
+    'proximity_alert_radius': proximityAlertRadius,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -942,13 +949,12 @@ final class InputMessageLocation extends InputMessageContent {
     int? livePeriod,
     int? heading,
     int? proximityAlertRadius,
-  }) =>
-      InputMessageLocation(
-        location: location ?? this.location,
-        livePeriod: livePeriod ?? this.livePeriod,
-        heading: heading ?? this.heading,
-        proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
-      );
+  }) => InputMessageLocation(
+    location: location ?? this.location,
+    livePeriod: livePeriod ?? this.livePeriod,
+    heading: heading ?? this.heading,
+    proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageLocation';
@@ -960,34 +966,26 @@ final class InputMessageLocation extends InputMessageContent {
 /// A message with information about a venue
 final class InputMessageVenue extends InputMessageContent {
   /// A message with information about a venue
-  const InputMessageVenue({
-    required this.venue,
-  });
+  const InputMessageVenue({required this.venue});
 
   /// Venue to send
   final Venue venue;
 
   /// Parses a [InputMessageVenue] from TDLib JSON.
   factory InputMessageVenue.fromJson(Map<String, dynamic> json) =>
-      InputMessageVenue(
-        venue: _readObject(json['venue'], Venue.fromJson),
-      );
+      InputMessageVenue(venue: _readObject(json['venue'], Venue.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'venue': venue.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'venue': venue.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputMessageVenue copyWith({
-    Venue? venue,
-  }) =>
-      InputMessageVenue(
-        venue: venue ?? this.venue,
-      );
+  InputMessageVenue copyWith({Venue? venue}) =>
+      InputMessageVenue(venue: venue ?? this.venue);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageVenue';
@@ -999,9 +997,7 @@ final class InputMessageVenue extends InputMessageContent {
 /// A message containing a user contact
 final class InputMessageContact extends InputMessageContent {
   /// A message containing a user contact
-  const InputMessageContact({
-    required this.contact,
-  });
+  const InputMessageContact({required this.contact});
 
   /// Contact to send
   final Contact contact;
@@ -1014,19 +1010,15 @@ final class InputMessageContact extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'contact': contact.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'contact': contact.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputMessageContact copyWith({
-    Contact? contact,
-  }) =>
-      InputMessageContact(
-        contact: contact ?? this.contact,
-      );
+  InputMessageContact copyWith({Contact? contact}) =>
+      InputMessageContact(contact: contact ?? this.contact);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageContact';
@@ -1038,10 +1030,7 @@ final class InputMessageContact extends InputMessageContent {
 /// A dice message
 final class InputMessageDice extends InputMessageContent {
   /// A dice message
-  const InputMessageDice({
-    required this.emoji,
-    required this.clearDraft,
-  });
+  const InputMessageDice({required this.emoji, required this.clearDraft});
 
   /// Emoji on which the dice throw animation is based
   final String emoji;
@@ -1058,18 +1047,15 @@ final class InputMessageDice extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'emoji': emoji,
-        'clear_draft': clearDraft,
-      };
+    '@type': CONSTRUCTOR,
+    'emoji': emoji,
+    'clear_draft': clearDraft,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputMessageDice copyWith({
-    String? emoji,
-    bool? clearDraft,
-  }) =>
+  InputMessageDice copyWith({String? emoji, bool? clearDraft}) =>
       InputMessageDice(
         emoji: emoji ?? this.emoji,
         clearDraft: clearDraft ?? this.clearDraft,
@@ -1105,18 +1091,15 @@ final class InputMessageGame extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'game_short_name': gameShortName,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'game_short_name': gameShortName,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputMessageGame copyWith({
-    int? botUserId,
-    String? gameShortName,
-  }) =>
+  InputMessageGame copyWith({int? botUserId, String? gameShortName}) =>
       InputMessageGame(
         botUserId: botUserId ?? this.botUserId,
         gameShortName: gameShortName ?? this.gameShortName,
@@ -1202,27 +1185,29 @@ final class InputMessageInvoice extends InputMessageContent {
         providerData: _readString(json['provider_data']),
         startParameter: _readString(json['start_parameter']),
         paidMedia: _readOptional(json['paid_media'], InputPaidMedia.fromJson),
-        paidMediaCaption:
-            _readOptional(json['paid_media_caption'], FormattedText.fromJson),
+        paidMediaCaption: _readOptional(
+          json['paid_media_caption'],
+          FormattedText.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'invoice': invoice.toJson(),
-        'title': title,
-        'description': description,
-        'photo_url': photoUrl,
-        'photo_size': photoSize,
-        'photo_width': photoWidth,
-        'photo_height': photoHeight,
-        'payload': payload,
-        'provider_token': providerToken,
-        'provider_data': providerData,
-        'start_parameter': startParameter,
-        'paid_media': paidMedia?.toJson(),
-        'paid_media_caption': paidMediaCaption?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'invoice': invoice.toJson(),
+    'title': title,
+    'description': description,
+    'photo_url': photoUrl,
+    'photo_size': photoSize,
+    'photo_width': photoWidth,
+    'photo_height': photoHeight,
+    'payload': payload,
+    'provider_token': providerToken,
+    'provider_data': providerData,
+    'start_parameter': startParameter,
+    'paid_media': paidMedia?.toJson(),
+    'paid_media_caption': paidMediaCaption?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1241,24 +1226,23 @@ final class InputMessageInvoice extends InputMessageContent {
     String? startParameter,
     InputPaidMedia? Function()? paidMedia,
     FormattedText? Function()? paidMediaCaption,
-  }) =>
-      InputMessageInvoice(
-        invoice: invoice ?? this.invoice,
-        title: title ?? this.title,
-        description: description ?? this.description,
-        photoUrl: photoUrl ?? this.photoUrl,
-        photoSize: photoSize ?? this.photoSize,
-        photoWidth: photoWidth ?? this.photoWidth,
-        photoHeight: photoHeight ?? this.photoHeight,
-        payload: payload ?? this.payload,
-        providerToken: providerToken ?? this.providerToken,
-        providerData: providerData ?? this.providerData,
-        startParameter: startParameter ?? this.startParameter,
-        paidMedia: paidMedia != null ? paidMedia() : this.paidMedia,
-        paidMediaCaption: paidMediaCaption != null
-            ? paidMediaCaption()
-            : this.paidMediaCaption,
-      );
+  }) => InputMessageInvoice(
+    invoice: invoice ?? this.invoice,
+    title: title ?? this.title,
+    description: description ?? this.description,
+    photoUrl: photoUrl ?? this.photoUrl,
+    photoSize: photoSize ?? this.photoSize,
+    photoWidth: photoWidth ?? this.photoWidth,
+    photoHeight: photoHeight ?? this.photoHeight,
+    payload: payload ?? this.payload,
+    providerToken: providerToken ?? this.providerToken,
+    providerData: providerData ?? this.providerData,
+    startParameter: startParameter ?? this.startParameter,
+    paidMedia: paidMedia != null ? paidMedia() : this.paidMedia,
+    paidMediaCaption: paidMediaCaption != null
+        ? paidMediaCaption()
+        : this.paidMediaCaption,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageInvoice';
@@ -1306,7 +1290,9 @@ final class InputMessagePoll extends InputMessageContent {
       InputMessagePoll(
         question: _readObject(json['question'], FormattedText.fromJson),
         options: _readList<FormattedText>(
-            json['options'], (e) => _readObject(e, FormattedText.fromJson)),
+          json['options'],
+          (e) => _readObject(e, FormattedText.fromJson),
+        ),
         isAnonymous: _readBool(json['is_anonymous']),
         type: _readObject(json['type'], PollType.fromJson),
         openPeriod: _readInt(json['open_period']),
@@ -1316,15 +1302,15 @@ final class InputMessagePoll extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'question': question.toJson(),
-        'options': [for (final e in options) e.toJson()],
-        'is_anonymous': isAnonymous,
-        'type': type.toJson(),
-        'open_period': openPeriod,
-        'close_date': closeDate,
-        'is_closed': isClosed,
-      };
+    '@type': CONSTRUCTOR,
+    'question': question.toJson(),
+    'options': [for (final e in options) e.toJson()],
+    'is_anonymous': isAnonymous,
+    'type': type.toJson(),
+    'open_period': openPeriod,
+    'close_date': closeDate,
+    'is_closed': isClosed,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1337,16 +1323,15 @@ final class InputMessagePoll extends InputMessageContent {
     int? openPeriod,
     int? closeDate,
     bool? isClosed,
-  }) =>
-      InputMessagePoll(
-        question: question ?? this.question,
-        options: options ?? this.options,
-        isAnonymous: isAnonymous ?? this.isAnonymous,
-        type: type ?? this.type,
-        openPeriod: openPeriod ?? this.openPeriod,
-        closeDate: closeDate ?? this.closeDate,
-        isClosed: isClosed ?? this.isClosed,
-      );
+  }) => InputMessagePoll(
+    question: question ?? this.question,
+    options: options ?? this.options,
+    isAnonymous: isAnonymous ?? this.isAnonymous,
+    type: type ?? this.type,
+    openPeriod: openPeriod ?? this.openPeriod,
+    closeDate: closeDate ?? this.closeDate,
+    isClosed: isClosed ?? this.isClosed,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessagePoll';
@@ -1378,18 +1363,15 @@ final class InputMessageStory extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'story_id': storyId,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputMessageStory copyWith({
-    int? storyPosterChatId,
-    int? storyId,
-  }) =>
+  InputMessageStory copyWith({int? storyPosterChatId, int? storyId}) =>
       InputMessageStory(
         storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
         storyId: storyId ?? this.storyId,
@@ -1405,9 +1387,7 @@ final class InputMessageStory extends InputMessageContent {
 /// A message with a checklist. Checklists can't be sent to secret chats, channel chats and channel direct messages chats; for Telegram Premium users only
 final class InputMessageChecklist extends InputMessageContent {
   /// A message with a checklist. Checklists can't be sent to secret chats, channel chats and channel direct messages chats; for Telegram Premium users only
-  const InputMessageChecklist({
-    required this.checklist,
-  });
+  const InputMessageChecklist({required this.checklist});
 
   /// The checklist to send
   final InputChecklist checklist;
@@ -1420,19 +1400,15 @@ final class InputMessageChecklist extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'checklist': checklist.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'checklist': checklist.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputMessageChecklist copyWith({
-    InputChecklist? checklist,
-  }) =>
-      InputMessageChecklist(
-        checklist: checklist ?? this.checklist,
-      );
+  InputMessageChecklist copyWith({InputChecklist? checklist}) =>
+      InputMessageChecklist(checklist: checklist ?? this.checklist);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageChecklist';
@@ -1477,23 +1453,26 @@ final class InputMessageForwarded extends InputMessageContent {
         fromChatId: _readInt(json['from_chat_id']),
         messageId: _readInt(json['message_id']),
         inGameShare: _readBool(json['in_game_share']),
-        replaceVideoStartTimestamp:
-            _readBool(json['replace_video_start_timestamp']),
+        replaceVideoStartTimestamp: _readBool(
+          json['replace_video_start_timestamp'],
+        ),
         newVideoStartTimestamp: _readInt(json['new_video_start_timestamp']),
-        copyOptions:
-            _readOptional(json['copy_options'], MessageCopyOptions.fromJson),
+        copyOptions: _readOptional(
+          json['copy_options'],
+          MessageCopyOptions.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'from_chat_id': fromChatId,
-        'message_id': messageId,
-        'in_game_share': inGameShare,
-        'replace_video_start_timestamp': replaceVideoStartTimestamp,
-        'new_video_start_timestamp': newVideoStartTimestamp,
-        'copy_options': copyOptions?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'from_chat_id': fromChatId,
+    'message_id': messageId,
+    'in_game_share': inGameShare,
+    'replace_video_start_timestamp': replaceVideoStartTimestamp,
+    'new_video_start_timestamp': newVideoStartTimestamp,
+    'copy_options': copyOptions?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1505,17 +1484,16 @@ final class InputMessageForwarded extends InputMessageContent {
     bool? replaceVideoStartTimestamp,
     int? newVideoStartTimestamp,
     MessageCopyOptions? Function()? copyOptions,
-  }) =>
-      InputMessageForwarded(
-        fromChatId: fromChatId ?? this.fromChatId,
-        messageId: messageId ?? this.messageId,
-        inGameShare: inGameShare ?? this.inGameShare,
-        replaceVideoStartTimestamp:
-            replaceVideoStartTimestamp ?? this.replaceVideoStartTimestamp,
-        newVideoStartTimestamp:
-            newVideoStartTimestamp ?? this.newVideoStartTimestamp,
-        copyOptions: copyOptions != null ? copyOptions() : this.copyOptions,
-      );
+  }) => InputMessageForwarded(
+    fromChatId: fromChatId ?? this.fromChatId,
+    messageId: messageId ?? this.messageId,
+    inGameShare: inGameShare ?? this.inGameShare,
+    replaceVideoStartTimestamp:
+        replaceVideoStartTimestamp ?? this.replaceVideoStartTimestamp,
+    newVideoStartTimestamp:
+        newVideoStartTimestamp ?? this.newVideoStartTimestamp,
+    copyOptions: copyOptions != null ? copyOptions() : this.copyOptions,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageForwarded';

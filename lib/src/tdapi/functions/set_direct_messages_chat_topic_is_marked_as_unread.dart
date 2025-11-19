@@ -25,12 +25,12 @@ final class SetDirectMessagesChatTopicIsMarkedAsUnread extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'topic_id': topicId,
-        'is_marked_as_unread': isMarkedAsUnread,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'topic_id': topicId,
+    'is_marked_as_unread': isMarkedAsUnread,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SetDirectMessagesChatTopicIsMarkedAsUnread extends TdFunction<Ok> {
     int? chatId,
     int? topicId,
     bool? isMarkedAsUnread,
-  }) =>
-      SetDirectMessagesChatTopicIsMarkedAsUnread(
-        chatId: chatId ?? this.chatId,
-        topicId: topicId ?? this.topicId,
-        isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
-      );
+  }) => SetDirectMessagesChatTopicIsMarkedAsUnread(
+    chatId: chatId ?? this.chatId,
+    topicId: topicId ?? this.topicId,
+    isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =

@@ -25,19 +25,23 @@ final class AffiliateProgramInfo extends TdObject {
   factory AffiliateProgramInfo.fromJson(Map<String, dynamic> json) =>
       AffiliateProgramInfo(
         parameters: _readObject(
-            json['parameters'], AffiliateProgramParameters.fromJson),
+          json['parameters'],
+          AffiliateProgramParameters.fromJson,
+        ),
         endDate: _readInt(json['end_date']),
         dailyRevenuePerUserAmount: _readObject(
-            json['daily_revenue_per_user_amount'], StarAmount.fromJson),
+          json['daily_revenue_per_user_amount'],
+          StarAmount.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'parameters': parameters.toJson(),
-        'end_date': endDate,
-        'daily_revenue_per_user_amount': dailyRevenuePerUserAmount.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'parameters': parameters.toJson(),
+    'end_date': endDate,
+    'daily_revenue_per_user_amount': dailyRevenuePerUserAmount.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -45,13 +49,12 @@ final class AffiliateProgramInfo extends TdObject {
     AffiliateProgramParameters? parameters,
     int? endDate,
     StarAmount? dailyRevenuePerUserAmount,
-  }) =>
-      AffiliateProgramInfo(
-        parameters: parameters ?? this.parameters,
-        endDate: endDate ?? this.endDate,
-        dailyRevenuePerUserAmount:
-            dailyRevenuePerUserAmount ?? this.dailyRevenuePerUserAmount,
-      );
+  }) => AffiliateProgramInfo(
+    parameters: parameters ?? this.parameters,
+    endDate: endDate ?? this.endDate,
+    dailyRevenuePerUserAmount:
+        dailyRevenuePerUserAmount ?? this.dailyRevenuePerUserAmount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'affiliateProgramInfo';

@@ -21,23 +21,22 @@ final class SetSupergroupCustomEmojiStickerSet extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'custom_emoji_sticker_set_id': customEmojiStickerSetId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'custom_emoji_sticker_set_id': customEmojiStickerSetId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetSupergroupCustomEmojiStickerSet copyWith({
     int? supergroupId,
     int? customEmojiStickerSetId,
-  }) =>
-      SetSupergroupCustomEmojiStickerSet(
-        supergroupId: supergroupId ?? this.supergroupId,
-        customEmojiStickerSetId:
-            customEmojiStickerSetId ?? this.customEmojiStickerSetId,
-      );
+  }) => SetSupergroupCustomEmojiStickerSet(
+    supergroupId: supergroupId ?? this.supergroupId,
+    customEmojiStickerSetId:
+        customEmojiStickerSetId ?? this.customEmojiStickerSetId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setSupergroupCustomEmojiStickerSet';

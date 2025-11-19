@@ -37,15 +37,15 @@ final class SendMessage extends TdFunction<Message> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'topic_id': topicId?.toJson(),
-        'reply_to': replyTo?.toJson(),
-        'options': options?.toJson(),
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'topic_id': topicId?.toJson(),
+    'reply_to': replyTo?.toJson(),
+    'options': options?.toJson(),
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class SendMessage extends TdFunction<Message> {
     MessageSendOptions? Function()? options,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      SendMessage(
-        chatId: chatId ?? this.chatId,
-        topicId: topicId != null ? topicId() : this.topicId,
-        replyTo: replyTo != null ? replyTo() : this.replyTo,
-        options: options != null ? options() : this.options,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => SendMessage(
+    chatId: chatId ?? this.chatId,
+    topicId: topicId != null ? topicId() : this.topicId,
+    replyTo: replyTo != null ? replyTo() : this.replyTo,
+    options: options != null ? options() : this.options,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sendMessage';

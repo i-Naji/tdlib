@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class RemoveSavedNotificationSound extends TdFunction<Ok> {
   /// Removes a notification sound from the list of saved notification sounds
-  const RemoveSavedNotificationSound({
-    required this.notificationSoundId,
-  });
+  const RemoveSavedNotificationSound({required this.notificationSoundId});
 
   /// Identifier of the notification sound
   final int notificationSoundId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'notification_sound_id': notificationSoundId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'notification_sound_id': notificationSoundId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RemoveSavedNotificationSound copyWith({
-    int? notificationSoundId,
-  }) =>
+  RemoveSavedNotificationSound copyWith({int? notificationSoundId}) =>
       RemoveSavedNotificationSound(
         notificationSoundId: notificationSoundId ?? this.notificationSoundId,
       );

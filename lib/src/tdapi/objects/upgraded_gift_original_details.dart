@@ -36,12 +36,12 @@ final class UpgradedGiftOriginalDetails extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sender_id': senderId?.toJson(),
-        'receiver_id': receiverId.toJson(),
-        'text': text.toJson(),
-        'date': date,
-      };
+    '@type': CONSTRUCTOR,
+    'sender_id': senderId?.toJson(),
+    'receiver_id': receiverId.toJson(),
+    'text': text.toJson(),
+    'date': date,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class UpgradedGiftOriginalDetails extends TdObject {
     MessageSender? receiverId,
     FormattedText? text,
     int? date,
-  }) =>
-      UpgradedGiftOriginalDetails(
-        senderId: senderId != null ? senderId() : this.senderId,
-        receiverId: receiverId ?? this.receiverId,
-        text: text ?? this.text,
-        date: date ?? this.date,
-      );
+  }) => UpgradedGiftOriginalDetails(
+    senderId: senderId != null ? senderId() : this.senderId,
+    receiverId: receiverId ?? this.receiverId,
+    text: text ?? this.text,
+    date: date ?? this.date,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradedGiftOriginalDetails';

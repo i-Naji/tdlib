@@ -21,18 +21,15 @@ final class SetQuickReplyShortcutName extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'shortcut_id': shortcutId,
-        'name': name,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'shortcut_id': shortcutId,
+    'name': name,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetQuickReplyShortcutName copyWith({
-    int? shortcutId,
-    String? name,
-  }) =>
+  SetQuickReplyShortcutName copyWith({int? shortcutId, String? name}) =>
       SetQuickReplyShortcutName(
         shortcutId: shortcutId ?? this.shortcutId,
         name: name ?? this.name,

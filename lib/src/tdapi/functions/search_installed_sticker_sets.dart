@@ -25,12 +25,12 @@ final class SearchInstalledStickerSets extends TdFunction<StickerSets> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker_type': stickerType.toJson(),
-        'query': query,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_type': stickerType.toJson(),
+    'query': query,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SearchInstalledStickerSets extends TdFunction<StickerSets> {
     StickerType? stickerType,
     String? query,
     int? limit,
-  }) =>
-      SearchInstalledStickerSets(
-        stickerType: stickerType ?? this.stickerType,
-        query: query ?? this.query,
-        limit: limit ?? this.limit,
-      );
+  }) => SearchInstalledStickerSets(
+    stickerType: stickerType ?? this.stickerType,
+    query: query ?? this.query,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchInstalledStickerSets';

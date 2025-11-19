@@ -33,9 +33,9 @@ final class RecoveryEmailAddress extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'recovery_email_address': recoveryEmailAddress,
-      };
+    '@type': CONSTRUCTOR,
+    'recovery_email_address': recoveryEmailAddress,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class RecoveryEmailAddress extends TdObject {
     String? recoveryEmailAddress,
     dynamic extra,
     int? clientId,
-  }) =>
-      RecoveryEmailAddress(
-        recoveryEmailAddress: recoveryEmailAddress ?? this.recoveryEmailAddress,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => RecoveryEmailAddress(
+    recoveryEmailAddress: recoveryEmailAddress ?? this.recoveryEmailAddress,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'recoveryEmailAddress';

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [BasicGroup].
 final class GetBasicGroup extends TdFunction<BasicGroup> {
   /// Returns information about a basic group by its identifier. This is an offline method if the current user is not a bot
-  const GetBasicGroup({
-    required this.basicGroupId,
-  });
+  const GetBasicGroup({required this.basicGroupId});
 
   /// Basic group identifier
   final int basicGroupId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'basic_group_id': basicGroupId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'basic_group_id': basicGroupId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetBasicGroup copyWith({
-    int? basicGroupId,
-  }) =>
-      GetBasicGroup(
-        basicGroupId: basicGroupId ?? this.basicGroupId,
-      );
+  GetBasicGroup copyWith({int? basicGroupId}) =>
+      GetBasicGroup(basicGroupId: basicGroupId ?? this.basicGroupId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getBasicGroup';

@@ -21,18 +21,15 @@ final class ToggleChatViewAsTopics extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'view_as_topics': viewAsTopics,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'view_as_topics': viewAsTopics,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ToggleChatViewAsTopics copyWith({
-    int? chatId,
-    bool? viewAsTopics,
-  }) =>
+  ToggleChatViewAsTopics copyWith({int? chatId, bool? viewAsTopics}) =>
       ToggleChatViewAsTopics(
         chatId: chatId ?? this.chatId,
         viewAsTopics: viewAsTopics ?? this.viewAsTopics,

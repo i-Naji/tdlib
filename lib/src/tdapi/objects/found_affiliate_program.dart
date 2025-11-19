@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Describes a found affiliate program
 final class FoundAffiliateProgram extends TdObject {
   /// Describes a found affiliate program
-  const FoundAffiliateProgram({
-    required this.botUserId,
-    required this.info,
-  });
+  const FoundAffiliateProgram({required this.botUserId, required this.info});
 
   /// User identifier of the bot created the program
   final int botUserId;
@@ -26,21 +23,20 @@ final class FoundAffiliateProgram extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'info': info.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'info': info.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   FoundAffiliateProgram copyWith({
     int? botUserId,
     AffiliateProgramInfo? info,
-  }) =>
-      FoundAffiliateProgram(
-        botUserId: botUserId ?? this.botUserId,
-        info: info ?? this.info,
-      );
+  }) => FoundAffiliateProgram(
+    botUserId: botUserId ?? this.botUserId,
+    info: info ?? this.info,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'foundAffiliateProgram';

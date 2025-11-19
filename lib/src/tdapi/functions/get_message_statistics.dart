@@ -25,20 +25,16 @@ final class GetMessageStatistics extends TdFunction<MessageStatistics> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'is_dark': isDark,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'is_dark': isDark,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetMessageStatistics copyWith({
-    int? chatId,
-    int? messageId,
-    bool? isDark,
-  }) =>
+  GetMessageStatistics copyWith({int? chatId, int? messageId, bool? isDark}) =>
       GetMessageStatistics(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,

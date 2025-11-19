@@ -25,12 +25,12 @@ final class SendPhoneNumberCode extends TdFunction<AuthenticationCodeInfo> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'phone_number': phoneNumber,
-        'settings': settings?.toJson(),
-        'type': type.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'phone_number': phoneNumber,
+    'settings': settings?.toJson(),
+    'type': type.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SendPhoneNumberCode extends TdFunction<AuthenticationCodeInfo> {
     String? phoneNumber,
     PhoneNumberAuthenticationSettings? Function()? settings,
     PhoneNumberCodeType? type,
-  }) =>
-      SendPhoneNumberCode(
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        settings: settings != null ? settings() : this.settings,
-        type: type ?? this.type,
-      );
+  }) => SendPhoneNumberCode(
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+    settings: settings != null ? settings() : this.settings,
+    type: type ?? this.type,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sendPhoneNumberCode';

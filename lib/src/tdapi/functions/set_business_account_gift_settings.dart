@@ -21,22 +21,21 @@ final class SetBusinessAccountGiftSettings extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'business_connection_id': businessConnectionId,
-        'settings': settings.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'business_connection_id': businessConnectionId,
+    'settings': settings.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetBusinessAccountGiftSettings copyWith({
     String? businessConnectionId,
     GiftSettings? settings,
-  }) =>
-      SetBusinessAccountGiftSettings(
-        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-        settings: settings ?? this.settings,
-      );
+  }) => SetBusinessAccountGiftSettings(
+    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+    settings: settings ?? this.settings,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setBusinessAccountGiftSettings';

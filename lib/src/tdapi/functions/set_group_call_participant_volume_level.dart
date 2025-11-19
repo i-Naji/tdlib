@@ -25,12 +25,12 @@ final class SetGroupCallParticipantVolumeLevel extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'participant_id': participantId.toJson(),
-        'volume_level': volumeLevel,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'participant_id': participantId.toJson(),
+    'volume_level': volumeLevel,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SetGroupCallParticipantVolumeLevel extends TdFunction<Ok> {
     int? groupCallId,
     MessageSender? participantId,
     int? volumeLevel,
-  }) =>
-      SetGroupCallParticipantVolumeLevel(
-        groupCallId: groupCallId ?? this.groupCallId,
-        participantId: participantId ?? this.participantId,
-        volumeLevel: volumeLevel ?? this.volumeLevel,
-      );
+  }) => SetGroupCallParticipantVolumeLevel(
+    groupCallId: groupCallId ?? this.groupCallId,
+    participantId: participantId ?? this.participantId,
+    volumeLevel: volumeLevel ?? this.volumeLevel,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setGroupCallParticipantVolumeLevel';

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class RemoveProfileAudio extends TdFunction<Ok> {
   /// Removes an audio file from the profile audio files of the current user
-  const RemoveProfileAudio({
-    required this.fileId,
-  });
+  const RemoveProfileAudio({required this.fileId});
 
   /// Identifier of the audio file to be removed
   final int fileId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'file_id': fileId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'file_id': fileId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RemoveProfileAudio copyWith({
-    int? fileId,
-  }) =>
-      RemoveProfileAudio(
-        fileId: fileId ?? this.fileId,
-      );
+  RemoveProfileAudio copyWith({int? fileId}) =>
+      RemoveProfileAudio(fileId: fileId ?? this.fileId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'removeProfileAudio';

@@ -77,12 +77,12 @@ final class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file_type': fileType?.toJson(),
-        'network_type': networkType.toJson(),
-        'sent_bytes': sentBytes,
-        'received_bytes': receivedBytes,
-      };
+    '@type': CONSTRUCTOR,
+    'file_type': fileType?.toJson(),
+    'network_type': networkType.toJson(),
+    'sent_bytes': sentBytes,
+    'received_bytes': receivedBytes,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -92,13 +92,12 @@ final class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
     NetworkType? networkType,
     int? sentBytes,
     int? receivedBytes,
-  }) =>
-      NetworkStatisticsEntryFile(
-        fileType: fileType != null ? fileType() : this.fileType,
-        networkType: networkType ?? this.networkType,
-        sentBytes: sentBytes ?? this.sentBytes,
-        receivedBytes: receivedBytes ?? this.receivedBytes,
-      );
+  }) => NetworkStatisticsEntryFile(
+    fileType: fileType != null ? fileType() : this.fileType,
+    networkType: networkType ?? this.networkType,
+    sentBytes: sentBytes ?? this.sentBytes,
+    receivedBytes: receivedBytes ?? this.receivedBytes,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'networkStatisticsEntryFile';
@@ -140,12 +139,12 @@ final class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'network_type': networkType.toJson(),
-        'sent_bytes': sentBytes,
-        'received_bytes': receivedBytes,
-        'duration': duration,
-      };
+    '@type': CONSTRUCTOR,
+    'network_type': networkType.toJson(),
+    'sent_bytes': sentBytes,
+    'received_bytes': receivedBytes,
+    'duration': duration,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -155,13 +154,12 @@ final class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
     int? sentBytes,
     int? receivedBytes,
     double? duration,
-  }) =>
-      NetworkStatisticsEntryCall(
-        networkType: networkType ?? this.networkType,
-        sentBytes: sentBytes ?? this.sentBytes,
-        receivedBytes: receivedBytes ?? this.receivedBytes,
-        duration: duration ?? this.duration,
-      );
+  }) => NetworkStatisticsEntryCall(
+    networkType: networkType ?? this.networkType,
+    sentBytes: sentBytes ?? this.sentBytes,
+    receivedBytes: receivedBytes ?? this.receivedBytes,
+    duration: duration ?? this.duration,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'networkStatisticsEntryCall';

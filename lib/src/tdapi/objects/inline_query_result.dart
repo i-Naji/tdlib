@@ -82,13 +82,13 @@ final class InlineQueryResultArticle extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'url': url,
-        'title': title,
-        'description': description,
-        'thumbnail': thumbnail?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'url': url,
+    'title': title,
+    'description': description,
+    'thumbnail': thumbnail?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -99,14 +99,13 @@ final class InlineQueryResultArticle extends InlineQueryResult {
     String? title,
     String? description,
     Thumbnail? Function()? thumbnail,
-  }) =>
-      InlineQueryResultArticle(
-        id: id ?? this.id,
-        url: url ?? this.url,
-        title: title ?? this.title,
-        description: description ?? this.description,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-      );
+  }) => InlineQueryResultArticle(
+    id: id ?? this.id,
+    url: url ?? this.url,
+    title: title ?? this.title,
+    description: description ?? this.description,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineQueryResultArticle';
@@ -143,11 +142,11 @@ final class InlineQueryResultContact extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'contact': contact.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'contact': contact.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -156,12 +155,11 @@ final class InlineQueryResultContact extends InlineQueryResult {
     String? id,
     Contact? contact,
     Thumbnail? Function()? thumbnail,
-  }) =>
-      InlineQueryResultContact(
-        id: id ?? this.id,
-        contact: contact ?? this.contact,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-      );
+  }) => InlineQueryResultContact(
+    id: id ?? this.id,
+    contact: contact ?? this.contact,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineQueryResultContact';
@@ -203,12 +201,12 @@ final class InlineQueryResultLocation extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'location': location.toJson(),
-        'title': title,
-        'thumbnail': thumbnail?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'location': location.toJson(),
+    'title': title,
+    'thumbnail': thumbnail?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -218,13 +216,12 @@ final class InlineQueryResultLocation extends InlineQueryResult {
     Location? location,
     String? title,
     Thumbnail? Function()? thumbnail,
-  }) =>
-      InlineQueryResultLocation(
-        id: id ?? this.id,
-        location: location ?? this.location,
-        title: title ?? this.title,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-      );
+  }) => InlineQueryResultLocation(
+    id: id ?? this.id,
+    location: location ?? this.location,
+    title: title ?? this.title,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineQueryResultLocation';
@@ -261,11 +258,11 @@ final class InlineQueryResultVenue extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'venue': venue.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'venue': venue.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -274,12 +271,11 @@ final class InlineQueryResultVenue extends InlineQueryResult {
     String? id,
     Venue? venue,
     Thumbnail? Function()? thumbnail,
-  }) =>
-      InlineQueryResultVenue(
-        id: id ?? this.id,
-        venue: venue ?? this.venue,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-      );
+  }) => InlineQueryResultVenue(
+    id: id ?? this.id,
+    venue: venue ?? this.venue,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineQueryResultVenue';
@@ -291,10 +287,7 @@ final class InlineQueryResultVenue extends InlineQueryResult {
 /// Represents information about a game
 final class InlineQueryResultGame extends InlineQueryResult {
   /// Represents information about a game
-  const InlineQueryResultGame({
-    required this.id,
-    required this.game,
-  });
+  const InlineQueryResultGame({required this.id, required this.game});
 
   /// Unique identifier of the query result
   final String id;
@@ -311,22 +304,16 @@ final class InlineQueryResultGame extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'game': game.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'game': game.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InlineQueryResultGame copyWith({
-    String? id,
-    Game? game,
-  }) =>
-      InlineQueryResultGame(
-        id: id ?? this.id,
-        game: game ?? this.game,
-      );
+  InlineQueryResultGame copyWith({String? id, Game? game}) =>
+      InlineQueryResultGame(id: id ?? this.id, game: game ?? this.game);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineQueryResultGame';
@@ -363,11 +350,11 @@ final class InlineQueryResultAnimation extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'animation': animation.toJson(),
-        'title': title,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'animation': animation.toJson(),
+    'title': title,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -376,12 +363,11 @@ final class InlineQueryResultAnimation extends InlineQueryResult {
     String? id,
     Animation? animation,
     String? title,
-  }) =>
-      InlineQueryResultAnimation(
-        id: id ?? this.id,
-        animation: animation ?? this.animation,
-        title: title ?? this.title,
-      );
+  }) => InlineQueryResultAnimation(
+    id: id ?? this.id,
+    animation: animation ?? this.animation,
+    title: title ?? this.title,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineQueryResultAnimation';
@@ -393,10 +379,7 @@ final class InlineQueryResultAnimation extends InlineQueryResult {
 /// Represents an audio file
 final class InlineQueryResultAudio extends InlineQueryResult {
   /// Represents an audio file
-  const InlineQueryResultAudio({
-    required this.id,
-    required this.audio,
-  });
+  const InlineQueryResultAudio({required this.id, required this.audio});
 
   /// Unique identifier of the query result
   final String id;
@@ -413,22 +396,16 @@ final class InlineQueryResultAudio extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'audio': audio.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'audio': audio.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InlineQueryResultAudio copyWith({
-    String? id,
-    Audio? audio,
-  }) =>
-      InlineQueryResultAudio(
-        id: id ?? this.id,
-        audio: audio ?? this.audio,
-      );
+  InlineQueryResultAudio copyWith({String? id, Audio? audio}) =>
+      InlineQueryResultAudio(id: id ?? this.id, audio: audio ?? this.audio);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineQueryResultAudio';
@@ -470,12 +447,12 @@ final class InlineQueryResultDocument extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'document': document.toJson(),
-        'title': title,
-        'description': description,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'document': document.toJson(),
+    'title': title,
+    'description': description,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -485,13 +462,12 @@ final class InlineQueryResultDocument extends InlineQueryResult {
     Document? document,
     String? title,
     String? description,
-  }) =>
-      InlineQueryResultDocument(
-        id: id ?? this.id,
-        document: document ?? this.document,
-        title: title ?? this.title,
-        description: description ?? this.description,
-      );
+  }) => InlineQueryResultDocument(
+    id: id ?? this.id,
+    document: document ?? this.document,
+    title: title ?? this.title,
+    description: description ?? this.description,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineQueryResultDocument';
@@ -533,12 +509,12 @@ final class InlineQueryResultPhoto extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'photo': photo.toJson(),
-        'title': title,
-        'description': description,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'photo': photo.toJson(),
+    'title': title,
+    'description': description,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -548,13 +524,12 @@ final class InlineQueryResultPhoto extends InlineQueryResult {
     Photo? photo,
     String? title,
     String? description,
-  }) =>
-      InlineQueryResultPhoto(
-        id: id ?? this.id,
-        photo: photo ?? this.photo,
-        title: title ?? this.title,
-        description: description ?? this.description,
-      );
+  }) => InlineQueryResultPhoto(
+    id: id ?? this.id,
+    photo: photo ?? this.photo,
+    title: title ?? this.title,
+    description: description ?? this.description,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineQueryResultPhoto';
@@ -566,10 +541,7 @@ final class InlineQueryResultPhoto extends InlineQueryResult {
 /// Represents a sticker
 final class InlineQueryResultSticker extends InlineQueryResult {
   /// Represents a sticker
-  const InlineQueryResultSticker({
-    required this.id,
-    required this.sticker,
-  });
+  const InlineQueryResultSticker({required this.id, required this.sticker});
 
   /// Unique identifier of the query result
   final String id;
@@ -586,18 +558,15 @@ final class InlineQueryResultSticker extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'sticker': sticker.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'sticker': sticker.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InlineQueryResultSticker copyWith({
-    String? id,
-    Sticker? sticker,
-  }) =>
+  InlineQueryResultSticker copyWith({String? id, Sticker? sticker}) =>
       InlineQueryResultSticker(
         id: id ?? this.id,
         sticker: sticker ?? this.sticker,
@@ -643,12 +612,12 @@ final class InlineQueryResultVideo extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'video': video.toJson(),
-        'title': title,
-        'description': description,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'video': video.toJson(),
+    'title': title,
+    'description': description,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -658,13 +627,12 @@ final class InlineQueryResultVideo extends InlineQueryResult {
     Video? video,
     String? title,
     String? description,
-  }) =>
-      InlineQueryResultVideo(
-        id: id ?? this.id,
-        video: video ?? this.video,
-        title: title ?? this.title,
-        description: description ?? this.description,
-      );
+  }) => InlineQueryResultVideo(
+    id: id ?? this.id,
+    video: video ?? this.video,
+    title: title ?? this.title,
+    description: description ?? this.description,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineQueryResultVideo';
@@ -701,11 +669,11 @@ final class InlineQueryResultVoiceNote extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'voice_note': voiceNote.toJson(),
-        'title': title,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'voice_note': voiceNote.toJson(),
+    'title': title,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -714,12 +682,11 @@ final class InlineQueryResultVoiceNote extends InlineQueryResult {
     String? id,
     VoiceNote? voiceNote,
     String? title,
-  }) =>
-      InlineQueryResultVoiceNote(
-        id: id ?? this.id,
-        voiceNote: voiceNote ?? this.voiceNote,
-        title: title ?? this.title,
-      );
+  }) => InlineQueryResultVoiceNote(
+    id: id ?? this.id,
+    voiceNote: voiceNote ?? this.voiceNote,
+    title: title ?? this.title,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineQueryResultVoiceNote';

@@ -23,20 +23,21 @@ final class Usernames extends TdObject {
 
   /// Parses a [Usernames] from TDLib JSON.
   factory Usernames.fromJson(Map<String, dynamic> json) => Usernames(
-        activeUsernames:
-            _readList<String>(json['active_usernames'], _readString),
-        disabledUsernames:
-            _readList<String>(json['disabled_usernames'], _readString),
-        editableUsername: _readString(json['editable_username']),
-      );
+    activeUsernames: _readList<String>(json['active_usernames'], _readString),
+    disabledUsernames: _readList<String>(
+      json['disabled_usernames'],
+      _readString,
+    ),
+    editableUsername: _readString(json['editable_username']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'active_usernames': activeUsernames,
-        'disabled_usernames': disabledUsernames,
-        'editable_username': editableUsername,
-      };
+    '@type': CONSTRUCTOR,
+    'active_usernames': activeUsernames,
+    'disabled_usernames': disabledUsernames,
+    'editable_username': editableUsername,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +45,11 @@ final class Usernames extends TdObject {
     List<String>? activeUsernames,
     List<String>? disabledUsernames,
     String? editableUsername,
-  }) =>
-      Usernames(
-        activeUsernames: activeUsernames ?? this.activeUsernames,
-        disabledUsernames: disabledUsernames ?? this.disabledUsernames,
-        editableUsername: editableUsername ?? this.editableUsername,
-      );
+  }) => Usernames(
+    activeUsernames: activeUsernames ?? this.activeUsernames,
+    disabledUsernames: disabledUsernames ?? this.disabledUsernames,
+    editableUsername: editableUsername ?? this.editableUsername,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'usernames';

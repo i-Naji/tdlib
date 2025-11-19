@@ -33,14 +33,14 @@ final class AddMessageReaction extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'reaction_type': reactionType.toJson(),
-        'is_big': isBig,
-        'update_recent_reactions': updateRecentReactions,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'reaction_type': reactionType.toJson(),
+    'is_big': isBig,
+    'update_recent_reactions': updateRecentReactions,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,15 +50,13 @@ final class AddMessageReaction extends TdFunction<Ok> {
     ReactionType? reactionType,
     bool? isBig,
     bool? updateRecentReactions,
-  }) =>
-      AddMessageReaction(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        reactionType: reactionType ?? this.reactionType,
-        isBig: isBig ?? this.isBig,
-        updateRecentReactions:
-            updateRecentReactions ?? this.updateRecentReactions,
-      );
+  }) => AddMessageReaction(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    reactionType: reactionType ?? this.reactionType,
+    isBig: isBig ?? this.isBig,
+    updateRecentReactions: updateRecentReactions ?? this.updateRecentReactions,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addMessageReaction';

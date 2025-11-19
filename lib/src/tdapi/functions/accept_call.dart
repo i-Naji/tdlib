@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class AcceptCall extends TdFunction<Ok> {
   /// Accepts an incoming call
-  const AcceptCall({
-    required this.callId,
-    required this.protocol,
-  });
+  const AcceptCall({required this.callId, required this.protocol});
 
   /// Call identifier
   final int callId;
@@ -21,22 +18,18 @@ final class AcceptCall extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'call_id': callId,
-        'protocol': protocol.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'call_id': callId,
+    'protocol': protocol.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  AcceptCall copyWith({
-    int? callId,
-    CallProtocol? protocol,
-  }) =>
-      AcceptCall(
-        callId: callId ?? this.callId,
-        protocol: protocol ?? this.protocol,
-      );
+  AcceptCall copyWith({int? callId, CallProtocol? protocol}) => AcceptCall(
+    callId: callId ?? this.callId,
+    protocol: protocol ?? this.protocol,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'acceptCall';

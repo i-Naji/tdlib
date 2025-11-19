@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetChatPhoto extends TdFunction<Ok> {
   /// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info member right
-  const SetChatPhoto({
-    required this.chatId,
-    this.photo,
-  });
+  const SetChatPhoto({required this.chatId, this.photo});
 
   /// Chat identifier
   final int chatId;
@@ -21,18 +18,15 @@ final class SetChatPhoto extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'photo': photo?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'photo': photo?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetChatPhoto copyWith({
-    int? chatId,
-    InputChatPhoto? Function()? photo,
-  }) =>
+  SetChatPhoto copyWith({int? chatId, InputChatPhoto? Function()? photo}) =>
       SetChatPhoto(
         chatId: chatId ?? this.chatId,
         photo: photo != null ? photo() : this.photo,

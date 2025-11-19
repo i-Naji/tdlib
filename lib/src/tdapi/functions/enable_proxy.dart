@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class EnableProxy extends TdFunction<Ok> {
   /// Enables a proxy. Only one proxy can be enabled at a time. Can be called before authorization
-  const EnableProxy({
-    required this.proxyId,
-  });
+  const EnableProxy({required this.proxyId});
 
   /// Proxy identifier
   final int proxyId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'proxy_id': proxyId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'proxy_id': proxyId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  EnableProxy copyWith({
-    int? proxyId,
-  }) =>
-      EnableProxy(
-        proxyId: proxyId ?? this.proxyId,
-      );
+  EnableProxy copyWith({int? proxyId}) =>
+      EnableProxy(proxyId: proxyId ?? this.proxyId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'enableProxy';

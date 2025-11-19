@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a number of Telegram Stars
 final class StarCount extends TdObject {
   /// Contains a number of Telegram Stars
-  const StarCount({
-    required this.starCount,
-    this.extra,
-    this.clientId,
-  });
+  const StarCount({required this.starCount, this.extra, this.clientId});
 
   /// Number of Telegram Stars
   final int starCount;
@@ -25,24 +21,20 @@ final class StarCount extends TdObject {
 
   /// Parses a [StarCount] from TDLib JSON.
   factory StarCount.fromJson(Map<String, dynamic> json) => StarCount(
-        starCount: _readInt(json['star_count']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    starCount: _readInt(json['star_count']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_count': starCount,
-      };
+    '@type': CONSTRUCTOR,
+    'star_count': starCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  StarCount copyWith({
-    int? starCount,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  StarCount copyWith({int? starCount, dynamic extra, int? clientId}) =>
       StarCount(
         starCount: starCount ?? this.starCount,
         extra: extra ?? this.extra,

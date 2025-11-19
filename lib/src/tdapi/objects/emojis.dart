@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Represents a list of emojis
 final class Emojis extends TdObject {
   /// Represents a list of emojis
-  const Emojis({
-    required this.emojis,
-    this.extra,
-    this.clientId,
-  });
+  const Emojis({required this.emojis, this.extra, this.clientId});
 
   /// List of emojis
   final List<String> emojis;
@@ -25,24 +21,17 @@ final class Emojis extends TdObject {
 
   /// Parses a [Emojis] from TDLib JSON.
   factory Emojis.fromJson(Map<String, dynamic> json) => Emojis(
-        emojis: _readList<String>(json['emojis'], _readString),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    emojis: _readList<String>(json['emojis'], _readString),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'emojis': emojis,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'emojis': emojis};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  Emojis copyWith({
-    List<String>? emojis,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  Emojis copyWith({List<String>? emojis, dynamic extra, int? clientId}) =>
       Emojis(
         emojis: emojis ?? this.emojis,
         extra: extra ?? this.extra,

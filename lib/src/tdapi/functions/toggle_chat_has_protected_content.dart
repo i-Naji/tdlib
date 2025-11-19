@@ -21,22 +21,21 @@ final class ToggleChatHasProtectedContent extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'has_protected_content': hasProtectedContent,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'has_protected_content': hasProtectedContent,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleChatHasProtectedContent copyWith({
     int? chatId,
     bool? hasProtectedContent,
-  }) =>
-      ToggleChatHasProtectedContent(
-        chatId: chatId ?? this.chatId,
-        hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
-      );
+  }) => ToggleChatHasProtectedContent(
+    chatId: chatId ?? this.chatId,
+    hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleChatHasProtectedContent';

@@ -52,9 +52,7 @@ final class TargetChatCurrent extends TargetChat {
       const TargetChatCurrent();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -71,9 +69,7 @@ final class TargetChatCurrent extends TargetChat {
 /// The chat needs to be chosen by the user among chats of the specified types
 final class TargetChatChosen extends TargetChat {
   /// The chat needs to be chosen by the user among chats of the specified types
-  const TargetChatChosen({
-    required this.types,
-  });
+  const TargetChatChosen({required this.types});
 
   /// Allowed types for the chat
   final TargetChatTypes types;
@@ -86,19 +82,15 @@ final class TargetChatChosen extends TargetChat {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'types': types.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'types': types.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  TargetChatChosen copyWith({
-    TargetChatTypes? types,
-  }) =>
-      TargetChatChosen(
-        types: types ?? this.types,
-      );
+  TargetChatChosen copyWith({TargetChatTypes? types}) =>
+      TargetChatChosen(types: types ?? this.types);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'targetChatChosen';
@@ -110,9 +102,7 @@ final class TargetChatChosen extends TargetChat {
 /// The chat needs to be open with the provided internal link
 final class TargetChatInternalLink extends TargetChat {
   /// The chat needs to be open with the provided internal link
-  const TargetChatInternalLink({
-    required this.link,
-  });
+  const TargetChatInternalLink({required this.link});
 
   /// An internal link pointing to the chat
   final InternalLinkType link;
@@ -125,19 +115,15 @@ final class TargetChatInternalLink extends TargetChat {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'link': link.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'link': link.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  TargetChatInternalLink copyWith({
-    InternalLinkType? link,
-  }) =>
-      TargetChatInternalLink(
-        link: link ?? this.link,
-      );
+  TargetChatInternalLink copyWith({InternalLinkType? link}) =>
+      TargetChatInternalLink(link: link ?? this.link);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'targetChatInternalLink';

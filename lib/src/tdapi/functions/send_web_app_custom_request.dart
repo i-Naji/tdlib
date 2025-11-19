@@ -25,12 +25,12 @@ final class SendWebAppCustomRequest extends TdFunction<CustomRequestResult> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'method': method,
-        'parameters': parameters,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'method': method,
+    'parameters': parameters,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SendWebAppCustomRequest extends TdFunction<CustomRequestResult> {
     int? botUserId,
     String? method,
     String? parameters,
-  }) =>
-      SendWebAppCustomRequest(
-        botUserId: botUserId ?? this.botUserId,
-        method: method ?? this.method,
-        parameters: parameters ?? this.parameters,
-      );
+  }) => SendWebAppCustomRequest(
+    botUserId: botUserId ?? this.botUserId,
+    method: method ?? this.method,
+    parameters: parameters ?? this.parameters,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sendWebAppCustomRequest';

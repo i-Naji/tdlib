@@ -29,13 +29,13 @@ final class EditChatFolderInviteLink extends TdFunction<ChatFolderInviteLink> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_folder_id': chatFolderId,
-        'invite_link': inviteLink,
-        'name': name,
-        'chat_ids': chatIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_folder_id': chatFolderId,
+    'invite_link': inviteLink,
+    'name': name,
+    'chat_ids': chatIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class EditChatFolderInviteLink extends TdFunction<ChatFolderInviteLink> {
     String? inviteLink,
     String? name,
     List<int>? chatIds,
-  }) =>
-      EditChatFolderInviteLink(
-        chatFolderId: chatFolderId ?? this.chatFolderId,
-        inviteLink: inviteLink ?? this.inviteLink,
-        name: name ?? this.name,
-        chatIds: chatIds ?? this.chatIds,
-      );
+  }) => EditChatFolderInviteLink(
+    chatFolderId: chatFolderId ?? this.chatFolderId,
+    inviteLink: inviteLink ?? this.inviteLink,
+    name: name ?? this.name,
+    chatIds: chatIds ?? this.chatIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'editChatFolderInviteLink';

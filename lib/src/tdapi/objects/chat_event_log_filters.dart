@@ -86,22 +86,22 @@ final class ChatEventLogFilters extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message_edits': messageEdits,
-        'message_deletions': messageDeletions,
-        'message_pins': messagePins,
-        'member_joins': memberJoins,
-        'member_leaves': memberLeaves,
-        'member_invites': memberInvites,
-        'member_promotions': memberPromotions,
-        'member_restrictions': memberRestrictions,
-        'info_changes': infoChanges,
-        'setting_changes': settingChanges,
-        'invite_link_changes': inviteLinkChanges,
-        'video_chat_changes': videoChatChanges,
-        'forum_changes': forumChanges,
-        'subscription_extensions': subscriptionExtensions,
-      };
+    '@type': CONSTRUCTOR,
+    'message_edits': messageEdits,
+    'message_deletions': messageDeletions,
+    'message_pins': messagePins,
+    'member_joins': memberJoins,
+    'member_leaves': memberLeaves,
+    'member_invites': memberInvites,
+    'member_promotions': memberPromotions,
+    'member_restrictions': memberRestrictions,
+    'info_changes': infoChanges,
+    'setting_changes': settingChanges,
+    'invite_link_changes': inviteLinkChanges,
+    'video_chat_changes': videoChatChanges,
+    'forum_changes': forumChanges,
+    'subscription_extensions': subscriptionExtensions,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -120,24 +120,23 @@ final class ChatEventLogFilters extends TdObject {
     bool? videoChatChanges,
     bool? forumChanges,
     bool? subscriptionExtensions,
-  }) =>
-      ChatEventLogFilters(
-        messageEdits: messageEdits ?? this.messageEdits,
-        messageDeletions: messageDeletions ?? this.messageDeletions,
-        messagePins: messagePins ?? this.messagePins,
-        memberJoins: memberJoins ?? this.memberJoins,
-        memberLeaves: memberLeaves ?? this.memberLeaves,
-        memberInvites: memberInvites ?? this.memberInvites,
-        memberPromotions: memberPromotions ?? this.memberPromotions,
-        memberRestrictions: memberRestrictions ?? this.memberRestrictions,
-        infoChanges: infoChanges ?? this.infoChanges,
-        settingChanges: settingChanges ?? this.settingChanges,
-        inviteLinkChanges: inviteLinkChanges ?? this.inviteLinkChanges,
-        videoChatChanges: videoChatChanges ?? this.videoChatChanges,
-        forumChanges: forumChanges ?? this.forumChanges,
-        subscriptionExtensions:
-            subscriptionExtensions ?? this.subscriptionExtensions,
-      );
+  }) => ChatEventLogFilters(
+    messageEdits: messageEdits ?? this.messageEdits,
+    messageDeletions: messageDeletions ?? this.messageDeletions,
+    messagePins: messagePins ?? this.messagePins,
+    memberJoins: memberJoins ?? this.memberJoins,
+    memberLeaves: memberLeaves ?? this.memberLeaves,
+    memberInvites: memberInvites ?? this.memberInvites,
+    memberPromotions: memberPromotions ?? this.memberPromotions,
+    memberRestrictions: memberRestrictions ?? this.memberRestrictions,
+    infoChanges: infoChanges ?? this.infoChanges,
+    settingChanges: settingChanges ?? this.settingChanges,
+    inviteLinkChanges: inviteLinkChanges ?? this.inviteLinkChanges,
+    videoChatChanges: videoChatChanges ?? this.videoChatChanges,
+    forumChanges: forumChanges ?? this.forumChanges,
+    subscriptionExtensions:
+        subscriptionExtensions ?? this.subscriptionExtensions,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventLogFilters';

@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [StarAmount].
 final class GetBusinessAccountStarAmount extends TdFunction<StarAmount> {
   /// Returns the amount of Telegram Stars owned by a business account; for bots only
-  const GetBusinessAccountStarAmount({
-    required this.businessConnectionId,
-  });
+  const GetBusinessAccountStarAmount({required this.businessConnectionId});
 
   /// Unique identifier of business connection
   final String businessConnectionId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'business_connection_id': businessConnectionId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'business_connection_id': businessConnectionId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetBusinessAccountStarAmount copyWith({
-    String? businessConnectionId,
-  }) =>
+  GetBusinessAccountStarAmount copyWith({String? businessConnectionId}) =>
       GetBusinessAccountStarAmount(
         businessConnectionId: businessConnectionId ?? this.businessConnectionId,
       );

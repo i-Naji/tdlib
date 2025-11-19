@@ -48,10 +48,7 @@ final class UndecodedCanTransferOwnershipResult
 /// The session can be used
 final class CanTransferOwnershipResultOk extends CanTransferOwnershipResult {
   /// The session can be used
-  const CanTransferOwnershipResultOk({
-    this.extra,
-    this.clientId,
-  });
+  const CanTransferOwnershipResultOk({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -69,17 +66,12 @@ final class CanTransferOwnershipResultOk extends CanTransferOwnershipResult {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  CanTransferOwnershipResultOk copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  CanTransferOwnershipResultOk copyWith({dynamic extra, int? clientId}) =>
       CanTransferOwnershipResultOk(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -96,10 +88,7 @@ final class CanTransferOwnershipResultOk extends CanTransferOwnershipResult {
 final class CanTransferOwnershipResultPasswordNeeded
     extends CanTransferOwnershipResult {
   /// The 2-step verification needs to be enabled first
-  const CanTransferOwnershipResultPasswordNeeded({
-    this.extra,
-    this.clientId,
-  });
+  const CanTransferOwnershipResultPasswordNeeded({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -111,16 +100,14 @@ final class CanTransferOwnershipResultPasswordNeeded
 
   /// Parses a [CanTransferOwnershipResultPasswordNeeded] from TDLib JSON.
   factory CanTransferOwnershipResultPasswordNeeded.fromJson(
-          Map<String, dynamic> json) =>
-      CanTransferOwnershipResultPasswordNeeded(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => CanTransferOwnershipResultPasswordNeeded(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -128,11 +115,10 @@ final class CanTransferOwnershipResultPasswordNeeded
   CanTransferOwnershipResultPasswordNeeded copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      CanTransferOwnershipResultPasswordNeeded(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CanTransferOwnershipResultPasswordNeeded(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'canTransferOwnershipResultPasswordNeeded';
@@ -164,18 +150,18 @@ final class CanTransferOwnershipResultPasswordTooFresh
 
   /// Parses a [CanTransferOwnershipResultPasswordTooFresh] from TDLib JSON.
   factory CanTransferOwnershipResultPasswordTooFresh.fromJson(
-          Map<String, dynamic> json) =>
-      CanTransferOwnershipResultPasswordTooFresh(
-        retryAfter: _readInt(json['retry_after']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => CanTransferOwnershipResultPasswordTooFresh(
+    retryAfter: _readInt(json['retry_after']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'retry_after': retryAfter,
-      };
+    '@type': CONSTRUCTOR,
+    'retry_after': retryAfter,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -184,12 +170,11 @@ final class CanTransferOwnershipResultPasswordTooFresh
     int? retryAfter,
     dynamic extra,
     int? clientId,
-  }) =>
-      CanTransferOwnershipResultPasswordTooFresh(
-        retryAfter: retryAfter ?? this.retryAfter,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CanTransferOwnershipResultPasswordTooFresh(
+    retryAfter: retryAfter ?? this.retryAfter,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -222,18 +207,18 @@ final class CanTransferOwnershipResultSessionTooFresh
 
   /// Parses a [CanTransferOwnershipResultSessionTooFresh] from TDLib JSON.
   factory CanTransferOwnershipResultSessionTooFresh.fromJson(
-          Map<String, dynamic> json) =>
-      CanTransferOwnershipResultSessionTooFresh(
-        retryAfter: _readInt(json['retry_after']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => CanTransferOwnershipResultSessionTooFresh(
+    retryAfter: _readInt(json['retry_after']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'retry_after': retryAfter,
-      };
+    '@type': CONSTRUCTOR,
+    'retry_after': retryAfter,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -242,12 +227,11 @@ final class CanTransferOwnershipResultSessionTooFresh
     int? retryAfter,
     dynamic extra,
     int? clientId,
-  }) =>
-      CanTransferOwnershipResultSessionTooFresh(
-        retryAfter: retryAfter ?? this.retryAfter,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CanTransferOwnershipResultSessionTooFresh(
+    retryAfter: retryAfter ?? this.retryAfter,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'canTransferOwnershipResultSessionTooFresh';

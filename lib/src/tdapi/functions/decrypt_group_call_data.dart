@@ -29,13 +29,13 @@ final class DecryptGroupCallData extends TdFunction<Data> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'participant_id': participantId.toJson(),
-        'data_channel': dataChannel?.toJson(),
-        'data': data,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'participant_id': participantId.toJson(),
+    'data_channel': dataChannel?.toJson(),
+    'data': data,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class DecryptGroupCallData extends TdFunction<Data> {
     MessageSender? participantId,
     GroupCallDataChannel? Function()? dataChannel,
     String? data,
-  }) =>
-      DecryptGroupCallData(
-        groupCallId: groupCallId ?? this.groupCallId,
-        participantId: participantId ?? this.participantId,
-        dataChannel: dataChannel != null ? dataChannel() : this.dataChannel,
-        data: data ?? this.data,
-      );
+  }) => DecryptGroupCallData(
+    groupCallId: groupCallId ?? this.groupCallId,
+    participantId: participantId ?? this.participantId,
+    dataChannel: dataChannel != null ? dataChannel() : this.dataChannel,
+    data: data ?? this.data,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'decryptGroupCallData';

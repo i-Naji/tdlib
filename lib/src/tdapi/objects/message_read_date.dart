@@ -72,18 +72,14 @@ final class MessageReadDateRead extends MessageReadDate {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'read_date': readDate,
-      };
+    '@type': CONSTRUCTOR,
+    'read_date': readDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageReadDateRead copyWith({
-    int? readDate,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  MessageReadDateRead copyWith({int? readDate, dynamic extra, int? clientId}) =>
       MessageReadDateRead(
         readDate: readDate ?? this.readDate,
         extra: extra ?? this.extra,
@@ -100,10 +96,7 @@ final class MessageReadDateRead extends MessageReadDate {
 /// The message is unread yet
 final class MessageReadDateUnread extends MessageReadDate {
   /// The message is unread yet
-  const MessageReadDateUnread({
-    this.extra,
-    this.clientId,
-  });
+  const MessageReadDateUnread({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -121,17 +114,12 @@ final class MessageReadDateUnread extends MessageReadDate {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageReadDateUnread copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  MessageReadDateUnread copyWith({dynamic extra, int? clientId}) =>
       MessageReadDateUnread(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -147,10 +135,7 @@ final class MessageReadDateUnread extends MessageReadDate {
 /// The message is too old to get read date
 final class MessageReadDateTooOld extends MessageReadDate {
   /// The message is too old to get read date
-  const MessageReadDateTooOld({
-    this.extra,
-    this.clientId,
-  });
+  const MessageReadDateTooOld({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -168,17 +153,12 @@ final class MessageReadDateTooOld extends MessageReadDate {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageReadDateTooOld copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  MessageReadDateTooOld copyWith({dynamic extra, int? clientId}) =>
       MessageReadDateTooOld(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -194,10 +174,7 @@ final class MessageReadDateTooOld extends MessageReadDate {
 /// The read date is unknown due to privacy settings of the other user
 final class MessageReadDateUserPrivacyRestricted extends MessageReadDate {
   /// The read date is unknown due to privacy settings of the other user
-  const MessageReadDateUserPrivacyRestricted({
-    this.extra,
-    this.clientId,
-  });
+  const MessageReadDateUserPrivacyRestricted({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -209,16 +186,14 @@ final class MessageReadDateUserPrivacyRestricted extends MessageReadDate {
 
   /// Parses a [MessageReadDateUserPrivacyRestricted] from TDLib JSON.
   factory MessageReadDateUserPrivacyRestricted.fromJson(
-          Map<String, dynamic> json) =>
-      MessageReadDateUserPrivacyRestricted(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => MessageReadDateUserPrivacyRestricted(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -226,11 +201,10 @@ final class MessageReadDateUserPrivacyRestricted extends MessageReadDate {
   MessageReadDateUserPrivacyRestricted copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      MessageReadDateUserPrivacyRestricted(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => MessageReadDateUserPrivacyRestricted(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageReadDateUserPrivacyRestricted';
@@ -242,10 +216,7 @@ final class MessageReadDateUserPrivacyRestricted extends MessageReadDate {
 /// The read date is unknown due to privacy settings of the current user, but will be known if the user subscribes to Telegram Premium
 final class MessageReadDateMyPrivacyRestricted extends MessageReadDate {
   /// The read date is unknown due to privacy settings of the current user, but will be known if the user subscribes to Telegram Premium
-  const MessageReadDateMyPrivacyRestricted({
-    this.extra,
-    this.clientId,
-  });
+  const MessageReadDateMyPrivacyRestricted({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -257,24 +228,19 @@ final class MessageReadDateMyPrivacyRestricted extends MessageReadDate {
 
   /// Parses a [MessageReadDateMyPrivacyRestricted] from TDLib JSON.
   factory MessageReadDateMyPrivacyRestricted.fromJson(
-          Map<String, dynamic> json) =>
-      MessageReadDateMyPrivacyRestricted(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => MessageReadDateMyPrivacyRestricted(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageReadDateMyPrivacyRestricted copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  MessageReadDateMyPrivacyRestricted copyWith({dynamic extra, int? clientId}) =>
       MessageReadDateMyPrivacyRestricted(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

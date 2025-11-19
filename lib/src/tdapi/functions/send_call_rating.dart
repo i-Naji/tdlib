@@ -29,13 +29,13 @@ final class SendCallRating extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'call_id': callId,
-        'rating': rating,
-        'comment': comment,
-        'problems': [for (final e in problems) e.toJson()],
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'call_id': callId,
+    'rating': rating,
+    'comment': comment,
+    'problems': [for (final e in problems) e.toJson()],
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class SendCallRating extends TdFunction<Ok> {
     int? rating,
     String? comment,
     List<CallProblem>? problems,
-  }) =>
-      SendCallRating(
-        callId: callId ?? this.callId,
-        rating: rating ?? this.rating,
-        comment: comment ?? this.comment,
-        problems: problems ?? this.problems,
-      );
+  }) => SendCallRating(
+    callId: callId ?? this.callId,
+    rating: rating ?? this.rating,
+    comment: comment ?? this.comment,
+    problems: problems ?? this.problems,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sendCallRating';

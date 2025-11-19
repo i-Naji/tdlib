@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetPassportElementErrors extends TdFunction<Ok> {
   /// Informs the user that some of the elements in their Telegram Passport contain errors; for bots only. The user will not be able to resend the elements, until the errors are fixed
-  const SetPassportElementErrors({
-    required this.userId,
-    required this.errors,
-  });
+  const SetPassportElementErrors({required this.userId, required this.errors});
 
   /// User identifier
   final int userId;
@@ -21,22 +18,21 @@ final class SetPassportElementErrors extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'errors': [for (final e in errors) e.toJson()],
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'errors': [for (final e in errors) e.toJson()],
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetPassportElementErrors copyWith({
     int? userId,
     List<InputPassportElementError>? errors,
-  }) =>
-      SetPassportElementErrors(
-        userId: userId ?? this.userId,
-        errors: errors ?? this.errors,
-      );
+  }) => SetPassportElementErrors(
+    userId: userId ?? this.userId,
+    errors: errors ?? this.errors,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setPassportElementErrors';

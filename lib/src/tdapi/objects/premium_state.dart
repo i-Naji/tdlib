@@ -37,28 +37,31 @@ final class PremiumState extends TdObject {
 
   /// Parses a [PremiumState] from TDLib JSON.
   factory PremiumState.fromJson(Map<String, dynamic> json) => PremiumState(
-        state: _readObject(json['state'], FormattedText.fromJson),
-        paymentOptions: _readList<PremiumStatePaymentOption>(
-            json['payment_options'],
-            (e) => _readObject(e, PremiumStatePaymentOption.fromJson)),
-        animations: _readList<PremiumFeaturePromotionAnimation>(
-            json['animations'],
-            (e) => _readObject(e, PremiumFeaturePromotionAnimation.fromJson)),
-        businessAnimations: _readList<BusinessFeaturePromotionAnimation>(
-            json['business_animations'],
-            (e) => _readObject(e, BusinessFeaturePromotionAnimation.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    state: _readObject(json['state'], FormattedText.fromJson),
+    paymentOptions: _readList<PremiumStatePaymentOption>(
+      json['payment_options'],
+      (e) => _readObject(e, PremiumStatePaymentOption.fromJson),
+    ),
+    animations: _readList<PremiumFeaturePromotionAnimation>(
+      json['animations'],
+      (e) => _readObject(e, PremiumFeaturePromotionAnimation.fromJson),
+    ),
+    businessAnimations: _readList<BusinessFeaturePromotionAnimation>(
+      json['business_animations'],
+      (e) => _readObject(e, BusinessFeaturePromotionAnimation.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'state': state.toJson(),
-        'payment_options': [for (final e in paymentOptions) e.toJson()],
-        'animations': [for (final e in animations) e.toJson()],
-        'business_animations': [for (final e in businessAnimations) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'state': state.toJson(),
+    'payment_options': [for (final e in paymentOptions) e.toJson()],
+    'animations': [for (final e in animations) e.toJson()],
+    'business_animations': [for (final e in businessAnimations) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -69,15 +72,14 @@ final class PremiumState extends TdObject {
     List<BusinessFeaturePromotionAnimation>? businessAnimations,
     dynamic extra,
     int? clientId,
-  }) =>
-      PremiumState(
-        state: state ?? this.state,
-        paymentOptions: paymentOptions ?? this.paymentOptions,
-        animations: animations ?? this.animations,
-        businessAnimations: businessAnimations ?? this.businessAnimations,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PremiumState(
+    state: state ?? this.state,
+    paymentOptions: paymentOptions ?? this.paymentOptions,
+    animations: animations ?? this.animations,
+    businessAnimations: businessAnimations ?? this.businessAnimations,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumState';

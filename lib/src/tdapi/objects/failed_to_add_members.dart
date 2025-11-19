@@ -27,19 +27,18 @@ final class FailedToAddMembers extends TdObject {
   factory FailedToAddMembers.fromJson(Map<String, dynamic> json) =>
       FailedToAddMembers(
         failedToAddMembers: _readList<FailedToAddMember>(
-            json['failed_to_add_members'],
-            (e) => _readObject(e, FailedToAddMember.fromJson)),
+          json['failed_to_add_members'],
+          (e) => _readObject(e, FailedToAddMember.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'failed_to_add_members': [
-          for (final e in failedToAddMembers) e.toJson()
-        ],
-      };
+    '@type': CONSTRUCTOR,
+    'failed_to_add_members': [for (final e in failedToAddMembers) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -47,12 +46,11 @@ final class FailedToAddMembers extends TdObject {
     List<FailedToAddMember>? failedToAddMembers,
     dynamic extra,
     int? clientId,
-  }) =>
-      FailedToAddMembers(
-        failedToAddMembers: failedToAddMembers ?? this.failedToAddMembers,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => FailedToAddMembers(
+    failedToAddMembers: failedToAddMembers ?? this.failedToAddMembers,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'failedToAddMembers';

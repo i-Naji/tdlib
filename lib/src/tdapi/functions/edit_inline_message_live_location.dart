@@ -37,15 +37,15 @@ final class EditInlineMessageLiveLocation extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'inline_message_id': inlineMessageId,
-        'reply_markup': replyMarkup?.toJson(),
-        'location': location?.toJson(),
-        'live_period': livePeriod,
-        'heading': heading,
-        'proximity_alert_radius': proximityAlertRadius,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'inline_message_id': inlineMessageId,
+    'reply_markup': replyMarkup?.toJson(),
+    'location': location?.toJson(),
+    'live_period': livePeriod,
+    'heading': heading,
+    'proximity_alert_radius': proximityAlertRadius,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class EditInlineMessageLiveLocation extends TdFunction<Ok> {
     int? livePeriod,
     int? heading,
     int? proximityAlertRadius,
-  }) =>
-      EditInlineMessageLiveLocation(
-        inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        location: location != null ? location() : this.location,
-        livePeriod: livePeriod ?? this.livePeriod,
-        heading: heading ?? this.heading,
-        proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
-      );
+  }) => EditInlineMessageLiveLocation(
+    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    location: location != null ? location() : this.location,
+    livePeriod: livePeriod ?? this.livePeriod,
+    heading: heading ?? this.heading,
+    proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'editInlineMessageLiveLocation';

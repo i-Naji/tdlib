@@ -47,10 +47,7 @@ final class UndecodedInternalLinkType extends InternalLinkType {
 /// The link is a link to the Devices section of the application. Use getActiveSessions to get the list of active sessions and show them to the user
 final class InternalLinkTypeActiveSessions extends InternalLinkType {
   /// The link is a link to the Devices section of the application. Use getActiveSessions to get the list of active sessions and show them to the user
-  const InternalLinkTypeActiveSessions({
-    this.extra,
-    this.clientId,
-  });
+  const InternalLinkTypeActiveSessions({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -68,17 +65,12 @@ final class InternalLinkTypeActiveSessions extends InternalLinkType {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InternalLinkTypeActiveSessions copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  InternalLinkTypeActiveSessions copyWith({dynamic extra, int? clientId}) =>
       InternalLinkTypeActiveSessions(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -121,22 +113,22 @@ final class InternalLinkTypeAttachmentMenuBot extends InternalLinkType {
 
   /// Parses a [InternalLinkTypeAttachmentMenuBot] from TDLib JSON.
   factory InternalLinkTypeAttachmentMenuBot.fromJson(
-          Map<String, dynamic> json) =>
-      InternalLinkTypeAttachmentMenuBot(
-        targetChat: _readObject(json['target_chat'], TargetChat.fromJson),
-        botUsername: _readString(json['bot_username']),
-        url: _readString(json['url']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InternalLinkTypeAttachmentMenuBot(
+    targetChat: _readObject(json['target_chat'], TargetChat.fromJson),
+    botUsername: _readString(json['bot_username']),
+    url: _readString(json['url']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'target_chat': targetChat.toJson(),
-        'bot_username': botUsername,
-        'url': url,
-      };
+    '@type': CONSTRUCTOR,
+    'target_chat': targetChat.toJson(),
+    'bot_username': botUsername,
+    'url': url,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -147,14 +139,13 @@ final class InternalLinkTypeAttachmentMenuBot extends InternalLinkType {
     String? url,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeAttachmentMenuBot(
-        targetChat: targetChat ?? this.targetChat,
-        botUsername: botUsername ?? this.botUsername,
-        url: url ?? this.url,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeAttachmentMenuBot(
+    targetChat: targetChat ?? this.targetChat,
+    botUsername: botUsername ?? this.botUsername,
+    url: url ?? this.url,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeAttachmentMenuBot';
@@ -185,18 +176,15 @@ final class InternalLinkTypeAuthenticationCode extends InternalLinkType {
 
   /// Parses a [InternalLinkTypeAuthenticationCode] from TDLib JSON.
   factory InternalLinkTypeAuthenticationCode.fromJson(
-          Map<String, dynamic> json) =>
-      InternalLinkTypeAuthenticationCode(
-        code: _readString(json['code']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InternalLinkTypeAuthenticationCode(
+    code: _readString(json['code']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'code': code,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'code': code};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -205,12 +193,11 @@ final class InternalLinkTypeAuthenticationCode extends InternalLinkType {
     String? code,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeAuthenticationCode(
-        code: code ?? this.code,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeAuthenticationCode(
+    code: code ?? this.code,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeAuthenticationCode';
@@ -249,9 +236,9 @@ final class InternalLinkTypeBackground extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'background_name': backgroundName,
-      };
+    '@type': CONSTRUCTOR,
+    'background_name': backgroundName,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -260,12 +247,11 @@ final class InternalLinkTypeBackground extends InternalLinkType {
     String? backgroundName,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeBackground(
-        backgroundName: backgroundName ?? this.backgroundName,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeBackground(
+    backgroundName: backgroundName ?? this.backgroundName,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeBackground';
@@ -303,17 +289,19 @@ final class InternalLinkTypeBotAddToChannel extends InternalLinkType {
       InternalLinkTypeBotAddToChannel(
         botUsername: _readString(json['bot_username']),
         administratorRights: _readObject(
-            json['administrator_rights'], ChatAdministratorRights.fromJson),
+          json['administrator_rights'],
+          ChatAdministratorRights.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'bot_username': botUsername,
-        'administrator_rights': administratorRights.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'bot_username': botUsername,
+    'administrator_rights': administratorRights.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -323,13 +311,12 @@ final class InternalLinkTypeBotAddToChannel extends InternalLinkType {
     ChatAdministratorRights? administratorRights,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeBotAddToChannel(
-        botUsername: botUsername ?? this.botUsername,
-        administratorRights: administratorRights ?? this.administratorRights,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeBotAddToChannel(
+    botUsername: botUsername ?? this.botUsername,
+    administratorRights: administratorRights ?? this.administratorRights,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeBotAddToChannel';
@@ -378,11 +365,11 @@ final class InternalLinkTypeBotStart extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'bot_username': botUsername,
-        'start_parameter': startParameter,
-        'autostart': autostart,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_username': botUsername,
+    'start_parameter': startParameter,
+    'autostart': autostart,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -393,14 +380,13 @@ final class InternalLinkTypeBotStart extends InternalLinkType {
     bool? autostart,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeBotStart(
-        botUsername: botUsername ?? this.botUsername,
-        startParameter: startParameter ?? this.startParameter,
-        autostart: autostart ?? this.autostart,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeBotStart(
+    botUsername: botUsername ?? this.botUsername,
+    startParameter: startParameter ?? this.startParameter,
+    autostart: autostart ?? this.autostart,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeBotStart';
@@ -443,18 +429,20 @@ final class InternalLinkTypeBotStartInGroup extends InternalLinkType {
         botUsername: _readString(json['bot_username']),
         startParameter: _readString(json['start_parameter']),
         administratorRights: _readOptional(
-            json['administrator_rights'], ChatAdministratorRights.fromJson),
+          json['administrator_rights'],
+          ChatAdministratorRights.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'bot_username': botUsername,
-        'start_parameter': startParameter,
-        'administrator_rights': administratorRights?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'bot_username': botUsername,
+    'start_parameter': startParameter,
+    'administrator_rights': administratorRights?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -465,16 +453,15 @@ final class InternalLinkTypeBotStartInGroup extends InternalLinkType {
     ChatAdministratorRights? Function()? administratorRights,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeBotStartInGroup(
-        botUsername: botUsername ?? this.botUsername,
-        startParameter: startParameter ?? this.startParameter,
-        administratorRights: administratorRights != null
-            ? administratorRights()
-            : this.administratorRights,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeBotStartInGroup(
+    botUsername: botUsername ?? this.botUsername,
+    startParameter: startParameter ?? this.startParameter,
+    administratorRights: administratorRights != null
+        ? administratorRights()
+        : this.administratorRights,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeBotStartInGroup';
@@ -513,9 +500,9 @@ final class InternalLinkTypeBusinessChat extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'link_name': linkName,
-      };
+    '@type': CONSTRUCTOR,
+    'link_name': linkName,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -524,12 +511,11 @@ final class InternalLinkTypeBusinessChat extends InternalLinkType {
     String? linkName,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeBusinessChat(
-        linkName: linkName ?? this.linkName,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeBusinessChat(
+    linkName: linkName ?? this.linkName,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeBusinessChat';
@@ -573,10 +559,10 @@ final class InternalLinkTypeBuyStars extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_count': starCount,
-        'purpose': purpose,
-      };
+    '@type': CONSTRUCTOR,
+    'star_count': starCount,
+    'purpose': purpose,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -586,13 +572,12 @@ final class InternalLinkTypeBuyStars extends InternalLinkType {
     String? purpose,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeBuyStars(
-        starCount: starCount ?? this.starCount,
-        purpose: purpose ?? this.purpose,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeBuyStars(
+    starCount: starCount ?? this.starCount,
+    purpose: purpose ?? this.purpose,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeBuyStars';
@@ -604,10 +589,7 @@ final class InternalLinkTypeBuyStars extends InternalLinkType {
 /// The link is a link to the change phone number section of the application
 final class InternalLinkTypeChangePhoneNumber extends InternalLinkType {
   /// The link is a link to the change phone number section of the application
-  const InternalLinkTypeChangePhoneNumber({
-    this.extra,
-    this.clientId,
-  });
+  const InternalLinkTypeChangePhoneNumber({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -619,24 +601,19 @@ final class InternalLinkTypeChangePhoneNumber extends InternalLinkType {
 
   /// Parses a [InternalLinkTypeChangePhoneNumber] from TDLib JSON.
   factory InternalLinkTypeChangePhoneNumber.fromJson(
-          Map<String, dynamic> json) =>
-      InternalLinkTypeChangePhoneNumber(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InternalLinkTypeChangePhoneNumber(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InternalLinkTypeChangePhoneNumber copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  InternalLinkTypeChangePhoneNumber copyWith({dynamic extra, int? clientId}) =>
       InternalLinkTypeChangePhoneNumber(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -675,20 +652,20 @@ final class InternalLinkTypeChatAffiliateProgram extends InternalLinkType {
 
   /// Parses a [InternalLinkTypeChatAffiliateProgram] from TDLib JSON.
   factory InternalLinkTypeChatAffiliateProgram.fromJson(
-          Map<String, dynamic> json) =>
-      InternalLinkTypeChatAffiliateProgram(
-        username: _readString(json['username']),
-        referrer: _readString(json['referrer']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InternalLinkTypeChatAffiliateProgram(
+    username: _readString(json['username']),
+    referrer: _readString(json['referrer']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'username': username,
-        'referrer': referrer,
-      };
+    '@type': CONSTRUCTOR,
+    'username': username,
+    'referrer': referrer,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -698,13 +675,12 @@ final class InternalLinkTypeChatAffiliateProgram extends InternalLinkType {
     String? referrer,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeChatAffiliateProgram(
-        username: username ?? this.username,
-        referrer: referrer ?? this.referrer,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeChatAffiliateProgram(
+    username: username ?? this.username,
+    referrer: referrer ?? this.referrer,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeChatAffiliateProgram';
@@ -742,10 +718,7 @@ final class InternalLinkTypeChatBoost extends InternalLinkType {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'url': url};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -754,12 +727,11 @@ final class InternalLinkTypeChatBoost extends InternalLinkType {
     String? url,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeChatBoost(
-        url: url ?? this.url,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeChatBoost(
+    url: url ?? this.url,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeChatBoost';
@@ -790,18 +762,18 @@ final class InternalLinkTypeChatFolderInvite extends InternalLinkType {
 
   /// Parses a [InternalLinkTypeChatFolderInvite] from TDLib JSON.
   factory InternalLinkTypeChatFolderInvite.fromJson(
-          Map<String, dynamic> json) =>
-      InternalLinkTypeChatFolderInvite(
-        inviteLink: _readString(json['invite_link']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InternalLinkTypeChatFolderInvite(
+    inviteLink: _readString(json['invite_link']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'invite_link': inviteLink,
-      };
+    '@type': CONSTRUCTOR,
+    'invite_link': inviteLink,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -810,12 +782,11 @@ final class InternalLinkTypeChatFolderInvite extends InternalLinkType {
     String? inviteLink,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeChatFolderInvite(
-        inviteLink: inviteLink ?? this.inviteLink,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeChatFolderInvite(
+    inviteLink: inviteLink ?? this.inviteLink,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeChatFolderInvite';
@@ -827,10 +798,7 @@ final class InternalLinkTypeChatFolderInvite extends InternalLinkType {
 /// The link is a link to the folder section of the application settings
 final class InternalLinkTypeChatFolderSettings extends InternalLinkType {
   /// The link is a link to the folder section of the application settings
-  const InternalLinkTypeChatFolderSettings({
-    this.extra,
-    this.clientId,
-  });
+  const InternalLinkTypeChatFolderSettings({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -842,24 +810,19 @@ final class InternalLinkTypeChatFolderSettings extends InternalLinkType {
 
   /// Parses a [InternalLinkTypeChatFolderSettings] from TDLib JSON.
   factory InternalLinkTypeChatFolderSettings.fromJson(
-          Map<String, dynamic> json) =>
-      InternalLinkTypeChatFolderSettings(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InternalLinkTypeChatFolderSettings(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InternalLinkTypeChatFolderSettings copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  InternalLinkTypeChatFolderSettings copyWith({dynamic extra, int? clientId}) =>
       InternalLinkTypeChatFolderSettings(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -902,9 +865,9 @@ final class InternalLinkTypeChatInvite extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'invite_link': inviteLink,
-      };
+    '@type': CONSTRUCTOR,
+    'invite_link': inviteLink,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -913,12 +876,11 @@ final class InternalLinkTypeChatInvite extends InternalLinkType {
     String? inviteLink,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeChatInvite(
-        inviteLink: inviteLink ?? this.inviteLink,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeChatInvite(
+    inviteLink: inviteLink ?? this.inviteLink,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeChatInvite';
@@ -946,16 +908,14 @@ final class InternalLinkTypeDefaultMessageAutoDeleteTimerSettings
 
   /// Parses a [InternalLinkTypeDefaultMessageAutoDeleteTimerSettings] from TDLib JSON.
   factory InternalLinkTypeDefaultMessageAutoDeleteTimerSettings.fromJson(
-          Map<String, dynamic> json) =>
-      InternalLinkTypeDefaultMessageAutoDeleteTimerSettings(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InternalLinkTypeDefaultMessageAutoDeleteTimerSettings(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -963,11 +923,10 @@ final class InternalLinkTypeDefaultMessageAutoDeleteTimerSettings
   InternalLinkTypeDefaultMessageAutoDeleteTimerSettings copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeDefaultMessageAutoDeleteTimerSettings(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeDefaultMessageAutoDeleteTimerSettings(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -999,18 +958,18 @@ final class InternalLinkTypeDirectMessagesChat extends InternalLinkType {
 
   /// Parses a [InternalLinkTypeDirectMessagesChat] from TDLib JSON.
   factory InternalLinkTypeDirectMessagesChat.fromJson(
-          Map<String, dynamic> json) =>
-      InternalLinkTypeDirectMessagesChat(
-        channelUsername: _readString(json['channel_username']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InternalLinkTypeDirectMessagesChat(
+    channelUsername: _readString(json['channel_username']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'channel_username': channelUsername,
-      };
+    '@type': CONSTRUCTOR,
+    'channel_username': channelUsername,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1019,12 +978,11 @@ final class InternalLinkTypeDirectMessagesChat extends InternalLinkType {
     String? channelUsername,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeDirectMessagesChat(
-        channelUsername: channelUsername ?? this.channelUsername,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeDirectMessagesChat(
+    channelUsername: channelUsername ?? this.channelUsername,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeDirectMessagesChat';
@@ -1036,10 +994,7 @@ final class InternalLinkTypeDirectMessagesChat extends InternalLinkType {
 /// The link is a link to the edit profile section of the application settings
 final class InternalLinkTypeEditProfileSettings extends InternalLinkType {
   /// The link is a link to the edit profile section of the application settings
-  const InternalLinkTypeEditProfileSettings({
-    this.extra,
-    this.clientId,
-  });
+  const InternalLinkTypeEditProfileSettings({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -1051,16 +1006,14 @@ final class InternalLinkTypeEditProfileSettings extends InternalLinkType {
 
   /// Parses a [InternalLinkTypeEditProfileSettings] from TDLib JSON.
   factory InternalLinkTypeEditProfileSettings.fromJson(
-          Map<String, dynamic> json) =>
-      InternalLinkTypeEditProfileSettings(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InternalLinkTypeEditProfileSettings(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1068,11 +1021,10 @@ final class InternalLinkTypeEditProfileSettings extends InternalLinkType {
   InternalLinkTypeEditProfileSettings copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeEditProfileSettings(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeEditProfileSettings(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeEditProfileSettings';
@@ -1116,10 +1068,10 @@ final class InternalLinkTypeGame extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'bot_username': botUsername,
-        'game_short_name': gameShortName,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_username': botUsername,
+    'game_short_name': gameShortName,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1129,13 +1081,12 @@ final class InternalLinkTypeGame extends InternalLinkType {
     String? gameShortName,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeGame(
-        botUsername: botUsername ?? this.botUsername,
-        gameShortName: gameShortName ?? this.gameShortName,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeGame(
+    botUsername: botUsername ?? this.botUsername,
+    gameShortName: gameShortName ?? this.gameShortName,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeGame';
@@ -1179,10 +1130,10 @@ final class InternalLinkTypeGiftCollection extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'gift_owner_username': giftOwnerUsername,
-        'collection_id': collectionId,
-      };
+    '@type': CONSTRUCTOR,
+    'gift_owner_username': giftOwnerUsername,
+    'collection_id': collectionId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1192,13 +1143,12 @@ final class InternalLinkTypeGiftCollection extends InternalLinkType {
     int? collectionId,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeGiftCollection(
-        giftOwnerUsername: giftOwnerUsername ?? this.giftOwnerUsername,
-        collectionId: collectionId ?? this.collectionId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeGiftCollection(
+    giftOwnerUsername: giftOwnerUsername ?? this.giftOwnerUsername,
+    collectionId: collectionId ?? this.collectionId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeGiftCollection';
@@ -1237,9 +1187,9 @@ final class InternalLinkTypeGroupCall extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'invite_link': inviteLink,
-      };
+    '@type': CONSTRUCTOR,
+    'invite_link': inviteLink,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1248,12 +1198,11 @@ final class InternalLinkTypeGroupCall extends InternalLinkType {
     String? inviteLink,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeGroupCall(
-        inviteLink: inviteLink ?? this.inviteLink,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeGroupCall(
+    inviteLink: inviteLink ?? this.inviteLink,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeGroupCall';
@@ -1297,10 +1246,10 @@ final class InternalLinkTypeInstantView extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'fallback_url': fallbackUrl,
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'fallback_url': fallbackUrl,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1310,13 +1259,12 @@ final class InternalLinkTypeInstantView extends InternalLinkType {
     String? fallbackUrl,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeInstantView(
-        url: url ?? this.url,
-        fallbackUrl: fallbackUrl ?? this.fallbackUrl,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeInstantView(
+    url: url ?? this.url,
+    fallbackUrl: fallbackUrl ?? this.fallbackUrl,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeInstantView';
@@ -1355,9 +1303,9 @@ final class InternalLinkTypeInvoice extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'invoice_name': invoiceName,
-      };
+    '@type': CONSTRUCTOR,
+    'invoice_name': invoiceName,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1366,12 +1314,11 @@ final class InternalLinkTypeInvoice extends InternalLinkType {
     String? invoiceName,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeInvoice(
-        invoiceName: invoiceName ?? this.invoiceName,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeInvoice(
+    invoiceName: invoiceName ?? this.invoiceName,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeInvoice';
@@ -1410,9 +1357,9 @@ final class InternalLinkTypeLanguagePack extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'language_pack_id': languagePackId,
-      };
+    '@type': CONSTRUCTOR,
+    'language_pack_id': languagePackId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1421,12 +1368,11 @@ final class InternalLinkTypeLanguagePack extends InternalLinkType {
     String? languagePackId,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeLanguagePack(
-        languagePackId: languagePackId ?? this.languagePackId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeLanguagePack(
+    languagePackId: languagePackId ?? this.languagePackId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeLanguagePack';
@@ -1438,10 +1384,7 @@ final class InternalLinkTypeLanguagePack extends InternalLinkType {
 /// The link is a link to the language section of the application settings
 final class InternalLinkTypeLanguageSettings extends InternalLinkType {
   /// The link is a link to the language section of the application settings
-  const InternalLinkTypeLanguageSettings({
-    this.extra,
-    this.clientId,
-  });
+  const InternalLinkTypeLanguageSettings({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -1453,24 +1396,19 @@ final class InternalLinkTypeLanguageSettings extends InternalLinkType {
 
   /// Parses a [InternalLinkTypeLanguageSettings] from TDLib JSON.
   factory InternalLinkTypeLanguageSettings.fromJson(
-          Map<String, dynamic> json) =>
-      InternalLinkTypeLanguageSettings(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InternalLinkTypeLanguageSettings(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InternalLinkTypeLanguageSettings copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  InternalLinkTypeLanguageSettings copyWith({dynamic extra, int? clientId}) =>
       InternalLinkTypeLanguageSettings(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -1523,11 +1461,11 @@ final class InternalLinkTypeMainWebApp extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'bot_username': botUsername,
-        'start_parameter': startParameter,
-        'mode': mode.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'bot_username': botUsername,
+    'start_parameter': startParameter,
+    'mode': mode.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1538,14 +1476,13 @@ final class InternalLinkTypeMainWebApp extends InternalLinkType {
     WebAppOpenMode? mode,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeMainWebApp(
-        botUsername: botUsername ?? this.botUsername,
-        startParameter: startParameter ?? this.startParameter,
-        mode: mode ?? this.mode,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeMainWebApp(
+    botUsername: botUsername ?? this.botUsername,
+    startParameter: startParameter ?? this.startParameter,
+    mode: mode ?? this.mode,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeMainWebApp';
@@ -1557,11 +1494,7 @@ final class InternalLinkTypeMainWebApp extends InternalLinkType {
 /// The link is a link to a Telegram message or a forum topic. Call getMessageLinkInfo with the given URL to process the link, and then open received forum topic or chat and show the message there
 final class InternalLinkTypeMessage extends InternalLinkType {
   /// The link is a link to a Telegram message or a forum topic. Call getMessageLinkInfo with the given URL to process the link, and then open received forum topic or chat and show the message there
-  const InternalLinkTypeMessage({
-    required this.url,
-    this.extra,
-    this.clientId,
-  });
+  const InternalLinkTypeMessage({required this.url, this.extra, this.clientId});
 
   /// URL to be passed to getMessageLinkInfo
   final String url;
@@ -1583,10 +1516,7 @@ final class InternalLinkTypeMessage extends InternalLinkType {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'url': url};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1595,12 +1525,11 @@ final class InternalLinkTypeMessage extends InternalLinkType {
     String? url,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeMessage(
-        url: url ?? this.url,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeMessage(
+    url: url ?? this.url,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeMessage';
@@ -1644,10 +1573,10 @@ final class InternalLinkTypeMessageDraft extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'contains_link': containsLink,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'contains_link': containsLink,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1657,13 +1586,12 @@ final class InternalLinkTypeMessageDraft extends InternalLinkType {
     bool? containsLink,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeMessageDraft(
-        text: text ?? this.text,
-        containsLink: containsLink ?? this.containsLink,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeMessageDraft(
+    text: text ?? this.text,
+    containsLink: containsLink ?? this.containsLink,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeMessageDraft';
@@ -1675,10 +1603,7 @@ final class InternalLinkTypeMessageDraft extends InternalLinkType {
 /// The link is a link to the screen with information about Telegram Star balance and transactions of the current user
 final class InternalLinkTypeMyStars extends InternalLinkType {
   /// The link is a link to the screen with information about Telegram Star balance and transactions of the current user
-  const InternalLinkTypeMyStars({
-    this.extra,
-    this.clientId,
-  });
+  const InternalLinkTypeMyStars({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -1696,17 +1621,12 @@ final class InternalLinkTypeMyStars extends InternalLinkType {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InternalLinkTypeMyStars copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  InternalLinkTypeMyStars copyWith({dynamic extra, int? clientId}) =>
       InternalLinkTypeMyStars(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -1722,10 +1642,7 @@ final class InternalLinkTypeMyStars extends InternalLinkType {
 /// The link is a link to the screen with information about Toncoin balance and transactions of the current user
 final class InternalLinkTypeMyToncoins extends InternalLinkType {
   /// The link is a link to the screen with information about Toncoin balance and transactions of the current user
-  const InternalLinkTypeMyToncoins({
-    this.extra,
-    this.clientId,
-  });
+  const InternalLinkTypeMyToncoins({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -1743,17 +1660,12 @@ final class InternalLinkTypeMyToncoins extends InternalLinkType {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InternalLinkTypeMyToncoins copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  InternalLinkTypeMyToncoins copyWith({dynamic extra, int? clientId}) =>
       InternalLinkTypeMyToncoins(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -1804,26 +1716,26 @@ final class InternalLinkTypePassportDataRequest extends InternalLinkType {
 
   /// Parses a [InternalLinkTypePassportDataRequest] from TDLib JSON.
   factory InternalLinkTypePassportDataRequest.fromJson(
-          Map<String, dynamic> json) =>
-      InternalLinkTypePassportDataRequest(
-        botUserId: _readInt(json['bot_user_id']),
-        scope: _readString(json['scope']),
-        publicKey: _readString(json['public_key']),
-        nonce: _readString(json['nonce']),
-        callbackUrl: _readString(json['callback_url']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InternalLinkTypePassportDataRequest(
+    botUserId: _readInt(json['bot_user_id']),
+    scope: _readString(json['scope']),
+    publicKey: _readString(json['public_key']),
+    nonce: _readString(json['nonce']),
+    callbackUrl: _readString(json['callback_url']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'scope': scope,
-        'public_key': publicKey,
-        'nonce': nonce,
-        'callback_url': callbackUrl,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'scope': scope,
+    'public_key': publicKey,
+    'nonce': nonce,
+    'callback_url': callbackUrl,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1836,16 +1748,15 @@ final class InternalLinkTypePassportDataRequest extends InternalLinkType {
     String? callbackUrl,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypePassportDataRequest(
-        botUserId: botUserId ?? this.botUserId,
-        scope: scope ?? this.scope,
-        publicKey: publicKey ?? this.publicKey,
-        nonce: nonce ?? this.nonce,
-        callbackUrl: callbackUrl ?? this.callbackUrl,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypePassportDataRequest(
+    botUserId: botUserId ?? this.botUserId,
+    scope: scope ?? this.scope,
+    publicKey: publicKey ?? this.publicKey,
+    nonce: nonce ?? this.nonce,
+    callbackUrl: callbackUrl ?? this.callbackUrl,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypePassportDataRequest';
@@ -1880,20 +1791,20 @@ final class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
 
   /// Parses a [InternalLinkTypePhoneNumberConfirmation] from TDLib JSON.
   factory InternalLinkTypePhoneNumberConfirmation.fromJson(
-          Map<String, dynamic> json) =>
-      InternalLinkTypePhoneNumberConfirmation(
-        hash: _readString(json['hash']),
-        phoneNumber: _readString(json['phone_number']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InternalLinkTypePhoneNumberConfirmation(
+    hash: _readString(json['hash']),
+    phoneNumber: _readString(json['phone_number']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'hash': hash,
-        'phone_number': phoneNumber,
-      };
+    '@type': CONSTRUCTOR,
+    'hash': hash,
+    'phone_number': phoneNumber,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1903,13 +1814,12 @@ final class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
     String? phoneNumber,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypePhoneNumberConfirmation(
-        hash: hash ?? this.hash,
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypePhoneNumberConfirmation(
+    hash: hash ?? this.hash,
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypePhoneNumberConfirmation';
@@ -1947,10 +1857,7 @@ final class InternalLinkTypePremiumFeatures extends InternalLinkType {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'referrer': referrer,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'referrer': referrer};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1959,12 +1866,11 @@ final class InternalLinkTypePremiumFeatures extends InternalLinkType {
     String? referrer,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypePremiumFeatures(
-        referrer: referrer ?? this.referrer,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypePremiumFeatures(
+    referrer: referrer ?? this.referrer,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypePremiumFeatures';
@@ -2002,10 +1908,7 @@ final class InternalLinkTypePremiumGift extends InternalLinkType {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'referrer': referrer,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'referrer': referrer};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2014,12 +1917,11 @@ final class InternalLinkTypePremiumGift extends InternalLinkType {
     String? referrer,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypePremiumGift(
-        referrer: referrer ?? this.referrer,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypePremiumGift(
+    referrer: referrer ?? this.referrer,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypePremiumGift';
@@ -2057,10 +1959,7 @@ final class InternalLinkTypePremiumGiftCode extends InternalLinkType {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'code': code,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'code': code};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2069,12 +1968,11 @@ final class InternalLinkTypePremiumGiftCode extends InternalLinkType {
     String? code,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypePremiumGiftCode(
-        code: code ?? this.code,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypePremiumGiftCode(
+    code: code ?? this.code,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypePremiumGiftCode';
@@ -2087,10 +1985,7 @@ final class InternalLinkTypePremiumGiftCode extends InternalLinkType {
 final class InternalLinkTypePrivacyAndSecuritySettings
     extends InternalLinkType {
   /// The link is a link to the privacy and security section of the application settings
-  const InternalLinkTypePrivacyAndSecuritySettings({
-    this.extra,
-    this.clientId,
-  });
+  const InternalLinkTypePrivacyAndSecuritySettings({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -2102,16 +1997,14 @@ final class InternalLinkTypePrivacyAndSecuritySettings
 
   /// Parses a [InternalLinkTypePrivacyAndSecuritySettings] from TDLib JSON.
   factory InternalLinkTypePrivacyAndSecuritySettings.fromJson(
-          Map<String, dynamic> json) =>
-      InternalLinkTypePrivacyAndSecuritySettings(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InternalLinkTypePrivacyAndSecuritySettings(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2119,11 +2012,10 @@ final class InternalLinkTypePrivacyAndSecuritySettings
   InternalLinkTypePrivacyAndSecuritySettings copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypePrivacyAndSecuritySettings(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypePrivacyAndSecuritySettings(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -2173,11 +2065,11 @@ final class InternalLinkTypeProxy extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'server': server,
-        'port': port,
-        'type': type.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'server': server,
+    'port': port,
+    'type': type.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2188,14 +2080,13 @@ final class InternalLinkTypeProxy extends InternalLinkType {
     ProxyType? type,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeProxy(
-        server: server ?? this.server,
-        port: port ?? this.port,
-        type: type ?? this.type,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeProxy(
+    server: server ?? this.server,
+    port: port ?? this.port,
+    type: type ?? this.type,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeProxy';
@@ -2244,11 +2135,11 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_username': chatUsername,
-        'draft_text': draftText,
-        'open_profile': openProfile,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_username': chatUsername,
+    'draft_text': draftText,
+    'open_profile': openProfile,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2259,14 +2150,13 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
     bool? openProfile,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypePublicChat(
-        chatUsername: chatUsername ?? this.chatUsername,
-        draftText: draftText ?? this.draftText,
-        openProfile: openProfile ?? this.openProfile,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypePublicChat(
+    chatUsername: chatUsername ?? this.chatUsername,
+    draftText: draftText ?? this.draftText,
+    openProfile: openProfile ?? this.openProfile,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypePublicChat';
@@ -2278,10 +2168,7 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
 /// The link can be used to login the current user on another device, but it must be scanned from QR-code using in-app camera. An alert similar to "This code can be used to allow someone to log in to your Telegram account. To confirm Telegram login, please go to Settings &gt; Devices &gt; Scan QR and scan the code" needs to be shown
 final class InternalLinkTypeQrCodeAuthentication extends InternalLinkType {
   /// The link can be used to login the current user on another device, but it must be scanned from QR-code using in-app camera. An alert similar to "This code can be used to allow someone to log in to your Telegram account. To confirm Telegram login, please go to Settings &gt; Devices &gt; Scan QR and scan the code" needs to be shown
-  const InternalLinkTypeQrCodeAuthentication({
-    this.extra,
-    this.clientId,
-  });
+  const InternalLinkTypeQrCodeAuthentication({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -2293,16 +2180,14 @@ final class InternalLinkTypeQrCodeAuthentication extends InternalLinkType {
 
   /// Parses a [InternalLinkTypeQrCodeAuthentication] from TDLib JSON.
   factory InternalLinkTypeQrCodeAuthentication.fromJson(
-          Map<String, dynamic> json) =>
-      InternalLinkTypeQrCodeAuthentication(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InternalLinkTypeQrCodeAuthentication(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2310,11 +2195,10 @@ final class InternalLinkTypeQrCodeAuthentication extends InternalLinkType {
   InternalLinkTypeQrCodeAuthentication copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeQrCodeAuthentication(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeQrCodeAuthentication(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeQrCodeAuthentication';
@@ -2326,10 +2210,7 @@ final class InternalLinkTypeQrCodeAuthentication extends InternalLinkType {
 /// The link forces restore of App Store purchases when opened. For official iOS application only
 final class InternalLinkTypeRestorePurchases extends InternalLinkType {
   /// The link forces restore of App Store purchases when opened. For official iOS application only
-  const InternalLinkTypeRestorePurchases({
-    this.extra,
-    this.clientId,
-  });
+  const InternalLinkTypeRestorePurchases({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -2341,24 +2222,19 @@ final class InternalLinkTypeRestorePurchases extends InternalLinkType {
 
   /// Parses a [InternalLinkTypeRestorePurchases] from TDLib JSON.
   factory InternalLinkTypeRestorePurchases.fromJson(
-          Map<String, dynamic> json) =>
-      InternalLinkTypeRestorePurchases(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InternalLinkTypeRestorePurchases(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InternalLinkTypeRestorePurchases copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  InternalLinkTypeRestorePurchases copyWith({dynamic extra, int? clientId}) =>
       InternalLinkTypeRestorePurchases(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -2374,10 +2250,7 @@ final class InternalLinkTypeRestorePurchases extends InternalLinkType {
 /// The link is a link to application settings
 final class InternalLinkTypeSettings extends InternalLinkType {
   /// The link is a link to application settings
-  const InternalLinkTypeSettings({
-    this.extra,
-    this.clientId,
-  });
+  const InternalLinkTypeSettings({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -2395,17 +2268,12 @@ final class InternalLinkTypeSettings extends InternalLinkType {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InternalLinkTypeSettings copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  InternalLinkTypeSettings copyWith({dynamic extra, int? clientId}) =>
       InternalLinkTypeSettings(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -2453,10 +2321,10 @@ final class InternalLinkTypeStickerSet extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker_set_name': stickerSetName,
-        'expect_custom_emoji': expectCustomEmoji,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_set_name': stickerSetName,
+    'expect_custom_emoji': expectCustomEmoji,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2466,13 +2334,12 @@ final class InternalLinkTypeStickerSet extends InternalLinkType {
     bool? expectCustomEmoji,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeStickerSet(
-        stickerSetName: stickerSetName ?? this.stickerSetName,
-        expectCustomEmoji: expectCustomEmoji ?? this.expectCustomEmoji,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeStickerSet(
+    stickerSetName: stickerSetName ?? this.stickerSetName,
+    expectCustomEmoji: expectCustomEmoji ?? this.expectCustomEmoji,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeStickerSet';
@@ -2516,10 +2383,10 @@ final class InternalLinkTypeStory extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'story_poster_username': storyPosterUsername,
-        'story_id': storyId,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_username': storyPosterUsername,
+    'story_id': storyId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2529,13 +2396,12 @@ final class InternalLinkTypeStory extends InternalLinkType {
     int? storyId,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeStory(
-        storyPosterUsername: storyPosterUsername ?? this.storyPosterUsername,
-        storyId: storyId ?? this.storyId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeStory(
+    storyPosterUsername: storyPosterUsername ?? this.storyPosterUsername,
+    storyId: storyId ?? this.storyId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeStory';
@@ -2571,8 +2437,9 @@ final class InternalLinkTypeStoryAlbum extends InternalLinkType {
   /// Parses a [InternalLinkTypeStoryAlbum] from TDLib JSON.
   factory InternalLinkTypeStoryAlbum.fromJson(Map<String, dynamic> json) =>
       InternalLinkTypeStoryAlbum(
-        storyAlbumOwnerUsername:
-            _readString(json['story_album_owner_username']),
+        storyAlbumOwnerUsername: _readString(
+          json['story_album_owner_username'],
+        ),
         storyAlbumId: _readInt(json['story_album_id']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -2580,10 +2447,10 @@ final class InternalLinkTypeStoryAlbum extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'story_album_owner_username': storyAlbumOwnerUsername,
-        'story_album_id': storyAlbumId,
-      };
+    '@type': CONSTRUCTOR,
+    'story_album_owner_username': storyAlbumOwnerUsername,
+    'story_album_id': storyAlbumId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2593,14 +2460,13 @@ final class InternalLinkTypeStoryAlbum extends InternalLinkType {
     int? storyAlbumId,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeStoryAlbum(
-        storyAlbumOwnerUsername:
-            storyAlbumOwnerUsername ?? this.storyAlbumOwnerUsername,
-        storyAlbumId: storyAlbumId ?? this.storyAlbumId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeStoryAlbum(
+    storyAlbumOwnerUsername:
+        storyAlbumOwnerUsername ?? this.storyAlbumOwnerUsername,
+    storyAlbumId: storyAlbumId ?? this.storyAlbumId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeStoryAlbum';
@@ -2639,9 +2505,9 @@ final class InternalLinkTypeTheme extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'theme_name': themeName,
-      };
+    '@type': CONSTRUCTOR,
+    'theme_name': themeName,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2650,12 +2516,11 @@ final class InternalLinkTypeTheme extends InternalLinkType {
     String? themeName,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeTheme(
-        themeName: themeName ?? this.themeName,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeTheme(
+    themeName: themeName ?? this.themeName,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeTheme';
@@ -2667,10 +2532,7 @@ final class InternalLinkTypeTheme extends InternalLinkType {
 /// The link is a link to the theme section of the application settings
 final class InternalLinkTypeThemeSettings extends InternalLinkType {
   /// The link is a link to the theme section of the application settings
-  const InternalLinkTypeThemeSettings({
-    this.extra,
-    this.clientId,
-  });
+  const InternalLinkTypeThemeSettings({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -2688,17 +2550,12 @@ final class InternalLinkTypeThemeSettings extends InternalLinkType {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InternalLinkTypeThemeSettings copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  InternalLinkTypeThemeSettings copyWith({dynamic extra, int? clientId}) =>
       InternalLinkTypeThemeSettings(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -2740,10 +2597,7 @@ final class InternalLinkTypeUnknownDeepLink extends InternalLinkType {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'link': link,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'link': link};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2752,12 +2606,11 @@ final class InternalLinkTypeUnknownDeepLink extends InternalLinkType {
     String? link,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeUnknownDeepLink(
-        link: link ?? this.link,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeUnknownDeepLink(
+    link: link ?? this.link,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeUnknownDeepLink';
@@ -2769,10 +2622,7 @@ final class InternalLinkTypeUnknownDeepLink extends InternalLinkType {
 /// The link is a link to an unsupported proxy. An alert can be shown to the user
 final class InternalLinkTypeUnsupportedProxy extends InternalLinkType {
   /// The link is a link to an unsupported proxy. An alert can be shown to the user
-  const InternalLinkTypeUnsupportedProxy({
-    this.extra,
-    this.clientId,
-  });
+  const InternalLinkTypeUnsupportedProxy({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -2784,24 +2634,19 @@ final class InternalLinkTypeUnsupportedProxy extends InternalLinkType {
 
   /// Parses a [InternalLinkTypeUnsupportedProxy] from TDLib JSON.
   factory InternalLinkTypeUnsupportedProxy.fromJson(
-          Map<String, dynamic> json) =>
-      InternalLinkTypeUnsupportedProxy(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InternalLinkTypeUnsupportedProxy(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InternalLinkTypeUnsupportedProxy copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  InternalLinkTypeUnsupportedProxy copyWith({dynamic extra, int? clientId}) =>
       InternalLinkTypeUnsupportedProxy(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -2843,10 +2688,7 @@ final class InternalLinkTypeUpgradedGift extends InternalLinkType {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'name': name};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2855,12 +2697,11 @@ final class InternalLinkTypeUpgradedGift extends InternalLinkType {
     String? name,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeUpgradedGift(
-        name: name ?? this.name,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeUpgradedGift(
+    name: name ?? this.name,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeUpgradedGift';
@@ -2909,11 +2750,11 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'phone_number': phoneNumber,
-        'draft_text': draftText,
-        'open_profile': openProfile,
-      };
+    '@type': CONSTRUCTOR,
+    'phone_number': phoneNumber,
+    'draft_text': draftText,
+    'open_profile': openProfile,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2924,14 +2765,13 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
     bool? openProfile,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeUserPhoneNumber(
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        draftText: draftText ?? this.draftText,
-        openProfile: openProfile ?? this.openProfile,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeUserPhoneNumber(
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+    draftText: draftText ?? this.draftText,
+    openProfile: openProfile ?? this.openProfile,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeUserPhoneNumber';
@@ -2969,10 +2809,7 @@ final class InternalLinkTypeUserToken extends InternalLinkType {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'token': token,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'token': token};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2981,12 +2818,11 @@ final class InternalLinkTypeUserToken extends InternalLinkType {
     String? token,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeUserToken(
-        token: token ?? this.token,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeUserToken(
+    token: token ?? this.token,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeUserToken';
@@ -3035,11 +2871,11 @@ final class InternalLinkTypeVideoChat extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_username': chatUsername,
-        'invite_hash': inviteHash,
-        'is_live_stream': isLiveStream,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_username': chatUsername,
+    'invite_hash': inviteHash,
+    'is_live_stream': isLiveStream,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3050,14 +2886,13 @@ final class InternalLinkTypeVideoChat extends InternalLinkType {
     bool? isLiveStream,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeVideoChat(
-        chatUsername: chatUsername ?? this.chatUsername,
-        inviteHash: inviteHash ?? this.inviteHash,
-        isLiveStream: isLiveStream ?? this.isLiveStream,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeVideoChat(
+    chatUsername: chatUsername ?? this.chatUsername,
+    inviteHash: inviteHash ?? this.inviteHash,
+    isLiveStream: isLiveStream ?? this.isLiveStream,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeVideoChat';
@@ -3111,12 +2946,12 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'bot_username': botUsername,
-        'web_app_short_name': webAppShortName,
-        'start_parameter': startParameter,
-        'mode': mode.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'bot_username': botUsername,
+    'web_app_short_name': webAppShortName,
+    'start_parameter': startParameter,
+    'mode': mode.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3128,15 +2963,14 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
     WebAppOpenMode? mode,
     dynamic extra,
     int? clientId,
-  }) =>
-      InternalLinkTypeWebApp(
-        botUsername: botUsername ?? this.botUsername,
-        webAppShortName: webAppShortName ?? this.webAppShortName,
-        startParameter: startParameter ?? this.startParameter,
-        mode: mode ?? this.mode,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InternalLinkTypeWebApp(
+    botUsername: botUsername ?? this.botUsername,
+    webAppShortName: webAppShortName ?? this.webAppShortName,
+    startParameter: startParameter ?? this.startParameter,
+    mode: mode ?? this.mode,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeWebApp';

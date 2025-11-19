@@ -38,10 +38,10 @@ final class TemporaryPasswordState extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'has_password': hasPassword,
-        'valid_for': validFor,
-      };
+    '@type': CONSTRUCTOR,
+    'has_password': hasPassword,
+    'valid_for': validFor,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class TemporaryPasswordState extends TdObject {
     int? validFor,
     dynamic extra,
     int? clientId,
-  }) =>
-      TemporaryPasswordState(
-        hasPassword: hasPassword ?? this.hasPassword,
-        validFor: validFor ?? this.validFor,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => TemporaryPasswordState(
+    hasPassword: hasPassword ?? this.hasPassword,
+    validFor: validFor ?? this.validFor,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'temporaryPasswordState';

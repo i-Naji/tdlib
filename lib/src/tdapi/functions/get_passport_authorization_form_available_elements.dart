@@ -22,22 +22,21 @@ final class GetPassportAuthorizationFormAvailableElements
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'authorization_form_id': authorizationFormId,
-        'password': password,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'authorization_form_id': authorizationFormId,
+    'password': password,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetPassportAuthorizationFormAvailableElements copyWith({
     int? authorizationFormId,
     String? password,
-  }) =>
-      GetPassportAuthorizationFormAvailableElements(
-        authorizationFormId: authorizationFormId ?? this.authorizationFormId,
-        password: password ?? this.password,
-      );
+  }) => GetPassportAuthorizationFormAvailableElements(
+    authorizationFormId: authorizationFormId ?? this.authorizationFormId,
+    password: password ?? this.password,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =

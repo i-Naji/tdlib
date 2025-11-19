@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [InternalLinkType].
 final class GetInternalLinkType extends TdFunction<InternalLinkType> {
   /// Returns information about the type of internal link. Returns a 404 error if the link is not internal. Can be called before authorization
-  const GetInternalLinkType({
-    required this.link,
-  });
+  const GetInternalLinkType({required this.link});
 
   /// The link
   final String link;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'link': link,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'link': link,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetInternalLinkType copyWith({
-    String? link,
-  }) =>
-      GetInternalLinkType(
-        link: link ?? this.link,
-      );
+  GetInternalLinkType copyWith({String? link}) =>
+      GetInternalLinkType(link: link ?? this.link);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getInternalLinkType';

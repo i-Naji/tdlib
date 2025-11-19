@@ -36,8 +36,9 @@ final class PassportAuthorizationForm extends TdObject {
       PassportAuthorizationForm(
         id: _readInt(json['id']),
         requiredElements: _readList<PassportRequiredElement>(
-            json['required_elements'],
-            (e) => _readObject(e, PassportRequiredElement.fromJson)),
+          json['required_elements'],
+          (e) => _readObject(e, PassportRequiredElement.fromJson),
+        ),
         privacyPolicyUrl: _readString(json['privacy_policy_url']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -45,11 +46,11 @@ final class PassportAuthorizationForm extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'required_elements': [for (final e in requiredElements) e.toJson()],
-        'privacy_policy_url': privacyPolicyUrl,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'required_elements': [for (final e in requiredElements) e.toJson()],
+    'privacy_policy_url': privacyPolicyUrl,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -59,14 +60,13 @@ final class PassportAuthorizationForm extends TdObject {
     String? privacyPolicyUrl,
     dynamic extra,
     int? clientId,
-  }) =>
-      PassportAuthorizationForm(
-        id: id ?? this.id,
-        requiredElements: requiredElements ?? this.requiredElements,
-        privacyPolicyUrl: privacyPolicyUrl ?? this.privacyPolicyUrl,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PassportAuthorizationForm(
+    id: id ?? this.id,
+    requiredElements: requiredElements ?? this.requiredElements,
+    privacyPolicyUrl: privacyPolicyUrl ?? this.privacyPolicyUrl,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportAuthorizationForm';

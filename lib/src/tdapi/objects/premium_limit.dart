@@ -33,20 +33,20 @@ final class PremiumLimit extends TdObject {
 
   /// Parses a [PremiumLimit] from TDLib JSON.
   factory PremiumLimit.fromJson(Map<String, dynamic> json) => PremiumLimit(
-        type: _readObject(json['type'], PremiumLimitType.fromJson),
-        defaultValue: _readInt(json['default_value']),
-        premiumValue: _readInt(json['premium_value']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    type: _readObject(json['type'], PremiumLimitType.fromJson),
+    defaultValue: _readInt(json['default_value']),
+    premiumValue: _readInt(json['premium_value']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-        'default_value': defaultValue,
-        'premium_value': premiumValue,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+    'default_value': defaultValue,
+    'premium_value': premiumValue,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,14 +56,13 @@ final class PremiumLimit extends TdObject {
     int? premiumValue,
     dynamic extra,
     int? clientId,
-  }) =>
-      PremiumLimit(
-        type: type ?? this.type,
-        defaultValue: defaultValue ?? this.defaultValue,
-        premiumValue: premiumValue ?? this.premiumValue,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PremiumLimit(
+    type: type ?? this.type,
+    defaultValue: defaultValue ?? this.defaultValue,
+    premiumValue: premiumValue ?? this.premiumValue,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumLimit';

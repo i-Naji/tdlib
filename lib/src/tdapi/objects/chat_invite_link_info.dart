@@ -84,32 +84,36 @@ final class ChatInviteLinkInfo extends TdObject {
         memberCount: _readInt(json['member_count']),
         memberUserIds: _readList<int>(json['member_user_ids'], _readInt),
         subscriptionInfo: _readOptional(
-            json['subscription_info'], ChatInviteLinkSubscriptionInfo.fromJson),
+          json['subscription_info'],
+          ChatInviteLinkSubscriptionInfo.fromJson,
+        ),
         createsJoinRequest: _readBool(json['creates_join_request']),
         isPublic: _readBool(json['is_public']),
         verificationStatus: _readOptional(
-            json['verification_status'], VerificationStatus.fromJson),
+          json['verification_status'],
+          VerificationStatus.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'accessible_for': accessibleFor,
-        'type': type.toJson(),
-        'title': title,
-        'photo': photo?.toJson(),
-        'accent_color_id': accentColorId,
-        'description': description,
-        'member_count': memberCount,
-        'member_user_ids': memberUserIds,
-        'subscription_info': subscriptionInfo?.toJson(),
-        'creates_join_request': createsJoinRequest,
-        'is_public': isPublic,
-        'verification_status': verificationStatus?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'accessible_for': accessibleFor,
+    'type': type.toJson(),
+    'title': title,
+    'photo': photo?.toJson(),
+    'accent_color_id': accentColorId,
+    'description': description,
+    'member_count': memberCount,
+    'member_user_ids': memberUserIds,
+    'subscription_info': subscriptionInfo?.toJson(),
+    'creates_join_request': createsJoinRequest,
+    'is_public': isPublic,
+    'verification_status': verificationStatus?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -129,28 +133,27 @@ final class ChatInviteLinkInfo extends TdObject {
     VerificationStatus? Function()? verificationStatus,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatInviteLinkInfo(
-        chatId: chatId ?? this.chatId,
-        accessibleFor: accessibleFor ?? this.accessibleFor,
-        type: type ?? this.type,
-        title: title ?? this.title,
-        photo: photo != null ? photo() : this.photo,
-        accentColorId: accentColorId ?? this.accentColorId,
-        description: description ?? this.description,
-        memberCount: memberCount ?? this.memberCount,
-        memberUserIds: memberUserIds ?? this.memberUserIds,
-        subscriptionInfo: subscriptionInfo != null
-            ? subscriptionInfo()
-            : this.subscriptionInfo,
-        createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
-        isPublic: isPublic ?? this.isPublic,
-        verificationStatus: verificationStatus != null
-            ? verificationStatus()
-            : this.verificationStatus,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatInviteLinkInfo(
+    chatId: chatId ?? this.chatId,
+    accessibleFor: accessibleFor ?? this.accessibleFor,
+    type: type ?? this.type,
+    title: title ?? this.title,
+    photo: photo != null ? photo() : this.photo,
+    accentColorId: accentColorId ?? this.accentColorId,
+    description: description ?? this.description,
+    memberCount: memberCount ?? this.memberCount,
+    memberUserIds: memberUserIds ?? this.memberUserIds,
+    subscriptionInfo: subscriptionInfo != null
+        ? subscriptionInfo()
+        : this.subscriptionInfo,
+    createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
+    isPublic: isPublic ?? this.isPublic,
+    verificationStatus: verificationStatus != null
+        ? verificationStatus()
+        : this.verificationStatus,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatInviteLinkInfo';

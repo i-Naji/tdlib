@@ -31,11 +31,11 @@ final class GiftResaleParameters extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_count': starCount,
-        'toncoin_cent_count': toncoinCentCount,
-        'toncoin_only': toncoinOnly,
-      };
+    '@type': CONSTRUCTOR,
+    'star_count': starCount,
+    'toncoin_cent_count': toncoinCentCount,
+    'toncoin_only': toncoinOnly,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class GiftResaleParameters extends TdObject {
     int? starCount,
     int? toncoinCentCount,
     bool? toncoinOnly,
-  }) =>
-      GiftResaleParameters(
-        starCount: starCount ?? this.starCount,
-        toncoinCentCount: toncoinCentCount ?? this.toncoinCentCount,
-        toncoinOnly: toncoinOnly ?? this.toncoinOnly,
-      );
+  }) => GiftResaleParameters(
+    starCount: starCount ?? this.starCount,
+    toncoinCentCount: toncoinCentCount ?? this.toncoinCentCount,
+    toncoinOnly: toncoinOnly ?? this.toncoinOnly,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giftResaleParameters';

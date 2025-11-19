@@ -45,34 +45,23 @@ final class UndecodedBackgroundFill extends BackgroundFill {
 /// Describes a solid fill of a background
 final class BackgroundFillSolid extends BackgroundFill {
   /// Describes a solid fill of a background
-  const BackgroundFillSolid({
-    required this.color,
-  });
+  const BackgroundFillSolid({required this.color});
 
   /// A color of the background in the RGB format
   final int color;
 
   /// Parses a [BackgroundFillSolid] from TDLib JSON.
   factory BackgroundFillSolid.fromJson(Map<String, dynamic> json) =>
-      BackgroundFillSolid(
-        color: _readInt(json['color']),
-      );
+      BackgroundFillSolid(color: _readInt(json['color']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'color': color,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'color': color};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  BackgroundFillSolid copyWith({
-    int? color,
-  }) =>
-      BackgroundFillSolid(
-        color: color ?? this.color,
-      );
+  BackgroundFillSolid copyWith({int? color}) =>
+      BackgroundFillSolid(color: color ?? this.color);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'backgroundFillSolid';
@@ -109,11 +98,11 @@ final class BackgroundFillGradient extends BackgroundFill {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'top_color': topColor,
-        'bottom_color': bottomColor,
-        'rotation_angle': rotationAngle,
-      };
+    '@type': CONSTRUCTOR,
+    'top_color': topColor,
+    'bottom_color': bottomColor,
+    'rotation_angle': rotationAngle,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -122,12 +111,11 @@ final class BackgroundFillGradient extends BackgroundFill {
     int? topColor,
     int? bottomColor,
     int? rotationAngle,
-  }) =>
-      BackgroundFillGradient(
-        topColor: topColor ?? this.topColor,
-        bottomColor: bottomColor ?? this.bottomColor,
-        rotationAngle: rotationAngle ?? this.rotationAngle,
-      );
+  }) => BackgroundFillGradient(
+    topColor: topColor ?? this.topColor,
+    bottomColor: bottomColor ?? this.bottomColor,
+    rotationAngle: rotationAngle ?? this.rotationAngle,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'backgroundFillGradient';
@@ -139,9 +127,7 @@ final class BackgroundFillGradient extends BackgroundFill {
 /// Describes a freeform gradient fill of a background
 final class BackgroundFillFreeformGradient extends BackgroundFill {
   /// Describes a freeform gradient fill of a background
-  const BackgroundFillFreeformGradient({
-    required this.colors,
-  });
+  const BackgroundFillFreeformGradient({required this.colors});
 
   /// A list of 3 or 4 colors of the freeform gradient in the RGB format
   final List<int> colors;
@@ -153,20 +139,13 @@ final class BackgroundFillFreeformGradient extends BackgroundFill {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'colors': colors,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'colors': colors};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  BackgroundFillFreeformGradient copyWith({
-    List<int>? colors,
-  }) =>
-      BackgroundFillFreeformGradient(
-        colors: colors ?? this.colors,
-      );
+  BackgroundFillFreeformGradient copyWith({List<int>? colors}) =>
+      BackgroundFillFreeformGradient(colors: colors ?? this.colors);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'backgroundFillFreeformGradient';

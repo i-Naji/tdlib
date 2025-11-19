@@ -52,9 +52,7 @@ final class UserTypeRegular extends UserType {
       const UserTypeRegular();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -78,9 +76,7 @@ final class UserTypeDeleted extends UserType {
       const UserTypeDeleted();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -146,35 +142,36 @@ final class UserTypeBot extends UserType {
 
   /// Parses a [UserTypeBot] from TDLib JSON.
   factory UserTypeBot.fromJson(Map<String, dynamic> json) => UserTypeBot(
-        canBeEdited: _readBool(json['can_be_edited']),
-        canJoinGroups: _readBool(json['can_join_groups']),
-        canReadAllGroupMessages: _readBool(json['can_read_all_group_messages']),
-        hasMainWebApp: _readBool(json['has_main_web_app']),
-        hasTopics: _readBool(json['has_topics']),
-        isInline: _readBool(json['is_inline']),
-        inlineQueryPlaceholder: _readString(json['inline_query_placeholder']),
-        needLocation: _readBool(json['need_location']),
-        canConnectToBusiness: _readBool(json['can_connect_to_business']),
-        canBeAddedToAttachmentMenu:
-            _readBool(json['can_be_added_to_attachment_menu']),
-        activeUserCount: _readInt(json['active_user_count']),
-      );
+    canBeEdited: _readBool(json['can_be_edited']),
+    canJoinGroups: _readBool(json['can_join_groups']),
+    canReadAllGroupMessages: _readBool(json['can_read_all_group_messages']),
+    hasMainWebApp: _readBool(json['has_main_web_app']),
+    hasTopics: _readBool(json['has_topics']),
+    isInline: _readBool(json['is_inline']),
+    inlineQueryPlaceholder: _readString(json['inline_query_placeholder']),
+    needLocation: _readBool(json['need_location']),
+    canConnectToBusiness: _readBool(json['can_connect_to_business']),
+    canBeAddedToAttachmentMenu: _readBool(
+      json['can_be_added_to_attachment_menu'],
+    ),
+    activeUserCount: _readInt(json['active_user_count']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'can_be_edited': canBeEdited,
-        'can_join_groups': canJoinGroups,
-        'can_read_all_group_messages': canReadAllGroupMessages,
-        'has_main_web_app': hasMainWebApp,
-        'has_topics': hasTopics,
-        'is_inline': isInline,
-        'inline_query_placeholder': inlineQueryPlaceholder,
-        'need_location': needLocation,
-        'can_connect_to_business': canConnectToBusiness,
-        'can_be_added_to_attachment_menu': canBeAddedToAttachmentMenu,
-        'active_user_count': activeUserCount,
-      };
+    '@type': CONSTRUCTOR,
+    'can_be_edited': canBeEdited,
+    'can_join_groups': canJoinGroups,
+    'can_read_all_group_messages': canReadAllGroupMessages,
+    'has_main_web_app': hasMainWebApp,
+    'has_topics': hasTopics,
+    'is_inline': isInline,
+    'inline_query_placeholder': inlineQueryPlaceholder,
+    'need_location': needLocation,
+    'can_connect_to_business': canConnectToBusiness,
+    'can_be_added_to_attachment_menu': canBeAddedToAttachmentMenu,
+    'active_user_count': activeUserCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -191,23 +188,22 @@ final class UserTypeBot extends UserType {
     bool? canConnectToBusiness,
     bool? canBeAddedToAttachmentMenu,
     int? activeUserCount,
-  }) =>
-      UserTypeBot(
-        canBeEdited: canBeEdited ?? this.canBeEdited,
-        canJoinGroups: canJoinGroups ?? this.canJoinGroups,
-        canReadAllGroupMessages:
-            canReadAllGroupMessages ?? this.canReadAllGroupMessages,
-        hasMainWebApp: hasMainWebApp ?? this.hasMainWebApp,
-        hasTopics: hasTopics ?? this.hasTopics,
-        isInline: isInline ?? this.isInline,
-        inlineQueryPlaceholder:
-            inlineQueryPlaceholder ?? this.inlineQueryPlaceholder,
-        needLocation: needLocation ?? this.needLocation,
-        canConnectToBusiness: canConnectToBusiness ?? this.canConnectToBusiness,
-        canBeAddedToAttachmentMenu:
-            canBeAddedToAttachmentMenu ?? this.canBeAddedToAttachmentMenu,
-        activeUserCount: activeUserCount ?? this.activeUserCount,
-      );
+  }) => UserTypeBot(
+    canBeEdited: canBeEdited ?? this.canBeEdited,
+    canJoinGroups: canJoinGroups ?? this.canJoinGroups,
+    canReadAllGroupMessages:
+        canReadAllGroupMessages ?? this.canReadAllGroupMessages,
+    hasMainWebApp: hasMainWebApp ?? this.hasMainWebApp,
+    hasTopics: hasTopics ?? this.hasTopics,
+    isInline: isInline ?? this.isInline,
+    inlineQueryPlaceholder:
+        inlineQueryPlaceholder ?? this.inlineQueryPlaceholder,
+    needLocation: needLocation ?? this.needLocation,
+    canConnectToBusiness: canConnectToBusiness ?? this.canConnectToBusiness,
+    canBeAddedToAttachmentMenu:
+        canBeAddedToAttachmentMenu ?? this.canBeAddedToAttachmentMenu,
+    activeUserCount: activeUserCount ?? this.activeUserCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userTypeBot';
@@ -226,9 +222,7 @@ final class UserTypeUnknown extends UserType {
       const UserTypeUnknown();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

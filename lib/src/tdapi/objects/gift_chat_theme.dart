@@ -23,20 +23,18 @@ final class GiftChatTheme extends TdObject {
 
   /// Parses a [GiftChatTheme] from TDLib JSON.
   factory GiftChatTheme.fromJson(Map<String, dynamic> json) => GiftChatTheme(
-        gift: _readObject(json['gift'], UpgradedGift.fromJson),
-        lightSettings:
-            _readObject(json['light_settings'], ThemeSettings.fromJson),
-        darkSettings:
-            _readObject(json['dark_settings'], ThemeSettings.fromJson),
-      );
+    gift: _readObject(json['gift'], UpgradedGift.fromJson),
+    lightSettings: _readObject(json['light_settings'], ThemeSettings.fromJson),
+    darkSettings: _readObject(json['dark_settings'], ThemeSettings.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'gift': gift.toJson(),
-        'light_settings': lightSettings.toJson(),
-        'dark_settings': darkSettings.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'gift': gift.toJson(),
+    'light_settings': lightSettings.toJson(),
+    'dark_settings': darkSettings.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +42,11 @@ final class GiftChatTheme extends TdObject {
     UpgradedGift? gift,
     ThemeSettings? lightSettings,
     ThemeSettings? darkSettings,
-  }) =>
-      GiftChatTheme(
-        gift: gift ?? this.gift,
-        lightSettings: lightSettings ?? this.lightSettings,
-        darkSettings: darkSettings ?? this.darkSettings,
-      );
+  }) => GiftChatTheme(
+    gift: gift ?? this.gift,
+    lightSettings: lightSettings ?? this.lightSettings,
+    darkSettings: darkSettings ?? this.darkSettings,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giftChatTheme';

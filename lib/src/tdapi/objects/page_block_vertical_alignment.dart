@@ -55,9 +55,7 @@ final class PageBlockVerticalAlignmentTop extends PageBlockVerticalAlignment {
       const PageBlockVerticalAlignmentTop();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -80,13 +78,11 @@ final class PageBlockVerticalAlignmentMiddle
 
   /// Parses a [PageBlockVerticalAlignmentMiddle] from TDLib JSON.
   factory PageBlockVerticalAlignmentMiddle.fromJson(
-          Map<String, dynamic> json) =>
-      const PageBlockVerticalAlignmentMiddle();
+    Map<String, dynamic> json,
+  ) => const PageBlockVerticalAlignmentMiddle();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -109,13 +105,11 @@ final class PageBlockVerticalAlignmentBottom
 
   /// Parses a [PageBlockVerticalAlignmentBottom] from TDLib JSON.
   factory PageBlockVerticalAlignmentBottom.fromJson(
-          Map<String, dynamic> json) =>
-      const PageBlockVerticalAlignmentBottom();
+    Map<String, dynamic> json,
+  ) => const PageBlockVerticalAlignmentBottom();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

@@ -21,22 +21,21 @@ final class UnpinAllDirectMessagesChatTopicMessages extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'topic_id': topicId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'topic_id': topicId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   UnpinAllDirectMessagesChatTopicMessages copyWith({
     int? chatId,
     int? topicId,
-  }) =>
-      UnpinAllDirectMessagesChatTopicMessages(
-        chatId: chatId ?? this.chatId,
-        topicId: topicId ?? this.topicId,
-      );
+  }) => UnpinAllDirectMessagesChatTopicMessages(
+    chatId: chatId ?? this.chatId,
+    topicId: topicId ?? this.topicId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'unpinAllDirectMessagesChatTopicMessages';

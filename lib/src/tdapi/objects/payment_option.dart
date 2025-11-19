@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Describes an additional payment option
 final class PaymentOption extends TdObject {
   /// Describes an additional payment option
-  const PaymentOption({
-    required this.title,
-    required this.url,
-  });
+  const PaymentOption({required this.title, required this.url});
 
   /// Title for the payment option
   final String title;
@@ -19,27 +16,21 @@ final class PaymentOption extends TdObject {
 
   /// Parses a [PaymentOption] from TDLib JSON.
   factory PaymentOption.fromJson(Map<String, dynamic> json) => PaymentOption(
-        title: _readString(json['title']),
-        url: _readString(json['url']),
-      );
+    title: _readString(json['title']),
+    url: _readString(json['url']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-        'url': url,
-      };
+    '@type': CONSTRUCTOR,
+    'title': title,
+    'url': url,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  PaymentOption copyWith({
-    String? title,
-    String? url,
-  }) =>
-      PaymentOption(
-        title: title ?? this.title,
-        url: url ?? this.url,
-      );
+  PaymentOption copyWith({String? title, String? url}) =>
+      PaymentOption(title: title ?? this.title, url: url ?? this.url);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'paymentOption';

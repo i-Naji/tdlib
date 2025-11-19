@@ -30,19 +30,21 @@ final class QuickReplyShortcut extends TdObject {
       QuickReplyShortcut(
         id: _readInt(json['id']),
         name: _readString(json['name']),
-        firstMessage:
-            _readObject(json['first_message'], QuickReplyMessage.fromJson),
+        firstMessage: _readObject(
+          json['first_message'],
+          QuickReplyMessage.fromJson,
+        ),
         messageCount: _readInt(json['message_count']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'name': name,
-        'first_message': firstMessage.toJson(),
-        'message_count': messageCount,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'name': name,
+    'first_message': firstMessage.toJson(),
+    'message_count': messageCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,13 +53,12 @@ final class QuickReplyShortcut extends TdObject {
     String? name,
     QuickReplyMessage? firstMessage,
     int? messageCount,
-  }) =>
-      QuickReplyShortcut(
-        id: id ?? this.id,
-        name: name ?? this.name,
-        firstMessage: firstMessage ?? this.firstMessage,
-        messageCount: messageCount ?? this.messageCount,
-      );
+  }) => QuickReplyShortcut(
+    id: id ?? this.id,
+    name: name ?? this.name,
+    firstMessage: firstMessage ?? this.firstMessage,
+    messageCount: messageCount ?? this.messageCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'quickReplyShortcut';

@@ -21,22 +21,21 @@ final class ToggleVideoChatMuteNewParticipants extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'mute_new_participants': muteNewParticipants,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'mute_new_participants': muteNewParticipants,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleVideoChatMuteNewParticipants copyWith({
     int? groupCallId,
     bool? muteNewParticipants,
-  }) =>
-      ToggleVideoChatMuteNewParticipants(
-        groupCallId: groupCallId ?? this.groupCallId,
-        muteNewParticipants: muteNewParticipants ?? this.muteNewParticipants,
-      );
+  }) => ToggleVideoChatMuteNewParticipants(
+    groupCallId: groupCallId ?? this.groupCallId,
+    muteNewParticipants: muteNewParticipants ?? this.muteNewParticipants,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleVideoChatMuteNewParticipants';

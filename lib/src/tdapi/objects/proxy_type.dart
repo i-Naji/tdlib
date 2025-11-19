@@ -45,10 +45,7 @@ final class UndecodedProxyType extends ProxyType {
 /// A SOCKS5 proxy server
 final class ProxyTypeSocks5 extends ProxyType {
   /// A SOCKS5 proxy server
-  const ProxyTypeSocks5({
-    required this.username,
-    required this.password,
-  });
+  const ProxyTypeSocks5({required this.username, required this.password});
 
   /// Username for logging in; may be empty
   final String username;
@@ -65,18 +62,15 @@ final class ProxyTypeSocks5 extends ProxyType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'username': username,
-        'password': password,
-      };
+    '@type': CONSTRUCTOR,
+    'username': username,
+    'password': password,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ProxyTypeSocks5 copyWith({
-    String? username,
-    String? password,
-  }) =>
+  ProxyTypeSocks5 copyWith({String? username, String? password}) =>
       ProxyTypeSocks5(
         username: username ?? this.username,
         password: password ?? this.password,
@@ -109,18 +103,18 @@ final class ProxyTypeHttp extends ProxyType {
 
   /// Parses a [ProxyTypeHttp] from TDLib JSON.
   factory ProxyTypeHttp.fromJson(Map<String, dynamic> json) => ProxyTypeHttp(
-        username: _readString(json['username']),
-        password: _readString(json['password']),
-        httpOnly: _readBool(json['http_only']),
-      );
+    username: _readString(json['username']),
+    password: _readString(json['password']),
+    httpOnly: _readBool(json['http_only']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'username': username,
-        'password': password,
-        'http_only': httpOnly,
-      };
+    '@type': CONSTRUCTOR,
+    'username': username,
+    'password': password,
+    'http_only': httpOnly,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -129,12 +123,11 @@ final class ProxyTypeHttp extends ProxyType {
     String? username,
     String? password,
     bool? httpOnly,
-  }) =>
-      ProxyTypeHttp(
-        username: username ?? this.username,
-        password: password ?? this.password,
-        httpOnly: httpOnly ?? this.httpOnly,
-      );
+  }) => ProxyTypeHttp(
+    username: username ?? this.username,
+    password: password ?? this.password,
+    httpOnly: httpOnly ?? this.httpOnly,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'proxyTypeHttp';
@@ -146,34 +139,23 @@ final class ProxyTypeHttp extends ProxyType {
 /// An MTProto proxy server
 final class ProxyTypeMtproto extends ProxyType {
   /// An MTProto proxy server
-  const ProxyTypeMtproto({
-    required this.secret,
-  });
+  const ProxyTypeMtproto({required this.secret});
 
   /// The proxy's secret in hexadecimal encoding
   final String secret;
 
   /// Parses a [ProxyTypeMtproto] from TDLib JSON.
   factory ProxyTypeMtproto.fromJson(Map<String, dynamic> json) =>
-      ProxyTypeMtproto(
-        secret: _readString(json['secret']),
-      );
+      ProxyTypeMtproto(secret: _readString(json['secret']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'secret': secret,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'secret': secret};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ProxyTypeMtproto copyWith({
-    String? secret,
-  }) =>
-      ProxyTypeMtproto(
-        secret: secret ?? this.secret,
-      );
+  ProxyTypeMtproto copyWith({String? secret}) =>
+      ProxyTypeMtproto(secret: secret ?? this.secret);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'proxyTypeMtproto';

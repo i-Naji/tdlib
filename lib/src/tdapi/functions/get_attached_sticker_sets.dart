@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [StickerSets].
 final class GetAttachedStickerSets extends TdFunction<StickerSets> {
   /// Returns a list of sticker sets attached to a file, including regular, mask, and emoji sticker sets. Currently, only animations, photos, and videos can have attached sticker sets
-  const GetAttachedStickerSets({
-    required this.fileId,
-  });
+  const GetAttachedStickerSets({required this.fileId});
 
   /// File identifier
   final int fileId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'file_id': fileId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'file_id': fileId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetAttachedStickerSets copyWith({
-    int? fileId,
-  }) =>
-      GetAttachedStickerSets(
-        fileId: fileId ?? this.fileId,
-      );
+  GetAttachedStickerSets copyWith({int? fileId}) =>
+      GetAttachedStickerSets(fileId: fileId ?? this.fileId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getAttachedStickerSets';

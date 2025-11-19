@@ -54,9 +54,7 @@ final class SearchMessagesFilterEmpty extends SearchMessagesFilter {
       const SearchMessagesFilterEmpty();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -80,9 +78,7 @@ final class SearchMessagesFilterAnimation extends SearchMessagesFilter {
       const SearchMessagesFilterAnimation();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -107,9 +103,7 @@ final class SearchMessagesFilterAudio extends SearchMessagesFilter {
       const SearchMessagesFilterAudio();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -133,9 +127,7 @@ final class SearchMessagesFilterDocument extends SearchMessagesFilter {
       const SearchMessagesFilterDocument();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -160,9 +152,7 @@ final class SearchMessagesFilterPhoto extends SearchMessagesFilter {
       const SearchMessagesFilterPhoto();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -186,9 +176,7 @@ final class SearchMessagesFilterVideo extends SearchMessagesFilter {
       const SearchMessagesFilterVideo();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -212,9 +200,7 @@ final class SearchMessagesFilterVoiceNote extends SearchMessagesFilter {
       const SearchMessagesFilterVoiceNote();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -236,13 +222,11 @@ final class SearchMessagesFilterPhotoAndVideo extends SearchMessagesFilter {
 
   /// Parses a [SearchMessagesFilterPhotoAndVideo] from TDLib JSON.
   factory SearchMessagesFilterPhotoAndVideo.fromJson(
-          Map<String, dynamic> json) =>
-      const SearchMessagesFilterPhotoAndVideo();
+    Map<String, dynamic> json,
+  ) => const SearchMessagesFilterPhotoAndVideo();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -267,9 +251,7 @@ final class SearchMessagesFilterUrl extends SearchMessagesFilter {
       const SearchMessagesFilterUrl();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -293,9 +275,7 @@ final class SearchMessagesFilterChatPhoto extends SearchMessagesFilter {
       const SearchMessagesFilterChatPhoto();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -320,9 +300,7 @@ final class SearchMessagesFilterVideoNote extends SearchMessagesFilter {
       const SearchMessagesFilterVideoNote();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -344,13 +322,11 @@ final class SearchMessagesFilterVoiceAndVideoNote extends SearchMessagesFilter {
 
   /// Parses a [SearchMessagesFilterVoiceAndVideoNote] from TDLib JSON.
   factory SearchMessagesFilterVoiceAndVideoNote.fromJson(
-          Map<String, dynamic> json) =>
-      const SearchMessagesFilterVoiceAndVideoNote();
+    Map<String, dynamic> json,
+  ) => const SearchMessagesFilterVoiceAndVideoNote();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -375,9 +351,7 @@ final class SearchMessagesFilterMention extends SearchMessagesFilter {
       const SearchMessagesFilterMention();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -398,13 +372,11 @@ final class SearchMessagesFilterUnreadMention extends SearchMessagesFilter {
 
   /// Parses a [SearchMessagesFilterUnreadMention] from TDLib JSON.
   factory SearchMessagesFilterUnreadMention.fromJson(
-          Map<String, dynamic> json) =>
-      const SearchMessagesFilterUnreadMention();
+    Map<String, dynamic> json,
+  ) => const SearchMessagesFilterUnreadMention();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -426,13 +398,11 @@ final class SearchMessagesFilterUnreadReaction extends SearchMessagesFilter {
 
   /// Parses a [SearchMessagesFilterUnreadReaction] from TDLib JSON.
   factory SearchMessagesFilterUnreadReaction.fromJson(
-          Map<String, dynamic> json) =>
-      const SearchMessagesFilterUnreadReaction();
+    Map<String, dynamic> json,
+  ) => const SearchMessagesFilterUnreadReaction();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -454,13 +424,11 @@ final class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
 
   /// Parses a [SearchMessagesFilterFailedToSend] from TDLib JSON.
   factory SearchMessagesFilterFailedToSend.fromJson(
-          Map<String, dynamic> json) =>
-      const SearchMessagesFilterFailedToSend();
+    Map<String, dynamic> json,
+  ) => const SearchMessagesFilterFailedToSend();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -485,9 +453,7 @@ final class SearchMessagesFilterPinned extends SearchMessagesFilter {
       const SearchMessagesFilterPinned();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

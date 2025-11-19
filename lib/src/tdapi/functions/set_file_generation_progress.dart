@@ -25,12 +25,12 @@ final class SetFileGenerationProgress extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'generation_id': generationId.toString(),
-        'expected_size': expectedSize,
-        'local_prefix_size': localPrefixSize,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'generation_id': generationId.toString(),
+    'expected_size': expectedSize,
+    'local_prefix_size': localPrefixSize,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SetFileGenerationProgress extends TdFunction<Ok> {
     int? generationId,
     int? expectedSize,
     int? localPrefixSize,
-  }) =>
-      SetFileGenerationProgress(
-        generationId: generationId ?? this.generationId,
-        expectedSize: expectedSize ?? this.expectedSize,
-        localPrefixSize: localPrefixSize ?? this.localPrefixSize,
-      );
+  }) => SetFileGenerationProgress(
+    generationId: generationId ?? this.generationId,
+    expectedSize: expectedSize ?? this.expectedSize,
+    localPrefixSize: localPrefixSize ?? this.localPrefixSize,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setFileGenerationProgress';

@@ -25,20 +25,16 @@ final class SetPollAnswer extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'option_ids': optionIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'option_ids': optionIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetPollAnswer copyWith({
-    int? chatId,
-    int? messageId,
-    List<int>? optionIds,
-  }) =>
+  SetPollAnswer copyWith({int? chatId, int? messageId, List<int>? optionIds}) =>
       SetPollAnswer(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,

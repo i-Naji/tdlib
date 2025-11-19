@@ -25,12 +25,12 @@ final class GetTrendingStickerSets extends TdFunction<TrendingStickerSets> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker_type': stickerType.toJson(),
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_type': stickerType.toJson(),
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class GetTrendingStickerSets extends TdFunction<TrendingStickerSets> {
     StickerType? stickerType,
     int? offset,
     int? limit,
-  }) =>
-      GetTrendingStickerSets(
-        stickerType: stickerType ?? this.stickerType,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => GetTrendingStickerSets(
+    stickerType: stickerType ?? this.stickerType,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getTrendingStickerSets';

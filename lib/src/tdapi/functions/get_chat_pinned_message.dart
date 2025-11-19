@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Message].
 final class GetChatPinnedMessage extends TdFunction<Message> {
   /// Returns information about a newest pinned message in the chat. Returns a 404 error if the message doesn't exist
-  const GetChatPinnedMessage({
-    required this.chatId,
-  });
+  const GetChatPinnedMessage({required this.chatId});
 
   /// Identifier of the chat the message belongs to
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatPinnedMessage copyWith({
-    int? chatId,
-  }) =>
-      GetChatPinnedMessage(
-        chatId: chatId ?? this.chatId,
-      );
+  GetChatPinnedMessage copyWith({int? chatId}) =>
+      GetChatPinnedMessage(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatPinnedMessage';

@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a counter
 final class Count extends TdObject {
   /// Contains a counter
-  const Count({
-    required this.count,
-    this.extra,
-    this.clientId,
-  });
+  const Count({required this.count, this.extra, this.clientId});
 
   /// Count
   final int count;
@@ -25,29 +21,21 @@ final class Count extends TdObject {
 
   /// Parses a [Count] from TDLib JSON.
   factory Count.fromJson(Map<String, dynamic> json) => Count(
-        count: _readInt(json['count']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    count: _readInt(json['count']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'count': count,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'count': count};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  Count copyWith({
-    int? count,
-    dynamic extra,
-    int? clientId,
-  }) =>
-      Count(
-        count: count ?? this.count,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  Count copyWith({int? count, dynamic extra, int? clientId}) => Count(
+    count: count ?? this.count,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'count';

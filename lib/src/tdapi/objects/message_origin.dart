@@ -45,34 +45,26 @@ final class UndecodedMessageOrigin extends MessageOrigin {
 /// The message was originally sent by a known user
 final class MessageOriginUser extends MessageOrigin {
   /// The message was originally sent by a known user
-  const MessageOriginUser({
-    required this.senderUserId,
-  });
+  const MessageOriginUser({required this.senderUserId});
 
   /// Identifier of the user that originally sent the message
   final int senderUserId;
 
   /// Parses a [MessageOriginUser] from TDLib JSON.
   factory MessageOriginUser.fromJson(Map<String, dynamic> json) =>
-      MessageOriginUser(
-        senderUserId: _readInt(json['sender_user_id']),
-      );
+      MessageOriginUser(senderUserId: _readInt(json['sender_user_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sender_user_id': senderUserId,
-      };
+    '@type': CONSTRUCTOR,
+    'sender_user_id': senderUserId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageOriginUser copyWith({
-    int? senderUserId,
-  }) =>
-      MessageOriginUser(
-        senderUserId: senderUserId ?? this.senderUserId,
-      );
+  MessageOriginUser copyWith({int? senderUserId}) =>
+      MessageOriginUser(senderUserId: senderUserId ?? this.senderUserId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageOriginUser';
@@ -84,34 +76,26 @@ final class MessageOriginUser extends MessageOrigin {
 /// The message was originally sent by a user, which is hidden by their privacy settings
 final class MessageOriginHiddenUser extends MessageOrigin {
   /// The message was originally sent by a user, which is hidden by their privacy settings
-  const MessageOriginHiddenUser({
-    required this.senderName,
-  });
+  const MessageOriginHiddenUser({required this.senderName});
 
   /// Name of the sender
   final String senderName;
 
   /// Parses a [MessageOriginHiddenUser] from TDLib JSON.
   factory MessageOriginHiddenUser.fromJson(Map<String, dynamic> json) =>
-      MessageOriginHiddenUser(
-        senderName: _readString(json['sender_name']),
-      );
+      MessageOriginHiddenUser(senderName: _readString(json['sender_name']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sender_name': senderName,
-      };
+    '@type': CONSTRUCTOR,
+    'sender_name': senderName,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageOriginHiddenUser copyWith({
-    String? senderName,
-  }) =>
-      MessageOriginHiddenUser(
-        senderName: senderName ?? this.senderName,
-      );
+  MessageOriginHiddenUser copyWith({String? senderName}) =>
+      MessageOriginHiddenUser(senderName: senderName ?? this.senderName);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageOriginHiddenUser';
@@ -143,18 +127,15 @@ final class MessageOriginChat extends MessageOrigin {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sender_chat_id': senderChatId,
-        'author_signature': authorSignature,
-      };
+    '@type': CONSTRUCTOR,
+    'sender_chat_id': senderChatId,
+    'author_signature': authorSignature,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageOriginChat copyWith({
-    int? senderChatId,
-    String? authorSignature,
-  }) =>
+  MessageOriginChat copyWith({int? senderChatId, String? authorSignature}) =>
       MessageOriginChat(
         senderChatId: senderChatId ?? this.senderChatId,
         authorSignature: authorSignature ?? this.authorSignature,
@@ -195,11 +176,11 @@ final class MessageOriginChannel extends MessageOrigin {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'author_signature': authorSignature,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'author_signature': authorSignature,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -208,12 +189,11 @@ final class MessageOriginChannel extends MessageOrigin {
     int? chatId,
     int? messageId,
     String? authorSignature,
-  }) =>
-      MessageOriginChannel(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        authorSignature: authorSignature ?? this.authorSignature,
-      );
+  }) => MessageOriginChannel(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    authorSignature: authorSignature ?? this.authorSignature,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageOriginChannel';

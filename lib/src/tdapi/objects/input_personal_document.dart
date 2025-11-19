@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// A personal document to be saved to Telegram Passport
 final class InputPersonalDocument extends TdObject {
   /// A personal document to be saved to Telegram Passport
-  const InputPersonalDocument({
-    required this.files,
-    required this.translation,
-  });
+  const InputPersonalDocument({required this.files, required this.translation});
 
   /// List of files containing the pages of the document
   final List<InputFile> files;
@@ -21,28 +18,31 @@ final class InputPersonalDocument extends TdObject {
   factory InputPersonalDocument.fromJson(Map<String, dynamic> json) =>
       InputPersonalDocument(
         files: _readList<InputFile>(
-            json['files'], (e) => _readObject(e, InputFile.fromJson)),
+          json['files'],
+          (e) => _readObject(e, InputFile.fromJson),
+        ),
         translation: _readList<InputFile>(
-            json['translation'], (e) => _readObject(e, InputFile.fromJson)),
+          json['translation'],
+          (e) => _readObject(e, InputFile.fromJson),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'files': [for (final e in files) e.toJson()],
-        'translation': [for (final e in translation) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'files': [for (final e in files) e.toJson()],
+    'translation': [for (final e in translation) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   InputPersonalDocument copyWith({
     List<InputFile>? files,
     List<InputFile>? translation,
-  }) =>
-      InputPersonalDocument(
-        files: files ?? this.files,
-        translation: translation ?? this.translation,
-      );
+  }) => InputPersonalDocument(
+    files: files ?? this.files,
+    translation: translation ?? this.translation,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPersonalDocument';

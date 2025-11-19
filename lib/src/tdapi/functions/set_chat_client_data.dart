@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetChatClientData extends TdFunction<Ok> {
   /// Changes application-specific data associated with a chat
-  const SetChatClientData({
-    required this.chatId,
-    required this.clientData,
-  });
+  const SetChatClientData({required this.chatId, required this.clientData});
 
   /// Chat identifier
   final int chatId;
@@ -21,18 +18,15 @@ final class SetChatClientData extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'client_data': clientData,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'client_data': clientData,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetChatClientData copyWith({
-    int? chatId,
-    String? clientData,
-  }) =>
+  SetChatClientData copyWith({int? chatId, String? clientData}) =>
       SetChatClientData(
         chatId: chatId ?? this.chatId,
         clientData: clientData ?? this.clientData,

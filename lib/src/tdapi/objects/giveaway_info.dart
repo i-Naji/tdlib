@@ -82,11 +82,11 @@ final class GiveawayInfoOngoing extends GiveawayInfo {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'creation_date': creationDate,
-        'status': status.toJson(),
-        'is_ended': isEnded,
-      };
+    '@type': CONSTRUCTOR,
+    'creation_date': creationDate,
+    'status': status.toJson(),
+    'is_ended': isEnded,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -97,14 +97,13 @@ final class GiveawayInfoOngoing extends GiveawayInfo {
     bool? isEnded,
     dynamic extra,
     int? clientId,
-  }) =>
-      GiveawayInfoOngoing(
-        creationDate: creationDate ?? this.creationDate,
-        status: status ?? this.status,
-        isEnded: isEnded ?? this.isEnded,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => GiveawayInfoOngoing(
+    creationDate: creationDate ?? this.creationDate,
+    status: status ?? this.status,
+    isEnded: isEnded ?? this.isEnded,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giveawayInfoOngoing';
@@ -165,8 +164,9 @@ final class GiveawayInfoCompleted extends GiveawayInfo {
   factory GiveawayInfoCompleted.fromJson(Map<String, dynamic> json) =>
       GiveawayInfoCompleted(
         creationDate: _readInt(json['creation_date']),
-        actualWinnersSelectionDate:
-            _readInt(json['actual_winners_selection_date']),
+        actualWinnersSelectionDate: _readInt(
+          json['actual_winners_selection_date'],
+        ),
         wasRefunded: _readBool(json['was_refunded']),
         isWinner: _readBool(json['is_winner']),
         winnerCount: _readInt(json['winner_count']),
@@ -179,16 +179,16 @@ final class GiveawayInfoCompleted extends GiveawayInfo {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'creation_date': creationDate,
-        'actual_winners_selection_date': actualWinnersSelectionDate,
-        'was_refunded': wasRefunded,
-        'is_winner': isWinner,
-        'winner_count': winnerCount,
-        'activation_count': activationCount,
-        'gift_code': giftCode,
-        'won_star_count': wonStarCount,
-      };
+    '@type': CONSTRUCTOR,
+    'creation_date': creationDate,
+    'actual_winners_selection_date': actualWinnersSelectionDate,
+    'was_refunded': wasRefunded,
+    'is_winner': isWinner,
+    'winner_count': winnerCount,
+    'activation_count': activationCount,
+    'gift_code': giftCode,
+    'won_star_count': wonStarCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -204,20 +204,19 @@ final class GiveawayInfoCompleted extends GiveawayInfo {
     int? wonStarCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      GiveawayInfoCompleted(
-        creationDate: creationDate ?? this.creationDate,
-        actualWinnersSelectionDate:
-            actualWinnersSelectionDate ?? this.actualWinnersSelectionDate,
-        wasRefunded: wasRefunded ?? this.wasRefunded,
-        isWinner: isWinner ?? this.isWinner,
-        winnerCount: winnerCount ?? this.winnerCount,
-        activationCount: activationCount ?? this.activationCount,
-        giftCode: giftCode ?? this.giftCode,
-        wonStarCount: wonStarCount ?? this.wonStarCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => GiveawayInfoCompleted(
+    creationDate: creationDate ?? this.creationDate,
+    actualWinnersSelectionDate:
+        actualWinnersSelectionDate ?? this.actualWinnersSelectionDate,
+    wasRefunded: wasRefunded ?? this.wasRefunded,
+    isWinner: isWinner ?? this.isWinner,
+    winnerCount: winnerCount ?? this.winnerCount,
+    activationCount: activationCount ?? this.activationCount,
+    giftCode: giftCode ?? this.giftCode,
+    wonStarCount: wonStarCount ?? this.wonStarCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giveawayInfoCompleted';

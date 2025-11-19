@@ -31,11 +31,11 @@ final class ScopeAutosaveSettings extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'autosave_photos': autosavePhotos,
-        'autosave_videos': autosaveVideos,
-        'max_video_file_size': maxVideoFileSize,
-      };
+    '@type': CONSTRUCTOR,
+    'autosave_photos': autosavePhotos,
+    'autosave_videos': autosaveVideos,
+    'max_video_file_size': maxVideoFileSize,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class ScopeAutosaveSettings extends TdObject {
     bool? autosavePhotos,
     bool? autosaveVideos,
     int? maxVideoFileSize,
-  }) =>
-      ScopeAutosaveSettings(
-        autosavePhotos: autosavePhotos ?? this.autosavePhotos,
-        autosaveVideos: autosaveVideos ?? this.autosaveVideos,
-        maxVideoFileSize: maxVideoFileSize ?? this.maxVideoFileSize,
-      );
+  }) => ScopeAutosaveSettings(
+    autosavePhotos: autosavePhotos ?? this.autosavePhotos,
+    autosaveVideos: autosaveVideos ?? this.autosaveVideos,
+    maxVideoFileSize: maxVideoFileSize ?? this.maxVideoFileSize,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'scopeAutosaveSettings';

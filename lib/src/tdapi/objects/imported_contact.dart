@@ -36,12 +36,12 @@ final class ImportedContact extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'phone_number': phoneNumber,
-        'first_name': firstName,
-        'last_name': lastName,
-        'note': note?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'phone_number': phoneNumber,
+    'first_name': firstName,
+    'last_name': lastName,
+    'note': note?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class ImportedContact extends TdObject {
     String? firstName,
     String? lastName,
     FormattedText? Function()? note,
-  }) =>
-      ImportedContact(
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        firstName: firstName ?? this.firstName,
-        lastName: lastName ?? this.lastName,
-        note: note != null ? note() : this.note,
-      );
+  }) => ImportedContact(
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+    firstName: firstName ?? this.firstName,
+    lastName: lastName ?? this.lastName,
+    note: note != null ? note() : this.note,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'importedContact';

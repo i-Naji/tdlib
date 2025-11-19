@@ -21,22 +21,21 @@ final class SetChatMessageSender extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_sender_id': messageSenderId.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_sender_id': messageSenderId.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetChatMessageSender copyWith({
     int? chatId,
     MessageSender? messageSenderId,
-  }) =>
-      SetChatMessageSender(
-        chatId: chatId ?? this.chatId,
-        messageSenderId: messageSenderId ?? this.messageSenderId,
-      );
+  }) => SetChatMessageSender(
+    chatId: chatId ?? this.chatId,
+    messageSenderId: messageSenderId ?? this.messageSenderId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setChatMessageSender';

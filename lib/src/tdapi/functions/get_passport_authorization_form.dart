@@ -30,13 +30,13 @@ final class GetPassportAuthorizationForm
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'scope': scope,
-        'public_key': publicKey,
-        'nonce': nonce,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'scope': scope,
+    'public_key': publicKey,
+    'nonce': nonce,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -45,13 +45,12 @@ final class GetPassportAuthorizationForm
     String? scope,
     String? publicKey,
     String? nonce,
-  }) =>
-      GetPassportAuthorizationForm(
-        botUserId: botUserId ?? this.botUserId,
-        scope: scope ?? this.scope,
-        publicKey: publicKey ?? this.publicKey,
-        nonce: nonce ?? this.nonce,
-      );
+  }) => GetPassportAuthorizationForm(
+    botUserId: botUserId ?? this.botUserId,
+    scope: scope ?? this.scope,
+    publicKey: publicKey ?? this.publicKey,
+    nonce: nonce ?? this.nonce,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getPassportAuthorizationForm';

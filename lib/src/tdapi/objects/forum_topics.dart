@@ -41,25 +41,27 @@ final class ForumTopics extends TdObject {
 
   /// Parses a [ForumTopics] from TDLib JSON.
   factory ForumTopics.fromJson(Map<String, dynamic> json) => ForumTopics(
-        totalCount: _readInt(json['total_count']),
-        topics: _readList<ForumTopic>(
-            json['topics'], (e) => _readObject(e, ForumTopic.fromJson)),
-        nextOffsetDate: _readInt(json['next_offset_date']),
-        nextOffsetMessageId: _readInt(json['next_offset_message_id']),
-        nextOffsetForumTopicId: _readInt(json['next_offset_forum_topic_id']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    totalCount: _readInt(json['total_count']),
+    topics: _readList<ForumTopic>(
+      json['topics'],
+      (e) => _readObject(e, ForumTopic.fromJson),
+    ),
+    nextOffsetDate: _readInt(json['next_offset_date']),
+    nextOffsetMessageId: _readInt(json['next_offset_message_id']),
+    nextOffsetForumTopicId: _readInt(json['next_offset_forum_topic_id']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'topics': [for (final e in topics) e.toJson()],
-        'next_offset_date': nextOffsetDate,
-        'next_offset_message_id': nextOffsetMessageId,
-        'next_offset_forum_topic_id': nextOffsetForumTopicId,
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'topics': [for (final e in topics) e.toJson()],
+    'next_offset_date': nextOffsetDate,
+    'next_offset_message_id': nextOffsetMessageId,
+    'next_offset_forum_topic_id': nextOffsetForumTopicId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -71,17 +73,16 @@ final class ForumTopics extends TdObject {
     int? nextOffsetForumTopicId,
     dynamic extra,
     int? clientId,
-  }) =>
-      ForumTopics(
-        totalCount: totalCount ?? this.totalCount,
-        topics: topics ?? this.topics,
-        nextOffsetDate: nextOffsetDate ?? this.nextOffsetDate,
-        nextOffsetMessageId: nextOffsetMessageId ?? this.nextOffsetMessageId,
-        nextOffsetForumTopicId:
-            nextOffsetForumTopicId ?? this.nextOffsetForumTopicId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ForumTopics(
+    totalCount: totalCount ?? this.totalCount,
+    topics: topics ?? this.topics,
+    nextOffsetDate: nextOffsetDate ?? this.nextOffsetDate,
+    nextOffsetMessageId: nextOffsetMessageId ?? this.nextOffsetMessageId,
+    nextOffsetForumTopicId:
+        nextOffsetForumTopicId ?? this.nextOffsetForumTopicId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'forumTopics';

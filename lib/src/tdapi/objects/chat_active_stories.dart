@@ -52,21 +52,23 @@ final class ChatActiveStories extends TdObject {
         canBeArchived: _readBool(json['can_be_archived']),
         maxReadStoryId: _readInt(json['max_read_story_id']),
         stories: _readList<StoryInfo>(
-            json['stories'], (e) => _readObject(e, StoryInfo.fromJson)),
+          json['stories'],
+          (e) => _readObject(e, StoryInfo.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'list': list?.toJson(),
-        'order': order,
-        'can_be_archived': canBeArchived,
-        'max_read_story_id': maxReadStoryId,
-        'stories': [for (final e in stories) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'list': list?.toJson(),
+    'order': order,
+    'can_be_archived': canBeArchived,
+    'max_read_story_id': maxReadStoryId,
+    'stories': [for (final e in stories) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -79,17 +81,16 @@ final class ChatActiveStories extends TdObject {
     List<StoryInfo>? stories,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatActiveStories(
-        chatId: chatId ?? this.chatId,
-        list: list != null ? list() : this.list,
-        order: order ?? this.order,
-        canBeArchived: canBeArchived ?? this.canBeArchived,
-        maxReadStoryId: maxReadStoryId ?? this.maxReadStoryId,
-        stories: stories ?? this.stories,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatActiveStories(
+    chatId: chatId ?? this.chatId,
+    list: list != null ? list() : this.list,
+    order: order ?? this.order,
+    canBeArchived: canBeArchived ?? this.canBeArchived,
+    maxReadStoryId: maxReadStoryId ?? this.maxReadStoryId,
+    stories: stories ?? this.stories,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatActiveStories';

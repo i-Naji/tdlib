@@ -43,11 +43,11 @@ final class AutoDownloadSettingsPresets extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'low': low.toJson(),
-        'medium': medium.toJson(),
-        'high': high.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'low': low.toJson(),
+    'medium': medium.toJson(),
+    'high': high.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,14 +57,13 @@ final class AutoDownloadSettingsPresets extends TdObject {
     AutoDownloadSettings? high,
     dynamic extra,
     int? clientId,
-  }) =>
-      AutoDownloadSettingsPresets(
-        low: low ?? this.low,
-        medium: medium ?? this.medium,
-        high: high ?? this.high,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => AutoDownloadSettingsPresets(
+    low: low ?? this.low,
+    medium: medium ?? this.medium,
+    high: high ?? this.high,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'autoDownloadSettingsPresets';

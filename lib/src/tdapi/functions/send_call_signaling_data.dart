@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SendCallSignalingData extends TdFunction<Ok> {
   /// Sends call signaling data
-  const SendCallSignalingData({
-    required this.callId,
-    required this.data,
-  });
+  const SendCallSignalingData({required this.callId, required this.data});
 
   /// Call identifier
   final int callId;
@@ -21,18 +18,15 @@ final class SendCallSignalingData extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'call_id': callId,
-        'data': data,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'call_id': callId,
+    'data': data,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SendCallSignalingData copyWith({
-    int? callId,
-    String? data,
-  }) =>
+  SendCallSignalingData copyWith({int? callId, String? data}) =>
       SendCallSignalingData(
         callId: callId ?? this.callId,
         data: data ?? this.data,

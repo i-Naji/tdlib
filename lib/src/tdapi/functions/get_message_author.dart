@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [User].
 final class GetMessageAuthor extends TdFunction<User> {
   /// Returns information about actual author of a message sent on behalf of a channel. The method can be called if messageProperties.can_get_author == true
-  const GetMessageAuthor({
-    required this.chatId,
-    required this.messageId,
-  });
+  const GetMessageAuthor({required this.chatId, required this.messageId});
 
   /// Chat identifier
   final int chatId;
@@ -21,22 +18,18 @@ final class GetMessageAuthor extends TdFunction<User> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetMessageAuthor copyWith({
-    int? chatId,
-    int? messageId,
-  }) =>
-      GetMessageAuthor(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-      );
+  GetMessageAuthor copyWith({int? chatId, int? messageId}) => GetMessageAuthor(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getMessageAuthor';

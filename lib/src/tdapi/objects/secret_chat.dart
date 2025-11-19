@@ -45,26 +45,26 @@ final class SecretChat extends TdObject {
 
   /// Parses a [SecretChat] from TDLib JSON.
   factory SecretChat.fromJson(Map<String, dynamic> json) => SecretChat(
-        id: _readInt(json['id']),
-        userId: _readInt(json['user_id']),
-        state: _readObject(json['state'], SecretChatState.fromJson),
-        isOutbound: _readBool(json['is_outbound']),
-        keyHash: _readString(json['key_hash']),
-        layer: _readInt(json['layer']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    id: _readInt(json['id']),
+    userId: _readInt(json['user_id']),
+    state: _readObject(json['state'], SecretChatState.fromJson),
+    isOutbound: _readBool(json['is_outbound']),
+    keyHash: _readString(json['key_hash']),
+    layer: _readInt(json['layer']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'user_id': userId,
-        'state': state.toJson(),
-        'is_outbound': isOutbound,
-        'key_hash': keyHash,
-        'layer': layer,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'user_id': userId,
+    'state': state.toJson(),
+    'is_outbound': isOutbound,
+    'key_hash': keyHash,
+    'layer': layer,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -77,17 +77,16 @@ final class SecretChat extends TdObject {
     int? layer,
     dynamic extra,
     int? clientId,
-  }) =>
-      SecretChat(
-        id: id ?? this.id,
-        userId: userId ?? this.userId,
-        state: state ?? this.state,
-        isOutbound: isOutbound ?? this.isOutbound,
-        keyHash: keyHash ?? this.keyHash,
-        layer: layer ?? this.layer,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => SecretChat(
+    id: id ?? this.id,
+    userId: userId ?? this.userId,
+    state: state ?? this.state,
+    isOutbound: isOutbound ?? this.isOutbound,
+    keyHash: keyHash ?? this.keyHash,
+    layer: layer ?? this.layer,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'secretChat';

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [ChatInviteLinkInfo].
 final class CheckChatInviteLink extends TdFunction<ChatInviteLinkInfo> {
   /// Checks the validity of an invite link for a chat and returns information about the corresponding chat
-  const CheckChatInviteLink({
-    required this.inviteLink,
-  });
+  const CheckChatInviteLink({required this.inviteLink});
 
   /// Invite link to be checked
   final String inviteLink;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'invite_link': inviteLink,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'invite_link': inviteLink,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CheckChatInviteLink copyWith({
-    String? inviteLink,
-  }) =>
-      CheckChatInviteLink(
-        inviteLink: inviteLink ?? this.inviteLink,
-      );
+  CheckChatInviteLink copyWith({String? inviteLink}) =>
+      CheckChatInviteLink(inviteLink: inviteLink ?? this.inviteLink);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkChatInviteLink';

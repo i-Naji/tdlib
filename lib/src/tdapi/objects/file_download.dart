@@ -31,22 +31,22 @@ final class FileDownload extends TdObject {
 
   /// Parses a [FileDownload] from TDLib JSON.
   factory FileDownload.fromJson(Map<String, dynamic> json) => FileDownload(
-        fileId: _readInt(json['file_id']),
-        message: _readObject(json['message'], Message.fromJson),
-        addDate: _readInt(json['add_date']),
-        completeDate: _readInt(json['complete_date']),
-        isPaused: _readBool(json['is_paused']),
-      );
+    fileId: _readInt(json['file_id']),
+    message: _readObject(json['message'], Message.fromJson),
+    addDate: _readInt(json['add_date']),
+    completeDate: _readInt(json['complete_date']),
+    isPaused: _readBool(json['is_paused']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file_id': fileId,
-        'message': message.toJson(),
-        'add_date': addDate,
-        'complete_date': completeDate,
-        'is_paused': isPaused,
-      };
+    '@type': CONSTRUCTOR,
+    'file_id': fileId,
+    'message': message.toJson(),
+    'add_date': addDate,
+    'complete_date': completeDate,
+    'is_paused': isPaused,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,14 +56,13 @@ final class FileDownload extends TdObject {
     int? addDate,
     int? completeDate,
     bool? isPaused,
-  }) =>
-      FileDownload(
-        fileId: fileId ?? this.fileId,
-        message: message ?? this.message,
-        addDate: addDate ?? this.addDate,
-        completeDate: completeDate ?? this.completeDate,
-        isPaused: isPaused ?? this.isPaused,
-      );
+  }) => FileDownload(
+    fileId: fileId ?? this.fileId,
+    message: message ?? this.message,
+    addDate: addDate ?? this.addDate,
+    completeDate: completeDate ?? this.completeDate,
+    isPaused: isPaused ?? this.isPaused,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'fileDownload';

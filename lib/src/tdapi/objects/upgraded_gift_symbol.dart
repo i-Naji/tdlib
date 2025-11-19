@@ -31,11 +31,11 @@ final class UpgradedGiftSymbol extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        'sticker': sticker.toJson(),
-        'rarity_per_mille': rarityPerMille,
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    'sticker': sticker.toJson(),
+    'rarity_per_mille': rarityPerMille,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class UpgradedGiftSymbol extends TdObject {
     String? name,
     Sticker? sticker,
     int? rarityPerMille,
-  }) =>
-      UpgradedGiftSymbol(
-        name: name ?? this.name,
-        sticker: sticker ?? this.sticker,
-        rarityPerMille: rarityPerMille ?? this.rarityPerMille,
-      );
+  }) => UpgradedGiftSymbol(
+    name: name ?? this.name,
+    sticker: sticker ?? this.sticker,
+    rarityPerMille: rarityPerMille ?? this.rarityPerMille,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradedGiftSymbol';

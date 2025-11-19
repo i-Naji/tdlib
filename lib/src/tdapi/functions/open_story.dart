@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class OpenStory extends TdFunction<Ok> {
   /// Informs TDLib that a story is opened and is being viewed by the user
-  const OpenStory({
-    required this.storyPosterChatId,
-    required this.storyId,
-  });
+  const OpenStory({required this.storyPosterChatId, required this.storyId});
 
   /// The identifier of the chat that posted the opened story
   final int storyPosterChatId;
@@ -21,22 +18,18 @@ final class OpenStory extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'story_id': storyId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  OpenStory copyWith({
-    int? storyPosterChatId,
-    int? storyId,
-  }) =>
-      OpenStory(
-        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-        storyId: storyId ?? this.storyId,
-      );
+  OpenStory copyWith({int? storyPosterChatId, int? storyId}) => OpenStory(
+    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+    storyId: storyId ?? this.storyId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'openStory';

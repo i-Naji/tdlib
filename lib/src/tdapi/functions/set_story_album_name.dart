@@ -25,20 +25,16 @@ final class SetStoryAlbumName extends TdFunction<StoryAlbum> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'story_album_id': storyAlbumId,
-        'name': name,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'story_album_id': storyAlbumId,
+    'name': name,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetStoryAlbumName copyWith({
-    int? chatId,
-    int? storyAlbumId,
-    String? name,
-  }) =>
+  SetStoryAlbumName copyWith({int? chatId, int? storyAlbumId, String? name}) =>
       SetStoryAlbumName(
         chatId: chatId ?? this.chatId,
         storyAlbumId: storyAlbumId ?? this.storyAlbumId,

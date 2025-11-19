@@ -29,13 +29,13 @@ final class ResendMessages extends TdFunction<Messages> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_ids': messageIds,
-        'quote': quote?.toJson(),
-        'paid_message_star_count': paidMessageStarCount,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_ids': messageIds,
+    'quote': quote?.toJson(),
+    'paid_message_star_count': paidMessageStarCount,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class ResendMessages extends TdFunction<Messages> {
     List<int>? messageIds,
     InputTextQuote? Function()? quote,
     int? paidMessageStarCount,
-  }) =>
-      ResendMessages(
-        chatId: chatId ?? this.chatId,
-        messageIds: messageIds ?? this.messageIds,
-        quote: quote != null ? quote() : this.quote,
-        paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
-      );
+  }) => ResendMessages(
+    chatId: chatId ?? this.chatId,
+    messageIds: messageIds ?? this.messageIds,
+    quote: quote != null ? quote() : this.quote,
+    paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'resendMessages';

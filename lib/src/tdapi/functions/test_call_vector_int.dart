@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [TestVectorInt].
 final class TestCallVectorInt extends TdFunction<TestVectorInt> {
   /// Returns the received vector of numbers; for testing only. This is an offline method. Can be called before authorization
-  const TestCallVectorInt({
-    required this.x,
-  });
+  const TestCallVectorInt({required this.x});
 
   /// Vector of numbers to return
   final List<int> x;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'x': x,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'x': x,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TestCallVectorInt copyWith({
-    List<int>? x,
-  }) =>
-      TestCallVectorInt(
-        x: x ?? this.x,
-      );
+  TestCallVectorInt copyWith({List<int>? x}) =>
+      TestCallVectorInt(x: x ?? this.x);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'testCallVectorInt';

@@ -21,22 +21,21 @@ final class SetSupergroupMainProfileTab extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'main_profile_tab': mainProfileTab.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'main_profile_tab': mainProfileTab.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetSupergroupMainProfileTab copyWith({
     int? supergroupId,
     ProfileTab? mainProfileTab,
-  }) =>
-      SetSupergroupMainProfileTab(
-        supergroupId: supergroupId ?? this.supergroupId,
-        mainProfileTab: mainProfileTab ?? this.mainProfileTab,
-      );
+  }) => SetSupergroupMainProfileTab(
+    supergroupId: supergroupId ?? this.supergroupId,
+    mainProfileTab: mainProfileTab ?? this.mainProfileTab,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setSupergroupMainProfileTab';

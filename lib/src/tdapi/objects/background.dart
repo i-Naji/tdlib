@@ -45,26 +45,26 @@ final class Background extends TdObject {
 
   /// Parses a [Background] from TDLib JSON.
   factory Background.fromJson(Map<String, dynamic> json) => Background(
-        id: _readInt(json['id']),
-        isDefault: _readBool(json['is_default']),
-        isDark: _readBool(json['is_dark']),
-        name: _readString(json['name']),
-        document: _readOptional(json['document'], Document.fromJson),
-        type: _readObject(json['type'], BackgroundType.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    id: _readInt(json['id']),
+    isDefault: _readBool(json['is_default']),
+    isDark: _readBool(json['is_dark']),
+    name: _readString(json['name']),
+    document: _readOptional(json['document'], Document.fromJson),
+    type: _readObject(json['type'], BackgroundType.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'is_default': isDefault,
-        'is_dark': isDark,
-        'name': name,
-        'document': document?.toJson(),
-        'type': type.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'is_default': isDefault,
+    'is_dark': isDark,
+    'name': name,
+    'document': document?.toJson(),
+    'type': type.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -77,17 +77,16 @@ final class Background extends TdObject {
     BackgroundType? type,
     dynamic extra,
     int? clientId,
-  }) =>
-      Background(
-        id: id ?? this.id,
-        isDefault: isDefault ?? this.isDefault,
-        isDark: isDark ?? this.isDark,
-        name: name ?? this.name,
-        document: document != null ? document() : this.document,
-        type: type ?? this.type,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => Background(
+    id: id ?? this.id,
+    isDefault: isDefault ?? this.isDefault,
+    isDark: isDark ?? this.isDark,
+    name: name ?? this.name,
+    document: document != null ? document() : this.document,
+    type: type ?? this.type,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'background';

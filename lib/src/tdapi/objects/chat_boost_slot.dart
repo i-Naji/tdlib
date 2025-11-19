@@ -31,22 +31,22 @@ final class ChatBoostSlot extends TdObject {
 
   /// Parses a [ChatBoostSlot] from TDLib JSON.
   factory ChatBoostSlot.fromJson(Map<String, dynamic> json) => ChatBoostSlot(
-        slotId: _readInt(json['slot_id']),
-        currentlyBoostedChatId: _readInt(json['currently_boosted_chat_id']),
-        startDate: _readInt(json['start_date']),
-        expirationDate: _readInt(json['expiration_date']),
-        cooldownUntilDate: _readInt(json['cooldown_until_date']),
-      );
+    slotId: _readInt(json['slot_id']),
+    currentlyBoostedChatId: _readInt(json['currently_boosted_chat_id']),
+    startDate: _readInt(json['start_date']),
+    expirationDate: _readInt(json['expiration_date']),
+    cooldownUntilDate: _readInt(json['cooldown_until_date']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'slot_id': slotId,
-        'currently_boosted_chat_id': currentlyBoostedChatId,
-        'start_date': startDate,
-        'expiration_date': expirationDate,
-        'cooldown_until_date': cooldownUntilDate,
-      };
+    '@type': CONSTRUCTOR,
+    'slot_id': slotId,
+    'currently_boosted_chat_id': currentlyBoostedChatId,
+    'start_date': startDate,
+    'expiration_date': expirationDate,
+    'cooldown_until_date': cooldownUntilDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class ChatBoostSlot extends TdObject {
     int? startDate,
     int? expirationDate,
     int? cooldownUntilDate,
-  }) =>
-      ChatBoostSlot(
-        slotId: slotId ?? this.slotId,
-        currentlyBoostedChatId:
-            currentlyBoostedChatId ?? this.currentlyBoostedChatId,
-        startDate: startDate ?? this.startDate,
-        expirationDate: expirationDate ?? this.expirationDate,
-        cooldownUntilDate: cooldownUntilDate ?? this.cooldownUntilDate,
-      );
+  }) => ChatBoostSlot(
+    slotId: slotId ?? this.slotId,
+    currentlyBoostedChatId:
+        currentlyBoostedChatId ?? this.currentlyBoostedChatId,
+    startDate: startDate ?? this.startDate,
+    expirationDate: expirationDate ?? this.expirationDate,
+    cooldownUntilDate: cooldownUntilDate ?? this.cooldownUntilDate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatBoostSlot';

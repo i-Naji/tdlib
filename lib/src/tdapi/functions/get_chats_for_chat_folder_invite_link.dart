@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Chats].
 final class GetChatsForChatFolderInviteLink extends TdFunction<Chats> {
   /// Returns identifiers of chats from a chat folder, suitable for adding to a chat folder invite link
-  const GetChatsForChatFolderInviteLink({
-    required this.chatFolderId,
-  });
+  const GetChatsForChatFolderInviteLink({required this.chatFolderId});
 
   /// Chat folder identifier
   final int chatFolderId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_folder_id': chatFolderId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_folder_id': chatFolderId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatsForChatFolderInviteLink copyWith({
-    int? chatFolderId,
-  }) =>
+  GetChatsForChatFolderInviteLink copyWith({int? chatFolderId}) =>
       GetChatsForChatFolderInviteLink(
         chatFolderId: chatFolderId ?? this.chatFolderId,
       );

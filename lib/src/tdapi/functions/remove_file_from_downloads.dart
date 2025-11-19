@@ -21,18 +21,15 @@ final class RemoveFileFromDownloads extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'file_id': fileId,
-        'delete_from_cache': deleteFromCache,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'file_id': fileId,
+    'delete_from_cache': deleteFromCache,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RemoveFileFromDownloads copyWith({
-    int? fileId,
-    bool? deleteFromCache,
-  }) =>
+  RemoveFileFromDownloads copyWith({int? fileId, bool? deleteFromCache}) =>
       RemoveFileFromDownloads(
         fileId: fileId ?? this.fileId,
         deleteFromCache: deleteFromCache ?? this.deleteFromCache,

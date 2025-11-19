@@ -25,12 +25,12 @@ final class RegisterUser extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'first_name': firstName,
-        'last_name': lastName,
-        'disable_notification': disableNotification,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'first_name': firstName,
+    'last_name': lastName,
+    'disable_notification': disableNotification,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class RegisterUser extends TdFunction<Ok> {
     String? firstName,
     String? lastName,
     bool? disableNotification,
-  }) =>
-      RegisterUser(
-        firstName: firstName ?? this.firstName,
-        lastName: lastName ?? this.lastName,
-        disableNotification: disableNotification ?? this.disableNotification,
-      );
+  }) => RegisterUser(
+    firstName: firstName ?? this.firstName,
+    lastName: lastName ?? this.lastName,
+    disableNotification: disableNotification ?? this.disableNotification,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'registerUser';

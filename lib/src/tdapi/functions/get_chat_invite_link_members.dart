@@ -33,14 +33,14 @@ final class GetChatInviteLinkMembers extends TdFunction<ChatInviteLinkMembers> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'invite_link': inviteLink,
-        'only_with_expired_subscription': onlyWithExpiredSubscription,
-        'offset_member': offsetMember?.toJson(),
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'invite_link': inviteLink,
+    'only_with_expired_subscription': onlyWithExpiredSubscription,
+    'offset_member': offsetMember?.toJson(),
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,15 +50,14 @@ final class GetChatInviteLinkMembers extends TdFunction<ChatInviteLinkMembers> {
     bool? onlyWithExpiredSubscription,
     ChatInviteLinkMember? Function()? offsetMember,
     int? limit,
-  }) =>
-      GetChatInviteLinkMembers(
-        chatId: chatId ?? this.chatId,
-        inviteLink: inviteLink ?? this.inviteLink,
-        onlyWithExpiredSubscription:
-            onlyWithExpiredSubscription ?? this.onlyWithExpiredSubscription,
-        offsetMember: offsetMember != null ? offsetMember() : this.offsetMember,
-        limit: limit ?? this.limit,
-      );
+  }) => GetChatInviteLinkMembers(
+    chatId: chatId ?? this.chatId,
+    inviteLink: inviteLink ?? this.inviteLink,
+    onlyWithExpiredSubscription:
+        onlyWithExpiredSubscription ?? this.onlyWithExpiredSubscription,
+    offsetMember: offsetMember != null ? offsetMember() : this.offsetMember,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatInviteLinkMembers';

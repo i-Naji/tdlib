@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class CheckQuickReplyShortcutName extends TdFunction<Ok> {
   /// Checks validness of a name for a quick reply shortcut. Can be called synchronously
-  const CheckQuickReplyShortcutName({
-    required this.name,
-  });
+  const CheckQuickReplyShortcutName({required this.name});
 
   /// The name of the shortcut; 1-32 characters
   final String name;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CheckQuickReplyShortcutName copyWith({
-    String? name,
-  }) =>
-      CheckQuickReplyShortcutName(
-        name: name ?? this.name,
-      );
+  CheckQuickReplyShortcutName copyWith({String? name}) =>
+      CheckQuickReplyShortcutName(name: name ?? this.name);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkQuickReplyShortcutName';

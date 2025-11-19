@@ -21,23 +21,21 @@ final class ToggleSupergroupIsAllHistoryAvailable extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'is_all_history_available': isAllHistoryAvailable,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'is_all_history_available': isAllHistoryAvailable,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleSupergroupIsAllHistoryAvailable copyWith({
     int? supergroupId,
     bool? isAllHistoryAvailable,
-  }) =>
-      ToggleSupergroupIsAllHistoryAvailable(
-        supergroupId: supergroupId ?? this.supergroupId,
-        isAllHistoryAvailable:
-            isAllHistoryAvailable ?? this.isAllHistoryAvailable,
-      );
+  }) => ToggleSupergroupIsAllHistoryAvailable(
+    supergroupId: supergroupId ?? this.supergroupId,
+    isAllHistoryAvailable: isAllHistoryAvailable ?? this.isAllHistoryAvailable,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleSupergroupIsAllHistoryAvailable';

@@ -9,9 +9,12 @@ import 'package:js/js.dart';
 @JS()
 abstract class Promise<T> {
   external factory Promise(
-      void Function(void Function(T result) resolve, Function reject) executor);
-  external Promise then(void Function(T result) onFulfilled,
-      [Function onRejected]);
+    void Function(void Function(T result) resolve, Function reject) executor,
+  );
+  external Promise then(
+    void Function(T result) onFulfilled, [
+    Function onRejected,
+  ]);
 }
 
 @JS("tdlib.default")

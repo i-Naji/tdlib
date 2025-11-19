@@ -34,24 +34,30 @@ final class ProfileAccentColor extends TdObject {
       ProfileAccentColor(
         id: _readInt(json['id']),
         lightThemeColors: _readObject(
-            json['light_theme_colors'], ProfileAccentColors.fromJson),
+          json['light_theme_colors'],
+          ProfileAccentColors.fromJson,
+        ),
         darkThemeColors: _readObject(
-            json['dark_theme_colors'], ProfileAccentColors.fromJson),
-        minSupergroupChatBoostLevel:
-            _readInt(json['min_supergroup_chat_boost_level']),
-        minChannelChatBoostLevel:
-            _readInt(json['min_channel_chat_boost_level']),
+          json['dark_theme_colors'],
+          ProfileAccentColors.fromJson,
+        ),
+        minSupergroupChatBoostLevel: _readInt(
+          json['min_supergroup_chat_boost_level'],
+        ),
+        minChannelChatBoostLevel: _readInt(
+          json['min_channel_chat_boost_level'],
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'light_theme_colors': lightThemeColors.toJson(),
-        'dark_theme_colors': darkThemeColors.toJson(),
-        'min_supergroup_chat_boost_level': minSupergroupChatBoostLevel,
-        'min_channel_chat_boost_level': minChannelChatBoostLevel,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'light_theme_colors': lightThemeColors.toJson(),
+    'dark_theme_colors': darkThemeColors.toJson(),
+    'min_supergroup_chat_boost_level': minSupergroupChatBoostLevel,
+    'min_channel_chat_boost_level': minChannelChatBoostLevel,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -61,16 +67,15 @@ final class ProfileAccentColor extends TdObject {
     ProfileAccentColors? darkThemeColors,
     int? minSupergroupChatBoostLevel,
     int? minChannelChatBoostLevel,
-  }) =>
-      ProfileAccentColor(
-        id: id ?? this.id,
-        lightThemeColors: lightThemeColors ?? this.lightThemeColors,
-        darkThemeColors: darkThemeColors ?? this.darkThemeColors,
-        minSupergroupChatBoostLevel:
-            minSupergroupChatBoostLevel ?? this.minSupergroupChatBoostLevel,
-        minChannelChatBoostLevel:
-            minChannelChatBoostLevel ?? this.minChannelChatBoostLevel,
-      );
+  }) => ProfileAccentColor(
+    id: id ?? this.id,
+    lightThemeColors: lightThemeColors ?? this.lightThemeColors,
+    darkThemeColors: darkThemeColors ?? this.darkThemeColors,
+    minSupergroupChatBoostLevel:
+        minSupergroupChatBoostLevel ?? this.minSupergroupChatBoostLevel,
+    minChannelChatBoostLevel:
+        minChannelChatBoostLevel ?? this.minChannelChatBoostLevel,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'profileAccentColor';

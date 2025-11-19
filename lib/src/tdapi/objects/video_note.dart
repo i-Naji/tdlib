@@ -39,29 +39,29 @@ final class VideoNote extends TdObject {
 
   /// Parses a [VideoNote] from TDLib JSON.
   factory VideoNote.fromJson(Map<String, dynamic> json) => VideoNote(
-        duration: _readInt(json['duration']),
-        waveform: _readString(json['waveform']),
-        length: _readInt(json['length']),
-        minithumbnail:
-            _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
-        thumbnail: _readOptional(json['thumbnail'], Thumbnail.fromJson),
-        speechRecognitionResult: _readOptional(
-            json['speech_recognition_result'],
-            SpeechRecognitionResult.fromJson),
-        video: _readObject(json['video'], File.fromJson),
-      );
+    duration: _readInt(json['duration']),
+    waveform: _readString(json['waveform']),
+    length: _readInt(json['length']),
+    minithumbnail: _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
+    thumbnail: _readOptional(json['thumbnail'], Thumbnail.fromJson),
+    speechRecognitionResult: _readOptional(
+      json['speech_recognition_result'],
+      SpeechRecognitionResult.fromJson,
+    ),
+    video: _readObject(json['video'], File.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'duration': duration,
-        'waveform': waveform,
-        'length': length,
-        'minithumbnail': minithumbnail?.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'speech_recognition_result': speechRecognitionResult?.toJson(),
-        'video': video.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'duration': duration,
+    'waveform': waveform,
+    'length': length,
+    'minithumbnail': minithumbnail?.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'speech_recognition_result': speechRecognitionResult?.toJson(),
+    'video': video.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -73,19 +73,17 @@ final class VideoNote extends TdObject {
     Thumbnail? Function()? thumbnail,
     SpeechRecognitionResult? Function()? speechRecognitionResult,
     File? video,
-  }) =>
-      VideoNote(
-        duration: duration ?? this.duration,
-        waveform: waveform ?? this.waveform,
-        length: length ?? this.length,
-        minithumbnail:
-            minithumbnail != null ? minithumbnail() : this.minithumbnail,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        speechRecognitionResult: speechRecognitionResult != null
-            ? speechRecognitionResult()
-            : this.speechRecognitionResult,
-        video: video ?? this.video,
-      );
+  }) => VideoNote(
+    duration: duration ?? this.duration,
+    waveform: waveform ?? this.waveform,
+    length: length ?? this.length,
+    minithumbnail: minithumbnail != null ? minithumbnail() : this.minithumbnail,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    speechRecognitionResult: speechRecognitionResult != null
+        ? speechRecognitionResult()
+        : this.speechRecognitionResult,
+    video: video ?? this.video,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'videoNote';

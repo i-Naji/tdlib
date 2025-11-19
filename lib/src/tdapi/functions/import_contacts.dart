@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [ImportedContacts].
 final class ImportContacts extends TdFunction<ImportedContacts> {
   /// Adds new contacts or edits existing contacts by their phone numbers; contacts' user identifiers are ignored
-  const ImportContacts({
-    required this.contacts,
-  });
+  const ImportContacts({required this.contacts});
 
   /// The list of contacts to import or edit
   final List<ImportedContact> contacts;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'contacts': [for (final e in contacts) e.toJson()],
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'contacts': [for (final e in contacts) e.toJson()],
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ImportContacts copyWith({
-    List<ImportedContact>? contacts,
-  }) =>
-      ImportContacts(
-        contacts: contacts ?? this.contacts,
-      );
+  ImportContacts copyWith({List<ImportedContact>? contacts}) =>
+      ImportContacts(contacts: contacts ?? this.contacts);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'importContacts';

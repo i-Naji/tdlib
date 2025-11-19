@@ -47,9 +47,7 @@ final class UndecodedStoryInteractionType extends StoryInteractionType {
 /// A view of the story
 final class StoryInteractionTypeView extends StoryInteractionType {
   /// A view of the story
-  const StoryInteractionTypeView({
-    this.chosenReactionType,
-  });
+  const StoryInteractionTypeView({this.chosenReactionType});
 
   /// Type of the reaction that was chosen by the viewer; may be null if none
   final ReactionType? chosenReactionType;
@@ -57,27 +55,28 @@ final class StoryInteractionTypeView extends StoryInteractionType {
   /// Parses a [StoryInteractionTypeView] from TDLib JSON.
   factory StoryInteractionTypeView.fromJson(Map<String, dynamic> json) =>
       StoryInteractionTypeView(
-        chosenReactionType:
-            _readOptional(json['chosen_reaction_type'], ReactionType.fromJson),
+        chosenReactionType: _readOptional(
+          json['chosen_reaction_type'],
+          ReactionType.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chosen_reaction_type': chosenReactionType?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chosen_reaction_type': chosenReactionType?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StoryInteractionTypeView copyWith({
     ReactionType? Function()? chosenReactionType,
-  }) =>
-      StoryInteractionTypeView(
-        chosenReactionType: chosenReactionType != null
-            ? chosenReactionType()
-            : this.chosenReactionType,
-      );
+  }) => StoryInteractionTypeView(
+    chosenReactionType: chosenReactionType != null
+        ? chosenReactionType()
+        : this.chosenReactionType,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyInteractionTypeView';
@@ -89,9 +88,7 @@ final class StoryInteractionTypeView extends StoryInteractionType {
 /// A forward of the story as a message
 final class StoryInteractionTypeForward extends StoryInteractionType {
   /// A forward of the story as a message
-  const StoryInteractionTypeForward({
-    required this.message,
-  });
+  const StoryInteractionTypeForward({required this.message});
 
   /// The message with story forward
   final Message message;
@@ -104,19 +101,15 @@ final class StoryInteractionTypeForward extends StoryInteractionType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message': message.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'message': message.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StoryInteractionTypeForward copyWith({
-    Message? message,
-  }) =>
-      StoryInteractionTypeForward(
-        message: message ?? this.message,
-      );
+  StoryInteractionTypeForward copyWith({Message? message}) =>
+      StoryInteractionTypeForward(message: message ?? this.message);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyInteractionTypeForward';
@@ -128,9 +121,7 @@ final class StoryInteractionTypeForward extends StoryInteractionType {
 /// A repost of the story as a story
 final class StoryInteractionTypeRepost extends StoryInteractionType {
   /// A repost of the story as a story
-  const StoryInteractionTypeRepost({
-    required this.story,
-  });
+  const StoryInteractionTypeRepost({required this.story});
 
   /// The reposted story
   final Story story;
@@ -143,19 +134,15 @@ final class StoryInteractionTypeRepost extends StoryInteractionType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'story': story.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'story': story.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StoryInteractionTypeRepost copyWith({
-    Story? story,
-  }) =>
-      StoryInteractionTypeRepost(
-        story: story ?? this.story,
-      );
+  StoryInteractionTypeRepost copyWith({Story? story}) =>
+      StoryInteractionTypeRepost(story: story ?? this.story);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyInteractionTypeRepost';

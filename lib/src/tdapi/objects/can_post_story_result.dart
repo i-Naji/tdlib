@@ -74,9 +74,9 @@ final class CanPostStoryResultOk extends CanPostStoryResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'story_count': storyCount,
-      };
+    '@type': CONSTRUCTOR,
+    'story_count': storyCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -85,12 +85,11 @@ final class CanPostStoryResultOk extends CanPostStoryResult {
     int? storyCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      CanPostStoryResultOk(
-        storyCount: storyCount ?? this.storyCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CanPostStoryResultOk(
+    storyCount: storyCount ?? this.storyCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'canPostStoryResultOk';
@@ -102,10 +101,7 @@ final class CanPostStoryResultOk extends CanPostStoryResult {
 /// The user must subscribe to Telegram Premium to be able to post stories
 final class CanPostStoryResultPremiumNeeded extends CanPostStoryResult {
   /// The user must subscribe to Telegram Premium to be able to post stories
-  const CanPostStoryResultPremiumNeeded({
-    this.extra,
-    this.clientId,
-  });
+  const CanPostStoryResultPremiumNeeded({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -123,17 +119,12 @@ final class CanPostStoryResultPremiumNeeded extends CanPostStoryResult {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  CanPostStoryResultPremiumNeeded copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  CanPostStoryResultPremiumNeeded copyWith({dynamic extra, int? clientId}) =>
       CanPostStoryResultPremiumNeeded(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -149,10 +140,7 @@ final class CanPostStoryResultPremiumNeeded extends CanPostStoryResult {
 /// The chat must be boosted first by Telegram Premium subscribers to post more stories. Call getChatBoostStatus to get current boost status of the chat
 final class CanPostStoryResultBoostNeeded extends CanPostStoryResult {
   /// The chat must be boosted first by Telegram Premium subscribers to post more stories. Call getChatBoostStatus to get current boost status of the chat
-  const CanPostStoryResultBoostNeeded({
-    this.extra,
-    this.clientId,
-  });
+  const CanPostStoryResultBoostNeeded({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -170,17 +158,12 @@ final class CanPostStoryResultBoostNeeded extends CanPostStoryResult {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  CanPostStoryResultBoostNeeded copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  CanPostStoryResultBoostNeeded copyWith({dynamic extra, int? clientId}) =>
       CanPostStoryResultBoostNeeded(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -197,10 +180,7 @@ final class CanPostStoryResultBoostNeeded extends CanPostStoryResult {
 final class CanPostStoryResultActiveStoryLimitExceeded
     extends CanPostStoryResult {
   /// The limit for the number of active stories exceeded. The user can buy Telegram Premium, delete an active story, or wait for the oldest story to expire
-  const CanPostStoryResultActiveStoryLimitExceeded({
-    this.extra,
-    this.clientId,
-  });
+  const CanPostStoryResultActiveStoryLimitExceeded({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -212,16 +192,14 @@ final class CanPostStoryResultActiveStoryLimitExceeded
 
   /// Parses a [CanPostStoryResultActiveStoryLimitExceeded] from TDLib JSON.
   factory CanPostStoryResultActiveStoryLimitExceeded.fromJson(
-          Map<String, dynamic> json) =>
-      CanPostStoryResultActiveStoryLimitExceeded(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => CanPostStoryResultActiveStoryLimitExceeded(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -229,11 +207,10 @@ final class CanPostStoryResultActiveStoryLimitExceeded
   CanPostStoryResultActiveStoryLimitExceeded copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      CanPostStoryResultActiveStoryLimitExceeded(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CanPostStoryResultActiveStoryLimitExceeded(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -265,18 +242,18 @@ final class CanPostStoryResultWeeklyLimitExceeded extends CanPostStoryResult {
 
   /// Parses a [CanPostStoryResultWeeklyLimitExceeded] from TDLib JSON.
   factory CanPostStoryResultWeeklyLimitExceeded.fromJson(
-          Map<String, dynamic> json) =>
-      CanPostStoryResultWeeklyLimitExceeded(
-        retryAfter: _readInt(json['retry_after']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => CanPostStoryResultWeeklyLimitExceeded(
+    retryAfter: _readInt(json['retry_after']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'retry_after': retryAfter,
-      };
+    '@type': CONSTRUCTOR,
+    'retry_after': retryAfter,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -285,12 +262,11 @@ final class CanPostStoryResultWeeklyLimitExceeded extends CanPostStoryResult {
     int? retryAfter,
     dynamic extra,
     int? clientId,
-  }) =>
-      CanPostStoryResultWeeklyLimitExceeded(
-        retryAfter: retryAfter ?? this.retryAfter,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CanPostStoryResultWeeklyLimitExceeded(
+    retryAfter: retryAfter ?? this.retryAfter,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'canPostStoryResultWeeklyLimitExceeded';
@@ -321,18 +297,18 @@ final class CanPostStoryResultMonthlyLimitExceeded extends CanPostStoryResult {
 
   /// Parses a [CanPostStoryResultMonthlyLimitExceeded] from TDLib JSON.
   factory CanPostStoryResultMonthlyLimitExceeded.fromJson(
-          Map<String, dynamic> json) =>
-      CanPostStoryResultMonthlyLimitExceeded(
-        retryAfter: _readInt(json['retry_after']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => CanPostStoryResultMonthlyLimitExceeded(
+    retryAfter: _readInt(json['retry_after']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'retry_after': retryAfter,
-      };
+    '@type': CONSTRUCTOR,
+    'retry_after': retryAfter,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -341,12 +317,11 @@ final class CanPostStoryResultMonthlyLimitExceeded extends CanPostStoryResult {
     int? retryAfter,
     dynamic extra,
     int? clientId,
-  }) =>
-      CanPostStoryResultMonthlyLimitExceeded(
-        retryAfter: retryAfter ?? this.retryAfter,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CanPostStoryResultMonthlyLimitExceeded(
+    retryAfter: retryAfter ?? this.retryAfter,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'canPostStoryResultMonthlyLimitExceeded';

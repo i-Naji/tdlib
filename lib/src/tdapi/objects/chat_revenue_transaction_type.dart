@@ -53,13 +53,11 @@ final class ChatRevenueTransactionTypeUnsupported
 
   /// Parses a [ChatRevenueTransactionTypeUnsupported] from TDLib JSON.
   factory ChatRevenueTransactionTypeUnsupported.fromJson(
-          Map<String, dynamic> json) =>
-      const ChatRevenueTransactionTypeUnsupported();
+    Map<String, dynamic> json,
+  ) => const ChatRevenueTransactionTypeUnsupported();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -91,18 +89,18 @@ final class ChatRevenueTransactionTypeSponsoredMessageEarnings
 
   /// Parses a [ChatRevenueTransactionTypeSponsoredMessageEarnings] from TDLib JSON.
   factory ChatRevenueTransactionTypeSponsoredMessageEarnings.fromJson(
-          Map<String, dynamic> json) =>
-      ChatRevenueTransactionTypeSponsoredMessageEarnings(
-        startDate: _readInt(json['start_date']),
-        endDate: _readInt(json['end_date']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatRevenueTransactionTypeSponsoredMessageEarnings(
+    startDate: _readInt(json['start_date']),
+    endDate: _readInt(json['end_date']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'start_date': startDate,
-        'end_date': endDate,
-      };
+    '@type': CONSTRUCTOR,
+    'start_date': startDate,
+    'end_date': endDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -110,11 +108,10 @@ final class ChatRevenueTransactionTypeSponsoredMessageEarnings
   ChatRevenueTransactionTypeSponsoredMessageEarnings copyWith({
     int? startDate,
     int? endDate,
-  }) =>
-      ChatRevenueTransactionTypeSponsoredMessageEarnings(
-        startDate: startDate ?? this.startDate,
-        endDate: endDate ?? this.endDate,
-      );
+  }) => ChatRevenueTransactionTypeSponsoredMessageEarnings(
+    startDate: startDate ?? this.startDate,
+    endDate: endDate ?? this.endDate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -128,32 +125,25 @@ final class ChatRevenueTransactionTypeSponsoredMessageEarnings
 final class ChatRevenueTransactionTypeSuggestedPostEarnings
     extends ChatRevenueTransactionType {
   /// Describes earnings from a published suggested post
-  const ChatRevenueTransactionTypeSuggestedPostEarnings({
-    required this.userId,
-  });
+  const ChatRevenueTransactionTypeSuggestedPostEarnings({required this.userId});
 
   /// Identifier of the user that paid for the suggested post
   final int userId;
 
   /// Parses a [ChatRevenueTransactionTypeSuggestedPostEarnings] from TDLib JSON.
   factory ChatRevenueTransactionTypeSuggestedPostEarnings.fromJson(
-          Map<String, dynamic> json) =>
-      ChatRevenueTransactionTypeSuggestedPostEarnings(
-        userId: _readInt(json['user_id']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatRevenueTransactionTypeSuggestedPostEarnings(
+    userId: _readInt(json['user_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'user_id': userId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatRevenueTransactionTypeSuggestedPostEarnings copyWith({
-    int? userId,
-  }) =>
+  ChatRevenueTransactionTypeSuggestedPostEarnings copyWith({int? userId}) =>
       ChatRevenueTransactionTypeSuggestedPostEarnings(
         userId: userId ?? this.userId,
       );
@@ -183,18 +173,18 @@ final class ChatRevenueTransactionTypeFragmentWithdrawal
 
   /// Parses a [ChatRevenueTransactionTypeFragmentWithdrawal] from TDLib JSON.
   factory ChatRevenueTransactionTypeFragmentWithdrawal.fromJson(
-          Map<String, dynamic> json) =>
-      ChatRevenueTransactionTypeFragmentWithdrawal(
-        withdrawalDate: _readInt(json['withdrawal_date']),
-        state: _readObject(json['state'], RevenueWithdrawalState.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => ChatRevenueTransactionTypeFragmentWithdrawal(
+    withdrawalDate: _readInt(json['withdrawal_date']),
+    state: _readObject(json['state'], RevenueWithdrawalState.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'withdrawal_date': withdrawalDate,
-        'state': state.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'withdrawal_date': withdrawalDate,
+    'state': state.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -202,11 +192,10 @@ final class ChatRevenueTransactionTypeFragmentWithdrawal
   ChatRevenueTransactionTypeFragmentWithdrawal copyWith({
     int? withdrawalDate,
     RevenueWithdrawalState? state,
-  }) =>
-      ChatRevenueTransactionTypeFragmentWithdrawal(
-        withdrawalDate: withdrawalDate ?? this.withdrawalDate,
-        state: state ?? this.state,
-      );
+  }) => ChatRevenueTransactionTypeFragmentWithdrawal(
+    withdrawalDate: withdrawalDate ?? this.withdrawalDate,
+    state: state ?? this.state,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -220,32 +209,28 @@ final class ChatRevenueTransactionTypeFragmentWithdrawal
 final class ChatRevenueTransactionTypeFragmentRefund
     extends ChatRevenueTransactionType {
   /// Describes a refund for failed withdrawal of earnings through Fragment
-  const ChatRevenueTransactionTypeFragmentRefund({
-    required this.refundDate,
-  });
+  const ChatRevenueTransactionTypeFragmentRefund({required this.refundDate});
 
   /// Point in time (Unix timestamp) when the transaction was refunded
   final int refundDate;
 
   /// Parses a [ChatRevenueTransactionTypeFragmentRefund] from TDLib JSON.
   factory ChatRevenueTransactionTypeFragmentRefund.fromJson(
-          Map<String, dynamic> json) =>
-      ChatRevenueTransactionTypeFragmentRefund(
-        refundDate: _readInt(json['refund_date']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatRevenueTransactionTypeFragmentRefund(
+    refundDate: _readInt(json['refund_date']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'refund_date': refundDate,
-      };
+    '@type': CONSTRUCTOR,
+    'refund_date': refundDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatRevenueTransactionTypeFragmentRefund copyWith({
-    int? refundDate,
-  }) =>
+  ChatRevenueTransactionTypeFragmentRefund copyWith({int? refundDate}) =>
       ChatRevenueTransactionTypeFragmentRefund(
         refundDate: refundDate ?? this.refundDate,
       );

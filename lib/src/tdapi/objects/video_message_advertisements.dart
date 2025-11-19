@@ -35,8 +35,9 @@ final class VideoMessageAdvertisements extends TdObject {
   factory VideoMessageAdvertisements.fromJson(Map<String, dynamic> json) =>
       VideoMessageAdvertisements(
         advertisements: _readList<VideoMessageAdvertisement>(
-            json['advertisements'],
-            (e) => _readObject(e, VideoMessageAdvertisement.fromJson)),
+          json['advertisements'],
+          (e) => _readObject(e, VideoMessageAdvertisement.fromJson),
+        ),
         startDelay: _readInt(json['start_delay']),
         betweenDelay: _readInt(json['between_delay']),
         extra: json['@extra'],
@@ -45,11 +46,11 @@ final class VideoMessageAdvertisements extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'advertisements': [for (final e in advertisements) e.toJson()],
-        'start_delay': startDelay,
-        'between_delay': betweenDelay,
-      };
+    '@type': CONSTRUCTOR,
+    'advertisements': [for (final e in advertisements) e.toJson()],
+    'start_delay': startDelay,
+    'between_delay': betweenDelay,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -59,14 +60,13 @@ final class VideoMessageAdvertisements extends TdObject {
     int? betweenDelay,
     dynamic extra,
     int? clientId,
-  }) =>
-      VideoMessageAdvertisements(
-        advertisements: advertisements ?? this.advertisements,
-        startDelay: startDelay ?? this.startDelay,
-        betweenDelay: betweenDelay ?? this.betweenDelay,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => VideoMessageAdvertisements(
+    advertisements: advertisements ?? this.advertisements,
+    startDelay: startDelay ?? this.startDelay,
+    betweenDelay: betweenDelay ?? this.betweenDelay,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'videoMessageAdvertisements';

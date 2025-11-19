@@ -46,31 +46,38 @@ final class AvailableReactions extends TdObject {
   /// Parses a [AvailableReactions] from TDLib JSON.
   factory AvailableReactions.fromJson(Map<String, dynamic> json) =>
       AvailableReactions(
-        topReactions: _readList<AvailableReaction>(json['top_reactions'],
-            (e) => _readObject(e, AvailableReaction.fromJson)),
-        recentReactions: _readList<AvailableReaction>(json['recent_reactions'],
-            (e) => _readObject(e, AvailableReaction.fromJson)),
+        topReactions: _readList<AvailableReaction>(
+          json['top_reactions'],
+          (e) => _readObject(e, AvailableReaction.fromJson),
+        ),
+        recentReactions: _readList<AvailableReaction>(
+          json['recent_reactions'],
+          (e) => _readObject(e, AvailableReaction.fromJson),
+        ),
         popularReactions: _readList<AvailableReaction>(
-            json['popular_reactions'],
-            (e) => _readObject(e, AvailableReaction.fromJson)),
+          json['popular_reactions'],
+          (e) => _readObject(e, AvailableReaction.fromJson),
+        ),
         allowCustomEmoji: _readBool(json['allow_custom_emoji']),
         areTags: _readBool(json['are_tags']),
-        unavailabilityReason: _readOptional(json['unavailability_reason'],
-            ReactionUnavailabilityReason.fromJson),
+        unavailabilityReason: _readOptional(
+          json['unavailability_reason'],
+          ReactionUnavailabilityReason.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'top_reactions': [for (final e in topReactions) e.toJson()],
-        'recent_reactions': [for (final e in recentReactions) e.toJson()],
-        'popular_reactions': [for (final e in popularReactions) e.toJson()],
-        'allow_custom_emoji': allowCustomEmoji,
-        'are_tags': areTags,
-        'unavailability_reason': unavailabilityReason?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'top_reactions': [for (final e in topReactions) e.toJson()],
+    'recent_reactions': [for (final e in recentReactions) e.toJson()],
+    'popular_reactions': [for (final e in popularReactions) e.toJson()],
+    'allow_custom_emoji': allowCustomEmoji,
+    'are_tags': areTags,
+    'unavailability_reason': unavailabilityReason?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -83,19 +90,18 @@ final class AvailableReactions extends TdObject {
     ReactionUnavailabilityReason? Function()? unavailabilityReason,
     dynamic extra,
     int? clientId,
-  }) =>
-      AvailableReactions(
-        topReactions: topReactions ?? this.topReactions,
-        recentReactions: recentReactions ?? this.recentReactions,
-        popularReactions: popularReactions ?? this.popularReactions,
-        allowCustomEmoji: allowCustomEmoji ?? this.allowCustomEmoji,
-        areTags: areTags ?? this.areTags,
-        unavailabilityReason: unavailabilityReason != null
-            ? unavailabilityReason()
-            : this.unavailabilityReason,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => AvailableReactions(
+    topReactions: topReactions ?? this.topReactions,
+    recentReactions: recentReactions ?? this.recentReactions,
+    popularReactions: popularReactions ?? this.popularReactions,
+    allowCustomEmoji: allowCustomEmoji ?? this.allowCustomEmoji,
+    areTags: areTags ?? this.areTags,
+    unavailabilityReason: unavailabilityReason != null
+        ? unavailabilityReason()
+        : this.unavailabilityReason,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'availableReactions';

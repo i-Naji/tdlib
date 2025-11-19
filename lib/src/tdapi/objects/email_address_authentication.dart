@@ -48,34 +48,23 @@ final class UndecodedEmailAddressAuthentication
 /// An authentication code delivered to a user's email address
 final class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
   /// An authentication code delivered to a user's email address
-  const EmailAddressAuthenticationCode({
-    required this.code,
-  });
+  const EmailAddressAuthenticationCode({required this.code});
 
   /// The code
   final String code;
 
   /// Parses a [EmailAddressAuthenticationCode] from TDLib JSON.
   factory EmailAddressAuthenticationCode.fromJson(Map<String, dynamic> json) =>
-      EmailAddressAuthenticationCode(
-        code: _readString(json['code']),
-      );
+      EmailAddressAuthenticationCode(code: _readString(json['code']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'code': code,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'code': code};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  EmailAddressAuthenticationCode copyWith({
-    String? code,
-  }) =>
-      EmailAddressAuthenticationCode(
-        code: code ?? this.code,
-      );
+  EmailAddressAuthenticationCode copyWith({String? code}) =>
+      EmailAddressAuthenticationCode(code: code ?? this.code);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'emailAddressAuthenticationCode';
@@ -88,35 +77,24 @@ final class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
 final class EmailAddressAuthenticationAppleId
     extends EmailAddressAuthentication {
   /// An authentication token received through Apple ID
-  const EmailAddressAuthenticationAppleId({
-    required this.token,
-  });
+  const EmailAddressAuthenticationAppleId({required this.token});
 
   /// The token
   final String token;
 
   /// Parses a [EmailAddressAuthenticationAppleId] from TDLib JSON.
   factory EmailAddressAuthenticationAppleId.fromJson(
-          Map<String, dynamic> json) =>
-      EmailAddressAuthenticationAppleId(
-        token: _readString(json['token']),
-      );
+    Map<String, dynamic> json,
+  ) => EmailAddressAuthenticationAppleId(token: _readString(json['token']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'token': token,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'token': token};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  EmailAddressAuthenticationAppleId copyWith({
-    String? token,
-  }) =>
-      EmailAddressAuthenticationAppleId(
-        token: token ?? this.token,
-      );
+  EmailAddressAuthenticationAppleId copyWith({String? token}) =>
+      EmailAddressAuthenticationAppleId(token: token ?? this.token);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'emailAddressAuthenticationAppleId';
@@ -129,35 +107,24 @@ final class EmailAddressAuthenticationAppleId
 final class EmailAddressAuthenticationGoogleId
     extends EmailAddressAuthentication {
   /// An authentication token received through Google ID
-  const EmailAddressAuthenticationGoogleId({
-    required this.token,
-  });
+  const EmailAddressAuthenticationGoogleId({required this.token});
 
   /// The token
   final String token;
 
   /// Parses a [EmailAddressAuthenticationGoogleId] from TDLib JSON.
   factory EmailAddressAuthenticationGoogleId.fromJson(
-          Map<String, dynamic> json) =>
-      EmailAddressAuthenticationGoogleId(
-        token: _readString(json['token']),
-      );
+    Map<String, dynamic> json,
+  ) => EmailAddressAuthenticationGoogleId(token: _readString(json['token']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'token': token,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'token': token};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  EmailAddressAuthenticationGoogleId copyWith({
-    String? token,
-  }) =>
-      EmailAddressAuthenticationGoogleId(
-        token: token ?? this.token,
-      );
+  EmailAddressAuthenticationGoogleId copyWith({String? token}) =>
+      EmailAddressAuthenticationGoogleId(token: token ?? this.token);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'emailAddressAuthenticationGoogleId';

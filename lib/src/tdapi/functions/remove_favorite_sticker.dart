@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class RemoveFavoriteSticker extends TdFunction<Ok> {
   /// Removes a sticker from the list of favorite stickers
-  const RemoveFavoriteSticker({
-    required this.sticker,
-  });
+  const RemoveFavoriteSticker({required this.sticker});
 
   /// Sticker file to delete from the list
   final InputFile sticker;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker': sticker.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker': sticker.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RemoveFavoriteSticker copyWith({
-    InputFile? sticker,
-  }) =>
-      RemoveFavoriteSticker(
-        sticker: sticker ?? this.sticker,
-      );
+  RemoveFavoriteSticker copyWith({InputFile? sticker}) =>
+      RemoveFavoriteSticker(sticker: sticker ?? this.sticker);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'removeFavoriteSticker';

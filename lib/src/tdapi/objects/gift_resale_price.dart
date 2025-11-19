@@ -45,34 +45,26 @@ final class UndecodedGiftResalePrice extends GiftResalePrice {
 /// Describes price of a resold gift in Telegram Stars
 final class GiftResalePriceStar extends GiftResalePrice {
   /// Describes price of a resold gift in Telegram Stars
-  const GiftResalePriceStar({
-    required this.starCount,
-  });
+  const GiftResalePriceStar({required this.starCount});
 
   /// The amount of Telegram Stars expected to be paid for the gift. Must be in range getOption("gift_resale_star_count_min")-getOption("gift_resale_star_count_max") for gifts put for resale
   final int starCount;
 
   /// Parses a [GiftResalePriceStar] from TDLib JSON.
   factory GiftResalePriceStar.fromJson(Map<String, dynamic> json) =>
-      GiftResalePriceStar(
-        starCount: _readInt(json['star_count']),
-      );
+      GiftResalePriceStar(starCount: _readInt(json['star_count']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_count': starCount,
-      };
+    '@type': CONSTRUCTOR,
+    'star_count': starCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  GiftResalePriceStar copyWith({
-    int? starCount,
-  }) =>
-      GiftResalePriceStar(
-        starCount: starCount ?? this.starCount,
-      );
+  GiftResalePriceStar copyWith({int? starCount}) =>
+      GiftResalePriceStar(starCount: starCount ?? this.starCount);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giftResalePriceStar';
@@ -84,9 +76,7 @@ final class GiftResalePriceStar extends GiftResalePrice {
 /// Describes price of a resold gift in Toncoins
 final class GiftResalePriceTon extends GiftResalePrice {
   /// Describes price of a resold gift in Toncoins
-  const GiftResalePriceTon({
-    required this.toncoinCentCount,
-  });
+  const GiftResalePriceTon({required this.toncoinCentCount});
 
   /// The amount of 1/100 of Toncoin expected to be paid for the gift. Must be in range getOption("gift_resale_toncoin_cent_count_min")-getOption("gift_resale_toncoin_cent_count_max")
   final int toncoinCentCount;
@@ -99,19 +89,16 @@ final class GiftResalePriceTon extends GiftResalePrice {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'toncoin_cent_count': toncoinCentCount,
-      };
+    '@type': CONSTRUCTOR,
+    'toncoin_cent_count': toncoinCentCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  GiftResalePriceTon copyWith({
-    int? toncoinCentCount,
-  }) =>
-      GiftResalePriceTon(
-        toncoinCentCount: toncoinCentCount ?? this.toncoinCentCount,
-      );
+  GiftResalePriceTon copyWith({int? toncoinCentCount}) => GiftResalePriceTon(
+    toncoinCentCount: toncoinCentCount ?? this.toncoinCentCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giftResalePriceTon';

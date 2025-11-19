@@ -33,14 +33,14 @@ final class SearchGiftsForResale extends TdFunction<GiftsForResale> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'gift_id': giftId.toString(),
-        'order': order.toJson(),
-        'attributes': [for (final e in attributes) e.toJson()],
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'gift_id': giftId.toString(),
+    'order': order.toJson(),
+    'attributes': [for (final e in attributes) e.toJson()],
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class SearchGiftsForResale extends TdFunction<GiftsForResale> {
     List<UpgradedGiftAttributeId>? attributes,
     String? offset,
     int? limit,
-  }) =>
-      SearchGiftsForResale(
-        giftId: giftId ?? this.giftId,
-        order: order ?? this.order,
-        attributes: attributes ?? this.attributes,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => SearchGiftsForResale(
+    giftId: giftId ?? this.giftId,
+    order: order ?? this.order,
+    attributes: attributes ?? this.attributes,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchGiftsForResale';

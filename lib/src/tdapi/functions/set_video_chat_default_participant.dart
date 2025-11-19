@@ -21,22 +21,21 @@ final class SetVideoChatDefaultParticipant extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'default_participant_id': defaultParticipantId.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'default_participant_id': defaultParticipantId.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetVideoChatDefaultParticipant copyWith({
     int? chatId,
     MessageSender? defaultParticipantId,
-  }) =>
-      SetVideoChatDefaultParticipant(
-        chatId: chatId ?? this.chatId,
-        defaultParticipantId: defaultParticipantId ?? this.defaultParticipantId,
-      );
+  }) => SetVideoChatDefaultParticipant(
+    chatId: chatId ?? this.chatId,
+    defaultParticipantId: defaultParticipantId ?? this.defaultParticipantId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setVideoChatDefaultParticipant';

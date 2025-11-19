@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetLogStream extends TdFunction<Ok> {
   /// Sets new log stream for internal logging of TDLib. Can be called synchronously
-  const SetLogStream({
-    required this.logStream,
-  });
+  const SetLogStream({required this.logStream});
 
   /// New log stream
   final LogStream logStream;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'log_stream': logStream.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'log_stream': logStream.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetLogStream copyWith({
-    LogStream? logStream,
-  }) =>
-      SetLogStream(
-        logStream: logStream ?? this.logStream,
-      );
+  SetLogStream copyWith({LogStream? logStream}) =>
+      SetLogStream(logStream: logStream ?? this.logStream);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setLogStream';

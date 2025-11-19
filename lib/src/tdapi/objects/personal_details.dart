@@ -66,18 +66,18 @@ final class PersonalDetails extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'first_name': firstName,
-        'middle_name': middleName,
-        'last_name': lastName,
-        'native_first_name': nativeFirstName,
-        'native_middle_name': nativeMiddleName,
-        'native_last_name': nativeLastName,
-        'birthdate': birthdate.toJson(),
-        'gender': gender,
-        'country_code': countryCode,
-        'residence_country_code': residenceCountryCode,
-      };
+    '@type': CONSTRUCTOR,
+    'first_name': firstName,
+    'middle_name': middleName,
+    'last_name': lastName,
+    'native_first_name': nativeFirstName,
+    'native_middle_name': nativeMiddleName,
+    'native_last_name': nativeLastName,
+    'birthdate': birthdate.toJson(),
+    'gender': gender,
+    'country_code': countryCode,
+    'residence_country_code': residenceCountryCode,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -92,19 +92,18 @@ final class PersonalDetails extends TdObject {
     String? gender,
     String? countryCode,
     String? residenceCountryCode,
-  }) =>
-      PersonalDetails(
-        firstName: firstName ?? this.firstName,
-        middleName: middleName ?? this.middleName,
-        lastName: lastName ?? this.lastName,
-        nativeFirstName: nativeFirstName ?? this.nativeFirstName,
-        nativeMiddleName: nativeMiddleName ?? this.nativeMiddleName,
-        nativeLastName: nativeLastName ?? this.nativeLastName,
-        birthdate: birthdate ?? this.birthdate,
-        gender: gender ?? this.gender,
-        countryCode: countryCode ?? this.countryCode,
-        residenceCountryCode: residenceCountryCode ?? this.residenceCountryCode,
-      );
+  }) => PersonalDetails(
+    firstName: firstName ?? this.firstName,
+    middleName: middleName ?? this.middleName,
+    lastName: lastName ?? this.lastName,
+    nativeFirstName: nativeFirstName ?? this.nativeFirstName,
+    nativeMiddleName: nativeMiddleName ?? this.nativeMiddleName,
+    nativeLastName: nativeLastName ?? this.nativeLastName,
+    birthdate: birthdate ?? this.birthdate,
+    gender: gender ?? this.gender,
+    countryCode: countryCode ?? this.countryCode,
+    residenceCountryCode: residenceCountryCode ?? this.residenceCountryCode,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'personalDetails';

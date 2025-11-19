@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Message].
 final class GetMessageLocally extends TdFunction<Message> {
   /// Returns information about a message, if it is available without sending network request. Returns a 404 error if message isn't available locally. This is an offline method
-  const GetMessageLocally({
-    required this.chatId,
-    required this.messageId,
-  });
+  const GetMessageLocally({required this.chatId, required this.messageId});
 
   /// Identifier of the chat the message belongs to
   final int chatId;
@@ -21,18 +18,15 @@ final class GetMessageLocally extends TdFunction<Message> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetMessageLocally copyWith({
-    int? chatId,
-    int? messageId,
-  }) =>
+  GetMessageLocally copyWith({int? chatId, int? messageId}) =>
       GetMessageLocally(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,

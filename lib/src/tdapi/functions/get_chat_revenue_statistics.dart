@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [ChatRevenueStatistics].
 final class GetChatRevenueStatistics extends TdFunction<ChatRevenueStatistics> {
   /// Returns detailed revenue statistics about a chat. Currently, this method can be used only for channels if supergroupFullInfo.can_get_revenue_statistics == true or bots if userFullInfo.bot_info.can_get_revenue_statistics == true
-  const GetChatRevenueStatistics({
-    required this.chatId,
-    required this.isDark,
-  });
+  const GetChatRevenueStatistics({required this.chatId, required this.isDark});
 
   /// Chat identifier
   final int chatId;
@@ -21,18 +18,15 @@ final class GetChatRevenueStatistics extends TdFunction<ChatRevenueStatistics> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'is_dark': isDark,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'is_dark': isDark,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatRevenueStatistics copyWith({
-    int? chatId,
-    bool? isDark,
-  }) =>
+  GetChatRevenueStatistics copyWith({int? chatId, bool? isDark}) =>
       GetChatRevenueStatistics(
         chatId: chatId ?? this.chatId,
         isDark: isDark ?? this.isDark,

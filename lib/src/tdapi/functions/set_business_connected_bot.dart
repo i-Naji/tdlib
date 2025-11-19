@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetBusinessConnectedBot extends TdFunction<Ok> {
   /// Adds or changes business bot that is connected to the current user account
-  const SetBusinessConnectedBot({
-    required this.bot,
-  });
+  const SetBusinessConnectedBot({required this.bot});
 
   /// Connection settings for the bot
   final BusinessConnectedBot bot;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot': bot.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot': bot.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetBusinessConnectedBot copyWith({
-    BusinessConnectedBot? bot,
-  }) =>
-      SetBusinessConnectedBot(
-        bot: bot ?? this.bot,
-      );
+  SetBusinessConnectedBot copyWith({BusinessConnectedBot? bot}) =>
+      SetBusinessConnectedBot(bot: bot ?? this.bot);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setBusinessConnectedBot';

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [PremiumLimit].
 final class GetPremiumLimit extends TdFunction<PremiumLimit> {
   /// Returns information about a limit, increased for Premium users. Returns a 404 error if the limit is unknown
-  const GetPremiumLimit({
-    required this.limitType,
-  });
+  const GetPremiumLimit({required this.limitType});
 
   /// Type of the limit
   final PremiumLimitType limitType;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'limit_type': limitType.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'limit_type': limitType.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetPremiumLimit copyWith({
-    PremiumLimitType? limitType,
-  }) =>
-      GetPremiumLimit(
-        limitType: limitType ?? this.limitType,
-      );
+  GetPremiumLimit copyWith({PremiumLimitType? limitType}) =>
+      GetPremiumLimit(limitType: limitType ?? this.limitType);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getPremiumLimit';

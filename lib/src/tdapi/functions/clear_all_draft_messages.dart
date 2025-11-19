@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ClearAllDraftMessages extends TdFunction<Ok> {
   /// Clears message drafts in all chats
-  const ClearAllDraftMessages({
-    required this.excludeSecretChats,
-  });
+  const ClearAllDraftMessages({required this.excludeSecretChats});
 
   /// Pass true to keep local message drafts in secret chats
   final bool excludeSecretChats;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'exclude_secret_chats': excludeSecretChats,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'exclude_secret_chats': excludeSecretChats,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ClearAllDraftMessages copyWith({
-    bool? excludeSecretChats,
-  }) =>
+  ClearAllDraftMessages copyWith({bool? excludeSecretChats}) =>
       ClearAllDraftMessages(
         excludeSecretChats: excludeSecretChats ?? this.excludeSecretChats,
       );

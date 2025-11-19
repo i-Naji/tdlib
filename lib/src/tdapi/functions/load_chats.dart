@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class LoadChats extends TdFunction<Ok> {
   /// Loads more chats from a chat list. The loaded chats and their positions in the chat list will be sent through updates. Chats are sorted by the pair (chat.position.order, chat.id) in descending order. Returns a 404 error if all chats have been loaded
-  const LoadChats({
-    this.chatList,
-    required this.limit,
-  });
+  const LoadChats({this.chatList, required this.limit});
 
   /// The chat list in which to load chats; pass null to load chats from the main chat list
   final ChatList? chatList;
@@ -21,22 +18,18 @@ final class LoadChats extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_list': chatList?.toJson(),
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_list': chatList?.toJson(),
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  LoadChats copyWith({
-    ChatList? Function()? chatList,
-    int? limit,
-  }) =>
-      LoadChats(
-        chatList: chatList != null ? chatList() : this.chatList,
-        limit: limit ?? this.limit,
-      );
+  LoadChats copyWith({ChatList? Function()? chatList, int? limit}) => LoadChats(
+    chatList: chatList != null ? chatList() : this.chatList,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'loadChats';

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetAlarm extends TdFunction<Ok> {
   /// Succeeds after a specified amount of time has passed. Can be called before initialization
-  const SetAlarm({
-    required this.seconds,
-  });
+  const SetAlarm({required this.seconds});
 
   /// Number of seconds before the function returns
   final double seconds;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'seconds': seconds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'seconds': seconds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetAlarm copyWith({
-    double? seconds,
-  }) =>
-      SetAlarm(
-        seconds: seconds ?? this.seconds,
-      );
+  SetAlarm copyWith({double? seconds}) =>
+      SetAlarm(seconds: seconds ?? this.seconds);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setAlarm';

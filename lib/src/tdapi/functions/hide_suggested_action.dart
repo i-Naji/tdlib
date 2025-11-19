@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class HideSuggestedAction extends TdFunction<Ok> {
   /// Hides a suggested action
-  const HideSuggestedAction({
-    required this.action,
-  });
+  const HideSuggestedAction({required this.action});
 
   /// Suggested action to hide
   final SuggestedAction action;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'action': action.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'action': action.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  HideSuggestedAction copyWith({
-    SuggestedAction? action,
-  }) =>
-      HideSuggestedAction(
-        action: action ?? this.action,
-      );
+  HideSuggestedAction copyWith({SuggestedAction? action}) =>
+      HideSuggestedAction(action: action ?? this.action);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'hideSuggestedAction';

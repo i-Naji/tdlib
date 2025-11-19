@@ -48,35 +48,24 @@ final class UndecodedAuthenticationCodeType extends AuthenticationCodeType {
 final class AuthenticationCodeTypeTelegramMessage
     extends AuthenticationCodeType {
   /// A digit-only authentication code is delivered via a private Telegram message, which can be viewed from another active session
-  const AuthenticationCodeTypeTelegramMessage({
-    required this.length,
-  });
+  const AuthenticationCodeTypeTelegramMessage({required this.length});
 
   /// Length of the code
   final int length;
 
   /// Parses a [AuthenticationCodeTypeTelegramMessage] from TDLib JSON.
   factory AuthenticationCodeTypeTelegramMessage.fromJson(
-          Map<String, dynamic> json) =>
-      AuthenticationCodeTypeTelegramMessage(
-        length: _readInt(json['length']),
-      );
+    Map<String, dynamic> json,
+  ) => AuthenticationCodeTypeTelegramMessage(length: _readInt(json['length']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'length': length,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'length': length};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  AuthenticationCodeTypeTelegramMessage copyWith({
-    int? length,
-  }) =>
-      AuthenticationCodeTypeTelegramMessage(
-        length: length ?? this.length,
-      );
+  AuthenticationCodeTypeTelegramMessage copyWith({int? length}) =>
+      AuthenticationCodeTypeTelegramMessage(length: length ?? this.length);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'authenticationCodeTypeTelegramMessage';
@@ -88,34 +77,23 @@ final class AuthenticationCodeTypeTelegramMessage
 /// A digit-only authentication code is delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
 final class AuthenticationCodeTypeSms extends AuthenticationCodeType {
   /// A digit-only authentication code is delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
-  const AuthenticationCodeTypeSms({
-    required this.length,
-  });
+  const AuthenticationCodeTypeSms({required this.length});
 
   /// Length of the code
   final int length;
 
   /// Parses a [AuthenticationCodeTypeSms] from TDLib JSON.
   factory AuthenticationCodeTypeSms.fromJson(Map<String, dynamic> json) =>
-      AuthenticationCodeTypeSms(
-        length: _readInt(json['length']),
-      );
+      AuthenticationCodeTypeSms(length: _readInt(json['length']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'length': length,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'length': length};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  AuthenticationCodeTypeSms copyWith({
-    int? length,
-  }) =>
-      AuthenticationCodeTypeSms(
-        length: length ?? this.length,
-      );
+  AuthenticationCodeTypeSms copyWith({int? length}) =>
+      AuthenticationCodeTypeSms(length: length ?? this.length);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'authenticationCodeTypeSms';
@@ -127,9 +105,7 @@ final class AuthenticationCodeTypeSms extends AuthenticationCodeType {
 /// An authentication code is a word delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
 final class AuthenticationCodeTypeSmsWord extends AuthenticationCodeType {
   /// An authentication code is a word delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
-  const AuthenticationCodeTypeSmsWord({
-    required this.firstLetter,
-  });
+  const AuthenticationCodeTypeSmsWord({required this.firstLetter});
 
   /// The first letters of the word if known
   final String firstLetter;
@@ -142,16 +118,14 @@ final class AuthenticationCodeTypeSmsWord extends AuthenticationCodeType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'first_letter': firstLetter,
-      };
+    '@type': CONSTRUCTOR,
+    'first_letter': firstLetter,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  AuthenticationCodeTypeSmsWord copyWith({
-    String? firstLetter,
-  }) =>
+  AuthenticationCodeTypeSmsWord copyWith({String? firstLetter}) =>
       AuthenticationCodeTypeSmsWord(
         firstLetter: firstLetter ?? this.firstLetter,
       );
@@ -166,9 +140,7 @@ final class AuthenticationCodeTypeSmsWord extends AuthenticationCodeType {
 /// An authentication code is a phrase from multiple words delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
 final class AuthenticationCodeTypeSmsPhrase extends AuthenticationCodeType {
   /// An authentication code is a phrase from multiple words delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
-  const AuthenticationCodeTypeSmsPhrase({
-    required this.firstWord,
-  });
+  const AuthenticationCodeTypeSmsPhrase({required this.firstWord});
 
   /// The first word of the phrase if known
   final String firstWord;
@@ -181,19 +153,15 @@ final class AuthenticationCodeTypeSmsPhrase extends AuthenticationCodeType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'first_word': firstWord,
-      };
+    '@type': CONSTRUCTOR,
+    'first_word': firstWord,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  AuthenticationCodeTypeSmsPhrase copyWith({
-    String? firstWord,
-  }) =>
-      AuthenticationCodeTypeSmsPhrase(
-        firstWord: firstWord ?? this.firstWord,
-      );
+  AuthenticationCodeTypeSmsPhrase copyWith({String? firstWord}) =>
+      AuthenticationCodeTypeSmsPhrase(firstWord: firstWord ?? this.firstWord);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'authenticationCodeTypeSmsPhrase';
@@ -205,34 +173,23 @@ final class AuthenticationCodeTypeSmsPhrase extends AuthenticationCodeType {
 /// A digit-only authentication code is delivered via a phone call to the specified phone number
 final class AuthenticationCodeTypeCall extends AuthenticationCodeType {
   /// A digit-only authentication code is delivered via a phone call to the specified phone number
-  const AuthenticationCodeTypeCall({
-    required this.length,
-  });
+  const AuthenticationCodeTypeCall({required this.length});
 
   /// Length of the code
   final int length;
 
   /// Parses a [AuthenticationCodeTypeCall] from TDLib JSON.
   factory AuthenticationCodeTypeCall.fromJson(Map<String, dynamic> json) =>
-      AuthenticationCodeTypeCall(
-        length: _readInt(json['length']),
-      );
+      AuthenticationCodeTypeCall(length: _readInt(json['length']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'length': length,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'length': length};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  AuthenticationCodeTypeCall copyWith({
-    int? length,
-  }) =>
-      AuthenticationCodeTypeCall(
-        length: length ?? this.length,
-      );
+  AuthenticationCodeTypeCall copyWith({int? length}) =>
+      AuthenticationCodeTypeCall(length: length ?? this.length);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'authenticationCodeTypeCall';
@@ -244,34 +201,23 @@ final class AuthenticationCodeTypeCall extends AuthenticationCodeType {
 /// An authentication code is delivered by an immediately canceled call to the specified phone number. The phone number that calls is the code that must be entered automatically
 final class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
   /// An authentication code is delivered by an immediately canceled call to the specified phone number. The phone number that calls is the code that must be entered automatically
-  const AuthenticationCodeTypeFlashCall({
-    required this.pattern,
-  });
+  const AuthenticationCodeTypeFlashCall({required this.pattern});
 
   /// Pattern of the phone number from which the call will be made
   final String pattern;
 
   /// Parses a [AuthenticationCodeTypeFlashCall] from TDLib JSON.
   factory AuthenticationCodeTypeFlashCall.fromJson(Map<String, dynamic> json) =>
-      AuthenticationCodeTypeFlashCall(
-        pattern: _readString(json['pattern']),
-      );
+      AuthenticationCodeTypeFlashCall(pattern: _readString(json['pattern']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'pattern': pattern,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'pattern': pattern};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  AuthenticationCodeTypeFlashCall copyWith({
-    String? pattern,
-  }) =>
-      AuthenticationCodeTypeFlashCall(
-        pattern: pattern ?? this.pattern,
-      );
+  AuthenticationCodeTypeFlashCall copyWith({String? pattern}) =>
+      AuthenticationCodeTypeFlashCall(pattern: pattern ?? this.pattern);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'authenticationCodeTypeFlashCall';
@@ -296,18 +242,18 @@ final class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
 
   /// Parses a [AuthenticationCodeTypeMissedCall] from TDLib JSON.
   factory AuthenticationCodeTypeMissedCall.fromJson(
-          Map<String, dynamic> json) =>
-      AuthenticationCodeTypeMissedCall(
-        phoneNumberPrefix: _readString(json['phone_number_prefix']),
-        length: _readInt(json['length']),
-      );
+    Map<String, dynamic> json,
+  ) => AuthenticationCodeTypeMissedCall(
+    phoneNumberPrefix: _readString(json['phone_number_prefix']),
+    length: _readInt(json['length']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'phone_number_prefix': phoneNumberPrefix,
-        'length': length,
-      };
+    '@type': CONSTRUCTOR,
+    'phone_number_prefix': phoneNumberPrefix,
+    'length': length,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -315,11 +261,10 @@ final class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
   AuthenticationCodeTypeMissedCall copyWith({
     String? phoneNumberPrefix,
     int? length,
-  }) =>
-      AuthenticationCodeTypeMissedCall(
-        phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix,
-        length: length ?? this.length,
-      );
+  }) => AuthenticationCodeTypeMissedCall(
+    phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix,
+    length: length ?? this.length,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'authenticationCodeTypeMissedCall';
@@ -351,18 +296,15 @@ final class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'length': length,
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'length': length,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  AuthenticationCodeTypeFragment copyWith({
-    String? url,
-    int? length,
-  }) =>
+  AuthenticationCodeTypeFragment copyWith({String? url, int? length}) =>
       AuthenticationCodeTypeFragment(
         url: url ?? this.url,
         length: length ?? this.length,
@@ -392,20 +334,21 @@ final class AuthenticationCodeTypeFirebaseAndroid
 
   /// Parses a [AuthenticationCodeTypeFirebaseAndroid] from TDLib JSON.
   factory AuthenticationCodeTypeFirebaseAndroid.fromJson(
-          Map<String, dynamic> json) =>
-      AuthenticationCodeTypeFirebaseAndroid(
-        deviceVerificationParameters: _readObject(
-            json['device_verification_parameters'],
-            FirebaseDeviceVerificationParameters.fromJson),
-        length: _readInt(json['length']),
-      );
+    Map<String, dynamic> json,
+  ) => AuthenticationCodeTypeFirebaseAndroid(
+    deviceVerificationParameters: _readObject(
+      json['device_verification_parameters'],
+      FirebaseDeviceVerificationParameters.fromJson,
+    ),
+    length: _readInt(json['length']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'device_verification_parameters': deviceVerificationParameters.toJson(),
-        'length': length,
-      };
+    '@type': CONSTRUCTOR,
+    'device_verification_parameters': deviceVerificationParameters.toJson(),
+    'length': length,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -413,12 +356,11 @@ final class AuthenticationCodeTypeFirebaseAndroid
   AuthenticationCodeTypeFirebaseAndroid copyWith({
     FirebaseDeviceVerificationParameters? deviceVerificationParameters,
     int? length,
-  }) =>
-      AuthenticationCodeTypeFirebaseAndroid(
-        deviceVerificationParameters:
-            deviceVerificationParameters ?? this.deviceVerificationParameters,
-        length: length ?? this.length,
-      );
+  }) => AuthenticationCodeTypeFirebaseAndroid(
+    deviceVerificationParameters:
+        deviceVerificationParameters ?? this.deviceVerificationParameters,
+    length: length ?? this.length,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'authenticationCodeTypeFirebaseAndroid';
@@ -447,20 +389,20 @@ final class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
 
   /// Parses a [AuthenticationCodeTypeFirebaseIos] from TDLib JSON.
   factory AuthenticationCodeTypeFirebaseIos.fromJson(
-          Map<String, dynamic> json) =>
-      AuthenticationCodeTypeFirebaseIos(
-        receipt: _readString(json['receipt']),
-        pushTimeout: _readInt(json['push_timeout']),
-        length: _readInt(json['length']),
-      );
+    Map<String, dynamic> json,
+  ) => AuthenticationCodeTypeFirebaseIos(
+    receipt: _readString(json['receipt']),
+    pushTimeout: _readInt(json['push_timeout']),
+    length: _readInt(json['length']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'receipt': receipt,
-        'push_timeout': pushTimeout,
-        'length': length,
-      };
+    '@type': CONSTRUCTOR,
+    'receipt': receipt,
+    'push_timeout': pushTimeout,
+    'length': length,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -469,12 +411,11 @@ final class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
     String? receipt,
     int? pushTimeout,
     int? length,
-  }) =>
-      AuthenticationCodeTypeFirebaseIos(
-        receipt: receipt ?? this.receipt,
-        pushTimeout: pushTimeout ?? this.pushTimeout,
-        length: length ?? this.length,
-      );
+  }) => AuthenticationCodeTypeFirebaseIos(
+    receipt: receipt ?? this.receipt,
+    pushTimeout: pushTimeout ?? this.pushTimeout,
+    length: length ?? this.length,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'authenticationCodeTypeFirebaseIos';

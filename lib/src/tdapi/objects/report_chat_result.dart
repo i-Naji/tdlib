@@ -47,10 +47,7 @@ final class UndecodedReportChatResult extends ReportChatResult {
 /// The chat was reported successfully
 final class ReportChatResultOk extends ReportChatResult {
   /// The chat was reported successfully
-  const ReportChatResultOk({
-    this.extra,
-    this.clientId,
-  });
+  const ReportChatResultOk({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -68,17 +65,12 @@ final class ReportChatResultOk extends ReportChatResult {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ReportChatResultOk copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  ReportChatResultOk copyWith({dynamic extra, int? clientId}) =>
       ReportChatResultOk(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -120,17 +112,19 @@ final class ReportChatResultOptionRequired extends ReportChatResult {
       ReportChatResultOptionRequired(
         title: _readString(json['title']),
         options: _readList<ReportOption>(
-            json['options'], (e) => _readObject(e, ReportOption.fromJson)),
+          json['options'],
+          (e) => _readObject(e, ReportOption.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-        'options': [for (final e in options) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'title': title,
+    'options': [for (final e in options) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -140,13 +134,12 @@ final class ReportChatResultOptionRequired extends ReportChatResult {
     List<ReportOption>? options,
     dynamic extra,
     int? clientId,
-  }) =>
-      ReportChatResultOptionRequired(
-        title: title ?? this.title,
-        options: options ?? this.options,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ReportChatResultOptionRequired(
+    title: title ?? this.title,
+    options: options ?? this.options,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reportChatResultOptionRequired';
@@ -190,10 +183,10 @@ final class ReportChatResultTextRequired extends ReportChatResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'option_id': optionId,
-        'is_optional': isOptional,
-      };
+    '@type': CONSTRUCTOR,
+    'option_id': optionId,
+    'is_optional': isOptional,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -203,13 +196,12 @@ final class ReportChatResultTextRequired extends ReportChatResult {
     bool? isOptional,
     dynamic extra,
     int? clientId,
-  }) =>
-      ReportChatResultTextRequired(
-        optionId: optionId ?? this.optionId,
-        isOptional: isOptional ?? this.isOptional,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ReportChatResultTextRequired(
+    optionId: optionId ?? this.optionId,
+    isOptional: isOptional ?? this.isOptional,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reportChatResultTextRequired';
@@ -221,10 +213,7 @@ final class ReportChatResultTextRequired extends ReportChatResult {
 /// The user must choose messages to report and repeat the reportChat request with the chosen messages
 final class ReportChatResultMessagesRequired extends ReportChatResult {
   /// The user must choose messages to report and repeat the reportChat request with the chosen messages
-  const ReportChatResultMessagesRequired({
-    this.extra,
-    this.clientId,
-  });
+  const ReportChatResultMessagesRequired({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -236,24 +225,19 @@ final class ReportChatResultMessagesRequired extends ReportChatResult {
 
   /// Parses a [ReportChatResultMessagesRequired] from TDLib JSON.
   factory ReportChatResultMessagesRequired.fromJson(
-          Map<String, dynamic> json) =>
-      ReportChatResultMessagesRequired(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => ReportChatResultMessagesRequired(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ReportChatResultMessagesRequired copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  ReportChatResultMessagesRequired copyWith({dynamic extra, int? clientId}) =>
       ReportChatResultMessagesRequired(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

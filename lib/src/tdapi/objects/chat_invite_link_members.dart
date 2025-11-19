@@ -31,18 +31,20 @@ final class ChatInviteLinkMembers extends TdObject {
   factory ChatInviteLinkMembers.fromJson(Map<String, dynamic> json) =>
       ChatInviteLinkMembers(
         totalCount: _readInt(json['total_count']),
-        members: _readList<ChatInviteLinkMember>(json['members'],
-            (e) => _readObject(e, ChatInviteLinkMember.fromJson)),
+        members: _readList<ChatInviteLinkMember>(
+          json['members'],
+          (e) => _readObject(e, ChatInviteLinkMember.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'members': [for (final e in members) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'members': [for (final e in members) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,13 +53,12 @@ final class ChatInviteLinkMembers extends TdObject {
     List<ChatInviteLinkMember>? members,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatInviteLinkMembers(
-        totalCount: totalCount ?? this.totalCount,
-        members: members ?? this.members,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatInviteLinkMembers(
+    totalCount: totalCount ?? this.totalCount,
+    members: members ?? this.members,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatInviteLinkMembers';

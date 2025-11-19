@@ -99,71 +99,87 @@ final class BotInfo extends TdObject {
 
   /// Parses a [BotInfo] from TDLib JSON.
   factory BotInfo.fromJson(Map<String, dynamic> json) => BotInfo(
-        shortDescription: _readString(json['short_description']),
-        description: _readString(json['description']),
-        photo: _readOptional(json['photo'], Photo.fromJson),
-        animation: _readOptional(json['animation'], Animation.fromJson),
-        menuButton: _readOptional(json['menu_button'], BotMenuButton.fromJson),
-        commands: _readList<BotCommand>(
-            json['commands'], (e) => _readObject(e, BotCommand.fromJson)),
-        privacyPolicyUrl: _readString(json['privacy_policy_url']),
-        defaultGroupAdministratorRights: _readOptional(
-            json['default_group_administrator_rights'],
-            ChatAdministratorRights.fromJson),
-        defaultChannelAdministratorRights: _readOptional(
-            json['default_channel_administrator_rights'],
-            ChatAdministratorRights.fromJson),
-        affiliateProgram: _readOptional(
-            json['affiliate_program'], AffiliateProgramInfo.fromJson),
-        webAppBackgroundLightColor:
-            _readInt(json['web_app_background_light_color']),
-        webAppBackgroundDarkColor:
-            _readInt(json['web_app_background_dark_color']),
-        webAppHeaderLightColor: _readInt(json['web_app_header_light_color']),
-        webAppHeaderDarkColor: _readInt(json['web_app_header_dark_color']),
-        verificationParameters: _readOptional(json['verification_parameters'],
-            BotVerificationParameters.fromJson),
-        canGetRevenueStatistics: _readBool(json['can_get_revenue_statistics']),
-        canManageEmojiStatus: _readBool(json['can_manage_emoji_status']),
-        hasMediaPreviews: _readBool(json['has_media_previews']),
-        editCommandsLink: _readOptional(
-            json['edit_commands_link'], InternalLinkType.fromJson),
-        editDescriptionLink: _readOptional(
-            json['edit_description_link'], InternalLinkType.fromJson),
-        editDescriptionMediaLink: _readOptional(
-            json['edit_description_media_link'], InternalLinkType.fromJson),
-        editSettingsLink: _readOptional(
-            json['edit_settings_link'], InternalLinkType.fromJson),
-      );
+    shortDescription: _readString(json['short_description']),
+    description: _readString(json['description']),
+    photo: _readOptional(json['photo'], Photo.fromJson),
+    animation: _readOptional(json['animation'], Animation.fromJson),
+    menuButton: _readOptional(json['menu_button'], BotMenuButton.fromJson),
+    commands: _readList<BotCommand>(
+      json['commands'],
+      (e) => _readObject(e, BotCommand.fromJson),
+    ),
+    privacyPolicyUrl: _readString(json['privacy_policy_url']),
+    defaultGroupAdministratorRights: _readOptional(
+      json['default_group_administrator_rights'],
+      ChatAdministratorRights.fromJson,
+    ),
+    defaultChannelAdministratorRights: _readOptional(
+      json['default_channel_administrator_rights'],
+      ChatAdministratorRights.fromJson,
+    ),
+    affiliateProgram: _readOptional(
+      json['affiliate_program'],
+      AffiliateProgramInfo.fromJson,
+    ),
+    webAppBackgroundLightColor: _readInt(
+      json['web_app_background_light_color'],
+    ),
+    webAppBackgroundDarkColor: _readInt(json['web_app_background_dark_color']),
+    webAppHeaderLightColor: _readInt(json['web_app_header_light_color']),
+    webAppHeaderDarkColor: _readInt(json['web_app_header_dark_color']),
+    verificationParameters: _readOptional(
+      json['verification_parameters'],
+      BotVerificationParameters.fromJson,
+    ),
+    canGetRevenueStatistics: _readBool(json['can_get_revenue_statistics']),
+    canManageEmojiStatus: _readBool(json['can_manage_emoji_status']),
+    hasMediaPreviews: _readBool(json['has_media_previews']),
+    editCommandsLink: _readOptional(
+      json['edit_commands_link'],
+      InternalLinkType.fromJson,
+    ),
+    editDescriptionLink: _readOptional(
+      json['edit_description_link'],
+      InternalLinkType.fromJson,
+    ),
+    editDescriptionMediaLink: _readOptional(
+      json['edit_description_media_link'],
+      InternalLinkType.fromJson,
+    ),
+    editSettingsLink: _readOptional(
+      json['edit_settings_link'],
+      InternalLinkType.fromJson,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'short_description': shortDescription,
-        'description': description,
-        'photo': photo?.toJson(),
-        'animation': animation?.toJson(),
-        'menu_button': menuButton?.toJson(),
-        'commands': [for (final e in commands) e.toJson()],
-        'privacy_policy_url': privacyPolicyUrl,
-        'default_group_administrator_rights':
-            defaultGroupAdministratorRights?.toJson(),
-        'default_channel_administrator_rights':
-            defaultChannelAdministratorRights?.toJson(),
-        'affiliate_program': affiliateProgram?.toJson(),
-        'web_app_background_light_color': webAppBackgroundLightColor,
-        'web_app_background_dark_color': webAppBackgroundDarkColor,
-        'web_app_header_light_color': webAppHeaderLightColor,
-        'web_app_header_dark_color': webAppHeaderDarkColor,
-        'verification_parameters': verificationParameters?.toJson(),
-        'can_get_revenue_statistics': canGetRevenueStatistics,
-        'can_manage_emoji_status': canManageEmojiStatus,
-        'has_media_previews': hasMediaPreviews,
-        'edit_commands_link': editCommandsLink?.toJson(),
-        'edit_description_link': editDescriptionLink?.toJson(),
-        'edit_description_media_link': editDescriptionMediaLink?.toJson(),
-        'edit_settings_link': editSettingsLink?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'short_description': shortDescription,
+    'description': description,
+    'photo': photo?.toJson(),
+    'animation': animation?.toJson(),
+    'menu_button': menuButton?.toJson(),
+    'commands': [for (final e in commands) e.toJson()],
+    'privacy_policy_url': privacyPolicyUrl,
+    'default_group_administrator_rights': defaultGroupAdministratorRights
+        ?.toJson(),
+    'default_channel_administrator_rights': defaultChannelAdministratorRights
+        ?.toJson(),
+    'affiliate_program': affiliateProgram?.toJson(),
+    'web_app_background_light_color': webAppBackgroundLightColor,
+    'web_app_background_dark_color': webAppBackgroundDarkColor,
+    'web_app_header_light_color': webAppHeaderLightColor,
+    'web_app_header_dark_color': webAppHeaderDarkColor,
+    'verification_parameters': verificationParameters?.toJson(),
+    'can_get_revenue_statistics': canGetRevenueStatistics,
+    'can_manage_emoji_status': canManageEmojiStatus,
+    'has_media_previews': hasMediaPreviews,
+    'edit_commands_link': editCommandsLink?.toJson(),
+    'edit_description_link': editDescriptionLink?.toJson(),
+    'edit_description_media_link': editDescriptionMediaLink?.toJson(),
+    'edit_settings_link': editSettingsLink?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -190,53 +206,50 @@ final class BotInfo extends TdObject {
     InternalLinkType? Function()? editDescriptionLink,
     InternalLinkType? Function()? editDescriptionMediaLink,
     InternalLinkType? Function()? editSettingsLink,
-  }) =>
-      BotInfo(
-        shortDescription: shortDescription ?? this.shortDescription,
-        description: description ?? this.description,
-        photo: photo != null ? photo() : this.photo,
-        animation: animation != null ? animation() : this.animation,
-        menuButton: menuButton != null ? menuButton() : this.menuButton,
-        commands: commands ?? this.commands,
-        privacyPolicyUrl: privacyPolicyUrl ?? this.privacyPolicyUrl,
-        defaultGroupAdministratorRights: defaultGroupAdministratorRights != null
-            ? defaultGroupAdministratorRights()
-            : this.defaultGroupAdministratorRights,
-        defaultChannelAdministratorRights:
-            defaultChannelAdministratorRights != null
-                ? defaultChannelAdministratorRights()
-                : this.defaultChannelAdministratorRights,
-        affiliateProgram: affiliateProgram != null
-            ? affiliateProgram()
-            : this.affiliateProgram,
-        webAppBackgroundLightColor:
-            webAppBackgroundLightColor ?? this.webAppBackgroundLightColor,
-        webAppBackgroundDarkColor:
-            webAppBackgroundDarkColor ?? this.webAppBackgroundDarkColor,
-        webAppHeaderLightColor:
-            webAppHeaderLightColor ?? this.webAppHeaderLightColor,
-        webAppHeaderDarkColor:
-            webAppHeaderDarkColor ?? this.webAppHeaderDarkColor,
-        verificationParameters: verificationParameters != null
-            ? verificationParameters()
-            : this.verificationParameters,
-        canGetRevenueStatistics:
-            canGetRevenueStatistics ?? this.canGetRevenueStatistics,
-        canManageEmojiStatus: canManageEmojiStatus ?? this.canManageEmojiStatus,
-        hasMediaPreviews: hasMediaPreviews ?? this.hasMediaPreviews,
-        editCommandsLink: editCommandsLink != null
-            ? editCommandsLink()
-            : this.editCommandsLink,
-        editDescriptionLink: editDescriptionLink != null
-            ? editDescriptionLink()
-            : this.editDescriptionLink,
-        editDescriptionMediaLink: editDescriptionMediaLink != null
-            ? editDescriptionMediaLink()
-            : this.editDescriptionMediaLink,
-        editSettingsLink: editSettingsLink != null
-            ? editSettingsLink()
-            : this.editSettingsLink,
-      );
+  }) => BotInfo(
+    shortDescription: shortDescription ?? this.shortDescription,
+    description: description ?? this.description,
+    photo: photo != null ? photo() : this.photo,
+    animation: animation != null ? animation() : this.animation,
+    menuButton: menuButton != null ? menuButton() : this.menuButton,
+    commands: commands ?? this.commands,
+    privacyPolicyUrl: privacyPolicyUrl ?? this.privacyPolicyUrl,
+    defaultGroupAdministratorRights: defaultGroupAdministratorRights != null
+        ? defaultGroupAdministratorRights()
+        : this.defaultGroupAdministratorRights,
+    defaultChannelAdministratorRights: defaultChannelAdministratorRights != null
+        ? defaultChannelAdministratorRights()
+        : this.defaultChannelAdministratorRights,
+    affiliateProgram: affiliateProgram != null
+        ? affiliateProgram()
+        : this.affiliateProgram,
+    webAppBackgroundLightColor:
+        webAppBackgroundLightColor ?? this.webAppBackgroundLightColor,
+    webAppBackgroundDarkColor:
+        webAppBackgroundDarkColor ?? this.webAppBackgroundDarkColor,
+    webAppHeaderLightColor:
+        webAppHeaderLightColor ?? this.webAppHeaderLightColor,
+    webAppHeaderDarkColor: webAppHeaderDarkColor ?? this.webAppHeaderDarkColor,
+    verificationParameters: verificationParameters != null
+        ? verificationParameters()
+        : this.verificationParameters,
+    canGetRevenueStatistics:
+        canGetRevenueStatistics ?? this.canGetRevenueStatistics,
+    canManageEmojiStatus: canManageEmojiStatus ?? this.canManageEmojiStatus,
+    hasMediaPreviews: hasMediaPreviews ?? this.hasMediaPreviews,
+    editCommandsLink: editCommandsLink != null
+        ? editCommandsLink()
+        : this.editCommandsLink,
+    editDescriptionLink: editDescriptionLink != null
+        ? editDescriptionLink()
+        : this.editDescriptionLink,
+    editDescriptionMediaLink: editDescriptionMediaLink != null
+        ? editDescriptionMediaLink()
+        : this.editDescriptionMediaLink,
+    editSettingsLink: editSettingsLink != null
+        ? editSettingsLink()
+        : this.editSettingsLink,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'botInfo';

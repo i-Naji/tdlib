@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Contains a caption of another block
 final class PageBlockCaption extends TdObject {
   /// Contains a caption of another block
-  const PageBlockCaption({
-    required this.text,
-    required this.credit,
-  });
+  const PageBlockCaption({required this.text, required this.credit});
 
   /// Content of the caption
   final RichText text;
@@ -26,21 +23,15 @@ final class PageBlockCaption extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'credit': credit.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'credit': credit.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  PageBlockCaption copyWith({
-    RichText? text,
-    RichText? credit,
-  }) =>
-      PageBlockCaption(
-        text: text ?? this.text,
-        credit: credit ?? this.credit,
-      );
+  PageBlockCaption copyWith({RichText? text, RichText? credit}) =>
+      PageBlockCaption(text: text ?? this.text, credit: credit ?? this.credit);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockCaption';

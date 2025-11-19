@@ -21,18 +21,15 @@ final class SearchOutgoingDocumentMessages extends TdFunction<FoundMessages> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'query': query,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'query': query,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchOutgoingDocumentMessages copyWith({
-    String? query,
-    int? limit,
-  }) =>
+  SearchOutgoingDocumentMessages copyWith({String? query, int? limit}) =>
       SearchOutgoingDocumentMessages(
         query: query ?? this.query,
         limit: limit ?? this.limit,

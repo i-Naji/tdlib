@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class RequestQrCodeAuthentication extends TdFunction<Ok> {
   /// Requests QR code authentication by scanning a QR code on another logged in device. Works only when the current authorization state is authorizationStateWaitPhoneNumber, or if there is no pending authentication query and the current authorization state is authorizationStateWaitPremiumPurchase, authorizationStateWaitEmailAddress, authorizationStateWaitEmailCode, authorizationStateWaitCode, authorizationStateWaitRegistration, or authorizationStateWaitPassword
-  const RequestQrCodeAuthentication({
-    required this.otherUserIds,
-  });
+  const RequestQrCodeAuthentication({required this.otherUserIds});
 
   /// List of user identifiers of other users currently using the application
   final List<int> otherUserIds;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'other_user_ids': otherUserIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'other_user_ids': otherUserIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RequestQrCodeAuthentication copyWith({
-    List<int>? otherUserIds,
-  }) =>
+  RequestQrCodeAuthentication copyWith({List<int>? otherUserIds}) =>
       RequestQrCodeAuthentication(
         otherUserIds: otherUserIds ?? this.otherUserIds,
       );

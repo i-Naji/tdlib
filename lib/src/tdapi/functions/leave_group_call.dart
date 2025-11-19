@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class LeaveGroupCall extends TdFunction<Ok> {
   /// Leaves a group call
-  const LeaveGroupCall({
-    required this.groupCallId,
-  });
+  const LeaveGroupCall({required this.groupCallId});
 
   /// Group call identifier
   final int groupCallId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  LeaveGroupCall copyWith({
-    int? groupCallId,
-  }) =>
-      LeaveGroupCall(
-        groupCallId: groupCallId ?? this.groupCallId,
-      );
+  LeaveGroupCall copyWith({int? groupCallId}) =>
+      LeaveGroupCall(groupCallId: groupCallId ?? this.groupCallId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'leaveGroupCall';

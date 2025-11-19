@@ -21,22 +21,21 @@ final class RemoveNotification extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'notification_group_id': notificationGroupId,
-        'notification_id': notificationId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'notification_group_id': notificationGroupId,
+    'notification_id': notificationId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   RemoveNotification copyWith({
     int? notificationGroupId,
     int? notificationId,
-  }) =>
-      RemoveNotification(
-        notificationGroupId: notificationGroupId ?? this.notificationGroupId,
-        notificationId: notificationId ?? this.notificationId,
-      );
+  }) => RemoveNotification(
+    notificationGroupId: notificationGroupId ?? this.notificationGroupId,
+    notificationId: notificationId ?? this.notificationId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'removeNotification';

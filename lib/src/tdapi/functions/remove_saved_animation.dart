@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class RemoveSavedAnimation extends TdFunction<Ok> {
   /// Removes an animation from the list of saved animations
-  const RemoveSavedAnimation({
-    required this.animation,
-  });
+  const RemoveSavedAnimation({required this.animation});
 
   /// Animation file to be removed
   final InputFile animation;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'animation': animation.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'animation': animation.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RemoveSavedAnimation copyWith({
-    InputFile? animation,
-  }) =>
-      RemoveSavedAnimation(
-        animation: animation ?? this.animation,
-      );
+  RemoveSavedAnimation copyWith({InputFile? animation}) =>
+      RemoveSavedAnimation(animation: animation ?? this.animation);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'removeSavedAnimation';

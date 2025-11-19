@@ -33,14 +33,14 @@ final class EditForumTopic extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'forum_topic_id': forumTopicId,
-        'name': name,
-        'edit_icon_custom_emoji': editIconCustomEmoji,
-        'icon_custom_emoji_id': iconCustomEmojiId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'forum_topic_id': forumTopicId,
+    'name': name,
+    'edit_icon_custom_emoji': editIconCustomEmoji,
+    'icon_custom_emoji_id': iconCustomEmojiId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class EditForumTopic extends TdFunction<Ok> {
     String? name,
     bool? editIconCustomEmoji,
     int? iconCustomEmojiId,
-  }) =>
-      EditForumTopic(
-        chatId: chatId ?? this.chatId,
-        forumTopicId: forumTopicId ?? this.forumTopicId,
-        name: name ?? this.name,
-        editIconCustomEmoji: editIconCustomEmoji ?? this.editIconCustomEmoji,
-        iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
-      );
+  }) => EditForumTopic(
+    chatId: chatId ?? this.chatId,
+    forumTopicId: forumTopicId ?? this.forumTopicId,
+    name: name ?? this.name,
+    editIconCustomEmoji: editIconCustomEmoji ?? this.editIconCustomEmoji,
+    iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'editForumTopic';

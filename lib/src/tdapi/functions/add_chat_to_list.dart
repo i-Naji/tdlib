@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class AddChatToList extends TdFunction<Ok> {
   /// Adds a chat to a chat list. A chat can't be simultaneously in Main and Archive chat lists, so it is automatically removed from another one if needed
-  const AddChatToList({
-    required this.chatId,
-    required this.chatList,
-  });
+  const AddChatToList({required this.chatId, required this.chatList});
 
   /// Chat identifier
   final int chatId;
@@ -21,22 +18,18 @@ final class AddChatToList extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'chat_list': chatList.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'chat_list': chatList.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  AddChatToList copyWith({
-    int? chatId,
-    ChatList? chatList,
-  }) =>
-      AddChatToList(
-        chatId: chatId ?? this.chatId,
-        chatList: chatList ?? this.chatList,
-      );
+  AddChatToList copyWith({int? chatId, ChatList? chatList}) => AddChatToList(
+    chatId: chatId ?? this.chatId,
+    chatList: chatList ?? this.chatList,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addChatToList';

@@ -29,13 +29,13 @@ final class ReplaceStickerInSet extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'name': name,
-        'old_sticker': oldSticker.toJson(),
-        'new_sticker': newSticker.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'name': name,
+    'old_sticker': oldSticker.toJson(),
+    'new_sticker': newSticker.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class ReplaceStickerInSet extends TdFunction<Ok> {
     String? name,
     InputFile? oldSticker,
     InputSticker? newSticker,
-  }) =>
-      ReplaceStickerInSet(
-        userId: userId ?? this.userId,
-        name: name ?? this.name,
-        oldSticker: oldSticker ?? this.oldSticker,
-        newSticker: newSticker ?? this.newSticker,
-      );
+  }) => ReplaceStickerInSet(
+    userId: userId ?? this.userId,
+    name: name ?? this.name,
+    oldSticker: oldSticker ?? this.oldSticker,
+    newSticker: newSticker ?? this.newSticker,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'replaceStickerInSet';

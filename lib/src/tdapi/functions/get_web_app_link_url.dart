@@ -37,15 +37,15 @@ final class GetWebAppLinkUrl extends TdFunction<HttpUrl> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'bot_user_id': botUserId,
-        'web_app_short_name': webAppShortName,
-        'start_parameter': startParameter,
-        'allow_write_access': allowWriteAccess,
-        'parameters': parameters.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'bot_user_id': botUserId,
+    'web_app_short_name': webAppShortName,
+    'start_parameter': startParameter,
+    'allow_write_access': allowWriteAccess,
+    'parameters': parameters.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class GetWebAppLinkUrl extends TdFunction<HttpUrl> {
     String? startParameter,
     bool? allowWriteAccess,
     WebAppOpenParameters? parameters,
-  }) =>
-      GetWebAppLinkUrl(
-        chatId: chatId ?? this.chatId,
-        botUserId: botUserId ?? this.botUserId,
-        webAppShortName: webAppShortName ?? this.webAppShortName,
-        startParameter: startParameter ?? this.startParameter,
-        allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
-        parameters: parameters ?? this.parameters,
-      );
+  }) => GetWebAppLinkUrl(
+    chatId: chatId ?? this.chatId,
+    botUserId: botUserId ?? this.botUserId,
+    webAppShortName: webAppShortName ?? this.webAppShortName,
+    startParameter: startParameter ?? this.startParameter,
+    allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
+    parameters: parameters ?? this.parameters,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getWebAppLinkUrl';

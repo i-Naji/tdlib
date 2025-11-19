@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Chats].
 final class GetChatFolderNewChats extends TdFunction<Chats> {
   /// Returns new chats added to a shareable chat folder by its owner. The method must be called at most once in getOption("chat_folder_new_chats_update_period") for the given chat folder
-  const GetChatFolderNewChats({
-    required this.chatFolderId,
-  });
+  const GetChatFolderNewChats({required this.chatFolderId});
 
   /// Chat folder identifier
   final int chatFolderId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_folder_id': chatFolderId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_folder_id': chatFolderId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatFolderNewChats copyWith({
-    int? chatFolderId,
-  }) =>
-      GetChatFolderNewChats(
-        chatFolderId: chatFolderId ?? this.chatFolderId,
-      );
+  GetChatFolderNewChats copyWith({int? chatFolderId}) =>
+      GetChatFolderNewChats(chatFolderId: chatFolderId ?? this.chatFolderId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatFolderNewChats';

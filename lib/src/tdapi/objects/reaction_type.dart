@@ -45,34 +45,23 @@ final class UndecodedReactionType extends ReactionType {
 /// A reaction with an emoji
 final class ReactionTypeEmoji extends ReactionType {
   /// A reaction with an emoji
-  const ReactionTypeEmoji({
-    required this.emoji,
-  });
+  const ReactionTypeEmoji({required this.emoji});
 
   /// Text representation of the reaction
   final String emoji;
 
   /// Parses a [ReactionTypeEmoji] from TDLib JSON.
   factory ReactionTypeEmoji.fromJson(Map<String, dynamic> json) =>
-      ReactionTypeEmoji(
-        emoji: _readString(json['emoji']),
-      );
+      ReactionTypeEmoji(emoji: _readString(json['emoji']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'emoji': emoji,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'emoji': emoji};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ReactionTypeEmoji copyWith({
-    String? emoji,
-  }) =>
-      ReactionTypeEmoji(
-        emoji: emoji ?? this.emoji,
-      );
+  ReactionTypeEmoji copyWith({String? emoji}) =>
+      ReactionTypeEmoji(emoji: emoji ?? this.emoji);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reactionTypeEmoji';
@@ -84,31 +73,25 @@ final class ReactionTypeEmoji extends ReactionType {
 /// A reaction with a custom emoji
 final class ReactionTypeCustomEmoji extends ReactionType {
   /// A reaction with a custom emoji
-  const ReactionTypeCustomEmoji({
-    required this.customEmojiId,
-  });
+  const ReactionTypeCustomEmoji({required this.customEmojiId});
 
   /// Unique identifier of the custom emoji
   final int customEmojiId;
 
   /// Parses a [ReactionTypeCustomEmoji] from TDLib JSON.
   factory ReactionTypeCustomEmoji.fromJson(Map<String, dynamic> json) =>
-      ReactionTypeCustomEmoji(
-        customEmojiId: _readInt(json['custom_emoji_id']),
-      );
+      ReactionTypeCustomEmoji(customEmojiId: _readInt(json['custom_emoji_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'custom_emoji_id': customEmojiId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'custom_emoji_id': customEmojiId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ReactionTypeCustomEmoji copyWith({
-    int? customEmojiId,
-  }) =>
+  ReactionTypeCustomEmoji copyWith({int? customEmojiId}) =>
       ReactionTypeCustomEmoji(
         customEmojiId: customEmojiId ?? this.customEmojiId,
       );
@@ -130,9 +113,7 @@ final class ReactionTypePaid extends ReactionType {
       const ReactionTypePaid();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

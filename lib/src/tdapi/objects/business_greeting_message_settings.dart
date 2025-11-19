@@ -25,18 +25,20 @@ final class BusinessGreetingMessageSettings extends TdObject {
   factory BusinessGreetingMessageSettings.fromJson(Map<String, dynamic> json) =>
       BusinessGreetingMessageSettings(
         shortcutId: _readInt(json['shortcut_id']),
-        recipients:
-            _readObject(json['recipients'], BusinessRecipients.fromJson),
+        recipients: _readObject(
+          json['recipients'],
+          BusinessRecipients.fromJson,
+        ),
         inactivityDays: _readInt(json['inactivity_days']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'shortcut_id': shortcutId,
-        'recipients': recipients.toJson(),
-        'inactivity_days': inactivityDays,
-      };
+    '@type': CONSTRUCTOR,
+    'shortcut_id': shortcutId,
+    'recipients': recipients.toJson(),
+    'inactivity_days': inactivityDays,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +46,11 @@ final class BusinessGreetingMessageSettings extends TdObject {
     int? shortcutId,
     BusinessRecipients? recipients,
     int? inactivityDays,
-  }) =>
-      BusinessGreetingMessageSettings(
-        shortcutId: shortcutId ?? this.shortcutId,
-        recipients: recipients ?? this.recipients,
-        inactivityDays: inactivityDays ?? this.inactivityDays,
-      );
+  }) => BusinessGreetingMessageSettings(
+    shortcutId: shortcutId ?? this.shortcutId,
+    recipients: recipients ?? this.recipients,
+    inactivityDays: inactivityDays ?? this.inactivityDays,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'businessGreetingMessageSettings';

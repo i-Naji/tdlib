@@ -21,22 +21,21 @@ final class ToggleSupergroupJoinByRequest extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'join_by_request': joinByRequest,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'join_by_request': joinByRequest,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleSupergroupJoinByRequest copyWith({
     int? supergroupId,
     bool? joinByRequest,
-  }) =>
-      ToggleSupergroupJoinByRequest(
-        supergroupId: supergroupId ?? this.supergroupId,
-        joinByRequest: joinByRequest ?? this.joinByRequest,
-      );
+  }) => ToggleSupergroupJoinByRequest(
+    supergroupId: supergroupId ?? this.supergroupId,
+    joinByRequest: joinByRequest ?? this.joinByRequest,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleSupergroupJoinByRequest';

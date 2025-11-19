@@ -22,18 +22,15 @@ final class GetFileDownloadedPrefixSize
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'file_id': fileId,
-        'offset': offset,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'file_id': fileId,
+    'offset': offset,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetFileDownloadedPrefixSize copyWith({
-    int? fileId,
-    int? offset,
-  }) =>
+  GetFileDownloadedPrefixSize copyWith({int? fileId, int? offset}) =>
       GetFileDownloadedPrefixSize(
         fileId: fileId ?? this.fileId,
         offset: offset ?? this.offset,

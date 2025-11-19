@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetGiftResalePrice extends TdFunction<Ok> {
   /// Changes resale price of a unique gift owned by the current user
-  const SetGiftResalePrice({
-    required this.receivedGiftId,
-    this.price,
-  });
+  const SetGiftResalePrice({required this.receivedGiftId, this.price});
 
   /// Identifier of the unique gift
   final String receivedGiftId;
@@ -21,22 +18,21 @@ final class SetGiftResalePrice extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'received_gift_id': receivedGiftId,
-        'price': price?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'received_gift_id': receivedGiftId,
+    'price': price?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetGiftResalePrice copyWith({
     String? receivedGiftId,
     GiftResalePrice? Function()? price,
-  }) =>
-      SetGiftResalePrice(
-        receivedGiftId: receivedGiftId ?? this.receivedGiftId,
-        price: price != null ? price() : this.price,
-      );
+  }) => SetGiftResalePrice(
+    receivedGiftId: receivedGiftId ?? this.receivedGiftId,
+    price: price != null ? price() : this.price,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setGiftResalePrice';

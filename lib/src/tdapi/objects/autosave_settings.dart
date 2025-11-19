@@ -39,25 +39,33 @@ final class AutosaveSettings extends TdObject {
   factory AutosaveSettings.fromJson(Map<String, dynamic> json) =>
       AutosaveSettings(
         privateChatSettings: _readObject(
-            json['private_chat_settings'], ScopeAutosaveSettings.fromJson),
-        groupSettings:
-            _readObject(json['group_settings'], ScopeAutosaveSettings.fromJson),
+          json['private_chat_settings'],
+          ScopeAutosaveSettings.fromJson,
+        ),
+        groupSettings: _readObject(
+          json['group_settings'],
+          ScopeAutosaveSettings.fromJson,
+        ),
         channelSettings: _readObject(
-            json['channel_settings'], ScopeAutosaveSettings.fromJson),
-        exceptions: _readList<AutosaveSettingsException>(json['exceptions'],
-            (e) => _readObject(e, AutosaveSettingsException.fromJson)),
+          json['channel_settings'],
+          ScopeAutosaveSettings.fromJson,
+        ),
+        exceptions: _readList<AutosaveSettingsException>(
+          json['exceptions'],
+          (e) => _readObject(e, AutosaveSettingsException.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'private_chat_settings': privateChatSettings.toJson(),
-        'group_settings': groupSettings.toJson(),
-        'channel_settings': channelSettings.toJson(),
-        'exceptions': [for (final e in exceptions) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'private_chat_settings': privateChatSettings.toJson(),
+    'group_settings': groupSettings.toJson(),
+    'channel_settings': channelSettings.toJson(),
+    'exceptions': [for (final e in exceptions) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -68,15 +76,14 @@ final class AutosaveSettings extends TdObject {
     List<AutosaveSettingsException>? exceptions,
     dynamic extra,
     int? clientId,
-  }) =>
-      AutosaveSettings(
-        privateChatSettings: privateChatSettings ?? this.privateChatSettings,
-        groupSettings: groupSettings ?? this.groupSettings,
-        channelSettings: channelSettings ?? this.channelSettings,
-        exceptions: exceptions ?? this.exceptions,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => AutosaveSettings(
+    privateChatSettings: privateChatSettings ?? this.privateChatSettings,
+    groupSettings: groupSettings ?? this.groupSettings,
+    channelSettings: channelSettings ?? this.channelSettings,
+    exceptions: exceptions ?? this.exceptions,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'autosaveSettings';

@@ -35,24 +35,24 @@ final class Address extends TdObject {
 
   /// Parses a [Address] from TDLib JSON.
   factory Address.fromJson(Map<String, dynamic> json) => Address(
-        countryCode: _readString(json['country_code']),
-        state: _readString(json['state']),
-        city: _readString(json['city']),
-        streetLine1: _readString(json['street_line1']),
-        streetLine2: _readString(json['street_line2']),
-        postalCode: _readString(json['postal_code']),
-      );
+    countryCode: _readString(json['country_code']),
+    state: _readString(json['state']),
+    city: _readString(json['city']),
+    streetLine1: _readString(json['street_line1']),
+    streetLine2: _readString(json['street_line2']),
+    postalCode: _readString(json['postal_code']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'country_code': countryCode,
-        'state': state,
-        'city': city,
-        'street_line1': streetLine1,
-        'street_line2': streetLine2,
-        'postal_code': postalCode,
-      };
+    '@type': CONSTRUCTOR,
+    'country_code': countryCode,
+    'state': state,
+    'city': city,
+    'street_line1': streetLine1,
+    'street_line2': streetLine2,
+    'postal_code': postalCode,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -63,15 +63,14 @@ final class Address extends TdObject {
     String? streetLine1,
     String? streetLine2,
     String? postalCode,
-  }) =>
-      Address(
-        countryCode: countryCode ?? this.countryCode,
-        state: state ?? this.state,
-        city: city ?? this.city,
-        streetLine1: streetLine1 ?? this.streetLine1,
-        streetLine2: streetLine2 ?? this.streetLine2,
-        postalCode: postalCode ?? this.postalCode,
-      );
+  }) => Address(
+    countryCode: countryCode ?? this.countryCode,
+    state: state ?? this.state,
+    city: city ?? this.city,
+    streetLine1: streetLine1 ?? this.streetLine1,
+    streetLine2: streetLine2 ?? this.streetLine2,
+    postalCode: postalCode ?? this.postalCode,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'address';

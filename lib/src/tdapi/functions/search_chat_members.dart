@@ -29,13 +29,13 @@ final class SearchChatMembers extends TdFunction<ChatMembers> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'query': query,
-        'limit': limit,
-        'filter': filter?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'query': query,
+    'limit': limit,
+    'filter': filter?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class SearchChatMembers extends TdFunction<ChatMembers> {
     String? query,
     int? limit,
     ChatMembersFilter? Function()? filter,
-  }) =>
-      SearchChatMembers(
-        chatId: chatId ?? this.chatId,
-        query: query ?? this.query,
-        limit: limit ?? this.limit,
-        filter: filter != null ? filter() : this.filter,
-      );
+  }) => SearchChatMembers(
+    chatId: chatId ?? this.chatId,
+    query: query ?? this.query,
+    limit: limit ?? this.limit,
+    filter: filter != null ? filter() : this.filter,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchChatMembers';

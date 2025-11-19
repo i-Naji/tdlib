@@ -31,22 +31,22 @@ final class Call extends TdObject {
 
   /// Parses a [Call] from TDLib JSON.
   factory Call.fromJson(Map<String, dynamic> json) => Call(
-        id: _readInt(json['id']),
-        userId: _readInt(json['user_id']),
-        isOutgoing: _readBool(json['is_outgoing']),
-        isVideo: _readBool(json['is_video']),
-        state: _readObject(json['state'], CallState.fromJson),
-      );
+    id: _readInt(json['id']),
+    userId: _readInt(json['user_id']),
+    isOutgoing: _readBool(json['is_outgoing']),
+    isVideo: _readBool(json['is_video']),
+    state: _readObject(json['state'], CallState.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'user_id': userId,
-        'is_outgoing': isOutgoing,
-        'is_video': isVideo,
-        'state': state.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'user_id': userId,
+    'is_outgoing': isOutgoing,
+    'is_video': isVideo,
+    'state': state.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,14 +56,13 @@ final class Call extends TdObject {
     bool? isOutgoing,
     bool? isVideo,
     CallState? state,
-  }) =>
-      Call(
-        id: id ?? this.id,
-        userId: userId ?? this.userId,
-        isOutgoing: isOutgoing ?? this.isOutgoing,
-        isVideo: isVideo ?? this.isVideo,
-        state: state ?? this.state,
-      );
+  }) => Call(
+    id: id ?? this.id,
+    userId: userId ?? this.userId,
+    isOutgoing: isOutgoing ?? this.isOutgoing,
+    isVideo: isVideo ?? this.isVideo,
+    state: state ?? this.state,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'call';

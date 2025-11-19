@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Represents a URL linking to an internal Telegram entity
 final class TMeUrl extends TdObject {
   /// Represents a URL linking to an internal Telegram entity
-  const TMeUrl({
-    required this.url,
-    required this.type,
-  });
+  const TMeUrl({required this.url, required this.type});
 
   /// URL
   final String url;
@@ -19,27 +16,21 @@ final class TMeUrl extends TdObject {
 
   /// Parses a [TMeUrl] from TDLib JSON.
   factory TMeUrl.fromJson(Map<String, dynamic> json) => TMeUrl(
-        url: _readString(json['url']),
-        type: _readObject(json['type'], TMeUrlType.fromJson),
-      );
+    url: _readString(json['url']),
+    type: _readObject(json['type'], TMeUrlType.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'type': type.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'type': type.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TMeUrl copyWith({
-    String? url,
-    TMeUrlType? type,
-  }) =>
-      TMeUrl(
-        url: url ?? this.url,
-        type: type ?? this.type,
-      );
+  TMeUrl copyWith({String? url, TMeUrlType? type}) =>
+      TMeUrl(url: url ?? this.url, type: type ?? this.type);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'tMeUrl';

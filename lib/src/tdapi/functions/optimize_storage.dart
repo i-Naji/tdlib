@@ -49,18 +49,18 @@ final class OptimizeStorage extends TdFunction<StorageStatistics> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'size': size,
-        'ttl': ttl,
-        'count': count,
-        'immunity_delay': immunityDelay,
-        'file_types': [for (final e in fileTypes) e.toJson()],
-        'chat_ids': chatIds,
-        'exclude_chat_ids': excludeChatIds,
-        'return_deleted_file_statistics': returnDeletedFileStatistics,
-        'chat_limit': chatLimit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'size': size,
+    'ttl': ttl,
+    'count': count,
+    'immunity_delay': immunityDelay,
+    'file_types': [for (final e in fileTypes) e.toJson()],
+    'chat_ids': chatIds,
+    'exclude_chat_ids': excludeChatIds,
+    'return_deleted_file_statistics': returnDeletedFileStatistics,
+    'chat_limit': chatLimit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -74,19 +74,18 @@ final class OptimizeStorage extends TdFunction<StorageStatistics> {
     List<int>? excludeChatIds,
     bool? returnDeletedFileStatistics,
     int? chatLimit,
-  }) =>
-      OptimizeStorage(
-        size: size ?? this.size,
-        ttl: ttl ?? this.ttl,
-        count: count ?? this.count,
-        immunityDelay: immunityDelay ?? this.immunityDelay,
-        fileTypes: fileTypes ?? this.fileTypes,
-        chatIds: chatIds ?? this.chatIds,
-        excludeChatIds: excludeChatIds ?? this.excludeChatIds,
-        returnDeletedFileStatistics:
-            returnDeletedFileStatistics ?? this.returnDeletedFileStatistics,
-        chatLimit: chatLimit ?? this.chatLimit,
-      );
+  }) => OptimizeStorage(
+    size: size ?? this.size,
+    ttl: ttl ?? this.ttl,
+    count: count ?? this.count,
+    immunityDelay: immunityDelay ?? this.immunityDelay,
+    fileTypes: fileTypes ?? this.fileTypes,
+    chatIds: chatIds ?? this.chatIds,
+    excludeChatIds: excludeChatIds ?? this.excludeChatIds,
+    returnDeletedFileStatistics:
+        returnDeletedFileStatistics ?? this.returnDeletedFileStatistics,
+    chatLimit: chatLimit ?? this.chatLimit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'optimizeStorage';

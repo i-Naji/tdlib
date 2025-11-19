@@ -25,12 +25,12 @@ final class SetPaidMessageReactionType extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'type': type.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'type': type.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SetPaidMessageReactionType extends TdFunction<Ok> {
     int? chatId,
     int? messageId,
     PaidReactionType? type,
-  }) =>
-      SetPaidMessageReactionType(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        type: type ?? this.type,
-      );
+  }) => SetPaidMessageReactionType(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    type: type ?? this.type,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setPaidMessageReactionType';

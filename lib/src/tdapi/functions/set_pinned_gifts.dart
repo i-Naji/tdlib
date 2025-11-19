@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetPinnedGifts extends TdFunction<Ok> {
   /// Changes the list of pinned gifts on the current user's or the channel's profile page; requires can_post_messages administrator right in the channel chat
-  const SetPinnedGifts({
-    required this.ownerId,
-    required this.receivedGiftIds,
-  });
+  const SetPinnedGifts({required this.ownerId, required this.receivedGiftIds});
 
   /// Identifier of the user or the channel chat that received the gifts
   final MessageSender ownerId;
@@ -21,22 +18,21 @@ final class SetPinnedGifts extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'owner_id': ownerId.toJson(),
-        'received_gift_ids': receivedGiftIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'owner_id': ownerId.toJson(),
+    'received_gift_ids': receivedGiftIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetPinnedGifts copyWith({
     MessageSender? ownerId,
     List<String>? receivedGiftIds,
-  }) =>
-      SetPinnedGifts(
-        ownerId: ownerId ?? this.ownerId,
-        receivedGiftIds: receivedGiftIds ?? this.receivedGiftIds,
-      );
+  }) => SetPinnedGifts(
+    ownerId: ownerId ?? this.ownerId,
+    receivedGiftIds: receivedGiftIds ?? this.receivedGiftIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setPinnedGifts';

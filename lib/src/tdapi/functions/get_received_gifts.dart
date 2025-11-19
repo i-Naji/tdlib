@@ -69,23 +69,23 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'business_connection_id': businessConnectionId,
-        'owner_id': ownerId.toJson(),
-        'collection_id': collectionId,
-        'exclude_unsaved': excludeUnsaved,
-        'exclude_saved': excludeSaved,
-        'exclude_unlimited': excludeUnlimited,
-        'exclude_upgradable': excludeUpgradable,
-        'exclude_non_upgradable': excludeNonUpgradable,
-        'exclude_upgraded': excludeUpgraded,
-        'exclude_without_colors': excludeWithoutColors,
-        'exclude_hosted': excludeHosted,
-        'sort_by_price': sortByPrice,
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'business_connection_id': businessConnectionId,
+    'owner_id': ownerId.toJson(),
+    'collection_id': collectionId,
+    'exclude_unsaved': excludeUnsaved,
+    'exclude_saved': excludeSaved,
+    'exclude_unlimited': excludeUnlimited,
+    'exclude_upgradable': excludeUpgradable,
+    'exclude_non_upgradable': excludeNonUpgradable,
+    'exclude_upgraded': excludeUpgraded,
+    'exclude_without_colors': excludeWithoutColors,
+    'exclude_hosted': excludeHosted,
+    'sort_by_price': sortByPrice,
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -104,23 +104,22 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
     bool? sortByPrice,
     String? offset,
     int? limit,
-  }) =>
-      GetReceivedGifts(
-        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-        ownerId: ownerId ?? this.ownerId,
-        collectionId: collectionId ?? this.collectionId,
-        excludeUnsaved: excludeUnsaved ?? this.excludeUnsaved,
-        excludeSaved: excludeSaved ?? this.excludeSaved,
-        excludeUnlimited: excludeUnlimited ?? this.excludeUnlimited,
-        excludeUpgradable: excludeUpgradable ?? this.excludeUpgradable,
-        excludeNonUpgradable: excludeNonUpgradable ?? this.excludeNonUpgradable,
-        excludeUpgraded: excludeUpgraded ?? this.excludeUpgraded,
-        excludeWithoutColors: excludeWithoutColors ?? this.excludeWithoutColors,
-        excludeHosted: excludeHosted ?? this.excludeHosted,
-        sortByPrice: sortByPrice ?? this.sortByPrice,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => GetReceivedGifts(
+    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+    ownerId: ownerId ?? this.ownerId,
+    collectionId: collectionId ?? this.collectionId,
+    excludeUnsaved: excludeUnsaved ?? this.excludeUnsaved,
+    excludeSaved: excludeSaved ?? this.excludeSaved,
+    excludeUnlimited: excludeUnlimited ?? this.excludeUnlimited,
+    excludeUpgradable: excludeUpgradable ?? this.excludeUpgradable,
+    excludeNonUpgradable: excludeNonUpgradable ?? this.excludeNonUpgradable,
+    excludeUpgraded: excludeUpgraded ?? this.excludeUpgraded,
+    excludeWithoutColors: excludeWithoutColors ?? this.excludeWithoutColors,
+    excludeHosted: excludeHosted ?? this.excludeHosted,
+    sortByPrice: sortByPrice ?? this.sortByPrice,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getReceivedGifts';

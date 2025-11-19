@@ -25,12 +25,12 @@ final class AddChecklistTasks extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'tasks': [for (final e in tasks) e.toJson()],
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'tasks': [for (final e in tasks) e.toJson()],
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class AddChecklistTasks extends TdFunction<Ok> {
     int? chatId,
     int? messageId,
     List<InputChecklistTask>? tasks,
-  }) =>
-      AddChecklistTasks(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        tasks: tasks ?? this.tasks,
-      );
+  }) => AddChecklistTasks(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    tasks: tasks ?? this.tasks,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addChecklistTasks';

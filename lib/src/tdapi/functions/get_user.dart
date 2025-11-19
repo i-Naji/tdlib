@@ -8,28 +8,21 @@ part of '../tdapi.dart';
 /// Returns [User].
 final class GetUser extends TdFunction<User> {
   /// Returns information about a user by their identifier. This is an offline method if the current user is not a bot
-  const GetUser({
-    required this.userId,
-  });
+  const GetUser({required this.userId});
 
   /// User identifier
   final int userId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetUser copyWith({
-    int? userId,
-  }) =>
-      GetUser(
-        userId: userId ?? this.userId,
-      );
+  GetUser copyWith({int? userId}) => GetUser(userId: userId ?? this.userId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getUser';

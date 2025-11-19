@@ -45,33 +45,23 @@ final class UndecodedTMeUrlType extends TMeUrlType {
 /// A URL linking to a user
 final class TMeUrlTypeUser extends TMeUrlType {
   /// A URL linking to a user
-  const TMeUrlTypeUser({
-    required this.userId,
-  });
+  const TMeUrlTypeUser({required this.userId});
 
   /// Identifier of the user
   final int userId;
 
   /// Parses a [TMeUrlTypeUser] from TDLib JSON.
-  factory TMeUrlTypeUser.fromJson(Map<String, dynamic> json) => TMeUrlTypeUser(
-        userId: _readInt(json['user_id']),
-      );
+  factory TMeUrlTypeUser.fromJson(Map<String, dynamic> json) =>
+      TMeUrlTypeUser(userId: _readInt(json['user_id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'user_id': userId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  TMeUrlTypeUser copyWith({
-    int? userId,
-  }) =>
-      TMeUrlTypeUser(
-        userId: userId ?? this.userId,
-      );
+  TMeUrlTypeUser copyWith({int? userId}) =>
+      TMeUrlTypeUser(userId: userId ?? this.userId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'tMeUrlTypeUser';
@@ -83,34 +73,26 @@ final class TMeUrlTypeUser extends TMeUrlType {
 /// A URL linking to a public supergroup or channel
 final class TMeUrlTypeSupergroup extends TMeUrlType {
   /// A URL linking to a public supergroup or channel
-  const TMeUrlTypeSupergroup({
-    required this.supergroupId,
-  });
+  const TMeUrlTypeSupergroup({required this.supergroupId});
 
   /// Identifier of the supergroup or channel
   final int supergroupId;
 
   /// Parses a [TMeUrlTypeSupergroup] from TDLib JSON.
   factory TMeUrlTypeSupergroup.fromJson(Map<String, dynamic> json) =>
-      TMeUrlTypeSupergroup(
-        supergroupId: _readInt(json['supergroup_id']),
-      );
+      TMeUrlTypeSupergroup(supergroupId: _readInt(json['supergroup_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  TMeUrlTypeSupergroup copyWith({
-    int? supergroupId,
-  }) =>
-      TMeUrlTypeSupergroup(
-        supergroupId: supergroupId ?? this.supergroupId,
-      );
+  TMeUrlTypeSupergroup copyWith({int? supergroupId}) =>
+      TMeUrlTypeSupergroup(supergroupId: supergroupId ?? this.supergroupId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'tMeUrlTypeSupergroup';
@@ -122,9 +104,7 @@ final class TMeUrlTypeSupergroup extends TMeUrlType {
 /// A chat invite link
 final class TMeUrlTypeChatInvite extends TMeUrlType {
   /// A chat invite link
-  const TMeUrlTypeChatInvite({
-    required this.info,
-  });
+  const TMeUrlTypeChatInvite({required this.info});
 
   /// Information about the chat invite link
   final ChatInviteLinkInfo info;
@@ -137,19 +117,15 @@ final class TMeUrlTypeChatInvite extends TMeUrlType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'info': info.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'info': info.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  TMeUrlTypeChatInvite copyWith({
-    ChatInviteLinkInfo? info,
-  }) =>
-      TMeUrlTypeChatInvite(
-        info: info ?? this.info,
-      );
+  TMeUrlTypeChatInvite copyWith({ChatInviteLinkInfo? info}) =>
+      TMeUrlTypeChatInvite(info: info ?? this.info);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'tMeUrlTypeChatInvite';
@@ -161,34 +137,26 @@ final class TMeUrlTypeChatInvite extends TMeUrlType {
 /// A URL linking to a sticker set
 final class TMeUrlTypeStickerSet extends TMeUrlType {
   /// A URL linking to a sticker set
-  const TMeUrlTypeStickerSet({
-    required this.stickerSetId,
-  });
+  const TMeUrlTypeStickerSet({required this.stickerSetId});
 
   /// Identifier of the sticker set
   final int stickerSetId;
 
   /// Parses a [TMeUrlTypeStickerSet] from TDLib JSON.
   factory TMeUrlTypeStickerSet.fromJson(Map<String, dynamic> json) =>
-      TMeUrlTypeStickerSet(
-        stickerSetId: _readInt(json['sticker_set_id']),
-      );
+      TMeUrlTypeStickerSet(stickerSetId: _readInt(json['sticker_set_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker_set_id': stickerSetId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_set_id': stickerSetId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  TMeUrlTypeStickerSet copyWith({
-    int? stickerSetId,
-  }) =>
-      TMeUrlTypeStickerSet(
-        stickerSetId: stickerSetId ?? this.stickerSetId,
-      );
+  TMeUrlTypeStickerSet copyWith({int? stickerSetId}) =>
+      TMeUrlTypeStickerSet(stickerSetId: stickerSetId ?? this.stickerSetId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'tMeUrlTypeStickerSet';

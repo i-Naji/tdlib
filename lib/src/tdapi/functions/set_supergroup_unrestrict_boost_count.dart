@@ -21,22 +21,21 @@ final class SetSupergroupUnrestrictBoostCount extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'unrestrict_boost_count': unrestrictBoostCount,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'unrestrict_boost_count': unrestrictBoostCount,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetSupergroupUnrestrictBoostCount copyWith({
     int? supergroupId,
     int? unrestrictBoostCount,
-  }) =>
-      SetSupergroupUnrestrictBoostCount(
-        supergroupId: supergroupId ?? this.supergroupId,
-        unrestrictBoostCount: unrestrictBoostCount ?? this.unrestrictBoostCount,
-      );
+  }) => SetSupergroupUnrestrictBoostCount(
+    supergroupId: supergroupId ?? this.supergroupId,
+    unrestrictBoostCount: unrestrictBoostCount ?? this.unrestrictBoostCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setSupergroupUnrestrictBoostCount';

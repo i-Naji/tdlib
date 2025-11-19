@@ -27,20 +27,20 @@ final class AvailableGift extends TdObject {
 
   /// Parses a [AvailableGift] from TDLib JSON.
   factory AvailableGift.fromJson(Map<String, dynamic> json) => AvailableGift(
-        gift: _readObject(json['gift'], Gift.fromJson),
-        resaleCount: _readInt(json['resale_count']),
-        minResaleStarCount: _readInt(json['min_resale_star_count']),
-        title: _readString(json['title']),
-      );
+    gift: _readObject(json['gift'], Gift.fromJson),
+    resaleCount: _readInt(json['resale_count']),
+    minResaleStarCount: _readInt(json['min_resale_star_count']),
+    title: _readString(json['title']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'gift': gift.toJson(),
-        'resale_count': resaleCount,
-        'min_resale_star_count': minResaleStarCount,
-        'title': title,
-      };
+    '@type': CONSTRUCTOR,
+    'gift': gift.toJson(),
+    'resale_count': resaleCount,
+    'min_resale_star_count': minResaleStarCount,
+    'title': title,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class AvailableGift extends TdObject {
     int? resaleCount,
     int? minResaleStarCount,
     String? title,
-  }) =>
-      AvailableGift(
-        gift: gift ?? this.gift,
-        resaleCount: resaleCount ?? this.resaleCount,
-        minResaleStarCount: minResaleStarCount ?? this.minResaleStarCount,
-        title: title ?? this.title,
-      );
+  }) => AvailableGift(
+    gift: gift ?? this.gift,
+    resaleCount: resaleCount ?? this.resaleCount,
+    minResaleStarCount: minResaleStarCount ?? this.minResaleStarCount,
+    title: title ?? this.title,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'availableGift';

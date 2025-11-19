@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetProfilePhoto extends TdFunction<Ok> {
   /// Changes a profile photo for the current user
-  const SetProfilePhoto({
-    required this.photo,
-    required this.isPublic,
-  });
+  const SetProfilePhoto({required this.photo, required this.isPublic});
 
   /// Profile photo to set
   final InputChatPhoto photo;
@@ -21,18 +18,15 @@ final class SetProfilePhoto extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'photo': photo.toJson(),
-        'is_public': isPublic,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo.toJson(),
+    'is_public': isPublic,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetProfilePhoto copyWith({
-    InputChatPhoto? photo,
-    bool? isPublic,
-  }) =>
+  SetProfilePhoto copyWith({InputChatPhoto? photo, bool? isPublic}) =>
       SetProfilePhoto(
         photo: photo ?? this.photo,
         isPublic: isPublic ?? this.isPublic,

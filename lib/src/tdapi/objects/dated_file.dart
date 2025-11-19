@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// File with the date it was uploaded
 final class DatedFile extends TdObject {
   /// File with the date it was uploaded
-  const DatedFile({
-    required this.file,
-    required this.date,
-  });
+  const DatedFile({required this.file, required this.date});
 
   /// The file
   final File file;
@@ -19,27 +16,21 @@ final class DatedFile extends TdObject {
 
   /// Parses a [DatedFile] from TDLib JSON.
   factory DatedFile.fromJson(Map<String, dynamic> json) => DatedFile(
-        file: _readObject(json['file'], File.fromJson),
-        date: _readInt(json['date']),
-      );
+    file: _readObject(json['file'], File.fromJson),
+    date: _readInt(json['date']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file': file.toJson(),
-        'date': date,
-      };
+    '@type': CONSTRUCTOR,
+    'file': file.toJson(),
+    'date': date,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DatedFile copyWith({
-    File? file,
-    int? date,
-  }) =>
-      DatedFile(
-        file: file ?? this.file,
-        date: date ?? this.date,
-      );
+  DatedFile copyWith({File? file, int? date}) =>
+      DatedFile(file: file ?? this.file, date: date ?? this.date);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'datedFile';

@@ -47,9 +47,7 @@ final class UndecodedEmojiCategorySource extends EmojiCategorySource {
 /// The category contains a list of similar emoji to search for in getStickers and searchStickers for stickers, or getInlineQueryResults with the bot getOption("animation_search_bot_username") for animations
 final class EmojiCategorySourceSearch extends EmojiCategorySource {
   /// The category contains a list of similar emoji to search for in getStickers and searchStickers for stickers, or getInlineQueryResults with the bot getOption("animation_search_bot_username") for animations
-  const EmojiCategorySourceSearch({
-    required this.emojis,
-  });
+  const EmojiCategorySourceSearch({required this.emojis});
 
   /// List of emojis to search for
   final List<String> emojis;
@@ -61,20 +59,13 @@ final class EmojiCategorySourceSearch extends EmojiCategorySource {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'emojis': emojis,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'emojis': emojis};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  EmojiCategorySourceSearch copyWith({
-    List<String>? emojis,
-  }) =>
-      EmojiCategorySourceSearch(
-        emojis: emojis ?? this.emojis,
-      );
+  EmojiCategorySourceSearch copyWith({List<String>? emojis}) =>
+      EmojiCategorySourceSearch(emojis: emojis ?? this.emojis);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'emojiCategorySourceSearch';
@@ -93,9 +84,7 @@ final class EmojiCategorySourcePremium extends EmojiCategorySource {
       const EmojiCategorySourcePremium();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

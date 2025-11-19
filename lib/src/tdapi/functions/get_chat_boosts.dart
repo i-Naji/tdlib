@@ -29,13 +29,13 @@ final class GetChatBoosts extends TdFunction<FoundChatBoosts> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'only_gift_codes': onlyGiftCodes,
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'only_gift_codes': onlyGiftCodes,
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class GetChatBoosts extends TdFunction<FoundChatBoosts> {
     bool? onlyGiftCodes,
     String? offset,
     int? limit,
-  }) =>
-      GetChatBoosts(
-        chatId: chatId ?? this.chatId,
-        onlyGiftCodes: onlyGiftCodes ?? this.onlyGiftCodes,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => GetChatBoosts(
+    chatId: chatId ?? this.chatId,
+    onlyGiftCodes: onlyGiftCodes ?? this.onlyGiftCodes,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatBoosts';

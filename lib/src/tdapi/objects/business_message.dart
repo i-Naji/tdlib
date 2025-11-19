@@ -31,18 +31,20 @@ final class BusinessMessage extends TdObject {
   factory BusinessMessage.fromJson(Map<String, dynamic> json) =>
       BusinessMessage(
         message: _readObject(json['message'], Message.fromJson),
-        replyToMessage:
-            _readOptional(json['reply_to_message'], Message.fromJson),
+        replyToMessage: _readOptional(
+          json['reply_to_message'],
+          Message.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message': message.toJson(),
-        'reply_to_message': replyToMessage?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'message': message.toJson(),
+    'reply_to_message': replyToMessage?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,14 +53,14 @@ final class BusinessMessage extends TdObject {
     Message? Function()? replyToMessage,
     dynamic extra,
     int? clientId,
-  }) =>
-      BusinessMessage(
-        message: message ?? this.message,
-        replyToMessage:
-            replyToMessage != null ? replyToMessage() : this.replyToMessage,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => BusinessMessage(
+    message: message ?? this.message,
+    replyToMessage: replyToMessage != null
+        ? replyToMessage()
+        : this.replyToMessage,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'businessMessage';

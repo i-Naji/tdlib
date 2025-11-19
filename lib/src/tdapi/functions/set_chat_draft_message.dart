@@ -25,12 +25,12 @@ final class SetChatDraftMessage extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'topic_id': topicId?.toJson(),
-        'draft_message': draftMessage?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'topic_id': topicId?.toJson(),
+    'draft_message': draftMessage?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SetChatDraftMessage extends TdFunction<Ok> {
     int? chatId,
     MessageTopic? Function()? topicId,
     DraftMessage? Function()? draftMessage,
-  }) =>
-      SetChatDraftMessage(
-        chatId: chatId ?? this.chatId,
-        topicId: topicId != null ? topicId() : this.topicId,
-        draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
-      );
+  }) => SetChatDraftMessage(
+    chatId: chatId ?? this.chatId,
+    topicId: topicId != null ? topicId() : this.topicId,
+    draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setChatDraftMessage';

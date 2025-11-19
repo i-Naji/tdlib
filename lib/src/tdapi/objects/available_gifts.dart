@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of gifts that can be sent to another user or channel chat
 final class AvailableGifts extends TdObject {
   /// Contains a list of gifts that can be sent to another user or channel chat
-  const AvailableGifts({
-    required this.gifts,
-    this.extra,
-    this.clientId,
-  });
+  const AvailableGifts({required this.gifts, this.extra, this.clientId});
 
   /// The list of gifts
   final List<AvailableGift> gifts;
@@ -25,17 +21,19 @@ final class AvailableGifts extends TdObject {
 
   /// Parses a [AvailableGifts] from TDLib JSON.
   factory AvailableGifts.fromJson(Map<String, dynamic> json) => AvailableGifts(
-        gifts: _readList<AvailableGift>(
-            json['gifts'], (e) => _readObject(e, AvailableGift.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    gifts: _readList<AvailableGift>(
+      json['gifts'],
+      (e) => _readObject(e, AvailableGift.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'gifts': [for (final e in gifts) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'gifts': [for (final e in gifts) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +41,11 @@ final class AvailableGifts extends TdObject {
     List<AvailableGift>? gifts,
     dynamic extra,
     int? clientId,
-  }) =>
-      AvailableGifts(
-        gifts: gifts ?? this.gifts,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => AvailableGifts(
+    gifts: gifts ?? this.gifts,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'availableGifts';

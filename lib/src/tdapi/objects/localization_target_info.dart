@@ -26,17 +26,19 @@ final class LocalizationTargetInfo extends TdObject {
   /// Parses a [LocalizationTargetInfo] from TDLib JSON.
   factory LocalizationTargetInfo.fromJson(Map<String, dynamic> json) =>
       LocalizationTargetInfo(
-        languagePacks: _readList<LanguagePackInfo>(json['language_packs'],
-            (e) => _readObject(e, LanguagePackInfo.fromJson)),
+        languagePacks: _readList<LanguagePackInfo>(
+          json['language_packs'],
+          (e) => _readObject(e, LanguagePackInfo.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'language_packs': [for (final e in languagePacks) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'language_packs': [for (final e in languagePacks) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +46,11 @@ final class LocalizationTargetInfo extends TdObject {
     List<LanguagePackInfo>? languagePacks,
     dynamic extra,
     int? clientId,
-  }) =>
-      LocalizationTargetInfo(
-        languagePacks: languagePacks ?? this.languagePacks,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => LocalizationTargetInfo(
+    languagePacks: languagePacks ?? this.languagePacks,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'localizationTargetInfo';

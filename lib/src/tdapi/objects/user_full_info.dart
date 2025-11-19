@@ -141,87 +141,94 @@ final class UserFullInfo extends TdObject {
 
   /// Parses a [UserFullInfo] from TDLib JSON.
   factory UserFullInfo.fromJson(Map<String, dynamic> json) => UserFullInfo(
-        personalPhoto:
-            _readOptional(json['personal_photo'], ChatPhoto.fromJson),
-        photo: _readOptional(json['photo'], ChatPhoto.fromJson),
-        publicPhoto: _readOptional(json['public_photo'], ChatPhoto.fromJson),
-        blockList: _readOptional(json['block_list'], BlockList.fromJson),
-        canBeCalled: _readBool(json['can_be_called']),
-        supportsVideoCalls: _readBool(json['supports_video_calls']),
-        hasPrivateCalls: _readBool(json['has_private_calls']),
-        hasPrivateForwards: _readBool(json['has_private_forwards']),
-        hasRestrictedVoiceAndVideoNoteMessages:
-            _readBool(json['has_restricted_voice_and_video_note_messages']),
-        hasPostedToProfileStories:
-            _readBool(json['has_posted_to_profile_stories']),
-        hasSponsoredMessagesEnabled:
-            _readBool(json['has_sponsored_messages_enabled']),
-        needPhoneNumberPrivacyException:
-            _readBool(json['need_phone_number_privacy_exception']),
-        setChatBackground: _readBool(json['set_chat_background']),
-        bio: _readOptional(json['bio'], FormattedText.fromJson),
-        birthdate: _readOptional(json['birthdate'], Birthdate.fromJson),
-        personalChatId: _readInt(json['personal_chat_id']),
-        giftCount: _readInt(json['gift_count']),
-        groupInCommonCount: _readInt(json['group_in_common_count']),
-        incomingPaidMessageStarCount:
-            _readInt(json['incoming_paid_message_star_count']),
-        outgoingPaidMessageStarCount:
-            _readInt(json['outgoing_paid_message_star_count']),
-        giftSettings: _readObject(json['gift_settings'], GiftSettings.fromJson),
-        botVerification:
-            _readOptional(json['bot_verification'], BotVerification.fromJson),
-        mainProfileTab:
-            _readOptional(json['main_profile_tab'], ProfileTab.fromJson),
-        firstProfileAudio:
-            _readOptional(json['first_profile_audio'], Audio.fromJson),
-        rating: _readOptional(json['rating'], UserRating.fromJson),
-        pendingRating:
-            _readOptional(json['pending_rating'], UserRating.fromJson),
-        pendingRatingDate: _readInt(json['pending_rating_date']),
-        note: _readOptional(json['note'], FormattedText.fromJson),
-        businessInfo:
-            _readOptional(json['business_info'], BusinessInfo.fromJson),
-        botInfo: _readOptional(json['bot_info'], BotInfo.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    personalPhoto: _readOptional(json['personal_photo'], ChatPhoto.fromJson),
+    photo: _readOptional(json['photo'], ChatPhoto.fromJson),
+    publicPhoto: _readOptional(json['public_photo'], ChatPhoto.fromJson),
+    blockList: _readOptional(json['block_list'], BlockList.fromJson),
+    canBeCalled: _readBool(json['can_be_called']),
+    supportsVideoCalls: _readBool(json['supports_video_calls']),
+    hasPrivateCalls: _readBool(json['has_private_calls']),
+    hasPrivateForwards: _readBool(json['has_private_forwards']),
+    hasRestrictedVoiceAndVideoNoteMessages: _readBool(
+      json['has_restricted_voice_and_video_note_messages'],
+    ),
+    hasPostedToProfileStories: _readBool(json['has_posted_to_profile_stories']),
+    hasSponsoredMessagesEnabled: _readBool(
+      json['has_sponsored_messages_enabled'],
+    ),
+    needPhoneNumberPrivacyException: _readBool(
+      json['need_phone_number_privacy_exception'],
+    ),
+    setChatBackground: _readBool(json['set_chat_background']),
+    bio: _readOptional(json['bio'], FormattedText.fromJson),
+    birthdate: _readOptional(json['birthdate'], Birthdate.fromJson),
+    personalChatId: _readInt(json['personal_chat_id']),
+    giftCount: _readInt(json['gift_count']),
+    groupInCommonCount: _readInt(json['group_in_common_count']),
+    incomingPaidMessageStarCount: _readInt(
+      json['incoming_paid_message_star_count'],
+    ),
+    outgoingPaidMessageStarCount: _readInt(
+      json['outgoing_paid_message_star_count'],
+    ),
+    giftSettings: _readObject(json['gift_settings'], GiftSettings.fromJson),
+    botVerification: _readOptional(
+      json['bot_verification'],
+      BotVerification.fromJson,
+    ),
+    mainProfileTab: _readOptional(
+      json['main_profile_tab'],
+      ProfileTab.fromJson,
+    ),
+    firstProfileAudio: _readOptional(
+      json['first_profile_audio'],
+      Audio.fromJson,
+    ),
+    rating: _readOptional(json['rating'], UserRating.fromJson),
+    pendingRating: _readOptional(json['pending_rating'], UserRating.fromJson),
+    pendingRatingDate: _readInt(json['pending_rating_date']),
+    note: _readOptional(json['note'], FormattedText.fromJson),
+    businessInfo: _readOptional(json['business_info'], BusinessInfo.fromJson),
+    botInfo: _readOptional(json['bot_info'], BotInfo.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'personal_photo': personalPhoto?.toJson(),
-        'photo': photo?.toJson(),
-        'public_photo': publicPhoto?.toJson(),
-        'block_list': blockList?.toJson(),
-        'can_be_called': canBeCalled,
-        'supports_video_calls': supportsVideoCalls,
-        'has_private_calls': hasPrivateCalls,
-        'has_private_forwards': hasPrivateForwards,
-        'has_restricted_voice_and_video_note_messages':
-            hasRestrictedVoiceAndVideoNoteMessages,
-        'has_posted_to_profile_stories': hasPostedToProfileStories,
-        'has_sponsored_messages_enabled': hasSponsoredMessagesEnabled,
-        'need_phone_number_privacy_exception': needPhoneNumberPrivacyException,
-        'set_chat_background': setChatBackground,
-        'bio': bio?.toJson(),
-        'birthdate': birthdate?.toJson(),
-        'personal_chat_id': personalChatId,
-        'gift_count': giftCount,
-        'group_in_common_count': groupInCommonCount,
-        'incoming_paid_message_star_count': incomingPaidMessageStarCount,
-        'outgoing_paid_message_star_count': outgoingPaidMessageStarCount,
-        'gift_settings': giftSettings.toJson(),
-        'bot_verification': botVerification?.toJson(),
-        'main_profile_tab': mainProfileTab?.toJson(),
-        'first_profile_audio': firstProfileAudio?.toJson(),
-        'rating': rating?.toJson(),
-        'pending_rating': pendingRating?.toJson(),
-        'pending_rating_date': pendingRatingDate,
-        'note': note?.toJson(),
-        'business_info': businessInfo?.toJson(),
-        'bot_info': botInfo?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'personal_photo': personalPhoto?.toJson(),
+    'photo': photo?.toJson(),
+    'public_photo': publicPhoto?.toJson(),
+    'block_list': blockList?.toJson(),
+    'can_be_called': canBeCalled,
+    'supports_video_calls': supportsVideoCalls,
+    'has_private_calls': hasPrivateCalls,
+    'has_private_forwards': hasPrivateForwards,
+    'has_restricted_voice_and_video_note_messages':
+        hasRestrictedVoiceAndVideoNoteMessages,
+    'has_posted_to_profile_stories': hasPostedToProfileStories,
+    'has_sponsored_messages_enabled': hasSponsoredMessagesEnabled,
+    'need_phone_number_privacy_exception': needPhoneNumberPrivacyException,
+    'set_chat_background': setChatBackground,
+    'bio': bio?.toJson(),
+    'birthdate': birthdate?.toJson(),
+    'personal_chat_id': personalChatId,
+    'gift_count': giftCount,
+    'group_in_common_count': groupInCommonCount,
+    'incoming_paid_message_star_count': incomingPaidMessageStarCount,
+    'outgoing_paid_message_star_count': outgoingPaidMessageStarCount,
+    'gift_settings': giftSettings.toJson(),
+    'bot_verification': botVerification?.toJson(),
+    'main_profile_tab': mainProfileTab?.toJson(),
+    'first_profile_audio': firstProfileAudio?.toJson(),
+    'rating': rating?.toJson(),
+    'pending_rating': pendingRating?.toJson(),
+    'pending_rating_date': pendingRatingDate,
+    'note': note?.toJson(),
+    'business_info': businessInfo?.toJson(),
+    'bot_info': botInfo?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -258,54 +265,53 @@ final class UserFullInfo extends TdObject {
     BotInfo? Function()? botInfo,
     dynamic extra,
     int? clientId,
-  }) =>
-      UserFullInfo(
-        personalPhoto:
-            personalPhoto != null ? personalPhoto() : this.personalPhoto,
-        photo: photo != null ? photo() : this.photo,
-        publicPhoto: publicPhoto != null ? publicPhoto() : this.publicPhoto,
-        blockList: blockList != null ? blockList() : this.blockList,
-        canBeCalled: canBeCalled ?? this.canBeCalled,
-        supportsVideoCalls: supportsVideoCalls ?? this.supportsVideoCalls,
-        hasPrivateCalls: hasPrivateCalls ?? this.hasPrivateCalls,
-        hasPrivateForwards: hasPrivateForwards ?? this.hasPrivateForwards,
-        hasRestrictedVoiceAndVideoNoteMessages:
-            hasRestrictedVoiceAndVideoNoteMessages ??
-                this.hasRestrictedVoiceAndVideoNoteMessages,
-        hasPostedToProfileStories:
-            hasPostedToProfileStories ?? this.hasPostedToProfileStories,
-        hasSponsoredMessagesEnabled:
-            hasSponsoredMessagesEnabled ?? this.hasSponsoredMessagesEnabled,
-        needPhoneNumberPrivacyException: needPhoneNumberPrivacyException ??
-            this.needPhoneNumberPrivacyException,
-        setChatBackground: setChatBackground ?? this.setChatBackground,
-        bio: bio != null ? bio() : this.bio,
-        birthdate: birthdate != null ? birthdate() : this.birthdate,
-        personalChatId: personalChatId ?? this.personalChatId,
-        giftCount: giftCount ?? this.giftCount,
-        groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
-        incomingPaidMessageStarCount:
-            incomingPaidMessageStarCount ?? this.incomingPaidMessageStarCount,
-        outgoingPaidMessageStarCount:
-            outgoingPaidMessageStarCount ?? this.outgoingPaidMessageStarCount,
-        giftSettings: giftSettings ?? this.giftSettings,
-        botVerification:
-            botVerification != null ? botVerification() : this.botVerification,
-        mainProfileTab:
-            mainProfileTab != null ? mainProfileTab() : this.mainProfileTab,
-        firstProfileAudio: firstProfileAudio != null
-            ? firstProfileAudio()
-            : this.firstProfileAudio,
-        rating: rating != null ? rating() : this.rating,
-        pendingRating:
-            pendingRating != null ? pendingRating() : this.pendingRating,
-        pendingRatingDate: pendingRatingDate ?? this.pendingRatingDate,
-        note: note != null ? note() : this.note,
-        businessInfo: businessInfo != null ? businessInfo() : this.businessInfo,
-        botInfo: botInfo != null ? botInfo() : this.botInfo,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UserFullInfo(
+    personalPhoto: personalPhoto != null ? personalPhoto() : this.personalPhoto,
+    photo: photo != null ? photo() : this.photo,
+    publicPhoto: publicPhoto != null ? publicPhoto() : this.publicPhoto,
+    blockList: blockList != null ? blockList() : this.blockList,
+    canBeCalled: canBeCalled ?? this.canBeCalled,
+    supportsVideoCalls: supportsVideoCalls ?? this.supportsVideoCalls,
+    hasPrivateCalls: hasPrivateCalls ?? this.hasPrivateCalls,
+    hasPrivateForwards: hasPrivateForwards ?? this.hasPrivateForwards,
+    hasRestrictedVoiceAndVideoNoteMessages:
+        hasRestrictedVoiceAndVideoNoteMessages ??
+        this.hasRestrictedVoiceAndVideoNoteMessages,
+    hasPostedToProfileStories:
+        hasPostedToProfileStories ?? this.hasPostedToProfileStories,
+    hasSponsoredMessagesEnabled:
+        hasSponsoredMessagesEnabled ?? this.hasSponsoredMessagesEnabled,
+    needPhoneNumberPrivacyException:
+        needPhoneNumberPrivacyException ?? this.needPhoneNumberPrivacyException,
+    setChatBackground: setChatBackground ?? this.setChatBackground,
+    bio: bio != null ? bio() : this.bio,
+    birthdate: birthdate != null ? birthdate() : this.birthdate,
+    personalChatId: personalChatId ?? this.personalChatId,
+    giftCount: giftCount ?? this.giftCount,
+    groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
+    incomingPaidMessageStarCount:
+        incomingPaidMessageStarCount ?? this.incomingPaidMessageStarCount,
+    outgoingPaidMessageStarCount:
+        outgoingPaidMessageStarCount ?? this.outgoingPaidMessageStarCount,
+    giftSettings: giftSettings ?? this.giftSettings,
+    botVerification: botVerification != null
+        ? botVerification()
+        : this.botVerification,
+    mainProfileTab: mainProfileTab != null
+        ? mainProfileTab()
+        : this.mainProfileTab,
+    firstProfileAudio: firstProfileAudio != null
+        ? firstProfileAudio()
+        : this.firstProfileAudio,
+    rating: rating != null ? rating() : this.rating,
+    pendingRating: pendingRating != null ? pendingRating() : this.pendingRating,
+    pendingRatingDate: pendingRatingDate ?? this.pendingRatingDate,
+    note: note != null ? note() : this.note,
+    businessInfo: businessInfo != null ? businessInfo() : this.businessInfo,
+    botInfo: botInfo != null ? botInfo() : this.botInfo,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userFullInfo';

@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// A simple object containing a vector of numbers; for testing only
 final class TestVectorInt extends TdObject {
   /// A simple object containing a vector of numbers; for testing only
-  const TestVectorInt({
-    required this.value,
-    this.extra,
-    this.clientId,
-  });
+  const TestVectorInt({required this.value, this.extra, this.clientId});
 
   /// Vector of numbers
   final List<int> value;
@@ -25,24 +21,17 @@ final class TestVectorInt extends TdObject {
 
   /// Parses a [TestVectorInt] from TDLib JSON.
   factory TestVectorInt.fromJson(Map<String, dynamic> json) => TestVectorInt(
-        value: _readList<int>(json['value'], _readInt),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    value: _readList<int>(json['value'], _readInt),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'value': value,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'value': value};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TestVectorInt copyWith({
-    List<int>? value,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  TestVectorInt copyWith({List<int>? value, dynamic extra, int? clientId}) =>
       TestVectorInt(
         value: value ?? this.value,
         extra: extra ?? this.extra,

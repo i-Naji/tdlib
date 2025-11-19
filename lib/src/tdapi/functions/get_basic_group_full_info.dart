@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [BasicGroupFullInfo].
 final class GetBasicGroupFullInfo extends TdFunction<BasicGroupFullInfo> {
   /// Returns full information about a basic group by its identifier
-  const GetBasicGroupFullInfo({
-    required this.basicGroupId,
-  });
+  const GetBasicGroupFullInfo({required this.basicGroupId});
 
   /// Basic group identifier
   final int basicGroupId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'basic_group_id': basicGroupId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'basic_group_id': basicGroupId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetBasicGroupFullInfo copyWith({
-    int? basicGroupId,
-  }) =>
-      GetBasicGroupFullInfo(
-        basicGroupId: basicGroupId ?? this.basicGroupId,
-      );
+  GetBasicGroupFullInfo copyWith({int? basicGroupId}) =>
+      GetBasicGroupFullInfo(basicGroupId: basicGroupId ?? this.basicGroupId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getBasicGroupFullInfo';

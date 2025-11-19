@@ -29,13 +29,13 @@ final class SetMessageReactions extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'reaction_types': [for (final e in reactionTypes) e.toJson()],
-        'is_big': isBig,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'reaction_types': [for (final e in reactionTypes) e.toJson()],
+    'is_big': isBig,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class SetMessageReactions extends TdFunction<Ok> {
     int? messageId,
     List<ReactionType>? reactionTypes,
     bool? isBig,
-  }) =>
-      SetMessageReactions(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        reactionTypes: reactionTypes ?? this.reactionTypes,
-        isBig: isBig ?? this.isBig,
-      );
+  }) => SetMessageReactions(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    reactionTypes: reactionTypes ?? this.reactionTypes,
+    isBig: isBig ?? this.isBig,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setMessageReactions';

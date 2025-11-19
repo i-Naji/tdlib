@@ -45,33 +45,26 @@ final class UndecodedPageBlock extends PageBlock {
 /// The title of a page
 final class PageBlockTitle extends PageBlock {
   /// The title of a page
-  const PageBlockTitle({
-    required this.title,
-  });
+  const PageBlockTitle({required this.title});
 
   /// Title
   final RichText title;
 
   /// Parses a [PageBlockTitle] from TDLib JSON.
-  factory PageBlockTitle.fromJson(Map<String, dynamic> json) => PageBlockTitle(
-        title: _readObject(json['title'], RichText.fromJson),
-      );
+  factory PageBlockTitle.fromJson(Map<String, dynamic> json) =>
+      PageBlockTitle(title: _readObject(json['title'], RichText.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'title': title.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PageBlockTitle copyWith({
-    RichText? title,
-  }) =>
-      PageBlockTitle(
-        title: title ?? this.title,
-      );
+  PageBlockTitle copyWith({RichText? title}) =>
+      PageBlockTitle(title: title ?? this.title);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockTitle';
@@ -83,9 +76,7 @@ final class PageBlockTitle extends PageBlock {
 /// The subtitle of a page
 final class PageBlockSubtitle extends PageBlock {
   /// The subtitle of a page
-  const PageBlockSubtitle({
-    required this.subtitle,
-  });
+  const PageBlockSubtitle({required this.subtitle});
 
   /// Subtitle
   final RichText subtitle;
@@ -98,19 +89,15 @@ final class PageBlockSubtitle extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'subtitle': subtitle.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'subtitle': subtitle.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PageBlockSubtitle copyWith({
-    RichText? subtitle,
-  }) =>
-      PageBlockSubtitle(
-        subtitle: subtitle ?? this.subtitle,
-      );
+  PageBlockSubtitle copyWith({RichText? subtitle}) =>
+      PageBlockSubtitle(subtitle: subtitle ?? this.subtitle);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockSubtitle';
@@ -122,10 +109,7 @@ final class PageBlockSubtitle extends PageBlock {
 /// The author and publishing date of a page
 final class PageBlockAuthorDate extends PageBlock {
   /// The author and publishing date of a page
-  const PageBlockAuthorDate({
-    required this.author,
-    required this.publishDate,
-  });
+  const PageBlockAuthorDate({required this.author, required this.publishDate});
 
   /// Author
   final RichText author;
@@ -142,18 +126,15 @@ final class PageBlockAuthorDate extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'author': author.toJson(),
-        'publish_date': publishDate,
-      };
+    '@type': CONSTRUCTOR,
+    'author': author.toJson(),
+    'publish_date': publishDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PageBlockAuthorDate copyWith({
-    RichText? author,
-    int? publishDate,
-  }) =>
+  PageBlockAuthorDate copyWith({RichText? author, int? publishDate}) =>
       PageBlockAuthorDate(
         author: author ?? this.author,
         publishDate: publishDate ?? this.publishDate,
@@ -169,34 +150,26 @@ final class PageBlockAuthorDate extends PageBlock {
 /// A header
 final class PageBlockHeader extends PageBlock {
   /// A header
-  const PageBlockHeader({
-    required this.header,
-  });
+  const PageBlockHeader({required this.header});
 
   /// Header
   final RichText header;
 
   /// Parses a [PageBlockHeader] from TDLib JSON.
   factory PageBlockHeader.fromJson(Map<String, dynamic> json) =>
-      PageBlockHeader(
-        header: _readObject(json['header'], RichText.fromJson),
-      );
+      PageBlockHeader(header: _readObject(json['header'], RichText.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'header': header.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'header': header.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PageBlockHeader copyWith({
-    RichText? header,
-  }) =>
-      PageBlockHeader(
-        header: header ?? this.header,
-      );
+  PageBlockHeader copyWith({RichText? header}) =>
+      PageBlockHeader(header: header ?? this.header);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockHeader';
@@ -208,9 +181,7 @@ final class PageBlockHeader extends PageBlock {
 /// A subheader
 final class PageBlockSubheader extends PageBlock {
   /// A subheader
-  const PageBlockSubheader({
-    required this.subheader,
-  });
+  const PageBlockSubheader({required this.subheader});
 
   /// Subheader
   final RichText subheader;
@@ -223,19 +194,15 @@ final class PageBlockSubheader extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'subheader': subheader.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'subheader': subheader.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PageBlockSubheader copyWith({
-    RichText? subheader,
-  }) =>
-      PageBlockSubheader(
-        subheader: subheader ?? this.subheader,
-      );
+  PageBlockSubheader copyWith({RichText? subheader}) =>
+      PageBlockSubheader(subheader: subheader ?? this.subheader);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockSubheader';
@@ -247,34 +214,26 @@ final class PageBlockSubheader extends PageBlock {
 /// A kicker
 final class PageBlockKicker extends PageBlock {
   /// A kicker
-  const PageBlockKicker({
-    required this.kicker,
-  });
+  const PageBlockKicker({required this.kicker});
 
   /// Kicker
   final RichText kicker;
 
   /// Parses a [PageBlockKicker] from TDLib JSON.
   factory PageBlockKicker.fromJson(Map<String, dynamic> json) =>
-      PageBlockKicker(
-        kicker: _readObject(json['kicker'], RichText.fromJson),
-      );
+      PageBlockKicker(kicker: _readObject(json['kicker'], RichText.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'kicker': kicker.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'kicker': kicker.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PageBlockKicker copyWith({
-    RichText? kicker,
-  }) =>
-      PageBlockKicker(
-        kicker: kicker ?? this.kicker,
-      );
+  PageBlockKicker copyWith({RichText? kicker}) =>
+      PageBlockKicker(kicker: kicker ?? this.kicker);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockKicker';
@@ -286,34 +245,26 @@ final class PageBlockKicker extends PageBlock {
 /// A text paragraph
 final class PageBlockParagraph extends PageBlock {
   /// A text paragraph
-  const PageBlockParagraph({
-    required this.text,
-  });
+  const PageBlockParagraph({required this.text});
 
   /// Paragraph text
   final RichText text;
 
   /// Parses a [PageBlockParagraph] from TDLib JSON.
   factory PageBlockParagraph.fromJson(Map<String, dynamic> json) =>
-      PageBlockParagraph(
-        text: _readObject(json['text'], RichText.fromJson),
-      );
+      PageBlockParagraph(text: _readObject(json['text'], RichText.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PageBlockParagraph copyWith({
-    RichText? text,
-  }) =>
-      PageBlockParagraph(
-        text: text ?? this.text,
-      );
+  PageBlockParagraph copyWith({RichText? text}) =>
+      PageBlockParagraph(text: text ?? this.text);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockParagraph';
@@ -325,10 +276,7 @@ final class PageBlockParagraph extends PageBlock {
 /// A preformatted text paragraph
 final class PageBlockPreformatted extends PageBlock {
   /// A preformatted text paragraph
-  const PageBlockPreformatted({
-    required this.text,
-    required this.language,
-  });
+  const PageBlockPreformatted({required this.text, required this.language});
 
   /// Paragraph text
   final RichText text;
@@ -345,18 +293,15 @@ final class PageBlockPreformatted extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'language': language,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'language': language,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PageBlockPreformatted copyWith({
-    RichText? text,
-    String? language,
-  }) =>
+  PageBlockPreformatted copyWith({RichText? text, String? language}) =>
       PageBlockPreformatted(
         text: text ?? this.text,
         language: language ?? this.language,
@@ -372,34 +317,26 @@ final class PageBlockPreformatted extends PageBlock {
 /// The footer of a page
 final class PageBlockFooter extends PageBlock {
   /// The footer of a page
-  const PageBlockFooter({
-    required this.footer,
-  });
+  const PageBlockFooter({required this.footer});
 
   /// Footer
   final RichText footer;
 
   /// Parses a [PageBlockFooter] from TDLib JSON.
   factory PageBlockFooter.fromJson(Map<String, dynamic> json) =>
-      PageBlockFooter(
-        footer: _readObject(json['footer'], RichText.fromJson),
-      );
+      PageBlockFooter(footer: _readObject(json['footer'], RichText.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'footer': footer.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'footer': footer.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PageBlockFooter copyWith({
-    RichText? footer,
-  }) =>
-      PageBlockFooter(
-        footer: footer ?? this.footer,
-      );
+  PageBlockFooter copyWith({RichText? footer}) =>
+      PageBlockFooter(footer: footer ?? this.footer);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockFooter';
@@ -418,9 +355,7 @@ final class PageBlockDivider extends PageBlock {
       const PageBlockDivider();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -437,34 +372,23 @@ final class PageBlockDivider extends PageBlock {
 /// An invisible anchor on a page, which can be used in a URL to open the page from the specified anchor
 final class PageBlockAnchor extends PageBlock {
   /// An invisible anchor on a page, which can be used in a URL to open the page from the specified anchor
-  const PageBlockAnchor({
-    required this.name,
-  });
+  const PageBlockAnchor({required this.name});
 
   /// Name of the anchor
   final String name;
 
   /// Parses a [PageBlockAnchor] from TDLib JSON.
   factory PageBlockAnchor.fromJson(Map<String, dynamic> json) =>
-      PageBlockAnchor(
-        name: _readString(json['name']),
-      );
+      PageBlockAnchor(name: _readString(json['name']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'name': name};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PageBlockAnchor copyWith({
-    String? name,
-  }) =>
-      PageBlockAnchor(
-        name: name ?? this.name,
-      );
+  PageBlockAnchor copyWith({String? name}) =>
+      PageBlockAnchor(name: name ?? this.name);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockAnchor';
@@ -476,34 +400,30 @@ final class PageBlockAnchor extends PageBlock {
 /// A list of data blocks
 final class PageBlockList extends PageBlock {
   /// A list of data blocks
-  const PageBlockList({
-    required this.items,
-  });
+  const PageBlockList({required this.items});
 
   /// The items of the list
   final List<PageBlockListItem> items;
 
   /// Parses a [PageBlockList] from TDLib JSON.
   factory PageBlockList.fromJson(Map<String, dynamic> json) => PageBlockList(
-        items: _readList<PageBlockListItem>(
-            json['items'], (e) => _readObject(e, PageBlockListItem.fromJson)),
-      );
+    items: _readList<PageBlockListItem>(
+      json['items'],
+      (e) => _readObject(e, PageBlockListItem.fromJson),
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'items': [for (final e in items) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'items': [for (final e in items) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PageBlockList copyWith({
-    List<PageBlockListItem>? items,
-  }) =>
-      PageBlockList(
-        items: items ?? this.items,
-      );
+  PageBlockList copyWith({List<PageBlockListItem>? items}) =>
+      PageBlockList(items: items ?? this.items);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockList';
@@ -515,10 +435,7 @@ final class PageBlockList extends PageBlock {
 /// A block quote
 final class PageBlockBlockQuote extends PageBlock {
   /// A block quote
-  const PageBlockBlockQuote({
-    required this.text,
-    required this.credit,
-  });
+  const PageBlockBlockQuote({required this.text, required this.credit});
 
   /// Quote text
   final RichText text;
@@ -535,18 +452,15 @@ final class PageBlockBlockQuote extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'credit': credit.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'credit': credit.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PageBlockBlockQuote copyWith({
-    RichText? text,
-    RichText? credit,
-  }) =>
+  PageBlockBlockQuote copyWith({RichText? text, RichText? credit}) =>
       PageBlockBlockQuote(
         text: text ?? this.text,
         credit: credit ?? this.credit,
@@ -562,10 +476,7 @@ final class PageBlockBlockQuote extends PageBlock {
 /// A pull quote
 final class PageBlockPullQuote extends PageBlock {
   /// A pull quote
-  const PageBlockPullQuote({
-    required this.text,
-    required this.credit,
-  });
+  const PageBlockPullQuote({required this.text, required this.credit});
 
   /// Quote text
   final RichText text;
@@ -582,18 +493,15 @@ final class PageBlockPullQuote extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'credit': credit.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'credit': credit.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PageBlockPullQuote copyWith({
-    RichText? text,
-    RichText? credit,
-  }) =>
+  PageBlockPullQuote copyWith({RichText? text, RichText? credit}) =>
       PageBlockPullQuote(
         text: text ?? this.text,
         credit: credit ?? this.credit,
@@ -634,11 +542,11 @@ final class PageBlockAnimation extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'animation': animation?.toJson(),
-        'caption': caption.toJson(),
-        'need_autoplay': needAutoplay,
-      };
+    '@type': CONSTRUCTOR,
+    'animation': animation?.toJson(),
+    'caption': caption.toJson(),
+    'need_autoplay': needAutoplay,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -647,12 +555,11 @@ final class PageBlockAnimation extends PageBlock {
     Animation? Function()? animation,
     PageBlockCaption? caption,
     bool? needAutoplay,
-  }) =>
-      PageBlockAnimation(
-        animation: animation != null ? animation() : this.animation,
-        caption: caption ?? this.caption,
-        needAutoplay: needAutoplay ?? this.needAutoplay,
-      );
+  }) => PageBlockAnimation(
+    animation: animation != null ? animation() : this.animation,
+    caption: caption ?? this.caption,
+    needAutoplay: needAutoplay ?? this.needAutoplay,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockAnimation';
@@ -664,10 +571,7 @@ final class PageBlockAnimation extends PageBlock {
 /// An audio file
 final class PageBlockAudio extends PageBlock {
   /// An audio file
-  const PageBlockAudio({
-    this.audio,
-    required this.caption,
-  });
+  const PageBlockAudio({this.audio, required this.caption});
 
   /// Audio file; may be null
   final Audio? audio;
@@ -677,16 +581,16 @@ final class PageBlockAudio extends PageBlock {
 
   /// Parses a [PageBlockAudio] from TDLib JSON.
   factory PageBlockAudio.fromJson(Map<String, dynamic> json) => PageBlockAudio(
-        audio: _readOptional(json['audio'], Audio.fromJson),
-        caption: _readObject(json['caption'], PageBlockCaption.fromJson),
-      );
+    audio: _readOptional(json['audio'], Audio.fromJson),
+    caption: _readObject(json['caption'], PageBlockCaption.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'audio': audio?.toJson(),
-        'caption': caption.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'audio': audio?.toJson(),
+    'caption': caption.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -694,11 +598,10 @@ final class PageBlockAudio extends PageBlock {
   PageBlockAudio copyWith({
     Audio? Function()? audio,
     PageBlockCaption? caption,
-  }) =>
-      PageBlockAudio(
-        audio: audio != null ? audio() : this.audio,
-        caption: caption ?? this.caption,
-      );
+  }) => PageBlockAudio(
+    audio: audio != null ? audio() : this.audio,
+    caption: caption ?? this.caption,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockAudio';
@@ -710,11 +613,7 @@ final class PageBlockAudio extends PageBlock {
 /// A photo
 final class PageBlockPhoto extends PageBlock {
   /// A photo
-  const PageBlockPhoto({
-    this.photo,
-    required this.caption,
-    required this.url,
-  });
+  const PageBlockPhoto({this.photo, required this.caption, required this.url});
 
   /// Photo file; may be null
   final Photo? photo;
@@ -727,18 +626,18 @@ final class PageBlockPhoto extends PageBlock {
 
   /// Parses a [PageBlockPhoto] from TDLib JSON.
   factory PageBlockPhoto.fromJson(Map<String, dynamic> json) => PageBlockPhoto(
-        photo: _readOptional(json['photo'], Photo.fromJson),
-        caption: _readObject(json['caption'], PageBlockCaption.fromJson),
-        url: _readString(json['url']),
-      );
+    photo: _readOptional(json['photo'], Photo.fromJson),
+    caption: _readObject(json['caption'], PageBlockCaption.fromJson),
+    url: _readString(json['url']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo?.toJson(),
-        'caption': caption.toJson(),
-        'url': url,
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo?.toJson(),
+    'caption': caption.toJson(),
+    'url': url,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -747,12 +646,11 @@ final class PageBlockPhoto extends PageBlock {
     Photo? Function()? photo,
     PageBlockCaption? caption,
     String? url,
-  }) =>
-      PageBlockPhoto(
-        photo: photo != null ? photo() : this.photo,
-        caption: caption ?? this.caption,
-        url: url ?? this.url,
-      );
+  }) => PageBlockPhoto(
+    photo: photo != null ? photo() : this.photo,
+    caption: caption ?? this.caption,
+    url: url ?? this.url,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockPhoto';
@@ -785,20 +683,20 @@ final class PageBlockVideo extends PageBlock {
 
   /// Parses a [PageBlockVideo] from TDLib JSON.
   factory PageBlockVideo.fromJson(Map<String, dynamic> json) => PageBlockVideo(
-        video: _readOptional(json['video'], Video.fromJson),
-        caption: _readObject(json['caption'], PageBlockCaption.fromJson),
-        needAutoplay: _readBool(json['need_autoplay']),
-        isLooped: _readBool(json['is_looped']),
-      );
+    video: _readOptional(json['video'], Video.fromJson),
+    caption: _readObject(json['caption'], PageBlockCaption.fromJson),
+    needAutoplay: _readBool(json['need_autoplay']),
+    isLooped: _readBool(json['is_looped']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'video': video?.toJson(),
-        'caption': caption.toJson(),
-        'need_autoplay': needAutoplay,
-        'is_looped': isLooped,
-      };
+    '@type': CONSTRUCTOR,
+    'video': video?.toJson(),
+    'caption': caption.toJson(),
+    'need_autoplay': needAutoplay,
+    'is_looped': isLooped,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -808,13 +706,12 @@ final class PageBlockVideo extends PageBlock {
     PageBlockCaption? caption,
     bool? needAutoplay,
     bool? isLooped,
-  }) =>
-      PageBlockVideo(
-        video: video != null ? video() : this.video,
-        caption: caption ?? this.caption,
-        needAutoplay: needAutoplay ?? this.needAutoplay,
-        isLooped: isLooped ?? this.isLooped,
-      );
+  }) => PageBlockVideo(
+    video: video != null ? video() : this.video,
+    caption: caption ?? this.caption,
+    needAutoplay: needAutoplay ?? this.needAutoplay,
+    isLooped: isLooped ?? this.isLooped,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockVideo';
@@ -826,10 +723,7 @@ final class PageBlockVideo extends PageBlock {
 /// A voice note
 final class PageBlockVoiceNote extends PageBlock {
   /// A voice note
-  const PageBlockVoiceNote({
-    this.voiceNote,
-    required this.caption,
-  });
+  const PageBlockVoiceNote({this.voiceNote, required this.caption});
 
   /// Voice note; may be null
   final VoiceNote? voiceNote;
@@ -846,10 +740,10 @@ final class PageBlockVoiceNote extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'voice_note': voiceNote?.toJson(),
-        'caption': caption.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'voice_note': voiceNote?.toJson(),
+    'caption': caption.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -857,11 +751,10 @@ final class PageBlockVoiceNote extends PageBlock {
   PageBlockVoiceNote copyWith({
     VoiceNote? Function()? voiceNote,
     PageBlockCaption? caption,
-  }) =>
-      PageBlockVoiceNote(
-        voiceNote: voiceNote != null ? voiceNote() : this.voiceNote,
-        caption: caption ?? this.caption,
-      );
+  }) => PageBlockVoiceNote(
+    voiceNote: voiceNote != null ? voiceNote() : this.voiceNote,
+    caption: caption ?? this.caption,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockVoiceNote';
@@ -873,33 +766,26 @@ final class PageBlockVoiceNote extends PageBlock {
 /// A page cover
 final class PageBlockCover extends PageBlock {
   /// A page cover
-  const PageBlockCover({
-    required this.cover,
-  });
+  const PageBlockCover({required this.cover});
 
   /// Cover
   final PageBlock cover;
 
   /// Parses a [PageBlockCover] from TDLib JSON.
-  factory PageBlockCover.fromJson(Map<String, dynamic> json) => PageBlockCover(
-        cover: _readObject(json['cover'], PageBlock.fromJson),
-      );
+  factory PageBlockCover.fromJson(Map<String, dynamic> json) =>
+      PageBlockCover(cover: _readObject(json['cover'], PageBlock.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'cover': cover.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'cover': cover.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PageBlockCover copyWith({
-    PageBlock? cover,
-  }) =>
-      PageBlockCover(
-        cover: cover ?? this.cover,
-      );
+  PageBlockCover copyWith({PageBlock? cover}) =>
+      PageBlockCover(cover: cover ?? this.cover);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockCover';
@@ -961,16 +847,16 @@ final class PageBlockEmbedded extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'html': html,
-        'poster_photo': posterPhoto?.toJson(),
-        'width': width,
-        'height': height,
-        'caption': caption.toJson(),
-        'is_full_width': isFullWidth,
-        'allow_scrolling': allowScrolling,
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'html': html,
+    'poster_photo': posterPhoto?.toJson(),
+    'width': width,
+    'height': height,
+    'caption': caption.toJson(),
+    'is_full_width': isFullWidth,
+    'allow_scrolling': allowScrolling,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -984,17 +870,16 @@ final class PageBlockEmbedded extends PageBlock {
     PageBlockCaption? caption,
     bool? isFullWidth,
     bool? allowScrolling,
-  }) =>
-      PageBlockEmbedded(
-        url: url ?? this.url,
-        html: html ?? this.html,
-        posterPhoto: posterPhoto != null ? posterPhoto() : this.posterPhoto,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        caption: caption ?? this.caption,
-        isFullWidth: isFullWidth ?? this.isFullWidth,
-        allowScrolling: allowScrolling ?? this.allowScrolling,
-      );
+  }) => PageBlockEmbedded(
+    url: url ?? this.url,
+    html: html ?? this.html,
+    posterPhoto: posterPhoto != null ? posterPhoto() : this.posterPhoto,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    caption: caption ?? this.caption,
+    isFullWidth: isFullWidth ?? this.isFullWidth,
+    allowScrolling: allowScrolling ?? this.allowScrolling,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockEmbedded';
@@ -1041,20 +926,22 @@ final class PageBlockEmbeddedPost extends PageBlock {
         authorPhoto: _readOptional(json['author_photo'], Photo.fromJson),
         date: _readInt(json['date']),
         pageBlocks: _readList<PageBlock>(
-            json['page_blocks'], (e) => _readObject(e, PageBlock.fromJson)),
+          json['page_blocks'],
+          (e) => _readObject(e, PageBlock.fromJson),
+        ),
         caption: _readObject(json['caption'], PageBlockCaption.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'author': author,
-        'author_photo': authorPhoto?.toJson(),
-        'date': date,
-        'page_blocks': [for (final e in pageBlocks) e.toJson()],
-        'caption': caption.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'author': author,
+    'author_photo': authorPhoto?.toJson(),
+    'date': date,
+    'page_blocks': [for (final e in pageBlocks) e.toJson()],
+    'caption': caption.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1066,15 +953,14 @@ final class PageBlockEmbeddedPost extends PageBlock {
     int? date,
     List<PageBlock>? pageBlocks,
     PageBlockCaption? caption,
-  }) =>
-      PageBlockEmbeddedPost(
-        url: url ?? this.url,
-        author: author ?? this.author,
-        authorPhoto: authorPhoto != null ? authorPhoto() : this.authorPhoto,
-        date: date ?? this.date,
-        pageBlocks: pageBlocks ?? this.pageBlocks,
-        caption: caption ?? this.caption,
-      );
+  }) => PageBlockEmbeddedPost(
+    url: url ?? this.url,
+    author: author ?? this.author,
+    authorPhoto: authorPhoto != null ? authorPhoto() : this.authorPhoto,
+    date: date ?? this.date,
+    pageBlocks: pageBlocks ?? this.pageBlocks,
+    caption: caption ?? this.caption,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockEmbeddedPost';
@@ -1086,10 +972,7 @@ final class PageBlockEmbeddedPost extends PageBlock {
 /// A collage
 final class PageBlockCollage extends PageBlock {
   /// A collage
-  const PageBlockCollage({
-    required this.pageBlocks,
-    required this.caption,
-  });
+  const PageBlockCollage({required this.pageBlocks, required this.caption});
 
   /// Collage item contents
   final List<PageBlock> pageBlocks;
@@ -1101,16 +984,18 @@ final class PageBlockCollage extends PageBlock {
   factory PageBlockCollage.fromJson(Map<String, dynamic> json) =>
       PageBlockCollage(
         pageBlocks: _readList<PageBlock>(
-            json['page_blocks'], (e) => _readObject(e, PageBlock.fromJson)),
+          json['page_blocks'],
+          (e) => _readObject(e, PageBlock.fromJson),
+        ),
         caption: _readObject(json['caption'], PageBlockCaption.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'page_blocks': [for (final e in pageBlocks) e.toJson()],
-        'caption': caption.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'page_blocks': [for (final e in pageBlocks) e.toJson()],
+    'caption': caption.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1118,11 +1003,10 @@ final class PageBlockCollage extends PageBlock {
   PageBlockCollage copyWith({
     List<PageBlock>? pageBlocks,
     PageBlockCaption? caption,
-  }) =>
-      PageBlockCollage(
-        pageBlocks: pageBlocks ?? this.pageBlocks,
-        caption: caption ?? this.caption,
-      );
+  }) => PageBlockCollage(
+    pageBlocks: pageBlocks ?? this.pageBlocks,
+    caption: caption ?? this.caption,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockCollage';
@@ -1134,10 +1018,7 @@ final class PageBlockCollage extends PageBlock {
 /// A slideshow
 final class PageBlockSlideshow extends PageBlock {
   /// A slideshow
-  const PageBlockSlideshow({
-    required this.pageBlocks,
-    required this.caption,
-  });
+  const PageBlockSlideshow({required this.pageBlocks, required this.caption});
 
   /// Slideshow item contents
   final List<PageBlock> pageBlocks;
@@ -1149,16 +1030,18 @@ final class PageBlockSlideshow extends PageBlock {
   factory PageBlockSlideshow.fromJson(Map<String, dynamic> json) =>
       PageBlockSlideshow(
         pageBlocks: _readList<PageBlock>(
-            json['page_blocks'], (e) => _readObject(e, PageBlock.fromJson)),
+          json['page_blocks'],
+          (e) => _readObject(e, PageBlock.fromJson),
+        ),
         caption: _readObject(json['caption'], PageBlockCaption.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'page_blocks': [for (final e in pageBlocks) e.toJson()],
-        'caption': caption.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'page_blocks': [for (final e in pageBlocks) e.toJson()],
+    'caption': caption.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1166,11 +1049,10 @@ final class PageBlockSlideshow extends PageBlock {
   PageBlockSlideshow copyWith({
     List<PageBlock>? pageBlocks,
     PageBlockCaption? caption,
-  }) =>
-      PageBlockSlideshow(
-        pageBlocks: pageBlocks ?? this.pageBlocks,
-        caption: caption ?? this.caption,
-      );
+  }) => PageBlockSlideshow(
+    pageBlocks: pageBlocks ?? this.pageBlocks,
+    caption: caption ?? this.caption,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockSlideshow';
@@ -1212,12 +1094,12 @@ final class PageBlockChatLink extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-        'photo': photo?.toJson(),
-        'accent_color_id': accentColorId,
-        'username': username,
-      };
+    '@type': CONSTRUCTOR,
+    'title': title,
+    'photo': photo?.toJson(),
+    'accent_color_id': accentColorId,
+    'username': username,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1227,13 +1109,12 @@ final class PageBlockChatLink extends PageBlock {
     ChatPhotoInfo? Function()? photo,
     int? accentColorId,
     String? username,
-  }) =>
-      PageBlockChatLink(
-        title: title ?? this.title,
-        photo: photo != null ? photo() : this.photo,
-        accentColorId: accentColorId ?? this.accentColorId,
-        username: username ?? this.username,
-      );
+  }) => PageBlockChatLink(
+    title: title ?? this.title,
+    photo: photo != null ? photo() : this.photo,
+    accentColorId: accentColorId ?? this.accentColorId,
+    username: username ?? this.username,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockChatLink';
@@ -1266,25 +1147,28 @@ final class PageBlockTable extends PageBlock {
 
   /// Parses a [PageBlockTable] from TDLib JSON.
   factory PageBlockTable.fromJson(Map<String, dynamic> json) => PageBlockTable(
-        caption: _readObject(json['caption'], RichText.fromJson),
-        cells: _readList<List<PageBlockTableCell>>(
-            json['cells'],
-            (e) => _readList<PageBlockTableCell>(
-                e, (e1) => _readObject(e1, PageBlockTableCell.fromJson))),
-        isBordered: _readBool(json['is_bordered']),
-        isStriped: _readBool(json['is_striped']),
-      );
+    caption: _readObject(json['caption'], RichText.fromJson),
+    cells: _readList<List<PageBlockTableCell>>(
+      json['cells'],
+      (e) => _readList<PageBlockTableCell>(
+        e,
+        (e1) => _readObject(e1, PageBlockTableCell.fromJson),
+      ),
+    ),
+    isBordered: _readBool(json['is_bordered']),
+    isStriped: _readBool(json['is_striped']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'caption': caption.toJson(),
-        'cells': [
-          for (final e in cells) [for (final e1 in e) e1.toJson()]
-        ],
-        'is_bordered': isBordered,
-        'is_striped': isStriped,
-      };
+    '@type': CONSTRUCTOR,
+    'caption': caption.toJson(),
+    'cells': [
+      for (final e in cells) [for (final e1 in e) e1.toJson()],
+    ],
+    'is_bordered': isBordered,
+    'is_striped': isStriped,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1294,13 +1178,12 @@ final class PageBlockTable extends PageBlock {
     List<List<PageBlockTableCell>>? cells,
     bool? isBordered,
     bool? isStriped,
-  }) =>
-      PageBlockTable(
-        caption: caption ?? this.caption,
-        cells: cells ?? this.cells,
-        isBordered: isBordered ?? this.isBordered,
-        isStriped: isStriped ?? this.isStriped,
-      );
+  }) => PageBlockTable(
+    caption: caption ?? this.caption,
+    cells: cells ?? this.cells,
+    isBordered: isBordered ?? this.isBordered,
+    isStriped: isStriped ?? this.isStriped,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockTable';
@@ -1332,17 +1215,19 @@ final class PageBlockDetails extends PageBlock {
       PageBlockDetails(
         header: _readObject(json['header'], RichText.fromJson),
         pageBlocks: _readList<PageBlock>(
-            json['page_blocks'], (e) => _readObject(e, PageBlock.fromJson)),
+          json['page_blocks'],
+          (e) => _readObject(e, PageBlock.fromJson),
+        ),
         isOpen: _readBool(json['is_open']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'header': header.toJson(),
-        'page_blocks': [for (final e in pageBlocks) e.toJson()],
-        'is_open': isOpen,
-      };
+    '@type': CONSTRUCTOR,
+    'header': header.toJson(),
+    'page_blocks': [for (final e in pageBlocks) e.toJson()],
+    'is_open': isOpen,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1351,12 +1236,11 @@ final class PageBlockDetails extends PageBlock {
     RichText? header,
     List<PageBlock>? pageBlocks,
     bool? isOpen,
-  }) =>
-      PageBlockDetails(
-        header: header ?? this.header,
-        pageBlocks: pageBlocks ?? this.pageBlocks,
-        isOpen: isOpen ?? this.isOpen,
-      );
+  }) => PageBlockDetails(
+    header: header ?? this.header,
+    pageBlocks: pageBlocks ?? this.pageBlocks,
+    isOpen: isOpen ?? this.isOpen,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockDetails';
@@ -1383,16 +1267,18 @@ final class PageBlockRelatedArticles extends PageBlock {
   factory PageBlockRelatedArticles.fromJson(Map<String, dynamic> json) =>
       PageBlockRelatedArticles(
         header: _readObject(json['header'], RichText.fromJson),
-        articles: _readList<PageBlockRelatedArticle>(json['articles'],
-            (e) => _readObject(e, PageBlockRelatedArticle.fromJson)),
+        articles: _readList<PageBlockRelatedArticle>(
+          json['articles'],
+          (e) => _readObject(e, PageBlockRelatedArticle.fromJson),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'header': header.toJson(),
-        'articles': [for (final e in articles) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'header': header.toJson(),
+    'articles': [for (final e in articles) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1400,11 +1286,10 @@ final class PageBlockRelatedArticles extends PageBlock {
   PageBlockRelatedArticles copyWith({
     RichText? header,
     List<PageBlockRelatedArticle>? articles,
-  }) =>
-      PageBlockRelatedArticles(
-        header: header ?? this.header,
-        articles: articles ?? this.articles,
-      );
+  }) => PageBlockRelatedArticles(
+    header: header ?? this.header,
+    articles: articles ?? this.articles,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockRelatedArticles';
@@ -1441,22 +1326,22 @@ final class PageBlockMap extends PageBlock {
 
   /// Parses a [PageBlockMap] from TDLib JSON.
   factory PageBlockMap.fromJson(Map<String, dynamic> json) => PageBlockMap(
-        location: _readObject(json['location'], Location.fromJson),
-        zoom: _readInt(json['zoom']),
-        width: _readInt(json['width']),
-        height: _readInt(json['height']),
-        caption: _readObject(json['caption'], PageBlockCaption.fromJson),
-      );
+    location: _readObject(json['location'], Location.fromJson),
+    zoom: _readInt(json['zoom']),
+    width: _readInt(json['width']),
+    height: _readInt(json['height']),
+    caption: _readObject(json['caption'], PageBlockCaption.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'location': location.toJson(),
-        'zoom': zoom,
-        'width': width,
-        'height': height,
-        'caption': caption.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'location': location.toJson(),
+    'zoom': zoom,
+    'width': width,
+    'height': height,
+    'caption': caption.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1467,14 +1352,13 @@ final class PageBlockMap extends PageBlock {
     int? width,
     int? height,
     PageBlockCaption? caption,
-  }) =>
-      PageBlockMap(
-        location: location ?? this.location,
-        zoom: zoom ?? this.zoom,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        caption: caption ?? this.caption,
-      );
+  }) => PageBlockMap(
+    location: location ?? this.location,
+    zoom: zoom ?? this.zoom,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    caption: caption ?? this.caption,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockMap';

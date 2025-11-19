@@ -31,18 +31,20 @@ final class ValidatedOrderInfo extends TdObject {
   factory ValidatedOrderInfo.fromJson(Map<String, dynamic> json) =>
       ValidatedOrderInfo(
         orderInfoId: _readString(json['order_info_id']),
-        shippingOptions: _readList<ShippingOption>(json['shipping_options'],
-            (e) => _readObject(e, ShippingOption.fromJson)),
+        shippingOptions: _readList<ShippingOption>(
+          json['shipping_options'],
+          (e) => _readObject(e, ShippingOption.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'order_info_id': orderInfoId,
-        'shipping_options': [for (final e in shippingOptions) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'order_info_id': orderInfoId,
+    'shipping_options': [for (final e in shippingOptions) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,13 +53,12 @@ final class ValidatedOrderInfo extends TdObject {
     List<ShippingOption>? shippingOptions,
     dynamic extra,
     int? clientId,
-  }) =>
-      ValidatedOrderInfo(
-        orderInfoId: orderInfoId ?? this.orderInfoId,
-        shippingOptions: shippingOptions ?? this.shippingOptions,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ValidatedOrderInfo(
+    orderInfoId: orderInfoId ?? this.orderInfoId,
+    shippingOptions: shippingOptions ?? this.shippingOptions,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'validatedOrderInfo';

@@ -21,18 +21,15 @@ final class SetChatSlowModeDelay extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'slow_mode_delay': slowModeDelay,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'slow_mode_delay': slowModeDelay,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetChatSlowModeDelay copyWith({
-    int? chatId,
-    int? slowModeDelay,
-  }) =>
+  SetChatSlowModeDelay copyWith({int? chatId, int? slowModeDelay}) =>
       SetChatSlowModeDelay(
         chatId: chatId ?? this.chatId,
         slowModeDelay: slowModeDelay ?? this.slowModeDelay,

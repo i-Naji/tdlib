@@ -9,28 +9,22 @@ part of '../tdapi.dart';
 final class GetChatAvailableMessageSenders
     extends TdFunction<ChatMessageSenders> {
   /// Returns the list of message sender identifiers, which can be used to send messages in a chat
-  const GetChatAvailableMessageSenders({
-    required this.chatId,
-  });
+  const GetChatAvailableMessageSenders({required this.chatId});
 
   /// Chat identifier
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatAvailableMessageSenders copyWith({
-    int? chatId,
-  }) =>
-      GetChatAvailableMessageSenders(
-        chatId: chatId ?? this.chatId,
-      );
+  GetChatAvailableMessageSenders copyWith({int? chatId}) =>
+      GetChatAvailableMessageSenders(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatAvailableMessageSenders';

@@ -33,14 +33,14 @@ final class EditBusinessMessageMedia extends TdFunction<BusinessMessage> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'business_connection_id': businessConnectionId,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'business_connection_id': businessConnectionId,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class EditBusinessMessageMedia extends TdFunction<BusinessMessage> {
     int? messageId,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      EditBusinessMessageMedia(
-        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => EditBusinessMessageMedia(
+    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'editBusinessMessageMedia';

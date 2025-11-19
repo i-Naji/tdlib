@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Represents an available reaction
 final class AvailableReaction extends TdObject {
   /// Represents an available reaction
-  const AvailableReaction({
-    required this.type,
-    required this.needsPremium,
-  });
+  const AvailableReaction({required this.type, required this.needsPremium});
 
   /// Type of the reaction
   final ReactionType type;
@@ -26,17 +23,14 @@ final class AvailableReaction extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-        'needs_premium': needsPremium,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+    'needs_premium': needsPremium,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  AvailableReaction copyWith({
-    ReactionType? type,
-    bool? needsPremium,
-  }) =>
+  AvailableReaction copyWith({ReactionType? type, bool? needsPremium}) =>
       AvailableReaction(
         type: type ?? this.type,
         needsPremium: needsPremium ?? this.needsPremium,

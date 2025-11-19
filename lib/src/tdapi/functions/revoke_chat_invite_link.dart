@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [ChatInviteLinks].
 final class RevokeChatInviteLink extends TdFunction<ChatInviteLinks> {
   /// Revokes invite link for a chat. Available for basic groups, supergroups, and channels. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links. If a primary link is revoked, then additionally to the revoked link returns new primary link
-  const RevokeChatInviteLink({
-    required this.chatId,
-    required this.inviteLink,
-  });
+  const RevokeChatInviteLink({required this.chatId, required this.inviteLink});
 
   /// Chat identifier
   final int chatId;
@@ -21,18 +18,15 @@ final class RevokeChatInviteLink extends TdFunction<ChatInviteLinks> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'invite_link': inviteLink,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'invite_link': inviteLink,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RevokeChatInviteLink copyWith({
-    int? chatId,
-    String? inviteLink,
-  }) =>
+  RevokeChatInviteLink copyWith({int? chatId, String? inviteLink}) =>
       RevokeChatInviteLink(
         chatId: chatId ?? this.chatId,
         inviteLink: inviteLink ?? this.inviteLink,

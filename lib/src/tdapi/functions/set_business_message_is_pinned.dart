@@ -29,13 +29,13 @@ final class SetBusinessMessageIsPinned extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'business_connection_id': businessConnectionId,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'is_pinned': isPinned,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'business_connection_id': businessConnectionId,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'is_pinned': isPinned,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class SetBusinessMessageIsPinned extends TdFunction<Ok> {
     int? chatId,
     int? messageId,
     bool? isPinned,
-  }) =>
-      SetBusinessMessageIsPinned(
-        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        isPinned: isPinned ?? this.isPinned,
-      );
+  }) => SetBusinessMessageIsPinned(
+    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    isPinned: isPinned ?? this.isPinned,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setBusinessMessageIsPinned';

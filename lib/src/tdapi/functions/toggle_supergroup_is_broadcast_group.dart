@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ToggleSupergroupIsBroadcastGroup extends TdFunction<Ok> {
   /// Upgrades supergroup to a broadcast group; requires owner privileges in the supergroup
-  const ToggleSupergroupIsBroadcastGroup({
-    required this.supergroupId,
-  });
+  const ToggleSupergroupIsBroadcastGroup({required this.supergroupId});
 
   /// Identifier of the supergroup
   final int supergroupId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ToggleSupergroupIsBroadcastGroup copyWith({
-    int? supergroupId,
-  }) =>
+  ToggleSupergroupIsBroadcastGroup copyWith({int? supergroupId}) =>
       ToggleSupergroupIsBroadcastGroup(
         supergroupId: supergroupId ?? this.supergroupId,
       );

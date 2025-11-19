@@ -35,8 +35,10 @@ final class BusinessConnectedBot extends TdObject {
   factory BusinessConnectedBot.fromJson(Map<String, dynamic> json) =>
       BusinessConnectedBot(
         botUserId: _readInt(json['bot_user_id']),
-        recipients:
-            _readObject(json['recipients'], BusinessRecipients.fromJson),
+        recipients: _readObject(
+          json['recipients'],
+          BusinessRecipients.fromJson,
+        ),
         rights: _readObject(json['rights'], BusinessBotRights.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -44,11 +46,11 @@ final class BusinessConnectedBot extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'recipients': recipients.toJson(),
-        'rights': rights.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'recipients': recipients.toJson(),
+    'rights': rights.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -58,14 +60,13 @@ final class BusinessConnectedBot extends TdObject {
     BusinessBotRights? rights,
     dynamic extra,
     int? clientId,
-  }) =>
-      BusinessConnectedBot(
-        botUserId: botUserId ?? this.botUserId,
-        recipients: recipients ?? this.recipients,
-        rights: rights ?? this.rights,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => BusinessConnectedBot(
+    botUserId: botUserId ?? this.botUserId,
+    recipients: recipients ?? this.recipients,
+    rights: rights ?? this.rights,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'businessConnectedBot';

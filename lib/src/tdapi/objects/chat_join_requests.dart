@@ -32,17 +32,19 @@ final class ChatJoinRequests extends TdObject {
       ChatJoinRequests(
         totalCount: _readInt(json['total_count']),
         requests: _readList<ChatJoinRequest>(
-            json['requests'], (e) => _readObject(e, ChatJoinRequest.fromJson)),
+          json['requests'],
+          (e) => _readObject(e, ChatJoinRequest.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'requests': [for (final e in requests) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'requests': [for (final e in requests) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,13 +53,12 @@ final class ChatJoinRequests extends TdObject {
     List<ChatJoinRequest>? requests,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatJoinRequests(
-        totalCount: totalCount ?? this.totalCount,
-        requests: requests ?? this.requests,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatJoinRequests(
+    totalCount: totalCount ?? this.totalCount,
+    requests: requests ?? this.requests,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatJoinRequests';

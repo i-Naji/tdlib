@@ -1,51 +1,50 @@
 # TDLib
 
-#### Flutter [Plugin](https://pub.dev/packages/tdlib) for [TDLib (Telegram Database Library)](https://github.com/tdlib/td/tree/8fbaf8441a79214bd00a1f19ab0bbcc91cd04e52) v1.8.56
+#### Flutter [Plugin](https://pub.dev/packages/tdlib) for [TDLib (Telegram Database Library)](https://github.com/tdlib/td/tree/4f4df7c6436085391e0b6d74cc7a54cf274c7edf) v1.8.56
 
 Telegram Tdlib is a complete library for creating telegram clients, it also has a simple tdjson ready-to-use library to ease the integration with different programming languages and platforms.<br>
 This plugin is a complete tdlib-tdjson binding package to help you create your own Telegram clients.
 
-~~See the `example` directory for the complete sample app.~~
+See the [example](example/lib/main.dart) for a sample app.
 
 ## Installation
 [Install](https://pub.dev/packages/tdlib/versions/1.8.56/install) the plugin by running the following command from the project root:
 ```
 flutter pub add tdlib
 ```
-## Initialization
-This plugin contains only **Android** tdlib-tdjson library. In case of other platforms usage you need to manually put the tdjson library in your project
-- for Windows:
-  - [Build tdlib-json for windows](https://github.com/tdlib/td#building)
-  - Add `.so` file in your project and use it's **path** for initialization.
-- for IOS and macOS support:
-  - Build tdlib-json by this [instruction](https://github.com/tdlib/td/tree/master/example/ios)
-  - [Add compiled file to linked libraries](https://docs.flutter.dev/development/platform-integration/c-interop#compiled-dynamic-library) and use it's **name** for initialization
-- for web:
-  - Copy all files in [data/web-package](/data/web_pkg/) to `web` folder in your project.
-  - Point `tdlib.js` file in `index.html`:
-    ```html
-    <!--add this between the <body> tags -->
-    <script src="/tdlib.js" type="application/javascript"></script>
-    ```
+Needs Flutter 3.38 or newer. The tdjson library for Android, iOS, macOS, Linux and Windows is downloaded and bundled by the package's [build hook](https://dart.dev/tools/hooks), builds are listed in [hook/tdjson_sources.json](hook/tdjson_sources.json).
 
-To initialize tdlib plugin, call the `initialize` method on the `TdPlugin` class.
-
-Since this is an asynchronous operation, the main function can be modified to ensure initialization is complete before running the application.
-> The method accepts LIBTDJSON_PATH for windows platform or LIBTDJSON_NAME for IOS & macOS.
-
-Import `tdlib` plugin:
-```dart
-import 'package:tdlib/tdlib.dart';
+To use your own tdjson build, set its path in your app's `pubspec.yaml`:
+```yaml
+hooks:
+  user_defines:
+    tdlib:
+      library_path: path/to/libtdjson.so
 ```
-Next, within the `main` function, initialize `TdPlugin`:
+### Web
+- Copy all files in [data/web_pkg](/data/web_pkg/) to `web` folder in your project.
+- Point `tdlib.js` file in `index.html`:
+  ```html
+  <!--add this between the <body> tags -->
+  <script src="/tdlib.js" type="application/javascript"></script>
+  ```
+- Call `await TdPlugin.initialize();` before using the plugin.
 
+## Usage
 ```dart
-// lib/main.dart
+import 'package:tdlib/td_lifecycle.dart';
+import 'package:tdlib/td_runtime.dart' as td;
 
 void main() async {
-  await TdPlugin.initialize();
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  final runtime = await td.TdRuntime.start();
+  TdLifecycle(runtime);
+
+  final client = runtime.createClient();
+  client.authorizationStates.listen((state) {
+    // send td.SetTdlibParameters on AuthorizationStateWaitTdlibParameters, ...
+  });
+  final td.User me = await client.invoke(const td.GetMe());
 }
 ```
-## Usage
 [Getting started with TDLib](https://core.telegram.org/tdlib/getting-started)

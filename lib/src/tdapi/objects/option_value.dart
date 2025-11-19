@@ -45,11 +45,7 @@ final class UndecodedOptionValue extends OptionValue {
 /// Represents a boolean option
 final class OptionValueBoolean extends OptionValue {
   /// Represents a boolean option
-  const OptionValueBoolean({
-    required this.value,
-    this.extra,
-    this.clientId,
-  });
+  const OptionValueBoolean({required this.value, this.extra, this.clientId});
 
   /// The value of the option
   final bool value;
@@ -71,19 +67,12 @@ final class OptionValueBoolean extends OptionValue {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'value': value,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'value': value};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  OptionValueBoolean copyWith({
-    bool? value,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  OptionValueBoolean copyWith({bool? value, dynamic extra, int? clientId}) =>
       OptionValueBoolean(
         value: value ?? this.value,
         extra: extra ?? this.extra,
@@ -100,10 +89,7 @@ final class OptionValueBoolean extends OptionValue {
 /// Represents an unknown option or an option which has a default value
 final class OptionValueEmpty extends OptionValue {
   /// Represents an unknown option or an option which has a default value
-  const OptionValueEmpty({
-    this.extra,
-    this.clientId,
-  });
+  const OptionValueEmpty({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -121,21 +107,15 @@ final class OptionValueEmpty extends OptionValue {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  OptionValueEmpty copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
-      OptionValueEmpty(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  OptionValueEmpty copyWith({dynamic extra, int? clientId}) => OptionValueEmpty(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'optionValueEmpty';
@@ -147,11 +127,7 @@ final class OptionValueEmpty extends OptionValue {
 /// Represents an integer option
 final class OptionValueInteger extends OptionValue {
   /// Represents an integer option
-  const OptionValueInteger({
-    required this.value,
-    this.extra,
-    this.clientId,
-  });
+  const OptionValueInteger({required this.value, this.extra, this.clientId});
 
   /// The value of the option
   final int value;
@@ -174,18 +150,14 @@ final class OptionValueInteger extends OptionValue {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'value': value.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'value': value.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  OptionValueInteger copyWith({
-    int? value,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  OptionValueInteger copyWith({int? value, dynamic extra, int? clientId}) =>
       OptionValueInteger(
         value: value ?? this.value,
         extra: extra ?? this.extra,
@@ -202,11 +174,7 @@ final class OptionValueInteger extends OptionValue {
 /// Represents a string option
 final class OptionValueString extends OptionValue {
   /// Represents a string option
-  const OptionValueString({
-    required this.value,
-    this.extra,
-    this.clientId,
-  });
+  const OptionValueString({required this.value, this.extra, this.clientId});
 
   /// The value of the option
   final String value;
@@ -228,19 +196,12 @@ final class OptionValueString extends OptionValue {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'value': value,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'value': value};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  OptionValueString copyWith({
-    String? value,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  OptionValueString copyWith({String? value, dynamic extra, int? clientId}) =>
       OptionValueString(
         value: value ?? this.value,
         extra: extra ?? this.extra,

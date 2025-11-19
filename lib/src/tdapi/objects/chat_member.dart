@@ -37,22 +37,22 @@ final class ChatMember extends TdObject {
 
   /// Parses a [ChatMember] from TDLib JSON.
   factory ChatMember.fromJson(Map<String, dynamic> json) => ChatMember(
-        memberId: _readObject(json['member_id'], MessageSender.fromJson),
-        inviterUserId: _readInt(json['inviter_user_id']),
-        joinedChatDate: _readInt(json['joined_chat_date']),
-        status: _readObject(json['status'], ChatMemberStatus.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    memberId: _readObject(json['member_id'], MessageSender.fromJson),
+    inviterUserId: _readInt(json['inviter_user_id']),
+    joinedChatDate: _readInt(json['joined_chat_date']),
+    status: _readObject(json['status'], ChatMemberStatus.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'member_id': memberId.toJson(),
-        'inviter_user_id': inviterUserId,
-        'joined_chat_date': joinedChatDate,
-        'status': status.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'member_id': memberId.toJson(),
+    'inviter_user_id': inviterUserId,
+    'joined_chat_date': joinedChatDate,
+    'status': status.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -63,15 +63,14 @@ final class ChatMember extends TdObject {
     ChatMemberStatus? status,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatMember(
-        memberId: memberId ?? this.memberId,
-        inviterUserId: inviterUserId ?? this.inviterUserId,
-        joinedChatDate: joinedChatDate ?? this.joinedChatDate,
-        status: status ?? this.status,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatMember(
+    memberId: memberId ?? this.memberId,
+    inviterUserId: inviterUserId ?? this.inviterUserId,
+    joinedChatDate: joinedChatDate ?? this.joinedChatDate,
+    status: status ?? this.status,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatMember';

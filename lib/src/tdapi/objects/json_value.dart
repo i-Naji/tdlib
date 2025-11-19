@@ -45,10 +45,7 @@ final class UndecodedJsonValue extends JsonValue {
 /// Represents a null JSON value
 final class JsonValueNull extends JsonValue {
   /// Represents a null JSON value
-  const JsonValueNull({
-    this.extra,
-    this.clientId,
-  });
+  const JsonValueNull({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -60,26 +57,20 @@ final class JsonValueNull extends JsonValue {
 
   /// Parses a [JsonValueNull] from TDLib JSON.
   factory JsonValueNull.fromJson(Map<String, dynamic> json) => JsonValueNull(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  JsonValueNull copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
-      JsonValueNull(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  JsonValueNull copyWith({dynamic extra, int? clientId}) => JsonValueNull(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'jsonValueNull';
@@ -91,11 +82,7 @@ final class JsonValueNull extends JsonValue {
 /// Represents a boolean JSON value
 final class JsonValueBoolean extends JsonValue {
   /// Represents a boolean JSON value
-  const JsonValueBoolean({
-    required this.value,
-    this.extra,
-    this.clientId,
-  });
+  const JsonValueBoolean({required this.value, this.extra, this.clientId});
 
   /// The value
   final bool value;
@@ -117,19 +104,12 @@ final class JsonValueBoolean extends JsonValue {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'value': value,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'value': value};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  JsonValueBoolean copyWith({
-    bool? value,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  JsonValueBoolean copyWith({bool? value, dynamic extra, int? clientId}) =>
       JsonValueBoolean(
         value: value ?? this.value,
         extra: extra ?? this.extra,
@@ -146,11 +126,7 @@ final class JsonValueBoolean extends JsonValue {
 /// Represents a numeric JSON value
 final class JsonValueNumber extends JsonValue {
   /// Represents a numeric JSON value
-  const JsonValueNumber({
-    required this.value,
-    this.extra,
-    this.clientId,
-  });
+  const JsonValueNumber({required this.value, this.extra, this.clientId});
 
   /// The value
   final double value;
@@ -172,19 +148,12 @@ final class JsonValueNumber extends JsonValue {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'value': value,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'value': value};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  JsonValueNumber copyWith({
-    double? value,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  JsonValueNumber copyWith({double? value, dynamic extra, int? clientId}) =>
       JsonValueNumber(
         value: value ?? this.value,
         extra: extra ?? this.extra,
@@ -201,11 +170,7 @@ final class JsonValueNumber extends JsonValue {
 /// Represents a string JSON value
 final class JsonValueString extends JsonValue {
   /// Represents a string JSON value
-  const JsonValueString({
-    required this.value,
-    this.extra,
-    this.clientId,
-  });
+  const JsonValueString({required this.value, this.extra, this.clientId});
 
   /// The value
   final String value;
@@ -227,19 +192,12 @@ final class JsonValueString extends JsonValue {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'value': value,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'value': value};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  JsonValueString copyWith({
-    String? value,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  JsonValueString copyWith({String? value, dynamic extra, int? clientId}) =>
       JsonValueString(
         value: value ?? this.value,
         extra: extra ?? this.extra,
@@ -256,11 +214,7 @@ final class JsonValueString extends JsonValue {
 /// Represents a JSON array
 final class JsonValueArray extends JsonValue {
   /// Represents a JSON array
-  const JsonValueArray({
-    required this.values,
-    this.extra,
-    this.clientId,
-  });
+  const JsonValueArray({required this.values, this.extra, this.clientId});
 
   /// The list of array elements
   final List<JsonValue> values;
@@ -275,17 +229,19 @@ final class JsonValueArray extends JsonValue {
 
   /// Parses a [JsonValueArray] from TDLib JSON.
   factory JsonValueArray.fromJson(Map<String, dynamic> json) => JsonValueArray(
-        values: _readList<JsonValue>(
-            json['values'], (e) => _readObject(e, JsonValue.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    values: _readList<JsonValue>(
+      json['values'],
+      (e) => _readObject(e, JsonValue.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'values': [for (final e in values) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'values': [for (final e in values) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -294,12 +250,11 @@ final class JsonValueArray extends JsonValue {
     List<JsonValue>? values,
     dynamic extra,
     int? clientId,
-  }) =>
-      JsonValueArray(
-        values: values ?? this.values,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => JsonValueArray(
+    values: values ?? this.values,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'jsonValueArray';
@@ -311,11 +266,7 @@ final class JsonValueArray extends JsonValue {
 /// Represents a JSON object
 final class JsonValueObject extends JsonValue {
   /// Represents a JSON object
-  const JsonValueObject({
-    required this.members,
-    this.extra,
-    this.clientId,
-  });
+  const JsonValueObject({required this.members, this.extra, this.clientId});
 
   /// The list of object members
   final List<JsonObjectMember> members;
@@ -332,16 +283,18 @@ final class JsonValueObject extends JsonValue {
   factory JsonValueObject.fromJson(Map<String, dynamic> json) =>
       JsonValueObject(
         members: _readList<JsonObjectMember>(
-            json['members'], (e) => _readObject(e, JsonObjectMember.fromJson)),
+          json['members'],
+          (e) => _readObject(e, JsonObjectMember.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'members': [for (final e in members) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'members': [for (final e in members) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -350,12 +303,11 @@ final class JsonValueObject extends JsonValue {
     List<JsonObjectMember>? members,
     dynamic extra,
     int? clientId,
-  }) =>
-      JsonValueObject(
-        members: members ?? this.members,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => JsonValueObject(
+    members: members ?? this.members,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'jsonValueObject';

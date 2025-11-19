@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [SavedMessagesTags].
 final class GetSavedMessagesTags extends TdFunction<SavedMessagesTags> {
   /// Returns tags used in Saved Messages or a Saved Messages topic
-  const GetSavedMessagesTags({
-    required this.savedMessagesTopicId,
-  });
+  const GetSavedMessagesTags({required this.savedMessagesTopicId});
 
   /// Identifier of Saved Messages topic which tags will be returned; pass 0 to get all Saved Messages tags
   final int savedMessagesTopicId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'saved_messages_topic_id': savedMessagesTopicId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'saved_messages_topic_id': savedMessagesTopicId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetSavedMessagesTags copyWith({
-    int? savedMessagesTopicId,
-  }) =>
+  GetSavedMessagesTags copyWith({int? savedMessagesTopicId}) =>
       GetSavedMessagesTags(
         savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
       );

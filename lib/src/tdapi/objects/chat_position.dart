@@ -27,20 +27,20 @@ final class ChatPosition extends TdObject {
 
   /// Parses a [ChatPosition] from TDLib JSON.
   factory ChatPosition.fromJson(Map<String, dynamic> json) => ChatPosition(
-        list: _readObject(json['list'], ChatList.fromJson),
-        order: _readInt(json['order']),
-        isPinned: _readBool(json['is_pinned']),
-        source: _readOptional(json['source'], ChatSource.fromJson),
-      );
+    list: _readObject(json['list'], ChatList.fromJson),
+    order: _readInt(json['order']),
+    isPinned: _readBool(json['is_pinned']),
+    source: _readOptional(json['source'], ChatSource.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'list': list.toJson(),
-        'order': order.toString(),
-        'is_pinned': isPinned,
-        'source': source?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'list': list.toJson(),
+    'order': order.toString(),
+    'is_pinned': isPinned,
+    'source': source?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class ChatPosition extends TdObject {
     int? order,
     bool? isPinned,
     ChatSource? Function()? source,
-  }) =>
-      ChatPosition(
-        list: list ?? this.list,
-        order: order ?? this.order,
-        isPinned: isPinned ?? this.isPinned,
-        source: source != null ? source() : this.source,
-      );
+  }) => ChatPosition(
+    list: list ?? this.list,
+    order: order ?? this.order,
+    isPinned: isPinned ?? this.isPinned,
+    source: source != null ? source() : this.source,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatPosition';

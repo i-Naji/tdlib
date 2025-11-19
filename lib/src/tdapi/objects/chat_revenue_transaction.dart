@@ -31,11 +31,11 @@ final class ChatRevenueTransaction extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'cryptocurrency': cryptocurrency,
-        'cryptocurrency_amount': cryptocurrencyAmount.toString(),
-        'type': type.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'cryptocurrency': cryptocurrency,
+    'cryptocurrency_amount': cryptocurrencyAmount.toString(),
+    'type': type.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class ChatRevenueTransaction extends TdObject {
     String? cryptocurrency,
     int? cryptocurrencyAmount,
     ChatRevenueTransactionType? type,
-  }) =>
-      ChatRevenueTransaction(
-        cryptocurrency: cryptocurrency ?? this.cryptocurrency,
-        cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
-        type: type ?? this.type,
-      );
+  }) => ChatRevenueTransaction(
+    cryptocurrency: cryptocurrency ?? this.cryptocurrency,
+    cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
+    type: type ?? this.type,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatRevenueTransaction';

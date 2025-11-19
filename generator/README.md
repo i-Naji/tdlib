@@ -1,8 +1,9 @@
 # API generator
 
 Generates `lib/src/tdapi/` from TDLib's schema, `data/td_api.tl`.
-`data/tdlib.json` names the TDLib version and commit the schema comes from;
-they end up in `tdlibVersion` and `tdlibSchemaCommit`.
+The TDLib version and commits come from `hook/tdjson_sources.json`, the
+manifest of the native libraries, so the API always matches the bundled
+libraries (`tdlibVersion`, `tdlibSchemaCommit`, `tdlibCompatibleCommits`).
 
 ```console
 dart run generator/generate.dart

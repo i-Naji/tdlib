@@ -26,12 +26,12 @@ final class GetDirectMessagesChatTopicMessageByDate
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'topic_id': topicId,
-        'date': date,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'topic_id': topicId,
+    'date': date,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -39,12 +39,11 @@ final class GetDirectMessagesChatTopicMessageByDate
     int? chatId,
     int? topicId,
     int? date,
-  }) =>
-      GetDirectMessagesChatTopicMessageByDate(
-        chatId: chatId ?? this.chatId,
-        topicId: topicId ?? this.topicId,
-        date: date ?? this.date,
-      );
+  }) => GetDirectMessagesChatTopicMessageByDate(
+    chatId: chatId ?? this.chatId,
+    topicId: topicId ?? this.topicId,
+    date: date ?? this.date,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getDirectMessagesChatTopicMessageByDate';

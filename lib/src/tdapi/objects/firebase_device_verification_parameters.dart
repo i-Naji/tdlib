@@ -11,7 +11,8 @@ sealed class FirebaseDeviceVerificationParameters extends TdObject {
 
   /// Parses whichever [FirebaseDeviceVerificationParameters] subtype the JSON describes.
   factory FirebaseDeviceVerificationParameters.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final object = tdObjectFactories[json['@type']]?.call(json);
     return object is FirebaseDeviceVerificationParameters
         ? object
@@ -50,35 +51,26 @@ final class UndecodedFirebaseDeviceVerificationParameters
 final class FirebaseDeviceVerificationParametersSafetyNet
     extends FirebaseDeviceVerificationParameters {
   /// Device verification must be performed with the SafetyNet Attestation API
-  const FirebaseDeviceVerificationParametersSafetyNet({
-    required this.nonce,
-  });
+  const FirebaseDeviceVerificationParametersSafetyNet({required this.nonce});
 
   /// Nonce to pass to the SafetyNet Attestation API
   final String nonce;
 
   /// Parses a [FirebaseDeviceVerificationParametersSafetyNet] from TDLib JSON.
   factory FirebaseDeviceVerificationParametersSafetyNet.fromJson(
-          Map<String, dynamic> json) =>
-      FirebaseDeviceVerificationParametersSafetyNet(
-        nonce: _readString(json['nonce']),
-      );
+    Map<String, dynamic> json,
+  ) => FirebaseDeviceVerificationParametersSafetyNet(
+    nonce: _readString(json['nonce']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'nonce': nonce,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'nonce': nonce};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  FirebaseDeviceVerificationParametersSafetyNet copyWith({
-    String? nonce,
-  }) =>
-      FirebaseDeviceVerificationParametersSafetyNet(
-        nonce: nonce ?? this.nonce,
-      );
+  FirebaseDeviceVerificationParametersSafetyNet copyWith({String? nonce}) =>
+      FirebaseDeviceVerificationParametersSafetyNet(nonce: nonce ?? this.nonce);
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -105,18 +97,18 @@ final class FirebaseDeviceVerificationParametersPlayIntegrity
 
   /// Parses a [FirebaseDeviceVerificationParametersPlayIntegrity] from TDLib JSON.
   factory FirebaseDeviceVerificationParametersPlayIntegrity.fromJson(
-          Map<String, dynamic> json) =>
-      FirebaseDeviceVerificationParametersPlayIntegrity(
-        nonce: _readString(json['nonce']),
-        cloudProjectNumber: _readInt(json['cloud_project_number']),
-      );
+    Map<String, dynamic> json,
+  ) => FirebaseDeviceVerificationParametersPlayIntegrity(
+    nonce: _readString(json['nonce']),
+    cloudProjectNumber: _readInt(json['cloud_project_number']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'nonce': nonce,
-        'cloud_project_number': cloudProjectNumber.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'nonce': nonce,
+    'cloud_project_number': cloudProjectNumber.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -124,11 +116,10 @@ final class FirebaseDeviceVerificationParametersPlayIntegrity
   FirebaseDeviceVerificationParametersPlayIntegrity copyWith({
     String? nonce,
     int? cloudProjectNumber,
-  }) =>
-      FirebaseDeviceVerificationParametersPlayIntegrity(
-        nonce: nonce ?? this.nonce,
-        cloudProjectNumber: cloudProjectNumber ?? this.cloudProjectNumber,
-      );
+  }) => FirebaseDeviceVerificationParametersPlayIntegrity(
+    nonce: nonce ?? this.nonce,
+    cloudProjectNumber: cloudProjectNumber ?? this.cloudProjectNumber,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =

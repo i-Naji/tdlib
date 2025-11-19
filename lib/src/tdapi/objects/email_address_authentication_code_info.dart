@@ -29,20 +29,20 @@ final class EmailAddressAuthenticationCodeInfo extends TdObject {
 
   /// Parses a [EmailAddressAuthenticationCodeInfo] from TDLib JSON.
   factory EmailAddressAuthenticationCodeInfo.fromJson(
-          Map<String, dynamic> json) =>
-      EmailAddressAuthenticationCodeInfo(
-        emailAddressPattern: _readString(json['email_address_pattern']),
-        length: _readInt(json['length']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => EmailAddressAuthenticationCodeInfo(
+    emailAddressPattern: _readString(json['email_address_pattern']),
+    length: _readInt(json['length']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'email_address_pattern': emailAddressPattern,
-        'length': length,
-      };
+    '@type': CONSTRUCTOR,
+    'email_address_pattern': emailAddressPattern,
+    'length': length,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,13 +51,12 @@ final class EmailAddressAuthenticationCodeInfo extends TdObject {
     int? length,
     dynamic extra,
     int? clientId,
-  }) =>
-      EmailAddressAuthenticationCodeInfo(
-        emailAddressPattern: emailAddressPattern ?? this.emailAddressPattern,
-        length: length ?? this.length,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => EmailAddressAuthenticationCodeInfo(
+    emailAddressPattern: emailAddressPattern ?? this.emailAddressPattern,
+    length: length ?? this.length,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'emailAddressAuthenticationCodeInfo';

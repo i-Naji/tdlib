@@ -6,9 +6,7 @@ part of '../tdapi.dart';
 /// Contains a description of the required Telegram Passport element that was requested by a service
 final class PassportRequiredElement extends TdObject {
   /// Contains a description of the required Telegram Passport element that was requested by a service
-  const PassportRequiredElement({
-    required this.suitableElements,
-  });
+  const PassportRequiredElement({required this.suitableElements});
 
   /// List of Telegram Passport elements any of which is enough to provide
   final List<PassportSuitableElement> suitableElements;
@@ -17,24 +15,24 @@ final class PassportRequiredElement extends TdObject {
   factory PassportRequiredElement.fromJson(Map<String, dynamic> json) =>
       PassportRequiredElement(
         suitableElements: _readList<PassportSuitableElement>(
-            json['suitable_elements'],
-            (e) => _readObject(e, PassportSuitableElement.fromJson)),
+          json['suitable_elements'],
+          (e) => _readObject(e, PassportSuitableElement.fromJson),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'suitable_elements': [for (final e in suitableElements) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'suitable_elements': [for (final e in suitableElements) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   PassportRequiredElement copyWith({
     List<PassportSuitableElement>? suitableElements,
-  }) =>
-      PassportRequiredElement(
-        suitableElements: suitableElements ?? this.suitableElements,
-      );
+  }) => PassportRequiredElement(
+    suitableElements: suitableElements ?? this.suitableElements,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportRequiredElement';

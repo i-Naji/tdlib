@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [MessageViewers].
 final class GetMessageViewers extends TdFunction<MessageViewers> {
   /// Returns viewers of a recent outgoing message in a basic group or a supergroup chat. For video notes and voice notes only users, opened content of the message, are returned. The method can be called if messageProperties.can_get_viewers == true
-  const GetMessageViewers({
-    required this.chatId,
-    required this.messageId,
-  });
+  const GetMessageViewers({required this.chatId, required this.messageId});
 
   /// Chat identifier
   final int chatId;
@@ -21,18 +18,15 @@ final class GetMessageViewers extends TdFunction<MessageViewers> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetMessageViewers copyWith({
-    int? chatId,
-    int? messageId,
-  }) =>
+  GetMessageViewers copyWith({int? chatId, int? messageId}) =>
       GetMessageViewers(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,

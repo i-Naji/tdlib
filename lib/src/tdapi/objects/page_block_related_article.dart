@@ -46,14 +46,14 @@ final class PageBlockRelatedArticle extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'title': title,
-        'description': description,
-        'photo': photo?.toJson(),
-        'author': author,
-        'publish_date': publishDate,
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'title': title,
+    'description': description,
+    'photo': photo?.toJson(),
+    'author': author,
+    'publish_date': publishDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -64,15 +64,14 @@ final class PageBlockRelatedArticle extends TdObject {
     Photo? Function()? photo,
     String? author,
     int? publishDate,
-  }) =>
-      PageBlockRelatedArticle(
-        url: url ?? this.url,
-        title: title ?? this.title,
-        description: description ?? this.description,
-        photo: photo != null ? photo() : this.photo,
-        author: author ?? this.author,
-        publishDate: publishDate ?? this.publishDate,
-      );
+  }) => PageBlockRelatedArticle(
+    url: url ?? this.url,
+    title: title ?? this.title,
+    description: description ?? this.description,
+    photo: photo != null ? photo() : this.photo,
+    author: author ?? this.author,
+    publishDate: publishDate ?? this.publishDate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockRelatedArticle';

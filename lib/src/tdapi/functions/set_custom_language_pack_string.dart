@@ -21,22 +21,21 @@ final class SetCustomLanguagePackString extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'language_pack_id': languagePackId,
-        'new_string': newString.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'language_pack_id': languagePackId,
+    'new_string': newString.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetCustomLanguagePackString copyWith({
     String? languagePackId,
     LanguagePackString? newString,
-  }) =>
-      SetCustomLanguagePackString(
-        languagePackId: languagePackId ?? this.languagePackId,
-        newString: newString ?? this.newString,
-      );
+  }) => SetCustomLanguagePackString(
+    languagePackId: languagePackId ?? this.languagePackId,
+    newString: newString ?? this.newString,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setCustomLanguagePackString';

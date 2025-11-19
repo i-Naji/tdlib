@@ -21,18 +21,15 @@ final class GetVideoChatInviteLink extends TdFunction<HttpUrl> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'can_self_unmute': canSelfUnmute,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'can_self_unmute': canSelfUnmute,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetVideoChatInviteLink copyWith({
-    int? groupCallId,
-    bool? canSelfUnmute,
-  }) =>
+  GetVideoChatInviteLink copyWith({int? groupCallId, bool? canSelfUnmute}) =>
       GetVideoChatInviteLink(
         groupCallId: groupCallId ?? this.groupCallId,
         canSelfUnmute: canSelfUnmute ?? this.canSelfUnmute,

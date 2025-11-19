@@ -21,18 +21,15 @@ final class SetAccentColor extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'accent_color_id': accentColorId,
-        'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'accent_color_id': accentColorId,
+    'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetAccentColor copyWith({
-    int? accentColorId,
-    int? backgroundCustomEmojiId,
-  }) =>
+  SetAccentColor copyWith({int? accentColorId, int? backgroundCustomEmojiId}) =>
       SetAccentColor(
         accentColorId: accentColorId ?? this.accentColorId,
         backgroundCustomEmojiId:

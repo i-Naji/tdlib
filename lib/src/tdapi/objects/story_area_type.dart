@@ -45,10 +45,7 @@ final class UndecodedStoryAreaType extends StoryAreaType {
 /// An area pointing to a location
 final class StoryAreaTypeLocation extends StoryAreaType {
   /// An area pointing to a location
-  const StoryAreaTypeLocation({
-    required this.location,
-    this.address,
-  });
+  const StoryAreaTypeLocation({required this.location, this.address});
 
   /// The location
   final Location location;
@@ -65,10 +62,10 @@ final class StoryAreaTypeLocation extends StoryAreaType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'location': location.toJson(),
-        'address': address?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'location': location.toJson(),
+    'address': address?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -76,11 +73,10 @@ final class StoryAreaTypeLocation extends StoryAreaType {
   StoryAreaTypeLocation copyWith({
     Location? location,
     LocationAddress? Function()? address,
-  }) =>
-      StoryAreaTypeLocation(
-        location: location ?? this.location,
-        address: address != null ? address() : this.address,
-      );
+  }) => StoryAreaTypeLocation(
+    location: location ?? this.location,
+    address: address != null ? address() : this.address,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyAreaTypeLocation';
@@ -92,34 +88,26 @@ final class StoryAreaTypeLocation extends StoryAreaType {
 /// An area pointing to a venue
 final class StoryAreaTypeVenue extends StoryAreaType {
   /// An area pointing to a venue
-  const StoryAreaTypeVenue({
-    required this.venue,
-  });
+  const StoryAreaTypeVenue({required this.venue});
 
   /// Information about the venue
   final Venue venue;
 
   /// Parses a [StoryAreaTypeVenue] from TDLib JSON.
   factory StoryAreaTypeVenue.fromJson(Map<String, dynamic> json) =>
-      StoryAreaTypeVenue(
-        venue: _readObject(json['venue'], Venue.fromJson),
-      );
+      StoryAreaTypeVenue(venue: _readObject(json['venue'], Venue.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'venue': venue.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'venue': venue.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StoryAreaTypeVenue copyWith({
-    Venue? venue,
-  }) =>
-      StoryAreaTypeVenue(
-        venue: venue ?? this.venue,
-      );
+  StoryAreaTypeVenue copyWith({Venue? venue}) =>
+      StoryAreaTypeVenue(venue: venue ?? this.venue);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyAreaTypeVenue';
@@ -161,12 +149,12 @@ final class StoryAreaTypeSuggestedReaction extends StoryAreaType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'reaction_type': reactionType.toJson(),
-        'total_count': totalCount,
-        'is_dark': isDark,
-        'is_flipped': isFlipped,
-      };
+    '@type': CONSTRUCTOR,
+    'reaction_type': reactionType.toJson(),
+    'total_count': totalCount,
+    'is_dark': isDark,
+    'is_flipped': isFlipped,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -176,13 +164,12 @@ final class StoryAreaTypeSuggestedReaction extends StoryAreaType {
     int? totalCount,
     bool? isDark,
     bool? isFlipped,
-  }) =>
-      StoryAreaTypeSuggestedReaction(
-        reactionType: reactionType ?? this.reactionType,
-        totalCount: totalCount ?? this.totalCount,
-        isDark: isDark ?? this.isDark,
-        isFlipped: isFlipped ?? this.isFlipped,
-      );
+  }) => StoryAreaTypeSuggestedReaction(
+    reactionType: reactionType ?? this.reactionType,
+    totalCount: totalCount ?? this.totalCount,
+    isDark: isDark ?? this.isDark,
+    isFlipped: isFlipped ?? this.isFlipped,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyAreaTypeSuggestedReaction';
@@ -194,10 +181,7 @@ final class StoryAreaTypeSuggestedReaction extends StoryAreaType {
 /// An area pointing to a message
 final class StoryAreaTypeMessage extends StoryAreaType {
   /// An area pointing to a message
-  const StoryAreaTypeMessage({
-    required this.chatId,
-    required this.messageId,
-  });
+  const StoryAreaTypeMessage({required this.chatId, required this.messageId});
 
   /// Identifier of the chat with the message
   final int chatId;
@@ -214,18 +198,15 @@ final class StoryAreaTypeMessage extends StoryAreaType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StoryAreaTypeMessage copyWith({
-    int? chatId,
-    int? messageId,
-  }) =>
+  StoryAreaTypeMessage copyWith({int? chatId, int? messageId}) =>
       StoryAreaTypeMessage(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
@@ -241,34 +222,23 @@ final class StoryAreaTypeMessage extends StoryAreaType {
 /// An area pointing to a HTTP or tg:// link
 final class StoryAreaTypeLink extends StoryAreaType {
   /// An area pointing to a HTTP or tg:// link
-  const StoryAreaTypeLink({
-    required this.url,
-  });
+  const StoryAreaTypeLink({required this.url});
 
   /// HTTP or tg:// URL to be opened when the area is clicked
   final String url;
 
   /// Parses a [StoryAreaTypeLink] from TDLib JSON.
   factory StoryAreaTypeLink.fromJson(Map<String, dynamic> json) =>
-      StoryAreaTypeLink(
-        url: _readString(json['url']),
-      );
+      StoryAreaTypeLink(url: _readString(json['url']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'url': url};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StoryAreaTypeLink copyWith({
-    String? url,
-  }) =>
-      StoryAreaTypeLink(
-        url: url ?? this.url,
-      );
+  StoryAreaTypeLink copyWith({String? url}) =>
+      StoryAreaTypeLink(url: url ?? this.url);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyAreaTypeLink';
@@ -305,11 +275,11 @@ final class StoryAreaTypeWeather extends StoryAreaType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'temperature': temperature,
-        'emoji': emoji,
-        'background_color': backgroundColor,
-      };
+    '@type': CONSTRUCTOR,
+    'temperature': temperature,
+    'emoji': emoji,
+    'background_color': backgroundColor,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -318,12 +288,11 @@ final class StoryAreaTypeWeather extends StoryAreaType {
     double? temperature,
     String? emoji,
     int? backgroundColor,
-  }) =>
-      StoryAreaTypeWeather(
-        temperature: temperature ?? this.temperature,
-        emoji: emoji ?? this.emoji,
-        backgroundColor: backgroundColor ?? this.backgroundColor,
-      );
+  }) => StoryAreaTypeWeather(
+    temperature: temperature ?? this.temperature,
+    emoji: emoji ?? this.emoji,
+    backgroundColor: backgroundColor ?? this.backgroundColor,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyAreaTypeWeather';
@@ -335,34 +304,26 @@ final class StoryAreaTypeWeather extends StoryAreaType {
 /// An area with an upgraded gift
 final class StoryAreaTypeUpgradedGift extends StoryAreaType {
   /// An area with an upgraded gift
-  const StoryAreaTypeUpgradedGift({
-    required this.giftName,
-  });
+  const StoryAreaTypeUpgradedGift({required this.giftName});
 
   /// Unique name of the upgraded gift
   final String giftName;
 
   /// Parses a [StoryAreaTypeUpgradedGift] from TDLib JSON.
   factory StoryAreaTypeUpgradedGift.fromJson(Map<String, dynamic> json) =>
-      StoryAreaTypeUpgradedGift(
-        giftName: _readString(json['gift_name']),
-      );
+      StoryAreaTypeUpgradedGift(giftName: _readString(json['gift_name']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'gift_name': giftName,
-      };
+    '@type': CONSTRUCTOR,
+    'gift_name': giftName,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StoryAreaTypeUpgradedGift copyWith({
-    String? giftName,
-  }) =>
-      StoryAreaTypeUpgradedGift(
-        giftName: giftName ?? this.giftName,
-      );
+  StoryAreaTypeUpgradedGift copyWith({String? giftName}) =>
+      StoryAreaTypeUpgradedGift(giftName: giftName ?? this.giftName);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyAreaTypeUpgradedGift';

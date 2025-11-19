@@ -31,22 +31,22 @@ final class SharedUser extends TdObject {
 
   /// Parses a [SharedUser] from TDLib JSON.
   factory SharedUser.fromJson(Map<String, dynamic> json) => SharedUser(
-        userId: _readInt(json['user_id']),
-        firstName: _readString(json['first_name']),
-        lastName: _readString(json['last_name']),
-        username: _readString(json['username']),
-        photo: _readOptional(json['photo'], Photo.fromJson),
-      );
+    userId: _readInt(json['user_id']),
+    firstName: _readString(json['first_name']),
+    lastName: _readString(json['last_name']),
+    username: _readString(json['username']),
+    photo: _readOptional(json['photo'], Photo.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'first_name': firstName,
-        'last_name': lastName,
-        'username': username,
-        'photo': photo?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'first_name': firstName,
+    'last_name': lastName,
+    'username': username,
+    'photo': photo?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,14 +56,13 @@ final class SharedUser extends TdObject {
     String? lastName,
     String? username,
     Photo? Function()? photo,
-  }) =>
-      SharedUser(
-        userId: userId ?? this.userId,
-        firstName: firstName ?? this.firstName,
-        lastName: lastName ?? this.lastName,
-        username: username ?? this.username,
-        photo: photo != null ? photo() : this.photo,
-      );
+  }) => SharedUser(
+    userId: userId ?? this.userId,
+    firstName: firstName ?? this.firstName,
+    lastName: lastName ?? this.lastName,
+    username: username ?? this.username,
+    photo: photo != null ? photo() : this.photo,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sharedUser';

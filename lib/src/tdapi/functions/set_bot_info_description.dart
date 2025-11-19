@@ -25,12 +25,12 @@ final class SetBotInfoDescription extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'language_code': languageCode,
-        'description': description,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'language_code': languageCode,
+    'description': description,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SetBotInfoDescription extends TdFunction<Ok> {
     int? botUserId,
     String? languageCode,
     String? description,
-  }) =>
-      SetBotInfoDescription(
-        botUserId: botUserId ?? this.botUserId,
-        languageCode: languageCode ?? this.languageCode,
-        description: description ?? this.description,
-      );
+  }) => SetBotInfoDescription(
+    botUserId: botUserId ?? this.botUserId,
+    languageCode: languageCode ?? this.languageCode,
+    description: description ?? this.description,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setBotInfoDescription';

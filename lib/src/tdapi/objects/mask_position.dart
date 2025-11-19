@@ -27,20 +27,20 @@ final class MaskPosition extends TdObject {
 
   /// Parses a [MaskPosition] from TDLib JSON.
   factory MaskPosition.fromJson(Map<String, dynamic> json) => MaskPosition(
-        point: _readObject(json['point'], MaskPoint.fromJson),
-        xShift: _readDouble(json['x_shift']),
-        yShift: _readDouble(json['y_shift']),
-        scale: _readDouble(json['scale']),
-      );
+    point: _readObject(json['point'], MaskPoint.fromJson),
+    xShift: _readDouble(json['x_shift']),
+    yShift: _readDouble(json['y_shift']),
+    scale: _readDouble(json['scale']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'point': point.toJson(),
-        'x_shift': xShift,
-        'y_shift': yShift,
-        'scale': scale,
-      };
+    '@type': CONSTRUCTOR,
+    'point': point.toJson(),
+    'x_shift': xShift,
+    'y_shift': yShift,
+    'scale': scale,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class MaskPosition extends TdObject {
     double? xShift,
     double? yShift,
     double? scale,
-  }) =>
-      MaskPosition(
-        point: point ?? this.point,
-        xShift: xShift ?? this.xShift,
-        yShift: yShift ?? this.yShift,
-        scale: scale ?? this.scale,
-      );
+  }) => MaskPosition(
+    point: point ?? this.point,
+    xShift: xShift ?? this.xShift,
+    yShift: yShift ?? this.yShift,
+    scale: scale ?? this.scale,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'maskPosition';

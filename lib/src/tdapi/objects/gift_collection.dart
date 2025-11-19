@@ -37,22 +37,22 @@ final class GiftCollection extends TdObject {
 
   /// Parses a [GiftCollection] from TDLib JSON.
   factory GiftCollection.fromJson(Map<String, dynamic> json) => GiftCollection(
-        id: _readInt(json['id']),
-        name: _readString(json['name']),
-        icon: _readOptional(json['icon'], Sticker.fromJson),
-        giftCount: _readInt(json['gift_count']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    id: _readInt(json['id']),
+    name: _readString(json['name']),
+    icon: _readOptional(json['icon'], Sticker.fromJson),
+    giftCount: _readInt(json['gift_count']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'name': name,
-        'icon': icon?.toJson(),
-        'gift_count': giftCount,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'name': name,
+    'icon': icon?.toJson(),
+    'gift_count': giftCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -63,15 +63,14 @@ final class GiftCollection extends TdObject {
     int? giftCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      GiftCollection(
-        id: id ?? this.id,
-        name: name ?? this.name,
-        icon: icon != null ? icon() : this.icon,
-        giftCount: giftCount ?? this.giftCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => GiftCollection(
+    id: id ?? this.id,
+    name: name ?? this.name,
+    icon: icon != null ? icon() : this.icon,
+    giftCount: giftCount ?? this.giftCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giftCollection';

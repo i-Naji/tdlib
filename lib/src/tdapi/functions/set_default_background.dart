@@ -25,12 +25,12 @@ final class SetDefaultBackground extends TdFunction<Background> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'background': background?.toJson(),
-        'type': type?.toJson(),
-        'for_dark_theme': forDarkTheme,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'background': background?.toJson(),
+    'type': type?.toJson(),
+    'for_dark_theme': forDarkTheme,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SetDefaultBackground extends TdFunction<Background> {
     InputBackground? Function()? background,
     BackgroundType? Function()? type,
     bool? forDarkTheme,
-  }) =>
-      SetDefaultBackground(
-        background: background != null ? background() : this.background,
-        type: type != null ? type() : this.type,
-        forDarkTheme: forDarkTheme ?? this.forDarkTheme,
-      );
+  }) => SetDefaultBackground(
+    background: background != null ? background() : this.background,
+    type: type != null ? type() : this.type,
+    forDarkTheme: forDarkTheme ?? this.forDarkTheme,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setDefaultBackground';

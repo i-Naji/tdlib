@@ -36,12 +36,12 @@ final class GroupCallJoinParameters extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'audio_source_id': audioSourceId,
-        'payload': payload,
-        'is_muted': isMuted,
-        'is_my_video_enabled': isMyVideoEnabled,
-      };
+    '@type': CONSTRUCTOR,
+    'audio_source_id': audioSourceId,
+    'payload': payload,
+    'is_muted': isMuted,
+    'is_my_video_enabled': isMyVideoEnabled,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class GroupCallJoinParameters extends TdObject {
     String? payload,
     bool? isMuted,
     bool? isMyVideoEnabled,
-  }) =>
-      GroupCallJoinParameters(
-        audioSourceId: audioSourceId ?? this.audioSourceId,
-        payload: payload ?? this.payload,
-        isMuted: isMuted ?? this.isMuted,
-        isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
-      );
+  }) => GroupCallJoinParameters(
+    audioSourceId: audioSourceId ?? this.audioSourceId,
+    payload: payload ?? this.payload,
+    isMuted: isMuted ?? this.isMuted,
+    isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'groupCallJoinParameters';

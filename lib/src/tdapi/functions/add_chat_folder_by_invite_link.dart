@@ -21,22 +21,21 @@ final class AddChatFolderByInviteLink extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'invite_link': inviteLink,
-        'chat_ids': chatIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'invite_link': inviteLink,
+    'chat_ids': chatIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   AddChatFolderByInviteLink copyWith({
     String? inviteLink,
     List<int>? chatIds,
-  }) =>
-      AddChatFolderByInviteLink(
-        inviteLink: inviteLink ?? this.inviteLink,
-        chatIds: chatIds ?? this.chatIds,
-      );
+  }) => AddChatFolderByInviteLink(
+    inviteLink: inviteLink ?? this.inviteLink,
+    chatIds: chatIds ?? this.chatIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addChatFolderByInviteLink';

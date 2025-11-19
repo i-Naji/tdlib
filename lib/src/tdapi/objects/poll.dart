@@ -51,34 +51,38 @@ final class Poll extends TdObject {
 
   /// Parses a [Poll] from TDLib JSON.
   factory Poll.fromJson(Map<String, dynamic> json) => Poll(
-        id: _readInt(json['id']),
-        question: _readObject(json['question'], FormattedText.fromJson),
-        options: _readList<PollOption>(
-            json['options'], (e) => _readObject(e, PollOption.fromJson)),
-        totalVoterCount: _readInt(json['total_voter_count']),
-        recentVoterIds: _readList<MessageSender>(json['recent_voter_ids'],
-            (e) => _readObject(e, MessageSender.fromJson)),
-        isAnonymous: _readBool(json['is_anonymous']),
-        type: _readObject(json['type'], PollType.fromJson),
-        openPeriod: _readInt(json['open_period']),
-        closeDate: _readInt(json['close_date']),
-        isClosed: _readBool(json['is_closed']),
-      );
+    id: _readInt(json['id']),
+    question: _readObject(json['question'], FormattedText.fromJson),
+    options: _readList<PollOption>(
+      json['options'],
+      (e) => _readObject(e, PollOption.fromJson),
+    ),
+    totalVoterCount: _readInt(json['total_voter_count']),
+    recentVoterIds: _readList<MessageSender>(
+      json['recent_voter_ids'],
+      (e) => _readObject(e, MessageSender.fromJson),
+    ),
+    isAnonymous: _readBool(json['is_anonymous']),
+    type: _readObject(json['type'], PollType.fromJson),
+    openPeriod: _readInt(json['open_period']),
+    closeDate: _readInt(json['close_date']),
+    isClosed: _readBool(json['is_closed']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'question': question.toJson(),
-        'options': [for (final e in options) e.toJson()],
-        'total_voter_count': totalVoterCount,
-        'recent_voter_ids': [for (final e in recentVoterIds) e.toJson()],
-        'is_anonymous': isAnonymous,
-        'type': type.toJson(),
-        'open_period': openPeriod,
-        'close_date': closeDate,
-        'is_closed': isClosed,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'question': question.toJson(),
+    'options': [for (final e in options) e.toJson()],
+    'total_voter_count': totalVoterCount,
+    'recent_voter_ids': [for (final e in recentVoterIds) e.toJson()],
+    'is_anonymous': isAnonymous,
+    'type': type.toJson(),
+    'open_period': openPeriod,
+    'close_date': closeDate,
+    'is_closed': isClosed,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -93,19 +97,18 @@ final class Poll extends TdObject {
     int? openPeriod,
     int? closeDate,
     bool? isClosed,
-  }) =>
-      Poll(
-        id: id ?? this.id,
-        question: question ?? this.question,
-        options: options ?? this.options,
-        totalVoterCount: totalVoterCount ?? this.totalVoterCount,
-        recentVoterIds: recentVoterIds ?? this.recentVoterIds,
-        isAnonymous: isAnonymous ?? this.isAnonymous,
-        type: type ?? this.type,
-        openPeriod: openPeriod ?? this.openPeriod,
-        closeDate: closeDate ?? this.closeDate,
-        isClosed: isClosed ?? this.isClosed,
-      );
+  }) => Poll(
+    id: id ?? this.id,
+    question: question ?? this.question,
+    options: options ?? this.options,
+    totalVoterCount: totalVoterCount ?? this.totalVoterCount,
+    recentVoterIds: recentVoterIds ?? this.recentVoterIds,
+    isAnonymous: isAnonymous ?? this.isAnonymous,
+    type: type ?? this.type,
+    openPeriod: openPeriod ?? this.openPeriod,
+    closeDate: closeDate ?? this.closeDate,
+    isClosed: isClosed ?? this.isClosed,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'poll';

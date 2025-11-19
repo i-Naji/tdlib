@@ -63,8 +63,9 @@ final class UpgradeGiftResult extends TdObject {
         isSaved: _readBool(json['is_saved']),
         canBeTransferred: _readBool(json['can_be_transferred']),
         transferStarCount: _readInt(json['transfer_star_count']),
-        dropOriginalDetailsStarCount:
-            _readInt(json['drop_original_details_star_count']),
+        dropOriginalDetailsStarCount: _readInt(
+          json['drop_original_details_star_count'],
+        ),
         nextTransferDate: _readInt(json['next_transfer_date']),
         nextResaleDate: _readInt(json['next_resale_date']),
         exportDate: _readInt(json['export_date']),
@@ -74,17 +75,17 @@ final class UpgradeGiftResult extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'gift': gift.toJson(),
-        'received_gift_id': receivedGiftId,
-        'is_saved': isSaved,
-        'can_be_transferred': canBeTransferred,
-        'transfer_star_count': transferStarCount,
-        'drop_original_details_star_count': dropOriginalDetailsStarCount,
-        'next_transfer_date': nextTransferDate,
-        'next_resale_date': nextResaleDate,
-        'export_date': exportDate,
-      };
+    '@type': CONSTRUCTOR,
+    'gift': gift.toJson(),
+    'received_gift_id': receivedGiftId,
+    'is_saved': isSaved,
+    'can_be_transferred': canBeTransferred,
+    'transfer_star_count': transferStarCount,
+    'drop_original_details_star_count': dropOriginalDetailsStarCount,
+    'next_transfer_date': nextTransferDate,
+    'next_resale_date': nextResaleDate,
+    'export_date': exportDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -100,21 +101,20 @@ final class UpgradeGiftResult extends TdObject {
     int? exportDate,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpgradeGiftResult(
-        gift: gift ?? this.gift,
-        receivedGiftId: receivedGiftId ?? this.receivedGiftId,
-        isSaved: isSaved ?? this.isSaved,
-        canBeTransferred: canBeTransferred ?? this.canBeTransferred,
-        transferStarCount: transferStarCount ?? this.transferStarCount,
-        dropOriginalDetailsStarCount:
-            dropOriginalDetailsStarCount ?? this.dropOriginalDetailsStarCount,
-        nextTransferDate: nextTransferDate ?? this.nextTransferDate,
-        nextResaleDate: nextResaleDate ?? this.nextResaleDate,
-        exportDate: exportDate ?? this.exportDate,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpgradeGiftResult(
+    gift: gift ?? this.gift,
+    receivedGiftId: receivedGiftId ?? this.receivedGiftId,
+    isSaved: isSaved ?? this.isSaved,
+    canBeTransferred: canBeTransferred ?? this.canBeTransferred,
+    transferStarCount: transferStarCount ?? this.transferStarCount,
+    dropOriginalDetailsStarCount:
+        dropOriginalDetailsStarCount ?? this.dropOriginalDetailsStarCount,
+    nextTransferDate: nextTransferDate ?? this.nextTransferDate,
+    nextResaleDate: nextResaleDate ?? this.nextResaleDate,
+    exportDate: exportDate ?? this.exportDate,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradeGiftResult';

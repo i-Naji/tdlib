@@ -36,12 +36,12 @@ final class BusinessBotManageBar extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'manage_url': manageUrl,
-        'is_bot_paused': isBotPaused,
-        'can_bot_reply': canBotReply,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'manage_url': manageUrl,
+    'is_bot_paused': isBotPaused,
+    'can_bot_reply': canBotReply,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class BusinessBotManageBar extends TdObject {
     String? manageUrl,
     bool? isBotPaused,
     bool? canBotReply,
-  }) =>
-      BusinessBotManageBar(
-        botUserId: botUserId ?? this.botUserId,
-        manageUrl: manageUrl ?? this.manageUrl,
-        isBotPaused: isBotPaused ?? this.isBotPaused,
-        canBotReply: canBotReply ?? this.canBotReply,
-      );
+  }) => BusinessBotManageBar(
+    botUserId: botUserId ?? this.botUserId,
+    manageUrl: manageUrl ?? this.manageUrl,
+    isBotPaused: isBotPaused ?? this.isBotPaused,
+    canBotReply: canBotReply ?? this.canBotReply,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'businessBotManageBar';

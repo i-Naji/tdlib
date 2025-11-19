@@ -29,18 +29,18 @@ final class DeepLinkInfo extends TdObject {
 
   /// Parses a [DeepLinkInfo] from TDLib JSON.
   factory DeepLinkInfo.fromJson(Map<String, dynamic> json) => DeepLinkInfo(
-        text: _readObject(json['text'], FormattedText.fromJson),
-        needUpdateApplication: _readBool(json['need_update_application']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    text: _readObject(json['text'], FormattedText.fromJson),
+    needUpdateApplication: _readBool(json['need_update_application']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'need_update_application': needUpdateApplication,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'need_update_application': needUpdateApplication,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,14 +49,12 @@ final class DeepLinkInfo extends TdObject {
     bool? needUpdateApplication,
     dynamic extra,
     int? clientId,
-  }) =>
-      DeepLinkInfo(
-        text: text ?? this.text,
-        needUpdateApplication:
-            needUpdateApplication ?? this.needUpdateApplication,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => DeepLinkInfo(
+    text: text ?? this.text,
+    needUpdateApplication: needUpdateApplication ?? this.needUpdateApplication,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deepLinkInfo';

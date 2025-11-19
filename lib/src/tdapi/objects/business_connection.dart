@@ -58,14 +58,14 @@ final class BusinessConnection extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'user_id': userId,
-        'user_chat_id': userChatId,
-        'date': date,
-        'rights': rights?.toJson(),
-        'is_enabled': isEnabled,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'user_id': userId,
+    'user_chat_id': userChatId,
+    'date': date,
+    'rights': rights?.toJson(),
+    'is_enabled': isEnabled,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -78,17 +78,16 @@ final class BusinessConnection extends TdObject {
     bool? isEnabled,
     dynamic extra,
     int? clientId,
-  }) =>
-      BusinessConnection(
-        id: id ?? this.id,
-        userId: userId ?? this.userId,
-        userChatId: userChatId ?? this.userChatId,
-        date: date ?? this.date,
-        rights: rights != null ? rights() : this.rights,
-        isEnabled: isEnabled ?? this.isEnabled,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => BusinessConnection(
+    id: id ?? this.id,
+    userId: userId ?? this.userId,
+    userChatId: userChatId ?? this.userChatId,
+    date: date ?? this.date,
+    rights: rights != null ? rights() : this.rights,
+    isEnabled: isEnabled ?? this.isEnabled,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'businessConnection';

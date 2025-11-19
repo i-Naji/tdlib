@@ -53,13 +53,11 @@ final class PassportElementErrorSourceUnspecified
 
   /// Parses a [PassportElementErrorSourceUnspecified] from TDLib JSON.
   factory PassportElementErrorSourceUnspecified.fromJson(
-          Map<String, dynamic> json) =>
-      const PassportElementErrorSourceUnspecified();
+    Map<String, dynamic> json,
+  ) => const PassportElementErrorSourceUnspecified();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -78,32 +76,28 @@ final class PassportElementErrorSourceUnspecified
 final class PassportElementErrorSourceDataField
     extends PassportElementErrorSource {
   /// One of the data fields contains an error. The error will be considered resolved when the value of the field changes
-  const PassportElementErrorSourceDataField({
-    required this.fieldName,
-  });
+  const PassportElementErrorSourceDataField({required this.fieldName});
 
   /// Field name
   final String fieldName;
 
   /// Parses a [PassportElementErrorSourceDataField] from TDLib JSON.
   factory PassportElementErrorSourceDataField.fromJson(
-          Map<String, dynamic> json) =>
-      PassportElementErrorSourceDataField(
-        fieldName: _readString(json['field_name']),
-      );
+    Map<String, dynamic> json,
+  ) => PassportElementErrorSourceDataField(
+    fieldName: _readString(json['field_name']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'field_name': fieldName,
-      };
+    '@type': CONSTRUCTOR,
+    'field_name': fieldName,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PassportElementErrorSourceDataField copyWith({
-    String? fieldName,
-  }) =>
+  PassportElementErrorSourceDataField copyWith({String? fieldName}) =>
       PassportElementErrorSourceDataField(
         fieldName: fieldName ?? this.fieldName,
       );
@@ -123,13 +117,11 @@ final class PassportElementErrorSourceFrontSide
 
   /// Parses a [PassportElementErrorSourceFrontSide] from TDLib JSON.
   factory PassportElementErrorSourceFrontSide.fromJson(
-          Map<String, dynamic> json) =>
-      const PassportElementErrorSourceFrontSide();
+    Map<String, dynamic> json,
+  ) => const PassportElementErrorSourceFrontSide();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -152,13 +144,11 @@ final class PassportElementErrorSourceReverseSide
 
   /// Parses a [PassportElementErrorSourceReverseSide] from TDLib JSON.
   factory PassportElementErrorSourceReverseSide.fromJson(
-          Map<String, dynamic> json) =>
-      const PassportElementErrorSourceReverseSide();
+    Map<String, dynamic> json,
+  ) => const PassportElementErrorSourceReverseSide();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -181,13 +171,11 @@ final class PassportElementErrorSourceSelfie
 
   /// Parses a [PassportElementErrorSourceSelfie] from TDLib JSON.
   factory PassportElementErrorSourceSelfie.fromJson(
-          Map<String, dynamic> json) =>
-      const PassportElementErrorSourceSelfie();
+    Map<String, dynamic> json,
+  ) => const PassportElementErrorSourceSelfie();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -206,32 +194,28 @@ final class PassportElementErrorSourceSelfie
 final class PassportElementErrorSourceTranslationFile
     extends PassportElementErrorSource {
   /// One of files with the translation of the document contains an error. The error will be considered resolved when the file changes
-  const PassportElementErrorSourceTranslationFile({
-    required this.fileIndex,
-  });
+  const PassportElementErrorSourceTranslationFile({required this.fileIndex});
 
   /// Index of a file with the error
   final int fileIndex;
 
   /// Parses a [PassportElementErrorSourceTranslationFile] from TDLib JSON.
   factory PassportElementErrorSourceTranslationFile.fromJson(
-          Map<String, dynamic> json) =>
-      PassportElementErrorSourceTranslationFile(
-        fileIndex: _readInt(json['file_index']),
-      );
+    Map<String, dynamic> json,
+  ) => PassportElementErrorSourceTranslationFile(
+    fileIndex: _readInt(json['file_index']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file_index': fileIndex,
-      };
+    '@type': CONSTRUCTOR,
+    'file_index': fileIndex,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PassportElementErrorSourceTranslationFile copyWith({
-    int? fileIndex,
-  }) =>
+  PassportElementErrorSourceTranslationFile copyWith({int? fileIndex}) =>
       PassportElementErrorSourceTranslationFile(
         fileIndex: fileIndex ?? this.fileIndex,
       );
@@ -251,13 +235,11 @@ final class PassportElementErrorSourceTranslationFiles
 
   /// Parses a [PassportElementErrorSourceTranslationFiles] from TDLib JSON.
   factory PassportElementErrorSourceTranslationFiles.fromJson(
-          Map<String, dynamic> json) =>
-      const PassportElementErrorSourceTranslationFiles();
+    Map<String, dynamic> json,
+  ) => const PassportElementErrorSourceTranslationFiles();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -276,34 +258,26 @@ final class PassportElementErrorSourceTranslationFiles
 /// The file contains an error. The error will be considered resolved when the file changes
 final class PassportElementErrorSourceFile extends PassportElementErrorSource {
   /// The file contains an error. The error will be considered resolved when the file changes
-  const PassportElementErrorSourceFile({
-    required this.fileIndex,
-  });
+  const PassportElementErrorSourceFile({required this.fileIndex});
 
   /// Index of a file with the error
   final int fileIndex;
 
   /// Parses a [PassportElementErrorSourceFile] from TDLib JSON.
   factory PassportElementErrorSourceFile.fromJson(Map<String, dynamic> json) =>
-      PassportElementErrorSourceFile(
-        fileIndex: _readInt(json['file_index']),
-      );
+      PassportElementErrorSourceFile(fileIndex: _readInt(json['file_index']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file_index': fileIndex,
-      };
+    '@type': CONSTRUCTOR,
+    'file_index': fileIndex,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PassportElementErrorSourceFile copyWith({
-    int? fileIndex,
-  }) =>
-      PassportElementErrorSourceFile(
-        fileIndex: fileIndex ?? this.fileIndex,
-      );
+  PassportElementErrorSourceFile copyWith({int? fileIndex}) =>
+      PassportElementErrorSourceFile(fileIndex: fileIndex ?? this.fileIndex);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportElementErrorSourceFile';
@@ -322,9 +296,7 @@ final class PassportElementErrorSourceFiles extends PassportElementErrorSource {
       const PassportElementErrorSourceFiles();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

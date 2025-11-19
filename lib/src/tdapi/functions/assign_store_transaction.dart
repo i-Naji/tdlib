@@ -21,22 +21,21 @@ final class AssignStoreTransaction extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'transaction': transaction.toJson(),
-        'purpose': purpose.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'transaction': transaction.toJson(),
+    'purpose': purpose.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   AssignStoreTransaction copyWith({
     StoreTransaction? transaction,
     StorePaymentPurpose? purpose,
-  }) =>
-      AssignStoreTransaction(
-        transaction: transaction ?? this.transaction,
-        purpose: purpose ?? this.purpose,
-      );
+  }) => AssignStoreTransaction(
+    transaction: transaction ?? this.transaction,
+    purpose: purpose ?? this.purpose,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'assignStoreTransaction';

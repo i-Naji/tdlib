@@ -26,12 +26,12 @@ final class InviteGroupCallParticipant
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'user_id': userId,
-        'is_video': isVideo,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'user_id': userId,
+    'is_video': isVideo,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -39,12 +39,11 @@ final class InviteGroupCallParticipant
     int? groupCallId,
     int? userId,
     bool? isVideo,
-  }) =>
-      InviteGroupCallParticipant(
-        groupCallId: groupCallId ?? this.groupCallId,
-        userId: userId ?? this.userId,
-        isVideo: isVideo ?? this.isVideo,
-      );
+  }) => InviteGroupCallParticipant(
+    groupCallId: groupCallId ?? this.groupCallId,
+    userId: userId ?? this.userId,
+    isVideo: isVideo ?? this.isVideo,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inviteGroupCallParticipant';

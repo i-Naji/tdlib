@@ -29,18 +29,18 @@ final class TdError extends TdObject {
 
   /// Parses a [TdError] from TDLib JSON.
   factory TdError.fromJson(Map<String, dynamic> json) => TdError(
-        code: _readInt(json['code']),
-        message: _readString(json['message']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    code: _readInt(json['code']),
+    message: _readString(json['message']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'code': code,
-        'message': message,
-      };
+    '@type': CONSTRUCTOR,
+    'code': code,
+    'message': message,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class TdError extends TdObject {
     String? message,
     dynamic extra,
     int? clientId,
-  }) =>
-      TdError(
-        code: code ?? this.code,
-        message: message ?? this.message,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => TdError(
+    code: code ?? this.code,
+    message: message ?? this.message,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'error';

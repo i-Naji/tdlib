@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetBirthdate extends TdFunction<Ok> {
   /// Changes the birthdate of the current user
-  const SetBirthdate({
-    this.birthdate,
-  });
+  const SetBirthdate({this.birthdate});
 
   /// The new value of the current user's birthdate; pass null to remove the birthdate
   final Birthdate? birthdate;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'birthdate': birthdate?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'birthdate': birthdate?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetBirthdate copyWith({
-    Birthdate? Function()? birthdate,
-  }) =>
-      SetBirthdate(
-        birthdate: birthdate != null ? birthdate() : this.birthdate,
-      );
+  SetBirthdate copyWith({Birthdate? Function()? birthdate}) =>
+      SetBirthdate(birthdate: birthdate != null ? birthdate() : this.birthdate);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setBirthdate';

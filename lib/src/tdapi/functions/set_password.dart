@@ -33,14 +33,14 @@ final class SetPassword extends TdFunction<PasswordState> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'old_password': oldPassword,
-        'new_password': newPassword,
-        'new_hint': newHint,
-        'set_recovery_email_address': setRecoveryEmailAddress,
-        'new_recovery_email_address': newRecoveryEmailAddress,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'old_password': oldPassword,
+    'new_password': newPassword,
+    'new_hint': newHint,
+    'set_recovery_email_address': setRecoveryEmailAddress,
+    'new_recovery_email_address': newRecoveryEmailAddress,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,16 +50,15 @@ final class SetPassword extends TdFunction<PasswordState> {
     String? newHint,
     bool? setRecoveryEmailAddress,
     String? newRecoveryEmailAddress,
-  }) =>
-      SetPassword(
-        oldPassword: oldPassword ?? this.oldPassword,
-        newPassword: newPassword ?? this.newPassword,
-        newHint: newHint ?? this.newHint,
-        setRecoveryEmailAddress:
-            setRecoveryEmailAddress ?? this.setRecoveryEmailAddress,
-        newRecoveryEmailAddress:
-            newRecoveryEmailAddress ?? this.newRecoveryEmailAddress,
-      );
+  }) => SetPassword(
+    oldPassword: oldPassword ?? this.oldPassword,
+    newPassword: newPassword ?? this.newPassword,
+    newHint: newHint ?? this.newHint,
+    setRecoveryEmailAddress:
+        setRecoveryEmailAddress ?? this.setRecoveryEmailAddress,
+    newRecoveryEmailAddress:
+        newRecoveryEmailAddress ?? this.newRecoveryEmailAddress,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setPassword';

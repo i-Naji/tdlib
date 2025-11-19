@@ -38,10 +38,10 @@ final class BusinessChatLinkInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'text': text.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'text': text.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class BusinessChatLinkInfo extends TdObject {
     FormattedText? text,
     dynamic extra,
     int? clientId,
-  }) =>
-      BusinessChatLinkInfo(
-        chatId: chatId ?? this.chatId,
-        text: text ?? this.text,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => BusinessChatLinkInfo(
+    chatId: chatId ?? this.chatId,
+    text: text ?? this.text,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'businessChatLinkInfo';

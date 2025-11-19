@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class DeleteStory extends TdFunction<Ok> {
   /// Deletes a previously posted story. Can be called only if story.can_be_deleted == true
-  const DeleteStory({
-    required this.storyPosterChatId,
-    required this.storyId,
-  });
+  const DeleteStory({required this.storyPosterChatId, required this.storyId});
 
   /// Identifier of the chat that posted the story
   final int storyPosterChatId;
@@ -21,22 +18,18 @@ final class DeleteStory extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'story_id': storyId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteStory copyWith({
-    int? storyPosterChatId,
-    int? storyId,
-  }) =>
-      DeleteStory(
-        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-        storyId: storyId ?? this.storyId,
-      );
+  DeleteStory copyWith({int? storyPosterChatId, int? storyId}) => DeleteStory(
+    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+    storyId: storyId ?? this.storyId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deleteStory';

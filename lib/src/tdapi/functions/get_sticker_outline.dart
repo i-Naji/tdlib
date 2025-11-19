@@ -25,12 +25,12 @@ final class GetStickerOutline extends TdFunction<Outline> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker_file_id': stickerFileId,
-        'for_animated_emoji': forAnimatedEmoji,
-        'for_clicked_animated_emoji_message': forClickedAnimatedEmojiMessage,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_file_id': stickerFileId,
+    'for_animated_emoji': forAnimatedEmoji,
+    'for_clicked_animated_emoji_message': forClickedAnimatedEmojiMessage,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,13 +38,12 @@ final class GetStickerOutline extends TdFunction<Outline> {
     int? stickerFileId,
     bool? forAnimatedEmoji,
     bool? forClickedAnimatedEmojiMessage,
-  }) =>
-      GetStickerOutline(
-        stickerFileId: stickerFileId ?? this.stickerFileId,
-        forAnimatedEmoji: forAnimatedEmoji ?? this.forAnimatedEmoji,
-        forClickedAnimatedEmojiMessage: forClickedAnimatedEmojiMessage ??
-            this.forClickedAnimatedEmojiMessage,
-      );
+  }) => GetStickerOutline(
+    stickerFileId: stickerFileId ?? this.stickerFileId,
+    forAnimatedEmoji: forAnimatedEmoji ?? this.forAnimatedEmoji,
+    forClickedAnimatedEmojiMessage:
+        forClickedAnimatedEmojiMessage ?? this.forClickedAnimatedEmojiMessage,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getStickerOutline';

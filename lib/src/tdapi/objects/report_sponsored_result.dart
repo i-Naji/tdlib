@@ -47,10 +47,7 @@ final class UndecodedReportSponsoredResult extends ReportSponsoredResult {
 /// The message was reported successfully
 final class ReportSponsoredResultOk extends ReportSponsoredResult {
   /// The message was reported successfully
-  const ReportSponsoredResultOk({
-    this.extra,
-    this.clientId,
-  });
+  const ReportSponsoredResultOk({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -68,17 +65,12 @@ final class ReportSponsoredResultOk extends ReportSponsoredResult {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ReportSponsoredResultOk copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  ReportSponsoredResultOk copyWith({dynamic extra, int? clientId}) =>
       ReportSponsoredResultOk(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -94,10 +86,7 @@ final class ReportSponsoredResultOk extends ReportSponsoredResult {
 /// The sponsored message is too old or not found
 final class ReportSponsoredResultFailed extends ReportSponsoredResult {
   /// The sponsored message is too old or not found
-  const ReportSponsoredResultFailed({
-    this.extra,
-    this.clientId,
-  });
+  const ReportSponsoredResultFailed({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -115,17 +104,12 @@ final class ReportSponsoredResultFailed extends ReportSponsoredResult {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ReportSponsoredResultFailed copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  ReportSponsoredResultFailed copyWith({dynamic extra, int? clientId}) =>
       ReportSponsoredResultFailed(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -164,21 +148,23 @@ final class ReportSponsoredResultOptionRequired extends ReportSponsoredResult {
 
   /// Parses a [ReportSponsoredResultOptionRequired] from TDLib JSON.
   factory ReportSponsoredResultOptionRequired.fromJson(
-          Map<String, dynamic> json) =>
-      ReportSponsoredResultOptionRequired(
-        title: _readString(json['title']),
-        options: _readList<ReportOption>(
-            json['options'], (e) => _readObject(e, ReportOption.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => ReportSponsoredResultOptionRequired(
+    title: _readString(json['title']),
+    options: _readList<ReportOption>(
+      json['options'],
+      (e) => _readObject(e, ReportOption.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-        'options': [for (final e in options) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'title': title,
+    'options': [for (final e in options) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -188,13 +174,12 @@ final class ReportSponsoredResultOptionRequired extends ReportSponsoredResult {
     List<ReportOption>? options,
     dynamic extra,
     int? clientId,
-  }) =>
-      ReportSponsoredResultOptionRequired(
-        title: title ?? this.title,
-        options: options ?? this.options,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ReportSponsoredResultOptionRequired(
+    title: title ?? this.title,
+    options: options ?? this.options,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reportSponsoredResultOptionRequired';
@@ -206,10 +191,7 @@ final class ReportSponsoredResultOptionRequired extends ReportSponsoredResult {
 /// Sponsored messages were hidden for the user in all chats
 final class ReportSponsoredResultAdsHidden extends ReportSponsoredResult {
   /// Sponsored messages were hidden for the user in all chats
-  const ReportSponsoredResultAdsHidden({
-    this.extra,
-    this.clientId,
-  });
+  const ReportSponsoredResultAdsHidden({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -227,17 +209,12 @@ final class ReportSponsoredResultAdsHidden extends ReportSponsoredResult {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ReportSponsoredResultAdsHidden copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  ReportSponsoredResultAdsHidden copyWith({dynamic extra, int? clientId}) =>
       ReportSponsoredResultAdsHidden(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -253,10 +230,7 @@ final class ReportSponsoredResultAdsHidden extends ReportSponsoredResult {
 /// The user asked to hide sponsored messages, but Telegram Premium is required for this
 final class ReportSponsoredResultPremiumRequired extends ReportSponsoredResult {
   /// The user asked to hide sponsored messages, but Telegram Premium is required for this
-  const ReportSponsoredResultPremiumRequired({
-    this.extra,
-    this.clientId,
-  });
+  const ReportSponsoredResultPremiumRequired({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -268,16 +242,14 @@ final class ReportSponsoredResultPremiumRequired extends ReportSponsoredResult {
 
   /// Parses a [ReportSponsoredResultPremiumRequired] from TDLib JSON.
   factory ReportSponsoredResultPremiumRequired.fromJson(
-          Map<String, dynamic> json) =>
-      ReportSponsoredResultPremiumRequired(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => ReportSponsoredResultPremiumRequired(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -285,11 +257,10 @@ final class ReportSponsoredResultPremiumRequired extends ReportSponsoredResult {
   ReportSponsoredResultPremiumRequired copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      ReportSponsoredResultPremiumRequired(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ReportSponsoredResultPremiumRequired(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reportSponsoredResultPremiumRequired';

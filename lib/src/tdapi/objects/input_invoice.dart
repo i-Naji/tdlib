@@ -45,10 +45,7 @@ final class UndecodedInputInvoice extends InputInvoice {
 /// An invoice from a message of the type messageInvoice or paid media purchase from messagePaidMedia
 final class InputInvoiceMessage extends InputInvoice {
   /// An invoice from a message of the type messageInvoice or paid media purchase from messagePaidMedia
-  const InputInvoiceMessage({
-    required this.chatId,
-    required this.messageId,
-  });
+  const InputInvoiceMessage({required this.chatId, required this.messageId});
 
   /// Chat identifier of the message
   final int chatId;
@@ -65,18 +62,15 @@ final class InputInvoiceMessage extends InputInvoice {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputInvoiceMessage copyWith({
-    int? chatId,
-    int? messageId,
-  }) =>
+  InputInvoiceMessage copyWith({int? chatId, int? messageId}) =>
       InputInvoiceMessage(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
@@ -92,34 +86,23 @@ final class InputInvoiceMessage extends InputInvoice {
 /// An invoice from a link of the type internalLinkTypeInvoice
 final class InputInvoiceName extends InputInvoice {
   /// An invoice from a link of the type internalLinkTypeInvoice
-  const InputInvoiceName({
-    required this.name,
-  });
+  const InputInvoiceName({required this.name});
 
   /// Name of the invoice
   final String name;
 
   /// Parses a [InputInvoiceName] from TDLib JSON.
   factory InputInvoiceName.fromJson(Map<String, dynamic> json) =>
-      InputInvoiceName(
-        name: _readString(json['name']),
-      );
+      InputInvoiceName(name: _readString(json['name']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'name': name};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputInvoiceName copyWith({
-    String? name,
-  }) =>
-      InputInvoiceName(
-        name: name ?? this.name,
-      );
+  InputInvoiceName copyWith({String? name}) =>
+      InputInvoiceName(name: name ?? this.name);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputInvoiceName';
@@ -131,9 +114,7 @@ final class InputInvoiceName extends InputInvoice {
 /// An invoice for a payment toward Telegram; must not be used in the in-store apps
 final class InputInvoiceTelegram extends InputInvoice {
   /// An invoice for a payment toward Telegram; must not be used in the in-store apps
-  const InputInvoiceTelegram({
-    required this.purpose,
-  });
+  const InputInvoiceTelegram({required this.purpose});
 
   /// Transaction purpose
   final TelegramPaymentPurpose purpose;
@@ -146,19 +127,15 @@ final class InputInvoiceTelegram extends InputInvoice {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'purpose': purpose.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'purpose': purpose.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputInvoiceTelegram copyWith({
-    TelegramPaymentPurpose? purpose,
-  }) =>
-      InputInvoiceTelegram(
-        purpose: purpose ?? this.purpose,
-      );
+  InputInvoiceTelegram copyWith({TelegramPaymentPurpose? purpose}) =>
+      InputInvoiceTelegram(purpose: purpose ?? this.purpose);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputInvoiceTelegram';

@@ -36,19 +36,21 @@ final class NotificationGroup extends TdObject {
         type: _readObject(json['type'], NotificationGroupType.fromJson),
         chatId: _readInt(json['chat_id']),
         totalCount: _readInt(json['total_count']),
-        notifications: _readList<Notification>(json['notifications'],
-            (e) => _readObject(e, Notification.fromJson)),
+        notifications: _readList<Notification>(
+          json['notifications'],
+          (e) => _readObject(e, Notification.fromJson),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'type': type.toJson(),
-        'chat_id': chatId,
-        'total_count': totalCount,
-        'notifications': [for (final e in notifications) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'type': type.toJson(),
+    'chat_id': chatId,
+    'total_count': totalCount,
+    'notifications': [for (final e in notifications) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -58,14 +60,13 @@ final class NotificationGroup extends TdObject {
     int? chatId,
     int? totalCount,
     List<Notification>? notifications,
-  }) =>
-      NotificationGroup(
-        id: id ?? this.id,
-        type: type ?? this.type,
-        chatId: chatId ?? this.chatId,
-        totalCount: totalCount ?? this.totalCount,
-        notifications: notifications ?? this.notifications,
-      );
+  }) => NotificationGroup(
+    id: id ?? this.id,
+    type: type ?? this.type,
+    chatId: chatId ?? this.chatId,
+    totalCount: totalCount ?? this.totalCount,
+    notifications: notifications ?? this.notifications,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'notificationGroup';

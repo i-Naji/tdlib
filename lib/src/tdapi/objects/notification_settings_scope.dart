@@ -53,13 +53,11 @@ final class NotificationSettingsScopePrivateChats
 
   /// Parses a [NotificationSettingsScopePrivateChats] from TDLib JSON.
   factory NotificationSettingsScopePrivateChats.fromJson(
-          Map<String, dynamic> json) =>
-      const NotificationSettingsScopePrivateChats();
+    Map<String, dynamic> json,
+  ) => const NotificationSettingsScopePrivateChats();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -82,13 +80,11 @@ final class NotificationSettingsScopeGroupChats
 
   /// Parses a [NotificationSettingsScopeGroupChats] from TDLib JSON.
   factory NotificationSettingsScopeGroupChats.fromJson(
-          Map<String, dynamic> json) =>
-      const NotificationSettingsScopeGroupChats();
+    Map<String, dynamic> json,
+  ) => const NotificationSettingsScopeGroupChats();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -111,13 +107,11 @@ final class NotificationSettingsScopeChannelChats
 
   /// Parses a [NotificationSettingsScopeChannelChats] from TDLib JSON.
   factory NotificationSettingsScopeChannelChats.fromJson(
-          Map<String, dynamic> json) =>
-      const NotificationSettingsScopeChannelChats();
+    Map<String, dynamic> json,
+  ) => const NotificationSettingsScopeChannelChats();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

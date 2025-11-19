@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Chat].
 final class CreateSupergroupChat extends TdFunction<Chat> {
   /// Returns an existing chat corresponding to a known supergroup or channel
-  const CreateSupergroupChat({
-    required this.supergroupId,
-    required this.force,
-  });
+  const CreateSupergroupChat({required this.supergroupId, required this.force});
 
   /// Supergroup or channel identifier
   final int supergroupId;
@@ -21,18 +18,15 @@ final class CreateSupergroupChat extends TdFunction<Chat> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'force': force,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'force': force,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CreateSupergroupChat copyWith({
-    int? supergroupId,
-    bool? force,
-  }) =>
+  CreateSupergroupChat copyWith({int? supergroupId, bool? force}) =>
       CreateSupergroupChat(
         supergroupId: supergroupId ?? this.supergroupId,
         force: force ?? this.force,

@@ -32,10 +32,7 @@ final class FileDownloadedPrefixSize extends TdObject {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'size': size,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'size': size};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +40,11 @@ final class FileDownloadedPrefixSize extends TdObject {
     int? size,
     dynamic extra,
     int? clientId,
-  }) =>
-      FileDownloadedPrefixSize(
-        size: size ?? this.size,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => FileDownloadedPrefixSize(
+    size: size ?? this.size,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'fileDownloadedPrefixSize';

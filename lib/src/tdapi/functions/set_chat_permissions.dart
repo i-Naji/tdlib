@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetChatPermissions extends TdFunction<Ok> {
   /// Changes the chat members permissions. Supported only for basic groups and supergroups. Requires can_restrict_members administrator right
-  const SetChatPermissions({
-    required this.chatId,
-    required this.permissions,
-  });
+  const SetChatPermissions({required this.chatId, required this.permissions});
 
   /// Chat identifier
   final int chatId;
@@ -21,18 +18,15 @@ final class SetChatPermissions extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'permissions': permissions.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'permissions': permissions.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetChatPermissions copyWith({
-    int? chatId,
-    ChatPermissions? permissions,
-  }) =>
+  SetChatPermissions copyWith({int? chatId, ChatPermissions? permissions}) =>
       SetChatPermissions(
         chatId: chatId ?? this.chatId,
         permissions: permissions ?? this.permissions,

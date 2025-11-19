@@ -27,20 +27,20 @@ final class SponsoredChat extends TdObject {
 
   /// Parses a [SponsoredChat] from TDLib JSON.
   factory SponsoredChat.fromJson(Map<String, dynamic> json) => SponsoredChat(
-        uniqueId: _readInt(json['unique_id']),
-        chatId: _readInt(json['chat_id']),
-        sponsorInfo: _readString(json['sponsor_info']),
-        additionalInfo: _readString(json['additional_info']),
-      );
+    uniqueId: _readInt(json['unique_id']),
+    chatId: _readInt(json['chat_id']),
+    sponsorInfo: _readString(json['sponsor_info']),
+    additionalInfo: _readString(json['additional_info']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'unique_id': uniqueId,
-        'chat_id': chatId,
-        'sponsor_info': sponsorInfo,
-        'additional_info': additionalInfo,
-      };
+    '@type': CONSTRUCTOR,
+    'unique_id': uniqueId,
+    'chat_id': chatId,
+    'sponsor_info': sponsorInfo,
+    'additional_info': additionalInfo,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class SponsoredChat extends TdObject {
     int? chatId,
     String? sponsorInfo,
     String? additionalInfo,
-  }) =>
-      SponsoredChat(
-        uniqueId: uniqueId ?? this.uniqueId,
-        chatId: chatId ?? this.chatId,
-        sponsorInfo: sponsorInfo ?? this.sponsorInfo,
-        additionalInfo: additionalInfo ?? this.additionalInfo,
-      );
+  }) => SponsoredChat(
+    uniqueId: uniqueId ?? this.uniqueId,
+    chatId: chatId ?? this.chatId,
+    sponsorInfo: sponsorInfo ?? this.sponsorInfo,
+    additionalInfo: additionalInfo ?? this.additionalInfo,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sponsoredChat';

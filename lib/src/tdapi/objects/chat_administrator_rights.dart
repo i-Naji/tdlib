@@ -96,24 +96,24 @@ final class ChatAdministratorRights extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'can_manage_chat': canManageChat,
-        'can_change_info': canChangeInfo,
-        'can_post_messages': canPostMessages,
-        'can_edit_messages': canEditMessages,
-        'can_delete_messages': canDeleteMessages,
-        'can_invite_users': canInviteUsers,
-        'can_restrict_members': canRestrictMembers,
-        'can_pin_messages': canPinMessages,
-        'can_manage_topics': canManageTopics,
-        'can_promote_members': canPromoteMembers,
-        'can_manage_video_chats': canManageVideoChats,
-        'can_post_stories': canPostStories,
-        'can_edit_stories': canEditStories,
-        'can_delete_stories': canDeleteStories,
-        'can_manage_direct_messages': canManageDirectMessages,
-        'is_anonymous': isAnonymous,
-      };
+    '@type': CONSTRUCTOR,
+    'can_manage_chat': canManageChat,
+    'can_change_info': canChangeInfo,
+    'can_post_messages': canPostMessages,
+    'can_edit_messages': canEditMessages,
+    'can_delete_messages': canDeleteMessages,
+    'can_invite_users': canInviteUsers,
+    'can_restrict_members': canRestrictMembers,
+    'can_pin_messages': canPinMessages,
+    'can_manage_topics': canManageTopics,
+    'can_promote_members': canPromoteMembers,
+    'can_manage_video_chats': canManageVideoChats,
+    'can_post_stories': canPostStories,
+    'can_edit_stories': canEditStories,
+    'can_delete_stories': canDeleteStories,
+    'can_manage_direct_messages': canManageDirectMessages,
+    'is_anonymous': isAnonymous,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -134,26 +134,25 @@ final class ChatAdministratorRights extends TdObject {
     bool? canDeleteStories,
     bool? canManageDirectMessages,
     bool? isAnonymous,
-  }) =>
-      ChatAdministratorRights(
-        canManageChat: canManageChat ?? this.canManageChat,
-        canChangeInfo: canChangeInfo ?? this.canChangeInfo,
-        canPostMessages: canPostMessages ?? this.canPostMessages,
-        canEditMessages: canEditMessages ?? this.canEditMessages,
-        canDeleteMessages: canDeleteMessages ?? this.canDeleteMessages,
-        canInviteUsers: canInviteUsers ?? this.canInviteUsers,
-        canRestrictMembers: canRestrictMembers ?? this.canRestrictMembers,
-        canPinMessages: canPinMessages ?? this.canPinMessages,
-        canManageTopics: canManageTopics ?? this.canManageTopics,
-        canPromoteMembers: canPromoteMembers ?? this.canPromoteMembers,
-        canManageVideoChats: canManageVideoChats ?? this.canManageVideoChats,
-        canPostStories: canPostStories ?? this.canPostStories,
-        canEditStories: canEditStories ?? this.canEditStories,
-        canDeleteStories: canDeleteStories ?? this.canDeleteStories,
-        canManageDirectMessages:
-            canManageDirectMessages ?? this.canManageDirectMessages,
-        isAnonymous: isAnonymous ?? this.isAnonymous,
-      );
+  }) => ChatAdministratorRights(
+    canManageChat: canManageChat ?? this.canManageChat,
+    canChangeInfo: canChangeInfo ?? this.canChangeInfo,
+    canPostMessages: canPostMessages ?? this.canPostMessages,
+    canEditMessages: canEditMessages ?? this.canEditMessages,
+    canDeleteMessages: canDeleteMessages ?? this.canDeleteMessages,
+    canInviteUsers: canInviteUsers ?? this.canInviteUsers,
+    canRestrictMembers: canRestrictMembers ?? this.canRestrictMembers,
+    canPinMessages: canPinMessages ?? this.canPinMessages,
+    canManageTopics: canManageTopics ?? this.canManageTopics,
+    canPromoteMembers: canPromoteMembers ?? this.canPromoteMembers,
+    canManageVideoChats: canManageVideoChats ?? this.canManageVideoChats,
+    canPostStories: canPostStories ?? this.canPostStories,
+    canEditStories: canEditStories ?? this.canEditStories,
+    canDeleteStories: canDeleteStories ?? this.canDeleteStories,
+    canManageDirectMessages:
+        canManageDirectMessages ?? this.canManageDirectMessages,
+    isAnonymous: isAnonymous ?? this.isAnonymous,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatAdministratorRights';

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [ChatLists].
 final class GetChatListsToAddChat extends TdFunction<ChatLists> {
   /// Returns chat lists to which the chat can be added. This is an offline method
-  const GetChatListsToAddChat({
-    required this.chatId,
-  });
+  const GetChatListsToAddChat({required this.chatId});
 
   /// Chat identifier
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatListsToAddChat copyWith({
-    int? chatId,
-  }) =>
-      GetChatListsToAddChat(
-        chatId: chatId ?? this.chatId,
-      );
+  GetChatListsToAddChat copyWith({int? chatId}) =>
+      GetChatListsToAddChat(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatListsToAddChat';

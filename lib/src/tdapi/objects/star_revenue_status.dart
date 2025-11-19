@@ -34,21 +34,23 @@ final class StarRevenueStatus extends TdObject {
       StarRevenueStatus(
         totalAmount: _readObject(json['total_amount'], StarAmount.fromJson),
         currentAmount: _readObject(json['current_amount'], StarAmount.fromJson),
-        availableAmount:
-            _readObject(json['available_amount'], StarAmount.fromJson),
+        availableAmount: _readObject(
+          json['available_amount'],
+          StarAmount.fromJson,
+        ),
         withdrawalEnabled: _readBool(json['withdrawal_enabled']),
         nextWithdrawalIn: _readInt(json['next_withdrawal_in']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_amount': totalAmount.toJson(),
-        'current_amount': currentAmount.toJson(),
-        'available_amount': availableAmount.toJson(),
-        'withdrawal_enabled': withdrawalEnabled,
-        'next_withdrawal_in': nextWithdrawalIn,
-      };
+    '@type': CONSTRUCTOR,
+    'total_amount': totalAmount.toJson(),
+    'current_amount': currentAmount.toJson(),
+    'available_amount': availableAmount.toJson(),
+    'withdrawal_enabled': withdrawalEnabled,
+    'next_withdrawal_in': nextWithdrawalIn,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -58,14 +60,13 @@ final class StarRevenueStatus extends TdObject {
     StarAmount? availableAmount,
     bool? withdrawalEnabled,
     int? nextWithdrawalIn,
-  }) =>
-      StarRevenueStatus(
-        totalAmount: totalAmount ?? this.totalAmount,
-        currentAmount: currentAmount ?? this.currentAmount,
-        availableAmount: availableAmount ?? this.availableAmount,
-        withdrawalEnabled: withdrawalEnabled ?? this.withdrawalEnabled,
-        nextWithdrawalIn: nextWithdrawalIn ?? this.nextWithdrawalIn,
-      );
+  }) => StarRevenueStatus(
+    totalAmount: totalAmount ?? this.totalAmount,
+    currentAmount: currentAmount ?? this.currentAmount,
+    availableAmount: availableAmount ?? this.availableAmount,
+    withdrawalEnabled: withdrawalEnabled ?? this.withdrawalEnabled,
+    nextWithdrawalIn: nextWithdrawalIn ?? this.nextWithdrawalIn,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starRevenueStatus';

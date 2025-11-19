@@ -31,22 +31,22 @@ final class TonTransaction extends TdObject {
 
   /// Parses a [TonTransaction] from TDLib JSON.
   factory TonTransaction.fromJson(Map<String, dynamic> json) => TonTransaction(
-        id: _readString(json['id']),
-        tonAmount: _readInt(json['ton_amount']),
-        isRefund: _readBool(json['is_refund']),
-        date: _readInt(json['date']),
-        type: _readObject(json['type'], TonTransactionType.fromJson),
-      );
+    id: _readString(json['id']),
+    tonAmount: _readInt(json['ton_amount']),
+    isRefund: _readBool(json['is_refund']),
+    date: _readInt(json['date']),
+    type: _readObject(json['type'], TonTransactionType.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'ton_amount': tonAmount,
-        'is_refund': isRefund,
-        'date': date,
-        'type': type.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'ton_amount': tonAmount,
+    'is_refund': isRefund,
+    'date': date,
+    'type': type.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,14 +56,13 @@ final class TonTransaction extends TdObject {
     bool? isRefund,
     int? date,
     TonTransactionType? type,
-  }) =>
-      TonTransaction(
-        id: id ?? this.id,
-        tonAmount: tonAmount ?? this.tonAmount,
-        isRefund: isRefund ?? this.isRefund,
-        date: date ?? this.date,
-        type: type ?? this.type,
-      );
+  }) => TonTransaction(
+    id: id ?? this.id,
+    tonAmount: tonAmount ?? this.tonAmount,
+    isRefund: isRefund ?? this.isRefund,
+    date: date ?? this.date,
+    type: type ?? this.type,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'tonTransaction';

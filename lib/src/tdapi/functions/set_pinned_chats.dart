@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetPinnedChats extends TdFunction<Ok> {
   /// Changes the order of pinned chats
-  const SetPinnedChats({
-    required this.chatList,
-    required this.chatIds,
-  });
+  const SetPinnedChats({required this.chatList, required this.chatIds});
 
   /// Chat list in which to change the order of pinned chats
   final ChatList chatList;
@@ -21,18 +18,15 @@ final class SetPinnedChats extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_list': chatList.toJson(),
-        'chat_ids': chatIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_list': chatList.toJson(),
+    'chat_ids': chatIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetPinnedChats copyWith({
-    ChatList? chatList,
-    List<int>? chatIds,
-  }) =>
+  SetPinnedChats copyWith({ChatList? chatList, List<int>? chatIds}) =>
       SetPinnedChats(
         chatList: chatList ?? this.chatList,
         chatIds: chatIds ?? this.chatIds,

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Background].
 final class SearchBackground extends TdFunction<Background> {
   /// Searches for a background by its name
-  const SearchBackground({
-    required this.name,
-  });
+  const SearchBackground({required this.name});
 
   /// The name of the background
   final String name;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchBackground copyWith({
-    String? name,
-  }) =>
-      SearchBackground(
-        name: name ?? this.name,
-      );
+  SearchBackground copyWith({String? name}) =>
+      SearchBackground(name: name ?? this.name);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchBackground';

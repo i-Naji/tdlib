@@ -25,12 +25,12 @@ final class AnswerShippingQuery extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'shipping_query_id': shippingQueryId.toString(),
-        'shipping_options': [for (final e in shippingOptions) e.toJson()],
-        'error_message': errorMessage,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'shipping_query_id': shippingQueryId.toString(),
+    'shipping_options': [for (final e in shippingOptions) e.toJson()],
+    'error_message': errorMessage,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class AnswerShippingQuery extends TdFunction<Ok> {
     int? shippingQueryId,
     List<ShippingOption>? shippingOptions,
     String? errorMessage,
-  }) =>
-      AnswerShippingQuery(
-        shippingQueryId: shippingQueryId ?? this.shippingQueryId,
-        shippingOptions: shippingOptions ?? this.shippingOptions,
-        errorMessage: errorMessage ?? this.errorMessage,
-      );
+  }) => AnswerShippingQuery(
+    shippingQueryId: shippingQueryId ?? this.shippingQueryId,
+    shippingOptions: shippingOptions ?? this.shippingOptions,
+    errorMessage: errorMessage ?? this.errorMessage,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'answerShippingQuery';

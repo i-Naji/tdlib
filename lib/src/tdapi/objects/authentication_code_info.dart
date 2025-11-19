@@ -40,8 +40,10 @@ final class AuthenticationCodeInfo extends TdObject {
       AuthenticationCodeInfo(
         phoneNumber: _readString(json['phone_number']),
         type: _readObject(json['type'], AuthenticationCodeType.fromJson),
-        nextType:
-            _readOptional(json['next_type'], AuthenticationCodeType.fromJson),
+        nextType: _readOptional(
+          json['next_type'],
+          AuthenticationCodeType.fromJson,
+        ),
         timeout: _readInt(json['timeout']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -49,12 +51,12 @@ final class AuthenticationCodeInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'phone_number': phoneNumber,
-        'type': type.toJson(),
-        'next_type': nextType?.toJson(),
-        'timeout': timeout,
-      };
+    '@type': CONSTRUCTOR,
+    'phone_number': phoneNumber,
+    'type': type.toJson(),
+    'next_type': nextType?.toJson(),
+    'timeout': timeout,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -65,15 +67,14 @@ final class AuthenticationCodeInfo extends TdObject {
     int? timeout,
     dynamic extra,
     int? clientId,
-  }) =>
-      AuthenticationCodeInfo(
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        type: type ?? this.type,
-        nextType: nextType != null ? nextType() : this.nextType,
-        timeout: timeout ?? this.timeout,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => AuthenticationCodeInfo(
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+    type: type ?? this.type,
+    nextType: nextType != null ? nextType() : this.nextType,
+    timeout: timeout ?? this.timeout,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'authenticationCodeInfo';

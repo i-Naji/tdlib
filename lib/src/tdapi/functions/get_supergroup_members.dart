@@ -29,13 +29,13 @@ final class GetSupergroupMembers extends TdFunction<ChatMembers> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'filter': filter?.toJson(),
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'filter': filter?.toJson(),
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class GetSupergroupMembers extends TdFunction<ChatMembers> {
     SupergroupMembersFilter? Function()? filter,
     int? offset,
     int? limit,
-  }) =>
-      GetSupergroupMembers(
-        supergroupId: supergroupId ?? this.supergroupId,
-        filter: filter != null ? filter() : this.filter,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => GetSupergroupMembers(
+    supergroupId: supergroupId ?? this.supergroupId,
+    filter: filter != null ? filter() : this.filter,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getSupergroupMembers';

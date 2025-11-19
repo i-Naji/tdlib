@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Represents a list of proxy servers
 final class Proxies extends TdObject {
   /// Represents a list of proxy servers
-  const Proxies({
-    required this.proxies,
-    this.extra,
-    this.clientId,
-  });
+  const Proxies({required this.proxies, this.extra, this.clientId});
 
   /// List of proxy servers
   final List<Proxy> proxies;
@@ -25,25 +21,23 @@ final class Proxies extends TdObject {
 
   /// Parses a [Proxies] from TDLib JSON.
   factory Proxies.fromJson(Map<String, dynamic> json) => Proxies(
-        proxies: _readList<Proxy>(
-            json['proxies'], (e) => _readObject(e, Proxy.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    proxies: _readList<Proxy>(
+      json['proxies'],
+      (e) => _readObject(e, Proxy.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'proxies': [for (final e in proxies) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'proxies': [for (final e in proxies) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  Proxies copyWith({
-    List<Proxy>? proxies,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  Proxies copyWith({List<Proxy>? proxies, dynamic extra, int? clientId}) =>
       Proxies(
         proxies: proxies ?? this.proxies,
         extra: extra ?? this.extra,

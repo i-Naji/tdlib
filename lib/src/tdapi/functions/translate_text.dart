@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [FormattedText].
 final class TranslateText extends TdFunction<FormattedText> {
   /// Translates a text to the given language. If the current user is a Telegram Premium user, then text formatting is preserved
-  const TranslateText({
-    required this.text,
-    required this.toLanguageCode,
-  });
+  const TranslateText({required this.text, required this.toLanguageCode});
 
   /// Text to translate
   final FormattedText text;
@@ -21,18 +18,15 @@ final class TranslateText extends TdFunction<FormattedText> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'to_language_code': toLanguageCode,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'to_language_code': toLanguageCode,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TranslateText copyWith({
-    FormattedText? text,
-    String? toLanguageCode,
-  }) =>
+  TranslateText copyWith({FormattedText? text, String? toLanguageCode}) =>
       TranslateText(
         text: text ?? this.text,
         toLanguageCode: toLanguageCode ?? this.toLanguageCode,

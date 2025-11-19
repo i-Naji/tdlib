@@ -33,14 +33,14 @@ final class GetVideoChatStreamSegment extends TdFunction<Data> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'time_offset': timeOffset,
-        'scale': scale,
-        'channel_id': channelId,
-        'video_quality': videoQuality?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'time_offset': timeOffset,
+    'scale': scale,
+    'channel_id': channelId,
+    'video_quality': videoQuality?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class GetVideoChatStreamSegment extends TdFunction<Data> {
     int? scale,
     int? channelId,
     GroupCallVideoQuality? Function()? videoQuality,
-  }) =>
-      GetVideoChatStreamSegment(
-        groupCallId: groupCallId ?? this.groupCallId,
-        timeOffset: timeOffset ?? this.timeOffset,
-        scale: scale ?? this.scale,
-        channelId: channelId ?? this.channelId,
-        videoQuality: videoQuality != null ? videoQuality() : this.videoQuality,
-      );
+  }) => GetVideoChatStreamSegment(
+    groupCallId: groupCallId ?? this.groupCallId,
+    timeOffset: timeOffset ?? this.timeOffset,
+    scale: scale ?? this.scale,
+    channelId: channelId ?? this.channelId,
+    videoQuality: videoQuality != null ? videoQuality() : this.videoQuality,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getVideoChatStreamSegment';

@@ -50,13 +50,11 @@ final class SuggestedActionEnableArchiveAndMuteNewChats
 
   /// Parses a [SuggestedActionEnableArchiveAndMuteNewChats] from TDLib JSON.
   factory SuggestedActionEnableArchiveAndMuteNewChats.fromJson(
-          Map<String, dynamic> json) =>
-      const SuggestedActionEnableArchiveAndMuteNewChats();
+    Map<String, dynamic> json,
+  ) => const SuggestedActionEnableArchiveAndMuteNewChats();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -82,9 +80,7 @@ final class SuggestedActionCheckPassword extends SuggestedAction {
       const SuggestedActionCheckPassword();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -109,9 +105,7 @@ final class SuggestedActionCheckPhoneNumber extends SuggestedAction {
       const SuggestedActionCheckPhoneNumber();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -136,9 +130,7 @@ final class SuggestedActionViewChecksHint extends SuggestedAction {
       const SuggestedActionViewChecksHint();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -156,32 +148,28 @@ final class SuggestedActionViewChecksHint extends SuggestedAction {
 /// Suggests the user to convert specified supergroup to a broadcast group
 final class SuggestedActionConvertToBroadcastGroup extends SuggestedAction {
   /// Suggests the user to convert specified supergroup to a broadcast group
-  const SuggestedActionConvertToBroadcastGroup({
-    required this.supergroupId,
-  });
+  const SuggestedActionConvertToBroadcastGroup({required this.supergroupId});
 
   /// Supergroup identifier
   final int supergroupId;
 
   /// Parses a [SuggestedActionConvertToBroadcastGroup] from TDLib JSON.
   factory SuggestedActionConvertToBroadcastGroup.fromJson(
-          Map<String, dynamic> json) =>
-      SuggestedActionConvertToBroadcastGroup(
-        supergroupId: _readInt(json['supergroup_id']),
-      );
+    Map<String, dynamic> json,
+  ) => SuggestedActionConvertToBroadcastGroup(
+    supergroupId: _readInt(json['supergroup_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  SuggestedActionConvertToBroadcastGroup copyWith({
-    int? supergroupId,
-  }) =>
+  SuggestedActionConvertToBroadcastGroup copyWith({int? supergroupId}) =>
       SuggestedActionConvertToBroadcastGroup(
         supergroupId: supergroupId ?? this.supergroupId,
       );
@@ -196,9 +184,7 @@ final class SuggestedActionConvertToBroadcastGroup extends SuggestedAction {
 /// Suggests the user to set a 2-step verification password to be able to log in again
 final class SuggestedActionSetPassword extends SuggestedAction {
   /// Suggests the user to set a 2-step verification password to be able to log in again
-  const SuggestedActionSetPassword({
-    required this.authorizationDelay,
-  });
+  const SuggestedActionSetPassword({required this.authorizationDelay});
 
   /// The number of days to pass between consecutive authorizations if the user declines to set password; if 0, then the user is advised to set the password for security reasons
   final int authorizationDelay;
@@ -211,16 +197,14 @@ final class SuggestedActionSetPassword extends SuggestedAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'authorization_delay': authorizationDelay,
-      };
+    '@type': CONSTRUCTOR,
+    'authorization_delay': authorizationDelay,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  SuggestedActionSetPassword copyWith({
-    int? authorizationDelay,
-  }) =>
+  SuggestedActionSetPassword copyWith({int? authorizationDelay}) =>
       SuggestedActionSetPassword(
         authorizationDelay: authorizationDelay ?? this.authorizationDelay,
       );
@@ -242,9 +226,7 @@ final class SuggestedActionUpgradePremium extends SuggestedAction {
       const SuggestedActionUpgradePremium();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -269,9 +251,7 @@ final class SuggestedActionRestorePremium extends SuggestedAction {
       const SuggestedActionRestorePremium();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -293,13 +273,11 @@ final class SuggestedActionSubscribeToAnnualPremium extends SuggestedAction {
 
   /// Parses a [SuggestedActionSubscribeToAnnualPremium] from TDLib JSON.
   factory SuggestedActionSubscribeToAnnualPremium.fromJson(
-          Map<String, dynamic> json) =>
-      const SuggestedActionSubscribeToAnnualPremium();
+    Map<String, dynamic> json,
+  ) => const SuggestedActionSubscribeToAnnualPremium();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -321,13 +299,11 @@ final class SuggestedActionGiftPremiumForChristmas extends SuggestedAction {
 
   /// Parses a [SuggestedActionGiftPremiumForChristmas] from TDLib JSON.
   factory SuggestedActionGiftPremiumForChristmas.fromJson(
-          Map<String, dynamic> json) =>
-      const SuggestedActionGiftPremiumForChristmas();
+    Map<String, dynamic> json,
+  ) => const SuggestedActionGiftPremiumForChristmas();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -352,9 +328,7 @@ final class SuggestedActionSetBirthdate extends SuggestedAction {
       const SuggestedActionSetBirthdate();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -378,9 +352,7 @@ final class SuggestedActionSetProfilePhoto extends SuggestedAction {
       const SuggestedActionSetProfilePhoto();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -408,26 +380,26 @@ final class SuggestedActionExtendPremium extends SuggestedAction {
   /// Parses a [SuggestedActionExtendPremium] from TDLib JSON.
   factory SuggestedActionExtendPremium.fromJson(Map<String, dynamic> json) =>
       SuggestedActionExtendPremium(
-        managePremiumSubscriptionUrl:
-            _readString(json['manage_premium_subscription_url']),
+        managePremiumSubscriptionUrl: _readString(
+          json['manage_premium_subscription_url'],
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'manage_premium_subscription_url': managePremiumSubscriptionUrl,
-      };
+    '@type': CONSTRUCTOR,
+    'manage_premium_subscription_url': managePremiumSubscriptionUrl,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SuggestedActionExtendPremium copyWith({
     String? managePremiumSubscriptionUrl,
-  }) =>
-      SuggestedActionExtendPremium(
-        managePremiumSubscriptionUrl:
-            managePremiumSubscriptionUrl ?? this.managePremiumSubscriptionUrl,
-      );
+  }) => SuggestedActionExtendPremium(
+    managePremiumSubscriptionUrl:
+        managePremiumSubscriptionUrl ?? this.managePremiumSubscriptionUrl,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'suggestedActionExtendPremium';
@@ -443,13 +415,11 @@ final class SuggestedActionExtendStarSubscriptions extends SuggestedAction {
 
   /// Parses a [SuggestedActionExtendStarSubscriptions] from TDLib JSON.
   factory SuggestedActionExtendStarSubscriptions.fromJson(
-          Map<String, dynamic> json) =>
-      const SuggestedActionExtendStarSubscriptions();
+    Map<String, dynamic> json,
+  ) => const SuggestedActionExtendStarSubscriptions();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -497,12 +467,12 @@ final class SuggestedActionCustom extends SuggestedAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        'title': title.toJson(),
-        'description': description.toJson(),
-        'url': url,
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    'title': title.toJson(),
+    'description': description.toJson(),
+    'url': url,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -512,13 +482,12 @@ final class SuggestedActionCustom extends SuggestedAction {
     FormattedText? title,
     FormattedText? description,
     String? url,
-  }) =>
-      SuggestedActionCustom(
-        name: name ?? this.name,
-        title: title ?? this.title,
-        description: description ?? this.description,
-        url: url ?? this.url,
-      );
+  }) => SuggestedActionCustom(
+    name: name ?? this.name,
+    title: title ?? this.title,
+    description: description ?? this.description,
+    url: url ?? this.url,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'suggestedActionCustom';

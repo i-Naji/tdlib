@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Session].
 final class ConfirmQrCodeAuthentication extends TdFunction<Session> {
   /// Confirms QR code authentication on another device. Returns created session on success
-  const ConfirmQrCodeAuthentication({
-    required this.link,
-  });
+  const ConfirmQrCodeAuthentication({required this.link});
 
   /// A link from a QR code. The link must be scanned by the in-app camera
   final String link;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'link': link,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'link': link,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ConfirmQrCodeAuthentication copyWith({
-    String? link,
-  }) =>
-      ConfirmQrCodeAuthentication(
-        link: link ?? this.link,
-      );
+  ConfirmQrCodeAuthentication copyWith({String? link}) =>
+      ConfirmQrCodeAuthentication(link: link ?? this.link);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'confirmQrCodeAuthentication';

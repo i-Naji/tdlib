@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class DeleteBusinessChatLink extends TdFunction<Ok> {
   /// Deletes a business chat link of the current account
-  const DeleteBusinessChatLink({
-    required this.link,
-  });
+  const DeleteBusinessChatLink({required this.link});
 
   /// The link to delete
   final String link;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'link': link,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'link': link,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteBusinessChatLink copyWith({
-    String? link,
-  }) =>
-      DeleteBusinessChatLink(
-        link: link ?? this.link,
-      );
+  DeleteBusinessChatLink copyWith({String? link}) =>
+      DeleteBusinessChatLink(link: link ?? this.link);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deleteBusinessChatLink';

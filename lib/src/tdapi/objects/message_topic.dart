@@ -45,34 +45,27 @@ final class UndecodedMessageTopic extends MessageTopic {
 /// A topic in a non-forum supergroup chat
 final class MessageTopicThread extends MessageTopic {
   /// A topic in a non-forum supergroup chat
-  const MessageTopicThread({
-    required this.messageThreadId,
-  });
+  const MessageTopicThread({required this.messageThreadId});
 
   /// Unique identifier of the message thread
   final int messageThreadId;
 
   /// Parses a [MessageTopicThread] from TDLib JSON.
   factory MessageTopicThread.fromJson(Map<String, dynamic> json) =>
-      MessageTopicThread(
-        messageThreadId: _readInt(json['message_thread_id']),
-      );
+      MessageTopicThread(messageThreadId: _readInt(json['message_thread_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message_thread_id': messageThreadId,
-      };
+    '@type': CONSTRUCTOR,
+    'message_thread_id': messageThreadId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageTopicThread copyWith({
-    int? messageThreadId,
-  }) =>
-      MessageTopicThread(
-        messageThreadId: messageThreadId ?? this.messageThreadId,
-      );
+  MessageTopicThread copyWith({int? messageThreadId}) => MessageTopicThread(
+    messageThreadId: messageThreadId ?? this.messageThreadId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageTopicThread';
@@ -84,34 +77,26 @@ final class MessageTopicThread extends MessageTopic {
 /// A topic in a forum supergroup chat or a chat with a bot
 final class MessageTopicForum extends MessageTopic {
   /// A topic in a forum supergroup chat or a chat with a bot
-  const MessageTopicForum({
-    required this.forumTopicId,
-  });
+  const MessageTopicForum({required this.forumTopicId});
 
   /// Unique identifier of the forum topic
   final int forumTopicId;
 
   /// Parses a [MessageTopicForum] from TDLib JSON.
   factory MessageTopicForum.fromJson(Map<String, dynamic> json) =>
-      MessageTopicForum(
-        forumTopicId: _readInt(json['forum_topic_id']),
-      );
+      MessageTopicForum(forumTopicId: _readInt(json['forum_topic_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'forum_topic_id': forumTopicId,
-      };
+    '@type': CONSTRUCTOR,
+    'forum_topic_id': forumTopicId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageTopicForum copyWith({
-    int? forumTopicId,
-  }) =>
-      MessageTopicForum(
-        forumTopicId: forumTopicId ?? this.forumTopicId,
-      );
+  MessageTopicForum copyWith({int? forumTopicId}) =>
+      MessageTopicForum(forumTopicId: forumTopicId ?? this.forumTopicId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageTopicForum';
@@ -123,9 +108,7 @@ final class MessageTopicForum extends MessageTopic {
 /// A topic in a channel direct messages chat administered by the current user
 final class MessageTopicDirectMessages extends MessageTopic {
   /// A topic in a channel direct messages chat administered by the current user
-  const MessageTopicDirectMessages({
-    required this.directMessagesChatTopicId,
-  });
+  const MessageTopicDirectMessages({required this.directMessagesChatTopicId});
 
   /// Unique identifier of the topic
   final int directMessagesChatTopicId;
@@ -133,22 +116,21 @@ final class MessageTopicDirectMessages extends MessageTopic {
   /// Parses a [MessageTopicDirectMessages] from TDLib JSON.
   factory MessageTopicDirectMessages.fromJson(Map<String, dynamic> json) =>
       MessageTopicDirectMessages(
-        directMessagesChatTopicId:
-            _readInt(json['direct_messages_chat_topic_id']),
+        directMessagesChatTopicId: _readInt(
+          json['direct_messages_chat_topic_id'],
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'direct_messages_chat_topic_id': directMessagesChatTopicId,
-      };
+    '@type': CONSTRUCTOR,
+    'direct_messages_chat_topic_id': directMessagesChatTopicId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageTopicDirectMessages copyWith({
-    int? directMessagesChatTopicId,
-  }) =>
+  MessageTopicDirectMessages copyWith({int? directMessagesChatTopicId}) =>
       MessageTopicDirectMessages(
         directMessagesChatTopicId:
             directMessagesChatTopicId ?? this.directMessagesChatTopicId,
@@ -164,9 +146,7 @@ final class MessageTopicDirectMessages extends MessageTopic {
 /// A topic in Saved Messages chat
 final class MessageTopicSavedMessages extends MessageTopic {
   /// A topic in Saved Messages chat
-  const MessageTopicSavedMessages({
-    required this.savedMessagesTopicId,
-  });
+  const MessageTopicSavedMessages({required this.savedMessagesTopicId});
 
   /// Unique identifier of the Saved Messages topic
   final int savedMessagesTopicId;
@@ -179,16 +159,14 @@ final class MessageTopicSavedMessages extends MessageTopic {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'saved_messages_topic_id': savedMessagesTopicId,
-      };
+    '@type': CONSTRUCTOR,
+    'saved_messages_topic_id': savedMessagesTopicId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageTopicSavedMessages copyWith({
-    int? savedMessagesTopicId,
-  }) =>
+  MessageTopicSavedMessages copyWith({int? savedMessagesTopicId}) =>
       MessageTopicSavedMessages(
         savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
       );

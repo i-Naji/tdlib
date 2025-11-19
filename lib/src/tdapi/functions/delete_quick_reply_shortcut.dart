@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class DeleteQuickReplyShortcut extends TdFunction<Ok> {
   /// Deletes a quick reply shortcut
-  const DeleteQuickReplyShortcut({
-    required this.shortcutId,
-  });
+  const DeleteQuickReplyShortcut({required this.shortcutId});
 
   /// Unique identifier of the quick reply shortcut
   final int shortcutId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'shortcut_id': shortcutId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'shortcut_id': shortcutId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteQuickReplyShortcut copyWith({
-    int? shortcutId,
-  }) =>
-      DeleteQuickReplyShortcut(
-        shortcutId: shortcutId ?? this.shortcutId,
-      );
+  DeleteQuickReplyShortcut copyWith({int? shortcutId}) =>
+      DeleteQuickReplyShortcut(shortcutId: shortcutId ?? this.shortcutId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deleteQuickReplyShortcut';

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Text].
 final class GetCountryFlagEmoji extends TdFunction<Text> {
   /// Returns an emoji for the given country. Returns an empty string on failure. Can be called synchronously
-  const GetCountryFlagEmoji({
-    required this.countryCode,
-  });
+  const GetCountryFlagEmoji({required this.countryCode});
 
   /// A two-letter ISO 3166-1 alpha-2 country code as received from getCountries
   final String countryCode;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'country_code': countryCode,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'country_code': countryCode,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetCountryFlagEmoji copyWith({
-    String? countryCode,
-  }) =>
-      GetCountryFlagEmoji(
-        countryCode: countryCode ?? this.countryCode,
-      );
+  GetCountryFlagEmoji copyWith({String? countryCode}) =>
+      GetCountryFlagEmoji(countryCode: countryCode ?? this.countryCode);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getCountryFlagEmoji';

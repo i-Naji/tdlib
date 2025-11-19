@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [StarRevenueStatistics].
 final class GetStarRevenueStatistics extends TdFunction<StarRevenueStatistics> {
   /// Returns detailed Telegram Star revenue statistics
-  const GetStarRevenueStatistics({
-    required this.ownerId,
-    required this.isDark,
-  });
+  const GetStarRevenueStatistics({required this.ownerId, required this.isDark});
 
   /// Identifier of the owner of the Telegram Stars; can be identifier of the current user, an owned bot, or a supergroup or a channel chat with supergroupFullInfo.can_get_star_revenue_statistics == true
   final MessageSender ownerId;
@@ -21,18 +18,15 @@ final class GetStarRevenueStatistics extends TdFunction<StarRevenueStatistics> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'owner_id': ownerId.toJson(),
-        'is_dark': isDark,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'owner_id': ownerId.toJson(),
+    'is_dark': isDark,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetStarRevenueStatistics copyWith({
-    MessageSender? ownerId,
-    bool? isDark,
-  }) =>
+  GetStarRevenueStatistics copyWith({MessageSender? ownerId, bool? isDark}) =>
       GetStarRevenueStatistics(
         ownerId: ownerId ?? this.ownerId,
         isDark: isDark ?? this.isDark,

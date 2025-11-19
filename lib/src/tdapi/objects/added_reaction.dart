@@ -27,20 +27,20 @@ final class AddedReaction extends TdObject {
 
   /// Parses a [AddedReaction] from TDLib JSON.
   factory AddedReaction.fromJson(Map<String, dynamic> json) => AddedReaction(
-        type: _readObject(json['type'], ReactionType.fromJson),
-        senderId: _readObject(json['sender_id'], MessageSender.fromJson),
-        isOutgoing: _readBool(json['is_outgoing']),
-        date: _readInt(json['date']),
-      );
+    type: _readObject(json['type'], ReactionType.fromJson),
+    senderId: _readObject(json['sender_id'], MessageSender.fromJson),
+    isOutgoing: _readBool(json['is_outgoing']),
+    date: _readInt(json['date']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-        'sender_id': senderId.toJson(),
-        'is_outgoing': isOutgoing,
-        'date': date,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+    'sender_id': senderId.toJson(),
+    'is_outgoing': isOutgoing,
+    'date': date,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class AddedReaction extends TdObject {
     MessageSender? senderId,
     bool? isOutgoing,
     int? date,
-  }) =>
-      AddedReaction(
-        type: type ?? this.type,
-        senderId: senderId ?? this.senderId,
-        isOutgoing: isOutgoing ?? this.isOutgoing,
-        date: date ?? this.date,
-      );
+  }) => AddedReaction(
+    type: type ?? this.type,
+    senderId: senderId ?? this.senderId,
+    isOutgoing: isOutgoing ?? this.isOutgoing,
+    date: date ?? this.date,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addedReaction';

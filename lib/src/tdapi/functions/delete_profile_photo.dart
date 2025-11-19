@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class DeleteProfilePhoto extends TdFunction<Ok> {
   /// Deletes a profile photo
-  const DeleteProfilePhoto({
-    required this.profilePhotoId,
-  });
+  const DeleteProfilePhoto({required this.profilePhotoId});
 
   /// Identifier of the profile photo to delete
   final int profilePhotoId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'profile_photo_id': profilePhotoId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'profile_photo_id': profilePhotoId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteProfilePhoto copyWith({
-    int? profilePhotoId,
-  }) =>
-      DeleteProfilePhoto(
-        profilePhotoId: profilePhotoId ?? this.profilePhotoId,
-      );
+  DeleteProfilePhoto copyWith({int? profilePhotoId}) =>
+      DeleteProfilePhoto(profilePhotoId: profilePhotoId ?? this.profilePhotoId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deleteProfilePhoto';

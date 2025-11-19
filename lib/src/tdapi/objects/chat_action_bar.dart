@@ -45,34 +45,26 @@ final class UndecodedChatActionBar extends ChatActionBar {
 /// The chat can be reported as spam using the method reportChat with an empty option_id and message_ids. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown
 final class ChatActionBarReportSpam extends ChatActionBar {
   /// The chat can be reported as spam using the method reportChat with an empty option_id and message_ids. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown
-  const ChatActionBarReportSpam({
-    required this.canUnarchive,
-  });
+  const ChatActionBarReportSpam({required this.canUnarchive});
 
   /// If true, the chat was automatically archived and can be moved back to the main chat list using addChatToList simultaneously with setting chat notification settings to default using setChatNotificationSettings
   final bool canUnarchive;
 
   /// Parses a [ChatActionBarReportSpam] from TDLib JSON.
   factory ChatActionBarReportSpam.fromJson(Map<String, dynamic> json) =>
-      ChatActionBarReportSpam(
-        canUnarchive: _readBool(json['can_unarchive']),
-      );
+      ChatActionBarReportSpam(canUnarchive: _readBool(json['can_unarchive']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'can_unarchive': canUnarchive,
-      };
+    '@type': CONSTRUCTOR,
+    'can_unarchive': canUnarchive,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatActionBarReportSpam copyWith({
-    bool? canUnarchive,
-  }) =>
-      ChatActionBarReportSpam(
-        canUnarchive: canUnarchive ?? this.canUnarchive,
-      );
+  ChatActionBarReportSpam copyWith({bool? canUnarchive}) =>
+      ChatActionBarReportSpam(canUnarchive: canUnarchive ?? this.canUnarchive);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatActionBarReportSpam';
@@ -91,9 +83,7 @@ final class ChatActionBarInviteMembers extends ChatActionBar {
       const ChatActionBarInviteMembers();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -130,10 +120,10 @@ final class ChatActionBarReportAddBlock extends ChatActionBar {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'can_unarchive': canUnarchive,
-        'account_info': accountInfo?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'can_unarchive': canUnarchive,
+    'account_info': accountInfo?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -141,11 +131,10 @@ final class ChatActionBarReportAddBlock extends ChatActionBar {
   ChatActionBarReportAddBlock copyWith({
     bool? canUnarchive,
     AccountInfo? Function()? accountInfo,
-  }) =>
-      ChatActionBarReportAddBlock(
-        canUnarchive: canUnarchive ?? this.canUnarchive,
-        accountInfo: accountInfo != null ? accountInfo() : this.accountInfo,
-      );
+  }) => ChatActionBarReportAddBlock(
+    canUnarchive: canUnarchive ?? this.canUnarchive,
+    accountInfo: accountInfo != null ? accountInfo() : this.accountInfo,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatActionBarReportAddBlock';
@@ -164,9 +153,7 @@ final class ChatActionBarAddContact extends ChatActionBar {
       const ChatActionBarAddContact();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -190,9 +177,7 @@ final class ChatActionBarSharePhoneNumber extends ChatActionBar {
       const ChatActionBarSharePhoneNumber();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -235,11 +220,11 @@ final class ChatActionBarJoinRequest extends ChatActionBar {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-        'is_channel': isChannel,
-        'request_date': requestDate,
-      };
+    '@type': CONSTRUCTOR,
+    'title': title,
+    'is_channel': isChannel,
+    'request_date': requestDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -248,12 +233,11 @@ final class ChatActionBarJoinRequest extends ChatActionBar {
     String? title,
     bool? isChannel,
     int? requestDate,
-  }) =>
-      ChatActionBarJoinRequest(
-        title: title ?? this.title,
-        isChannel: isChannel ?? this.isChannel,
-        requestDate: requestDate ?? this.requestDate,
-      );
+  }) => ChatActionBarJoinRequest(
+    title: title ?? this.title,
+    isChannel: isChannel ?? this.isChannel,
+    requestDate: requestDate ?? this.requestDate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatActionBarJoinRequest';

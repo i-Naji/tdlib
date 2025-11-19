@@ -51,15 +51,15 @@ final class PremiumGiftPaymentOption extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'currency': currency,
-        'amount': amount,
-        'star_count': starCount,
-        'discount_percentage': discountPercentage,
-        'month_count': monthCount,
-        'store_product_id': storeProductId,
-        'sticker': sticker?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'currency': currency,
+    'amount': amount,
+    'star_count': starCount,
+    'discount_percentage': discountPercentage,
+    'month_count': monthCount,
+    'store_product_id': storeProductId,
+    'sticker': sticker?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -71,16 +71,15 @@ final class PremiumGiftPaymentOption extends TdObject {
     int? monthCount,
     String? storeProductId,
     Sticker? Function()? sticker,
-  }) =>
-      PremiumGiftPaymentOption(
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        starCount: starCount ?? this.starCount,
-        discountPercentage: discountPercentage ?? this.discountPercentage,
-        monthCount: monthCount ?? this.monthCount,
-        storeProductId: storeProductId ?? this.storeProductId,
-        sticker: sticker != null ? sticker() : this.sticker,
-      );
+  }) => PremiumGiftPaymentOption(
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    starCount: starCount ?? this.starCount,
+    discountPercentage: discountPercentage ?? this.discountPercentage,
+    monthCount: monthCount ?? this.monthCount,
+    storeProductId: storeProductId ?? this.storeProductId,
+    sticker: sticker != null ? sticker() : this.sticker,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumGiftPaymentOption';

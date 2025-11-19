@@ -33,9 +33,9 @@ final class LogVerbosityLevel extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'verbosity_level': verbosityLevel,
-      };
+    '@type': CONSTRUCTOR,
+    'verbosity_level': verbosityLevel,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class LogVerbosityLevel extends TdObject {
     int? verbosityLevel,
     dynamic extra,
     int? clientId,
-  }) =>
-      LogVerbosityLevel(
-        verbosityLevel: verbosityLevel ?? this.verbosityLevel,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => LogVerbosityLevel(
+    verbosityLevel: verbosityLevel ?? this.verbosityLevel,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'logVerbosityLevel';

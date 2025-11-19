@@ -25,25 +25,20 @@ final class ReadFilePart extends TdFunction<Data> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'file_id': fileId,
-        'offset': offset,
-        'count': count,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'file_id': fileId,
+    'offset': offset,
+    'count': count,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ReadFilePart copyWith({
-    int? fileId,
-    int? offset,
-    int? count,
-  }) =>
-      ReadFilePart(
-        fileId: fileId ?? this.fileId,
-        offset: offset ?? this.offset,
-        count: count ?? this.count,
-      );
+  ReadFilePart copyWith({int? fileId, int? offset, int? count}) => ReadFilePart(
+    fileId: fileId ?? this.fileId,
+    offset: offset ?? this.offset,
+    count: count ?? this.count,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'readFilePart';

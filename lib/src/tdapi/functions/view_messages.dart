@@ -29,13 +29,13 @@ final class ViewMessages extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_ids': messageIds,
-        'source': source?.toJson(),
-        'force_read': forceRead,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_ids': messageIds,
+    'source': source?.toJson(),
+    'force_read': forceRead,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class ViewMessages extends TdFunction<Ok> {
     List<int>? messageIds,
     MessageSource? Function()? source,
     bool? forceRead,
-  }) =>
-      ViewMessages(
-        chatId: chatId ?? this.chatId,
-        messageIds: messageIds ?? this.messageIds,
-        source: source != null ? source() : this.source,
-        forceRead: forceRead ?? this.forceRead,
-      );
+  }) => ViewMessages(
+    chatId: chatId ?? this.chatId,
+    messageIds: messageIds ?? this.messageIds,
+    source: source != null ? source() : this.source,
+    forceRead: forceRead ?? this.forceRead,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'viewMessages';

@@ -35,41 +35,16 @@ class TdWebPlugin extends TdPlugin {
   num tdGetTimeout() => _platform.td_get_timeout();
 
   @override
-  int tdJsonClientCreate() {
-    throw UnsupportedError("tdJsonClientCreate not supported in web platform");
-  }
-
-  @override
-  String? tdJsonClientExecute(String event) {
-    throw UnsupportedError("tdJsonClientExecute not supported in web platform");
-  }
-
-  @override
-  String? tdJsonClientReceive(int clientId, [double timeout = 0]) {
-    throw UnsupportedError(
-        "tdJsonClientReceive is not supported in web platform");
-  }
-
-  @override
-  void tdJsonClientSend(int clientId, String event) {
-    throw UnsupportedError("tdJsonClientSend is not supported in web platform");
-  }
-
-  @override
-  void tdJsonClientDestroy(int clientId) {
-    throw UnsupportedError(
-        "tdJsonClientDestroy is not supported in web platform");
-  }
-
-  @override
   void removeLogMessageCallback() {
     throw UnsupportedError(
-        "removeLogMessageCallback is not supported in web platform");
+      "removeLogMessageCallback is not supported in web platform",
+    );
   }
 
   @override
   void setLogMessageCallback(int maxVerbosityLevel, callback) {
     throw UnsupportedError(
-        "setLogMessageCallback is not supported in web platform");
+      "setLogMessageCallback is not supported in web platform",
+    );
   }
 }

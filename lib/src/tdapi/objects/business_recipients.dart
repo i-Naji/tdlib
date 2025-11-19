@@ -51,15 +51,15 @@ final class BusinessRecipients extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_ids': chatIds,
-        'excluded_chat_ids': excludedChatIds,
-        'select_existing_chats': selectExistingChats,
-        'select_new_chats': selectNewChats,
-        'select_contacts': selectContacts,
-        'select_non_contacts': selectNonContacts,
-        'exclude_selected': excludeSelected,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_ids': chatIds,
+    'excluded_chat_ids': excludedChatIds,
+    'select_existing_chats': selectExistingChats,
+    'select_new_chats': selectNewChats,
+    'select_contacts': selectContacts,
+    'select_non_contacts': selectNonContacts,
+    'exclude_selected': excludeSelected,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -71,16 +71,15 @@ final class BusinessRecipients extends TdObject {
     bool? selectContacts,
     bool? selectNonContacts,
     bool? excludeSelected,
-  }) =>
-      BusinessRecipients(
-        chatIds: chatIds ?? this.chatIds,
-        excludedChatIds: excludedChatIds ?? this.excludedChatIds,
-        selectExistingChats: selectExistingChats ?? this.selectExistingChats,
-        selectNewChats: selectNewChats ?? this.selectNewChats,
-        selectContacts: selectContacts ?? this.selectContacts,
-        selectNonContacts: selectNonContacts ?? this.selectNonContacts,
-        excludeSelected: excludeSelected ?? this.excludeSelected,
-      );
+  }) => BusinessRecipients(
+    chatIds: chatIds ?? this.chatIds,
+    excludedChatIds: excludedChatIds ?? this.excludedChatIds,
+    selectExistingChats: selectExistingChats ?? this.selectExistingChats,
+    selectNewChats: selectNewChats ?? this.selectNewChats,
+    selectContacts: selectContacts ?? this.selectContacts,
+    selectNonContacts: selectNonContacts ?? this.selectNonContacts,
+    excludeSelected: excludeSelected ?? this.excludeSelected,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'businessRecipients';

@@ -33,9 +33,9 @@ final class EmojiStatusCustomEmojis extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'custom_emoji_ids': [for (final e in customEmojiIds) e.toString()],
-      };
+    '@type': CONSTRUCTOR,
+    'custom_emoji_ids': [for (final e in customEmojiIds) e.toString()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class EmojiStatusCustomEmojis extends TdObject {
     List<int>? customEmojiIds,
     dynamic extra,
     int? clientId,
-  }) =>
-      EmojiStatusCustomEmojis(
-        customEmojiIds: customEmojiIds ?? this.customEmojiIds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => EmojiStatusCustomEmojis(
+    customEmojiIds: customEmojiIds ?? this.customEmojiIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'emojiStatusCustomEmojis';

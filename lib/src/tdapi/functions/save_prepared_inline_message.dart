@@ -26,12 +26,12 @@ final class SavePreparedInlineMessage
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'result': result.toJson(),
-        'chat_types': chatTypes.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'result': result.toJson(),
+    'chat_types': chatTypes.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -39,12 +39,11 @@ final class SavePreparedInlineMessage
     int? userId,
     InputInlineQueryResult? result,
     TargetChatTypes? chatTypes,
-  }) =>
-      SavePreparedInlineMessage(
-        userId: userId ?? this.userId,
-        result: result ?? this.result,
-        chatTypes: chatTypes ?? this.chatTypes,
-      );
+  }) => SavePreparedInlineMessage(
+    userId: userId ?? this.userId,
+    result: result ?? this.result,
+    chatTypes: chatTypes ?? this.chatTypes,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'savePreparedInlineMessage';

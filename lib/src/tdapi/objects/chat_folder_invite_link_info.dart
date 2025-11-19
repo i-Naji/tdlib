@@ -34,8 +34,10 @@ final class ChatFolderInviteLinkInfo extends TdObject {
   /// Parses a [ChatFolderInviteLinkInfo] from TDLib JSON.
   factory ChatFolderInviteLinkInfo.fromJson(Map<String, dynamic> json) =>
       ChatFolderInviteLinkInfo(
-        chatFolderInfo:
-            _readObject(json['chat_folder_info'], ChatFolderInfo.fromJson),
+        chatFolderInfo: _readObject(
+          json['chat_folder_info'],
+          ChatFolderInfo.fromJson,
+        ),
         missingChatIds: _readList<int>(json['missing_chat_ids'], _readInt),
         addedChatIds: _readList<int>(json['added_chat_ids'], _readInt),
         extra: json['@extra'],
@@ -44,11 +46,11 @@ final class ChatFolderInviteLinkInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_folder_info': chatFolderInfo.toJson(),
-        'missing_chat_ids': missingChatIds,
-        'added_chat_ids': addedChatIds,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_folder_info': chatFolderInfo.toJson(),
+    'missing_chat_ids': missingChatIds,
+    'added_chat_ids': addedChatIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -58,14 +60,13 @@ final class ChatFolderInviteLinkInfo extends TdObject {
     List<int>? addedChatIds,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatFolderInviteLinkInfo(
-        chatFolderInfo: chatFolderInfo ?? this.chatFolderInfo,
-        missingChatIds: missingChatIds ?? this.missingChatIds,
-        addedChatIds: addedChatIds ?? this.addedChatIds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatFolderInviteLinkInfo(
+    chatFolderInfo: chatFolderInfo ?? this.chatFolderInfo,
+    missingChatIds: missingChatIds ?? this.missingChatIds,
+    addedChatIds: addedChatIds ?? this.addedChatIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatFolderInviteLinkInfo';

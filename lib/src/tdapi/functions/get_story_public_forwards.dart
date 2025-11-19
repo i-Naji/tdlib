@@ -29,13 +29,13 @@ final class GetStoryPublicForwards extends TdFunction<PublicForwards> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'story_id': storyId,
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class GetStoryPublicForwards extends TdFunction<PublicForwards> {
     int? storyId,
     String? offset,
     int? limit,
-  }) =>
-      GetStoryPublicForwards(
-        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-        storyId: storyId ?? this.storyId,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => GetStoryPublicForwards(
+    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+    storyId: storyId ?? this.storyId,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getStoryPublicForwards';

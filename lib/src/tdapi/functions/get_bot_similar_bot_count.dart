@@ -21,18 +21,15 @@ final class GetBotSimilarBotCount extends TdFunction<Count> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'return_local': returnLocal,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'return_local': returnLocal,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetBotSimilarBotCount copyWith({
-    int? botUserId,
-    bool? returnLocal,
-  }) =>
+  GetBotSimilarBotCount copyWith({int? botUserId, bool? returnLocal}) =>
       GetBotSimilarBotCount(
         botUserId: botUserId ?? this.botUserId,
         returnLocal: returnLocal ?? this.returnLocal,

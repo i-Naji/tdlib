@@ -21,22 +21,21 @@ final class SetUserPrivacySettingRules extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'setting': setting.toJson(),
-        'rules': rules.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'setting': setting.toJson(),
+    'rules': rules.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetUserPrivacySettingRules copyWith({
     UserPrivacySetting? setting,
     UserPrivacySettingRules? rules,
-  }) =>
-      SetUserPrivacySettingRules(
-        setting: setting ?? this.setting,
-        rules: rules ?? this.rules,
-      );
+  }) => SetUserPrivacySettingRules(
+    setting: setting ?? this.setting,
+    rules: rules ?? this.rules,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setUserPrivacySettingRules';

@@ -26,12 +26,12 @@ final class CreateChatSubscriptionInviteLink
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'name': name,
-        'subscription_pricing': subscriptionPricing.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'name': name,
+    'subscription_pricing': subscriptionPricing.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -39,12 +39,11 @@ final class CreateChatSubscriptionInviteLink
     int? chatId,
     String? name,
     StarSubscriptionPricing? subscriptionPricing,
-  }) =>
-      CreateChatSubscriptionInviteLink(
-        chatId: chatId ?? this.chatId,
-        name: name ?? this.name,
-        subscriptionPricing: subscriptionPricing ?? this.subscriptionPricing,
-      );
+  }) => CreateChatSubscriptionInviteLink(
+    chatId: chatId ?? this.chatId,
+    name: name ?? this.name,
+    subscriptionPricing: subscriptionPricing ?? this.subscriptionPricing,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'createChatSubscriptionInviteLink';

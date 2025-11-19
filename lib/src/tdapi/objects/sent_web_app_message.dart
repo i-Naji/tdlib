@@ -33,9 +33,9 @@ final class SentWebAppMessage extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'inline_message_id': inlineMessageId,
-      };
+    '@type': CONSTRUCTOR,
+    'inline_message_id': inlineMessageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class SentWebAppMessage extends TdObject {
     String? inlineMessageId,
     dynamic extra,
     int? clientId,
-  }) =>
-      SentWebAppMessage(
-        inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => SentWebAppMessage(
+    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sentWebAppMessage';

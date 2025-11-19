@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetChatTitle extends TdFunction<Ok> {
   /// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info member right
-  const SetChatTitle({
-    required this.chatId,
-    required this.title,
-  });
+  const SetChatTitle({required this.chatId, required this.title});
 
   /// Chat identifier
   final int chatId;
@@ -21,22 +18,16 @@ final class SetChatTitle extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'title': title,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'title': title,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetChatTitle copyWith({
-    int? chatId,
-    String? title,
-  }) =>
-      SetChatTitle(
-        chatId: chatId ?? this.chatId,
-        title: title ?? this.title,
-      );
+  SetChatTitle copyWith({int? chatId, String? title}) =>
+      SetChatTitle(chatId: chatId ?? this.chatId, title: title ?? this.title);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setChatTitle';

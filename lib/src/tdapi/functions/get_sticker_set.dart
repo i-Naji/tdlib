@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [StickerSet].
 final class GetStickerSet extends TdFunction<StickerSet> {
   /// Returns information about a sticker set by its identifier
-  const GetStickerSet({
-    required this.setId,
-  });
+  const GetStickerSet({required this.setId});
 
   /// Identifier of the sticker set
   final int setId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'set_id': setId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'set_id': setId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetStickerSet copyWith({
-    int? setId,
-  }) =>
-      GetStickerSet(
-        setId: setId ?? this.setId,
-      );
+  GetStickerSet copyWith({int? setId}) =>
+      GetStickerSet(setId: setId ?? this.setId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getStickerSet';

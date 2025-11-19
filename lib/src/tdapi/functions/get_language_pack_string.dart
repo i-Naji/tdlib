@@ -29,13 +29,13 @@ final class GetLanguagePackString extends TdFunction<LanguagePackStringValue> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'language_pack_database_path': languagePackDatabasePath,
-        'localization_target': localizationTarget,
-        'language_pack_id': languagePackId,
-        'key': key,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'language_pack_database_path': languagePackDatabasePath,
+    'localization_target': localizationTarget,
+    'language_pack_id': languagePackId,
+    'key': key,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,14 +44,13 @@ final class GetLanguagePackString extends TdFunction<LanguagePackStringValue> {
     String? localizationTarget,
     String? languagePackId,
     String? key,
-  }) =>
-      GetLanguagePackString(
-        languagePackDatabasePath:
-            languagePackDatabasePath ?? this.languagePackDatabasePath,
-        localizationTarget: localizationTarget ?? this.localizationTarget,
-        languagePackId: languagePackId ?? this.languagePackId,
-        key: key ?? this.key,
-      );
+  }) => GetLanguagePackString(
+    languagePackDatabasePath:
+        languagePackDatabasePath ?? this.languagePackDatabasePath,
+    localizationTarget: localizationTarget ?? this.localizationTarget,
+    languagePackId: languagePackId ?? this.languagePackId,
+    key: key ?? this.key,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getLanguagePackString';

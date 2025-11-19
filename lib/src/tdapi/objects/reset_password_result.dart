@@ -47,10 +47,7 @@ final class UndecodedResetPasswordResult extends ResetPasswordResult {
 /// The password was reset
 final class ResetPasswordResultOk extends ResetPasswordResult {
   /// The password was reset
-  const ResetPasswordResultOk({
-    this.extra,
-    this.clientId,
-  });
+  const ResetPasswordResultOk({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -68,17 +65,12 @@ final class ResetPasswordResultOk extends ResetPasswordResult {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ResetPasswordResultOk copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  ResetPasswordResultOk copyWith({dynamic extra, int? clientId}) =>
       ResetPasswordResultOk(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -121,9 +113,9 @@ final class ResetPasswordResultPending extends ResetPasswordResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'pending_reset_date': pendingResetDate,
-      };
+    '@type': CONSTRUCTOR,
+    'pending_reset_date': pendingResetDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -132,12 +124,11 @@ final class ResetPasswordResultPending extends ResetPasswordResult {
     int? pendingResetDate,
     dynamic extra,
     int? clientId,
-  }) =>
-      ResetPasswordResultPending(
-        pendingResetDate: pendingResetDate ?? this.pendingResetDate,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ResetPasswordResultPending(
+    pendingResetDate: pendingResetDate ?? this.pendingResetDate,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'resetPasswordResultPending';
@@ -176,9 +167,9 @@ final class ResetPasswordResultDeclined extends ResetPasswordResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'retry_date': retryDate,
-      };
+    '@type': CONSTRUCTOR,
+    'retry_date': retryDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -187,12 +178,11 @@ final class ResetPasswordResultDeclined extends ResetPasswordResult {
     int? retryDate,
     dynamic extra,
     int? clientId,
-  }) =>
-      ResetPasswordResultDeclined(
-        retryDate: retryDate ?? this.retryDate,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ResetPasswordResultDeclined(
+    retryDate: retryDate ?? this.retryDate,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'resetPasswordResultDeclined';

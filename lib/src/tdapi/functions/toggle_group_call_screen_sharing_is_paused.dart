@@ -21,22 +21,21 @@ final class ToggleGroupCallScreenSharingIsPaused extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'is_paused': isPaused,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'is_paused': isPaused,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleGroupCallScreenSharingIsPaused copyWith({
     int? groupCallId,
     bool? isPaused,
-  }) =>
-      ToggleGroupCallScreenSharingIsPaused(
-        groupCallId: groupCallId ?? this.groupCallId,
-        isPaused: isPaused ?? this.isPaused,
-      );
+  }) => ToggleGroupCallScreenSharingIsPaused(
+    groupCallId: groupCallId ?? this.groupCallId,
+    isPaused: isPaused ?? this.isPaused,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleGroupCallScreenSharingIsPaused';

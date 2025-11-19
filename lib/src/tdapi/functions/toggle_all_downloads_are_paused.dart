@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ToggleAllDownloadsArePaused extends TdFunction<Ok> {
   /// Changes pause state of all files in the file download list
-  const ToggleAllDownloadsArePaused({
-    required this.arePaused,
-  });
+  const ToggleAllDownloadsArePaused({required this.arePaused});
 
   /// Pass true to pause all downloads; pass false to unpause them
   final bool arePaused;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'are_paused': arePaused,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'are_paused': arePaused,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ToggleAllDownloadsArePaused copyWith({
-    bool? arePaused,
-  }) =>
-      ToggleAllDownloadsArePaused(
-        arePaused: arePaused ?? this.arePaused,
-      );
+  ToggleAllDownloadsArePaused copyWith({bool? arePaused}) =>
+      ToggleAllDownloadsArePaused(arePaused: arePaused ?? this.arePaused);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleAllDownloadsArePaused';

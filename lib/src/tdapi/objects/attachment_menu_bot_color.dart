@@ -26,17 +26,14 @@ final class AttachmentMenuBotColor extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'light_color': lightColor,
-        'dark_color': darkColor,
-      };
+    '@type': CONSTRUCTOR,
+    'light_color': lightColor,
+    'dark_color': darkColor,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  AttachmentMenuBotColor copyWith({
-    int? lightColor,
-    int? darkColor,
-  }) =>
+  AttachmentMenuBotColor copyWith({int? lightColor, int? darkColor}) =>
       AttachmentMenuBotColor(
         lightColor: lightColor ?? this.lightColor,
         darkColor: darkColor ?? this.darkColor,

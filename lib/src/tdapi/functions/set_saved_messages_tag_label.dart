@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetSavedMessagesTagLabel extends TdFunction<Ok> {
   /// Changes label of a Saved Messages tag; for Telegram Premium users only
-  const SetSavedMessagesTagLabel({
-    required this.tag,
-    required this.label,
-  });
+  const SetSavedMessagesTagLabel({required this.tag, required this.label});
 
   /// The tag which label will be changed
   final ReactionType tag;
@@ -21,18 +18,15 @@ final class SetSavedMessagesTagLabel extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'tag': tag.toJson(),
-        'label': label,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'tag': tag.toJson(),
+    'label': label,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetSavedMessagesTagLabel copyWith({
-    ReactionType? tag,
-    String? label,
-  }) =>
+  SetSavedMessagesTagLabel copyWith({ReactionType? tag, String? label}) =>
       SetSavedMessagesTagLabel(
         tag: tag ?? this.tag,
         label: label ?? this.label,

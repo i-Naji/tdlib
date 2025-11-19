@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class DeleteAccount extends TdFunction<Ok> {
   /// Deletes the account of the current user, deleting all information associated with the user from the server. The phone number of the account can be used to create a new account. Can be called before authorization when the current authorization state is authorizationStateWaitPassword
-  const DeleteAccount({
-    required this.reason,
-    required this.password,
-  });
+  const DeleteAccount({required this.reason, required this.password});
 
   /// The reason why the account was deleted; optional
   final String reason;
@@ -21,22 +18,18 @@ final class DeleteAccount extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'reason': reason,
-        'password': password,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'reason': reason,
+    'password': password,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteAccount copyWith({
-    String? reason,
-    String? password,
-  }) =>
-      DeleteAccount(
-        reason: reason ?? this.reason,
-        password: password ?? this.password,
-      );
+  DeleteAccount copyWith({String? reason, String? password}) => DeleteAccount(
+    reason: reason ?? this.reason,
+    password: password ?? this.password,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deleteAccount';

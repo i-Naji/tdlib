@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SharePhoneNumber extends TdFunction<Ok> {
   /// Shares the phone number of the current user with a mutual contact. Supposed to be called when the user clicks on chatActionBarSharePhoneNumber
-  const SharePhoneNumber({
-    required this.userId,
-  });
+  const SharePhoneNumber({required this.userId});
 
   /// Identifier of the user with whom to share the phone number. The user must be a mutual contact
   final int userId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SharePhoneNumber copyWith({
-    int? userId,
-  }) =>
-      SharePhoneNumber(
-        userId: userId ?? this.userId,
-      );
+  SharePhoneNumber copyWith({int? userId}) =>
+      SharePhoneNumber(userId: userId ?? this.userId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sharePhoneNumber';

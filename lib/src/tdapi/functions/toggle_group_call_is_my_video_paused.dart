@@ -21,22 +21,21 @@ final class ToggleGroupCallIsMyVideoPaused extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'is_my_video_paused': isMyVideoPaused,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'is_my_video_paused': isMyVideoPaused,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleGroupCallIsMyVideoPaused copyWith({
     int? groupCallId,
     bool? isMyVideoPaused,
-  }) =>
-      ToggleGroupCallIsMyVideoPaused(
-        groupCallId: groupCallId ?? this.groupCallId,
-        isMyVideoPaused: isMyVideoPaused ?? this.isMyVideoPaused,
-      );
+  }) => ToggleGroupCallIsMyVideoPaused(
+    groupCallId: groupCallId ?? this.groupCallId,
+    isMyVideoPaused: isMyVideoPaused ?? this.isMyVideoPaused,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleGroupCallIsMyVideoPaused';

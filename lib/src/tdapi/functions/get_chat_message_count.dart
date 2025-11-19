@@ -29,13 +29,13 @@ final class GetChatMessageCount extends TdFunction<Count> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'topic_id': topicId?.toJson(),
-        'filter': filter.toJson(),
-        'return_local': returnLocal,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'topic_id': topicId?.toJson(),
+    'filter': filter.toJson(),
+    'return_local': returnLocal,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class GetChatMessageCount extends TdFunction<Count> {
     MessageTopic? Function()? topicId,
     SearchMessagesFilter? filter,
     bool? returnLocal,
-  }) =>
-      GetChatMessageCount(
-        chatId: chatId ?? this.chatId,
-        topicId: topicId != null ? topicId() : this.topicId,
-        filter: filter ?? this.filter,
-        returnLocal: returnLocal ?? this.returnLocal,
-      );
+  }) => GetChatMessageCount(
+    chatId: chatId ?? this.chatId,
+    topicId: topicId != null ? topicId() : this.topicId,
+    filter: filter ?? this.filter,
+    returnLocal: returnLocal ?? this.returnLocal,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatMessageCount';

@@ -13,9 +13,9 @@ final class CanTransferOwnership
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

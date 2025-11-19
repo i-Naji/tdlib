@@ -47,9 +47,7 @@ final class UndecodedMessageSelfDestructType extends MessageSelfDestructType {
 /// The message will be self-destructed in the specified time after its content was opened
 final class MessageSelfDestructTypeTimer extends MessageSelfDestructType {
   /// The message will be self-destructed in the specified time after its content was opened
-  const MessageSelfDestructTypeTimer({
-    required this.selfDestructTime,
-  });
+  const MessageSelfDestructTypeTimer({required this.selfDestructTime});
 
   /// The message's self-destruct time, in seconds; must be between 0 and 60 in private chats
   final int selfDestructTime;
@@ -62,16 +60,14 @@ final class MessageSelfDestructTypeTimer extends MessageSelfDestructType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'self_destruct_time': selfDestructTime,
-      };
+    '@type': CONSTRUCTOR,
+    'self_destruct_time': selfDestructTime,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageSelfDestructTypeTimer copyWith({
-    int? selfDestructTime,
-  }) =>
+  MessageSelfDestructTypeTimer copyWith({int? selfDestructTime}) =>
       MessageSelfDestructTypeTimer(
         selfDestructTime: selfDestructTime ?? this.selfDestructTime,
       );
@@ -90,13 +86,11 @@ final class MessageSelfDestructTypeImmediately extends MessageSelfDestructType {
 
   /// Parses a [MessageSelfDestructTypeImmediately] from TDLib JSON.
   factory MessageSelfDestructTypeImmediately.fromJson(
-          Map<String, dynamic> json) =>
-      const MessageSelfDestructTypeImmediately();
+    Map<String, dynamic> json,
+  ) => const MessageSelfDestructTypeImmediately();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

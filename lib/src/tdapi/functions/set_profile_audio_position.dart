@@ -21,18 +21,15 @@ final class SetProfileAudioPosition extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'file_id': fileId,
-        'after_file_id': afterFileId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'file_id': fileId,
+    'after_file_id': afterFileId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetProfileAudioPosition copyWith({
-    int? fileId,
-    int? afterFileId,
-  }) =>
+  SetProfileAudioPosition copyWith({int? fileId, int? afterFileId}) =>
       SetProfileAudioPosition(
         fileId: fileId ?? this.fileId,
         afterFileId: afterFileId ?? this.afterFileId,

@@ -21,22 +21,21 @@ final class DeleteChatFolderInviteLink extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_folder_id': chatFolderId,
-        'invite_link': inviteLink,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_folder_id': chatFolderId,
+    'invite_link': inviteLink,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   DeleteChatFolderInviteLink copyWith({
     int? chatFolderId,
     String? inviteLink,
-  }) =>
-      DeleteChatFolderInviteLink(
-        chatFolderId: chatFolderId ?? this.chatFolderId,
-        inviteLink: inviteLink ?? this.inviteLink,
-      );
+  }) => DeleteChatFolderInviteLink(
+    chatFolderId: chatFolderId ?? this.chatFolderId,
+    inviteLink: inviteLink ?? this.inviteLink,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deleteChatFolderInviteLink';

@@ -21,18 +21,15 @@ final class BanGroupCallParticipants extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'user_ids': [for (final e in userIds) e.toString()],
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'user_ids': [for (final e in userIds) e.toString()],
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  BanGroupCallParticipants copyWith({
-    int? groupCallId,
-    List<int>? userIds,
-  }) =>
+  BanGroupCallParticipants copyWith({int? groupCallId, List<int>? userIds}) =>
       BanGroupCallParticipants(
         groupCallId: groupCallId ?? this.groupCallId,
         userIds: userIds ?? this.userIds,

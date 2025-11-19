@@ -25,20 +25,16 @@ final class RateSpeechRecognition extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'is_good': isGood,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'is_good': isGood,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RateSpeechRecognition copyWith({
-    int? chatId,
-    int? messageId,
-    bool? isGood,
-  }) =>
+  RateSpeechRecognition copyWith({int? chatId, int? messageId, bool? isGood}) =>
       RateSpeechRecognition(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,

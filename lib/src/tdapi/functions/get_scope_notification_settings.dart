@@ -9,28 +9,22 @@ part of '../tdapi.dart';
 final class GetScopeNotificationSettings
     extends TdFunction<ScopeNotificationSettings> {
   /// Returns the notification settings for chats of a given type
-  const GetScopeNotificationSettings({
-    required this.scope,
-  });
+  const GetScopeNotificationSettings({required this.scope});
 
   /// Types of chats for which to return the notification settings information
   final NotificationSettingsScope scope;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'scope': scope.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'scope': scope.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetScopeNotificationSettings copyWith({
-    NotificationSettingsScope? scope,
-  }) =>
-      GetScopeNotificationSettings(
-        scope: scope ?? this.scope,
-      );
+  GetScopeNotificationSettings copyWith({NotificationSettingsScope? scope}) =>
+      GetScopeNotificationSettings(scope: scope ?? this.scope);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getScopeNotificationSettings';

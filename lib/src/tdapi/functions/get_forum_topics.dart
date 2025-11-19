@@ -37,15 +37,15 @@ final class GetForumTopics extends TdFunction<ForumTopics> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'query': query,
-        'offset_date': offsetDate,
-        'offset_message_id': offsetMessageId,
-        'offset_forum_topic_id': offsetForumTopicId,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'query': query,
+    'offset_date': offsetDate,
+    'offset_message_id': offsetMessageId,
+    'offset_forum_topic_id': offsetForumTopicId,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class GetForumTopics extends TdFunction<ForumTopics> {
     int? offsetMessageId,
     int? offsetForumTopicId,
     int? limit,
-  }) =>
-      GetForumTopics(
-        chatId: chatId ?? this.chatId,
-        query: query ?? this.query,
-        offsetDate: offsetDate ?? this.offsetDate,
-        offsetMessageId: offsetMessageId ?? this.offsetMessageId,
-        offsetForumTopicId: offsetForumTopicId ?? this.offsetForumTopicId,
-        limit: limit ?? this.limit,
-      );
+  }) => GetForumTopics(
+    chatId: chatId ?? this.chatId,
+    query: query ?? this.query,
+    offsetDate: offsetDate ?? this.offsetDate,
+    offsetMessageId: offsetMessageId ?? this.offsetMessageId,
+    offsetForumTopicId: offsetForumTopicId ?? this.offsetForumTopicId,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getForumTopics';

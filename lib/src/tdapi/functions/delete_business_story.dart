@@ -21,18 +21,15 @@ final class DeleteBusinessStory extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'business_connection_id': businessConnectionId,
-        'story_id': storyId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'business_connection_id': businessConnectionId,
+    'story_id': storyId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteBusinessStory copyWith({
-    String? businessConnectionId,
-    int? storyId,
-  }) =>
+  DeleteBusinessStory copyWith({String? businessConnectionId, int? storyId}) =>
       DeleteBusinessStory(
         businessConnectionId: businessConnectionId ?? this.businessConnectionId,
         storyId: storyId ?? this.storyId,

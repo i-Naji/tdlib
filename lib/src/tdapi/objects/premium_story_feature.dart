@@ -51,13 +51,11 @@ final class PremiumStoryFeaturePriorityOrder extends PremiumStoryFeature {
 
   /// Parses a [PremiumStoryFeaturePriorityOrder] from TDLib JSON.
   factory PremiumStoryFeaturePriorityOrder.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumStoryFeaturePriorityOrder();
+    Map<String, dynamic> json,
+  ) => const PremiumStoryFeaturePriorityOrder();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -82,9 +80,7 @@ final class PremiumStoryFeatureStealthMode extends PremiumStoryFeature {
       const PremiumStoryFeatureStealthMode();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -107,13 +103,11 @@ final class PremiumStoryFeaturePermanentViewsHistory
 
   /// Parses a [PremiumStoryFeaturePermanentViewsHistory] from TDLib JSON.
   factory PremiumStoryFeaturePermanentViewsHistory.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumStoryFeaturePermanentViewsHistory();
+    Map<String, dynamic> json,
+  ) => const PremiumStoryFeaturePermanentViewsHistory();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -136,13 +130,11 @@ final class PremiumStoryFeatureCustomExpirationDuration
 
   /// Parses a [PremiumStoryFeatureCustomExpirationDuration] from TDLib JSON.
   factory PremiumStoryFeatureCustomExpirationDuration.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumStoryFeatureCustomExpirationDuration();
+    Map<String, dynamic> json,
+  ) => const PremiumStoryFeatureCustomExpirationDuration();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -168,9 +160,7 @@ final class PremiumStoryFeatureSaveStories extends PremiumStoryFeature {
       const PremiumStoryFeatureSaveStories();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -192,13 +182,11 @@ final class PremiumStoryFeatureLinksAndFormatting extends PremiumStoryFeature {
 
   /// Parses a [PremiumStoryFeatureLinksAndFormatting] from TDLib JSON.
   factory PremiumStoryFeatureLinksAndFormatting.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumStoryFeatureLinksAndFormatting();
+    Map<String, dynamic> json,
+  ) => const PremiumStoryFeatureLinksAndFormatting();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -223,9 +211,7 @@ final class PremiumStoryFeatureVideoQuality extends PremiumStoryFeature {
       const PremiumStoryFeatureVideoQuality();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

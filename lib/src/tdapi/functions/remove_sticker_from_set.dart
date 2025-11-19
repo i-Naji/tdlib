@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class RemoveStickerFromSet extends TdFunction<Ok> {
   /// Removes a sticker from the set to which it belongs. The sticker set must be owned by the current user
-  const RemoveStickerFromSet({
-    required this.sticker,
-  });
+  const RemoveStickerFromSet({required this.sticker});
 
   /// Sticker to remove from the set
   final InputFile sticker;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker': sticker.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker': sticker.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RemoveStickerFromSet copyWith({
-    InputFile? sticker,
-  }) =>
-      RemoveStickerFromSet(
-        sticker: sticker ?? this.sticker,
-      );
+  RemoveStickerFromSet copyWith({InputFile? sticker}) =>
+      RemoveStickerFromSet(sticker: sticker ?? this.sticker);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'removeStickerFromSet';

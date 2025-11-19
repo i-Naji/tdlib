@@ -23,20 +23,18 @@ final class EmojiChatTheme extends TdObject {
 
   /// Parses a [EmojiChatTheme] from TDLib JSON.
   factory EmojiChatTheme.fromJson(Map<String, dynamic> json) => EmojiChatTheme(
-        name: _readString(json['name']),
-        lightSettings:
-            _readObject(json['light_settings'], ThemeSettings.fromJson),
-        darkSettings:
-            _readObject(json['dark_settings'], ThemeSettings.fromJson),
-      );
+    name: _readString(json['name']),
+    lightSettings: _readObject(json['light_settings'], ThemeSettings.fromJson),
+    darkSettings: _readObject(json['dark_settings'], ThemeSettings.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        'light_settings': lightSettings.toJson(),
-        'dark_settings': darkSettings.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    'light_settings': lightSettings.toJson(),
+    'dark_settings': darkSettings.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +42,11 @@ final class EmojiChatTheme extends TdObject {
     String? name,
     ThemeSettings? lightSettings,
     ThemeSettings? darkSettings,
-  }) =>
-      EmojiChatTheme(
-        name: name ?? this.name,
-        lightSettings: lightSettings ?? this.lightSettings,
-        darkSettings: darkSettings ?? this.darkSettings,
-      );
+  }) => EmojiChatTheme(
+    name: name ?? this.name,
+    lightSettings: lightSettings ?? this.lightSettings,
+    darkSettings: darkSettings ?? this.darkSettings,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'emojiChatTheme';

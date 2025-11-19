@@ -19,29 +19,28 @@ final class PremiumFeaturePromotionAnimation extends TdObject {
 
   /// Parses a [PremiumFeaturePromotionAnimation] from TDLib JSON.
   factory PremiumFeaturePromotionAnimation.fromJson(
-          Map<String, dynamic> json) =>
-      PremiumFeaturePromotionAnimation(
-        feature: _readObject(json['feature'], PremiumFeature.fromJson),
-        animation: _readObject(json['animation'], Animation.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => PremiumFeaturePromotionAnimation(
+    feature: _readObject(json['feature'], PremiumFeature.fromJson),
+    animation: _readObject(json['animation'], Animation.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'feature': feature.toJson(),
-        'animation': animation.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'feature': feature.toJson(),
+    'animation': animation.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   PremiumFeaturePromotionAnimation copyWith({
     PremiumFeature? feature,
     Animation? animation,
-  }) =>
-      PremiumFeaturePromotionAnimation(
-        feature: feature ?? this.feature,
-        animation: animation ?? this.animation,
-      );
+  }) => PremiumFeaturePromotionAnimation(
+    feature: feature ?? this.feature,
+    animation: animation ?? this.animation,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumFeaturePromotionAnimation';

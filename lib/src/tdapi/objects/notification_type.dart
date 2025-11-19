@@ -67,18 +67,15 @@ final class NotificationTypeNewMessage extends NotificationType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message': message.toJson(),
-        'show_preview': showPreview,
-      };
+    '@type': CONSTRUCTOR,
+    'message': message.toJson(),
+    'show_preview': showPreview,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  NotificationTypeNewMessage copyWith({
-    Message? message,
-    bool? showPreview,
-  }) =>
+  NotificationTypeNewMessage copyWith({Message? message, bool? showPreview}) =>
       NotificationTypeNewMessage(
         message: message ?? this.message,
         showPreview: showPreview ?? this.showPreview,
@@ -101,9 +98,7 @@ final class NotificationTypeNewSecretChat extends NotificationType {
       const NotificationTypeNewSecretChat();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -121,34 +116,23 @@ final class NotificationTypeNewSecretChat extends NotificationType {
 /// New call was received
 final class NotificationTypeNewCall extends NotificationType {
   /// New call was received
-  const NotificationTypeNewCall({
-    required this.callId,
-  });
+  const NotificationTypeNewCall({required this.callId});
 
   /// Call identifier
   final int callId;
 
   /// Parses a [NotificationTypeNewCall] from TDLib JSON.
   factory NotificationTypeNewCall.fromJson(Map<String, dynamic> json) =>
-      NotificationTypeNewCall(
-        callId: _readInt(json['call_id']),
-      );
+      NotificationTypeNewCall(callId: _readInt(json['call_id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'call_id': callId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'call_id': callId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  NotificationTypeNewCall copyWith({
-    int? callId,
-  }) =>
-      NotificationTypeNewCall(
-        callId: callId ?? this.callId,
-      );
+  NotificationTypeNewCall copyWith({int? callId}) =>
+      NotificationTypeNewCall(callId: callId ?? this.callId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'notificationTypeNewCall';
@@ -195,13 +179,13 @@ final class NotificationTypeNewPushMessage extends NotificationType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message_id': messageId,
-        'sender_id': senderId.toJson(),
-        'sender_name': senderName,
-        'is_outgoing': isOutgoing,
-        'content': content.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'message_id': messageId,
+    'sender_id': senderId.toJson(),
+    'sender_name': senderName,
+    'is_outgoing': isOutgoing,
+    'content': content.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -212,14 +196,13 @@ final class NotificationTypeNewPushMessage extends NotificationType {
     String? senderName,
     bool? isOutgoing,
     PushMessageContent? content,
-  }) =>
-      NotificationTypeNewPushMessage(
-        messageId: messageId ?? this.messageId,
-        senderId: senderId ?? this.senderId,
-        senderName: senderName ?? this.senderName,
-        isOutgoing: isOutgoing ?? this.isOutgoing,
-        content: content ?? this.content,
-      );
+  }) => NotificationTypeNewPushMessage(
+    messageId: messageId ?? this.messageId,
+    senderId: senderId ?? this.senderId,
+    senderName: senderName ?? this.senderName,
+    isOutgoing: isOutgoing ?? this.isOutgoing,
+    content: content ?? this.content,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'notificationTypeNewPushMessage';

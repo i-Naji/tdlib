@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Emojis].
 final class GetStickerEmojis extends TdFunction<Emojis> {
   /// Returns emoji corresponding to a sticker. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object
-  const GetStickerEmojis({
-    required this.sticker,
-  });
+  const GetStickerEmojis({required this.sticker});
 
   /// Sticker file identifier
   final InputFile sticker;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker': sticker.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker': sticker.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetStickerEmojis copyWith({
-    InputFile? sticker,
-  }) =>
-      GetStickerEmojis(
-        sticker: sticker ?? this.sticker,
-      );
+  GetStickerEmojis copyWith({InputFile? sticker}) =>
+      GetStickerEmojis(sticker: sticker ?? this.sticker);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getStickerEmojis';

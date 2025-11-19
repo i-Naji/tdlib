@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Describes a business chat link to create or edit
 final class InputBusinessChatLink extends TdObject {
   /// Describes a business chat link to create or edit
-  const InputBusinessChatLink({
-    required this.text,
-    required this.title,
-  });
+  const InputBusinessChatLink({required this.text, required this.title});
 
   /// Message draft text that will be added to the input field
   final FormattedText text;
@@ -26,17 +23,14 @@ final class InputBusinessChatLink extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'title': title,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'title': title,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  InputBusinessChatLink copyWith({
-    FormattedText? text,
-    String? title,
-  }) =>
+  InputBusinessChatLink copyWith({FormattedText? text, String? title}) =>
       InputBusinessChatLink(
         text: text ?? this.text,
         title: title ?? this.title,

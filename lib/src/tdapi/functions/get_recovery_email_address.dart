@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [RecoveryEmailAddress].
 final class GetRecoveryEmailAddress extends TdFunction<RecoveryEmailAddress> {
   /// Returns a 2-step verification recovery email address that was previously set up. This method can be used to verify a password provided by the user
-  const GetRecoveryEmailAddress({
-    required this.password,
-  });
+  const GetRecoveryEmailAddress({required this.password});
 
   /// The 2-step verification password for the current user
   final String password;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'password': password,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'password': password,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetRecoveryEmailAddress copyWith({
-    String? password,
-  }) =>
-      GetRecoveryEmailAddress(
-        password: password ?? this.password,
-      );
+  GetRecoveryEmailAddress copyWith({String? password}) =>
+      GetRecoveryEmailAddress(password: password ?? this.password);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getRecoveryEmailAddress';

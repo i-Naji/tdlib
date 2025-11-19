@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [AuthenticationCodeInfo].
 final class ResendPhoneNumberCode extends TdFunction<AuthenticationCodeInfo> {
   /// Resends the authentication code sent to a phone number. Works only if the previously received authenticationCodeInfo next_code_type was not null and the server-specified timeout has passed
-  const ResendPhoneNumberCode({
-    this.reason,
-  });
+  const ResendPhoneNumberCode({this.reason});
 
   /// Reason of code resending; pass null if unknown
   final ResendCodeReason? reason;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'reason': reason?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'reason': reason?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ResendPhoneNumberCode copyWith({
-    ResendCodeReason? Function()? reason,
-  }) =>
-      ResendPhoneNumberCode(
-        reason: reason != null ? reason() : this.reason,
-      );
+  ResendPhoneNumberCode copyWith({ResendCodeReason? Function()? reason}) =>
+      ResendPhoneNumberCode(reason: reason != null ? reason() : this.reason);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'resendPhoneNumberCode';

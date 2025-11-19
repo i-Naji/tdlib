@@ -23,26 +23,22 @@ final class GameHighScore extends TdObject {
 
   /// Parses a [GameHighScore] from TDLib JSON.
   factory GameHighScore.fromJson(Map<String, dynamic> json) => GameHighScore(
-        position: _readInt(json['position']),
-        userId: _readInt(json['user_id']),
-        score: _readInt(json['score']),
-      );
+    position: _readInt(json['position']),
+    userId: _readInt(json['user_id']),
+    score: _readInt(json['score']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'position': position,
-        'user_id': userId,
-        'score': score,
-      };
+    '@type': CONSTRUCTOR,
+    'position': position,
+    'user_id': userId,
+    'score': score,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GameHighScore copyWith({
-    int? position,
-    int? userId,
-    int? score,
-  }) =>
+  GameHighScore copyWith({int? position, int? userId, int? score}) =>
       GameHighScore(
         position: position ?? this.position,
         userId: userId ?? this.userId,

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [MessageLinkInfo].
 final class GetMessageLinkInfo extends TdFunction<MessageLinkInfo> {
   /// Returns information about a public or private message link. Can be called for any internal link of the type internalLinkTypeMessage
-  const GetMessageLinkInfo({
-    required this.url,
-  });
+  const GetMessageLinkInfo({required this.url});
 
   /// The message link
   final String url;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetMessageLinkInfo copyWith({
-    String? url,
-  }) =>
-      GetMessageLinkInfo(
-        url: url ?? this.url,
-      );
+  GetMessageLinkInfo copyWith({String? url}) =>
+      GetMessageLinkInfo(url: url ?? this.url);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getMessageLinkInfo';

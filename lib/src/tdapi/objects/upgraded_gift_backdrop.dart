@@ -30,19 +30,21 @@ final class UpgradedGiftBackdrop extends TdObject {
       UpgradedGiftBackdrop(
         id: _readInt(json['id']),
         name: _readString(json['name']),
-        colors:
-            _readObject(json['colors'], UpgradedGiftBackdropColors.fromJson),
+        colors: _readObject(
+          json['colors'],
+          UpgradedGiftBackdropColors.fromJson,
+        ),
         rarityPerMille: _readInt(json['rarity_per_mille']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'name': name,
-        'colors': colors.toJson(),
-        'rarity_per_mille': rarityPerMille,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'name': name,
+    'colors': colors.toJson(),
+    'rarity_per_mille': rarityPerMille,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,13 +53,12 @@ final class UpgradedGiftBackdrop extends TdObject {
     String? name,
     UpgradedGiftBackdropColors? colors,
     int? rarityPerMille,
-  }) =>
-      UpgradedGiftBackdrop(
-        id: id ?? this.id,
-        name: name ?? this.name,
-        colors: colors ?? this.colors,
-        rarityPerMille: rarityPerMille ?? this.rarityPerMille,
-      );
+  }) => UpgradedGiftBackdrop(
+    id: id ?? this.id,
+    name: name ?? this.name,
+    colors: colors ?? this.colors,
+    rarityPerMille: rarityPerMille ?? this.rarityPerMille,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradedGiftBackdrop';

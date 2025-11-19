@@ -25,12 +25,12 @@ final class EditUserStarSubscription extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'telegram_payment_charge_id': telegramPaymentChargeId,
-        'is_canceled': isCanceled,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'telegram_payment_charge_id': telegramPaymentChargeId,
+    'is_canceled': isCanceled,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,13 +38,12 @@ final class EditUserStarSubscription extends TdFunction<Ok> {
     int? userId,
     String? telegramPaymentChargeId,
     bool? isCanceled,
-  }) =>
-      EditUserStarSubscription(
-        userId: userId ?? this.userId,
-        telegramPaymentChargeId:
-            telegramPaymentChargeId ?? this.telegramPaymentChargeId,
-        isCanceled: isCanceled ?? this.isCanceled,
-      );
+  }) => EditUserStarSubscription(
+    userId: userId ?? this.userId,
+    telegramPaymentChargeId:
+        telegramPaymentChargeId ?? this.telegramPaymentChargeId,
+    isCanceled: isCanceled ?? this.isCanceled,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'editUserStarSubscription';

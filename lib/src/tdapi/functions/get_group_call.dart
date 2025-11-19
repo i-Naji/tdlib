@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [GroupCall].
 final class GetGroupCall extends TdFunction<GroupCall> {
   /// Returns information about a group call
-  const GetGroupCall({
-    required this.groupCallId,
-  });
+  const GetGroupCall({required this.groupCallId});
 
   /// Group call identifier
   final int groupCallId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetGroupCall copyWith({
-    int? groupCallId,
-  }) =>
-      GetGroupCall(
-        groupCallId: groupCallId ?? this.groupCallId,
-      );
+  GetGroupCall copyWith({int? groupCallId}) =>
+      GetGroupCall(groupCallId: groupCallId ?? this.groupCallId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getGroupCall';

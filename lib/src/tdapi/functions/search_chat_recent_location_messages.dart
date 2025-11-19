@@ -21,18 +21,15 @@ final class SearchChatRecentLocationMessages extends TdFunction<Messages> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchChatRecentLocationMessages copyWith({
-    int? chatId,
-    int? limit,
-  }) =>
+  SearchChatRecentLocationMessages copyWith({int? chatId, int? limit}) =>
       SearchChatRecentLocationMessages(
         chatId: chatId ?? this.chatId,
         limit: limit ?? this.limit,

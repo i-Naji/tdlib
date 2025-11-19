@@ -21,18 +21,15 @@ final class DeleteChatBackground extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'restore_previous': restorePrevious,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'restore_previous': restorePrevious,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteChatBackground copyWith({
-    int? chatId,
-    bool? restorePrevious,
-  }) =>
+  DeleteChatBackground copyWith({int? chatId, bool? restorePrevious}) =>
       DeleteChatBackground(
         chatId: chatId ?? this.chatId,
         restorePrevious: restorePrevious ?? this.restorePrevious,

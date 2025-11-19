@@ -33,14 +33,14 @@ final class AnswerCallbackQuery extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'callback_query_id': callbackQueryId.toString(),
-        'text': text,
-        'show_alert': showAlert,
-        'url': url,
-        'cache_time': cacheTime,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'callback_query_id': callbackQueryId.toString(),
+    'text': text,
+    'show_alert': showAlert,
+    'url': url,
+    'cache_time': cacheTime,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class AnswerCallbackQuery extends TdFunction<Ok> {
     bool? showAlert,
     String? url,
     int? cacheTime,
-  }) =>
-      AnswerCallbackQuery(
-        callbackQueryId: callbackQueryId ?? this.callbackQueryId,
-        text: text ?? this.text,
-        showAlert: showAlert ?? this.showAlert,
-        url: url ?? this.url,
-        cacheTime: cacheTime ?? this.cacheTime,
-      );
+  }) => AnswerCallbackQuery(
+    callbackQueryId: callbackQueryId ?? this.callbackQueryId,
+    text: text ?? this.text,
+    showAlert: showAlert ?? this.showAlert,
+    url: url ?? this.url,
+    cacheTime: cacheTime ?? this.cacheTime,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'answerCallbackQuery';

@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetMessageSenderBlockList extends TdFunction<Ok> {
   /// Changes the block list of a message sender. Currently, only users and supergroup chats can be blocked
-  const SetMessageSenderBlockList({
-    required this.senderId,
-    this.blockList,
-  });
+  const SetMessageSenderBlockList({required this.senderId, this.blockList});
 
   /// Identifier of a message sender to block/unblock
   final MessageSender senderId;
@@ -21,22 +18,21 @@ final class SetMessageSenderBlockList extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sender_id': senderId.toJson(),
-        'block_list': blockList?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sender_id': senderId.toJson(),
+    'block_list': blockList?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetMessageSenderBlockList copyWith({
     MessageSender? senderId,
     BlockList? Function()? blockList,
-  }) =>
-      SetMessageSenderBlockList(
-        senderId: senderId ?? this.senderId,
-        blockList: blockList != null ? blockList() : this.blockList,
-      );
+  }) => SetMessageSenderBlockList(
+    senderId: senderId ?? this.senderId,
+    blockList: blockList != null ? blockList() : this.blockList,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setMessageSenderBlockList';

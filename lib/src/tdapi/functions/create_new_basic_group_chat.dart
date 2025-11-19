@@ -25,12 +25,12 @@ final class CreateNewBasicGroupChat extends TdFunction<CreatedBasicGroupChat> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_ids': userIds,
-        'title': title,
-        'message_auto_delete_time': messageAutoDeleteTime,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_ids': userIds,
+    'title': title,
+    'message_auto_delete_time': messageAutoDeleteTime,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,13 +38,11 @@ final class CreateNewBasicGroupChat extends TdFunction<CreatedBasicGroupChat> {
     List<int>? userIds,
     String? title,
     int? messageAutoDeleteTime,
-  }) =>
-      CreateNewBasicGroupChat(
-        userIds: userIds ?? this.userIds,
-        title: title ?? this.title,
-        messageAutoDeleteTime:
-            messageAutoDeleteTime ?? this.messageAutoDeleteTime,
-      );
+  }) => CreateNewBasicGroupChat(
+    userIds: userIds ?? this.userIds,
+    title: title ?? this.title,
+    messageAutoDeleteTime: messageAutoDeleteTime ?? this.messageAutoDeleteTime,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'createNewBasicGroupChat';

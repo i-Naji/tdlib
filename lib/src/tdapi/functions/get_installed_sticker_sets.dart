@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [StickerSets].
 final class GetInstalledStickerSets extends TdFunction<StickerSets> {
   /// Returns a list of installed sticker sets
-  const GetInstalledStickerSets({
-    required this.stickerType,
-  });
+  const GetInstalledStickerSets({required this.stickerType});
 
   /// Type of the sticker sets to return
   final StickerType stickerType;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker_type': stickerType.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_type': stickerType.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetInstalledStickerSets copyWith({
-    StickerType? stickerType,
-  }) =>
-      GetInstalledStickerSets(
-        stickerType: stickerType ?? this.stickerType,
-      );
+  GetInstalledStickerSets copyWith({StickerType? stickerType}) =>
+      GetInstalledStickerSets(stickerType: stickerType ?? this.stickerType);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getInstalledStickerSets';

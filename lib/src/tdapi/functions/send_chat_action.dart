@@ -29,13 +29,13 @@ final class SendChatAction extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'topic_id': topicId.toJson(),
-        'business_connection_id': businessConnectionId,
-        'action': action?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'topic_id': topicId.toJson(),
+    'business_connection_id': businessConnectionId,
+    'action': action?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class SendChatAction extends TdFunction<Ok> {
     MessageTopic? topicId,
     String? businessConnectionId,
     ChatAction? Function()? action,
-  }) =>
-      SendChatAction(
-        chatId: chatId ?? this.chatId,
-        topicId: topicId ?? this.topicId,
-        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-        action: action != null ? action() : this.action,
-      );
+  }) => SendChatAction(
+    chatId: chatId ?? this.chatId,
+    topicId: topicId ?? this.topicId,
+    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+    action: action != null ? action() : this.action,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sendChatAction';

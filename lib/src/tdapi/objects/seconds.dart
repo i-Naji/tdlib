@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a value representing a number of seconds
 final class Seconds extends TdObject {
   /// Contains a value representing a number of seconds
-  const Seconds({
-    required this.seconds,
-    this.extra,
-    this.clientId,
-  });
+  const Seconds({required this.seconds, this.extra, this.clientId});
 
   /// Number of seconds
   final double seconds;
@@ -25,29 +21,21 @@ final class Seconds extends TdObject {
 
   /// Parses a [Seconds] from TDLib JSON.
   factory Seconds.fromJson(Map<String, dynamic> json) => Seconds(
-        seconds: _readDouble(json['seconds']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    seconds: _readDouble(json['seconds']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'seconds': seconds,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'seconds': seconds};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  Seconds copyWith({
-    double? seconds,
-    dynamic extra,
-    int? clientId,
-  }) =>
-      Seconds(
-        seconds: seconds ?? this.seconds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  Seconds copyWith({double? seconds, dynamic extra, int? clientId}) => Seconds(
+    seconds: seconds ?? this.seconds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'seconds';

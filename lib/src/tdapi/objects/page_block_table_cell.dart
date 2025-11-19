@@ -34,28 +34,27 @@ final class PageBlockTableCell extends TdObject {
   final PageBlockVerticalAlignment valign;
 
   /// Parses a [PageBlockTableCell] from TDLib JSON.
-  factory PageBlockTableCell.fromJson(Map<String, dynamic> json) =>
-      PageBlockTableCell(
-        text: _readOptional(json['text'], RichText.fromJson),
-        isHeader: _readBool(json['is_header']),
-        colspan: _readInt(json['colspan']),
-        rowspan: _readInt(json['rowspan']),
-        align:
-            _readObject(json['align'], PageBlockHorizontalAlignment.fromJson),
-        valign:
-            _readObject(json['valign'], PageBlockVerticalAlignment.fromJson),
-      );
+  factory PageBlockTableCell.fromJson(
+    Map<String, dynamic> json,
+  ) => PageBlockTableCell(
+    text: _readOptional(json['text'], RichText.fromJson),
+    isHeader: _readBool(json['is_header']),
+    colspan: _readInt(json['colspan']),
+    rowspan: _readInt(json['rowspan']),
+    align: _readObject(json['align'], PageBlockHorizontalAlignment.fromJson),
+    valign: _readObject(json['valign'], PageBlockVerticalAlignment.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text?.toJson(),
-        'is_header': isHeader,
-        'colspan': colspan,
-        'rowspan': rowspan,
-        'align': align.toJson(),
-        'valign': valign.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'text': text?.toJson(),
+    'is_header': isHeader,
+    'colspan': colspan,
+    'rowspan': rowspan,
+    'align': align.toJson(),
+    'valign': valign.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -66,15 +65,14 @@ final class PageBlockTableCell extends TdObject {
     int? rowspan,
     PageBlockHorizontalAlignment? align,
     PageBlockVerticalAlignment? valign,
-  }) =>
-      PageBlockTableCell(
-        text: text != null ? text() : this.text,
-        isHeader: isHeader ?? this.isHeader,
-        colspan: colspan ?? this.colspan,
-        rowspan: rowspan ?? this.rowspan,
-        align: align ?? this.align,
-        valign: valign ?? this.valign,
-      );
+  }) => PageBlockTableCell(
+    text: text != null ? text() : this.text,
+    isHeader: isHeader ?? this.isHeader,
+    colspan: colspan ?? this.colspan,
+    rowspan: rowspan ?? this.rowspan,
+    align: align ?? this.align,
+    valign: valign ?? this.valign,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockTableCell';

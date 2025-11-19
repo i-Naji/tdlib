@@ -31,18 +31,19 @@ final class MessageCopyOptions extends TdObject {
         sendCopy: _readBool(json['send_copy']),
         replaceCaption: _readBool(json['replace_caption']),
         newCaption: _readOptional(json['new_caption'], FormattedText.fromJson),
-        newShowCaptionAboveMedia:
-            _readBool(json['new_show_caption_above_media']),
+        newShowCaptionAboveMedia: _readBool(
+          json['new_show_caption_above_media'],
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'send_copy': sendCopy,
-        'replace_caption': replaceCaption,
-        'new_caption': newCaption?.toJson(),
-        'new_show_caption_above_media': newShowCaptionAboveMedia,
-      };
+    '@type': CONSTRUCTOR,
+    'send_copy': sendCopy,
+    'replace_caption': replaceCaption,
+    'new_caption': newCaption?.toJson(),
+    'new_show_caption_above_media': newShowCaptionAboveMedia,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,14 +52,13 @@ final class MessageCopyOptions extends TdObject {
     bool? replaceCaption,
     FormattedText? Function()? newCaption,
     bool? newShowCaptionAboveMedia,
-  }) =>
-      MessageCopyOptions(
-        sendCopy: sendCopy ?? this.sendCopy,
-        replaceCaption: replaceCaption ?? this.replaceCaption,
-        newCaption: newCaption != null ? newCaption() : this.newCaption,
-        newShowCaptionAboveMedia:
-            newShowCaptionAboveMedia ?? this.newShowCaptionAboveMedia,
-      );
+  }) => MessageCopyOptions(
+    sendCopy: sendCopy ?? this.sendCopy,
+    replaceCaption: replaceCaption ?? this.replaceCaption,
+    newCaption: newCaption != null ? newCaption() : this.newCaption,
+    newShowCaptionAboveMedia:
+        newShowCaptionAboveMedia ?? this.newShowCaptionAboveMedia,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageCopyOptions';

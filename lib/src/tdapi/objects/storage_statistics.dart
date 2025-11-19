@@ -36,19 +36,21 @@ final class StorageStatistics extends TdObject {
       StorageStatistics(
         size: _readInt(json['size']),
         count: _readInt(json['count']),
-        byChat: _readList<StorageStatisticsByChat>(json['by_chat'],
-            (e) => _readObject(e, StorageStatisticsByChat.fromJson)),
+        byChat: _readList<StorageStatisticsByChat>(
+          json['by_chat'],
+          (e) => _readObject(e, StorageStatisticsByChat.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'size': size,
-        'count': count,
-        'by_chat': [for (final e in byChat) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'size': size,
+    'count': count,
+    'by_chat': [for (final e in byChat) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -58,14 +60,13 @@ final class StorageStatistics extends TdObject {
     List<StorageStatisticsByChat>? byChat,
     dynamic extra,
     int? clientId,
-  }) =>
-      StorageStatistics(
-        size: size ?? this.size,
-        count: count ?? this.count,
-        byChat: byChat ?? this.byChat,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => StorageStatistics(
+    size: size ?? this.size,
+    count: count ?? this.count,
+    byChat: byChat ?? this.byChat,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storageStatistics';

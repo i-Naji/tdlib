@@ -47,9 +47,7 @@ final class UndecodedLinkPreviewAlbumMedia extends LinkPreviewAlbumMedia {
 /// The media is a photo
 final class LinkPreviewAlbumMediaPhoto extends LinkPreviewAlbumMedia {
   /// The media is a photo
-  const LinkPreviewAlbumMediaPhoto({
-    required this.photo,
-  });
+  const LinkPreviewAlbumMediaPhoto({required this.photo});
 
   /// Photo description
   final Photo photo;
@@ -62,19 +60,15 @@ final class LinkPreviewAlbumMediaPhoto extends LinkPreviewAlbumMedia {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewAlbumMediaPhoto copyWith({
-    Photo? photo,
-  }) =>
-      LinkPreviewAlbumMediaPhoto(
-        photo: photo ?? this.photo,
-      );
+  LinkPreviewAlbumMediaPhoto copyWith({Photo? photo}) =>
+      LinkPreviewAlbumMediaPhoto(photo: photo ?? this.photo);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewAlbumMediaPhoto';
@@ -86,9 +80,7 @@ final class LinkPreviewAlbumMediaPhoto extends LinkPreviewAlbumMedia {
 /// The media is a video
 final class LinkPreviewAlbumMediaVideo extends LinkPreviewAlbumMedia {
   /// The media is a video
-  const LinkPreviewAlbumMediaVideo({
-    required this.video,
-  });
+  const LinkPreviewAlbumMediaVideo({required this.video});
 
   /// Video description
   final Video video;
@@ -101,19 +93,15 @@ final class LinkPreviewAlbumMediaVideo extends LinkPreviewAlbumMedia {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'video': video.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'video': video.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewAlbumMediaVideo copyWith({
-    Video? video,
-  }) =>
-      LinkPreviewAlbumMediaVideo(
-        video: video ?? this.video,
-      );
+  LinkPreviewAlbumMediaVideo copyWith({Video? video}) =>
+      LinkPreviewAlbumMediaVideo(video: video ?? this.video);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewAlbumMediaVideo';

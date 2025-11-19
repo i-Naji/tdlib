@@ -25,12 +25,12 @@ final class CreateStoryAlbum extends TdFunction<StoryAlbum> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'name': name,
-        'story_ids': storyIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'name': name,
+    'story_ids': storyIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class CreateStoryAlbum extends TdFunction<StoryAlbum> {
     int? storyPosterChatId,
     String? name,
     List<int>? storyIds,
-  }) =>
-      CreateStoryAlbum(
-        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-        name: name ?? this.name,
-        storyIds: storyIds ?? this.storyIds,
-      );
+  }) => CreateStoryAlbum(
+    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+    name: name ?? this.name,
+    storyIds: storyIds ?? this.storyIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'createStoryAlbum';

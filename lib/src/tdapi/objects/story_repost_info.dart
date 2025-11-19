@@ -26,17 +26,14 @@ final class StoryRepostInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'origin': origin.toJson(),
-        'is_content_modified': isContentModified,
-      };
+    '@type': CONSTRUCTOR,
+    'origin': origin.toJson(),
+    'is_content_modified': isContentModified,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  StoryRepostInfo copyWith({
-    StoryOrigin? origin,
-    bool? isContentModified,
-  }) =>
+  StoryRepostInfo copyWith({StoryOrigin? origin, bool? isContentModified}) =>
       StoryRepostInfo(
         origin: origin ?? this.origin,
         isContentModified: isContentModified ?? this.isContentModified,

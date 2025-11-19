@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Describes an action associated with a bank card number
 final class BankCardActionOpenUrl extends TdObject {
   /// Describes an action associated with a bank card number
-  const BankCardActionOpenUrl({
-    required this.text,
-    required this.url,
-  });
+  const BankCardActionOpenUrl({required this.text, required this.url});
 
   /// Action text
   final String text;
@@ -26,21 +23,15 @@ final class BankCardActionOpenUrl extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text,
-        'url': url,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text,
+    'url': url,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  BankCardActionOpenUrl copyWith({
-    String? text,
-    String? url,
-  }) =>
-      BankCardActionOpenUrl(
-        text: text ?? this.text,
-        url: url ?? this.url,
-      );
+  BankCardActionOpenUrl copyWith({String? text, String? url}) =>
+      BankCardActionOpenUrl(text: text ?? this.text, url: url ?? this.url);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'bankCardActionOpenUrl';

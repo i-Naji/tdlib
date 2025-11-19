@@ -21,22 +21,21 @@ final class EditInlineMessageReplyMarkup extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'inline_message_id': inlineMessageId,
-        'reply_markup': replyMarkup?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'inline_message_id': inlineMessageId,
+    'reply_markup': replyMarkup?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   EditInlineMessageReplyMarkup copyWith({
     String? inlineMessageId,
     ReplyMarkup? Function()? replyMarkup,
-  }) =>
-      EditInlineMessageReplyMarkup(
-        inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-      );
+  }) => EditInlineMessageReplyMarkup(
+    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'editInlineMessageReplyMarkup';

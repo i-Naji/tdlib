@@ -60,18 +60,18 @@ final class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
 
   /// Parses a [ChatPhotoStickerTypeRegularOrMask] from TDLib JSON.
   factory ChatPhotoStickerTypeRegularOrMask.fromJson(
-          Map<String, dynamic> json) =>
-      ChatPhotoStickerTypeRegularOrMask(
-        stickerSetId: _readInt(json['sticker_set_id']),
-        stickerId: _readInt(json['sticker_id']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatPhotoStickerTypeRegularOrMask(
+    stickerSetId: _readInt(json['sticker_set_id']),
+    stickerId: _readInt(json['sticker_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker_set_id': stickerSetId.toString(),
-        'sticker_id': stickerId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_set_id': stickerSetId.toString(),
+    'sticker_id': stickerId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -79,11 +79,10 @@ final class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
   ChatPhotoStickerTypeRegularOrMask copyWith({
     int? stickerSetId,
     int? stickerId,
-  }) =>
-      ChatPhotoStickerTypeRegularOrMask(
-        stickerSetId: stickerSetId ?? this.stickerSetId,
-        stickerId: stickerId ?? this.stickerId,
-      );
+  }) => ChatPhotoStickerTypeRegularOrMask(
+    stickerSetId: stickerSetId ?? this.stickerSetId,
+    stickerId: stickerId ?? this.stickerId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatPhotoStickerTypeRegularOrMask';
@@ -95,9 +94,7 @@ final class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
 /// Information about the custom emoji, which was used to create the chat photo
 final class ChatPhotoStickerTypeCustomEmoji extends ChatPhotoStickerType {
   /// Information about the custom emoji, which was used to create the chat photo
-  const ChatPhotoStickerTypeCustomEmoji({
-    required this.customEmojiId,
-  });
+  const ChatPhotoStickerTypeCustomEmoji({required this.customEmojiId});
 
   /// Identifier of the custom emoji
   final int customEmojiId;
@@ -110,16 +107,14 @@ final class ChatPhotoStickerTypeCustomEmoji extends ChatPhotoStickerType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'custom_emoji_id': customEmojiId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'custom_emoji_id': customEmojiId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatPhotoStickerTypeCustomEmoji copyWith({
-    int? customEmojiId,
-  }) =>
+  ChatPhotoStickerTypeCustomEmoji copyWith({int? customEmojiId}) =>
       ChatPhotoStickerTypeCustomEmoji(
         customEmojiId: customEmojiId ?? this.customEmojiId,
       );

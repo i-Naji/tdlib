@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class CheckEmailAddressVerificationCode extends TdFunction<Ok> {
   /// Checks the email address verification code for Telegram Passport
-  const CheckEmailAddressVerificationCode({
-    required this.code,
-  });
+  const CheckEmailAddressVerificationCode({required this.code});
 
   /// Verification code to check
   final String code;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'code': code,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'code': code,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CheckEmailAddressVerificationCode copyWith({
-    String? code,
-  }) =>
-      CheckEmailAddressVerificationCode(
-        code: code ?? this.code,
-      );
+  CheckEmailAddressVerificationCode copyWith({String? code}) =>
+      CheckEmailAddressVerificationCode(code: code ?? this.code);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkEmailAddressVerificationCode';

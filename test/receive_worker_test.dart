@@ -9,8 +9,10 @@ void main() {
   Uint8List bytes(Object json) => utf8.encode(jsonEncode(json));
 
   test('peekType reads @type without decoding', () {
-    expect(peekType(bytes({'@type': 'updateFile', 'file': <String, Object>{}})),
-        'updateFile');
+    expect(
+      peekType(bytes({'@type': 'updateFile', 'file': <String, Object>{}})),
+      'updateFile',
+    );
     expect(peekType(bytes({'a': 1, '@type': 'x'})), isNull);
     expect(peekType(Uint8List(0)), isNull);
   });

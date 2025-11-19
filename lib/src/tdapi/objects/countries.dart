@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains information about countries
 final class Countries extends TdObject {
   /// Contains information about countries
-  const Countries({
-    required this.countries,
-    this.extra,
-    this.clientId,
-  });
+  const Countries({required this.countries, this.extra, this.clientId});
 
   /// The list of countries
   final List<CountryInfo> countries;
@@ -25,17 +21,19 @@ final class Countries extends TdObject {
 
   /// Parses a [Countries] from TDLib JSON.
   factory Countries.fromJson(Map<String, dynamic> json) => Countries(
-        countries: _readList<CountryInfo>(
-            json['countries'], (e) => _readObject(e, CountryInfo.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    countries: _readList<CountryInfo>(
+      json['countries'],
+      (e) => _readObject(e, CountryInfo.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'countries': [for (final e in countries) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'countries': [for (final e in countries) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +41,11 @@ final class Countries extends TdObject {
     List<CountryInfo>? countries,
     dynamic extra,
     int? clientId,
-  }) =>
-      Countries(
-        countries: countries ?? this.countries,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => Countries(
+    countries: countries ?? this.countries,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'countries';

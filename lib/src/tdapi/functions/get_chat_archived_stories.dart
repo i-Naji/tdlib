@@ -25,12 +25,12 @@ final class GetChatArchivedStories extends TdFunction<Stories> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'from_story_id': fromStoryId,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'from_story_id': fromStoryId,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class GetChatArchivedStories extends TdFunction<Stories> {
     int? chatId,
     int? fromStoryId,
     int? limit,
-  }) =>
-      GetChatArchivedStories(
-        chatId: chatId ?? this.chatId,
-        fromStoryId: fromStoryId ?? this.fromStoryId,
-        limit: limit ?? this.limit,
-      );
+  }) => GetChatArchivedStories(
+    chatId: chatId ?? this.chatId,
+    fromStoryId: fromStoryId ?? this.fromStoryId,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatArchivedStories';

@@ -25,12 +25,12 @@ final class EditMessageReplyMarkup extends TdFunction<Message> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'reply_markup': replyMarkup?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'reply_markup': replyMarkup?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class EditMessageReplyMarkup extends TdFunction<Message> {
     int? chatId,
     int? messageId,
     ReplyMarkup? Function()? replyMarkup,
-  }) =>
-      EditMessageReplyMarkup(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-      );
+  }) => EditMessageReplyMarkup(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'editMessageReplyMarkup';

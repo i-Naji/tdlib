@@ -27,20 +27,20 @@ final class Thumbnail extends TdObject {
 
   /// Parses a [Thumbnail] from TDLib JSON.
   factory Thumbnail.fromJson(Map<String, dynamic> json) => Thumbnail(
-        format: _readObject(json['format'], ThumbnailFormat.fromJson),
-        width: _readInt(json['width']),
-        height: _readInt(json['height']),
-        file: _readObject(json['file'], File.fromJson),
-      );
+    format: _readObject(json['format'], ThumbnailFormat.fromJson),
+    width: _readInt(json['width']),
+    height: _readInt(json['height']),
+    file: _readObject(json['file'], File.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'format': format.toJson(),
-        'width': width,
-        'height': height,
-        'file': file.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'format': format.toJson(),
+    'width': width,
+    'height': height,
+    'file': file.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class Thumbnail extends TdObject {
     int? width,
     int? height,
     File? file,
-  }) =>
-      Thumbnail(
-        format: format ?? this.format,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        file: file ?? this.file,
-      );
+  }) => Thumbnail(
+    format: format ?? this.format,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    file: file ?? this.file,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'thumbnail';

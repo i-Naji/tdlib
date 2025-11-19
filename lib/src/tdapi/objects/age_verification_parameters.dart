@@ -31,11 +31,11 @@ final class AgeVerificationParameters extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'min_age': minAge,
-        'verification_bot_username': verificationBotUsername,
-        'country': country,
-      };
+    '@type': CONSTRUCTOR,
+    'min_age': minAge,
+    'verification_bot_username': verificationBotUsername,
+    'country': country,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,13 +43,12 @@ final class AgeVerificationParameters extends TdObject {
     int? minAge,
     String? verificationBotUsername,
     String? country,
-  }) =>
-      AgeVerificationParameters(
-        minAge: minAge ?? this.minAge,
-        verificationBotUsername:
-            verificationBotUsername ?? this.verificationBotUsername,
-        country: country ?? this.country,
-      );
+  }) => AgeVerificationParameters(
+    minAge: minAge ?? this.minAge,
+    verificationBotUsername:
+        verificationBotUsername ?? this.verificationBotUsername,
+    country: country ?? this.country,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'ageVerificationParameters';

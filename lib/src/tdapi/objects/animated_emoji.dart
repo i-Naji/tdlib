@@ -41,24 +41,24 @@ final class AnimatedEmoji extends TdObject {
 
   /// Parses a [AnimatedEmoji] from TDLib JSON.
   factory AnimatedEmoji.fromJson(Map<String, dynamic> json) => AnimatedEmoji(
-        sticker: _readOptional(json['sticker'], Sticker.fromJson),
-        stickerWidth: _readInt(json['sticker_width']),
-        stickerHeight: _readInt(json['sticker_height']),
-        fitzpatrickType: _readInt(json['fitzpatrick_type']),
-        sound: _readOptional(json['sound'], File.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    sticker: _readOptional(json['sticker'], Sticker.fromJson),
+    stickerWidth: _readInt(json['sticker_width']),
+    stickerHeight: _readInt(json['sticker_height']),
+    fitzpatrickType: _readInt(json['fitzpatrick_type']),
+    sound: _readOptional(json['sound'], File.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker': sticker?.toJson(),
-        'sticker_width': stickerWidth,
-        'sticker_height': stickerHeight,
-        'fitzpatrick_type': fitzpatrickType,
-        'sound': sound?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'sticker': sticker?.toJson(),
+    'sticker_width': stickerWidth,
+    'sticker_height': stickerHeight,
+    'fitzpatrick_type': fitzpatrickType,
+    'sound': sound?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -70,16 +70,15 @@ final class AnimatedEmoji extends TdObject {
     File? Function()? sound,
     dynamic extra,
     int? clientId,
-  }) =>
-      AnimatedEmoji(
-        sticker: sticker != null ? sticker() : this.sticker,
-        stickerWidth: stickerWidth ?? this.stickerWidth,
-        stickerHeight: stickerHeight ?? this.stickerHeight,
-        fitzpatrickType: fitzpatrickType ?? this.fitzpatrickType,
-        sound: sound != null ? sound() : this.sound,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => AnimatedEmoji(
+    sticker: sticker != null ? sticker() : this.sticker,
+    stickerWidth: stickerWidth ?? this.stickerWidth,
+    stickerHeight: stickerHeight ?? this.stickerHeight,
+    fitzpatrickType: fitzpatrickType ?? this.fitzpatrickType,
+    sound: sound != null ? sound() : this.sound,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'animatedEmoji';

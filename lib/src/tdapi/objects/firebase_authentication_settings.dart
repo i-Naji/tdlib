@@ -53,13 +53,11 @@ final class FirebaseAuthenticationSettingsAndroid
 
   /// Parses a [FirebaseAuthenticationSettingsAndroid] from TDLib JSON.
   factory FirebaseAuthenticationSettingsAndroid.fromJson(
-          Map<String, dynamic> json) =>
-      const FirebaseAuthenticationSettingsAndroid();
+    Map<String, dynamic> json,
+  ) => const FirebaseAuthenticationSettingsAndroid();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -91,18 +89,18 @@ final class FirebaseAuthenticationSettingsIos
 
   /// Parses a [FirebaseAuthenticationSettingsIos] from TDLib JSON.
   factory FirebaseAuthenticationSettingsIos.fromJson(
-          Map<String, dynamic> json) =>
-      FirebaseAuthenticationSettingsIos(
-        deviceToken: _readString(json['device_token']),
-        isAppSandbox: _readBool(json['is_app_sandbox']),
-      );
+    Map<String, dynamic> json,
+  ) => FirebaseAuthenticationSettingsIos(
+    deviceToken: _readString(json['device_token']),
+    isAppSandbox: _readBool(json['is_app_sandbox']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'device_token': deviceToken,
-        'is_app_sandbox': isAppSandbox,
-      };
+    '@type': CONSTRUCTOR,
+    'device_token': deviceToken,
+    'is_app_sandbox': isAppSandbox,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -110,11 +108,10 @@ final class FirebaseAuthenticationSettingsIos
   FirebaseAuthenticationSettingsIos copyWith({
     String? deviceToken,
     bool? isAppSandbox,
-  }) =>
-      FirebaseAuthenticationSettingsIos(
-        deviceToken: deviceToken ?? this.deviceToken,
-        isAppSandbox: isAppSandbox ?? this.isAppSandbox,
-      );
+  }) => FirebaseAuthenticationSettingsIos(
+    deviceToken: deviceToken ?? this.deviceToken,
+    isAppSandbox: isAppSandbox ?? this.isAppSandbox,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'firebaseAuthenticationSettingsIos';

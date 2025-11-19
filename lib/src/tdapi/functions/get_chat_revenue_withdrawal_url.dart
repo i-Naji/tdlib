@@ -21,18 +21,15 @@ final class GetChatRevenueWithdrawalUrl extends TdFunction<HttpUrl> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'password': password,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'password': password,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatRevenueWithdrawalUrl copyWith({
-    int? chatId,
-    String? password,
-  }) =>
+  GetChatRevenueWithdrawalUrl copyWith({int? chatId, String? password}) =>
       GetChatRevenueWithdrawalUrl(
         chatId: chatId ?? this.chatId,
         password: password ?? this.password,

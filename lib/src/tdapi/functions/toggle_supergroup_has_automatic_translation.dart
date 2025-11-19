@@ -21,23 +21,22 @@ final class ToggleSupergroupHasAutomaticTranslation extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'has_automatic_translation': hasAutomaticTranslation,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'has_automatic_translation': hasAutomaticTranslation,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleSupergroupHasAutomaticTranslation copyWith({
     int? supergroupId,
     bool? hasAutomaticTranslation,
-  }) =>
-      ToggleSupergroupHasAutomaticTranslation(
-        supergroupId: supergroupId ?? this.supergroupId,
-        hasAutomaticTranslation:
-            hasAutomaticTranslation ?? this.hasAutomaticTranslation,
-      );
+  }) => ToggleSupergroupHasAutomaticTranslation(
+    supergroupId: supergroupId ?? this.supergroupId,
+    hasAutomaticTranslation:
+        hasAutomaticTranslation ?? this.hasAutomaticTranslation,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleSupergroupHasAutomaticTranslation';

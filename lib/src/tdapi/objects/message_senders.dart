@@ -29,19 +29,21 @@ final class MessageSenders extends TdObject {
 
   /// Parses a [MessageSenders] from TDLib JSON.
   factory MessageSenders.fromJson(Map<String, dynamic> json) => MessageSenders(
-        totalCount: _readInt(json['total_count']),
-        senders: _readList<MessageSender>(
-            json['senders'], (e) => _readObject(e, MessageSender.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    totalCount: _readInt(json['total_count']),
+    senders: _readList<MessageSender>(
+      json['senders'],
+      (e) => _readObject(e, MessageSender.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'senders': [for (final e in senders) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'senders': [for (final e in senders) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +52,12 @@ final class MessageSenders extends TdObject {
     List<MessageSender>? senders,
     dynamic extra,
     int? clientId,
-  }) =>
-      MessageSenders(
-        totalCount: totalCount ?? this.totalCount,
-        senders: senders ?? this.senders,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => MessageSenders(
+    totalCount: totalCount ?? this.totalCount,
+    senders: senders ?? this.senders,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageSenders';

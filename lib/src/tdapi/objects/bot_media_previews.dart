@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of media previews of a bot
 final class BotMediaPreviews extends TdObject {
   /// Contains a list of media previews of a bot
-  const BotMediaPreviews({
-    required this.previews,
-    this.extra,
-    this.clientId,
-  });
+  const BotMediaPreviews({required this.previews, this.extra, this.clientId});
 
   /// List of media previews
   final List<BotMediaPreview> previews;
@@ -27,16 +23,18 @@ final class BotMediaPreviews extends TdObject {
   factory BotMediaPreviews.fromJson(Map<String, dynamic> json) =>
       BotMediaPreviews(
         previews: _readList<BotMediaPreview>(
-            json['previews'], (e) => _readObject(e, BotMediaPreview.fromJson)),
+          json['previews'],
+          (e) => _readObject(e, BotMediaPreview.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'previews': [for (final e in previews) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'previews': [for (final e in previews) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +42,11 @@ final class BotMediaPreviews extends TdObject {
     List<BotMediaPreview>? previews,
     dynamic extra,
     int? clientId,
-  }) =>
-      BotMediaPreviews(
-        previews: previews ?? this.previews,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => BotMediaPreviews(
+    previews: previews ?? this.previews,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'botMediaPreviews';

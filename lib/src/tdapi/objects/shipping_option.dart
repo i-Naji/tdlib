@@ -23,19 +23,21 @@ final class ShippingOption extends TdObject {
 
   /// Parses a [ShippingOption] from TDLib JSON.
   factory ShippingOption.fromJson(Map<String, dynamic> json) => ShippingOption(
-        id: _readString(json['id']),
-        title: _readString(json['title']),
-        priceParts: _readList<LabeledPricePart>(json['price_parts'],
-            (e) => _readObject(e, LabeledPricePart.fromJson)),
-      );
+    id: _readString(json['id']),
+    title: _readString(json['title']),
+    priceParts: _readList<LabeledPricePart>(
+      json['price_parts'],
+      (e) => _readObject(e, LabeledPricePart.fromJson),
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'title': title,
-        'price_parts': [for (final e in priceParts) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'title': title,
+    'price_parts': [for (final e in priceParts) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +45,11 @@ final class ShippingOption extends TdObject {
     String? id,
     String? title,
     List<LabeledPricePart>? priceParts,
-  }) =>
-      ShippingOption(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        priceParts: priceParts ?? this.priceParts,
-      );
+  }) => ShippingOption(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    priceParts: priceParts ?? this.priceParts,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'shippingOption';

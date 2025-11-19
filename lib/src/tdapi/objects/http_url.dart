@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains an HTTP URL
 final class HttpUrl extends TdObject {
   /// Contains an HTTP URL
-  const HttpUrl({
-    required this.url,
-    this.extra,
-    this.clientId,
-  });
+  const HttpUrl({required this.url, this.extra, this.clientId});
 
   /// The URL
   final String url;
@@ -25,29 +21,21 @@ final class HttpUrl extends TdObject {
 
   /// Parses a [HttpUrl] from TDLib JSON.
   factory HttpUrl.fromJson(Map<String, dynamic> json) => HttpUrl(
-        url: _readString(json['url']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    url: _readString(json['url']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'url': url};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  HttpUrl copyWith({
-    String? url,
-    dynamic extra,
-    int? clientId,
-  }) =>
-      HttpUrl(
-        url: url ?? this.url,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  HttpUrl copyWith({String? url, dynamic extra, int? clientId}) => HttpUrl(
+    url: url ?? this.url,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'httpUrl';

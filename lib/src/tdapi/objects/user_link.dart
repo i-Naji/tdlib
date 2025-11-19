@@ -29,18 +29,18 @@ final class UserLink extends TdObject {
 
   /// Parses a [UserLink] from TDLib JSON.
   factory UserLink.fromJson(Map<String, dynamic> json) => UserLink(
-        url: _readString(json['url']),
-        expiresIn: _readInt(json['expires_in']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    url: _readString(json['url']),
+    expiresIn: _readInt(json['expires_in']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'expires_in': expiresIn,
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'expires_in': expiresIn,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class UserLink extends TdObject {
     int? expiresIn,
     dynamic extra,
     int? clientId,
-  }) =>
-      UserLink(
-        url: url ?? this.url,
-        expiresIn: expiresIn ?? this.expiresIn,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UserLink(
+    url: url ?? this.url,
+    expiresIn: expiresIn ?? this.expiresIn,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userLink';

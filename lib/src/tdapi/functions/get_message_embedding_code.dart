@@ -25,12 +25,12 @@ final class GetMessageEmbeddingCode extends TdFunction<Text> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'for_album': forAlbum,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'for_album': forAlbum,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class GetMessageEmbeddingCode extends TdFunction<Text> {
     int? chatId,
     int? messageId,
     bool? forAlbum,
-  }) =>
-      GetMessageEmbeddingCode(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        forAlbum: forAlbum ?? this.forAlbum,
-      );
+  }) => GetMessageEmbeddingCode(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    forAlbum: forAlbum ?? this.forAlbum,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getMessageEmbeddingCode';

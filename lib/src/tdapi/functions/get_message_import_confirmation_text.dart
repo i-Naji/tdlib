@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Text].
 final class GetMessageImportConfirmationText extends TdFunction<Text> {
   /// Returns a confirmation text to be shown to the user before starting message import
-  const GetMessageImportConfirmationText({
-    required this.chatId,
-  });
+  const GetMessageImportConfirmationText({required this.chatId});
 
   /// Identifier of a chat to which the messages will be imported. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can_change_info member right
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetMessageImportConfirmationText copyWith({
-    int? chatId,
-  }) =>
-      GetMessageImportConfirmationText(
-        chatId: chatId ?? this.chatId,
-      );
+  GetMessageImportConfirmationText copyWith({int? chatId}) =>
+      GetMessageImportConfirmationText(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getMessageImportConfirmationText';

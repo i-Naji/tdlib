@@ -23,18 +23,18 @@ final class TermsOfService extends TdObject {
 
   /// Parses a [TermsOfService] from TDLib JSON.
   factory TermsOfService.fromJson(Map<String, dynamic> json) => TermsOfService(
-        text: _readObject(json['text'], FormattedText.fromJson),
-        minUserAge: _readInt(json['min_user_age']),
-        showPopup: _readBool(json['show_popup']),
-      );
+    text: _readObject(json['text'], FormattedText.fromJson),
+    minUserAge: _readInt(json['min_user_age']),
+    showPopup: _readBool(json['show_popup']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'min_user_age': minUserAge,
-        'show_popup': showPopup,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'min_user_age': minUserAge,
+    'show_popup': showPopup,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -42,12 +42,11 @@ final class TermsOfService extends TdObject {
     FormattedText? text,
     int? minUserAge,
     bool? showPopup,
-  }) =>
-      TermsOfService(
-        text: text ?? this.text,
-        minUserAge: minUserAge ?? this.minUserAge,
-        showPopup: showPopup ?? this.showPopup,
-      );
+  }) => TermsOfService(
+    text: text ?? this.text,
+    minUserAge: minUserAge ?? this.minUserAge,
+    showPopup: showPopup ?? this.showPopup,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'termsOfService';

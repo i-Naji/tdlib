@@ -21,22 +21,21 @@ final class InviteVideoChatParticipants extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'user_ids': userIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'user_ids': userIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   InviteVideoChatParticipants copyWith({
     int? groupCallId,
     List<int>? userIds,
-  }) =>
-      InviteVideoChatParticipants(
-        groupCallId: groupCallId ?? this.groupCallId,
-        userIds: userIds ?? this.userIds,
-      );
+  }) => InviteVideoChatParticipants(
+    groupCallId: groupCallId ?? this.groupCallId,
+    userIds: userIds ?? this.userIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inviteVideoChatParticipants';

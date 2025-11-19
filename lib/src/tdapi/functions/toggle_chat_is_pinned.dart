@@ -25,12 +25,12 @@ final class ToggleChatIsPinned extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_list': chatList.toJson(),
-        'chat_id': chatId,
-        'is_pinned': isPinned,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_list': chatList.toJson(),
+    'chat_id': chatId,
+    'is_pinned': isPinned,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class ToggleChatIsPinned extends TdFunction<Ok> {
     ChatList? chatList,
     int? chatId,
     bool? isPinned,
-  }) =>
-      ToggleChatIsPinned(
-        chatList: chatList ?? this.chatList,
-        chatId: chatId ?? this.chatId,
-        isPinned: isPinned ?? this.isPinned,
-      );
+  }) => ToggleChatIsPinned(
+    chatList: chatList ?? this.chatList,
+    chatId: chatId ?? this.chatId,
+    isPinned: isPinned ?? this.isPinned,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleChatIsPinned';

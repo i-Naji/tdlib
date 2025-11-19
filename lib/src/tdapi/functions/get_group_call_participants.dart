@@ -21,22 +21,21 @@ final class GetGroupCallParticipants extends TdFunction<GroupCallParticipants> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'input_group_call': inputGroupCall.toJson(),
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'input_group_call': inputGroupCall.toJson(),
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetGroupCallParticipants copyWith({
     InputGroupCall? inputGroupCall,
     int? limit,
-  }) =>
-      GetGroupCallParticipants(
-        inputGroupCall: inputGroupCall ?? this.inputGroupCall,
-        limit: limit ?? this.limit,
-      );
+  }) => GetGroupCallParticipants(
+    inputGroupCall: inputGroupCall ?? this.inputGroupCall,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getGroupCallParticipants';

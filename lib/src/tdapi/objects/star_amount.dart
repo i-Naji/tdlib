@@ -29,18 +29,18 @@ final class StarAmount extends TdObject {
 
   /// Parses a [StarAmount] from TDLib JSON.
   factory StarAmount.fromJson(Map<String, dynamic> json) => StarAmount(
-        starCount: _readInt(json['star_count']),
-        nanostarCount: _readInt(json['nanostar_count']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    starCount: _readInt(json['star_count']),
+    nanostarCount: _readInt(json['nanostar_count']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_count': starCount,
-        'nanostar_count': nanostarCount,
-      };
+    '@type': CONSTRUCTOR,
+    'star_count': starCount,
+    'nanostar_count': nanostarCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class StarAmount extends TdObject {
     int? nanostarCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      StarAmount(
-        starCount: starCount ?? this.starCount,
-        nanostarCount: nanostarCount ?? this.nanostarCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => StarAmount(
+    starCount: starCount ?? this.starCount,
+    nanostarCount: nanostarCount ?? this.nanostarCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starAmount';

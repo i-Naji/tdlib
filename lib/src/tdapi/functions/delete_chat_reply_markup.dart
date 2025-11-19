@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class DeleteChatReplyMarkup extends TdFunction<Ok> {
   /// Deletes the default reply markup from a chat. Must be called after a one-time keyboard or a replyMarkupForceReply reply markup has been used or dismissed
-  const DeleteChatReplyMarkup({
-    required this.chatId,
-    required this.messageId,
-  });
+  const DeleteChatReplyMarkup({required this.chatId, required this.messageId});
 
   /// Chat identifier
   final int chatId;
@@ -21,18 +18,15 @@ final class DeleteChatReplyMarkup extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteChatReplyMarkup copyWith({
-    int? chatId,
-    int? messageId,
-  }) =>
+  DeleteChatReplyMarkup copyWith({int? chatId, int? messageId}) =>
       DeleteChatReplyMarkup(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,

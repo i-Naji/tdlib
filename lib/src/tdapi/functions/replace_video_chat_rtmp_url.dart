@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [RtmpUrl].
 final class ReplaceVideoChatRtmpUrl extends TdFunction<RtmpUrl> {
   /// Replaces the current RTMP URL for streaming to the video chat of a chat; requires owner privileges in the chat
-  const ReplaceVideoChatRtmpUrl({
-    required this.chatId,
-  });
+  const ReplaceVideoChatRtmpUrl({required this.chatId});
 
   /// Chat identifier
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ReplaceVideoChatRtmpUrl copyWith({
-    int? chatId,
-  }) =>
-      ReplaceVideoChatRtmpUrl(
-        chatId: chatId ?? this.chatId,
-      );
+  ReplaceVideoChatRtmpUrl copyWith({int? chatId}) =>
+      ReplaceVideoChatRtmpUrl(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'replaceVideoChatRtmpUrl';

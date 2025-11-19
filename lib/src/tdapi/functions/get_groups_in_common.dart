@@ -25,20 +25,16 @@ final class GetGroupsInCommon extends TdFunction<Chats> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'offset_chat_id': offsetChatId,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'offset_chat_id': offsetChatId,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetGroupsInCommon copyWith({
-    int? userId,
-    int? offsetChatId,
-    int? limit,
-  }) =>
+  GetGroupsInCommon copyWith({int? userId, int? offsetChatId, int? limit}) =>
       GetGroupsInCommon(
         userId: userId ?? this.userId,
         offsetChatId: offsetChatId ?? this.offsetChatId,

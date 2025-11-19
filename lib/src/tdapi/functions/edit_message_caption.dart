@@ -33,14 +33,14 @@ final class EditMessageCaption extends TdFunction<Message> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'reply_markup': replyMarkup?.toJson(),
-        'caption': caption?.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'reply_markup': replyMarkup?.toJson(),
+    'caption': caption?.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,15 +50,13 @@ final class EditMessageCaption extends TdFunction<Message> {
     ReplyMarkup? Function()? replyMarkup,
     FormattedText? Function()? caption,
     bool? showCaptionAboveMedia,
-  }) =>
-      EditMessageCaption(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        caption: caption != null ? caption() : this.caption,
-        showCaptionAboveMedia:
-            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
-      );
+  }) => EditMessageCaption(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    caption: caption != null ? caption() : this.caption,
+    showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'editMessageCaption';

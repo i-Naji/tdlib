@@ -37,15 +37,15 @@ final class EditChatInviteLink extends TdFunction<ChatInviteLink> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'invite_link': inviteLink,
-        'name': name,
-        'expiration_date': expirationDate,
-        'member_limit': memberLimit,
-        'creates_join_request': createsJoinRequest,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'invite_link': inviteLink,
+    'name': name,
+    'expiration_date': expirationDate,
+    'member_limit': memberLimit,
+    'creates_join_request': createsJoinRequest,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class EditChatInviteLink extends TdFunction<ChatInviteLink> {
     int? expirationDate,
     int? memberLimit,
     bool? createsJoinRequest,
-  }) =>
-      EditChatInviteLink(
-        chatId: chatId ?? this.chatId,
-        inviteLink: inviteLink ?? this.inviteLink,
-        name: name ?? this.name,
-        expirationDate: expirationDate ?? this.expirationDate,
-        memberLimit: memberLimit ?? this.memberLimit,
-        createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
-      );
+  }) => EditChatInviteLink(
+    chatId: chatId ?? this.chatId,
+    inviteLink: inviteLink ?? this.inviteLink,
+    name: name ?? this.name,
+    expirationDate: expirationDate ?? this.expirationDate,
+    memberLimit: memberLimit ?? this.memberLimit,
+    createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'editChatInviteLink';

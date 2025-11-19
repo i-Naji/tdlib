@@ -29,13 +29,13 @@ final class SearchPublicStoriesByTag extends TdFunction<FoundStories> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'tag': tag,
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'tag': tag,
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class SearchPublicStoriesByTag extends TdFunction<FoundStories> {
     String? tag,
     String? offset,
     int? limit,
-  }) =>
-      SearchPublicStoriesByTag(
-        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-        tag: tag ?? this.tag,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => SearchPublicStoriesByTag(
+    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+    tag: tag ?? this.tag,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchPublicStoriesByTag';

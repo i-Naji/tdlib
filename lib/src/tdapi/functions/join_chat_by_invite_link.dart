@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Chat].
 final class JoinChatByInviteLink extends TdFunction<Chat> {
   /// Uses an invite link to add the current user to the chat if possible. May return an error with a message "INVITE_REQUEST_SENT" if only a join request was created
-  const JoinChatByInviteLink({
-    required this.inviteLink,
-  });
+  const JoinChatByInviteLink({required this.inviteLink});
 
   /// Invite link to use
   final String inviteLink;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'invite_link': inviteLink,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'invite_link': inviteLink,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  JoinChatByInviteLink copyWith({
-    String? inviteLink,
-  }) =>
-      JoinChatByInviteLink(
-        inviteLink: inviteLink ?? this.inviteLink,
-      );
+  JoinChatByInviteLink copyWith({String? inviteLink}) =>
+      JoinChatByInviteLink(inviteLink: inviteLink ?? this.inviteLink);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'joinChatByInviteLink';

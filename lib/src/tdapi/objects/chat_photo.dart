@@ -39,29 +39,32 @@ final class ChatPhoto extends TdObject {
 
   /// Parses a [ChatPhoto] from TDLib JSON.
   factory ChatPhoto.fromJson(Map<String, dynamic> json) => ChatPhoto(
-        id: _readInt(json['id']),
-        addedDate: _readInt(json['added_date']),
-        minithumbnail:
-            _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
-        sizes: _readList<PhotoSize>(
-            json['sizes'], (e) => _readObject(e, PhotoSize.fromJson)),
-        animation: _readOptional(json['animation'], AnimatedChatPhoto.fromJson),
-        smallAnimation:
-            _readOptional(json['small_animation'], AnimatedChatPhoto.fromJson),
-        sticker: _readOptional(json['sticker'], ChatPhotoSticker.fromJson),
-      );
+    id: _readInt(json['id']),
+    addedDate: _readInt(json['added_date']),
+    minithumbnail: _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
+    sizes: _readList<PhotoSize>(
+      json['sizes'],
+      (e) => _readObject(e, PhotoSize.fromJson),
+    ),
+    animation: _readOptional(json['animation'], AnimatedChatPhoto.fromJson),
+    smallAnimation: _readOptional(
+      json['small_animation'],
+      AnimatedChatPhoto.fromJson,
+    ),
+    sticker: _readOptional(json['sticker'], ChatPhotoSticker.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'added_date': addedDate,
-        'minithumbnail': minithumbnail?.toJson(),
-        'sizes': [for (final e in sizes) e.toJson()],
-        'animation': animation?.toJson(),
-        'small_animation': smallAnimation?.toJson(),
-        'sticker': sticker?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'added_date': addedDate,
+    'minithumbnail': minithumbnail?.toJson(),
+    'sizes': [for (final e in sizes) e.toJson()],
+    'animation': animation?.toJson(),
+    'small_animation': smallAnimation?.toJson(),
+    'sticker': sticker?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -73,18 +76,17 @@ final class ChatPhoto extends TdObject {
     AnimatedChatPhoto? Function()? animation,
     AnimatedChatPhoto? Function()? smallAnimation,
     ChatPhotoSticker? Function()? sticker,
-  }) =>
-      ChatPhoto(
-        id: id ?? this.id,
-        addedDate: addedDate ?? this.addedDate,
-        minithumbnail:
-            minithumbnail != null ? minithumbnail() : this.minithumbnail,
-        sizes: sizes ?? this.sizes,
-        animation: animation != null ? animation() : this.animation,
-        smallAnimation:
-            smallAnimation != null ? smallAnimation() : this.smallAnimation,
-        sticker: sticker != null ? sticker() : this.sticker,
-      );
+  }) => ChatPhoto(
+    id: id ?? this.id,
+    addedDate: addedDate ?? this.addedDate,
+    minithumbnail: minithumbnail != null ? minithumbnail() : this.minithumbnail,
+    sizes: sizes ?? this.sizes,
+    animation: animation != null ? animation() : this.animation,
+    smallAnimation: smallAnimation != null
+        ? smallAnimation()
+        : this.smallAnimation,
+    sticker: sticker != null ? sticker() : this.sticker,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatPhoto';

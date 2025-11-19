@@ -26,17 +26,19 @@ final class BotVerification extends TdObject {
       BotVerification(
         botUserId: _readInt(json['bot_user_id']),
         iconCustomEmojiId: _readInt(json['icon_custom_emoji_id']),
-        customDescription:
-            _readObject(json['custom_description'], FormattedText.fromJson),
+        customDescription: _readObject(
+          json['custom_description'],
+          FormattedText.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'icon_custom_emoji_id': iconCustomEmojiId.toString(),
-        'custom_description': customDescription.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'icon_custom_emoji_id': iconCustomEmojiId.toString(),
+    'custom_description': customDescription.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +46,11 @@ final class BotVerification extends TdObject {
     int? botUserId,
     int? iconCustomEmojiId,
     FormattedText? customDescription,
-  }) =>
-      BotVerification(
-        botUserId: botUserId ?? this.botUserId,
-        iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
-        customDescription: customDescription ?? this.customDescription,
-      );
+  }) => BotVerification(
+    botUserId: botUserId ?? this.botUserId,
+    iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
+    customDescription: customDescription ?? this.customDescription,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'botVerification';

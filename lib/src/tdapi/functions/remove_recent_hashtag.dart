@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class RemoveRecentHashtag extends TdFunction<Ok> {
   /// Removes a hashtag from the list of recently used hashtags
-  const RemoveRecentHashtag({
-    required this.hashtag,
-  });
+  const RemoveRecentHashtag({required this.hashtag});
 
   /// Hashtag to delete
   final String hashtag;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'hashtag': hashtag,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'hashtag': hashtag,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RemoveRecentHashtag copyWith({
-    String? hashtag,
-  }) =>
-      RemoveRecentHashtag(
-        hashtag: hashtag ?? this.hashtag,
-      );
+  RemoveRecentHashtag copyWith({String? hashtag}) =>
+      RemoveRecentHashtag(hashtag: hashtag ?? this.hashtag);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'removeRecentHashtag';

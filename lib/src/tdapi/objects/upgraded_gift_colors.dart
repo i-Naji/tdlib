@@ -51,15 +51,15 @@ final class UpgradedGiftColors extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'model_custom_emoji_id': modelCustomEmojiId.toString(),
-        'symbol_custom_emoji_id': symbolCustomEmojiId.toString(),
-        'light_theme_accent_color': lightThemeAccentColor,
-        'light_theme_colors': lightThemeColors,
-        'dark_theme_accent_color': darkThemeAccentColor,
-        'dark_theme_colors': darkThemeColors,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'model_custom_emoji_id': modelCustomEmojiId.toString(),
+    'symbol_custom_emoji_id': symbolCustomEmojiId.toString(),
+    'light_theme_accent_color': lightThemeAccentColor,
+    'light_theme_colors': lightThemeColors,
+    'dark_theme_accent_color': darkThemeAccentColor,
+    'dark_theme_colors': darkThemeColors,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -71,17 +71,15 @@ final class UpgradedGiftColors extends TdObject {
     List<int>? lightThemeColors,
     int? darkThemeAccentColor,
     List<int>? darkThemeColors,
-  }) =>
-      UpgradedGiftColors(
-        id: id ?? this.id,
-        modelCustomEmojiId: modelCustomEmojiId ?? this.modelCustomEmojiId,
-        symbolCustomEmojiId: symbolCustomEmojiId ?? this.symbolCustomEmojiId,
-        lightThemeAccentColor:
-            lightThemeAccentColor ?? this.lightThemeAccentColor,
-        lightThemeColors: lightThemeColors ?? this.lightThemeColors,
-        darkThemeAccentColor: darkThemeAccentColor ?? this.darkThemeAccentColor,
-        darkThemeColors: darkThemeColors ?? this.darkThemeColors,
-      );
+  }) => UpgradedGiftColors(
+    id: id ?? this.id,
+    modelCustomEmojiId: modelCustomEmojiId ?? this.modelCustomEmojiId,
+    symbolCustomEmojiId: symbolCustomEmojiId ?? this.symbolCustomEmojiId,
+    lightThemeAccentColor: lightThemeAccentColor ?? this.lightThemeAccentColor,
+    lightThemeColors: lightThemeColors ?? this.lightThemeColors,
+    darkThemeAccentColor: darkThemeAccentColor ?? this.darkThemeAccentColor,
+    darkThemeColors: darkThemeColors ?? this.darkThemeColors,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradedGiftColors';

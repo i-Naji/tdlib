@@ -41,13 +41,13 @@ final class PrepaidGiveaway extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'winner_count': winnerCount,
-        'prize': prize.toJson(),
-        'boost_count': boostCount,
-        'payment_date': paymentDate,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'winner_count': winnerCount,
+    'prize': prize.toJson(),
+    'boost_count': boostCount,
+    'payment_date': paymentDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,14 +57,13 @@ final class PrepaidGiveaway extends TdObject {
     GiveawayPrize? prize,
     int? boostCount,
     int? paymentDate,
-  }) =>
-      PrepaidGiveaway(
-        id: id ?? this.id,
-        winnerCount: winnerCount ?? this.winnerCount,
-        prize: prize ?? this.prize,
-        boostCount: boostCount ?? this.boostCount,
-        paymentDate: paymentDate ?? this.paymentDate,
-      );
+  }) => PrepaidGiveaway(
+    id: id ?? this.id,
+    winnerCount: winnerCount ?? this.winnerCount,
+    prize: prize ?? this.prize,
+    boostCount: boostCount ?? this.boostCount,
+    paymentDate: paymentDate ?? this.paymentDate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'prepaidGiveaway';

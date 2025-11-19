@@ -21,18 +21,15 @@ final class DropGiftOriginalDetails extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'received_gift_id': receivedGiftId,
-        'star_count': starCount,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'received_gift_id': receivedGiftId,
+    'star_count': starCount,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DropGiftOriginalDetails copyWith({
-    String? receivedGiftId,
-    int? starCount,
-  }) =>
+  DropGiftOriginalDetails copyWith({String? receivedGiftId, int? starCount}) =>
       DropGiftOriginalDetails(
         receivedGiftId: receivedGiftId ?? this.receivedGiftId,
         starCount: starCount ?? this.starCount,

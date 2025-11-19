@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [TMeUrls].
 final class GetRecentlyVisitedTMeUrls extends TdFunction<TMeUrls> {
   /// Returns t.me URLs recently visited by a newly registered user
-  const GetRecentlyVisitedTMeUrls({
-    required this.referrer,
-  });
+  const GetRecentlyVisitedTMeUrls({required this.referrer});
 
   /// Google Play referrer to identify the user
   final String referrer;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'referrer': referrer,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'referrer': referrer,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetRecentlyVisitedTMeUrls copyWith({
-    String? referrer,
-  }) =>
-      GetRecentlyVisitedTMeUrls(
-        referrer: referrer ?? this.referrer,
-      );
+  GetRecentlyVisitedTMeUrls copyWith({String? referrer}) =>
+      GetRecentlyVisitedTMeUrls(referrer: referrer ?? this.referrer);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getRecentlyVisitedTMeUrls';

@@ -29,13 +29,13 @@ final class BlockMessageSenderFromReplies extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'message_id': messageId,
-        'delete_message': deleteMessage,
-        'delete_all_messages': deleteAllMessages,
-        'report_spam': reportSpam,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'message_id': messageId,
+    'delete_message': deleteMessage,
+    'delete_all_messages': deleteAllMessages,
+    'report_spam': reportSpam,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class BlockMessageSenderFromReplies extends TdFunction<Ok> {
     bool? deleteMessage,
     bool? deleteAllMessages,
     bool? reportSpam,
-  }) =>
-      BlockMessageSenderFromReplies(
-        messageId: messageId ?? this.messageId,
-        deleteMessage: deleteMessage ?? this.deleteMessage,
-        deleteAllMessages: deleteAllMessages ?? this.deleteAllMessages,
-        reportSpam: reportSpam ?? this.reportSpam,
-      );
+  }) => BlockMessageSenderFromReplies(
+    messageId: messageId ?? this.messageId,
+    deleteMessage: deleteMessage ?? this.deleteMessage,
+    deleteAllMessages: deleteAllMessages ?? this.deleteAllMessages,
+    reportSpam: reportSpam ?? this.reportSpam,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'blockMessageSenderFromReplies';

@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [PaymentReceipt].
 final class GetPaymentReceipt extends TdFunction<PaymentReceipt> {
   /// Returns information about a successful payment
-  const GetPaymentReceipt({
-    required this.chatId,
-    required this.messageId,
-  });
+  const GetPaymentReceipt({required this.chatId, required this.messageId});
 
   /// Chat identifier of the messagePaymentSuccessful message
   final int chatId;
@@ -21,18 +18,15 @@ final class GetPaymentReceipt extends TdFunction<PaymentReceipt> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetPaymentReceipt copyWith({
-    int? chatId,
-    int? messageId,
-  }) =>
+  GetPaymentReceipt copyWith({int? chatId, int? messageId}) =>
       GetPaymentReceipt(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,

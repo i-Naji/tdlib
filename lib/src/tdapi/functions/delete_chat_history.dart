@@ -25,12 +25,12 @@ final class DeleteChatHistory extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'remove_from_chat_list': removeFromChatList,
-        'revoke': revoke,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'remove_from_chat_list': removeFromChatList,
+    'revoke': revoke,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class DeleteChatHistory extends TdFunction<Ok> {
     int? chatId,
     bool? removeFromChatList,
     bool? revoke,
-  }) =>
-      DeleteChatHistory(
-        chatId: chatId ?? this.chatId,
-        removeFromChatList: removeFromChatList ?? this.removeFromChatList,
-        revoke: revoke ?? this.revoke,
-      );
+  }) => DeleteChatHistory(
+    chatId: chatId ?? this.chatId,
+    removeFromChatList: removeFromChatList ?? this.removeFromChatList,
+    revoke: revoke ?? this.revoke,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deleteChatHistory';

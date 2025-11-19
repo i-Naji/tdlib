@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Hashtags].
 final class SearchHashtags extends TdFunction<Hashtags> {
   /// Searches for recently used hashtags by their prefix
-  const SearchHashtags({
-    required this.prefix,
-    required this.limit,
-  });
+  const SearchHashtags({required this.prefix, required this.limit});
 
   /// Hashtag prefix to search for
   final String prefix;
@@ -21,22 +18,16 @@ final class SearchHashtags extends TdFunction<Hashtags> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'prefix': prefix,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'prefix': prefix,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchHashtags copyWith({
-    String? prefix,
-    int? limit,
-  }) =>
-      SearchHashtags(
-        prefix: prefix ?? this.prefix,
-        limit: limit ?? this.limit,
-      );
+  SearchHashtags copyWith({String? prefix, int? limit}) =>
+      SearchHashtags(prefix: prefix ?? this.prefix, limit: limit ?? this.limit);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchHashtags';

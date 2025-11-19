@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [BusinessChatLink].
 final class CreateBusinessChatLink extends TdFunction<BusinessChatLink> {
   /// Creates a business chat link for the current account. Requires Telegram Business subscription. There can be up to getOption("business_chat_link_count_max") links created. Returns the created link
-  const CreateBusinessChatLink({
-    required this.linkInfo,
-  });
+  const CreateBusinessChatLink({required this.linkInfo});
 
   /// Information about the link to create
   final InputBusinessChatLink linkInfo;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'link_info': linkInfo.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'link_info': linkInfo.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CreateBusinessChatLink copyWith({
-    InputBusinessChatLink? linkInfo,
-  }) =>
-      CreateBusinessChatLink(
-        linkInfo: linkInfo ?? this.linkInfo,
-      );
+  CreateBusinessChatLink copyWith({InputBusinessChatLink? linkInfo}) =>
+      CreateBusinessChatLink(linkInfo: linkInfo ?? this.linkInfo);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'createBusinessChatLink';

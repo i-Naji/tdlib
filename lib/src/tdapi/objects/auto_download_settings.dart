@@ -61,17 +61,17 @@ final class AutoDownloadSettings extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_auto_download_enabled': isAutoDownloadEnabled,
-        'max_photo_file_size': maxPhotoFileSize,
-        'max_video_file_size': maxVideoFileSize,
-        'max_other_file_size': maxOtherFileSize,
-        'video_upload_bitrate': videoUploadBitrate,
-        'preload_large_videos': preloadLargeVideos,
-        'preload_next_audio': preloadNextAudio,
-        'preload_stories': preloadStories,
-        'use_less_data_for_calls': useLessDataForCalls,
-      };
+    '@type': CONSTRUCTOR,
+    'is_auto_download_enabled': isAutoDownloadEnabled,
+    'max_photo_file_size': maxPhotoFileSize,
+    'max_video_file_size': maxVideoFileSize,
+    'max_other_file_size': maxOtherFileSize,
+    'video_upload_bitrate': videoUploadBitrate,
+    'preload_large_videos': preloadLargeVideos,
+    'preload_next_audio': preloadNextAudio,
+    'preload_stories': preloadStories,
+    'use_less_data_for_calls': useLessDataForCalls,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -85,19 +85,17 @@ final class AutoDownloadSettings extends TdObject {
     bool? preloadNextAudio,
     bool? preloadStories,
     bool? useLessDataForCalls,
-  }) =>
-      AutoDownloadSettings(
-        isAutoDownloadEnabled:
-            isAutoDownloadEnabled ?? this.isAutoDownloadEnabled,
-        maxPhotoFileSize: maxPhotoFileSize ?? this.maxPhotoFileSize,
-        maxVideoFileSize: maxVideoFileSize ?? this.maxVideoFileSize,
-        maxOtherFileSize: maxOtherFileSize ?? this.maxOtherFileSize,
-        videoUploadBitrate: videoUploadBitrate ?? this.videoUploadBitrate,
-        preloadLargeVideos: preloadLargeVideos ?? this.preloadLargeVideos,
-        preloadNextAudio: preloadNextAudio ?? this.preloadNextAudio,
-        preloadStories: preloadStories ?? this.preloadStories,
-        useLessDataForCalls: useLessDataForCalls ?? this.useLessDataForCalls,
-      );
+  }) => AutoDownloadSettings(
+    isAutoDownloadEnabled: isAutoDownloadEnabled ?? this.isAutoDownloadEnabled,
+    maxPhotoFileSize: maxPhotoFileSize ?? this.maxPhotoFileSize,
+    maxVideoFileSize: maxVideoFileSize ?? this.maxVideoFileSize,
+    maxOtherFileSize: maxOtherFileSize ?? this.maxOtherFileSize,
+    videoUploadBitrate: videoUploadBitrate ?? this.videoUploadBitrate,
+    preloadLargeVideos: preloadLargeVideos ?? this.preloadLargeVideos,
+    preloadNextAudio: preloadNextAudio ?? this.preloadNextAudio,
+    preloadStories: preloadStories ?? this.preloadStories,
+    useLessDataForCalls: useLessDataForCalls ?? this.useLessDataForCalls,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'autoDownloadSettings';

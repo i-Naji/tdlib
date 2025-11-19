@@ -8,28 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class CloseChat extends TdFunction<Ok> {
   /// Informs TDLib that the chat is closed by the user. Many useful activities depend on the chat being opened or closed
-  const CloseChat({
-    required this.chatId,
-  });
+  const CloseChat({required this.chatId});
 
   /// Chat identifier
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CloseChat copyWith({
-    int? chatId,
-  }) =>
-      CloseChat(
-        chatId: chatId ?? this.chatId,
-      );
+  CloseChat copyWith({int? chatId}) => CloseChat(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'closeChat';

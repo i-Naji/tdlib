@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [ChatBoostSlots].
 final class BoostChat extends TdFunction<ChatBoostSlots> {
   /// Boosts a chat and returns the list of available chat boost slots for the current user after the boost
-  const BoostChat({
-    required this.chatId,
-    required this.slotIds,
-  });
+  const BoostChat({required this.chatId, required this.slotIds});
 
   /// Identifier of the chat
   final int chatId;
@@ -21,22 +18,18 @@ final class BoostChat extends TdFunction<ChatBoostSlots> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'slot_ids': slotIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'slot_ids': slotIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  BoostChat copyWith({
-    int? chatId,
-    List<int>? slotIds,
-  }) =>
-      BoostChat(
-        chatId: chatId ?? this.chatId,
-        slotIds: slotIds ?? this.slotIds,
-      );
+  BoostChat copyWith({int? chatId, List<int>? slotIds}) => BoostChat(
+    chatId: chatId ?? this.chatId,
+    slotIds: slotIds ?? this.slotIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'boostChat';

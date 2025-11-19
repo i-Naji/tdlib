@@ -31,22 +31,22 @@ final class PollOption extends TdObject {
 
   /// Parses a [PollOption] from TDLib JSON.
   factory PollOption.fromJson(Map<String, dynamic> json) => PollOption(
-        text: _readObject(json['text'], FormattedText.fromJson),
-        voterCount: _readInt(json['voter_count']),
-        votePercentage: _readInt(json['vote_percentage']),
-        isChosen: _readBool(json['is_chosen']),
-        isBeingChosen: _readBool(json['is_being_chosen']),
-      );
+    text: _readObject(json['text'], FormattedText.fromJson),
+    voterCount: _readInt(json['voter_count']),
+    votePercentage: _readInt(json['vote_percentage']),
+    isChosen: _readBool(json['is_chosen']),
+    isBeingChosen: _readBool(json['is_being_chosen']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'voter_count': voterCount,
-        'vote_percentage': votePercentage,
-        'is_chosen': isChosen,
-        'is_being_chosen': isBeingChosen,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'voter_count': voterCount,
+    'vote_percentage': votePercentage,
+    'is_chosen': isChosen,
+    'is_being_chosen': isBeingChosen,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,14 +56,13 @@ final class PollOption extends TdObject {
     int? votePercentage,
     bool? isChosen,
     bool? isBeingChosen,
-  }) =>
-      PollOption(
-        text: text ?? this.text,
-        voterCount: voterCount ?? this.voterCount,
-        votePercentage: votePercentage ?? this.votePercentage,
-        isChosen: isChosen ?? this.isChosen,
-        isBeingChosen: isBeingChosen ?? this.isBeingChosen,
-      );
+  }) => PollOption(
+    text: text ?? this.text,
+    voterCount: voterCount ?? this.voterCount,
+    votePercentage: votePercentage ?? this.votePercentage,
+    isChosen: isChosen ?? this.isChosen,
+    isBeingChosen: isBeingChosen ?? this.isBeingChosen,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pollOption';

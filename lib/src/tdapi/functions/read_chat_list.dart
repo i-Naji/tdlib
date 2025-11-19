@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ReadChatList extends TdFunction<Ok> {
   /// Traverse all chats in a chat list and marks all messages in the chats as read
-  const ReadChatList({
-    required this.chatList,
-  });
+  const ReadChatList({required this.chatList});
 
   /// Chat list in which to mark all chats as read
   final ChatList chatList;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_list': chatList.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_list': chatList.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ReadChatList copyWith({
-    ChatList? chatList,
-  }) =>
-      ReadChatList(
-        chatList: chatList ?? this.chatList,
-      );
+  ReadChatList copyWith({ChatList? chatList}) =>
+      ReadChatList(chatList: chatList ?? this.chatList);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'readChatList';

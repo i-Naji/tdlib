@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [PassportElements].
 final class GetAllPassportElements extends TdFunction<PassportElements> {
   /// Returns all available Telegram Passport elements
-  const GetAllPassportElements({
-    required this.password,
-  });
+  const GetAllPassportElements({required this.password});
 
   /// The 2-step verification password of the current user
   final String password;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'password': password,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'password': password,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetAllPassportElements copyWith({
-    String? password,
-  }) =>
-      GetAllPassportElements(
-        password: password ?? this.password,
-      );
+  GetAllPassportElements copyWith({String? password}) =>
+      GetAllPassportElements(password: password ?? this.password);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getAllPassportElements';

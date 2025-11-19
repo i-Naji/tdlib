@@ -87,45 +87,50 @@ final class ChatBoostLevelFeatures extends TdObject {
         customEmojiReactionCount: _readInt(json['custom_emoji_reaction_count']),
         titleColorCount: _readInt(json['title_color_count']),
         profileAccentColorCount: _readInt(json['profile_accent_color_count']),
-        canSetProfileBackgroundCustomEmoji:
-            _readBool(json['can_set_profile_background_custom_emoji']),
+        canSetProfileBackgroundCustomEmoji: _readBool(
+          json['can_set_profile_background_custom_emoji'],
+        ),
         accentColorCount: _readInt(json['accent_color_count']),
-        canSetBackgroundCustomEmoji:
-            _readBool(json['can_set_background_custom_emoji']),
+        canSetBackgroundCustomEmoji: _readBool(
+          json['can_set_background_custom_emoji'],
+        ),
         canSetEmojiStatus: _readBool(json['can_set_emoji_status']),
         chatThemeBackgroundCount: _readInt(json['chat_theme_background_count']),
         canSetCustomBackground: _readBool(json['can_set_custom_background']),
-        canSetCustomEmojiStickerSet:
-            _readBool(json['can_set_custom_emoji_sticker_set']),
-        canEnableAutomaticTranslation:
-            _readBool(json['can_enable_automatic_translation']),
+        canSetCustomEmojiStickerSet: _readBool(
+          json['can_set_custom_emoji_sticker_set'],
+        ),
+        canEnableAutomaticTranslation: _readBool(
+          json['can_enable_automatic_translation'],
+        ),
         canRecognizeSpeech: _readBool(json['can_recognize_speech']),
-        canDisableSponsoredMessages:
-            _readBool(json['can_disable_sponsored_messages']),
+        canDisableSponsoredMessages: _readBool(
+          json['can_disable_sponsored_messages'],
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'level': level,
-        'story_per_day_count': storyPerDayCount,
-        'custom_emoji_reaction_count': customEmojiReactionCount,
-        'title_color_count': titleColorCount,
-        'profile_accent_color_count': profileAccentColorCount,
-        'can_set_profile_background_custom_emoji':
-            canSetProfileBackgroundCustomEmoji,
-        'accent_color_count': accentColorCount,
-        'can_set_background_custom_emoji': canSetBackgroundCustomEmoji,
-        'can_set_emoji_status': canSetEmojiStatus,
-        'chat_theme_background_count': chatThemeBackgroundCount,
-        'can_set_custom_background': canSetCustomBackground,
-        'can_set_custom_emoji_sticker_set': canSetCustomEmojiStickerSet,
-        'can_enable_automatic_translation': canEnableAutomaticTranslation,
-        'can_recognize_speech': canRecognizeSpeech,
-        'can_disable_sponsored_messages': canDisableSponsoredMessages,
-      };
+    '@type': CONSTRUCTOR,
+    'level': level,
+    'story_per_day_count': storyPerDayCount,
+    'custom_emoji_reaction_count': customEmojiReactionCount,
+    'title_color_count': titleColorCount,
+    'profile_accent_color_count': profileAccentColorCount,
+    'can_set_profile_background_custom_emoji':
+        canSetProfileBackgroundCustomEmoji,
+    'accent_color_count': accentColorCount,
+    'can_set_background_custom_emoji': canSetBackgroundCustomEmoji,
+    'can_set_emoji_status': canSetEmojiStatus,
+    'chat_theme_background_count': chatThemeBackgroundCount,
+    'can_set_custom_background': canSetCustomBackground,
+    'can_set_custom_emoji_sticker_set': canSetCustomEmojiStickerSet,
+    'can_enable_automatic_translation': canEnableAutomaticTranslation,
+    'can_recognize_speech': canRecognizeSpeech,
+    'can_disable_sponsored_messages': canDisableSponsoredMessages,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -147,36 +152,35 @@ final class ChatBoostLevelFeatures extends TdObject {
     bool? canDisableSponsoredMessages,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatBoostLevelFeatures(
-        level: level ?? this.level,
-        storyPerDayCount: storyPerDayCount ?? this.storyPerDayCount,
-        customEmojiReactionCount:
-            customEmojiReactionCount ?? this.customEmojiReactionCount,
-        titleColorCount: titleColorCount ?? this.titleColorCount,
-        profileAccentColorCount:
-            profileAccentColorCount ?? this.profileAccentColorCount,
-        canSetProfileBackgroundCustomEmoji:
-            canSetProfileBackgroundCustomEmoji ??
-                this.canSetProfileBackgroundCustomEmoji,
-        accentColorCount: accentColorCount ?? this.accentColorCount,
-        canSetBackgroundCustomEmoji:
-            canSetBackgroundCustomEmoji ?? this.canSetBackgroundCustomEmoji,
-        canSetEmojiStatus: canSetEmojiStatus ?? this.canSetEmojiStatus,
-        chatThemeBackgroundCount:
-            chatThemeBackgroundCount ?? this.chatThemeBackgroundCount,
-        canSetCustomBackground:
-            canSetCustomBackground ?? this.canSetCustomBackground,
-        canSetCustomEmojiStickerSet:
-            canSetCustomEmojiStickerSet ?? this.canSetCustomEmojiStickerSet,
-        canEnableAutomaticTranslation:
-            canEnableAutomaticTranslation ?? this.canEnableAutomaticTranslation,
-        canRecognizeSpeech: canRecognizeSpeech ?? this.canRecognizeSpeech,
-        canDisableSponsoredMessages:
-            canDisableSponsoredMessages ?? this.canDisableSponsoredMessages,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatBoostLevelFeatures(
+    level: level ?? this.level,
+    storyPerDayCount: storyPerDayCount ?? this.storyPerDayCount,
+    customEmojiReactionCount:
+        customEmojiReactionCount ?? this.customEmojiReactionCount,
+    titleColorCount: titleColorCount ?? this.titleColorCount,
+    profileAccentColorCount:
+        profileAccentColorCount ?? this.profileAccentColorCount,
+    canSetProfileBackgroundCustomEmoji:
+        canSetProfileBackgroundCustomEmoji ??
+        this.canSetProfileBackgroundCustomEmoji,
+    accentColorCount: accentColorCount ?? this.accentColorCount,
+    canSetBackgroundCustomEmoji:
+        canSetBackgroundCustomEmoji ?? this.canSetBackgroundCustomEmoji,
+    canSetEmojiStatus: canSetEmojiStatus ?? this.canSetEmojiStatus,
+    chatThemeBackgroundCount:
+        chatThemeBackgroundCount ?? this.chatThemeBackgroundCount,
+    canSetCustomBackground:
+        canSetCustomBackground ?? this.canSetCustomBackground,
+    canSetCustomEmojiStickerSet:
+        canSetCustomEmojiStickerSet ?? this.canSetCustomEmojiStickerSet,
+    canEnableAutomaticTranslation:
+        canEnableAutomaticTranslation ?? this.canEnableAutomaticTranslation,
+    canRecognizeSpeech: canRecognizeSpeech ?? this.canRecognizeSpeech,
+    canDisableSponsoredMessages:
+        canDisableSponsoredMessages ?? this.canDisableSponsoredMessages,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatBoostLevelFeatures';

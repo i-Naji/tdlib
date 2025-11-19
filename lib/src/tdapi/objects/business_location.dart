@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Represents a location of a business
 final class BusinessLocation extends TdObject {
   /// Represents a location of a business
-  const BusinessLocation({
-    this.location,
-    required this.address,
-  });
+  const BusinessLocation({this.location, required this.address});
 
   /// The location; may be null if not specified
   final Location? location;
@@ -26,21 +23,20 @@ final class BusinessLocation extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'location': location?.toJson(),
-        'address': address,
-      };
+    '@type': CONSTRUCTOR,
+    'location': location?.toJson(),
+    'address': address,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   BusinessLocation copyWith({
     Location? Function()? location,
     String? address,
-  }) =>
-      BusinessLocation(
-        location: location != null ? location() : this.location,
-        address: address ?? this.address,
-      );
+  }) => BusinessLocation(
+    location: location != null ? location() : this.location,
+    address: address ?? this.address,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'businessLocation';

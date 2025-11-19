@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [GiftCollections].
 final class GetGiftCollections extends TdFunction<GiftCollections> {
   /// Returns collections of gifts owned by the given user or chat
-  const GetGiftCollections({
-    required this.ownerId,
-  });
+  const GetGiftCollections({required this.ownerId});
 
   /// Identifier of the user or the channel chat that received the gifts
   final MessageSender ownerId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'owner_id': ownerId.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'owner_id': ownerId.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetGiftCollections copyWith({
-    MessageSender? ownerId,
-  }) =>
-      GetGiftCollections(
-        ownerId: ownerId ?? this.ownerId,
-      );
+  GetGiftCollections copyWith({MessageSender? ownerId}) =>
+      GetGiftCollections(ownerId: ownerId ?? this.ownerId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getGiftCollections';

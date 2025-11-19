@@ -17,20 +17,19 @@ final class ToggleHasSponsoredMessagesEnabled extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'has_sponsored_messages_enabled': hasSponsoredMessagesEnabled,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'has_sponsored_messages_enabled': hasSponsoredMessagesEnabled,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleHasSponsoredMessagesEnabled copyWith({
     bool? hasSponsoredMessagesEnabled,
-  }) =>
-      ToggleHasSponsoredMessagesEnabled(
-        hasSponsoredMessagesEnabled:
-            hasSponsoredMessagesEnabled ?? this.hasSponsoredMessagesEnabled,
-      );
+  }) => ToggleHasSponsoredMessagesEnabled(
+    hasSponsoredMessagesEnabled:
+        hasSponsoredMessagesEnabled ?? this.hasSponsoredMessagesEnabled,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleHasSponsoredMessagesEnabled';

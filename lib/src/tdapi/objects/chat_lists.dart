@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of chat lists
 final class ChatLists extends TdObject {
   /// Contains a list of chat lists
-  const ChatLists({
-    required this.chatLists,
-    this.extra,
-    this.clientId,
-  });
+  const ChatLists({required this.chatLists, this.extra, this.clientId});
 
   /// List of chat lists
   final List<ChatList> chatLists;
@@ -25,17 +21,19 @@ final class ChatLists extends TdObject {
 
   /// Parses a [ChatLists] from TDLib JSON.
   factory ChatLists.fromJson(Map<String, dynamic> json) => ChatLists(
-        chatLists: _readList<ChatList>(
-            json['chat_lists'], (e) => _readObject(e, ChatList.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    chatLists: _readList<ChatList>(
+      json['chat_lists'],
+      (e) => _readObject(e, ChatList.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_lists': [for (final e in chatLists) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'chat_lists': [for (final e in chatLists) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +41,11 @@ final class ChatLists extends TdObject {
     List<ChatList>? chatLists,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatLists(
-        chatLists: chatLists ?? this.chatLists,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatLists(
+    chatLists: chatLists ?? this.chatLists,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatLists';

@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of hashtags
 final class Hashtags extends TdObject {
   /// Contains a list of hashtags
-  const Hashtags({
-    required this.hashtags,
-    this.extra,
-    this.clientId,
-  });
+  const Hashtags({required this.hashtags, this.extra, this.clientId});
 
   /// A list of hashtags
   final List<String> hashtags;
@@ -25,24 +21,17 @@ final class Hashtags extends TdObject {
 
   /// Parses a [Hashtags] from TDLib JSON.
   factory Hashtags.fromJson(Map<String, dynamic> json) => Hashtags(
-        hashtags: _readList<String>(json['hashtags'], _readString),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    hashtags: _readList<String>(json['hashtags'], _readString),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'hashtags': hashtags,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'hashtags': hashtags};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  Hashtags copyWith({
-    List<String>? hashtags,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  Hashtags copyWith({List<String>? hashtags, dynamic extra, int? clientId}) =>
       Hashtags(
         hashtags: hashtags ?? this.hashtags,
         extra: extra ?? this.extra,

@@ -31,22 +31,22 @@ final class RemoteFile extends TdObject {
 
   /// Parses a [RemoteFile] from TDLib JSON.
   factory RemoteFile.fromJson(Map<String, dynamic> json) => RemoteFile(
-        id: _readString(json['id']),
-        uniqueId: _readString(json['unique_id']),
-        isUploadingActive: _readBool(json['is_uploading_active']),
-        isUploadingCompleted: _readBool(json['is_uploading_completed']),
-        uploadedSize: _readInt(json['uploaded_size']),
-      );
+    id: _readString(json['id']),
+    uniqueId: _readString(json['unique_id']),
+    isUploadingActive: _readBool(json['is_uploading_active']),
+    isUploadingCompleted: _readBool(json['is_uploading_completed']),
+    uploadedSize: _readInt(json['uploaded_size']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'unique_id': uniqueId,
-        'is_uploading_active': isUploadingActive,
-        'is_uploading_completed': isUploadingCompleted,
-        'uploaded_size': uploadedSize,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'unique_id': uniqueId,
+    'is_uploading_active': isUploadingActive,
+    'is_uploading_completed': isUploadingCompleted,
+    'uploaded_size': uploadedSize,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,14 +56,13 @@ final class RemoteFile extends TdObject {
     bool? isUploadingActive,
     bool? isUploadingCompleted,
     int? uploadedSize,
-  }) =>
-      RemoteFile(
-        id: id ?? this.id,
-        uniqueId: uniqueId ?? this.uniqueId,
-        isUploadingActive: isUploadingActive ?? this.isUploadingActive,
-        isUploadingCompleted: isUploadingCompleted ?? this.isUploadingCompleted,
-        uploadedSize: uploadedSize ?? this.uploadedSize,
-      );
+  }) => RemoteFile(
+    id: id ?? this.id,
+    uniqueId: uniqueId ?? this.uniqueId,
+    isUploadingActive: isUploadingActive ?? this.isUploadingActive,
+    isUploadingCompleted: isUploadingCompleted ?? this.isUploadingCompleted,
+    uploadedSize: uploadedSize ?? this.uploadedSize,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'remoteFile';

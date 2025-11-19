@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [AnimatedEmoji].
 final class GetAnimatedEmoji extends TdFunction<AnimatedEmoji> {
   /// Returns an animated emoji corresponding to a given emoji. Returns a 404 error if the emoji has no animated emoji
-  const GetAnimatedEmoji({
-    required this.emoji,
-  });
+  const GetAnimatedEmoji({required this.emoji});
 
   /// The emoji
   final String emoji;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'emoji': emoji,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'emoji': emoji,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetAnimatedEmoji copyWith({
-    String? emoji,
-  }) =>
-      GetAnimatedEmoji(
-        emoji: emoji ?? this.emoji,
-      );
+  GetAnimatedEmoji copyWith({String? emoji}) =>
+      GetAnimatedEmoji(emoji: emoji ?? this.emoji);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getAnimatedEmoji';

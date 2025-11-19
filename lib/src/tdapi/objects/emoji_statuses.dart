@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of emoji statuses
 final class EmojiStatuses extends TdObject {
   /// Contains a list of emoji statuses
-  const EmojiStatuses({
-    required this.emojiStatuses,
-    this.extra,
-    this.clientId,
-  });
+  const EmojiStatuses({required this.emojiStatuses, this.extra, this.clientId});
 
   /// The list of emoji statuses identifiers
   final List<EmojiStatus> emojiStatuses;
@@ -25,17 +21,19 @@ final class EmojiStatuses extends TdObject {
 
   /// Parses a [EmojiStatuses] from TDLib JSON.
   factory EmojiStatuses.fromJson(Map<String, dynamic> json) => EmojiStatuses(
-        emojiStatuses: _readList<EmojiStatus>(json['emoji_statuses'],
-            (e) => _readObject(e, EmojiStatus.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    emojiStatuses: _readList<EmojiStatus>(
+      json['emoji_statuses'],
+      (e) => _readObject(e, EmojiStatus.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'emoji_statuses': [for (final e in emojiStatuses) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'emoji_statuses': [for (final e in emojiStatuses) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +41,11 @@ final class EmojiStatuses extends TdObject {
     List<EmojiStatus>? emojiStatuses,
     dynamic extra,
     int? clientId,
-  }) =>
-      EmojiStatuses(
-        emojiStatuses: emojiStatuses ?? this.emojiStatuses,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => EmojiStatuses(
+    emojiStatuses: emojiStatuses ?? this.emojiStatuses,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'emojiStatuses';

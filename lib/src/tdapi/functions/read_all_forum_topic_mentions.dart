@@ -21,18 +21,15 @@ final class ReadAllForumTopicMentions extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'forum_topic_id': forumTopicId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'forum_topic_id': forumTopicId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ReadAllForumTopicMentions copyWith({
-    int? chatId,
-    int? forumTopicId,
-  }) =>
+  ReadAllForumTopicMentions copyWith({int? chatId, int? forumTopicId}) =>
       ReadAllForumTopicMentions(
         chatId: chatId ?? this.chatId,
         forumTopicId: forumTopicId ?? this.forumTopicId,

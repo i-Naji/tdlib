@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class LoadActiveStories extends TdFunction<Ok> {
   /// Loads more active stories from a story list. The loaded stories will be sent through updates. Active stories are sorted by the pair (active_stories.order, active_stories.story_poster_chat_id) in descending order. Returns a 404 error if all active stories have been loaded
-  const LoadActiveStories({
-    required this.storyList,
-  });
+  const LoadActiveStories({required this.storyList});
 
   /// The story list in which to load active stories
   final StoryList storyList;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'story_list': storyList.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'story_list': storyList.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  LoadActiveStories copyWith({
-    StoryList? storyList,
-  }) =>
-      LoadActiveStories(
-        storyList: storyList ?? this.storyList,
-      );
+  LoadActiveStories copyWith({StoryList? storyList}) =>
+      LoadActiveStories(storyList: storyList ?? this.storyList);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'loadActiveStories';

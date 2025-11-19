@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [ChatAdministrators].
 final class GetChatAdministrators extends TdFunction<ChatAdministrators> {
   /// Returns a list of administrators of the chat with their custom titles
-  const GetChatAdministrators({
-    required this.chatId,
-  });
+  const GetChatAdministrators({required this.chatId});
 
   /// Chat identifier
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatAdministrators copyWith({
-    int? chatId,
-  }) =>
-      GetChatAdministrators(
-        chatId: chatId ?? this.chatId,
-      );
+  GetChatAdministrators copyWith({int? chatId}) =>
+      GetChatAdministrators(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatAdministrators';

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [EmojiCategories].
 final class GetEmojiCategories extends TdFunction<EmojiCategories> {
   /// Returns available emoji categories
-  const GetEmojiCategories({
-    this.type,
-  });
+  const GetEmojiCategories({this.type});
 
   /// Type of emoji categories to return; pass null to get default emoji categories
   final EmojiCategoryType? type;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'type': type?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetEmojiCategories copyWith({
-    EmojiCategoryType? Function()? type,
-  }) =>
-      GetEmojiCategories(
-        type: type != null ? type() : this.type,
-      );
+  GetEmojiCategories copyWith({EmojiCategoryType? Function()? type}) =>
+      GetEmojiCategories(type: type != null ? type() : this.type);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getEmojiCategories';

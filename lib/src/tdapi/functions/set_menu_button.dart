@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetMenuButton extends TdFunction<Ok> {
   /// Sets menu button for the given user or for all users; for bots only
-  const SetMenuButton({
-    required this.userId,
-    required this.menuButton,
-  });
+  const SetMenuButton({required this.userId, required this.menuButton});
 
   /// Identifier of the user or 0 to set menu button for all users
   final int userId;
@@ -21,18 +18,15 @@ final class SetMenuButton extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'menu_button': menuButton.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'menu_button': menuButton.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetMenuButton copyWith({
-    int? userId,
-    BotMenuButton? menuButton,
-  }) =>
+  SetMenuButton copyWith({int? userId, BotMenuButton? menuButton}) =>
       SetMenuButton(
         userId: userId ?? this.userId,
         menuButton: menuButton ?? this.menuButton,

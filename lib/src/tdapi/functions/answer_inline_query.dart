@@ -37,15 +37,15 @@ final class AnswerInlineQuery extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'inline_query_id': inlineQueryId.toString(),
-        'is_personal': isPersonal,
-        'button': button?.toJson(),
-        'results': [for (final e in results) e.toJson()],
-        'cache_time': cacheTime,
-        'next_offset': nextOffset,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'inline_query_id': inlineQueryId.toString(),
+    'is_personal': isPersonal,
+    'button': button?.toJson(),
+    'results': [for (final e in results) e.toJson()],
+    'cache_time': cacheTime,
+    'next_offset': nextOffset,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class AnswerInlineQuery extends TdFunction<Ok> {
     List<InputInlineQueryResult>? results,
     int? cacheTime,
     String? nextOffset,
-  }) =>
-      AnswerInlineQuery(
-        inlineQueryId: inlineQueryId ?? this.inlineQueryId,
-        isPersonal: isPersonal ?? this.isPersonal,
-        button: button != null ? button() : this.button,
-        results: results ?? this.results,
-        cacheTime: cacheTime ?? this.cacheTime,
-        nextOffset: nextOffset ?? this.nextOffset,
-      );
+  }) => AnswerInlineQuery(
+    inlineQueryId: inlineQueryId ?? this.inlineQueryId,
+    isPersonal: isPersonal ?? this.isPersonal,
+    button: button != null ? button() : this.button,
+    results: results ?? this.results,
+    cacheTime: cacheTime ?? this.cacheTime,
+    nextOffset: nextOffset ?? this.nextOffset,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'answerInlineQuery';

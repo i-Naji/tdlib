@@ -21,23 +21,22 @@ final class ToggleVideoChatEnabledStartNotification extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'enabled_start_notification': enabledStartNotification,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'enabled_start_notification': enabledStartNotification,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleVideoChatEnabledStartNotification copyWith({
     int? groupCallId,
     bool? enabledStartNotification,
-  }) =>
-      ToggleVideoChatEnabledStartNotification(
-        groupCallId: groupCallId ?? this.groupCallId,
-        enabledStartNotification:
-            enabledStartNotification ?? this.enabledStartNotification,
-      );
+  }) => ToggleVideoChatEnabledStartNotification(
+    groupCallId: groupCallId ?? this.groupCallId,
+    enabledStartNotification:
+        enabledStartNotification ?? this.enabledStartNotification,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleVideoChatEnabledStartNotification';

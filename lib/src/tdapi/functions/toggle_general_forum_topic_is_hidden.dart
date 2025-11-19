@@ -21,18 +21,15 @@ final class ToggleGeneralForumTopicIsHidden extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'is_hidden': isHidden,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'is_hidden': isHidden,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ToggleGeneralForumTopicIsHidden copyWith({
-    int? chatId,
-    bool? isHidden,
-  }) =>
+  ToggleGeneralForumTopicIsHidden copyWith({int? chatId, bool? isHidden}) =>
       ToggleGeneralForumTopicIsHidden(
         chatId: chatId ?? this.chatId,
         isHidden: isHidden ?? this.isHidden,

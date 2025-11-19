@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetUsername extends TdFunction<Ok> {
   /// Changes the editable username of the current user
-  const SetUsername({
-    required this.username,
-  });
+  const SetUsername({required this.username});
 
   /// The new value of the username. Use an empty string to remove the username. The username can't be completely removed if there is another active or disabled username
   final String username;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'username': username,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'username': username,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetUsername copyWith({
-    String? username,
-  }) =>
-      SetUsername(
-        username: username ?? this.username,
-      );
+  SetUsername copyWith({String? username}) =>
+      SetUsername(username: username ?? this.username);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setUsername';

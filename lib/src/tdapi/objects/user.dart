@@ -133,76 +133,82 @@ final class User extends TdObject {
 
   /// Parses a [User] from TDLib JSON.
   factory User.fromJson(Map<String, dynamic> json) => User(
-        id: _readInt(json['id']),
-        firstName: _readString(json['first_name']),
-        lastName: _readString(json['last_name']),
-        usernames: _readOptional(json['usernames'], Usernames.fromJson),
-        phoneNumber: _readString(json['phone_number']),
-        status: _readObject(json['status'], UserStatus.fromJson),
-        profilePhoto:
-            _readOptional(json['profile_photo'], ProfilePhoto.fromJson),
-        accentColorId: _readInt(json['accent_color_id']),
-        backgroundCustomEmojiId: _readInt(json['background_custom_emoji_id']),
-        upgradedGiftColors: _readOptional(
-            json['upgraded_gift_colors'], UpgradedGiftColors.fromJson),
-        profileAccentColorId: _readInt(json['profile_accent_color_id']),
-        profileBackgroundCustomEmojiId:
-            _readInt(json['profile_background_custom_emoji_id']),
-        emojiStatus: _readOptional(json['emoji_status'], EmojiStatus.fromJson),
-        isContact: _readBool(json['is_contact']),
-        isMutualContact: _readBool(json['is_mutual_contact']),
-        isCloseFriend: _readBool(json['is_close_friend']),
-        verificationStatus: _readOptional(
-            json['verification_status'], VerificationStatus.fromJson),
-        isPremium: _readBool(json['is_premium']),
-        isSupport: _readBool(json['is_support']),
-        restrictionInfo:
-            _readOptional(json['restriction_info'], RestrictionInfo.fromJson),
-        hasActiveStories: _readBool(json['has_active_stories']),
-        hasUnreadActiveStories: _readBool(json['has_unread_active_stories']),
-        restrictsNewChats: _readBool(json['restricts_new_chats']),
-        paidMessageStarCount: _readInt(json['paid_message_star_count']),
-        haveAccess: _readBool(json['have_access']),
-        type: _readObject(json['type'], UserType.fromJson),
-        languageCode: _readString(json['language_code']),
-        addedToAttachmentMenu: _readBool(json['added_to_attachment_menu']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    id: _readInt(json['id']),
+    firstName: _readString(json['first_name']),
+    lastName: _readString(json['last_name']),
+    usernames: _readOptional(json['usernames'], Usernames.fromJson),
+    phoneNumber: _readString(json['phone_number']),
+    status: _readObject(json['status'], UserStatus.fromJson),
+    profilePhoto: _readOptional(json['profile_photo'], ProfilePhoto.fromJson),
+    accentColorId: _readInt(json['accent_color_id']),
+    backgroundCustomEmojiId: _readInt(json['background_custom_emoji_id']),
+    upgradedGiftColors: _readOptional(
+      json['upgraded_gift_colors'],
+      UpgradedGiftColors.fromJson,
+    ),
+    profileAccentColorId: _readInt(json['profile_accent_color_id']),
+    profileBackgroundCustomEmojiId: _readInt(
+      json['profile_background_custom_emoji_id'],
+    ),
+    emojiStatus: _readOptional(json['emoji_status'], EmojiStatus.fromJson),
+    isContact: _readBool(json['is_contact']),
+    isMutualContact: _readBool(json['is_mutual_contact']),
+    isCloseFriend: _readBool(json['is_close_friend']),
+    verificationStatus: _readOptional(
+      json['verification_status'],
+      VerificationStatus.fromJson,
+    ),
+    isPremium: _readBool(json['is_premium']),
+    isSupport: _readBool(json['is_support']),
+    restrictionInfo: _readOptional(
+      json['restriction_info'],
+      RestrictionInfo.fromJson,
+    ),
+    hasActiveStories: _readBool(json['has_active_stories']),
+    hasUnreadActiveStories: _readBool(json['has_unread_active_stories']),
+    restrictsNewChats: _readBool(json['restricts_new_chats']),
+    paidMessageStarCount: _readInt(json['paid_message_star_count']),
+    haveAccess: _readBool(json['have_access']),
+    type: _readObject(json['type'], UserType.fromJson),
+    languageCode: _readString(json['language_code']),
+    addedToAttachmentMenu: _readBool(json['added_to_attachment_menu']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'first_name': firstName,
-        'last_name': lastName,
-        'usernames': usernames?.toJson(),
-        'phone_number': phoneNumber,
-        'status': status.toJson(),
-        'profile_photo': profilePhoto?.toJson(),
-        'accent_color_id': accentColorId,
-        'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
-        'upgraded_gift_colors': upgradedGiftColors?.toJson(),
-        'profile_accent_color_id': profileAccentColorId,
-        'profile_background_custom_emoji_id':
-            profileBackgroundCustomEmojiId.toString(),
-        'emoji_status': emojiStatus?.toJson(),
-        'is_contact': isContact,
-        'is_mutual_contact': isMutualContact,
-        'is_close_friend': isCloseFriend,
-        'verification_status': verificationStatus?.toJson(),
-        'is_premium': isPremium,
-        'is_support': isSupport,
-        'restriction_info': restrictionInfo?.toJson(),
-        'has_active_stories': hasActiveStories,
-        'has_unread_active_stories': hasUnreadActiveStories,
-        'restricts_new_chats': restrictsNewChats,
-        'paid_message_star_count': paidMessageStarCount,
-        'have_access': haveAccess,
-        'type': type.toJson(),
-        'language_code': languageCode,
-        'added_to_attachment_menu': addedToAttachmentMenu,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'first_name': firstName,
+    'last_name': lastName,
+    'usernames': usernames?.toJson(),
+    'phone_number': phoneNumber,
+    'status': status.toJson(),
+    'profile_photo': profilePhoto?.toJson(),
+    'accent_color_id': accentColorId,
+    'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
+    'upgraded_gift_colors': upgradedGiftColors?.toJson(),
+    'profile_accent_color_id': profileAccentColorId,
+    'profile_background_custom_emoji_id': profileBackgroundCustomEmojiId
+        .toString(),
+    'emoji_status': emojiStatus?.toJson(),
+    'is_contact': isContact,
+    'is_mutual_contact': isMutualContact,
+    'is_close_friend': isCloseFriend,
+    'verification_status': verificationStatus?.toJson(),
+    'is_premium': isPremium,
+    'is_support': isSupport,
+    'restriction_info': restrictionInfo?.toJson(),
+    'has_active_stories': hasActiveStories,
+    'has_unread_active_stories': hasUnreadActiveStories,
+    'restricts_new_chats': restrictsNewChats,
+    'paid_message_star_count': paidMessageStarCount,
+    'have_access': haveAccess,
+    'type': type.toJson(),
+    'language_code': languageCode,
+    'added_to_attachment_menu': addedToAttachmentMenu,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -237,48 +243,47 @@ final class User extends TdObject {
     bool? addedToAttachmentMenu,
     dynamic extra,
     int? clientId,
-  }) =>
-      User(
-        id: id ?? this.id,
-        firstName: firstName ?? this.firstName,
-        lastName: lastName ?? this.lastName,
-        usernames: usernames != null ? usernames() : this.usernames,
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        status: status ?? this.status,
-        profilePhoto: profilePhoto != null ? profilePhoto() : this.profilePhoto,
-        accentColorId: accentColorId ?? this.accentColorId,
-        backgroundCustomEmojiId:
-            backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
-        upgradedGiftColors: upgradedGiftColors != null
-            ? upgradedGiftColors()
-            : this.upgradedGiftColors,
-        profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
-        profileBackgroundCustomEmojiId: profileBackgroundCustomEmojiId ??
-            this.profileBackgroundCustomEmojiId,
-        emojiStatus: emojiStatus != null ? emojiStatus() : this.emojiStatus,
-        isContact: isContact ?? this.isContact,
-        isMutualContact: isMutualContact ?? this.isMutualContact,
-        isCloseFriend: isCloseFriend ?? this.isCloseFriend,
-        verificationStatus: verificationStatus != null
-            ? verificationStatus()
-            : this.verificationStatus,
-        isPremium: isPremium ?? this.isPremium,
-        isSupport: isSupport ?? this.isSupport,
-        restrictionInfo:
-            restrictionInfo != null ? restrictionInfo() : this.restrictionInfo,
-        hasActiveStories: hasActiveStories ?? this.hasActiveStories,
-        hasUnreadActiveStories:
-            hasUnreadActiveStories ?? this.hasUnreadActiveStories,
-        restrictsNewChats: restrictsNewChats ?? this.restrictsNewChats,
-        paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
-        haveAccess: haveAccess ?? this.haveAccess,
-        type: type ?? this.type,
-        languageCode: languageCode ?? this.languageCode,
-        addedToAttachmentMenu:
-            addedToAttachmentMenu ?? this.addedToAttachmentMenu,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => User(
+    id: id ?? this.id,
+    firstName: firstName ?? this.firstName,
+    lastName: lastName ?? this.lastName,
+    usernames: usernames != null ? usernames() : this.usernames,
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+    status: status ?? this.status,
+    profilePhoto: profilePhoto != null ? profilePhoto() : this.profilePhoto,
+    accentColorId: accentColorId ?? this.accentColorId,
+    backgroundCustomEmojiId:
+        backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
+    upgradedGiftColors: upgradedGiftColors != null
+        ? upgradedGiftColors()
+        : this.upgradedGiftColors,
+    profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
+    profileBackgroundCustomEmojiId:
+        profileBackgroundCustomEmojiId ?? this.profileBackgroundCustomEmojiId,
+    emojiStatus: emojiStatus != null ? emojiStatus() : this.emojiStatus,
+    isContact: isContact ?? this.isContact,
+    isMutualContact: isMutualContact ?? this.isMutualContact,
+    isCloseFriend: isCloseFriend ?? this.isCloseFriend,
+    verificationStatus: verificationStatus != null
+        ? verificationStatus()
+        : this.verificationStatus,
+    isPremium: isPremium ?? this.isPremium,
+    isSupport: isSupport ?? this.isSupport,
+    restrictionInfo: restrictionInfo != null
+        ? restrictionInfo()
+        : this.restrictionInfo,
+    hasActiveStories: hasActiveStories ?? this.hasActiveStories,
+    hasUnreadActiveStories:
+        hasUnreadActiveStories ?? this.hasUnreadActiveStories,
+    restrictsNewChats: restrictsNewChats ?? this.restrictsNewChats,
+    paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
+    haveAccess: haveAccess ?? this.haveAccess,
+    type: type ?? this.type,
+    languageCode: languageCode ?? this.languageCode,
+    addedToAttachmentMenu: addedToAttachmentMenu ?? this.addedToAttachmentMenu,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'user';

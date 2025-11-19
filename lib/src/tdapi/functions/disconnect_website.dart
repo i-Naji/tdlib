@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class DisconnectWebsite extends TdFunction<Ok> {
   /// Disconnects website from the current user's Telegram account
-  const DisconnectWebsite({
-    required this.websiteId,
-  });
+  const DisconnectWebsite({required this.websiteId});
 
   /// Website identifier
   final int websiteId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'website_id': websiteId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'website_id': websiteId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DisconnectWebsite copyWith({
-    int? websiteId,
-  }) =>
-      DisconnectWebsite(
-        websiteId: websiteId ?? this.websiteId,
-      );
+  DisconnectWebsite copyWith({int? websiteId}) =>
+      DisconnectWebsite(websiteId: websiteId ?? this.websiteId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'disconnectWebsite';

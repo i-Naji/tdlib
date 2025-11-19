@@ -8,28 +8,21 @@ part of '../tdapi.dart';
 /// Returns [OptionValue].
 final class GetOption extends TdFunction<OptionValue> {
   /// Returns the value of an option by its name. (Check the list of available options on https://core.telegram.org/tdlib/options.) Can be called before authorization. Can be called synchronously for options "version" and "commit_hash"
-  const GetOption({
-    required this.name,
-  });
+  const GetOption({required this.name});
 
   /// The name of the option
   final String name;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetOption copyWith({
-    String? name,
-  }) =>
-      GetOption(
-        name: name ?? this.name,
-      );
+  GetOption copyWith({String? name}) => GetOption(name: name ?? this.name);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getOption';

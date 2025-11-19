@@ -53,7 +53,9 @@ final class ConnectedAffiliateProgram extends TdObject {
         url: _readString(json['url']),
         botUserId: _readInt(json['bot_user_id']),
         parameters: _readObject(
-            json['parameters'], AffiliateProgramParameters.fromJson),
+          json['parameters'],
+          AffiliateProgramParameters.fromJson,
+        ),
         connectionDate: _readInt(json['connection_date']),
         isDisconnected: _readBool(json['is_disconnected']),
         userCount: _readInt(json['user_count']),
@@ -64,15 +66,15 @@ final class ConnectedAffiliateProgram extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'bot_user_id': botUserId,
-        'parameters': parameters.toJson(),
-        'connection_date': connectionDate,
-        'is_disconnected': isDisconnected,
-        'user_count': userCount.toString(),
-        'revenue_star_count': revenueStarCount.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'bot_user_id': botUserId,
+    'parameters': parameters.toJson(),
+    'connection_date': connectionDate,
+    'is_disconnected': isDisconnected,
+    'user_count': userCount.toString(),
+    'revenue_star_count': revenueStarCount.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -86,18 +88,17 @@ final class ConnectedAffiliateProgram extends TdObject {
     int? revenueStarCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      ConnectedAffiliateProgram(
-        url: url ?? this.url,
-        botUserId: botUserId ?? this.botUserId,
-        parameters: parameters ?? this.parameters,
-        connectionDate: connectionDate ?? this.connectionDate,
-        isDisconnected: isDisconnected ?? this.isDisconnected,
-        userCount: userCount ?? this.userCount,
-        revenueStarCount: revenueStarCount ?? this.revenueStarCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ConnectedAffiliateProgram(
+    url: url ?? this.url,
+    botUserId: botUserId ?? this.botUserId,
+    parameters: parameters ?? this.parameters,
+    connectionDate: connectionDate ?? this.connectionDate,
+    isDisconnected: isDisconnected ?? this.isDisconnected,
+    userCount: userCount ?? this.userCount,
+    revenueStarCount: revenueStarCount ?? this.revenueStarCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'connectedAffiliateProgram';

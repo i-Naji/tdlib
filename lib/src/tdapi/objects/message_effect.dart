@@ -41,24 +41,24 @@ final class MessageEffect extends TdObject {
 
   /// Parses a [MessageEffect] from TDLib JSON.
   factory MessageEffect.fromJson(Map<String, dynamic> json) => MessageEffect(
-        id: _readInt(json['id']),
-        staticIcon: _readOptional(json['static_icon'], Sticker.fromJson),
-        emoji: _readString(json['emoji']),
-        isPremium: _readBool(json['is_premium']),
-        type: _readObject(json['type'], MessageEffectType.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    id: _readInt(json['id']),
+    staticIcon: _readOptional(json['static_icon'], Sticker.fromJson),
+    emoji: _readString(json['emoji']),
+    isPremium: _readBool(json['is_premium']),
+    type: _readObject(json['type'], MessageEffectType.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'static_icon': staticIcon?.toJson(),
-        'emoji': emoji,
-        'is_premium': isPremium,
-        'type': type.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'static_icon': staticIcon?.toJson(),
+    'emoji': emoji,
+    'is_premium': isPremium,
+    'type': type.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -70,16 +70,15 @@ final class MessageEffect extends TdObject {
     MessageEffectType? type,
     dynamic extra,
     int? clientId,
-  }) =>
-      MessageEffect(
-        id: id ?? this.id,
-        staticIcon: staticIcon != null ? staticIcon() : this.staticIcon,
-        emoji: emoji ?? this.emoji,
-        isPremium: isPremium ?? this.isPremium,
-        type: type ?? this.type,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => MessageEffect(
+    id: id ?? this.id,
+    staticIcon: staticIcon != null ? staticIcon() : this.staticIcon,
+    emoji: emoji ?? this.emoji,
+    isPremium: isPremium ?? this.isPremium,
+    type: type ?? this.type,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageEffect';

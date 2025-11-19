@@ -25,12 +25,12 @@ final class ToggleStoryIsPostedToChatPage extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'story_id': storyId,
-        'is_posted_to_chat_page': isPostedToChatPage,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+    'is_posted_to_chat_page': isPostedToChatPage,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class ToggleStoryIsPostedToChatPage extends TdFunction<Ok> {
     int? storyPosterChatId,
     int? storyId,
     bool? isPostedToChatPage,
-  }) =>
-      ToggleStoryIsPostedToChatPage(
-        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-        storyId: storyId ?? this.storyId,
-        isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
-      );
+  }) => ToggleStoryIsPostedToChatPage(
+    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+    storyId: storyId ?? this.storyId,
+    isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleStoryIsPostedToChatPage';

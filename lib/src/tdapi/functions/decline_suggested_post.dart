@@ -25,12 +25,12 @@ final class DeclineSuggestedPost extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'comment': comment,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'comment': comment,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class DeclineSuggestedPost extends TdFunction<Ok> {
     int? chatId,
     int? messageId,
     String? comment,
-  }) =>
-      DeclineSuggestedPost(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        comment: comment ?? this.comment,
-      );
+  }) => DeclineSuggestedPost(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    comment: comment ?? this.comment,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'declineSuggestedPost';

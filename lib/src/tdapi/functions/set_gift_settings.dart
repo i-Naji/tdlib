@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetGiftSettings extends TdFunction<Ok> {
   /// Changes settings for gift receiving for the current user
-  const SetGiftSettings({
-    required this.settings,
-  });
+  const SetGiftSettings({required this.settings});
 
   /// The new settings
   final GiftSettings settings;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'settings': settings.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'settings': settings.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetGiftSettings copyWith({
-    GiftSettings? settings,
-  }) =>
-      SetGiftSettings(
-        settings: settings ?? this.settings,
-      );
+  SetGiftSettings copyWith({GiftSettings? settings}) =>
+      SetGiftSettings(settings: settings ?? this.settings);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setGiftSettings';

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Backgrounds].
 final class GetInstalledBackgrounds extends TdFunction<Backgrounds> {
   /// Returns backgrounds installed by the user
-  const GetInstalledBackgrounds({
-    required this.forDarkTheme,
-  });
+  const GetInstalledBackgrounds({required this.forDarkTheme});
 
   /// Pass true to order returned backgrounds for a dark theme
   final bool forDarkTheme;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'for_dark_theme': forDarkTheme,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'for_dark_theme': forDarkTheme,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetInstalledBackgrounds copyWith({
-    bool? forDarkTheme,
-  }) =>
-      GetInstalledBackgrounds(
-        forDarkTheme: forDarkTheme ?? this.forDarkTheme,
-      );
+  GetInstalledBackgrounds copyWith({bool? forDarkTheme}) =>
+      GetInstalledBackgrounds(forDarkTheme: forDarkTheme ?? this.forDarkTheme);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getInstalledBackgrounds';

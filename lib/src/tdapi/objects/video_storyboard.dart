@@ -36,12 +36,12 @@ final class VideoStoryboard extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'storyboard_file': storyboardFile.toJson(),
-        'width': width,
-        'height': height,
-        'map_file': mapFile.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'storyboard_file': storyboardFile.toJson(),
+    'width': width,
+    'height': height,
+    'map_file': mapFile.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class VideoStoryboard extends TdObject {
     int? width,
     int? height,
     File? mapFile,
-  }) =>
-      VideoStoryboard(
-        storyboardFile: storyboardFile ?? this.storyboardFile,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        mapFile: mapFile ?? this.mapFile,
-      );
+  }) => VideoStoryboard(
+    storyboardFile: storyboardFile ?? this.storyboardFile,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    mapFile: mapFile ?? this.mapFile,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'videoStoryboard';

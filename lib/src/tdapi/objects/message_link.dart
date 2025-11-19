@@ -29,18 +29,18 @@ final class MessageLink extends TdObject {
 
   /// Parses a [MessageLink] from TDLib JSON.
   factory MessageLink.fromJson(Map<String, dynamic> json) => MessageLink(
-        link: _readString(json['link']),
-        isPublic: _readBool(json['is_public']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    link: _readString(json['link']),
+    isPublic: _readBool(json['is_public']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'link': link,
-        'is_public': isPublic,
-      };
+    '@type': CONSTRUCTOR,
+    'link': link,
+    'is_public': isPublic,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class MessageLink extends TdObject {
     bool? isPublic,
     dynamic extra,
     int? clientId,
-  }) =>
-      MessageLink(
-        link: link ?? this.link,
-        isPublic: isPublic ?? this.isPublic,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => MessageLink(
+    link: link ?? this.link,
+    isPublic: isPublic ?? this.isPublic,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageLink';

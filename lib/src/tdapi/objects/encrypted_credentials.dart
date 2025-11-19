@@ -31,19 +31,15 @@ final class EncryptedCredentials extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'data': data,
-        'hash': hash,
-        'secret': secret,
-      };
+    '@type': CONSTRUCTOR,
+    'data': data,
+    'hash': hash,
+    'secret': secret,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  EncryptedCredentials copyWith({
-    String? data,
-    String? hash,
-    String? secret,
-  }) =>
+  EncryptedCredentials copyWith({String? data, String? hash, String? secret}) =>
       EncryptedCredentials(
         data: data ?? this.data,
         hash: hash ?? this.hash,

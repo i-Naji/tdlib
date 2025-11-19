@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Message].
 final class GetChatMessageByDate extends TdFunction<Message> {
   /// Returns the last message sent in a chat no later than the specified date. Returns a 404 error if such message doesn't exist
-  const GetChatMessageByDate({
-    required this.chatId,
-    required this.date,
-  });
+  const GetChatMessageByDate({required this.chatId, required this.date});
 
   /// Chat identifier
   final int chatId;
@@ -21,18 +18,15 @@ final class GetChatMessageByDate extends TdFunction<Message> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'date': date,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'date': date,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatMessageByDate copyWith({
-    int? chatId,
-    int? date,
-  }) =>
+  GetChatMessageByDate copyWith({int? chatId, int? date}) =>
       GetChatMessageByDate(
         chatId: chatId ?? this.chatId,
         date: date ?? this.date,

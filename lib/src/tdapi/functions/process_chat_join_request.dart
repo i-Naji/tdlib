@@ -25,20 +25,16 @@ final class ProcessChatJoinRequest extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'user_id': userId,
-        'approve': approve,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'user_id': userId,
+    'approve': approve,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ProcessChatJoinRequest copyWith({
-    int? chatId,
-    int? userId,
-    bool? approve,
-  }) =>
+  ProcessChatJoinRequest copyWith({int? chatId, int? userId, bool? approve}) =>
       ProcessChatJoinRequest(
         chatId: chatId ?? this.chatId,
         userId: userId ?? this.userId,

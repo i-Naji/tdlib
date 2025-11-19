@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Describes a price required to pay to upgrade a gift
 final class GiftUpgradePrice extends TdObject {
   /// Describes a price required to pay to upgrade a gift
-  const GiftUpgradePrice({
-    required this.date,
-    required this.starCount,
-  });
+  const GiftUpgradePrice({required this.date, required this.starCount});
 
   /// Point in time (Unix timestamp) when the price will be in effect
   final int date;
@@ -26,21 +23,17 @@ final class GiftUpgradePrice extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'date': date,
-        'star_count': starCount,
-      };
+    '@type': CONSTRUCTOR,
+    'date': date,
+    'star_count': starCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GiftUpgradePrice copyWith({
-    int? date,
-    int? starCount,
-  }) =>
-      GiftUpgradePrice(
-        date: date ?? this.date,
-        starCount: starCount ?? this.starCount,
-      );
+  GiftUpgradePrice copyWith({int? date, int? starCount}) => GiftUpgradePrice(
+    date: date ?? this.date,
+    starCount: starCount ?? this.starCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giftUpgradePrice';

@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [ChatFolderInfo].
 final class EditChatFolder extends TdFunction<ChatFolderInfo> {
   /// Edits existing chat folder. Returns information about the edited chat folder
-  const EditChatFolder({
-    required this.chatFolderId,
-    required this.folder,
-  });
+  const EditChatFolder({required this.chatFolderId, required this.folder});
 
   /// Chat folder identifier
   final int chatFolderId;
@@ -21,18 +18,15 @@ final class EditChatFolder extends TdFunction<ChatFolderInfo> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_folder_id': chatFolderId,
-        'folder': folder.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_folder_id': chatFolderId,
+    'folder': folder.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  EditChatFolder copyWith({
-    int? chatFolderId,
-    ChatFolder? folder,
-  }) =>
+  EditChatFolder copyWith({int? chatFolderId, ChatFolder? folder}) =>
       EditChatFolder(
         chatFolderId: chatFolderId ?? this.chatFolderId,
         folder: folder ?? this.folder,

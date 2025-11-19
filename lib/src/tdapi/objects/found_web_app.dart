@@ -33,20 +33,20 @@ final class FoundWebApp extends TdObject {
 
   /// Parses a [FoundWebApp] from TDLib JSON.
   factory FoundWebApp.fromJson(Map<String, dynamic> json) => FoundWebApp(
-        webApp: _readObject(json['web_app'], WebApp.fromJson),
-        requestWriteAccess: _readBool(json['request_write_access']),
-        skipConfirmation: _readBool(json['skip_confirmation']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    webApp: _readObject(json['web_app'], WebApp.fromJson),
+    requestWriteAccess: _readBool(json['request_write_access']),
+    skipConfirmation: _readBool(json['skip_confirmation']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'web_app': webApp.toJson(),
-        'request_write_access': requestWriteAccess,
-        'skip_confirmation': skipConfirmation,
-      };
+    '@type': CONSTRUCTOR,
+    'web_app': webApp.toJson(),
+    'request_write_access': requestWriteAccess,
+    'skip_confirmation': skipConfirmation,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,14 +56,13 @@ final class FoundWebApp extends TdObject {
     bool? skipConfirmation,
     dynamic extra,
     int? clientId,
-  }) =>
-      FoundWebApp(
-        webApp: webApp ?? this.webApp,
-        requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
-        skipConfirmation: skipConfirmation ?? this.skipConfirmation,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => FoundWebApp(
+    webApp: webApp ?? this.webApp,
+    requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
+    skipConfirmation: skipConfirmation ?? this.skipConfirmation,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'foundWebApp';

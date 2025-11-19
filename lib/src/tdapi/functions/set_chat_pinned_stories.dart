@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetChatPinnedStories extends TdFunction<Ok> {
   /// Changes the list of pinned stories on a chat page; requires can_edit_stories administrator right in the chat
-  const SetChatPinnedStories({
-    required this.chatId,
-    required this.storyIds,
-  });
+  const SetChatPinnedStories({required this.chatId, required this.storyIds});
 
   /// Identifier of the chat that posted the stories
   final int chatId;
@@ -21,18 +18,15 @@ final class SetChatPinnedStories extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'story_ids': storyIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'story_ids': storyIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetChatPinnedStories copyWith({
-    int? chatId,
-    List<int>? storyIds,
-  }) =>
+  SetChatPinnedStories copyWith({int? chatId, List<int>? storyIds}) =>
       SetChatPinnedStories(
         chatId: chatId ?? this.chatId,
         storyIds: storyIds ?? this.storyIds,

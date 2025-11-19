@@ -33,14 +33,14 @@ final class TestProxy extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'server': server,
-        'port': port,
-        'type': type.toJson(),
-        'dc_id': dcId,
-        'timeout': timeout,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'server': server,
+    'port': port,
+    'type': type.toJson(),
+    'dc_id': dcId,
+    'timeout': timeout,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class TestProxy extends TdFunction<Ok> {
     ProxyType? type,
     int? dcId,
     double? timeout,
-  }) =>
-      TestProxy(
-        server: server ?? this.server,
-        port: port ?? this.port,
-        type: type ?? this.type,
-        dcId: dcId ?? this.dcId,
-        timeout: timeout ?? this.timeout,
-      );
+  }) => TestProxy(
+    server: server ?? this.server,
+    port: port ?? this.port,
+    type: type ?? this.type,
+    dcId: dcId ?? this.dcId,
+    timeout: timeout ?? this.timeout,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'testProxy';

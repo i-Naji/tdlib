@@ -36,12 +36,12 @@ final class UpgradedGiftBackdropColors extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'center_color': centerColor,
-        'edge_color': edgeColor,
-        'symbol_color': symbolColor,
-        'text_color': textColor,
-      };
+    '@type': CONSTRUCTOR,
+    'center_color': centerColor,
+    'edge_color': edgeColor,
+    'symbol_color': symbolColor,
+    'text_color': textColor,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class UpgradedGiftBackdropColors extends TdObject {
     int? edgeColor,
     int? symbolColor,
     int? textColor,
-  }) =>
-      UpgradedGiftBackdropColors(
-        centerColor: centerColor ?? this.centerColor,
-        edgeColor: edgeColor ?? this.edgeColor,
-        symbolColor: symbolColor ?? this.symbolColor,
-        textColor: textColor ?? this.textColor,
-      );
+  }) => UpgradedGiftBackdropColors(
+    centerColor: centerColor ?? this.centerColor,
+    edgeColor: edgeColor ?? this.edgeColor,
+    symbolColor: symbolColor ?? this.symbolColor,
+    textColor: textColor ?? this.textColor,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradedGiftBackdropColors';

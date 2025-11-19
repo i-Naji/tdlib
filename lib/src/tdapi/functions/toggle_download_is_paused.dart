@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ToggleDownloadIsPaused extends TdFunction<Ok> {
   /// Changes pause state of a file in the file download list
-  const ToggleDownloadIsPaused({
-    required this.fileId,
-    required this.isPaused,
-  });
+  const ToggleDownloadIsPaused({required this.fileId, required this.isPaused});
 
   /// Identifier of the downloaded file
   final int fileId;
@@ -21,18 +18,15 @@ final class ToggleDownloadIsPaused extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'file_id': fileId,
-        'is_paused': isPaused,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'file_id': fileId,
+    'is_paused': isPaused,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ToggleDownloadIsPaused copyWith({
-    int? fileId,
-    bool? isPaused,
-  }) =>
+  ToggleDownloadIsPaused copyWith({int? fileId, bool? isPaused}) =>
       ToggleDownloadIsPaused(
         fileId: fileId ?? this.fileId,
         isPaused: isPaused ?? this.isPaused,

@@ -36,12 +36,12 @@ final class TargetChatTypes extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'allow_user_chats': allowUserChats,
-        'allow_bot_chats': allowBotChats,
-        'allow_group_chats': allowGroupChats,
-        'allow_channel_chats': allowChannelChats,
-      };
+    '@type': CONSTRUCTOR,
+    'allow_user_chats': allowUserChats,
+    'allow_bot_chats': allowBotChats,
+    'allow_group_chats': allowGroupChats,
+    'allow_channel_chats': allowChannelChats,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class TargetChatTypes extends TdObject {
     bool? allowBotChats,
     bool? allowGroupChats,
     bool? allowChannelChats,
-  }) =>
-      TargetChatTypes(
-        allowUserChats: allowUserChats ?? this.allowUserChats,
-        allowBotChats: allowBotChats ?? this.allowBotChats,
-        allowGroupChats: allowGroupChats ?? this.allowGroupChats,
-        allowChannelChats: allowChannelChats ?? this.allowChannelChats,
-      );
+  }) => TargetChatTypes(
+    allowUserChats: allowUserChats ?? this.allowUserChats,
+    allowBotChats: allowBotChats ?? this.allowBotChats,
+    allowGroupChats: allowGroupChats ?? this.allowGroupChats,
+    allowChannelChats: allowChannelChats ?? this.allowChannelChats,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'targetChatTypes';

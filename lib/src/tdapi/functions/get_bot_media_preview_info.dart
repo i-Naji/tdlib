@@ -21,18 +21,15 @@ final class GetBotMediaPreviewInfo extends TdFunction<BotMediaPreviewInfo> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'language_code': languageCode,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'language_code': languageCode,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetBotMediaPreviewInfo copyWith({
-    int? botUserId,
-    String? languageCode,
-  }) =>
+  GetBotMediaPreviewInfo copyWith({int? botUserId, String? languageCode}) =>
       GetBotMediaPreviewInfo(
         botUserId: botUserId ?? this.botUserId,
         languageCode: languageCode ?? this.languageCode,

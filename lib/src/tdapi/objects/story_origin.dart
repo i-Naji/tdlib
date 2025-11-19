@@ -45,10 +45,7 @@ final class UndecodedStoryOrigin extends StoryOrigin {
 /// The original story was a public story that was posted by a known chat
 final class StoryOriginPublicStory extends StoryOrigin {
   /// The original story was a public story that was posted by a known chat
-  const StoryOriginPublicStory({
-    required this.chatId,
-    required this.storyId,
-  });
+  const StoryOriginPublicStory({required this.chatId, required this.storyId});
 
   /// Identifier of the chat that posted original story
   final int chatId;
@@ -65,18 +62,15 @@ final class StoryOriginPublicStory extends StoryOrigin {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'story_id': storyId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'story_id': storyId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StoryOriginPublicStory copyWith({
-    int? chatId,
-    int? storyId,
-  }) =>
+  StoryOriginPublicStory copyWith({int? chatId, int? storyId}) =>
       StoryOriginPublicStory(
         chatId: chatId ?? this.chatId,
         storyId: storyId ?? this.storyId,
@@ -92,34 +86,26 @@ final class StoryOriginPublicStory extends StoryOrigin {
 /// The original story was posted by an unknown user
 final class StoryOriginHiddenUser extends StoryOrigin {
   /// The original story was posted by an unknown user
-  const StoryOriginHiddenUser({
-    required this.posterName,
-  });
+  const StoryOriginHiddenUser({required this.posterName});
 
   /// Name of the user or the chat that posted the story
   final String posterName;
 
   /// Parses a [StoryOriginHiddenUser] from TDLib JSON.
   factory StoryOriginHiddenUser.fromJson(Map<String, dynamic> json) =>
-      StoryOriginHiddenUser(
-        posterName: _readString(json['poster_name']),
-      );
+      StoryOriginHiddenUser(posterName: _readString(json['poster_name']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'poster_name': posterName,
-      };
+    '@type': CONSTRUCTOR,
+    'poster_name': posterName,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StoryOriginHiddenUser copyWith({
-    String? posterName,
-  }) =>
-      StoryOriginHiddenUser(
-        posterName: posterName ?? this.posterName,
-      );
+  StoryOriginHiddenUser copyWith({String? posterName}) =>
+      StoryOriginHiddenUser(posterName: posterName ?? this.posterName);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyOriginHiddenUser';

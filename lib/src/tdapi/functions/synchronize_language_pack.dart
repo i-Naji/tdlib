@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SynchronizeLanguagePack extends TdFunction<Ok> {
   /// Fetches the latest versions of all strings from a language pack in the current localization target from the server. This method doesn't need to be called explicitly for the current used/base language packs. Can be called before authorization
-  const SynchronizeLanguagePack({
-    required this.languagePackId,
-  });
+  const SynchronizeLanguagePack({required this.languagePackId});
 
   /// Language pack identifier
   final String languagePackId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'language_pack_id': languagePackId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'language_pack_id': languagePackId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SynchronizeLanguagePack copyWith({
-    String? languagePackId,
-  }) =>
+  SynchronizeLanguagePack copyWith({String? languagePackId}) =>
       SynchronizeLanguagePack(
         languagePackId: languagePackId ?? this.languagePackId,
       );

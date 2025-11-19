@@ -32,17 +32,19 @@ final class MessagePositions extends TdObject {
       MessagePositions(
         totalCount: _readInt(json['total_count']),
         positions: _readList<MessagePosition>(
-            json['positions'], (e) => _readObject(e, MessagePosition.fromJson)),
+          json['positions'],
+          (e) => _readObject(e, MessagePosition.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'positions': [for (final e in positions) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'positions': [for (final e in positions) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,13 +53,12 @@ final class MessagePositions extends TdObject {
     List<MessagePosition>? positions,
     dynamic extra,
     int? clientId,
-  }) =>
-      MessagePositions(
-        totalCount: totalCount ?? this.totalCount,
-        positions: positions ?? this.positions,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => MessagePositions(
+    totalCount: totalCount ?? this.totalCount,
+    positions: positions ?? this.positions,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messagePositions';

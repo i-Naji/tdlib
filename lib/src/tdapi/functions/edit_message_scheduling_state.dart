@@ -25,12 +25,12 @@ final class EditMessageSchedulingState extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'scheduling_state': schedulingState?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'scheduling_state': schedulingState?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,13 +38,13 @@ final class EditMessageSchedulingState extends TdFunction<Ok> {
     int? chatId,
     int? messageId,
     MessageSchedulingState? Function()? schedulingState,
-  }) =>
-      EditMessageSchedulingState(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        schedulingState:
-            schedulingState != null ? schedulingState() : this.schedulingState,
-      );
+  }) => EditMessageSchedulingState(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    schedulingState: schedulingState != null
+        ? schedulingState()
+        : this.schedulingState,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'editMessageSchedulingState';

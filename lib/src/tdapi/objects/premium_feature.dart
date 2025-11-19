@@ -52,9 +52,7 @@ final class PremiumFeatureIncreasedLimits extends PremiumFeature {
       const PremiumFeatureIncreasedLimits();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -76,13 +74,11 @@ final class PremiumFeatureIncreasedUploadFileSize extends PremiumFeature {
 
   /// Parses a [PremiumFeatureIncreasedUploadFileSize] from TDLib JSON.
   factory PremiumFeatureIncreasedUploadFileSize.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumFeatureIncreasedUploadFileSize();
+    Map<String, dynamic> json,
+  ) => const PremiumFeatureIncreasedUploadFileSize();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -104,13 +100,11 @@ final class PremiumFeatureImprovedDownloadSpeed extends PremiumFeature {
 
   /// Parses a [PremiumFeatureImprovedDownloadSpeed] from TDLib JSON.
   factory PremiumFeatureImprovedDownloadSpeed.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumFeatureImprovedDownloadSpeed();
+    Map<String, dynamic> json,
+  ) => const PremiumFeatureImprovedDownloadSpeed();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -135,9 +129,7 @@ final class PremiumFeatureVoiceRecognition extends PremiumFeature {
       const PremiumFeatureVoiceRecognition();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -162,9 +154,7 @@ final class PremiumFeatureDisabledAds extends PremiumFeature {
       const PremiumFeatureDisabledAds();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -188,9 +178,7 @@ final class PremiumFeatureUniqueReactions extends PremiumFeature {
       const PremiumFeatureUniqueReactions();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -215,9 +203,7 @@ final class PremiumFeatureUniqueStickers extends PremiumFeature {
       const PremiumFeatureUniqueStickers();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -242,9 +228,7 @@ final class PremiumFeatureCustomEmoji extends PremiumFeature {
       const PremiumFeatureCustomEmoji();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -265,13 +249,11 @@ final class PremiumFeatureAdvancedChatManagement extends PremiumFeature {
 
   /// Parses a [PremiumFeatureAdvancedChatManagement] from TDLib JSON.
   factory PremiumFeatureAdvancedChatManagement.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumFeatureAdvancedChatManagement();
+    Map<String, dynamic> json,
+  ) => const PremiumFeatureAdvancedChatManagement();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -296,9 +278,7 @@ final class PremiumFeatureProfileBadge extends PremiumFeature {
       const PremiumFeatureProfileBadge();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -322,9 +302,7 @@ final class PremiumFeatureEmojiStatus extends PremiumFeature {
       const PremiumFeatureEmojiStatus();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -345,13 +323,11 @@ final class PremiumFeatureAnimatedProfilePhoto extends PremiumFeature {
 
   /// Parses a [PremiumFeatureAnimatedProfilePhoto] from TDLib JSON.
   factory PremiumFeatureAnimatedProfilePhoto.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumFeatureAnimatedProfilePhoto();
+    Map<String, dynamic> json,
+  ) => const PremiumFeatureAnimatedProfilePhoto();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -376,9 +352,7 @@ final class PremiumFeatureForumTopicIcon extends PremiumFeature {
       const PremiumFeatureForumTopicIcon();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -403,9 +377,7 @@ final class PremiumFeatureAppIcons extends PremiumFeature {
       const PremiumFeatureAppIcons();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -426,13 +398,11 @@ final class PremiumFeatureRealTimeChatTranslation extends PremiumFeature {
 
   /// Parses a [PremiumFeatureRealTimeChatTranslation] from TDLib JSON.
   factory PremiumFeatureRealTimeChatTranslation.fromJson(
-          Map<String, dynamic> json) =>
-      const PremiumFeatureRealTimeChatTranslation();
+    Map<String, dynamic> json,
+  ) => const PremiumFeatureRealTimeChatTranslation();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -457,9 +427,7 @@ final class PremiumFeatureUpgradedStories extends PremiumFeature {
       const PremiumFeatureUpgradedStories();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -484,9 +452,7 @@ final class PremiumFeatureChatBoost extends PremiumFeature {
       const PremiumFeatureChatBoost();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -510,9 +476,7 @@ final class PremiumFeatureAccentColor extends PremiumFeature {
       const PremiumFeatureAccentColor();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -536,9 +500,7 @@ final class PremiumFeatureBackgroundForBoth extends PremiumFeature {
       const PremiumFeatureBackgroundForBoth();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -563,9 +525,7 @@ final class PremiumFeatureSavedMessagesTags extends PremiumFeature {
       const PremiumFeatureSavedMessagesTags();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -590,9 +550,7 @@ final class PremiumFeatureMessagePrivacy extends PremiumFeature {
       const PremiumFeatureMessagePrivacy();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -617,9 +575,7 @@ final class PremiumFeatureLastSeenTimes extends PremiumFeature {
       const PremiumFeatureLastSeenTimes();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -643,9 +599,7 @@ final class PremiumFeatureBusiness extends PremiumFeature {
       const PremiumFeatureBusiness();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -669,9 +623,7 @@ final class PremiumFeatureMessageEffects extends PremiumFeature {
       const PremiumFeatureMessageEffects();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -696,9 +648,7 @@ final class PremiumFeatureChecklists extends PremiumFeature {
       const PremiumFeatureChecklists();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

@@ -125,70 +125,74 @@ final class Supergroup extends TdObject {
 
   /// Parses a [Supergroup] from TDLib JSON.
   factory Supergroup.fromJson(Map<String, dynamic> json) => Supergroup(
-        id: _readInt(json['id']),
-        usernames: _readOptional(json['usernames'], Usernames.fromJson),
-        date: _readInt(json['date']),
-        status: _readObject(json['status'], ChatMemberStatus.fromJson),
-        memberCount: _readInt(json['member_count']),
-        boostLevel: _readInt(json['boost_level']),
-        hasAutomaticTranslation: _readBool(json['has_automatic_translation']),
-        hasLinkedChat: _readBool(json['has_linked_chat']),
-        hasLocation: _readBool(json['has_location']),
-        signMessages: _readBool(json['sign_messages']),
-        showMessageSender: _readBool(json['show_message_sender']),
-        joinToSendMessages: _readBool(json['join_to_send_messages']),
-        joinByRequest: _readBool(json['join_by_request']),
-        isSlowModeEnabled: _readBool(json['is_slow_mode_enabled']),
-        isChannel: _readBool(json['is_channel']),
-        isBroadcastGroup: _readBool(json['is_broadcast_group']),
-        isForum: _readBool(json['is_forum']),
-        isDirectMessagesGroup: _readBool(json['is_direct_messages_group']),
-        isAdministeredDirectMessagesGroup:
-            _readBool(json['is_administered_direct_messages_group']),
-        verificationStatus: _readOptional(
-            json['verification_status'], VerificationStatus.fromJson),
-        hasDirectMessagesGroup: _readBool(json['has_direct_messages_group']),
-        hasForumTabs: _readBool(json['has_forum_tabs']),
-        restrictionInfo:
-            _readOptional(json['restriction_info'], RestrictionInfo.fromJson),
-        paidMessageStarCount: _readInt(json['paid_message_star_count']),
-        hasActiveStories: _readBool(json['has_active_stories']),
-        hasUnreadActiveStories: _readBool(json['has_unread_active_stories']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    id: _readInt(json['id']),
+    usernames: _readOptional(json['usernames'], Usernames.fromJson),
+    date: _readInt(json['date']),
+    status: _readObject(json['status'], ChatMemberStatus.fromJson),
+    memberCount: _readInt(json['member_count']),
+    boostLevel: _readInt(json['boost_level']),
+    hasAutomaticTranslation: _readBool(json['has_automatic_translation']),
+    hasLinkedChat: _readBool(json['has_linked_chat']),
+    hasLocation: _readBool(json['has_location']),
+    signMessages: _readBool(json['sign_messages']),
+    showMessageSender: _readBool(json['show_message_sender']),
+    joinToSendMessages: _readBool(json['join_to_send_messages']),
+    joinByRequest: _readBool(json['join_by_request']),
+    isSlowModeEnabled: _readBool(json['is_slow_mode_enabled']),
+    isChannel: _readBool(json['is_channel']),
+    isBroadcastGroup: _readBool(json['is_broadcast_group']),
+    isForum: _readBool(json['is_forum']),
+    isDirectMessagesGroup: _readBool(json['is_direct_messages_group']),
+    isAdministeredDirectMessagesGroup: _readBool(
+      json['is_administered_direct_messages_group'],
+    ),
+    verificationStatus: _readOptional(
+      json['verification_status'],
+      VerificationStatus.fromJson,
+    ),
+    hasDirectMessagesGroup: _readBool(json['has_direct_messages_group']),
+    hasForumTabs: _readBool(json['has_forum_tabs']),
+    restrictionInfo: _readOptional(
+      json['restriction_info'],
+      RestrictionInfo.fromJson,
+    ),
+    paidMessageStarCount: _readInt(json['paid_message_star_count']),
+    hasActiveStories: _readBool(json['has_active_stories']),
+    hasUnreadActiveStories: _readBool(json['has_unread_active_stories']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'usernames': usernames?.toJson(),
-        'date': date,
-        'status': status.toJson(),
-        'member_count': memberCount,
-        'boost_level': boostLevel,
-        'has_automatic_translation': hasAutomaticTranslation,
-        'has_linked_chat': hasLinkedChat,
-        'has_location': hasLocation,
-        'sign_messages': signMessages,
-        'show_message_sender': showMessageSender,
-        'join_to_send_messages': joinToSendMessages,
-        'join_by_request': joinByRequest,
-        'is_slow_mode_enabled': isSlowModeEnabled,
-        'is_channel': isChannel,
-        'is_broadcast_group': isBroadcastGroup,
-        'is_forum': isForum,
-        'is_direct_messages_group': isDirectMessagesGroup,
-        'is_administered_direct_messages_group':
-            isAdministeredDirectMessagesGroup,
-        'verification_status': verificationStatus?.toJson(),
-        'has_direct_messages_group': hasDirectMessagesGroup,
-        'has_forum_tabs': hasForumTabs,
-        'restriction_info': restrictionInfo?.toJson(),
-        'paid_message_star_count': paidMessageStarCount,
-        'has_active_stories': hasActiveStories,
-        'has_unread_active_stories': hasUnreadActiveStories,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'usernames': usernames?.toJson(),
+    'date': date,
+    'status': status.toJson(),
+    'member_count': memberCount,
+    'boost_level': boostLevel,
+    'has_automatic_translation': hasAutomaticTranslation,
+    'has_linked_chat': hasLinkedChat,
+    'has_location': hasLocation,
+    'sign_messages': signMessages,
+    'show_message_sender': showMessageSender,
+    'join_to_send_messages': joinToSendMessages,
+    'join_by_request': joinByRequest,
+    'is_slow_mode_enabled': isSlowModeEnabled,
+    'is_channel': isChannel,
+    'is_broadcast_group': isBroadcastGroup,
+    'is_forum': isForum,
+    'is_direct_messages_group': isDirectMessagesGroup,
+    'is_administered_direct_messages_group': isAdministeredDirectMessagesGroup,
+    'verification_status': verificationStatus?.toJson(),
+    'has_direct_messages_group': hasDirectMessagesGroup,
+    'has_forum_tabs': hasForumTabs,
+    'restriction_info': restrictionInfo?.toJson(),
+    'paid_message_star_count': paidMessageStarCount,
+    'has_active_stories': hasActiveStories,
+    'has_unread_active_stories': hasUnreadActiveStories,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -221,45 +225,45 @@ final class Supergroup extends TdObject {
     bool? hasUnreadActiveStories,
     dynamic extra,
     int? clientId,
-  }) =>
-      Supergroup(
-        id: id ?? this.id,
-        usernames: usernames != null ? usernames() : this.usernames,
-        date: date ?? this.date,
-        status: status ?? this.status,
-        memberCount: memberCount ?? this.memberCount,
-        boostLevel: boostLevel ?? this.boostLevel,
-        hasAutomaticTranslation:
-            hasAutomaticTranslation ?? this.hasAutomaticTranslation,
-        hasLinkedChat: hasLinkedChat ?? this.hasLinkedChat,
-        hasLocation: hasLocation ?? this.hasLocation,
-        signMessages: signMessages ?? this.signMessages,
-        showMessageSender: showMessageSender ?? this.showMessageSender,
-        joinToSendMessages: joinToSendMessages ?? this.joinToSendMessages,
-        joinByRequest: joinByRequest ?? this.joinByRequest,
-        isSlowModeEnabled: isSlowModeEnabled ?? this.isSlowModeEnabled,
-        isChannel: isChannel ?? this.isChannel,
-        isBroadcastGroup: isBroadcastGroup ?? this.isBroadcastGroup,
-        isForum: isForum ?? this.isForum,
-        isDirectMessagesGroup:
-            isDirectMessagesGroup ?? this.isDirectMessagesGroup,
-        isAdministeredDirectMessagesGroup: isAdministeredDirectMessagesGroup ??
-            this.isAdministeredDirectMessagesGroup,
-        verificationStatus: verificationStatus != null
-            ? verificationStatus()
-            : this.verificationStatus,
-        hasDirectMessagesGroup:
-            hasDirectMessagesGroup ?? this.hasDirectMessagesGroup,
-        hasForumTabs: hasForumTabs ?? this.hasForumTabs,
-        restrictionInfo:
-            restrictionInfo != null ? restrictionInfo() : this.restrictionInfo,
-        paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
-        hasActiveStories: hasActiveStories ?? this.hasActiveStories,
-        hasUnreadActiveStories:
-            hasUnreadActiveStories ?? this.hasUnreadActiveStories,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => Supergroup(
+    id: id ?? this.id,
+    usernames: usernames != null ? usernames() : this.usernames,
+    date: date ?? this.date,
+    status: status ?? this.status,
+    memberCount: memberCount ?? this.memberCount,
+    boostLevel: boostLevel ?? this.boostLevel,
+    hasAutomaticTranslation:
+        hasAutomaticTranslation ?? this.hasAutomaticTranslation,
+    hasLinkedChat: hasLinkedChat ?? this.hasLinkedChat,
+    hasLocation: hasLocation ?? this.hasLocation,
+    signMessages: signMessages ?? this.signMessages,
+    showMessageSender: showMessageSender ?? this.showMessageSender,
+    joinToSendMessages: joinToSendMessages ?? this.joinToSendMessages,
+    joinByRequest: joinByRequest ?? this.joinByRequest,
+    isSlowModeEnabled: isSlowModeEnabled ?? this.isSlowModeEnabled,
+    isChannel: isChannel ?? this.isChannel,
+    isBroadcastGroup: isBroadcastGroup ?? this.isBroadcastGroup,
+    isForum: isForum ?? this.isForum,
+    isDirectMessagesGroup: isDirectMessagesGroup ?? this.isDirectMessagesGroup,
+    isAdministeredDirectMessagesGroup:
+        isAdministeredDirectMessagesGroup ??
+        this.isAdministeredDirectMessagesGroup,
+    verificationStatus: verificationStatus != null
+        ? verificationStatus()
+        : this.verificationStatus,
+    hasDirectMessagesGroup:
+        hasDirectMessagesGroup ?? this.hasDirectMessagesGroup,
+    hasForumTabs: hasForumTabs ?? this.hasForumTabs,
+    restrictionInfo: restrictionInfo != null
+        ? restrictionInfo()
+        : this.restrictionInfo,
+    paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
+    hasActiveStories: hasActiveStories ?? this.hasActiveStories,
+    hasUnreadActiveStories:
+        hasUnreadActiveStories ?? this.hasUnreadActiveStories,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'supergroup';

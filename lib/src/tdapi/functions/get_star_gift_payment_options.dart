@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [StarPaymentOptions].
 final class GetStarGiftPaymentOptions extends TdFunction<StarPaymentOptions> {
   /// Returns available options for Telegram Stars gifting
-  const GetStarGiftPaymentOptions({
-    required this.userId,
-  });
+  const GetStarGiftPaymentOptions({required this.userId});
 
   /// Identifier of the user that will receive Telegram Stars; pass 0 to get options for an unspecified user
   final int userId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetStarGiftPaymentOptions copyWith({
-    int? userId,
-  }) =>
-      GetStarGiftPaymentOptions(
-        userId: userId ?? this.userId,
-      );
+  GetStarGiftPaymentOptions copyWith({int? userId}) =>
+      GetStarGiftPaymentOptions(userId: userId ?? this.userId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getStarGiftPaymentOptions';

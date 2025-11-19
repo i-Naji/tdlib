@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// A personal document, containing some information about a user
 final class PersonalDocument extends TdObject {
   /// A personal document, containing some information about a user
-  const PersonalDocument({
-    required this.files,
-    required this.translation,
-  });
+  const PersonalDocument({required this.files, required this.translation});
 
   /// List of files containing the pages of the document
   final List<DatedFile> files;
@@ -21,28 +18,31 @@ final class PersonalDocument extends TdObject {
   factory PersonalDocument.fromJson(Map<String, dynamic> json) =>
       PersonalDocument(
         files: _readList<DatedFile>(
-            json['files'], (e) => _readObject(e, DatedFile.fromJson)),
+          json['files'],
+          (e) => _readObject(e, DatedFile.fromJson),
+        ),
         translation: _readList<DatedFile>(
-            json['translation'], (e) => _readObject(e, DatedFile.fromJson)),
+          json['translation'],
+          (e) => _readObject(e, DatedFile.fromJson),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'files': [for (final e in files) e.toJson()],
-        'translation': [for (final e in translation) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'files': [for (final e in files) e.toJson()],
+    'translation': [for (final e in translation) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   PersonalDocument copyWith({
     List<DatedFile>? files,
     List<DatedFile>? translation,
-  }) =>
-      PersonalDocument(
-        files: files ?? this.files,
-        translation: translation ?? this.translation,
-      );
+  }) => PersonalDocument(
+    files: files ?? this.files,
+    translation: translation ?? this.translation,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'personalDocument';

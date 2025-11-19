@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Supergroup].
 final class GetSupergroup extends TdFunction<Supergroup> {
   /// Returns information about a supergroup or a channel by its identifier. This is an offline method if the current user is not a bot
-  const GetSupergroup({
-    required this.supergroupId,
-  });
+  const GetSupergroup({required this.supergroupId});
 
   /// Supergroup or channel identifier
   final int supergroupId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetSupergroup copyWith({
-    int? supergroupId,
-  }) =>
-      GetSupergroup(
-        supergroupId: supergroupId ?? this.supergroupId,
-      );
+  GetSupergroup copyWith({int? supergroupId}) =>
+      GetSupergroup(supergroupId: supergroupId ?? this.supergroupId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getSupergroup';

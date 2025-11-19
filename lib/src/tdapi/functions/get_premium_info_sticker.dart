@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Sticker].
 final class GetPremiumInfoSticker extends TdFunction<Sticker> {
   /// Returns the sticker to be used as representation of the Telegram Premium subscription
-  const GetPremiumInfoSticker({
-    required this.monthCount,
-  });
+  const GetPremiumInfoSticker({required this.monthCount});
 
   /// Number of months the Telegram Premium subscription will be active
   final int monthCount;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'month_count': monthCount,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'month_count': monthCount,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetPremiumInfoSticker copyWith({
-    int? monthCount,
-  }) =>
-      GetPremiumInfoSticker(
-        monthCount: monthCount ?? this.monthCount,
-      );
+  GetPremiumInfoSticker copyWith({int? monthCount}) =>
+      GetPremiumInfoSticker(monthCount: monthCount ?? this.monthCount);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getPremiumInfoSticker';

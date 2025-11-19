@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [BusinessConnection].
 final class GetBusinessConnection extends TdFunction<BusinessConnection> {
   /// Returns information about a business connection by its identifier; for bots only
-  const GetBusinessConnection({
-    required this.connectionId,
-  });
+  const GetBusinessConnection({required this.connectionId});
 
   /// Identifier of the business connection to return
   final String connectionId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'connection_id': connectionId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'connection_id': connectionId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetBusinessConnection copyWith({
-    String? connectionId,
-  }) =>
-      GetBusinessConnection(
-        connectionId: connectionId ?? this.connectionId,
-      );
+  GetBusinessConnection copyWith({String? connectionId}) =>
+      GetBusinessConnection(connectionId: connectionId ?? this.connectionId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getBusinessConnection';

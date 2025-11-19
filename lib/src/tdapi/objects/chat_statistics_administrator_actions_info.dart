@@ -27,22 +27,22 @@ final class ChatStatisticsAdministratorActionsInfo extends TdObject {
 
   /// Parses a [ChatStatisticsAdministratorActionsInfo] from TDLib JSON.
   factory ChatStatisticsAdministratorActionsInfo.fromJson(
-          Map<String, dynamic> json) =>
-      ChatStatisticsAdministratorActionsInfo(
-        userId: _readInt(json['user_id']),
-        deletedMessageCount: _readInt(json['deleted_message_count']),
-        bannedUserCount: _readInt(json['banned_user_count']),
-        restrictedUserCount: _readInt(json['restricted_user_count']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatStatisticsAdministratorActionsInfo(
+    userId: _readInt(json['user_id']),
+    deletedMessageCount: _readInt(json['deleted_message_count']),
+    bannedUserCount: _readInt(json['banned_user_count']),
+    restrictedUserCount: _readInt(json['restricted_user_count']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'deleted_message_count': deletedMessageCount,
-        'banned_user_count': bannedUserCount,
-        'restricted_user_count': restrictedUserCount,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'deleted_message_count': deletedMessageCount,
+    'banned_user_count': bannedUserCount,
+    'restricted_user_count': restrictedUserCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,13 +51,12 @@ final class ChatStatisticsAdministratorActionsInfo extends TdObject {
     int? deletedMessageCount,
     int? bannedUserCount,
     int? restrictedUserCount,
-  }) =>
-      ChatStatisticsAdministratorActionsInfo(
-        userId: userId ?? this.userId,
-        deletedMessageCount: deletedMessageCount ?? this.deletedMessageCount,
-        bannedUserCount: bannedUserCount ?? this.bannedUserCount,
-        restrictedUserCount: restrictedUserCount ?? this.restrictedUserCount,
-      );
+  }) => ChatStatisticsAdministratorActionsInfo(
+    userId: userId ?? this.userId,
+    deletedMessageCount: deletedMessageCount ?? this.deletedMessageCount,
+    bannedUserCount: bannedUserCount ?? this.bannedUserCount,
+    restrictedUserCount: restrictedUserCount ?? this.restrictedUserCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatStatisticsAdministratorActionsInfo';

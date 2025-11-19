@@ -31,11 +31,11 @@ final class ChatStatisticsMessageSenderInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'sent_message_count': sentMessageCount,
-        'average_character_count': averageCharacterCount,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'sent_message_count': sentMessageCount,
+    'average_character_count': averageCharacterCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,13 +43,11 @@ final class ChatStatisticsMessageSenderInfo extends TdObject {
     int? userId,
     int? sentMessageCount,
     int? averageCharacterCount,
-  }) =>
-      ChatStatisticsMessageSenderInfo(
-        userId: userId ?? this.userId,
-        sentMessageCount: sentMessageCount ?? this.sentMessageCount,
-        averageCharacterCount:
-            averageCharacterCount ?? this.averageCharacterCount,
-      );
+  }) => ChatStatisticsMessageSenderInfo(
+    userId: userId ?? this.userId,
+    sentMessageCount: sentMessageCount ?? this.sentMessageCount,
+    averageCharacterCount: averageCharacterCount ?? this.averageCharacterCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatStatisticsMessageSenderInfo';

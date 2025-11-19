@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetUserEmojiStatus extends TdFunction<Ok> {
   /// Changes the emoji status of a user; for bots only
-  const SetUserEmojiStatus({
-    required this.userId,
-    this.emojiStatus,
-  });
+  const SetUserEmojiStatus({required this.userId, this.emojiStatus});
 
   /// Identifier of the user
   final int userId;
@@ -21,22 +18,21 @@ final class SetUserEmojiStatus extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'emoji_status': emojiStatus?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'emoji_status': emojiStatus?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetUserEmojiStatus copyWith({
     int? userId,
     EmojiStatus? Function()? emojiStatus,
-  }) =>
-      SetUserEmojiStatus(
-        userId: userId ?? this.userId,
-        emojiStatus: emojiStatus != null ? emojiStatus() : this.emojiStatus,
-      );
+  }) => SetUserEmojiStatus(
+    userId: userId ?? this.userId,
+    emojiStatus: emojiStatus != null ? emojiStatus() : this.emojiStatus,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setUserEmojiStatus';

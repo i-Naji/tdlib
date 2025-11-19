@@ -23,26 +23,22 @@ final class Minithumbnail extends TdObject {
 
   /// Parses a [Minithumbnail] from TDLib JSON.
   factory Minithumbnail.fromJson(Map<String, dynamic> json) => Minithumbnail(
-        width: _readInt(json['width']),
-        height: _readInt(json['height']),
-        data: _readString(json['data']),
-      );
+    width: _readInt(json['width']),
+    height: _readInt(json['height']),
+    data: _readString(json['data']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'width': width,
-        'height': height,
-        'data': data,
-      };
+    '@type': CONSTRUCTOR,
+    'width': width,
+    'height': height,
+    'data': data,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  Minithumbnail copyWith({
-    int? width,
-    int? height,
-    String? data,
-  }) =>
+  Minithumbnail copyWith({int? width, int? height, String? data}) =>
       Minithumbnail(
         width: width ?? this.width,
         height: height ?? this.height,

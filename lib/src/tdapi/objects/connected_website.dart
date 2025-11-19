@@ -61,17 +61,17 @@ final class ConnectedWebsite extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'domain_name': domainName,
-        'bot_user_id': botUserId,
-        'browser': browser,
-        'platform': platform,
-        'log_in_date': logInDate,
-        'last_active_date': lastActiveDate,
-        'ip_address': ipAddress,
-        'location': location,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'domain_name': domainName,
+    'bot_user_id': botUserId,
+    'browser': browser,
+    'platform': platform,
+    'log_in_date': logInDate,
+    'last_active_date': lastActiveDate,
+    'ip_address': ipAddress,
+    'location': location,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -85,18 +85,17 @@ final class ConnectedWebsite extends TdObject {
     int? lastActiveDate,
     String? ipAddress,
     String? location,
-  }) =>
-      ConnectedWebsite(
-        id: id ?? this.id,
-        domainName: domainName ?? this.domainName,
-        botUserId: botUserId ?? this.botUserId,
-        browser: browser ?? this.browser,
-        platform: platform ?? this.platform,
-        logInDate: logInDate ?? this.logInDate,
-        lastActiveDate: lastActiveDate ?? this.lastActiveDate,
-        ipAddress: ipAddress ?? this.ipAddress,
-        location: location ?? this.location,
-      );
+  }) => ConnectedWebsite(
+    id: id ?? this.id,
+    domainName: domainName ?? this.domainName,
+    botUserId: botUserId ?? this.botUserId,
+    browser: browser ?? this.browser,
+    platform: platform ?? this.platform,
+    logInDate: logInDate ?? this.logInDate,
+    lastActiveDate: lastActiveDate ?? this.lastActiveDate,
+    ipAddress: ipAddress ?? this.ipAddress,
+    location: location ?? this.location,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'connectedWebsite';

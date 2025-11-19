@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetDatabaseEncryptionKey extends TdFunction<Ok> {
   /// Changes the database encryption key. Usually the encryption key is never changed and is stored in some OS keychain
-  const SetDatabaseEncryptionKey({
-    required this.newEncryptionKey,
-  });
+  const SetDatabaseEncryptionKey({required this.newEncryptionKey});
 
   /// New encryption key
   final String newEncryptionKey;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'new_encryption_key': newEncryptionKey,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'new_encryption_key': newEncryptionKey,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetDatabaseEncryptionKey copyWith({
-    String? newEncryptionKey,
-  }) =>
+  SetDatabaseEncryptionKey copyWith({String? newEncryptionKey}) =>
       SetDatabaseEncryptionKey(
         newEncryptionKey: newEncryptionKey ?? this.newEncryptionKey,
       );

@@ -21,22 +21,21 @@ final class SetStoryPrivacySettings extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'story_id': storyId,
-        'privacy_settings': privacySettings.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'story_id': storyId,
+    'privacy_settings': privacySettings.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetStoryPrivacySettings copyWith({
     int? storyId,
     StoryPrivacySettings? privacySettings,
-  }) =>
-      SetStoryPrivacySettings(
-        storyId: storyId ?? this.storyId,
-        privacySettings: privacySettings ?? this.privacySettings,
-      );
+  }) => SetStoryPrivacySettings(
+    storyId: storyId ?? this.storyId,
+    privacySettings: privacySettings ?? this.privacySettings,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setStoryPrivacySettings';

@@ -21,22 +21,21 @@ final class DeleteBusinessMessages extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'business_connection_id': businessConnectionId,
-        'message_ids': messageIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'business_connection_id': businessConnectionId,
+    'message_ids': messageIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   DeleteBusinessMessages copyWith({
     String? businessConnectionId,
     List<int>? messageIds,
-  }) =>
-      DeleteBusinessMessages(
-        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-        messageIds: messageIds ?? this.messageIds,
-      );
+  }) => DeleteBusinessMessages(
+    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+    messageIds: messageIds ?? this.messageIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deleteBusinessMessages';

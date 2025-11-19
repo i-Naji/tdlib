@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class OpenChatSimilarChat extends TdFunction<Ok> {
   /// Informs TDLib that a chat was opened from the list of similar chats. The method is independent of openChat and closeChat methods
-  const OpenChatSimilarChat({
-    required this.chatId,
-    required this.openedChatId,
-  });
+  const OpenChatSimilarChat({required this.chatId, required this.openedChatId});
 
   /// Identifier of the original chat, which similar chats were requested
   final int chatId;
@@ -21,18 +18,15 @@ final class OpenChatSimilarChat extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'opened_chat_id': openedChatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'opened_chat_id': openedChatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  OpenChatSimilarChat copyWith({
-    int? chatId,
-    int? openedChatId,
-  }) =>
+  OpenChatSimilarChat copyWith({int? chatId, int? openedChatId}) =>
       OpenChatSimilarChat(
         chatId: chatId ?? this.chatId,
         openedChatId: openedChatId ?? this.openedChatId,

@@ -50,24 +50,25 @@ final class StarGiveawayPaymentOption extends TdObject {
         storeProductId: _readString(json['store_product_id']),
         yearlyBoostCount: _readInt(json['yearly_boost_count']),
         winnerOptions: _readList<StarGiveawayWinnerOption>(
-            json['winner_options'],
-            (e) => _readObject(e, StarGiveawayWinnerOption.fromJson)),
+          json['winner_options'],
+          (e) => _readObject(e, StarGiveawayWinnerOption.fromJson),
+        ),
         isDefault: _readBool(json['is_default']),
         isAdditional: _readBool(json['is_additional']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'currency': currency,
-        'amount': amount,
-        'star_count': starCount,
-        'store_product_id': storeProductId,
-        'yearly_boost_count': yearlyBoostCount,
-        'winner_options': [for (final e in winnerOptions) e.toJson()],
-        'is_default': isDefault,
-        'is_additional': isAdditional,
-      };
+    '@type': CONSTRUCTOR,
+    'currency': currency,
+    'amount': amount,
+    'star_count': starCount,
+    'store_product_id': storeProductId,
+    'yearly_boost_count': yearlyBoostCount,
+    'winner_options': [for (final e in winnerOptions) e.toJson()],
+    'is_default': isDefault,
+    'is_additional': isAdditional,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -80,17 +81,16 @@ final class StarGiveawayPaymentOption extends TdObject {
     List<StarGiveawayWinnerOption>? winnerOptions,
     bool? isDefault,
     bool? isAdditional,
-  }) =>
-      StarGiveawayPaymentOption(
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        starCount: starCount ?? this.starCount,
-        storeProductId: storeProductId ?? this.storeProductId,
-        yearlyBoostCount: yearlyBoostCount ?? this.yearlyBoostCount,
-        winnerOptions: winnerOptions ?? this.winnerOptions,
-        isDefault: isDefault ?? this.isDefault,
-        isAdditional: isAdditional ?? this.isAdditional,
-      );
+  }) => StarGiveawayPaymentOption(
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    starCount: starCount ?? this.starCount,
+    storeProductId: storeProductId ?? this.storeProductId,
+    yearlyBoostCount: yearlyBoostCount ?? this.yearlyBoostCount,
+    winnerOptions: winnerOptions ?? this.winnerOptions,
+    isDefault: isDefault ?? this.isDefault,
+    isAdditional: isAdditional ?? this.isAdditional,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starGiveawayPaymentOption';

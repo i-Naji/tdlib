@@ -21,18 +21,15 @@ final class ToggleUsernameIsActive extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'username': username,
-        'is_active': isActive,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'username': username,
+    'is_active': isActive,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ToggleUsernameIsActive copyWith({
-    String? username,
-    bool? isActive,
-  }) =>
+  ToggleUsernameIsActive copyWith({String? username, bool? isActive}) =>
       ToggleUsernameIsActive(
         username: username ?? this.username,
         isActive: isActive ?? this.isActive,

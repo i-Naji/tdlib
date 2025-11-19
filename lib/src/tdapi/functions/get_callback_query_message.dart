@@ -25,12 +25,12 @@ final class GetCallbackQueryMessage extends TdFunction<Message> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'callback_query_id': callbackQueryId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'callback_query_id': callbackQueryId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class GetCallbackQueryMessage extends TdFunction<Message> {
     int? chatId,
     int? messageId,
     int? callbackQueryId,
-  }) =>
-      GetCallbackQueryMessage(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        callbackQueryId: callbackQueryId ?? this.callbackQueryId,
-      );
+  }) => GetCallbackQueryMessage(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    callbackQueryId: callbackQueryId ?? this.callbackQueryId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getCallbackQueryMessage';

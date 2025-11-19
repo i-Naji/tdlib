@@ -27,20 +27,20 @@ final class ChatEvent extends TdObject {
 
   /// Parses a [ChatEvent] from TDLib JSON.
   factory ChatEvent.fromJson(Map<String, dynamic> json) => ChatEvent(
-        id: _readInt(json['id']),
-        date: _readInt(json['date']),
-        memberId: _readObject(json['member_id'], MessageSender.fromJson),
-        action: _readObject(json['action'], ChatEventAction.fromJson),
-      );
+    id: _readInt(json['id']),
+    date: _readInt(json['date']),
+    memberId: _readObject(json['member_id'], MessageSender.fromJson),
+    action: _readObject(json['action'], ChatEventAction.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'date': date,
-        'member_id': memberId.toJson(),
-        'action': action.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'date': date,
+    'member_id': memberId.toJson(),
+    'action': action.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class ChatEvent extends TdObject {
     int? date,
     MessageSender? memberId,
     ChatEventAction? action,
-  }) =>
-      ChatEvent(
-        id: id ?? this.id,
-        date: date ?? this.date,
-        memberId: memberId ?? this.memberId,
-        action: action ?? this.action,
-      );
+  }) => ChatEvent(
+    id: id ?? this.id,
+    date: date ?? this.date,
+    memberId: memberId ?? this.memberId,
+    action: action ?? this.action,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEvent';

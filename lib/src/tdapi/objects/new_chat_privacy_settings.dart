@@ -30,20 +30,22 @@ final class NewChatPrivacySettings extends TdObject {
   /// Parses a [NewChatPrivacySettings] from TDLib JSON.
   factory NewChatPrivacySettings.fromJson(Map<String, dynamic> json) =>
       NewChatPrivacySettings(
-        allowNewChatsFromUnknownUsers:
-            _readBool(json['allow_new_chats_from_unknown_users']),
-        incomingPaidMessageStarCount:
-            _readInt(json['incoming_paid_message_star_count']),
+        allowNewChatsFromUnknownUsers: _readBool(
+          json['allow_new_chats_from_unknown_users'],
+        ),
+        incomingPaidMessageStarCount: _readInt(
+          json['incoming_paid_message_star_count'],
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'allow_new_chats_from_unknown_users': allowNewChatsFromUnknownUsers,
-        'incoming_paid_message_star_count': incomingPaidMessageStarCount,
-      };
+    '@type': CONSTRUCTOR,
+    'allow_new_chats_from_unknown_users': allowNewChatsFromUnknownUsers,
+    'incoming_paid_message_star_count': incomingPaidMessageStarCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -52,15 +54,14 @@ final class NewChatPrivacySettings extends TdObject {
     int? incomingPaidMessageStarCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      NewChatPrivacySettings(
-        allowNewChatsFromUnknownUsers:
-            allowNewChatsFromUnknownUsers ?? this.allowNewChatsFromUnknownUsers,
-        incomingPaidMessageStarCount:
-            incomingPaidMessageStarCount ?? this.incomingPaidMessageStarCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => NewChatPrivacySettings(
+    allowNewChatsFromUnknownUsers:
+        allowNewChatsFromUnknownUsers ?? this.allowNewChatsFromUnknownUsers,
+    incomingPaidMessageStarCount:
+        incomingPaidMessageStarCount ?? this.incomingPaidMessageStarCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'newChatPrivacySettings';

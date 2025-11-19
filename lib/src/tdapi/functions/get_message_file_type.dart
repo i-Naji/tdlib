@@ -8,28 +8,23 @@ part of '../tdapi.dart';
 /// Returns [MessageFileType].
 final class GetMessageFileType extends TdFunction<MessageFileType> {
   /// Returns information about a file with messages exported from another application
-  const GetMessageFileType({
-    required this.messageFileHead,
-  });
+  const GetMessageFileType({required this.messageFileHead});
 
   /// Beginning of the message file; up to 100 first lines
   final String messageFileHead;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'message_file_head': messageFileHead,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'message_file_head': messageFileHead,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetMessageFileType copyWith({
-    String? messageFileHead,
-  }) =>
-      GetMessageFileType(
-        messageFileHead: messageFileHead ?? this.messageFileHead,
-      );
+  GetMessageFileType copyWith({String? messageFileHead}) => GetMessageFileType(
+    messageFileHead: messageFileHead ?? this.messageFileHead,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getMessageFileType';

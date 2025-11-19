@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Chat].
 final class CreatePrivateChat extends TdFunction<Chat> {
   /// Returns an existing chat corresponding to a given user
-  const CreatePrivateChat({
-    required this.userId,
-    required this.force,
-  });
+  const CreatePrivateChat({required this.userId, required this.force});
 
   /// User identifier
   final int userId;
@@ -21,22 +18,18 @@ final class CreatePrivateChat extends TdFunction<Chat> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'force': force,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'force': force,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CreatePrivateChat copyWith({
-    int? userId,
-    bool? force,
-  }) =>
-      CreatePrivateChat(
-        userId: userId ?? this.userId,
-        force: force ?? this.force,
-      );
+  CreatePrivateChat copyWith({int? userId, bool? force}) => CreatePrivateChat(
+    userId: userId ?? this.userId,
+    force: force ?? this.force,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'createPrivateChat';

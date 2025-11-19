@@ -37,15 +37,15 @@ final class SearchSavedMessages extends TdFunction<FoundChatMessages> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'saved_messages_topic_id': savedMessagesTopicId,
-        'tag': tag?.toJson(),
-        'query': query,
-        'from_message_id': fromMessageId,
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'saved_messages_topic_id': savedMessagesTopicId,
+    'tag': tag?.toJson(),
+    'query': query,
+    'from_message_id': fromMessageId,
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class SearchSavedMessages extends TdFunction<FoundChatMessages> {
     int? fromMessageId,
     int? offset,
     int? limit,
-  }) =>
-      SearchSavedMessages(
-        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-        tag: tag != null ? tag() : this.tag,
-        query: query ?? this.query,
-        fromMessageId: fromMessageId ?? this.fromMessageId,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => SearchSavedMessages(
+    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+    tag: tag != null ? tag() : this.tag,
+    query: query ?? this.query,
+    fromMessageId: fromMessageId ?? this.fromMessageId,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchSavedMessages';

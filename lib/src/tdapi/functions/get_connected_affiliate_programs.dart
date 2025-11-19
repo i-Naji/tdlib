@@ -26,12 +26,12 @@ final class GetConnectedAffiliatePrograms
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'affiliate': affiliate.toJson(),
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'affiliate': affiliate.toJson(),
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -39,12 +39,11 @@ final class GetConnectedAffiliatePrograms
     AffiliateType? affiliate,
     String? offset,
     int? limit,
-  }) =>
-      GetConnectedAffiliatePrograms(
-        affiliate: affiliate ?? this.affiliate,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => GetConnectedAffiliatePrograms(
+    affiliate: affiliate ?? this.affiliate,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getConnectedAffiliatePrograms';

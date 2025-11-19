@@ -23,31 +23,26 @@ final class TimeZone extends TdObject {
 
   /// Parses a [TimeZone] from TDLib JSON.
   factory TimeZone.fromJson(Map<String, dynamic> json) => TimeZone(
-        id: _readString(json['id']),
-        name: _readString(json['name']),
-        utcTimeOffset: _readInt(json['utc_time_offset']),
-      );
+    id: _readString(json['id']),
+    name: _readString(json['name']),
+    utcTimeOffset: _readInt(json['utc_time_offset']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'name': name,
-        'utc_time_offset': utcTimeOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'name': name,
+    'utc_time_offset': utcTimeOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TimeZone copyWith({
-    String? id,
-    String? name,
-    int? utcTimeOffset,
-  }) =>
-      TimeZone(
-        id: id ?? this.id,
-        name: name ?? this.name,
-        utcTimeOffset: utcTimeOffset ?? this.utcTimeOffset,
-      );
+  TimeZone copyWith({String? id, String? name, int? utcTimeOffset}) => TimeZone(
+    id: id ?? this.id,
+    name: name ?? this.name,
+    utcTimeOffset: utcTimeOffset ?? this.utcTimeOffset,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'timeZone';

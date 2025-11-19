@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Describes an emoji to be shown instead of the Telegram Premium badge
 final class EmojiStatus extends TdObject {
   /// Describes an emoji to be shown instead of the Telegram Premium badge
-  const EmojiStatus({
-    required this.type,
-    required this.expirationDate,
-  });
+  const EmojiStatus({required this.type, required this.expirationDate});
 
   /// Type of the emoji status
   final EmojiStatusType type;
@@ -19,23 +16,20 @@ final class EmojiStatus extends TdObject {
 
   /// Parses a [EmojiStatus] from TDLib JSON.
   factory EmojiStatus.fromJson(Map<String, dynamic> json) => EmojiStatus(
-        type: _readObject(json['type'], EmojiStatusType.fromJson),
-        expirationDate: _readInt(json['expiration_date']),
-      );
+    type: _readObject(json['type'], EmojiStatusType.fromJson),
+    expirationDate: _readInt(json['expiration_date']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-        'expiration_date': expirationDate,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+    'expiration_date': expirationDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  EmojiStatus copyWith({
-    EmojiStatusType? type,
-    int? expirationDate,
-  }) =>
+  EmojiStatus copyWith({EmojiStatusType? type, int? expirationDate}) =>
       EmojiStatus(
         type: type ?? this.type,
         expirationDate: expirationDate ?? this.expirationDate,

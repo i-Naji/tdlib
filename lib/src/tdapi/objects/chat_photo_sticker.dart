@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Information about the sticker, which was used to create the chat photo. The sticker is shown at the center of the photo and occupies at most 67% of it
 final class ChatPhotoSticker extends TdObject {
   /// Information about the sticker, which was used to create the chat photo. The sticker is shown at the center of the photo and occupies at most 67% of it
-  const ChatPhotoSticker({
-    required this.type,
-    required this.backgroundFill,
-  });
+  const ChatPhotoSticker({required this.type, required this.backgroundFill});
 
   /// Type of the sticker
   final ChatPhotoStickerType type;
@@ -21,27 +18,28 @@ final class ChatPhotoSticker extends TdObject {
   factory ChatPhotoSticker.fromJson(Map<String, dynamic> json) =>
       ChatPhotoSticker(
         type: _readObject(json['type'], ChatPhotoStickerType.fromJson),
-        backgroundFill:
-            _readObject(json['background_fill'], BackgroundFill.fromJson),
+        backgroundFill: _readObject(
+          json['background_fill'],
+          BackgroundFill.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-        'background_fill': backgroundFill.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+    'background_fill': backgroundFill.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ChatPhotoSticker copyWith({
     ChatPhotoStickerType? type,
     BackgroundFill? backgroundFill,
-  }) =>
-      ChatPhotoSticker(
-        type: type ?? this.type,
-        backgroundFill: backgroundFill ?? this.backgroundFill,
-      );
+  }) => ChatPhotoSticker(
+    type: type ?? this.type,
+    backgroundFill: backgroundFill ?? this.backgroundFill,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatPhotoSticker';

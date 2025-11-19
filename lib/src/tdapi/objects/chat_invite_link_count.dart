@@ -31,11 +31,11 @@ final class ChatInviteLinkCount extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'invite_link_count': inviteLinkCount,
-        'revoked_invite_link_count': revokedInviteLinkCount,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'invite_link_count': inviteLinkCount,
+    'revoked_invite_link_count': revokedInviteLinkCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,13 +43,12 @@ final class ChatInviteLinkCount extends TdObject {
     int? userId,
     int? inviteLinkCount,
     int? revokedInviteLinkCount,
-  }) =>
-      ChatInviteLinkCount(
-        userId: userId ?? this.userId,
-        inviteLinkCount: inviteLinkCount ?? this.inviteLinkCount,
-        revokedInviteLinkCount:
-            revokedInviteLinkCount ?? this.revokedInviteLinkCount,
-      );
+  }) => ChatInviteLinkCount(
+    userId: userId ?? this.userId,
+    inviteLinkCount: inviteLinkCount ?? this.inviteLinkCount,
+    revokedInviteLinkCount:
+        revokedInviteLinkCount ?? this.revokedInviteLinkCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatInviteLinkCount';

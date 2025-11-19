@@ -46,14 +46,14 @@ final class StoryAreaPosition extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'x_percentage': xPercentage,
-        'y_percentage': yPercentage,
-        'width_percentage': widthPercentage,
-        'height_percentage': heightPercentage,
-        'rotation_angle': rotationAngle,
-        'corner_radius_percentage': cornerRadiusPercentage,
-      };
+    '@type': CONSTRUCTOR,
+    'x_percentage': xPercentage,
+    'y_percentage': yPercentage,
+    'width_percentage': widthPercentage,
+    'height_percentage': heightPercentage,
+    'rotation_angle': rotationAngle,
+    'corner_radius_percentage': cornerRadiusPercentage,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -64,16 +64,15 @@ final class StoryAreaPosition extends TdObject {
     double? heightPercentage,
     double? rotationAngle,
     double? cornerRadiusPercentage,
-  }) =>
-      StoryAreaPosition(
-        xPercentage: xPercentage ?? this.xPercentage,
-        yPercentage: yPercentage ?? this.yPercentage,
-        widthPercentage: widthPercentage ?? this.widthPercentage,
-        heightPercentage: heightPercentage ?? this.heightPercentage,
-        rotationAngle: rotationAngle ?? this.rotationAngle,
-        cornerRadiusPercentage:
-            cornerRadiusPercentage ?? this.cornerRadiusPercentage,
-      );
+  }) => StoryAreaPosition(
+    xPercentage: xPercentage ?? this.xPercentage,
+    yPercentage: yPercentage ?? this.yPercentage,
+    widthPercentage: widthPercentage ?? this.widthPercentage,
+    heightPercentage: heightPercentage ?? this.heightPercentage,
+    rotationAngle: rotationAngle ?? this.rotationAngle,
+    cornerRadiusPercentage:
+        cornerRadiusPercentage ?? this.cornerRadiusPercentage,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyAreaPosition';

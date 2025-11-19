@@ -33,21 +33,23 @@ final class Stories extends TdObject {
 
   /// Parses a [Stories] from TDLib JSON.
   factory Stories.fromJson(Map<String, dynamic> json) => Stories(
-        totalCount: _readInt(json['total_count']),
-        stories: _readList<Story>(
-            json['stories'], (e) => _readObject(e, Story.fromJson)),
-        pinnedStoryIds: _readList<int>(json['pinned_story_ids'], _readInt),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    totalCount: _readInt(json['total_count']),
+    stories: _readList<Story>(
+      json['stories'],
+      (e) => _readObject(e, Story.fromJson),
+    ),
+    pinnedStoryIds: _readList<int>(json['pinned_story_ids'], _readInt),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'stories': [for (final e in stories) e.toJson()],
-        'pinned_story_ids': pinnedStoryIds,
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'stories': [for (final e in stories) e.toJson()],
+    'pinned_story_ids': pinnedStoryIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,14 +59,13 @@ final class Stories extends TdObject {
     List<int>? pinnedStoryIds,
     dynamic extra,
     int? clientId,
-  }) =>
-      Stories(
-        totalCount: totalCount ?? this.totalCount,
-        stories: stories ?? this.stories,
-        pinnedStoryIds: pinnedStoryIds ?? this.pinnedStoryIds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => Stories(
+    totalCount: totalCount ?? this.totalCount,
+    stories: stories ?? this.stories,
+    pinnedStoryIds: pinnedStoryIds ?? this.pinnedStoryIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'stories';

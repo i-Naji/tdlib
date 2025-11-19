@@ -47,27 +47,31 @@ final class WebPageInstantView extends TdObject {
   factory WebPageInstantView.fromJson(Map<String, dynamic> json) =>
       WebPageInstantView(
         pageBlocks: _readList<PageBlock>(
-            json['page_blocks'], (e) => _readObject(e, PageBlock.fromJson)),
+          json['page_blocks'],
+          (e) => _readObject(e, PageBlock.fromJson),
+        ),
         viewCount: _readInt(json['view_count']),
         version: _readInt(json['version']),
         isRtl: _readBool(json['is_rtl']),
         isFull: _readBool(json['is_full']),
-        feedbackLink:
-            _readObject(json['feedback_link'], InternalLinkType.fromJson),
+        feedbackLink: _readObject(
+          json['feedback_link'],
+          InternalLinkType.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'page_blocks': [for (final e in pageBlocks) e.toJson()],
-        'view_count': viewCount,
-        'version': version,
-        'is_rtl': isRtl,
-        'is_full': isFull,
-        'feedback_link': feedbackLink.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'page_blocks': [for (final e in pageBlocks) e.toJson()],
+    'view_count': viewCount,
+    'version': version,
+    'is_rtl': isRtl,
+    'is_full': isFull,
+    'feedback_link': feedbackLink.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -80,17 +84,16 @@ final class WebPageInstantView extends TdObject {
     InternalLinkType? feedbackLink,
     dynamic extra,
     int? clientId,
-  }) =>
-      WebPageInstantView(
-        pageBlocks: pageBlocks ?? this.pageBlocks,
-        viewCount: viewCount ?? this.viewCount,
-        version: version ?? this.version,
-        isRtl: isRtl ?? this.isRtl,
-        isFull: isFull ?? this.isFull,
-        feedbackLink: feedbackLink ?? this.feedbackLink,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => WebPageInstantView(
+    pageBlocks: pageBlocks ?? this.pageBlocks,
+    viewCount: viewCount ?? this.viewCount,
+    version: version ?? this.version,
+    isRtl: isRtl ?? this.isRtl,
+    isFull: isFull ?? this.isFull,
+    feedbackLink: feedbackLink ?? this.feedbackLink,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'webPageInstantView';

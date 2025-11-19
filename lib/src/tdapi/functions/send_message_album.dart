@@ -33,16 +33,16 @@ final class SendMessageAlbum extends TdFunction<Messages> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'topic_id': topicId?.toJson(),
-        'reply_to': replyTo?.toJson(),
-        'options': options?.toJson(),
-        'input_message_contents': [
-          for (final e in inputMessageContents) e.toJson()
-        ],
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'topic_id': topicId?.toJson(),
+    'reply_to': replyTo?.toJson(),
+    'options': options?.toJson(),
+    'input_message_contents': [
+      for (final e in inputMessageContents) e.toJson(),
+    ],
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -52,14 +52,13 @@ final class SendMessageAlbum extends TdFunction<Messages> {
     InputMessageReplyTo? Function()? replyTo,
     MessageSendOptions? Function()? options,
     List<InputMessageContent>? inputMessageContents,
-  }) =>
-      SendMessageAlbum(
-        chatId: chatId ?? this.chatId,
-        topicId: topicId != null ? topicId() : this.topicId,
-        replyTo: replyTo != null ? replyTo() : this.replyTo,
-        options: options != null ? options() : this.options,
-        inputMessageContents: inputMessageContents ?? this.inputMessageContents,
-      );
+  }) => SendMessageAlbum(
+    chatId: chatId ?? this.chatId,
+    topicId: topicId != null ? topicId() : this.topicId,
+    replyTo: replyTo != null ? replyTo() : this.replyTo,
+    options: options != null ? options() : this.options,
+    inputMessageContents: inputMessageContents ?? this.inputMessageContents,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sendMessageAlbum';

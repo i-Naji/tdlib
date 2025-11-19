@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [BusinessChatLinkInfo].
 final class GetBusinessChatLinkInfo extends TdFunction<BusinessChatLinkInfo> {
   /// Returns information about a business chat link
-  const GetBusinessChatLinkInfo({
-    required this.linkName,
-  });
+  const GetBusinessChatLinkInfo({required this.linkName});
 
   /// Name of the link
   final String linkName;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'link_name': linkName,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'link_name': linkName,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetBusinessChatLinkInfo copyWith({
-    String? linkName,
-  }) =>
-      GetBusinessChatLinkInfo(
-        linkName: linkName ?? this.linkName,
-      );
+  GetBusinessChatLinkInfo copyWith({String? linkName}) =>
+      GetBusinessChatLinkInfo(linkName: linkName ?? this.linkName);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getBusinessChatLinkInfo';

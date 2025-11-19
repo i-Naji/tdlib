@@ -33,21 +33,23 @@ final class PublicForwards extends TdObject {
 
   /// Parses a [PublicForwards] from TDLib JSON.
   factory PublicForwards.fromJson(Map<String, dynamic> json) => PublicForwards(
-        totalCount: _readInt(json['total_count']),
-        forwards: _readList<PublicForward>(
-            json['forwards'], (e) => _readObject(e, PublicForward.fromJson)),
-        nextOffset: _readString(json['next_offset']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    totalCount: _readInt(json['total_count']),
+    forwards: _readList<PublicForward>(
+      json['forwards'],
+      (e) => _readObject(e, PublicForward.fromJson),
+    ),
+    nextOffset: _readString(json['next_offset']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'forwards': [for (final e in forwards) e.toJson()],
-        'next_offset': nextOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'forwards': [for (final e in forwards) e.toJson()],
+    'next_offset': nextOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,14 +59,13 @@ final class PublicForwards extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) =>
-      PublicForwards(
-        totalCount: totalCount ?? this.totalCount,
-        forwards: forwards ?? this.forwards,
-        nextOffset: nextOffset ?? this.nextOffset,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PublicForwards(
+    totalCount: totalCount ?? this.totalCount,
+    forwards: forwards ?? this.forwards,
+    nextOffset: nextOffset ?? this.nextOffset,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'publicForwards';

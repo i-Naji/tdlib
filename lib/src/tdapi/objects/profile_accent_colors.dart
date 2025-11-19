@@ -31,11 +31,11 @@ final class ProfileAccentColors extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'palette_colors': paletteColors,
-        'background_colors': backgroundColors,
-        'story_colors': storyColors,
-      };
+    '@type': CONSTRUCTOR,
+    'palette_colors': paletteColors,
+    'background_colors': backgroundColors,
+    'story_colors': storyColors,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class ProfileAccentColors extends TdObject {
     List<int>? paletteColors,
     List<int>? backgroundColors,
     List<int>? storyColors,
-  }) =>
-      ProfileAccentColors(
-        paletteColors: paletteColors ?? this.paletteColors,
-        backgroundColors: backgroundColors ?? this.backgroundColors,
-        storyColors: storyColors ?? this.storyColors,
-      );
+  }) => ProfileAccentColors(
+    paletteColors: paletteColors ?? this.paletteColors,
+    backgroundColors: backgroundColors ?? this.backgroundColors,
+    storyColors: storyColors ?? this.storyColors,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'profileAccentColors';

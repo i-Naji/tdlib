@@ -31,22 +31,22 @@ final class Contact extends TdObject {
 
   /// Parses a [Contact] from TDLib JSON.
   factory Contact.fromJson(Map<String, dynamic> json) => Contact(
-        phoneNumber: _readString(json['phone_number']),
-        firstName: _readString(json['first_name']),
-        lastName: _readString(json['last_name']),
-        vcard: _readString(json['vcard']),
-        userId: _readInt(json['user_id']),
-      );
+    phoneNumber: _readString(json['phone_number']),
+    firstName: _readString(json['first_name']),
+    lastName: _readString(json['last_name']),
+    vcard: _readString(json['vcard']),
+    userId: _readInt(json['user_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'phone_number': phoneNumber,
-        'first_name': firstName,
-        'last_name': lastName,
-        'vcard': vcard,
-        'user_id': userId,
-      };
+    '@type': CONSTRUCTOR,
+    'phone_number': phoneNumber,
+    'first_name': firstName,
+    'last_name': lastName,
+    'vcard': vcard,
+    'user_id': userId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,14 +56,13 @@ final class Contact extends TdObject {
     String? lastName,
     String? vcard,
     int? userId,
-  }) =>
-      Contact(
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        firstName: firstName ?? this.firstName,
-        lastName: lastName ?? this.lastName,
-        vcard: vcard ?? this.vcard,
-        userId: userId ?? this.userId,
-      );
+  }) => Contact(
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+    firstName: firstName ?? this.firstName,
+    lastName: lastName ?? this.lastName,
+    vcard: vcard ?? this.vcard,
+    userId: userId ?? this.userId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'contact';

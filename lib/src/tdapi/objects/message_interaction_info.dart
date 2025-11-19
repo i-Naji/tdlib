@@ -36,12 +36,12 @@ final class MessageInteractionInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'view_count': viewCount,
-        'forward_count': forwardCount,
-        'reply_info': replyInfo?.toJson(),
-        'reactions': reactions?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'view_count': viewCount,
+    'forward_count': forwardCount,
+    'reply_info': replyInfo?.toJson(),
+    'reactions': reactions?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class MessageInteractionInfo extends TdObject {
     int? forwardCount,
     MessageReplyInfo? Function()? replyInfo,
     MessageReactions? Function()? reactions,
-  }) =>
-      MessageInteractionInfo(
-        viewCount: viewCount ?? this.viewCount,
-        forwardCount: forwardCount ?? this.forwardCount,
-        replyInfo: replyInfo != null ? replyInfo() : this.replyInfo,
-        reactions: reactions != null ? reactions() : this.reactions,
-      );
+  }) => MessageInteractionInfo(
+    viewCount: viewCount ?? this.viewCount,
+    forwardCount: forwardCount ?? this.forwardCount,
+    replyInfo: replyInfo != null ? replyInfo() : this.replyInfo,
+    reactions: reactions != null ? reactions() : this.reactions,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageInteractionInfo';

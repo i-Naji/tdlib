@@ -29,18 +29,18 @@ final class FoundPositions extends TdObject {
 
   /// Parses a [FoundPositions] from TDLib JSON.
   factory FoundPositions.fromJson(Map<String, dynamic> json) => FoundPositions(
-        totalCount: _readInt(json['total_count']),
-        positions: _readList<int>(json['positions'], _readInt),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    totalCount: _readInt(json['total_count']),
+    positions: _readList<int>(json['positions'], _readInt),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'positions': positions,
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'positions': positions,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class FoundPositions extends TdObject {
     List<int>? positions,
     dynamic extra,
     int? clientId,
-  }) =>
-      FoundPositions(
-        totalCount: totalCount ?? this.totalCount,
-        positions: positions ?? this.positions,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => FoundPositions(
+    totalCount: totalCount ?? this.totalCount,
+    positions: positions ?? this.positions,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'foundPositions';

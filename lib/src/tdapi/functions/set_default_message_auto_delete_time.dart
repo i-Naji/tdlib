@@ -8,29 +8,25 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetDefaultMessageAutoDeleteTime extends TdFunction<Ok> {
   /// Changes the default message auto-delete time for new chats
-  const SetDefaultMessageAutoDeleteTime({
-    required this.messageAutoDeleteTime,
-  });
+  const SetDefaultMessageAutoDeleteTime({required this.messageAutoDeleteTime});
 
   /// New default message auto-delete time; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically
   final MessageAutoDeleteTime messageAutoDeleteTime;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'message_auto_delete_time': messageAutoDeleteTime.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'message_auto_delete_time': messageAutoDeleteTime.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetDefaultMessageAutoDeleteTime copyWith({
     MessageAutoDeleteTime? messageAutoDeleteTime,
-  }) =>
-      SetDefaultMessageAutoDeleteTime(
-        messageAutoDeleteTime:
-            messageAutoDeleteTime ?? this.messageAutoDeleteTime,
-      );
+  }) => SetDefaultMessageAutoDeleteTime(
+    messageAutoDeleteTime: messageAutoDeleteTime ?? this.messageAutoDeleteTime,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setDefaultMessageAutoDeleteTime';

@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [StickerSet].
 final class SearchStickerSet extends TdFunction<StickerSet> {
   /// Searches for a sticker set by its name
-  const SearchStickerSet({
-    required this.name,
-    required this.ignoreCache,
-  });
+  const SearchStickerSet({required this.name, required this.ignoreCache});
 
   /// Name of the sticker set
   final String name;
@@ -21,18 +18,15 @@ final class SearchStickerSet extends TdFunction<StickerSet> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        'ignore_cache': ignoreCache,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    'ignore_cache': ignoreCache,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchStickerSet copyWith({
-    String? name,
-    bool? ignoreCache,
-  }) =>
+  SearchStickerSet copyWith({String? name, bool? ignoreCache}) =>
       SearchStickerSet(
         name: name ?? this.name,
         ignoreCache: ignoreCache ?? this.ignoreCache,

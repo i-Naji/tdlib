@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [File].
 final class GetRemoteFile extends TdFunction<File> {
   /// Returns information about a file by its remote identifier. This is an offline method. Can be used to register a URL as a file for further uploading, or sending as a message. Even the request succeeds, the file can be used only if it is still accessible to the user. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application
-  const GetRemoteFile({
-    required this.remoteFileId,
-    this.fileType,
-  });
+  const GetRemoteFile({required this.remoteFileId, this.fileType});
 
   /// Remote identifier of the file to get
   final String remoteFileId;
@@ -21,22 +18,21 @@ final class GetRemoteFile extends TdFunction<File> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'remote_file_id': remoteFileId,
-        'file_type': fileType?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'remote_file_id': remoteFileId,
+    'file_type': fileType?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetRemoteFile copyWith({
     String? remoteFileId,
     FileType? Function()? fileType,
-  }) =>
-      GetRemoteFile(
-        remoteFileId: remoteFileId ?? this.remoteFileId,
-        fileType: fileType != null ? fileType() : this.fileType,
-      );
+  }) => GetRemoteFile(
+    remoteFileId: remoteFileId ?? this.remoteFileId,
+    fileType: fileType != null ? fileType() : this.fileType,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getRemoteFile';

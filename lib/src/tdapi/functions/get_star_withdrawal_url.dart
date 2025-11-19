@@ -25,12 +25,12 @@ final class GetStarWithdrawalUrl extends TdFunction<HttpUrl> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'owner_id': ownerId.toJson(),
-        'star_count': starCount,
-        'password': password,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'owner_id': ownerId.toJson(),
+    'star_count': starCount,
+    'password': password,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class GetStarWithdrawalUrl extends TdFunction<HttpUrl> {
     MessageSender? ownerId,
     int? starCount,
     String? password,
-  }) =>
-      GetStarWithdrawalUrl(
-        ownerId: ownerId ?? this.ownerId,
-        starCount: starCount ?? this.starCount,
-        password: password ?? this.password,
-      );
+  }) => GetStarWithdrawalUrl(
+    ownerId: ownerId ?? this.ownerId,
+    starCount: starCount ?? this.starCount,
+    password: password ?? this.password,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getStarWithdrawalUrl';

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [CollectibleItemInfo].
 final class GetCollectibleItemInfo extends TdFunction<CollectibleItemInfo> {
   /// Returns information about a given collectible item that was purchased at https://fragment.com
-  const GetCollectibleItemInfo({
-    required this.type,
-  });
+  const GetCollectibleItemInfo({required this.type});
 
   /// Type of the collectible item. The item must be used by a user and must be visible to the current user
   final CollectibleItemType type;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetCollectibleItemInfo copyWith({
-    CollectibleItemType? type,
-  }) =>
-      GetCollectibleItemInfo(
-        type: type ?? this.type,
-      );
+  GetCollectibleItemInfo copyWith({CollectibleItemType? type}) =>
+      GetCollectibleItemInfo(type: type ?? this.type);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getCollectibleItemInfo';

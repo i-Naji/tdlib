@@ -8,29 +8,23 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ViewSponsoredChat extends TdFunction<Ok> {
   /// Informs TDLib that the user fully viewed a sponsored chat
-  const ViewSponsoredChat({
-    required this.sponsoredChatUniqueId,
-  });
+  const ViewSponsoredChat({required this.sponsoredChatUniqueId});
 
   /// Unique identifier of the sponsored chat
   final int sponsoredChatUniqueId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sponsored_chat_unique_id': sponsoredChatUniqueId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sponsored_chat_unique_id': sponsoredChatUniqueId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ViewSponsoredChat copyWith({
-    int? sponsoredChatUniqueId,
-  }) =>
-      ViewSponsoredChat(
-        sponsoredChatUniqueId:
-            sponsoredChatUniqueId ?? this.sponsoredChatUniqueId,
-      );
+  ViewSponsoredChat copyWith({int? sponsoredChatUniqueId}) => ViewSponsoredChat(
+    sponsoredChatUniqueId: sponsoredChatUniqueId ?? this.sponsoredChatUniqueId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'viewSponsoredChat';

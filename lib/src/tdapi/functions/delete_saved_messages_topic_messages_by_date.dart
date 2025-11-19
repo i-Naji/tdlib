@@ -25,12 +25,12 @@ final class DeleteSavedMessagesTopicMessagesByDate extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'saved_messages_topic_id': savedMessagesTopicId,
-        'min_date': minDate,
-        'max_date': maxDate,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'saved_messages_topic_id': savedMessagesTopicId,
+    'min_date': minDate,
+    'max_date': maxDate,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class DeleteSavedMessagesTopicMessagesByDate extends TdFunction<Ok> {
     int? savedMessagesTopicId,
     int? minDate,
     int? maxDate,
-  }) =>
-      DeleteSavedMessagesTopicMessagesByDate(
-        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-        minDate: minDate ?? this.minDate,
-        maxDate: maxDate ?? this.maxDate,
-      );
+  }) => DeleteSavedMessagesTopicMessagesByDate(
+    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+    minDate: minDate ?? this.minDate,
+    maxDate: maxDate ?? this.maxDate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deleteSavedMessagesTopicMessagesByDate';

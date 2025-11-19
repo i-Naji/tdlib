@@ -47,10 +47,7 @@ final class UndecodedReportStoryResult extends ReportStoryResult {
 /// The story was reported successfully
 final class ReportStoryResultOk extends ReportStoryResult {
   /// The story was reported successfully
-  const ReportStoryResultOk({
-    this.extra,
-    this.clientId,
-  });
+  const ReportStoryResultOk({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -68,17 +65,12 @@ final class ReportStoryResultOk extends ReportStoryResult {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ReportStoryResultOk copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  ReportStoryResultOk copyWith({dynamic extra, int? clientId}) =>
       ReportStoryResultOk(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -120,17 +112,19 @@ final class ReportStoryResultOptionRequired extends ReportStoryResult {
       ReportStoryResultOptionRequired(
         title: _readString(json['title']),
         options: _readList<ReportOption>(
-            json['options'], (e) => _readObject(e, ReportOption.fromJson)),
+          json['options'],
+          (e) => _readObject(e, ReportOption.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-        'options': [for (final e in options) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'title': title,
+    'options': [for (final e in options) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -140,13 +134,12 @@ final class ReportStoryResultOptionRequired extends ReportStoryResult {
     List<ReportOption>? options,
     dynamic extra,
     int? clientId,
-  }) =>
-      ReportStoryResultOptionRequired(
-        title: title ?? this.title,
-        options: options ?? this.options,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ReportStoryResultOptionRequired(
+    title: title ?? this.title,
+    options: options ?? this.options,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reportStoryResultOptionRequired';
@@ -190,10 +183,10 @@ final class ReportStoryResultTextRequired extends ReportStoryResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'option_id': optionId,
-        'is_optional': isOptional,
-      };
+    '@type': CONSTRUCTOR,
+    'option_id': optionId,
+    'is_optional': isOptional,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -203,13 +196,12 @@ final class ReportStoryResultTextRequired extends ReportStoryResult {
     bool? isOptional,
     dynamic extra,
     int? clientId,
-  }) =>
-      ReportStoryResultTextRequired(
-        optionId: optionId ?? this.optionId,
-        isOptional: isOptional ?? this.isOptional,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ReportStoryResultTextRequired(
+    optionId: optionId ?? this.optionId,
+    isOptional: isOptional ?? this.isOptional,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reportStoryResultTextRequired';

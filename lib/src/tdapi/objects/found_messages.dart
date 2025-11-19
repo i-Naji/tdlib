@@ -33,21 +33,23 @@ final class FoundMessages extends TdObject {
 
   /// Parses a [FoundMessages] from TDLib JSON.
   factory FoundMessages.fromJson(Map<String, dynamic> json) => FoundMessages(
-        totalCount: _readInt(json['total_count']),
-        messages: _readList<Message>(
-            json['messages'], (e) => _readObject(e, Message.fromJson)),
-        nextOffset: _readString(json['next_offset']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    totalCount: _readInt(json['total_count']),
+    messages: _readList<Message>(
+      json['messages'],
+      (e) => _readObject(e, Message.fromJson),
+    ),
+    nextOffset: _readString(json['next_offset']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'messages': [for (final e in messages) e.toJson()],
-        'next_offset': nextOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'messages': [for (final e in messages) e.toJson()],
+    'next_offset': nextOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,14 +59,13 @@ final class FoundMessages extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) =>
-      FoundMessages(
-        totalCount: totalCount ?? this.totalCount,
-        messages: messages ?? this.messages,
-        nextOffset: nextOffset ?? this.nextOffset,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => FoundMessages(
+    totalCount: totalCount ?? this.totalCount,
+    messages: messages ?? this.messages,
+    nextOffset: nextOffset ?? this.nextOffset,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'foundMessages';

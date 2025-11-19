@@ -63,15 +63,15 @@ final class PremiumGiftCodeInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'creator_id': creatorId?.toJson(),
-        'creation_date': creationDate,
-        'is_from_giveaway': isFromGiveaway,
-        'giveaway_message_id': giveawayMessageId,
-        'month_count': monthCount,
-        'user_id': userId,
-        'use_date': useDate,
-      };
+    '@type': CONSTRUCTOR,
+    'creator_id': creatorId?.toJson(),
+    'creation_date': creationDate,
+    'is_from_giveaway': isFromGiveaway,
+    'giveaway_message_id': giveawayMessageId,
+    'month_count': monthCount,
+    'user_id': userId,
+    'use_date': useDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -85,18 +85,17 @@ final class PremiumGiftCodeInfo extends TdObject {
     int? useDate,
     dynamic extra,
     int? clientId,
-  }) =>
-      PremiumGiftCodeInfo(
-        creatorId: creatorId != null ? creatorId() : this.creatorId,
-        creationDate: creationDate ?? this.creationDate,
-        isFromGiveaway: isFromGiveaway ?? this.isFromGiveaway,
-        giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
-        monthCount: monthCount ?? this.monthCount,
-        userId: userId ?? this.userId,
-        useDate: useDate ?? this.useDate,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PremiumGiftCodeInfo(
+    creatorId: creatorId != null ? creatorId() : this.creatorId,
+    creationDate: creationDate ?? this.creationDate,
+    isFromGiveaway: isFromGiveaway ?? this.isFromGiveaway,
+    giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
+    monthCount: monthCount ?? this.monthCount,
+    userId: userId ?? this.userId,
+    useDate: useDate ?? this.useDate,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumGiftCodeInfo';

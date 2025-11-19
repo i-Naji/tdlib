@@ -31,11 +31,11 @@ final class StatisticalValue extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'value': value,
-        'previous_value': previousValue,
-        'growth_rate_percentage': growthRatePercentage,
-      };
+    '@type': CONSTRUCTOR,
+    'value': value,
+    'previous_value': previousValue,
+    'growth_rate_percentage': growthRatePercentage,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class StatisticalValue extends TdObject {
     double? value,
     double? previousValue,
     double? growthRatePercentage,
-  }) =>
-      StatisticalValue(
-        value: value ?? this.value,
-        previousValue: previousValue ?? this.previousValue,
-        growthRatePercentage: growthRatePercentage ?? this.growthRatePercentage,
-      );
+  }) => StatisticalValue(
+    value: value ?? this.value,
+    previousValue: previousValue ?? this.previousValue,
+    growthRatePercentage: growthRatePercentage ?? this.growthRatePercentage,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'statisticalValue';

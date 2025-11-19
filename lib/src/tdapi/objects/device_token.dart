@@ -58,26 +58,23 @@ final class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
 
   /// Parses a [DeviceTokenFirebaseCloudMessaging] from TDLib JSON.
   factory DeviceTokenFirebaseCloudMessaging.fromJson(
-          Map<String, dynamic> json) =>
-      DeviceTokenFirebaseCloudMessaging(
-        token: _readString(json['token']),
-        encrypt: _readBool(json['encrypt']),
-      );
+    Map<String, dynamic> json,
+  ) => DeviceTokenFirebaseCloudMessaging(
+    token: _readString(json['token']),
+    encrypt: _readBool(json['encrypt']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'token': token,
-        'encrypt': encrypt,
-      };
+    '@type': CONSTRUCTOR,
+    'token': token,
+    'encrypt': encrypt,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  DeviceTokenFirebaseCloudMessaging copyWith({
-    String? token,
-    bool? encrypt,
-  }) =>
+  DeviceTokenFirebaseCloudMessaging copyWith({String? token, bool? encrypt}) =>
       DeviceTokenFirebaseCloudMessaging(
         token: token ?? this.token,
         encrypt: encrypt ?? this.encrypt,
@@ -113,18 +110,15 @@ final class DeviceTokenApplePush extends DeviceToken {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'device_token': deviceToken,
-        'is_app_sandbox': isAppSandbox,
-      };
+    '@type': CONSTRUCTOR,
+    'device_token': deviceToken,
+    'is_app_sandbox': isAppSandbox,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  DeviceTokenApplePush copyWith({
-    String? deviceToken,
-    bool? isAppSandbox,
-  }) =>
+  DeviceTokenApplePush copyWith({String? deviceToken, bool? isAppSandbox}) =>
       DeviceTokenApplePush(
         deviceToken: deviceToken ?? this.deviceToken,
         isAppSandbox: isAppSandbox ?? this.isAppSandbox,
@@ -165,11 +159,11 @@ final class DeviceTokenApplePushVoIP extends DeviceToken {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'device_token': deviceToken,
-        'is_app_sandbox': isAppSandbox,
-        'encrypt': encrypt,
-      };
+    '@type': CONSTRUCTOR,
+    'device_token': deviceToken,
+    'is_app_sandbox': isAppSandbox,
+    'encrypt': encrypt,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -178,12 +172,11 @@ final class DeviceTokenApplePushVoIP extends DeviceToken {
     String? deviceToken,
     bool? isAppSandbox,
     bool? encrypt,
-  }) =>
-      DeviceTokenApplePushVoIP(
-        deviceToken: deviceToken ?? this.deviceToken,
-        isAppSandbox: isAppSandbox ?? this.isAppSandbox,
-        encrypt: encrypt ?? this.encrypt,
-      );
+  }) => DeviceTokenApplePushVoIP(
+    deviceToken: deviceToken ?? this.deviceToken,
+    isAppSandbox: isAppSandbox ?? this.isAppSandbox,
+    encrypt: encrypt ?? this.encrypt,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deviceTokenApplePushVoIP';
@@ -195,34 +188,26 @@ final class DeviceTokenApplePushVoIP extends DeviceToken {
 /// A token for Windows Push Notification Services
 final class DeviceTokenWindowsPush extends DeviceToken {
   /// A token for Windows Push Notification Services
-  const DeviceTokenWindowsPush({
-    required this.accessToken,
-  });
+  const DeviceTokenWindowsPush({required this.accessToken});
 
   /// The access token that will be used to send notifications; may be empty to deregister a device
   final String accessToken;
 
   /// Parses a [DeviceTokenWindowsPush] from TDLib JSON.
   factory DeviceTokenWindowsPush.fromJson(Map<String, dynamic> json) =>
-      DeviceTokenWindowsPush(
-        accessToken: _readString(json['access_token']),
-      );
+      DeviceTokenWindowsPush(accessToken: _readString(json['access_token']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'access_token': accessToken,
-      };
+    '@type': CONSTRUCTOR,
+    'access_token': accessToken,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  DeviceTokenWindowsPush copyWith({
-    String? accessToken,
-  }) =>
-      DeviceTokenWindowsPush(
-        accessToken: accessToken ?? this.accessToken,
-      );
+  DeviceTokenWindowsPush copyWith({String? accessToken}) =>
+      DeviceTokenWindowsPush(accessToken: accessToken ?? this.accessToken);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deviceTokenWindowsPush';
@@ -234,34 +219,26 @@ final class DeviceTokenWindowsPush extends DeviceToken {
 /// A token for Microsoft Push Notification Service
 final class DeviceTokenMicrosoftPush extends DeviceToken {
   /// A token for Microsoft Push Notification Service
-  const DeviceTokenMicrosoftPush({
-    required this.channelUri,
-  });
+  const DeviceTokenMicrosoftPush({required this.channelUri});
 
   /// Push notification channel URI; may be empty to deregister a device
   final String channelUri;
 
   /// Parses a [DeviceTokenMicrosoftPush] from TDLib JSON.
   factory DeviceTokenMicrosoftPush.fromJson(Map<String, dynamic> json) =>
-      DeviceTokenMicrosoftPush(
-        channelUri: _readString(json['channel_uri']),
-      );
+      DeviceTokenMicrosoftPush(channelUri: _readString(json['channel_uri']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'channel_uri': channelUri,
-      };
+    '@type': CONSTRUCTOR,
+    'channel_uri': channelUri,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  DeviceTokenMicrosoftPush copyWith({
-    String? channelUri,
-  }) =>
-      DeviceTokenMicrosoftPush(
-        channelUri: channelUri ?? this.channelUri,
-      );
+  DeviceTokenMicrosoftPush copyWith({String? channelUri}) =>
+      DeviceTokenMicrosoftPush(channelUri: channelUri ?? this.channelUri);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deviceTokenMicrosoftPush';
@@ -273,9 +250,7 @@ final class DeviceTokenMicrosoftPush extends DeviceToken {
 /// A token for Microsoft Push Notification Service VoIP channel
 final class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
   /// A token for Microsoft Push Notification Service VoIP channel
-  const DeviceTokenMicrosoftPushVoIP({
-    required this.channelUri,
-  });
+  const DeviceTokenMicrosoftPushVoIP({required this.channelUri});
 
   /// Push notification channel URI; may be empty to deregister a device
   final String channelUri;
@@ -288,19 +263,15 @@ final class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'channel_uri': channelUri,
-      };
+    '@type': CONSTRUCTOR,
+    'channel_uri': channelUri,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  DeviceTokenMicrosoftPushVoIP copyWith({
-    String? channelUri,
-  }) =>
-      DeviceTokenMicrosoftPushVoIP(
-        channelUri: channelUri ?? this.channelUri,
-      );
+  DeviceTokenMicrosoftPushVoIP copyWith({String? channelUri}) =>
+      DeviceTokenMicrosoftPushVoIP(channelUri: channelUri ?? this.channelUri);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deviceTokenMicrosoftPushVoIP';
@@ -337,11 +308,11 @@ final class DeviceTokenWebPush extends DeviceToken {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'endpoint': endpoint,
-        'p256dh_base64url': p256dhBase64url,
-        'auth_base64url': authBase64url,
-      };
+    '@type': CONSTRUCTOR,
+    'endpoint': endpoint,
+    'p256dh_base64url': p256dhBase64url,
+    'auth_base64url': authBase64url,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -350,12 +321,11 @@ final class DeviceTokenWebPush extends DeviceToken {
     String? endpoint,
     String? p256dhBase64url,
     String? authBase64url,
-  }) =>
-      DeviceTokenWebPush(
-        endpoint: endpoint ?? this.endpoint,
-        p256dhBase64url: p256dhBase64url ?? this.p256dhBase64url,
-        authBase64url: authBase64url ?? this.authBase64url,
-      );
+  }) => DeviceTokenWebPush(
+    endpoint: endpoint ?? this.endpoint,
+    p256dhBase64url: p256dhBase64url ?? this.p256dhBase64url,
+    authBase64url: authBase64url ?? this.authBase64url,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deviceTokenWebPush';
@@ -367,34 +337,23 @@ final class DeviceTokenWebPush extends DeviceToken {
 /// A token for Simple Push API for Firefox OS
 final class DeviceTokenSimplePush extends DeviceToken {
   /// A token for Simple Push API for Firefox OS
-  const DeviceTokenSimplePush({
-    required this.endpoint,
-  });
+  const DeviceTokenSimplePush({required this.endpoint});
 
   /// Absolute URL exposed by the push service where the application server can send push messages; may be empty to deregister a device
   final String endpoint;
 
   /// Parses a [DeviceTokenSimplePush] from TDLib JSON.
   factory DeviceTokenSimplePush.fromJson(Map<String, dynamic> json) =>
-      DeviceTokenSimplePush(
-        endpoint: _readString(json['endpoint']),
-      );
+      DeviceTokenSimplePush(endpoint: _readString(json['endpoint']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'endpoint': endpoint,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'endpoint': endpoint};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  DeviceTokenSimplePush copyWith({
-    String? endpoint,
-  }) =>
-      DeviceTokenSimplePush(
-        endpoint: endpoint ?? this.endpoint,
-      );
+  DeviceTokenSimplePush copyWith({String? endpoint}) =>
+      DeviceTokenSimplePush(endpoint: endpoint ?? this.endpoint);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deviceTokenSimplePush';
@@ -406,34 +365,23 @@ final class DeviceTokenSimplePush extends DeviceToken {
 /// A token for Ubuntu Push Client service
 final class DeviceTokenUbuntuPush extends DeviceToken {
   /// A token for Ubuntu Push Client service
-  const DeviceTokenUbuntuPush({
-    required this.token,
-  });
+  const DeviceTokenUbuntuPush({required this.token});
 
   /// Token; may be empty to deregister a device
   final String token;
 
   /// Parses a [DeviceTokenUbuntuPush] from TDLib JSON.
   factory DeviceTokenUbuntuPush.fromJson(Map<String, dynamic> json) =>
-      DeviceTokenUbuntuPush(
-        token: _readString(json['token']),
-      );
+      DeviceTokenUbuntuPush(token: _readString(json['token']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'token': token,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'token': token};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  DeviceTokenUbuntuPush copyWith({
-    String? token,
-  }) =>
-      DeviceTokenUbuntuPush(
-        token: token ?? this.token,
-      );
+  DeviceTokenUbuntuPush copyWith({String? token}) =>
+      DeviceTokenUbuntuPush(token: token ?? this.token);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deviceTokenUbuntuPush';
@@ -445,34 +393,23 @@ final class DeviceTokenUbuntuPush extends DeviceToken {
 /// A token for BlackBerry Push Service
 final class DeviceTokenBlackBerryPush extends DeviceToken {
   /// A token for BlackBerry Push Service
-  const DeviceTokenBlackBerryPush({
-    required this.token,
-  });
+  const DeviceTokenBlackBerryPush({required this.token});
 
   /// Token; may be empty to deregister a device
   final String token;
 
   /// Parses a [DeviceTokenBlackBerryPush] from TDLib JSON.
   factory DeviceTokenBlackBerryPush.fromJson(Map<String, dynamic> json) =>
-      DeviceTokenBlackBerryPush(
-        token: _readString(json['token']),
-      );
+      DeviceTokenBlackBerryPush(token: _readString(json['token']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'token': token,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'token': token};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  DeviceTokenBlackBerryPush copyWith({
-    String? token,
-  }) =>
-      DeviceTokenBlackBerryPush(
-        token: token ?? this.token,
-      );
+  DeviceTokenBlackBerryPush copyWith({String? token}) =>
+      DeviceTokenBlackBerryPush(token: token ?? this.token);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deviceTokenBlackBerryPush';
@@ -484,34 +421,23 @@ final class DeviceTokenBlackBerryPush extends DeviceToken {
 /// A token for Tizen Push Service
 final class DeviceTokenTizenPush extends DeviceToken {
   /// A token for Tizen Push Service
-  const DeviceTokenTizenPush({
-    required this.regId,
-  });
+  const DeviceTokenTizenPush({required this.regId});
 
   /// Push service registration identifier; may be empty to deregister a device
   final String regId;
 
   /// Parses a [DeviceTokenTizenPush] from TDLib JSON.
   factory DeviceTokenTizenPush.fromJson(Map<String, dynamic> json) =>
-      DeviceTokenTizenPush(
-        regId: _readString(json['reg_id']),
-      );
+      DeviceTokenTizenPush(regId: _readString(json['reg_id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'reg_id': regId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'reg_id': regId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  DeviceTokenTizenPush copyWith({
-    String? regId,
-  }) =>
-      DeviceTokenTizenPush(
-        regId: regId ?? this.regId,
-      );
+  DeviceTokenTizenPush copyWith({String? regId}) =>
+      DeviceTokenTizenPush(regId: regId ?? this.regId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deviceTokenTizenPush';
@@ -523,10 +449,7 @@ final class DeviceTokenTizenPush extends DeviceToken {
 /// A token for HUAWEI Push Service
 final class DeviceTokenHuaweiPush extends DeviceToken {
   /// A token for HUAWEI Push Service
-  const DeviceTokenHuaweiPush({
-    required this.token,
-    required this.encrypt,
-  });
+  const DeviceTokenHuaweiPush({required this.token, required this.encrypt});
 
   /// Device registration token; may be empty to deregister a device
   final String token;
@@ -543,18 +466,15 @@ final class DeviceTokenHuaweiPush extends DeviceToken {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'token': token,
-        'encrypt': encrypt,
-      };
+    '@type': CONSTRUCTOR,
+    'token': token,
+    'encrypt': encrypt,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  DeviceTokenHuaweiPush copyWith({
-    String? token,
-    bool? encrypt,
-  }) =>
+  DeviceTokenHuaweiPush copyWith({String? token, bool? encrypt}) =>
       DeviceTokenHuaweiPush(
         token: token ?? this.token,
         encrypt: encrypt ?? this.encrypt,

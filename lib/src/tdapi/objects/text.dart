@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains some text
 final class Text extends TdObject {
   /// Contains some text
-  const Text({
-    required this.text,
-    this.extra,
-    this.clientId,
-  });
+  const Text({required this.text, this.extra, this.clientId});
 
   /// Text
   final String text;
@@ -25,29 +21,21 @@ final class Text extends TdObject {
 
   /// Parses a [Text] from TDLib JSON.
   factory Text.fromJson(Map<String, dynamic> json) => Text(
-        text: _readString(json['text']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    text: _readString(json['text']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'text': text};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  Text copyWith({
-    String? text,
-    dynamic extra,
-    int? clientId,
-  }) =>
-      Text(
-        text: text ?? this.text,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  Text copyWith({String? text, dynamic extra, int? clientId}) => Text(
+    text: text ?? this.text,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'text';

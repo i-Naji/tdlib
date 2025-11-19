@@ -25,19 +25,20 @@ final class GroupCallParticipantVideoInfo extends TdObject {
   factory GroupCallParticipantVideoInfo.fromJson(Map<String, dynamic> json) =>
       GroupCallParticipantVideoInfo(
         sourceGroups: _readList<GroupCallVideoSourceGroup>(
-            json['source_groups'],
-            (e) => _readObject(e, GroupCallVideoSourceGroup.fromJson)),
+          json['source_groups'],
+          (e) => _readObject(e, GroupCallVideoSourceGroup.fromJson),
+        ),
         endpointId: _readString(json['endpoint_id']),
         isPaused: _readBool(json['is_paused']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'source_groups': [for (final e in sourceGroups) e.toJson()],
-        'endpoint_id': endpointId,
-        'is_paused': isPaused,
-      };
+    '@type': CONSTRUCTOR,
+    'source_groups': [for (final e in sourceGroups) e.toJson()],
+    'endpoint_id': endpointId,
+    'is_paused': isPaused,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -45,12 +46,11 @@ final class GroupCallParticipantVideoInfo extends TdObject {
     List<GroupCallVideoSourceGroup>? sourceGroups,
     String? endpointId,
     bool? isPaused,
-  }) =>
-      GroupCallParticipantVideoInfo(
-        sourceGroups: sourceGroups ?? this.sourceGroups,
-        endpointId: endpointId ?? this.endpointId,
-        isPaused: isPaused ?? this.isPaused,
-      );
+  }) => GroupCallParticipantVideoInfo(
+    sourceGroups: sourceGroups ?? this.sourceGroups,
+    endpointId: endpointId ?? this.endpointId,
+    isPaused: isPaused ?? this.isPaused,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'groupCallParticipantVideoInfo';

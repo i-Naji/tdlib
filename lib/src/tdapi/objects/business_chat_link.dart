@@ -48,12 +48,12 @@ final class BusinessChatLink extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'link': link,
-        'text': text.toJson(),
-        'title': title,
-        'view_count': viewCount,
-      };
+    '@type': CONSTRUCTOR,
+    'link': link,
+    'text': text.toJson(),
+    'title': title,
+    'view_count': viewCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -64,15 +64,14 @@ final class BusinessChatLink extends TdObject {
     int? viewCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      BusinessChatLink(
-        link: link ?? this.link,
-        text: text ?? this.text,
-        title: title ?? this.title,
-        viewCount: viewCount ?? this.viewCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => BusinessChatLink(
+    link: link ?? this.link,
+    text: text ?? this.text,
+    title: title ?? this.title,
+    viewCount: viewCount ?? this.viewCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'businessChatLink';

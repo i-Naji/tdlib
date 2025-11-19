@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class AddCustomServerLanguagePack extends TdFunction<Ok> {
   /// Adds a custom server language pack to the list of installed language packs in current localization target. Can be called before authorization
-  const AddCustomServerLanguagePack({
-    required this.languagePackId,
-  });
+  const AddCustomServerLanguagePack({required this.languagePackId});
 
   /// Identifier of a language pack to be added
   final String languagePackId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'language_pack_id': languagePackId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'language_pack_id': languagePackId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  AddCustomServerLanguagePack copyWith({
-    String? languagePackId,
-  }) =>
+  AddCustomServerLanguagePack copyWith({String? languagePackId}) =>
       AddCustomServerLanguagePack(
         languagePackId: languagePackId ?? this.languagePackId,
       );

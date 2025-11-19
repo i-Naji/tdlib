@@ -25,20 +25,16 @@ final class GetStatisticalGraph extends TdFunction<StatisticalGraph> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'token': token,
-        'x': x,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'token': token,
+    'x': x,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetStatisticalGraph copyWith({
-    int? chatId,
-    String? token,
-    int? x,
-  }) =>
+  GetStatisticalGraph copyWith({int? chatId, String? token, int? x}) =>
       GetStatisticalGraph(
         chatId: chatId ?? this.chatId,
         token: token ?? this.token,

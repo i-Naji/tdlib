@@ -36,12 +36,12 @@ final class PassportSuitableElement extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-        'is_selfie_required': isSelfieRequired,
-        'is_translation_required': isTranslationRequired,
-        'is_native_name_required': isNativeNameRequired,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+    'is_selfie_required': isSelfieRequired,
+    'is_translation_required': isTranslationRequired,
+    'is_native_name_required': isNativeNameRequired,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,12 @@ final class PassportSuitableElement extends TdObject {
     bool? isSelfieRequired,
     bool? isTranslationRequired,
     bool? isNativeNameRequired,
-  }) =>
-      PassportSuitableElement(
-        type: type ?? this.type,
-        isSelfieRequired: isSelfieRequired ?? this.isSelfieRequired,
-        isTranslationRequired:
-            isTranslationRequired ?? this.isTranslationRequired,
-        isNativeNameRequired: isNativeNameRequired ?? this.isNativeNameRequired,
-      );
+  }) => PassportSuitableElement(
+    type: type ?? this.type,
+    isSelfieRequired: isSelfieRequired ?? this.isSelfieRequired,
+    isTranslationRequired: isTranslationRequired ?? this.isTranslationRequired,
+    isNativeNameRequired: isNativeNameRequired ?? this.isNativeNameRequired,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportSuitableElement';

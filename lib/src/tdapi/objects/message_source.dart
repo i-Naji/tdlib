@@ -52,9 +52,7 @@ final class MessageSourceChatHistory extends MessageSource {
       const MessageSourceChatHistory();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -75,13 +73,11 @@ final class MessageSourceMessageThreadHistory extends MessageSource {
 
   /// Parses a [MessageSourceMessageThreadHistory] from TDLib JSON.
   factory MessageSourceMessageThreadHistory.fromJson(
-          Map<String, dynamic> json) =>
-      const MessageSourceMessageThreadHistory();
+    Map<String, dynamic> json,
+  ) => const MessageSourceMessageThreadHistory();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -106,9 +102,7 @@ final class MessageSourceForumTopicHistory extends MessageSource {
       const MessageSourceForumTopicHistory();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -130,13 +124,11 @@ final class MessageSourceDirectMessagesChatTopicHistory extends MessageSource {
 
   /// Parses a [MessageSourceDirectMessagesChatTopicHistory] from TDLib JSON.
   factory MessageSourceDirectMessagesChatTopicHistory.fromJson(
-          Map<String, dynamic> json) =>
-      const MessageSourceDirectMessagesChatTopicHistory();
+    Map<String, dynamic> json,
+  ) => const MessageSourceDirectMessagesChatTopicHistory();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -162,9 +154,7 @@ final class MessageSourceHistoryPreview extends MessageSource {
       const MessageSourceHistoryPreview();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -188,9 +178,7 @@ final class MessageSourceChatList extends MessageSource {
       const MessageSourceChatList();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -214,9 +202,7 @@ final class MessageSourceSearch extends MessageSource {
       const MessageSourceSearch();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -240,9 +226,7 @@ final class MessageSourceChatEventLog extends MessageSource {
       const MessageSourceChatEventLog();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -266,9 +250,7 @@ final class MessageSourceNotification extends MessageSource {
       const MessageSourceNotification();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -292,9 +274,7 @@ final class MessageSourceScreenshot extends MessageSource {
       const MessageSourceScreenshot();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -318,9 +298,7 @@ final class MessageSourceOther extends MessageSource {
       const MessageSourceOther();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

@@ -35,24 +35,24 @@ final class ForwardSource extends TdObject {
 
   /// Parses a [ForwardSource] from TDLib JSON.
   factory ForwardSource.fromJson(Map<String, dynamic> json) => ForwardSource(
-        chatId: _readInt(json['chat_id']),
-        messageId: _readInt(json['message_id']),
-        senderId: _readOptional(json['sender_id'], MessageSender.fromJson),
-        senderName: _readString(json['sender_name']),
-        date: _readInt(json['date']),
-        isOutgoing: _readBool(json['is_outgoing']),
-      );
+    chatId: _readInt(json['chat_id']),
+    messageId: _readInt(json['message_id']),
+    senderId: _readOptional(json['sender_id'], MessageSender.fromJson),
+    senderName: _readString(json['sender_name']),
+    date: _readInt(json['date']),
+    isOutgoing: _readBool(json['is_outgoing']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'sender_id': senderId?.toJson(),
-        'sender_name': senderName,
-        'date': date,
-        'is_outgoing': isOutgoing,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'sender_id': senderId?.toJson(),
+    'sender_name': senderName,
+    'date': date,
+    'is_outgoing': isOutgoing,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -63,15 +63,14 @@ final class ForwardSource extends TdObject {
     String? senderName,
     int? date,
     bool? isOutgoing,
-  }) =>
-      ForwardSource(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        senderId: senderId != null ? senderId() : this.senderId,
-        senderName: senderName ?? this.senderName,
-        date: date ?? this.date,
-        isOutgoing: isOutgoing ?? this.isOutgoing,
-      );
+  }) => ForwardSource(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    senderId: senderId != null ? senderId() : this.senderId,
+    senderName: senderName ?? this.senderName,
+    date: date ?? this.date,
+    isOutgoing: isOutgoing ?? this.isOutgoing,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'forwardSource';

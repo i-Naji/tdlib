@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Text].
 final class CleanFileName extends TdFunction<Text> {
   /// Removes potentially dangerous characters from the name of a file. Returns an empty string on failure. Can be called synchronously
-  const CleanFileName({
-    required this.fileName,
-  });
+  const CleanFileName({required this.fileName});
 
   /// File name or path to the file
   final String fileName;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'file_name': fileName,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'file_name': fileName,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CleanFileName copyWith({
-    String? fileName,
-  }) =>
-      CleanFileName(
-        fileName: fileName ?? this.fileName,
-      );
+  CleanFileName copyWith({String? fileName}) =>
+      CleanFileName(fileName: fileName ?? this.fileName);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'cleanFileName';

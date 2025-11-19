@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class DeleteAllCallMessages extends TdFunction<Ok> {
   /// Deletes all call messages
-  const DeleteAllCallMessages({
-    required this.revoke,
-  });
+  const DeleteAllCallMessages({required this.revoke});
 
   /// Pass true to delete the messages for all users
   final bool revoke;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'revoke': revoke,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'revoke': revoke,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteAllCallMessages copyWith({
-    bool? revoke,
-  }) =>
-      DeleteAllCallMessages(
-        revoke: revoke ?? this.revoke,
-      );
+  DeleteAllCallMessages copyWith({bool? revoke}) =>
+      DeleteAllCallMessages(revoke: revoke ?? this.revoke);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deleteAllCallMessages';

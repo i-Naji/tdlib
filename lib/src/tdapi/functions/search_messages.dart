@@ -45,17 +45,17 @@ final class SearchMessages extends TdFunction<FoundMessages> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_list': chatList?.toJson(),
-        'query': query,
-        'offset': offset,
-        'limit': limit,
-        'filter': filter?.toJson(),
-        'chat_type_filter': chatTypeFilter?.toJson(),
-        'min_date': minDate,
-        'max_date': maxDate,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_list': chatList?.toJson(),
+    'query': query,
+    'offset': offset,
+    'limit': limit,
+    'filter': filter?.toJson(),
+    'chat_type_filter': chatTypeFilter?.toJson(),
+    'min_date': minDate,
+    'max_date': maxDate,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -68,18 +68,18 @@ final class SearchMessages extends TdFunction<FoundMessages> {
     SearchMessagesChatTypeFilter? Function()? chatTypeFilter,
     int? minDate,
     int? maxDate,
-  }) =>
-      SearchMessages(
-        chatList: chatList != null ? chatList() : this.chatList,
-        query: query ?? this.query,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-        filter: filter != null ? filter() : this.filter,
-        chatTypeFilter:
-            chatTypeFilter != null ? chatTypeFilter() : this.chatTypeFilter,
-        minDate: minDate ?? this.minDate,
-        maxDate: maxDate ?? this.maxDate,
-      );
+  }) => SearchMessages(
+    chatList: chatList != null ? chatList() : this.chatList,
+    query: query ?? this.query,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+    filter: filter != null ? filter() : this.filter,
+    chatTypeFilter: chatTypeFilter != null
+        ? chatTypeFilter()
+        : this.chatTypeFilter,
+    minDate: minDate ?? this.minDate,
+    maxDate: maxDate ?? this.maxDate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchMessages';

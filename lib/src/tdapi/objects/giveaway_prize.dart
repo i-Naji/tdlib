@@ -45,34 +45,26 @@ final class UndecodedGiveawayPrize extends GiveawayPrize {
 /// The giveaway sends Telegram Premium subscriptions to the winners
 final class GiveawayPrizePremium extends GiveawayPrize {
   /// The giveaway sends Telegram Premium subscriptions to the winners
-  const GiveawayPrizePremium({
-    required this.monthCount,
-  });
+  const GiveawayPrizePremium({required this.monthCount});
 
   /// Number of months the Telegram Premium subscription will be active after code activation
   final int monthCount;
 
   /// Parses a [GiveawayPrizePremium] from TDLib JSON.
   factory GiveawayPrizePremium.fromJson(Map<String, dynamic> json) =>
-      GiveawayPrizePremium(
-        monthCount: _readInt(json['month_count']),
-      );
+      GiveawayPrizePremium(monthCount: _readInt(json['month_count']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'month_count': monthCount,
-      };
+    '@type': CONSTRUCTOR,
+    'month_count': monthCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  GiveawayPrizePremium copyWith({
-    int? monthCount,
-  }) =>
-      GiveawayPrizePremium(
-        monthCount: monthCount ?? this.monthCount,
-      );
+  GiveawayPrizePremium copyWith({int? monthCount}) =>
+      GiveawayPrizePremium(monthCount: monthCount ?? this.monthCount);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giveawayPrizePremium';
@@ -84,34 +76,26 @@ final class GiveawayPrizePremium extends GiveawayPrize {
 /// The giveaway sends Telegram Stars to the winners
 final class GiveawayPrizeStars extends GiveawayPrize {
   /// The giveaway sends Telegram Stars to the winners
-  const GiveawayPrizeStars({
-    required this.starCount,
-  });
+  const GiveawayPrizeStars({required this.starCount});
 
   /// Number of Telegram Stars that will be shared by all winners
   final int starCount;
 
   /// Parses a [GiveawayPrizeStars] from TDLib JSON.
   factory GiveawayPrizeStars.fromJson(Map<String, dynamic> json) =>
-      GiveawayPrizeStars(
-        starCount: _readInt(json['star_count']),
-      );
+      GiveawayPrizeStars(starCount: _readInt(json['star_count']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_count': starCount,
-      };
+    '@type': CONSTRUCTOR,
+    'star_count': starCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  GiveawayPrizeStars copyWith({
-    int? starCount,
-  }) =>
-      GiveawayPrizeStars(
-        starCount: starCount ?? this.starCount,
-      );
+  GiveawayPrizeStars copyWith({int? starCount}) =>
+      GiveawayPrizeStars(starCount: starCount ?? this.starCount);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giveawayPrizeStars';

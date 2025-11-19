@@ -43,28 +43,38 @@ final class GiftUpgradePreview extends TdObject {
   factory GiftUpgradePreview.fromJson(Map<String, dynamic> json) =>
       GiftUpgradePreview(
         models: _readList<UpgradedGiftModel>(
-            json['models'], (e) => _readObject(e, UpgradedGiftModel.fromJson)),
-        symbols: _readList<UpgradedGiftSymbol>(json['symbols'],
-            (e) => _readObject(e, UpgradedGiftSymbol.fromJson)),
-        backdrops: _readList<UpgradedGiftBackdrop>(json['backdrops'],
-            (e) => _readObject(e, UpgradedGiftBackdrop.fromJson)),
+          json['models'],
+          (e) => _readObject(e, UpgradedGiftModel.fromJson),
+        ),
+        symbols: _readList<UpgradedGiftSymbol>(
+          json['symbols'],
+          (e) => _readObject(e, UpgradedGiftSymbol.fromJson),
+        ),
+        backdrops: _readList<UpgradedGiftBackdrop>(
+          json['backdrops'],
+          (e) => _readObject(e, UpgradedGiftBackdrop.fromJson),
+        ),
         prices: _readList<GiftUpgradePrice>(
-            json['prices'], (e) => _readObject(e, GiftUpgradePrice.fromJson)),
-        nextPrices: _readList<GiftUpgradePrice>(json['next_prices'],
-            (e) => _readObject(e, GiftUpgradePrice.fromJson)),
+          json['prices'],
+          (e) => _readObject(e, GiftUpgradePrice.fromJson),
+        ),
+        nextPrices: _readList<GiftUpgradePrice>(
+          json['next_prices'],
+          (e) => _readObject(e, GiftUpgradePrice.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'models': [for (final e in models) e.toJson()],
-        'symbols': [for (final e in symbols) e.toJson()],
-        'backdrops': [for (final e in backdrops) e.toJson()],
-        'prices': [for (final e in prices) e.toJson()],
-        'next_prices': [for (final e in nextPrices) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'models': [for (final e in models) e.toJson()],
+    'symbols': [for (final e in symbols) e.toJson()],
+    'backdrops': [for (final e in backdrops) e.toJson()],
+    'prices': [for (final e in prices) e.toJson()],
+    'next_prices': [for (final e in nextPrices) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -76,16 +86,15 @@ final class GiftUpgradePreview extends TdObject {
     List<GiftUpgradePrice>? nextPrices,
     dynamic extra,
     int? clientId,
-  }) =>
-      GiftUpgradePreview(
-        models: models ?? this.models,
-        symbols: symbols ?? this.symbols,
-        backdrops: backdrops ?? this.backdrops,
-        prices: prices ?? this.prices,
-        nextPrices: nextPrices ?? this.nextPrices,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => GiftUpgradePreview(
+    models: models ?? this.models,
+    symbols: symbols ?? this.symbols,
+    backdrops: backdrops ?? this.backdrops,
+    prices: prices ?? this.prices,
+    nextPrices: nextPrices ?? this.nextPrices,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giftUpgradePreview';

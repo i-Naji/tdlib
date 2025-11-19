@@ -23,20 +23,21 @@ final class Photo extends TdObject {
 
   /// Parses a [Photo] from TDLib JSON.
   factory Photo.fromJson(Map<String, dynamic> json) => Photo(
-        hasStickers: _readBool(json['has_stickers']),
-        minithumbnail:
-            _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
-        sizes: _readList<PhotoSize>(
-            json['sizes'], (e) => _readObject(e, PhotoSize.fromJson)),
-      );
+    hasStickers: _readBool(json['has_stickers']),
+    minithumbnail: _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
+    sizes: _readList<PhotoSize>(
+      json['sizes'],
+      (e) => _readObject(e, PhotoSize.fromJson),
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'has_stickers': hasStickers,
-        'minithumbnail': minithumbnail?.toJson(),
-        'sizes': [for (final e in sizes) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'has_stickers': hasStickers,
+    'minithumbnail': minithumbnail?.toJson(),
+    'sizes': [for (final e in sizes) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +45,11 @@ final class Photo extends TdObject {
     bool? hasStickers,
     Minithumbnail? Function()? minithumbnail,
     List<PhotoSize>? sizes,
-  }) =>
-      Photo(
-        hasStickers: hasStickers ?? this.hasStickers,
-        minithumbnail:
-            minithumbnail != null ? minithumbnail() : this.minithumbnail,
-        sizes: sizes ?? this.sizes,
-      );
+  }) => Photo(
+    hasStickers: hasStickers ?? this.hasStickers,
+    minithumbnail: minithumbnail != null ? minithumbnail() : this.minithumbnail,
+    sizes: sizes ?? this.sizes,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'photo';

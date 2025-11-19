@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Message].
 final class GetRepliedMessage extends TdFunction<Message> {
   /// Returns information about a non-bundled message that is replied by a given message. Also, returns the pinned message for messagePinMessage, the game message for messageGameScore, the invoice message for messagePaymentSuccessful, the message with a previously set same background for messageChatSetBackground, the giveaway message for messageGiveawayCompleted, the checklist message for messageChecklistTasksDone, messageChecklistTasksAdded, the message with suggested post information for messageSuggestedPostApprovalFailed, messageSuggestedPostApproved, messageSuggestedPostDeclined, messageSuggestedPostPaid, messageSuggestedPostRefunded, the message with the regular gift that was upgraded for messageUpgradedGift with origin of the type upgradedGiftOriginUpgrade, and the topic creation message for topic messages without non-bundled replied message. Returns a 404 error if the message doesn't exist
-  const GetRepliedMessage({
-    required this.chatId,
-    required this.messageId,
-  });
+  const GetRepliedMessage({required this.chatId, required this.messageId});
 
   /// Identifier of the chat the message belongs to
   final int chatId;
@@ -21,18 +18,15 @@ final class GetRepliedMessage extends TdFunction<Message> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetRepliedMessage copyWith({
-    int? chatId,
-    int? messageId,
-  }) =>
+  GetRepliedMessage copyWith({int? chatId, int? messageId}) =>
       GetRepliedMessage(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,

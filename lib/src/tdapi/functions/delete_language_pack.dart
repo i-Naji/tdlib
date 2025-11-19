@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class DeleteLanguagePack extends TdFunction<Ok> {
   /// Deletes all information about a language pack in the current localization target. The language pack which is currently in use (including base language pack) or is being synchronized can't be deleted. Can be called before authorization
-  const DeleteLanguagePack({
-    required this.languagePackId,
-  });
+  const DeleteLanguagePack({required this.languagePackId});
 
   /// Identifier of the language pack to delete
   final String languagePackId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'language_pack_id': languagePackId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'language_pack_id': languagePackId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteLanguagePack copyWith({
-    String? languagePackId,
-  }) =>
-      DeleteLanguagePack(
-        languagePackId: languagePackId ?? this.languagePackId,
-      );
+  DeleteLanguagePack copyWith({String? languagePackId}) =>
+      DeleteLanguagePack(languagePackId: languagePackId ?? this.languagePackId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deleteLanguagePack';

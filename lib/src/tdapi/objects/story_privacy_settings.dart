@@ -47,9 +47,7 @@ final class UndecodedStoryPrivacySettings extends StoryPrivacySettings {
 /// The story can be viewed by everyone
 final class StoryPrivacySettingsEveryone extends StoryPrivacySettings {
   /// The story can be viewed by everyone
-  const StoryPrivacySettingsEveryone({
-    required this.exceptUserIds,
-  });
+  const StoryPrivacySettingsEveryone({required this.exceptUserIds});
 
   /// Identifiers of the users that can't see the story; always unknown and empty for non-owned stories
   final List<int> exceptUserIds;
@@ -62,16 +60,14 @@ final class StoryPrivacySettingsEveryone extends StoryPrivacySettings {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'except_user_ids': exceptUserIds,
-      };
+    '@type': CONSTRUCTOR,
+    'except_user_ids': exceptUserIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StoryPrivacySettingsEveryone copyWith({
-    List<int>? exceptUserIds,
-  }) =>
+  StoryPrivacySettingsEveryone copyWith({List<int>? exceptUserIds}) =>
       StoryPrivacySettingsEveryone(
         exceptUserIds: exceptUserIds ?? this.exceptUserIds,
       );
@@ -86,9 +82,7 @@ final class StoryPrivacySettingsEveryone extends StoryPrivacySettings {
 /// The story can be viewed by all contacts except chosen users
 final class StoryPrivacySettingsContacts extends StoryPrivacySettings {
   /// The story can be viewed by all contacts except chosen users
-  const StoryPrivacySettingsContacts({
-    required this.exceptUserIds,
-  });
+  const StoryPrivacySettingsContacts({required this.exceptUserIds});
 
   /// User identifiers of the contacts that can't see the story; always unknown and empty for non-owned stories
   final List<int> exceptUserIds;
@@ -101,16 +95,14 @@ final class StoryPrivacySettingsContacts extends StoryPrivacySettings {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'except_user_ids': exceptUserIds,
-      };
+    '@type': CONSTRUCTOR,
+    'except_user_ids': exceptUserIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StoryPrivacySettingsContacts copyWith({
-    List<int>? exceptUserIds,
-  }) =>
+  StoryPrivacySettingsContacts copyWith({List<int>? exceptUserIds}) =>
       StoryPrivacySettingsContacts(
         exceptUserIds: exceptUserIds ?? this.exceptUserIds,
       );
@@ -129,13 +121,11 @@ final class StoryPrivacySettingsCloseFriends extends StoryPrivacySettings {
 
   /// Parses a [StoryPrivacySettingsCloseFriends] from TDLib JSON.
   factory StoryPrivacySettingsCloseFriends.fromJson(
-          Map<String, dynamic> json) =>
-      const StoryPrivacySettingsCloseFriends();
+    Map<String, dynamic> json,
+  ) => const StoryPrivacySettingsCloseFriends();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -153,35 +143,26 @@ final class StoryPrivacySettingsCloseFriends extends StoryPrivacySettings {
 /// The story can be viewed by certain specified users
 final class StoryPrivacySettingsSelectedUsers extends StoryPrivacySettings {
   /// The story can be viewed by certain specified users
-  const StoryPrivacySettingsSelectedUsers({
-    required this.userIds,
-  });
+  const StoryPrivacySettingsSelectedUsers({required this.userIds});
 
   /// Identifiers of the users; always unknown and empty for non-owned stories
   final List<int> userIds;
 
   /// Parses a [StoryPrivacySettingsSelectedUsers] from TDLib JSON.
   factory StoryPrivacySettingsSelectedUsers.fromJson(
-          Map<String, dynamic> json) =>
-      StoryPrivacySettingsSelectedUsers(
-        userIds: _readList<int>(json['user_ids'], _readInt),
-      );
+    Map<String, dynamic> json,
+  ) => StoryPrivacySettingsSelectedUsers(
+    userIds: _readList<int>(json['user_ids'], _readInt),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_ids': userIds,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'user_ids': userIds};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StoryPrivacySettingsSelectedUsers copyWith({
-    List<int>? userIds,
-  }) =>
-      StoryPrivacySettingsSelectedUsers(
-        userIds: userIds ?? this.userIds,
-      );
+  StoryPrivacySettingsSelectedUsers copyWith({List<int>? userIds}) =>
+      StoryPrivacySettingsSelectedUsers(userIds: userIds ?? this.userIds);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyPrivacySettingsSelectedUsers';

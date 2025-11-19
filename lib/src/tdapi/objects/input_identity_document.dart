@@ -42,19 +42,21 @@ final class InputIdentityDocument extends TdObject {
         reverseSide: _readOptional(json['reverse_side'], InputFile.fromJson),
         selfie: _readOptional(json['selfie'], InputFile.fromJson),
         translation: _readList<InputFile>(
-            json['translation'], (e) => _readObject(e, InputFile.fromJson)),
+          json['translation'],
+          (e) => _readObject(e, InputFile.fromJson),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'number': number,
-        'expiration_date': expirationDate?.toJson(),
-        'front_side': frontSide.toJson(),
-        'reverse_side': reverseSide?.toJson(),
-        'selfie': selfie?.toJson(),
-        'translation': [for (final e in translation) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'number': number,
+    'expiration_date': expirationDate?.toJson(),
+    'front_side': frontSide.toJson(),
+    'reverse_side': reverseSide?.toJson(),
+    'selfie': selfie?.toJson(),
+    'translation': [for (final e in translation) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -65,16 +67,16 @@ final class InputIdentityDocument extends TdObject {
     InputFile? Function()? reverseSide,
     InputFile? Function()? selfie,
     List<InputFile>? translation,
-  }) =>
-      InputIdentityDocument(
-        number: number ?? this.number,
-        expirationDate:
-            expirationDate != null ? expirationDate() : this.expirationDate,
-        frontSide: frontSide ?? this.frontSide,
-        reverseSide: reverseSide != null ? reverseSide() : this.reverseSide,
-        selfie: selfie != null ? selfie() : this.selfie,
-        translation: translation ?? this.translation,
-      );
+  }) => InputIdentityDocument(
+    number: number ?? this.number,
+    expirationDate: expirationDate != null
+        ? expirationDate()
+        : this.expirationDate,
+    frontSide: frontSide ?? this.frontSide,
+    reverseSide: reverseSide != null ? reverseSide() : this.reverseSide,
+    selfie: selfie != null ? selfie() : this.selfie,
+    translation: translation ?? this.translation,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputIdentityDocument';

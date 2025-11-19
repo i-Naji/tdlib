@@ -21,23 +21,22 @@ final class SetRecoveryEmailAddress extends TdFunction<PasswordState> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'password': password,
-        'new_recovery_email_address': newRecoveryEmailAddress,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'password': password,
+    'new_recovery_email_address': newRecoveryEmailAddress,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetRecoveryEmailAddress copyWith({
     String? password,
     String? newRecoveryEmailAddress,
-  }) =>
-      SetRecoveryEmailAddress(
-        password: password ?? this.password,
-        newRecoveryEmailAddress:
-            newRecoveryEmailAddress ?? this.newRecoveryEmailAddress,
-      );
+  }) => SetRecoveryEmailAddress(
+    password: password ?? this.password,
+    newRecoveryEmailAddress:
+        newRecoveryEmailAddress ?? this.newRecoveryEmailAddress,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setRecoveryEmailAddress';

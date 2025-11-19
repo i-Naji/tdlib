@@ -21,22 +21,21 @@ final class ProcessChatFolderNewChats extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_folder_id': chatFolderId,
-        'added_chat_ids': addedChatIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_folder_id': chatFolderId,
+    'added_chat_ids': addedChatIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ProcessChatFolderNewChats copyWith({
     int? chatFolderId,
     List<int>? addedChatIds,
-  }) =>
-      ProcessChatFolderNewChats(
-        chatFolderId: chatFolderId ?? this.chatFolderId,
-        addedChatIds: addedChatIds ?? this.addedChatIds,
-      );
+  }) => ProcessChatFolderNewChats(
+    chatFolderId: chatFolderId ?? this.chatFolderId,
+    addedChatIds: addedChatIds ?? this.addedChatIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'processChatFolderNewChats';

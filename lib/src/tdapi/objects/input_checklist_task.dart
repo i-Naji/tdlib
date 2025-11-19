@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Describes a task in a checklist to be sent
 final class InputChecklistTask extends TdObject {
   /// Describes a task in a checklist to be sent
-  const InputChecklistTask({
-    required this.id,
-    required this.text,
-  });
+  const InputChecklistTask({required this.id, required this.text});
 
   /// Unique identifier of the task; must be positive
   final int id;
@@ -26,21 +23,15 @@ final class InputChecklistTask extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'text': text.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'text': text.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  InputChecklistTask copyWith({
-    int? id,
-    FormattedText? text,
-  }) =>
-      InputChecklistTask(
-        id: id ?? this.id,
-        text: text ?? this.text,
-      );
+  InputChecklistTask copyWith({int? id, FormattedText? text}) =>
+      InputChecklistTask(id: id ?? this.id, text: text ?? this.text);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputChecklistTask';

@@ -23,18 +23,18 @@ final class UnreadReaction extends TdObject {
 
   /// Parses a [UnreadReaction] from TDLib JSON.
   factory UnreadReaction.fromJson(Map<String, dynamic> json) => UnreadReaction(
-        type: _readObject(json['type'], ReactionType.fromJson),
-        senderId: _readObject(json['sender_id'], MessageSender.fromJson),
-        isBig: _readBool(json['is_big']),
-      );
+    type: _readObject(json['type'], ReactionType.fromJson),
+    senderId: _readObject(json['sender_id'], MessageSender.fromJson),
+    isBig: _readBool(json['is_big']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-        'sender_id': senderId.toJson(),
-        'is_big': isBig,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+    'sender_id': senderId.toJson(),
+    'is_big': isBig,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -42,12 +42,11 @@ final class UnreadReaction extends TdObject {
     ReactionType? type,
     MessageSender? senderId,
     bool? isBig,
-  }) =>
-      UnreadReaction(
-        type: type ?? this.type,
-        senderId: senderId ?? this.senderId,
-        isBig: isBig ?? this.isBig,
-      );
+  }) => UnreadReaction(
+    type: type ?? this.type,
+    senderId: senderId ?? this.senderId,
+    isBig: isBig ?? this.isBig,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'unreadReaction';

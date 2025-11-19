@@ -45,8 +45,10 @@ final class StoryInteractions extends TdObject {
         totalCount: _readInt(json['total_count']),
         totalForwardCount: _readInt(json['total_forward_count']),
         totalReactionCount: _readInt(json['total_reaction_count']),
-        interactions: _readList<StoryInteraction>(json['interactions'],
-            (e) => _readObject(e, StoryInteraction.fromJson)),
+        interactions: _readList<StoryInteraction>(
+          json['interactions'],
+          (e) => _readObject(e, StoryInteraction.fromJson),
+        ),
         nextOffset: _readString(json['next_offset']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -54,13 +56,13 @@ final class StoryInteractions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'total_forward_count': totalForwardCount,
-        'total_reaction_count': totalReactionCount,
-        'interactions': [for (final e in interactions) e.toJson()],
-        'next_offset': nextOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'total_forward_count': totalForwardCount,
+    'total_reaction_count': totalReactionCount,
+    'interactions': [for (final e in interactions) e.toJson()],
+    'next_offset': nextOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -72,16 +74,15 @@ final class StoryInteractions extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) =>
-      StoryInteractions(
-        totalCount: totalCount ?? this.totalCount,
-        totalForwardCount: totalForwardCount ?? this.totalForwardCount,
-        totalReactionCount: totalReactionCount ?? this.totalReactionCount,
-        interactions: interactions ?? this.interactions,
-        nextOffset: nextOffset ?? this.nextOffset,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => StoryInteractions(
+    totalCount: totalCount ?? this.totalCount,
+    totalForwardCount: totalForwardCount ?? this.totalForwardCount,
+    totalReactionCount: totalReactionCount ?? this.totalReactionCount,
+    interactions: interactions ?? this.interactions,
+    nextOffset: nextOffset ?? this.nextOffset,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyInteractions';

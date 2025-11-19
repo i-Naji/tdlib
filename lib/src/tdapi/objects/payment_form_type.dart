@@ -85,33 +85,40 @@ final class PaymentFormTypeRegular extends PaymentFormType {
       PaymentFormTypeRegular(
         invoice: _readObject(json['invoice'], Invoice.fromJson),
         paymentProviderUserId: _readInt(json['payment_provider_user_id']),
-        paymentProvider:
-            _readObject(json['payment_provider'], PaymentProvider.fromJson),
+        paymentProvider: _readObject(
+          json['payment_provider'],
+          PaymentProvider.fromJson,
+        ),
         additionalPaymentOptions: _readList<PaymentOption>(
-            json['additional_payment_options'],
-            (e) => _readObject(e, PaymentOption.fromJson)),
-        savedOrderInfo:
-            _readOptional(json['saved_order_info'], OrderInfo.fromJson),
-        savedCredentials: _readList<SavedCredentials>(json['saved_credentials'],
-            (e) => _readObject(e, SavedCredentials.fromJson)),
+          json['additional_payment_options'],
+          (e) => _readObject(e, PaymentOption.fromJson),
+        ),
+        savedOrderInfo: _readOptional(
+          json['saved_order_info'],
+          OrderInfo.fromJson,
+        ),
+        savedCredentials: _readList<SavedCredentials>(
+          json['saved_credentials'],
+          (e) => _readObject(e, SavedCredentials.fromJson),
+        ),
         canSaveCredentials: _readBool(json['can_save_credentials']),
         needPassword: _readBool(json['need_password']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'invoice': invoice.toJson(),
-        'payment_provider_user_id': paymentProviderUserId,
-        'payment_provider': paymentProvider.toJson(),
-        'additional_payment_options': [
-          for (final e in additionalPaymentOptions) e.toJson()
-        ],
-        'saved_order_info': savedOrderInfo?.toJson(),
-        'saved_credentials': [for (final e in savedCredentials) e.toJson()],
-        'can_save_credentials': canSaveCredentials,
-        'need_password': needPassword,
-      };
+    '@type': CONSTRUCTOR,
+    'invoice': invoice.toJson(),
+    'payment_provider_user_id': paymentProviderUserId,
+    'payment_provider': paymentProvider.toJson(),
+    'additional_payment_options': [
+      for (final e in additionalPaymentOptions) e.toJson(),
+    ],
+    'saved_order_info': savedOrderInfo?.toJson(),
+    'saved_credentials': [for (final e in savedCredentials) e.toJson()],
+    'can_save_credentials': canSaveCredentials,
+    'need_password': needPassword,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -125,20 +132,19 @@ final class PaymentFormTypeRegular extends PaymentFormType {
     List<SavedCredentials>? savedCredentials,
     bool? canSaveCredentials,
     bool? needPassword,
-  }) =>
-      PaymentFormTypeRegular(
-        invoice: invoice ?? this.invoice,
-        paymentProviderUserId:
-            paymentProviderUserId ?? this.paymentProviderUserId,
-        paymentProvider: paymentProvider ?? this.paymentProvider,
-        additionalPaymentOptions:
-            additionalPaymentOptions ?? this.additionalPaymentOptions,
-        savedOrderInfo:
-            savedOrderInfo != null ? savedOrderInfo() : this.savedOrderInfo,
-        savedCredentials: savedCredentials ?? this.savedCredentials,
-        canSaveCredentials: canSaveCredentials ?? this.canSaveCredentials,
-        needPassword: needPassword ?? this.needPassword,
-      );
+  }) => PaymentFormTypeRegular(
+    invoice: invoice ?? this.invoice,
+    paymentProviderUserId: paymentProviderUserId ?? this.paymentProviderUserId,
+    paymentProvider: paymentProvider ?? this.paymentProvider,
+    additionalPaymentOptions:
+        additionalPaymentOptions ?? this.additionalPaymentOptions,
+    savedOrderInfo: savedOrderInfo != null
+        ? savedOrderInfo()
+        : this.savedOrderInfo,
+    savedCredentials: savedCredentials ?? this.savedCredentials,
+    canSaveCredentials: canSaveCredentials ?? this.canSaveCredentials,
+    needPassword: needPassword ?? this.needPassword,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'paymentFormTypeRegular';
@@ -150,34 +156,26 @@ final class PaymentFormTypeRegular extends PaymentFormType {
 /// The payment form is for a payment in Telegram Stars
 final class PaymentFormTypeStars extends PaymentFormType {
   /// The payment form is for a payment in Telegram Stars
-  const PaymentFormTypeStars({
-    required this.starCount,
-  });
+  const PaymentFormTypeStars({required this.starCount});
 
   /// Number of Telegram Stars that will be paid
   final int starCount;
 
   /// Parses a [PaymentFormTypeStars] from TDLib JSON.
   factory PaymentFormTypeStars.fromJson(Map<String, dynamic> json) =>
-      PaymentFormTypeStars(
-        starCount: _readInt(json['star_count']),
-      );
+      PaymentFormTypeStars(starCount: _readInt(json['star_count']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_count': starCount,
-      };
+    '@type': CONSTRUCTOR,
+    'star_count': starCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PaymentFormTypeStars copyWith({
-    int? starCount,
-  }) =>
-      PaymentFormTypeStars(
-        starCount: starCount ?? this.starCount,
-      );
+  PaymentFormTypeStars copyWith({int? starCount}) =>
+      PaymentFormTypeStars(starCount: starCount ?? this.starCount);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'paymentFormTypeStars';
@@ -189,9 +187,7 @@ final class PaymentFormTypeStars extends PaymentFormType {
 /// The payment form is for a payment in Telegram Stars for subscription
 final class PaymentFormTypeStarSubscription extends PaymentFormType {
   /// The payment form is for a payment in Telegram Stars for subscription
-  const PaymentFormTypeStarSubscription({
-    required this.pricing,
-  });
+  const PaymentFormTypeStarSubscription({required this.pricing});
 
   /// Information about subscription plan
   final StarSubscriptionPricing pricing;
@@ -204,19 +200,16 @@ final class PaymentFormTypeStarSubscription extends PaymentFormType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'pricing': pricing.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'pricing': pricing.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PaymentFormTypeStarSubscription copyWith({
     StarSubscriptionPricing? pricing,
-  }) =>
-      PaymentFormTypeStarSubscription(
-        pricing: pricing ?? this.pricing,
-      );
+  }) => PaymentFormTypeStarSubscription(pricing: pricing ?? this.pricing);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'paymentFormTypeStarSubscription';

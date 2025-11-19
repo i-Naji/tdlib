@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ReuseStarSubscription extends TdFunction<Ok> {
   /// Reuses an active Telegram Star subscription to a channel chat and joins the chat again
-  const ReuseStarSubscription({
-    required this.subscriptionId,
-  });
+  const ReuseStarSubscription({required this.subscriptionId});
 
   /// Identifier of the subscription
   final String subscriptionId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'subscription_id': subscriptionId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'subscription_id': subscriptionId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ReuseStarSubscription copyWith({
-    String? subscriptionId,
-  }) =>
+  ReuseStarSubscription copyWith({String? subscriptionId}) =>
       ReuseStarSubscription(
         subscriptionId: subscriptionId ?? this.subscriptionId,
       );

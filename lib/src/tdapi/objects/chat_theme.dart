@@ -45,33 +45,23 @@ final class UndecodedChatTheme extends ChatTheme {
 /// A chat theme based on an emoji
 final class ChatThemeEmoji extends ChatTheme {
   /// A chat theme based on an emoji
-  const ChatThemeEmoji({
-    required this.name,
-  });
+  const ChatThemeEmoji({required this.name});
 
   /// Name of the theme; full theme description is received through updateEmojiChatThemes
   final String name;
 
   /// Parses a [ChatThemeEmoji] from TDLib JSON.
-  factory ChatThemeEmoji.fromJson(Map<String, dynamic> json) => ChatThemeEmoji(
-        name: _readString(json['name']),
-      );
+  factory ChatThemeEmoji.fromJson(Map<String, dynamic> json) =>
+      ChatThemeEmoji(name: _readString(json['name']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'name': name};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatThemeEmoji copyWith({
-    String? name,
-  }) =>
-      ChatThemeEmoji(
-        name: name ?? this.name,
-      );
+  ChatThemeEmoji copyWith({String? name}) =>
+      ChatThemeEmoji(name: name ?? this.name);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatThemeEmoji';
@@ -83,33 +73,27 @@ final class ChatThemeEmoji extends ChatTheme {
 /// A chat theme based on an upgraded gift
 final class ChatThemeGift extends ChatTheme {
   /// A chat theme based on an upgraded gift
-  const ChatThemeGift({
-    required this.giftTheme,
-  });
+  const ChatThemeGift({required this.giftTheme});
 
   /// The chat theme
   final GiftChatTheme giftTheme;
 
   /// Parses a [ChatThemeGift] from TDLib JSON.
   factory ChatThemeGift.fromJson(Map<String, dynamic> json) => ChatThemeGift(
-        giftTheme: _readObject(json['gift_theme'], GiftChatTheme.fromJson),
-      );
+    giftTheme: _readObject(json['gift_theme'], GiftChatTheme.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'gift_theme': giftTheme.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'gift_theme': giftTheme.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatThemeGift copyWith({
-    GiftChatTheme? giftTheme,
-  }) =>
-      ChatThemeGift(
-        giftTheme: giftTheme ?? this.giftTheme,
-      );
+  ChatThemeGift copyWith({GiftChatTheme? giftTheme}) =>
+      ChatThemeGift(giftTheme: giftTheme ?? this.giftTheme);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatThemeGift';

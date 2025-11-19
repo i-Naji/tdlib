@@ -29,13 +29,13 @@ final class GetLoginUrl extends TdFunction<HttpUrl> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'button_id': buttonId,
-        'allow_write_access': allowWriteAccess,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'button_id': buttonId,
+    'allow_write_access': allowWriteAccess,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class GetLoginUrl extends TdFunction<HttpUrl> {
     int? messageId,
     int? buttonId,
     bool? allowWriteAccess,
-  }) =>
-      GetLoginUrl(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        buttonId: buttonId ?? this.buttonId,
-        allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
-      );
+  }) => GetLoginUrl(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    buttonId: buttonId ?? this.buttonId,
+    allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getLoginUrl';

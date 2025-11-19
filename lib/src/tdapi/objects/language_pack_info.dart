@@ -93,21 +93,21 @@ final class LanguagePackInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'base_language_pack_id': baseLanguagePackId,
-        'name': name,
-        'native_name': nativeName,
-        'plural_code': pluralCode,
-        'is_official': isOfficial,
-        'is_rtl': isRtl,
-        'is_beta': isBeta,
-        'is_installed': isInstalled,
-        'total_string_count': totalStringCount,
-        'translated_string_count': translatedStringCount,
-        'local_string_count': localStringCount,
-        'translation_url': translationUrl,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'base_language_pack_id': baseLanguagePackId,
+    'name': name,
+    'native_name': nativeName,
+    'plural_code': pluralCode,
+    'is_official': isOfficial,
+    'is_rtl': isRtl,
+    'is_beta': isBeta,
+    'is_installed': isInstalled,
+    'total_string_count': totalStringCount,
+    'translated_string_count': translatedStringCount,
+    'local_string_count': localStringCount,
+    'translation_url': translationUrl,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -127,25 +127,23 @@ final class LanguagePackInfo extends TdObject {
     String? translationUrl,
     dynamic extra,
     int? clientId,
-  }) =>
-      LanguagePackInfo(
-        id: id ?? this.id,
-        baseLanguagePackId: baseLanguagePackId ?? this.baseLanguagePackId,
-        name: name ?? this.name,
-        nativeName: nativeName ?? this.nativeName,
-        pluralCode: pluralCode ?? this.pluralCode,
-        isOfficial: isOfficial ?? this.isOfficial,
-        isRtl: isRtl ?? this.isRtl,
-        isBeta: isBeta ?? this.isBeta,
-        isInstalled: isInstalled ?? this.isInstalled,
-        totalStringCount: totalStringCount ?? this.totalStringCount,
-        translatedStringCount:
-            translatedStringCount ?? this.translatedStringCount,
-        localStringCount: localStringCount ?? this.localStringCount,
-        translationUrl: translationUrl ?? this.translationUrl,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => LanguagePackInfo(
+    id: id ?? this.id,
+    baseLanguagePackId: baseLanguagePackId ?? this.baseLanguagePackId,
+    name: name ?? this.name,
+    nativeName: nativeName ?? this.nativeName,
+    pluralCode: pluralCode ?? this.pluralCode,
+    isOfficial: isOfficial ?? this.isOfficial,
+    isRtl: isRtl ?? this.isRtl,
+    isBeta: isBeta ?? this.isBeta,
+    isInstalled: isInstalled ?? this.isInstalled,
+    totalStringCount: totalStringCount ?? this.totalStringCount,
+    translatedStringCount: translatedStringCount ?? this.translatedStringCount,
+    localStringCount: localStringCount ?? this.localStringCount,
+    translationUrl: translationUrl ?? this.translationUrl,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'languagePackInfo';

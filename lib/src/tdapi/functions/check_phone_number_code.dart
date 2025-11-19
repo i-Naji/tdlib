@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class CheckPhoneNumberCode extends TdFunction<Ok> {
   /// Check the authentication code and completes the request for which the code was sent if appropriate
-  const CheckPhoneNumberCode({
-    required this.code,
-  });
+  const CheckPhoneNumberCode({required this.code});
 
   /// Authentication code to check
   final String code;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'code': code,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'code': code,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CheckPhoneNumberCode copyWith({
-    String? code,
-  }) =>
-      CheckPhoneNumberCode(
-        code: code ?? this.code,
-      );
+  CheckPhoneNumberCode copyWith({String? code}) =>
+      CheckPhoneNumberCode(code: code ?? this.code);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkPhoneNumberCode';

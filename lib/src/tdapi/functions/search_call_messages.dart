@@ -25,20 +25,16 @@ final class SearchCallMessages extends TdFunction<FoundMessages> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'offset': offset,
-        'limit': limit,
-        'only_missed': onlyMissed,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'offset': offset,
+    'limit': limit,
+    'only_missed': onlyMissed,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchCallMessages copyWith({
-    String? offset,
-    int? limit,
-    bool? onlyMissed,
-  }) =>
+  SearchCallMessages copyWith({String? offset, int? limit, bool? onlyMissed}) =>
       SearchCallMessages(
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,

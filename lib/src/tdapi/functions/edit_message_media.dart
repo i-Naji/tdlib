@@ -29,13 +29,13 @@ final class EditMessageMedia extends TdFunction<Message> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class EditMessageMedia extends TdFunction<Message> {
     int? messageId,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      EditMessageMedia(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => EditMessageMedia(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'editMessageMedia';

@@ -37,15 +37,15 @@ final class GetMapThumbnailFile extends TdFunction<File> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'location': location.toJson(),
-        'zoom': zoom,
-        'width': width,
-        'height': height,
-        'scale': scale,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'location': location.toJson(),
+    'zoom': zoom,
+    'width': width,
+    'height': height,
+    'scale': scale,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class GetMapThumbnailFile extends TdFunction<File> {
     int? height,
     int? scale,
     int? chatId,
-  }) =>
-      GetMapThumbnailFile(
-        location: location ?? this.location,
-        zoom: zoom ?? this.zoom,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        scale: scale ?? this.scale,
-        chatId: chatId ?? this.chatId,
-      );
+  }) => GetMapThumbnailFile(
+    location: location ?? this.location,
+    zoom: zoom ?? this.zoom,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    scale: scale ?? this.scale,
+    chatId: chatId ?? this.chatId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getMapThumbnailFile';

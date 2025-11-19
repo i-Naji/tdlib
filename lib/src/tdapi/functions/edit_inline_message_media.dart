@@ -25,12 +25,12 @@ final class EditInlineMessageMedia extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'inline_message_id': inlineMessageId,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'inline_message_id': inlineMessageId,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class EditInlineMessageMedia extends TdFunction<Ok> {
     String? inlineMessageId,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      EditInlineMessageMedia(
-        inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => EditInlineMessageMedia(
+    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'editInlineMessageMedia';

@@ -26,21 +26,20 @@ final class RestrictionInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'restriction_reason': restrictionReason,
-        'has_sensitive_content': hasSensitiveContent,
-      };
+    '@type': CONSTRUCTOR,
+    'restriction_reason': restrictionReason,
+    'has_sensitive_content': hasSensitiveContent,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   RestrictionInfo copyWith({
     String? restrictionReason,
     bool? hasSensitiveContent,
-  }) =>
-      RestrictionInfo(
-        restrictionReason: restrictionReason ?? this.restrictionReason,
-        hasSensitiveContent: hasSensitiveContent ?? this.hasSensitiveContent,
-      );
+  }) => RestrictionInfo(
+    restrictionReason: restrictionReason ?? this.restrictionReason,
+    hasSensitiveContent: hasSensitiveContent ?? this.hasSensitiveContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'restrictionInfo';

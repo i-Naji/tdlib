@@ -54,9 +54,7 @@ final class UserPrivacySettingShowStatus extends UserPrivacySetting {
       const UserPrivacySettingShowStatus();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -78,13 +76,11 @@ final class UserPrivacySettingShowProfilePhoto extends UserPrivacySetting {
 
   /// Parses a [UserPrivacySettingShowProfilePhoto] from TDLib JSON.
   factory UserPrivacySettingShowProfilePhoto.fromJson(
-          Map<String, dynamic> json) =>
-      const UserPrivacySettingShowProfilePhoto();
+    Map<String, dynamic> json,
+  ) => const UserPrivacySettingShowProfilePhoto();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -107,13 +103,11 @@ final class UserPrivacySettingShowLinkInForwardedMessages
 
   /// Parses a [UserPrivacySettingShowLinkInForwardedMessages] from TDLib JSON.
   factory UserPrivacySettingShowLinkInForwardedMessages.fromJson(
-          Map<String, dynamic> json) =>
-      const UserPrivacySettingShowLinkInForwardedMessages();
+    Map<String, dynamic> json,
+  ) => const UserPrivacySettingShowLinkInForwardedMessages();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -136,13 +130,11 @@ final class UserPrivacySettingShowPhoneNumber extends UserPrivacySetting {
 
   /// Parses a [UserPrivacySettingShowPhoneNumber] from TDLib JSON.
   factory UserPrivacySettingShowPhoneNumber.fromJson(
-          Map<String, dynamic> json) =>
-      const UserPrivacySettingShowPhoneNumber();
+    Map<String, dynamic> json,
+  ) => const UserPrivacySettingShowPhoneNumber();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -167,9 +159,7 @@ final class UserPrivacySettingShowBio extends UserPrivacySetting {
       const UserPrivacySettingShowBio();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -193,9 +183,7 @@ final class UserPrivacySettingShowBirthdate extends UserPrivacySetting {
       const UserPrivacySettingShowBirthdate();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -217,13 +205,11 @@ final class UserPrivacySettingAllowChatInvites extends UserPrivacySetting {
 
   /// Parses a [UserPrivacySettingAllowChatInvites] from TDLib JSON.
   factory UserPrivacySettingAllowChatInvites.fromJson(
-          Map<String, dynamic> json) =>
-      const UserPrivacySettingAllowChatInvites();
+    Map<String, dynamic> json,
+  ) => const UserPrivacySettingAllowChatInvites();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -248,9 +234,7 @@ final class UserPrivacySettingAllowCalls extends UserPrivacySetting {
       const UserPrivacySettingAllowCalls();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -272,13 +256,11 @@ final class UserPrivacySettingAllowPeerToPeerCalls extends UserPrivacySetting {
 
   /// Parses a [UserPrivacySettingAllowPeerToPeerCalls] from TDLib JSON.
   factory UserPrivacySettingAllowPeerToPeerCalls.fromJson(
-          Map<String, dynamic> json) =>
-      const UserPrivacySettingAllowPeerToPeerCalls();
+    Map<String, dynamic> json,
+  ) => const UserPrivacySettingAllowPeerToPeerCalls();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -301,13 +283,11 @@ final class UserPrivacySettingAllowFindingByPhoneNumber
 
   /// Parses a [UserPrivacySettingAllowFindingByPhoneNumber] from TDLib JSON.
   factory UserPrivacySettingAllowFindingByPhoneNumber.fromJson(
-          Map<String, dynamic> json) =>
-      const UserPrivacySettingAllowFindingByPhoneNumber();
+    Map<String, dynamic> json,
+  ) => const UserPrivacySettingAllowFindingByPhoneNumber();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -331,13 +311,11 @@ final class UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages
 
   /// Parses a [UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages] from TDLib JSON.
   factory UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages.fromJson(
-          Map<String, dynamic> json) =>
-      const UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages();
+    Map<String, dynamic> json,
+  ) => const UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -363,9 +341,7 @@ final class UserPrivacySettingAutosaveGifts extends UserPrivacySetting {
       const UserPrivacySettingAutosaveGifts();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -387,13 +363,11 @@ final class UserPrivacySettingAllowUnpaidMessages extends UserPrivacySetting {
 
   /// Parses a [UserPrivacySettingAllowUnpaidMessages] from TDLib JSON.
   factory UserPrivacySettingAllowUnpaidMessages.fromJson(
-          Map<String, dynamic> json) =>
-      const UserPrivacySettingAllowUnpaidMessages();
+    Map<String, dynamic> json,
+  ) => const UserPrivacySettingAllowUnpaidMessages();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

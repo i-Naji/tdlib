@@ -25,12 +25,12 @@ final class TranslateMessageText extends TdFunction<FormattedText> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'to_language_code': toLanguageCode,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'to_language_code': toLanguageCode,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class TranslateMessageText extends TdFunction<FormattedText> {
     int? chatId,
     int? messageId,
     String? toLanguageCode,
-  }) =>
-      TranslateMessageText(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        toLanguageCode: toLanguageCode ?? this.toLanguageCode,
-      );
+  }) => TranslateMessageText(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    toLanguageCode: toLanguageCode ?? this.toLanguageCode,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'translateMessageText';

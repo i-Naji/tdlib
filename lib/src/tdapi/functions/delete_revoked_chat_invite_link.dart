@@ -21,18 +21,15 @@ final class DeleteRevokedChatInviteLink extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'invite_link': inviteLink,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'invite_link': inviteLink,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteRevokedChatInviteLink copyWith({
-    int? chatId,
-    String? inviteLink,
-  }) =>
+  DeleteRevokedChatInviteLink copyWith({int? chatId, String? inviteLink}) =>
       DeleteRevokedChatInviteLink(
         chatId: chatId ?? this.chatId,
         inviteLink: inviteLink ?? this.inviteLink,

@@ -25,20 +25,16 @@ final class GetLoginUrlInfo extends TdFunction<LoginUrlInfo> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'button_id': buttonId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'button_id': buttonId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetLoginUrlInfo copyWith({
-    int? chatId,
-    int? messageId,
-    int? buttonId,
-  }) =>
+  GetLoginUrlInfo copyWith({int? chatId, int? messageId, int? buttonId}) =>
       GetLoginUrlInfo(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,

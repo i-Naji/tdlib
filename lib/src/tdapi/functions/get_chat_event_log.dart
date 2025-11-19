@@ -37,15 +37,15 @@ final class GetChatEventLog extends TdFunction<ChatEvents> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'query': query,
-        'from_event_id': fromEventId.toString(),
-        'limit': limit,
-        'filters': filters?.toJson(),
-        'user_ids': userIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'query': query,
+    'from_event_id': fromEventId.toString(),
+    'limit': limit,
+    'filters': filters?.toJson(),
+    'user_ids': userIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class GetChatEventLog extends TdFunction<ChatEvents> {
     int? limit,
     ChatEventLogFilters? Function()? filters,
     List<int>? userIds,
-  }) =>
-      GetChatEventLog(
-        chatId: chatId ?? this.chatId,
-        query: query ?? this.query,
-        fromEventId: fromEventId ?? this.fromEventId,
-        limit: limit ?? this.limit,
-        filters: filters != null ? filters() : this.filters,
-        userIds: userIds ?? this.userIds,
-      );
+  }) => GetChatEventLog(
+    chatId: chatId ?? this.chatId,
+    query: query ?? this.query,
+    fromEventId: fromEventId ?? this.fromEventId,
+    limit: limit ?? this.limit,
+    filters: filters != null ? filters() : this.filters,
+    userIds: userIds ?? this.userIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatEventLog';

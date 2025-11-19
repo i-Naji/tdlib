@@ -1588,11 +1588,11 @@ part 'objects/web_page_instant_view.dart';
 const String tdlibVersion = '1.8.56';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '8fbaf8441a79214bd00a1f19ab0bbcc91cd04e52';
+const String tdlibSchemaCommit = '4f4df7c6436085391e0b6d74cc7a54cf274c7edf';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '8fbaf8441a79214bd00a1f19ab0bbcc91cd04e52',
+  '4f4df7c6436085391e0b6d74cc7a54cf274c7edf',
 ];
 
 /// Base class of every TDLib object.
@@ -3841,11 +3841,11 @@ TdObject? convertToObject(String? query) {
 // JSON readers shared by the generated classes. They accept missing or
 // differently typed values (int64 sent as a string, 1 for 1.0).
 int _readInt(Object? v) => switch (v) {
-      int() => v,
-      num() => v.toInt(),
-      String() => int.tryParse(v) ?? 0,
-      _ => 0,
-    };
+  int() => v,
+  num() => v.toInt(),
+  String() => int.tryParse(v) ?? 0,
+  _ => 0,
+};
 
 double _readDouble(Object? v) => v is num ? v.toDouble() : 0.0;
 

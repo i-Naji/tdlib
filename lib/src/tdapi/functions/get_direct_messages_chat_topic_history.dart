@@ -33,14 +33,14 @@ final class GetDirectMessagesChatTopicHistory extends TdFunction<Messages> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'topic_id': topicId,
-        'from_message_id': fromMessageId,
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'topic_id': topicId,
+    'from_message_id': fromMessageId,
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class GetDirectMessagesChatTopicHistory extends TdFunction<Messages> {
     int? fromMessageId,
     int? offset,
     int? limit,
-  }) =>
-      GetDirectMessagesChatTopicHistory(
-        chatId: chatId ?? this.chatId,
-        topicId: topicId ?? this.topicId,
-        fromMessageId: fromMessageId ?? this.fromMessageId,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => GetDirectMessagesChatTopicHistory(
+    chatId: chatId ?? this.chatId,
+    topicId: topicId ?? this.topicId,
+    fromMessageId: fromMessageId ?? this.fromMessageId,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getDirectMessagesChatTopicHistory';

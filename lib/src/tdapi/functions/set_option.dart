@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetOption extends TdFunction<Ok> {
   /// Sets the value of an option. (Check the list of available options on https://core.telegram.org/tdlib/options.) Only writable options can be set. Can be called before authorization
-  const SetOption({
-    required this.name,
-    this.value,
-  });
+  const SetOption({required this.name, this.value});
 
   /// The name of the option
   final String name;
@@ -21,18 +18,15 @@ final class SetOption extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        'value': value?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    'value': value?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetOption copyWith({
-    String? name,
-    OptionValue? Function()? value,
-  }) =>
+  SetOption copyWith({String? name, OptionValue? Function()? value}) =>
       SetOption(
         name: name ?? this.name,
         value: value != null ? value() : this.value,

@@ -21,18 +21,15 @@ final class ReportSupergroupSpam extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'message_ids': messageIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'message_ids': messageIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ReportSupergroupSpam copyWith({
-    int? supergroupId,
-    List<int>? messageIds,
-  }) =>
+  ReportSupergroupSpam copyWith({int? supergroupId, List<int>? messageIds}) =>
       ReportSupergroupSpam(
         supergroupId: supergroupId ?? this.supergroupId,
         messageIds: messageIds ?? this.messageIds,

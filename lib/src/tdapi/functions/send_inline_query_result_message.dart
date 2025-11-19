@@ -41,16 +41,16 @@ final class SendInlineQueryResultMessage extends TdFunction<Message> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'topic_id': topicId?.toJson(),
-        'reply_to': replyTo?.toJson(),
-        'options': options?.toJson(),
-        'query_id': queryId.toString(),
-        'result_id': resultId,
-        'hide_via_bot': hideViaBot,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'topic_id': topicId?.toJson(),
+    'reply_to': replyTo?.toJson(),
+    'options': options?.toJson(),
+    'query_id': queryId.toString(),
+    'result_id': resultId,
+    'hide_via_bot': hideViaBot,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -62,16 +62,15 @@ final class SendInlineQueryResultMessage extends TdFunction<Message> {
     int? queryId,
     String? resultId,
     bool? hideViaBot,
-  }) =>
-      SendInlineQueryResultMessage(
-        chatId: chatId ?? this.chatId,
-        topicId: topicId != null ? topicId() : this.topicId,
-        replyTo: replyTo != null ? replyTo() : this.replyTo,
-        options: options != null ? options() : this.options,
-        queryId: queryId ?? this.queryId,
-        resultId: resultId ?? this.resultId,
-        hideViaBot: hideViaBot ?? this.hideViaBot,
-      );
+  }) => SendInlineQueryResultMessage(
+    chatId: chatId ?? this.chatId,
+    topicId: topicId != null ? topicId() : this.topicId,
+    replyTo: replyTo != null ? replyTo() : this.replyTo,
+    options: options != null ? options() : this.options,
+    queryId: queryId ?? this.queryId,
+    resultId: resultId ?? this.resultId,
+    hideViaBot: hideViaBot ?? this.hideViaBot,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sendInlineQueryResultMessage';

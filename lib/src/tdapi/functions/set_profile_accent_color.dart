@@ -21,24 +21,23 @@ final class SetProfileAccentColor extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'profile_accent_color_id': profileAccentColorId,
-        'profile_background_custom_emoji_id':
-            profileBackgroundCustomEmojiId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'profile_accent_color_id': profileAccentColorId,
+    'profile_background_custom_emoji_id': profileBackgroundCustomEmojiId
+        .toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetProfileAccentColor copyWith({
     int? profileAccentColorId,
     int? profileBackgroundCustomEmojiId,
-  }) =>
-      SetProfileAccentColor(
-        profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
-        profileBackgroundCustomEmojiId: profileBackgroundCustomEmojiId ??
-            this.profileBackgroundCustomEmojiId,
-      );
+  }) => SetProfileAccentColor(
+    profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
+    profileBackgroundCustomEmojiId:
+        profileBackgroundCustomEmojiId ?? this.profileBackgroundCustomEmojiId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setProfileAccentColor';

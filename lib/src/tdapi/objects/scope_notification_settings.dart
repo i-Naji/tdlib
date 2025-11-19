@@ -65,28 +65,29 @@ final class ScopeNotificationSettings extends TdObject {
         muteStories: _readBool(json['mute_stories']),
         storySoundId: _readInt(json['story_sound_id']),
         showStoryPoster: _readBool(json['show_story_poster']),
-        disablePinnedMessageNotifications:
-            _readBool(json['disable_pinned_message_notifications']),
-        disableMentionNotifications:
-            _readBool(json['disable_mention_notifications']),
+        disablePinnedMessageNotifications: _readBool(
+          json['disable_pinned_message_notifications'],
+        ),
+        disableMentionNotifications: _readBool(
+          json['disable_mention_notifications'],
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'mute_for': muteFor,
-        'sound_id': soundId.toString(),
-        'show_preview': showPreview,
-        'use_default_mute_stories': useDefaultMuteStories,
-        'mute_stories': muteStories,
-        'story_sound_id': storySoundId.toString(),
-        'show_story_poster': showStoryPoster,
-        'disable_pinned_message_notifications':
-            disablePinnedMessageNotifications,
-        'disable_mention_notifications': disableMentionNotifications,
-      };
+    '@type': CONSTRUCTOR,
+    'mute_for': muteFor,
+    'sound_id': soundId.toString(),
+    'show_preview': showPreview,
+    'use_default_mute_stories': useDefaultMuteStories,
+    'mute_stories': muteStories,
+    'story_sound_id': storySoundId.toString(),
+    'show_story_poster': showStoryPoster,
+    'disable_pinned_message_notifications': disablePinnedMessageNotifications,
+    'disable_mention_notifications': disableMentionNotifications,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -102,23 +103,22 @@ final class ScopeNotificationSettings extends TdObject {
     bool? disableMentionNotifications,
     dynamic extra,
     int? clientId,
-  }) =>
-      ScopeNotificationSettings(
-        muteFor: muteFor ?? this.muteFor,
-        soundId: soundId ?? this.soundId,
-        showPreview: showPreview ?? this.showPreview,
-        useDefaultMuteStories:
-            useDefaultMuteStories ?? this.useDefaultMuteStories,
-        muteStories: muteStories ?? this.muteStories,
-        storySoundId: storySoundId ?? this.storySoundId,
-        showStoryPoster: showStoryPoster ?? this.showStoryPoster,
-        disablePinnedMessageNotifications: disablePinnedMessageNotifications ??
-            this.disablePinnedMessageNotifications,
-        disableMentionNotifications:
-            disableMentionNotifications ?? this.disableMentionNotifications,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ScopeNotificationSettings(
+    muteFor: muteFor ?? this.muteFor,
+    soundId: soundId ?? this.soundId,
+    showPreview: showPreview ?? this.showPreview,
+    useDefaultMuteStories: useDefaultMuteStories ?? this.useDefaultMuteStories,
+    muteStories: muteStories ?? this.muteStories,
+    storySoundId: storySoundId ?? this.storySoundId,
+    showStoryPoster: showStoryPoster ?? this.showStoryPoster,
+    disablePinnedMessageNotifications:
+        disablePinnedMessageNotifications ??
+        this.disablePinnedMessageNotifications,
+    disableMentionNotifications:
+        disableMentionNotifications ?? this.disableMentionNotifications,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'scopeNotificationSettings';

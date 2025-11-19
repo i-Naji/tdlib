@@ -31,19 +31,15 @@ final class VideoChatStream extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'channel_id': channelId,
-        'scale': scale,
-        'time_offset': timeOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'channel_id': channelId,
+    'scale': scale,
+    'time_offset': timeOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  VideoChatStream copyWith({
-    int? channelId,
-    int? scale,
-    int? timeOffset,
-  }) =>
+  VideoChatStream copyWith({int? channelId, int? scale, int? timeOffset}) =>
       VideoChatStream(
         channelId: channelId ?? this.channelId,
         scale: scale ?? this.scale,

@@ -71,48 +71,52 @@ final class Invoice extends TdObject {
 
   /// Parses a [Invoice] from TDLib JSON.
   factory Invoice.fromJson(Map<String, dynamic> json) => Invoice(
-        currency: _readString(json['currency']),
-        priceParts: _readList<LabeledPricePart>(json['price_parts'],
-            (e) => _readObject(e, LabeledPricePart.fromJson)),
-        subscriptionPeriod: _readInt(json['subscription_period']),
-        maxTipAmount: _readInt(json['max_tip_amount']),
-        suggestedTipAmounts:
-            _readList<int>(json['suggested_tip_amounts'], _readInt),
-        recurringPaymentTermsOfServiceUrl:
-            _readString(json['recurring_payment_terms_of_service_url']),
-        termsOfServiceUrl: _readString(json['terms_of_service_url']),
-        isTest: _readBool(json['is_test']),
-        needName: _readBool(json['need_name']),
-        needPhoneNumber: _readBool(json['need_phone_number']),
-        needEmailAddress: _readBool(json['need_email_address']),
-        needShippingAddress: _readBool(json['need_shipping_address']),
-        sendPhoneNumberToProvider:
-            _readBool(json['send_phone_number_to_provider']),
-        sendEmailAddressToProvider:
-            _readBool(json['send_email_address_to_provider']),
-        isFlexible: _readBool(json['is_flexible']),
-      );
+    currency: _readString(json['currency']),
+    priceParts: _readList<LabeledPricePart>(
+      json['price_parts'],
+      (e) => _readObject(e, LabeledPricePart.fromJson),
+    ),
+    subscriptionPeriod: _readInt(json['subscription_period']),
+    maxTipAmount: _readInt(json['max_tip_amount']),
+    suggestedTipAmounts: _readList<int>(
+      json['suggested_tip_amounts'],
+      _readInt,
+    ),
+    recurringPaymentTermsOfServiceUrl: _readString(
+      json['recurring_payment_terms_of_service_url'],
+    ),
+    termsOfServiceUrl: _readString(json['terms_of_service_url']),
+    isTest: _readBool(json['is_test']),
+    needName: _readBool(json['need_name']),
+    needPhoneNumber: _readBool(json['need_phone_number']),
+    needEmailAddress: _readBool(json['need_email_address']),
+    needShippingAddress: _readBool(json['need_shipping_address']),
+    sendPhoneNumberToProvider: _readBool(json['send_phone_number_to_provider']),
+    sendEmailAddressToProvider: _readBool(
+      json['send_email_address_to_provider'],
+    ),
+    isFlexible: _readBool(json['is_flexible']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'currency': currency,
-        'price_parts': [for (final e in priceParts) e.toJson()],
-        'subscription_period': subscriptionPeriod,
-        'max_tip_amount': maxTipAmount,
-        'suggested_tip_amounts': suggestedTipAmounts,
-        'recurring_payment_terms_of_service_url':
-            recurringPaymentTermsOfServiceUrl,
-        'terms_of_service_url': termsOfServiceUrl,
-        'is_test': isTest,
-        'need_name': needName,
-        'need_phone_number': needPhoneNumber,
-        'need_email_address': needEmailAddress,
-        'need_shipping_address': needShippingAddress,
-        'send_phone_number_to_provider': sendPhoneNumberToProvider,
-        'send_email_address_to_provider': sendEmailAddressToProvider,
-        'is_flexible': isFlexible,
-      };
+    '@type': CONSTRUCTOR,
+    'currency': currency,
+    'price_parts': [for (final e in priceParts) e.toJson()],
+    'subscription_period': subscriptionPeriod,
+    'max_tip_amount': maxTipAmount,
+    'suggested_tip_amounts': suggestedTipAmounts,
+    'recurring_payment_terms_of_service_url': recurringPaymentTermsOfServiceUrl,
+    'terms_of_service_url': termsOfServiceUrl,
+    'is_test': isTest,
+    'need_name': needName,
+    'need_phone_number': needPhoneNumber,
+    'need_email_address': needEmailAddress,
+    'need_shipping_address': needShippingAddress,
+    'send_phone_number_to_provider': sendPhoneNumberToProvider,
+    'send_email_address_to_provider': sendEmailAddressToProvider,
+    'is_flexible': isFlexible,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -132,27 +136,27 @@ final class Invoice extends TdObject {
     bool? sendPhoneNumberToProvider,
     bool? sendEmailAddressToProvider,
     bool? isFlexible,
-  }) =>
-      Invoice(
-        currency: currency ?? this.currency,
-        priceParts: priceParts ?? this.priceParts,
-        subscriptionPeriod: subscriptionPeriod ?? this.subscriptionPeriod,
-        maxTipAmount: maxTipAmount ?? this.maxTipAmount,
-        suggestedTipAmounts: suggestedTipAmounts ?? this.suggestedTipAmounts,
-        recurringPaymentTermsOfServiceUrl: recurringPaymentTermsOfServiceUrl ??
-            this.recurringPaymentTermsOfServiceUrl,
-        termsOfServiceUrl: termsOfServiceUrl ?? this.termsOfServiceUrl,
-        isTest: isTest ?? this.isTest,
-        needName: needName ?? this.needName,
-        needPhoneNumber: needPhoneNumber ?? this.needPhoneNumber,
-        needEmailAddress: needEmailAddress ?? this.needEmailAddress,
-        needShippingAddress: needShippingAddress ?? this.needShippingAddress,
-        sendPhoneNumberToProvider:
-            sendPhoneNumberToProvider ?? this.sendPhoneNumberToProvider,
-        sendEmailAddressToProvider:
-            sendEmailAddressToProvider ?? this.sendEmailAddressToProvider,
-        isFlexible: isFlexible ?? this.isFlexible,
-      );
+  }) => Invoice(
+    currency: currency ?? this.currency,
+    priceParts: priceParts ?? this.priceParts,
+    subscriptionPeriod: subscriptionPeriod ?? this.subscriptionPeriod,
+    maxTipAmount: maxTipAmount ?? this.maxTipAmount,
+    suggestedTipAmounts: suggestedTipAmounts ?? this.suggestedTipAmounts,
+    recurringPaymentTermsOfServiceUrl:
+        recurringPaymentTermsOfServiceUrl ??
+        this.recurringPaymentTermsOfServiceUrl,
+    termsOfServiceUrl: termsOfServiceUrl ?? this.termsOfServiceUrl,
+    isTest: isTest ?? this.isTest,
+    needName: needName ?? this.needName,
+    needPhoneNumber: needPhoneNumber ?? this.needPhoneNumber,
+    needEmailAddress: needEmailAddress ?? this.needEmailAddress,
+    needShippingAddress: needShippingAddress ?? this.needShippingAddress,
+    sendPhoneNumberToProvider:
+        sendPhoneNumberToProvider ?? this.sendPhoneNumberToProvider,
+    sendEmailAddressToProvider:
+        sendEmailAddressToProvider ?? this.sendEmailAddressToProvider,
+    isFlexible: isFlexible ?? this.isFlexible,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'invoice';

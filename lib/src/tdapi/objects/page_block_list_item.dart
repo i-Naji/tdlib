@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Describes an item of a list page block
 final class PageBlockListItem extends TdObject {
   /// Describes an item of a list page block
-  const PageBlockListItem({
-    required this.label,
-    required this.pageBlocks,
-  });
+  const PageBlockListItem({required this.label, required this.pageBlocks});
 
   /// Item label
   final String label;
@@ -22,22 +19,21 @@ final class PageBlockListItem extends TdObject {
       PageBlockListItem(
         label: _readString(json['label']),
         pageBlocks: _readList<PageBlock>(
-            json['page_blocks'], (e) => _readObject(e, PageBlock.fromJson)),
+          json['page_blocks'],
+          (e) => _readObject(e, PageBlock.fromJson),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'label': label,
-        'page_blocks': [for (final e in pageBlocks) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'label': label,
+    'page_blocks': [for (final e in pageBlocks) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  PageBlockListItem copyWith({
-    String? label,
-    List<PageBlock>? pageBlocks,
-  }) =>
+  PageBlockListItem copyWith({String? label, List<PageBlock>? pageBlocks}) =>
       PageBlockListItem(
         label: label ?? this.label,
         pageBlocks: pageBlocks ?? this.pageBlocks,

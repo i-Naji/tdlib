@@ -46,14 +46,14 @@ final class PremiumGiveawayPaymentOption extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'currency': currency,
-        'amount': amount,
-        'winner_count': winnerCount,
-        'month_count': monthCount,
-        'store_product_id': storeProductId,
-        'store_product_quantity': storeProductQuantity,
-      };
+    '@type': CONSTRUCTOR,
+    'currency': currency,
+    'amount': amount,
+    'winner_count': winnerCount,
+    'month_count': monthCount,
+    'store_product_id': storeProductId,
+    'store_product_quantity': storeProductQuantity,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -64,15 +64,14 @@ final class PremiumGiveawayPaymentOption extends TdObject {
     int? monthCount,
     String? storeProductId,
     int? storeProductQuantity,
-  }) =>
-      PremiumGiveawayPaymentOption(
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        winnerCount: winnerCount ?? this.winnerCount,
-        monthCount: monthCount ?? this.monthCount,
-        storeProductId: storeProductId ?? this.storeProductId,
-        storeProductQuantity: storeProductQuantity ?? this.storeProductQuantity,
-      );
+  }) => PremiumGiveawayPaymentOption(
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    winnerCount: winnerCount ?? this.winnerCount,
+    monthCount: monthCount ?? this.monthCount,
+    storeProductId: storeProductId ?? this.storeProductId,
+    storeProductQuantity: storeProductQuantity ?? this.storeProductQuantity,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumGiveawayPaymentOption';

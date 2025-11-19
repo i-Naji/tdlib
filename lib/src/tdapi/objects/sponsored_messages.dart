@@ -31,7 +31,9 @@ final class SponsoredMessages extends TdObject {
   factory SponsoredMessages.fromJson(Map<String, dynamic> json) =>
       SponsoredMessages(
         messages: _readList<SponsoredMessage>(
-            json['messages'], (e) => _readObject(e, SponsoredMessage.fromJson)),
+          json['messages'],
+          (e) => _readObject(e, SponsoredMessage.fromJson),
+        ),
         messagesBetween: _readInt(json['messages_between']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -39,10 +41,10 @@ final class SponsoredMessages extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'messages': [for (final e in messages) e.toJson()],
-        'messages_between': messagesBetween,
-      };
+    '@type': CONSTRUCTOR,
+    'messages': [for (final e in messages) e.toJson()],
+    'messages_between': messagesBetween,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,13 +53,12 @@ final class SponsoredMessages extends TdObject {
     int? messagesBetween,
     dynamic extra,
     int? clientId,
-  }) =>
-      SponsoredMessages(
-        messages: messages ?? this.messages,
-        messagesBetween: messagesBetween ?? this.messagesBetween,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => SponsoredMessages(
+    messages: messages ?? this.messages,
+    messagesBetween: messagesBetween ?? this.messagesBetween,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sponsoredMessages';

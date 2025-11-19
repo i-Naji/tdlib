@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [HttpUrl].
 final class GetEmojiSuggestionsUrl extends TdFunction<HttpUrl> {
   /// Returns an HTTP URL which can be used to automatically log in to the translation platform and suggest new emoji replacements. The URL will be valid for 30 seconds after generation
-  const GetEmojiSuggestionsUrl({
-    required this.languageCode,
-  });
+  const GetEmojiSuggestionsUrl({required this.languageCode});
 
   /// Language code for which the emoji replacements will be suggested
   final String languageCode;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'language_code': languageCode,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'language_code': languageCode,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetEmojiSuggestionsUrl copyWith({
-    String? languageCode,
-  }) =>
-      GetEmojiSuggestionsUrl(
-        languageCode: languageCode ?? this.languageCode,
-      );
+  GetEmojiSuggestionsUrl copyWith({String? languageCode}) =>
+      GetEmojiSuggestionsUrl(languageCode: languageCode ?? this.languageCode);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getEmojiSuggestionsUrl';

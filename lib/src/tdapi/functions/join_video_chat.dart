@@ -29,13 +29,13 @@ final class JoinVideoChat extends TdFunction<Text> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'participant_id': participantId?.toJson(),
-        'join_parameters': joinParameters.toJson(),
-        'invite_hash': inviteHash,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'participant_id': participantId?.toJson(),
+    'join_parameters': joinParameters.toJson(),
+    'invite_hash': inviteHash,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,14 +44,12 @@ final class JoinVideoChat extends TdFunction<Text> {
     MessageSender? Function()? participantId,
     GroupCallJoinParameters? joinParameters,
     String? inviteHash,
-  }) =>
-      JoinVideoChat(
-        groupCallId: groupCallId ?? this.groupCallId,
-        participantId:
-            participantId != null ? participantId() : this.participantId,
-        joinParameters: joinParameters ?? this.joinParameters,
-        inviteHash: inviteHash ?? this.inviteHash,
-      );
+  }) => JoinVideoChat(
+    groupCallId: groupCallId ?? this.groupCallId,
+    participantId: participantId != null ? participantId() : this.participantId,
+    joinParameters: joinParameters ?? this.joinParameters,
+    inviteHash: inviteHash ?? this.inviteHash,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'joinVideoChat';

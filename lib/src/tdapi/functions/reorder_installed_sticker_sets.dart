@@ -21,22 +21,21 @@ final class ReorderInstalledStickerSets extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker_type': stickerType.toJson(),
-        'sticker_set_ids': [for (final e in stickerSetIds) e.toString()],
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_type': stickerType.toJson(),
+    'sticker_set_ids': [for (final e in stickerSetIds) e.toString()],
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ReorderInstalledStickerSets copyWith({
     StickerType? stickerType,
     List<int>? stickerSetIds,
-  }) =>
-      ReorderInstalledStickerSets(
-        stickerType: stickerType ?? this.stickerType,
-        stickerSetIds: stickerSetIds ?? this.stickerSetIds,
-      );
+  }) => ReorderInstalledStickerSets(
+    stickerType: stickerType ?? this.stickerType,
+    stickerSetIds: stickerSetIds ?? this.stickerSetIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reorderInstalledStickerSets';

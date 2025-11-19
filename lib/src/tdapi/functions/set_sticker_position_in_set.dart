@@ -21,18 +21,15 @@ final class SetStickerPositionInSet extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker': sticker.toJson(),
-        'position': position,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker': sticker.toJson(),
+    'position': position,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetStickerPositionInSet copyWith({
-    InputFile? sticker,
-    int? position,
-  }) =>
+  SetStickerPositionInSet copyWith({InputFile? sticker, int? position}) =>
       SetStickerPositionInSet(
         sticker: sticker ?? this.sticker,
         position: position ?? this.position,

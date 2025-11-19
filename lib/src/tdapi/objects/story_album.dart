@@ -37,22 +37,22 @@ final class StoryAlbum extends TdObject {
 
   /// Parses a [StoryAlbum] from TDLib JSON.
   factory StoryAlbum.fromJson(Map<String, dynamic> json) => StoryAlbum(
-        id: _readInt(json['id']),
-        name: _readString(json['name']),
-        photoIcon: _readOptional(json['photo_icon'], Photo.fromJson),
-        videoIcon: _readOptional(json['video_icon'], Video.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    id: _readInt(json['id']),
+    name: _readString(json['name']),
+    photoIcon: _readOptional(json['photo_icon'], Photo.fromJson),
+    videoIcon: _readOptional(json['video_icon'], Video.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'name': name,
-        'photo_icon': photoIcon?.toJson(),
-        'video_icon': videoIcon?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'name': name,
+    'photo_icon': photoIcon?.toJson(),
+    'video_icon': videoIcon?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -63,15 +63,14 @@ final class StoryAlbum extends TdObject {
     Video? Function()? videoIcon,
     dynamic extra,
     int? clientId,
-  }) =>
-      StoryAlbum(
-        id: id ?? this.id,
-        name: name ?? this.name,
-        photoIcon: photoIcon != null ? photoIcon() : this.photoIcon,
-        videoIcon: videoIcon != null ? videoIcon() : this.videoIcon,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => StoryAlbum(
+    id: id ?? this.id,
+    name: name ?? this.name,
+    photoIcon: photoIcon != null ? photoIcon() : this.photoIcon,
+    videoIcon: videoIcon != null ? videoIcon() : this.videoIcon,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyAlbum';

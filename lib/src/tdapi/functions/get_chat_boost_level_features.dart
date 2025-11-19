@@ -22,18 +22,15 @@ final class GetChatBoostLevelFeatures
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'is_channel': isChannel,
-        'level': level,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'is_channel': isChannel,
+    'level': level,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatBoostLevelFeatures copyWith({
-    bool? isChannel,
-    int? level,
-  }) =>
+  GetChatBoostLevelFeatures copyWith({bool? isChannel, int? level}) =>
       GetChatBoostLevelFeatures(
         isChannel: isChannel ?? this.isChannel,
         level: level ?? this.level,

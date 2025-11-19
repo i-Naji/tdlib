@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ViewVideoMessageAdvertisement extends TdFunction<Ok> {
   /// Informs TDLib that the user viewed a video message advertisement
-  const ViewVideoMessageAdvertisement({
-    required this.advertisementUniqueId,
-  });
+  const ViewVideoMessageAdvertisement({required this.advertisementUniqueId});
 
   /// Unique identifier of the advertisement
   final int advertisementUniqueId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'advertisement_unique_id': advertisementUniqueId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'advertisement_unique_id': advertisementUniqueId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ViewVideoMessageAdvertisement copyWith({
-    int? advertisementUniqueId,
-  }) =>
+  ViewVideoMessageAdvertisement copyWith({int? advertisementUniqueId}) =>
       ViewVideoMessageAdvertisement(
         advertisementUniqueId:
             advertisementUniqueId ?? this.advertisementUniqueId,

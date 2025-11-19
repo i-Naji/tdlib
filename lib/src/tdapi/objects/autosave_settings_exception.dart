@@ -26,21 +26,20 @@ final class AutosaveSettingsException extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'settings': settings.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'settings': settings.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   AutosaveSettingsException copyWith({
     int? chatId,
     ScopeAutosaveSettings? settings,
-  }) =>
-      AutosaveSettingsException(
-        chatId: chatId ?? this.chatId,
-        settings: settings ?? this.settings,
-      );
+  }) => AutosaveSettingsException(
+    chatId: chatId ?? this.chatId,
+    settings: settings ?? this.settings,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'autosaveSettingsException';

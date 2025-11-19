@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Describes manually chosen quote from another message
 final class InputTextQuote extends TdObject {
   /// Describes manually chosen quote from another message
-  const InputTextQuote({
-    required this.text,
-    required this.position,
-  });
+  const InputTextQuote({required this.text, required this.position});
 
   /// Text of the quote; 0-getOption("message_reply_quote_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed to be kept and must be kept in the quote
   final FormattedText text;
@@ -19,23 +16,20 @@ final class InputTextQuote extends TdObject {
 
   /// Parses a [InputTextQuote] from TDLib JSON.
   factory InputTextQuote.fromJson(Map<String, dynamic> json) => InputTextQuote(
-        text: _readObject(json['text'], FormattedText.fromJson),
-        position: _readInt(json['position']),
-      );
+    text: _readObject(json['text'], FormattedText.fromJson),
+    position: _readInt(json['position']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'position': position,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'position': position,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  InputTextQuote copyWith({
-    FormattedText? text,
-    int? position,
-  }) =>
+  InputTextQuote copyWith({FormattedText? text, int? position}) =>
       InputTextQuote(
         text: text ?? this.text,
         position: position ?? this.position,

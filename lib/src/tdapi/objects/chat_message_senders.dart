@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Represents a list of message senders, which can be used to send messages in a chat
 final class ChatMessageSenders extends TdObject {
   /// Represents a list of message senders, which can be used to send messages in a chat
-  const ChatMessageSenders({
-    required this.senders,
-    this.extra,
-    this.clientId,
-  });
+  const ChatMessageSenders({required this.senders, this.extra, this.clientId});
 
   /// List of available message senders
   final List<ChatMessageSender> senders;
@@ -27,16 +23,18 @@ final class ChatMessageSenders extends TdObject {
   factory ChatMessageSenders.fromJson(Map<String, dynamic> json) =>
       ChatMessageSenders(
         senders: _readList<ChatMessageSender>(
-            json['senders'], (e) => _readObject(e, ChatMessageSender.fromJson)),
+          json['senders'],
+          (e) => _readObject(e, ChatMessageSender.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'senders': [for (final e in senders) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'senders': [for (final e in senders) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +42,11 @@ final class ChatMessageSenders extends TdObject {
     List<ChatMessageSender>? senders,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatMessageSenders(
-        senders: senders ?? this.senders,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatMessageSenders(
+    senders: senders ?? this.senders,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatMessageSenders';

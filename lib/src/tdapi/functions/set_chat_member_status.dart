@@ -25,12 +25,12 @@ final class SetChatMemberStatus extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'member_id': memberId.toJson(),
-        'status': status.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'member_id': memberId.toJson(),
+    'status': status.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SetChatMemberStatus extends TdFunction<Ok> {
     int? chatId,
     MessageSender? memberId,
     ChatMemberStatus? status,
-  }) =>
-      SetChatMemberStatus(
-        chatId: chatId ?? this.chatId,
-        memberId: memberId ?? this.memberId,
-        status: status ?? this.status,
-      );
+  }) => SetChatMemberStatus(
+    chatId: chatId ?? this.chatId,
+    memberId: memberId ?? this.memberId,
+    status: status ?? this.status,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setChatMemberStatus';

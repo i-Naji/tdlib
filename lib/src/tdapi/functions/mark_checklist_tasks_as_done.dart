@@ -29,13 +29,13 @@ final class MarkChecklistTasksAsDone extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'marked_as_done_task_ids': markedAsDoneTaskIds,
-        'marked_as_not_done_task_ids': markedAsNotDoneTaskIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'marked_as_done_task_ids': markedAsDoneTaskIds,
+    'marked_as_not_done_task_ids': markedAsNotDoneTaskIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,14 +44,13 @@ final class MarkChecklistTasksAsDone extends TdFunction<Ok> {
     int? messageId,
     List<int>? markedAsDoneTaskIds,
     List<int>? markedAsNotDoneTaskIds,
-  }) =>
-      MarkChecklistTasksAsDone(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        markedAsDoneTaskIds: markedAsDoneTaskIds ?? this.markedAsDoneTaskIds,
-        markedAsNotDoneTaskIds:
-            markedAsNotDoneTaskIds ?? this.markedAsNotDoneTaskIds,
-      );
+  }) => MarkChecklistTasksAsDone(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    markedAsDoneTaskIds: markedAsDoneTaskIds ?? this.markedAsDoneTaskIds,
+    markedAsNotDoneTaskIds:
+        markedAsNotDoneTaskIds ?? this.markedAsNotDoneTaskIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'markChecklistTasksAsDone';

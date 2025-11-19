@@ -49,13 +49,11 @@ final class ConnectionStateWaitingForNetwork extends ConnectionState {
 
   /// Parses a [ConnectionStateWaitingForNetwork] from TDLib JSON.
   factory ConnectionStateWaitingForNetwork.fromJson(
-          Map<String, dynamic> json) =>
-      const ConnectionStateWaitingForNetwork();
+    Map<String, dynamic> json,
+  ) => const ConnectionStateWaitingForNetwork();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -77,13 +75,11 @@ final class ConnectionStateConnectingToProxy extends ConnectionState {
 
   /// Parses a [ConnectionStateConnectingToProxy] from TDLib JSON.
   factory ConnectionStateConnectingToProxy.fromJson(
-          Map<String, dynamic> json) =>
-      const ConnectionStateConnectingToProxy();
+    Map<String, dynamic> json,
+  ) => const ConnectionStateConnectingToProxy();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -108,9 +104,7 @@ final class ConnectionStateConnecting extends ConnectionState {
       const ConnectionStateConnecting();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -134,9 +128,7 @@ final class ConnectionStateUpdating extends ConnectionState {
       const ConnectionStateUpdating();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -160,9 +152,7 @@ final class ConnectionStateReady extends ConnectionState {
       const ConnectionStateReady();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

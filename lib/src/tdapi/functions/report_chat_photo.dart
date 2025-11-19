@@ -29,13 +29,13 @@ final class ReportChatPhoto extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'file_id': fileId,
-        'reason': reason.toJson(),
-        'text': text,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'file_id': fileId,
+    'reason': reason.toJson(),
+    'text': text,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class ReportChatPhoto extends TdFunction<Ok> {
     int? fileId,
     ReportReason? reason,
     String? text,
-  }) =>
-      ReportChatPhoto(
-        chatId: chatId ?? this.chatId,
-        fileId: fileId ?? this.fileId,
-        reason: reason ?? this.reason,
-        text: text ?? this.text,
-      );
+  }) => ReportChatPhoto(
+    chatId: chatId ?? this.chatId,
+    fileId: fileId ?? this.fileId,
+    reason: reason ?? this.reason,
+    text: text ?? this.text,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reportChatPhoto';

@@ -25,12 +25,12 @@ final class CheckWebAppFileDownload extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'file_name': fileName,
-        'url': url,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'file_name': fileName,
+    'url': url,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class CheckWebAppFileDownload extends TdFunction<Ok> {
     int? botUserId,
     String? fileName,
     String? url,
-  }) =>
-      CheckWebAppFileDownload(
-        botUserId: botUserId ?? this.botUserId,
-        fileName: fileName ?? this.fileName,
-        url: url ?? this.url,
-      );
+  }) => CheckWebAppFileDownload(
+    botUserId: botUserId ?? this.botUserId,
+    fileName: fileName ?? this.fileName,
+    url: url ?? this.url,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkWebAppFileDownload';

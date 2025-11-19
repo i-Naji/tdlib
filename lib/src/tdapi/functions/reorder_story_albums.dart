@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ReorderStoryAlbums extends TdFunction<Ok> {
   /// Changes order of story albums. If the albums are owned by a supergroup or a channel chat, then requires can_edit_stories administrator right in the chat
-  const ReorderStoryAlbums({
-    required this.chatId,
-    required this.storyAlbumIds,
-  });
+  const ReorderStoryAlbums({required this.chatId, required this.storyAlbumIds});
 
   /// Identifier of the chat that owns the stories
   final int chatId;
@@ -21,18 +18,15 @@ final class ReorderStoryAlbums extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'story_album_ids': storyAlbumIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'story_album_ids': storyAlbumIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ReorderStoryAlbums copyWith({
-    int? chatId,
-    List<int>? storyAlbumIds,
-  }) =>
+  ReorderStoryAlbums copyWith({int? chatId, List<int>? storyAlbumIds}) =>
       ReorderStoryAlbums(
         chatId: chatId ?? this.chatId,
         storyAlbumIds: storyAlbumIds ?? this.storyAlbumIds,

@@ -35,22 +35,28 @@ final class PremiumFeatures extends TdObject {
   factory PremiumFeatures.fromJson(Map<String, dynamic> json) =>
       PremiumFeatures(
         features: _readList<PremiumFeature>(
-            json['features'], (e) => _readObject(e, PremiumFeature.fromJson)),
+          json['features'],
+          (e) => _readObject(e, PremiumFeature.fromJson),
+        ),
         limits: _readList<PremiumLimit>(
-            json['limits'], (e) => _readObject(e, PremiumLimit.fromJson)),
-        paymentLink:
-            _readOptional(json['payment_link'], InternalLinkType.fromJson),
+          json['limits'],
+          (e) => _readObject(e, PremiumLimit.fromJson),
+        ),
+        paymentLink: _readOptional(
+          json['payment_link'],
+          InternalLinkType.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'features': [for (final e in features) e.toJson()],
-        'limits': [for (final e in limits) e.toJson()],
-        'payment_link': paymentLink?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'features': [for (final e in features) e.toJson()],
+    'limits': [for (final e in limits) e.toJson()],
+    'payment_link': paymentLink?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -60,14 +66,13 @@ final class PremiumFeatures extends TdObject {
     InternalLinkType? Function()? paymentLink,
     dynamic extra,
     int? clientId,
-  }) =>
-      PremiumFeatures(
-        features: features ?? this.features,
-        limits: limits ?? this.limits,
-        paymentLink: paymentLink != null ? paymentLink() : this.paymentLink,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PremiumFeatures(
+    features: features ?? this.features,
+    limits: limits ?? this.limits,
+    paymentLink: paymentLink != null ? paymentLink() : this.paymentLink,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumFeatures';

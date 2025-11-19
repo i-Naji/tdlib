@@ -26,17 +26,14 @@ final class BusinessOpeningHoursInterval extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'start_minute': startMinute,
-        'end_minute': endMinute,
-      };
+    '@type': CONSTRUCTOR,
+    'start_minute': startMinute,
+    'end_minute': endMinute,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  BusinessOpeningHoursInterval copyWith({
-    int? startMinute,
-    int? endMinute,
-  }) =>
+  BusinessOpeningHoursInterval copyWith({int? startMinute, int? endMinute}) =>
       BusinessOpeningHoursInterval(
         startMinute: startMinute ?? this.startMinute,
         endMinute: endMinute ?? this.endMinute,

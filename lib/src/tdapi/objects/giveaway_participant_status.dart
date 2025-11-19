@@ -53,13 +53,11 @@ final class GiveawayParticipantStatusEligible
 
   /// Parses a [GiveawayParticipantStatusEligible] from TDLib JSON.
   factory GiveawayParticipantStatusEligible.fromJson(
-          Map<String, dynamic> json) =>
-      const GiveawayParticipantStatusEligible();
+    Map<String, dynamic> json,
+  ) => const GiveawayParticipantStatusEligible();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -82,13 +80,11 @@ final class GiveawayParticipantStatusParticipating
 
   /// Parses a [GiveawayParticipantStatusParticipating] from TDLib JSON.
   factory GiveawayParticipantStatusParticipating.fromJson(
-          Map<String, dynamic> json) =>
-      const GiveawayParticipantStatusParticipating();
+    Map<String, dynamic> json,
+  ) => const GiveawayParticipantStatusParticipating();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -116,23 +112,21 @@ final class GiveawayParticipantStatusAlreadyWasMember
 
   /// Parses a [GiveawayParticipantStatusAlreadyWasMember] from TDLib JSON.
   factory GiveawayParticipantStatusAlreadyWasMember.fromJson(
-          Map<String, dynamic> json) =>
-      GiveawayParticipantStatusAlreadyWasMember(
-        joinedChatDate: _readInt(json['joined_chat_date']),
-      );
+    Map<String, dynamic> json,
+  ) => GiveawayParticipantStatusAlreadyWasMember(
+    joinedChatDate: _readInt(json['joined_chat_date']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'joined_chat_date': joinedChatDate,
-      };
+    '@type': CONSTRUCTOR,
+    'joined_chat_date': joinedChatDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  GiveawayParticipantStatusAlreadyWasMember copyWith({
-    int? joinedChatDate,
-  }) =>
+  GiveawayParticipantStatusAlreadyWasMember copyWith({int? joinedChatDate}) =>
       GiveawayParticipantStatusAlreadyWasMember(
         joinedChatDate: joinedChatDate ?? this.joinedChatDate,
       );
@@ -148,35 +142,25 @@ final class GiveawayParticipantStatusAlreadyWasMember
 final class GiveawayParticipantStatusAdministrator
     extends GiveawayParticipantStatus {
   /// The user can't participate in the giveaway, because they are an administrator in one of the chats that created the giveaway
-  const GiveawayParticipantStatusAdministrator({
-    required this.chatId,
-  });
+  const GiveawayParticipantStatusAdministrator({required this.chatId});
 
   /// Identifier of the chat administered by the user
   final int chatId;
 
   /// Parses a [GiveawayParticipantStatusAdministrator] from TDLib JSON.
   factory GiveawayParticipantStatusAdministrator.fromJson(
-          Map<String, dynamic> json) =>
-      GiveawayParticipantStatusAdministrator(
-        chatId: _readInt(json['chat_id']),
-      );
+    Map<String, dynamic> json,
+  ) =>
+      GiveawayParticipantStatusAdministrator(chatId: _readInt(json['chat_id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'chat_id': chatId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  GiveawayParticipantStatusAdministrator copyWith({
-    int? chatId,
-  }) =>
-      GiveawayParticipantStatusAdministrator(
-        chatId: chatId ?? this.chatId,
-      );
+  GiveawayParticipantStatusAdministrator copyWith({int? chatId}) =>
+      GiveawayParticipantStatusAdministrator(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giveawayParticipantStatusAdministrator';
@@ -198,26 +182,25 @@ final class GiveawayParticipantStatusDisallowedCountry
 
   /// Parses a [GiveawayParticipantStatusDisallowedCountry] from TDLib JSON.
   factory GiveawayParticipantStatusDisallowedCountry.fromJson(
-          Map<String, dynamic> json) =>
-      GiveawayParticipantStatusDisallowedCountry(
-        userCountryCode: _readString(json['user_country_code']),
-      );
+    Map<String, dynamic> json,
+  ) => GiveawayParticipantStatusDisallowedCountry(
+    userCountryCode: _readString(json['user_country_code']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_country_code': userCountryCode,
-      };
+    '@type': CONSTRUCTOR,
+    'user_country_code': userCountryCode,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   GiveawayParticipantStatusDisallowedCountry copyWith({
     String? userCountryCode,
-  }) =>
-      GiveawayParticipantStatusDisallowedCountry(
-        userCountryCode: userCountryCode ?? this.userCountryCode,
-      );
+  }) => GiveawayParticipantStatusDisallowedCountry(
+    userCountryCode: userCountryCode ?? this.userCountryCode,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [CanPostStoryResult].
 final class CanPostStory extends TdFunction<CanPostStoryResult> {
   /// Checks whether the current user can post a story on behalf of a chat; requires can_post_stories administrator right for supergroup and channel chats
-  const CanPostStory({
-    required this.chatId,
-  });
+  const CanPostStory({required this.chatId});
 
   /// Chat identifier. Pass Saved Messages chat identifier when posting a story on behalf of the current user
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CanPostStory copyWith({
-    int? chatId,
-  }) =>
-      CanPostStory(
-        chatId: chatId ?? this.chatId,
-      );
+  CanPostStory copyWith({int? chatId}) =>
+      CanPostStory(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'canPostStory';

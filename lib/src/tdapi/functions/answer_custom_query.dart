@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class AnswerCustomQuery extends TdFunction<Ok> {
   /// Answers a custom query; for bots only
-  const AnswerCustomQuery({
-    required this.customQueryId,
-    required this.data,
-  });
+  const AnswerCustomQuery({required this.customQueryId, required this.data});
 
   /// Identifier of a custom query
   final int customQueryId;
@@ -21,18 +18,15 @@ final class AnswerCustomQuery extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'custom_query_id': customQueryId.toString(),
-        'data': data,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'custom_query_id': customQueryId.toString(),
+    'data': data,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  AnswerCustomQuery copyWith({
-    int? customQueryId,
-    String? data,
-  }) =>
+  AnswerCustomQuery copyWith({int? customQueryId, String? data}) =>
       AnswerCustomQuery(
         customQueryId: customQueryId ?? this.customQueryId,
         data: data ?? this.data,

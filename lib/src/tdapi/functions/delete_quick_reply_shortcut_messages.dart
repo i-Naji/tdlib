@@ -21,22 +21,21 @@ final class DeleteQuickReplyShortcutMessages extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'shortcut_id': shortcutId,
-        'message_ids': messageIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'shortcut_id': shortcutId,
+    'message_ids': messageIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   DeleteQuickReplyShortcutMessages copyWith({
     int? shortcutId,
     List<int>? messageIds,
-  }) =>
-      DeleteQuickReplyShortcutMessages(
-        shortcutId: shortcutId ?? this.shortcutId,
-        messageIds: messageIds ?? this.messageIds,
-      );
+  }) => DeleteQuickReplyShortcutMessages(
+    shortcutId: shortcutId ?? this.shortcutId,
+    messageIds: messageIds ?? this.messageIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deleteQuickReplyShortcutMessages';

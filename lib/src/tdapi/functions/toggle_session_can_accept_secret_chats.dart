@@ -21,22 +21,21 @@ final class ToggleSessionCanAcceptSecretChats extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'session_id': sessionId.toString(),
-        'can_accept_secret_chats': canAcceptSecretChats,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'session_id': sessionId.toString(),
+    'can_accept_secret_chats': canAcceptSecretChats,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleSessionCanAcceptSecretChats copyWith({
     int? sessionId,
     bool? canAcceptSecretChats,
-  }) =>
-      ToggleSessionCanAcceptSecretChats(
-        sessionId: sessionId ?? this.sessionId,
-        canAcceptSecretChats: canAcceptSecretChats ?? this.canAcceptSecretChats,
-      );
+  }) => ToggleSessionCanAcceptSecretChats(
+    sessionId: sessionId ?? this.sessionId,
+    canAcceptSecretChats: canAcceptSecretChats ?? this.canAcceptSecretChats,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleSessionCanAcceptSecretChats';

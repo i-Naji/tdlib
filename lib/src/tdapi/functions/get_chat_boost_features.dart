@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [ChatBoostFeatures].
 final class GetChatBoostFeatures extends TdFunction<ChatBoostFeatures> {
   /// Returns the list of features available for different chat boost levels. This is an offline method
-  const GetChatBoostFeatures({
-    required this.isChannel,
-  });
+  const GetChatBoostFeatures({required this.isChannel});
 
   /// Pass true to get the list of features for channels; pass false to get the list of features for supergroups
   final bool isChannel;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'is_channel': isChannel,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'is_channel': isChannel,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatBoostFeatures copyWith({
-    bool? isChannel,
-  }) =>
-      GetChatBoostFeatures(
-        isChannel: isChannel ?? this.isChannel,
-      );
+  GetChatBoostFeatures copyWith({bool? isChannel}) =>
+      GetChatBoostFeatures(isChannel: isChannel ?? this.isChannel);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatBoostFeatures';

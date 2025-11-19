@@ -27,20 +27,20 @@ final class SharedChat extends TdObject {
 
   /// Parses a [SharedChat] from TDLib JSON.
   factory SharedChat.fromJson(Map<String, dynamic> json) => SharedChat(
-        chatId: _readInt(json['chat_id']),
-        title: _readString(json['title']),
-        username: _readString(json['username']),
-        photo: _readOptional(json['photo'], Photo.fromJson),
-      );
+    chatId: _readInt(json['chat_id']),
+    title: _readString(json['title']),
+    username: _readString(json['username']),
+    photo: _readOptional(json['photo'], Photo.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'title': title,
-        'username': username,
-        'photo': photo?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'title': title,
+    'username': username,
+    'photo': photo?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class SharedChat extends TdObject {
     String? title,
     String? username,
     Photo? Function()? photo,
-  }) =>
-      SharedChat(
-        chatId: chatId ?? this.chatId,
-        title: title ?? this.title,
-        username: username ?? this.username,
-        photo: photo != null ? photo() : this.photo,
-      );
+  }) => SharedChat(
+    chatId: chatId ?? this.chatId,
+    title: title ?? this.title,
+    username: username ?? this.username,
+    photo: photo != null ? photo() : this.photo,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sharedChat';

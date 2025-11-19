@@ -21,23 +21,22 @@ final class ToggleSupergroupCanHaveSponsoredMessages extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'can_have_sponsored_messages': canHaveSponsoredMessages,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'can_have_sponsored_messages': canHaveSponsoredMessages,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleSupergroupCanHaveSponsoredMessages copyWith({
     int? supergroupId,
     bool? canHaveSponsoredMessages,
-  }) =>
-      ToggleSupergroupCanHaveSponsoredMessages(
-        supergroupId: supergroupId ?? this.supergroupId,
-        canHaveSponsoredMessages:
-            canHaveSponsoredMessages ?? this.canHaveSponsoredMessages,
-      );
+  }) => ToggleSupergroupCanHaveSponsoredMessages(
+    supergroupId: supergroupId ?? this.supergroupId,
+    canHaveSponsoredMessages:
+        canHaveSponsoredMessages ?? this.canHaveSponsoredMessages,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleSupergroupCanHaveSponsoredMessages';

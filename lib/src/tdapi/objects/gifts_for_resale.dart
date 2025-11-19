@@ -45,30 +45,38 @@ final class GiftsForResale extends TdObject {
 
   /// Parses a [GiftsForResale] from TDLib JSON.
   factory GiftsForResale.fromJson(Map<String, dynamic> json) => GiftsForResale(
-        totalCount: _readInt(json['total_count']),
-        gifts: _readList<GiftForResale>(
-            json['gifts'], (e) => _readObject(e, GiftForResale.fromJson)),
-        models: _readList<UpgradedGiftModelCount>(json['models'],
-            (e) => _readObject(e, UpgradedGiftModelCount.fromJson)),
-        symbols: _readList<UpgradedGiftSymbolCount>(json['symbols'],
-            (e) => _readObject(e, UpgradedGiftSymbolCount.fromJson)),
-        backdrops: _readList<UpgradedGiftBackdropCount>(json['backdrops'],
-            (e) => _readObject(e, UpgradedGiftBackdropCount.fromJson)),
-        nextOffset: _readString(json['next_offset']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    totalCount: _readInt(json['total_count']),
+    gifts: _readList<GiftForResale>(
+      json['gifts'],
+      (e) => _readObject(e, GiftForResale.fromJson),
+    ),
+    models: _readList<UpgradedGiftModelCount>(
+      json['models'],
+      (e) => _readObject(e, UpgradedGiftModelCount.fromJson),
+    ),
+    symbols: _readList<UpgradedGiftSymbolCount>(
+      json['symbols'],
+      (e) => _readObject(e, UpgradedGiftSymbolCount.fromJson),
+    ),
+    backdrops: _readList<UpgradedGiftBackdropCount>(
+      json['backdrops'],
+      (e) => _readObject(e, UpgradedGiftBackdropCount.fromJson),
+    ),
+    nextOffset: _readString(json['next_offset']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'gifts': [for (final e in gifts) e.toJson()],
-        'models': [for (final e in models) e.toJson()],
-        'symbols': [for (final e in symbols) e.toJson()],
-        'backdrops': [for (final e in backdrops) e.toJson()],
-        'next_offset': nextOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'gifts': [for (final e in gifts) e.toJson()],
+    'models': [for (final e in models) e.toJson()],
+    'symbols': [for (final e in symbols) e.toJson()],
+    'backdrops': [for (final e in backdrops) e.toJson()],
+    'next_offset': nextOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -81,17 +89,16 @@ final class GiftsForResale extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) =>
-      GiftsForResale(
-        totalCount: totalCount ?? this.totalCount,
-        gifts: gifts ?? this.gifts,
-        models: models ?? this.models,
-        symbols: symbols ?? this.symbols,
-        backdrops: backdrops ?? this.backdrops,
-        nextOffset: nextOffset ?? this.nextOffset,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => GiftsForResale(
+    totalCount: totalCount ?? this.totalCount,
+    gifts: gifts ?? this.gifts,
+    models: models ?? this.models,
+    symbols: symbols ?? this.symbols,
+    backdrops: backdrops ?? this.backdrops,
+    nextOffset: nextOffset ?? this.nextOffset,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giftsForResale';

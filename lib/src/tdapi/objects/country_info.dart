@@ -31,22 +31,22 @@ final class CountryInfo extends TdObject {
 
   /// Parses a [CountryInfo] from TDLib JSON.
   factory CountryInfo.fromJson(Map<String, dynamic> json) => CountryInfo(
-        countryCode: _readString(json['country_code']),
-        name: _readString(json['name']),
-        englishName: _readString(json['english_name']),
-        isHidden: _readBool(json['is_hidden']),
-        callingCodes: _readList<String>(json['calling_codes'], _readString),
-      );
+    countryCode: _readString(json['country_code']),
+    name: _readString(json['name']),
+    englishName: _readString(json['english_name']),
+    isHidden: _readBool(json['is_hidden']),
+    callingCodes: _readList<String>(json['calling_codes'], _readString),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'country_code': countryCode,
-        'name': name,
-        'english_name': englishName,
-        'is_hidden': isHidden,
-        'calling_codes': callingCodes,
-      };
+    '@type': CONSTRUCTOR,
+    'country_code': countryCode,
+    'name': name,
+    'english_name': englishName,
+    'is_hidden': isHidden,
+    'calling_codes': callingCodes,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,14 +56,13 @@ final class CountryInfo extends TdObject {
     String? englishName,
     bool? isHidden,
     List<String>? callingCodes,
-  }) =>
-      CountryInfo(
-        countryCode: countryCode ?? this.countryCode,
-        name: name ?? this.name,
-        englishName: englishName ?? this.englishName,
-        isHidden: isHidden ?? this.isHidden,
-        callingCodes: callingCodes ?? this.callingCodes,
-      );
+  }) => CountryInfo(
+    countryCode: countryCode ?? this.countryCode,
+    name: name ?? this.name,
+    englishName: englishName ?? this.englishName,
+    isHidden: isHidden ?? this.isHidden,
+    callingCodes: callingCodes ?? this.callingCodes,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'countryInfo';

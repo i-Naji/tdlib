@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of backgrounds
 final class Backgrounds extends TdObject {
   /// Contains a list of backgrounds
-  const Backgrounds({
-    required this.backgrounds,
-    this.extra,
-    this.clientId,
-  });
+  const Backgrounds({required this.backgrounds, this.extra, this.clientId});
 
   /// A list of backgrounds
   final List<Background> backgrounds;
@@ -25,17 +21,19 @@ final class Backgrounds extends TdObject {
 
   /// Parses a [Backgrounds] from TDLib JSON.
   factory Backgrounds.fromJson(Map<String, dynamic> json) => Backgrounds(
-        backgrounds: _readList<Background>(
-            json['backgrounds'], (e) => _readObject(e, Background.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    backgrounds: _readList<Background>(
+      json['backgrounds'],
+      (e) => _readObject(e, Background.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'backgrounds': [for (final e in backgrounds) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'backgrounds': [for (final e in backgrounds) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +41,11 @@ final class Backgrounds extends TdObject {
     List<Background>? backgrounds,
     dynamic extra,
     int? clientId,
-  }) =>
-      Backgrounds(
-        backgrounds: backgrounds ?? this.backgrounds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => Backgrounds(
+    backgrounds: backgrounds ?? this.backgrounds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'backgrounds';

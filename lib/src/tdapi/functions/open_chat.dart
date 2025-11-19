@@ -8,28 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class OpenChat extends TdFunction<Ok> {
   /// Informs TDLib that the chat is opened by the user. Many useful activities depend on the chat being opened or closed (e.g., in supergroups and channels all updates are received only for opened chats)
-  const OpenChat({
-    required this.chatId,
-  });
+  const OpenChat({required this.chatId});
 
   /// Chat identifier
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  OpenChat copyWith({
-    int? chatId,
-  }) =>
-      OpenChat(
-        chatId: chatId ?? this.chatId,
-      );
+  OpenChat copyWith({int? chatId}) => OpenChat(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'openChat';

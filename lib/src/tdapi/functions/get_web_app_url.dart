@@ -25,12 +25,12 @@ final class GetWebAppUrl extends TdFunction<HttpUrl> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'url': url,
-        'parameters': parameters.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'url': url,
+    'parameters': parameters.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class GetWebAppUrl extends TdFunction<HttpUrl> {
     int? botUserId,
     String? url,
     WebAppOpenParameters? parameters,
-  }) =>
-      GetWebAppUrl(
-        botUserId: botUserId ?? this.botUserId,
-        url: url ?? this.url,
-        parameters: parameters ?? this.parameters,
-      );
+  }) => GetWebAppUrl(
+    botUserId: botUserId ?? this.botUserId,
+    url: url ?? this.url,
+    parameters: parameters ?? this.parameters,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getWebAppUrl';

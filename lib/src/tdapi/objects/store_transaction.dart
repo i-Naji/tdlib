@@ -47,34 +47,23 @@ final class UndecodedStoreTransaction extends StoreTransaction {
 /// A purchase through App Store
 final class StoreTransactionAppStore extends StoreTransaction {
   /// A purchase through App Store
-  const StoreTransactionAppStore({
-    required this.receipt,
-  });
+  const StoreTransactionAppStore({required this.receipt});
 
   /// App Store receipt
   final String receipt;
 
   /// Parses a [StoreTransactionAppStore] from TDLib JSON.
   factory StoreTransactionAppStore.fromJson(Map<String, dynamic> json) =>
-      StoreTransactionAppStore(
-        receipt: _readString(json['receipt']),
-      );
+      StoreTransactionAppStore(receipt: _readString(json['receipt']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'receipt': receipt,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'receipt': receipt};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StoreTransactionAppStore copyWith({
-    String? receipt,
-  }) =>
-      StoreTransactionAppStore(
-        receipt: receipt ?? this.receipt,
-      );
+  StoreTransactionAppStore copyWith({String? receipt}) =>
+      StoreTransactionAppStore(receipt: receipt ?? this.receipt);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storeTransactionAppStore';
@@ -111,11 +100,11 @@ final class StoreTransactionGooglePlay extends StoreTransaction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'package_name': packageName,
-        'store_product_id': storeProductId,
-        'purchase_token': purchaseToken,
-      };
+    '@type': CONSTRUCTOR,
+    'package_name': packageName,
+    'store_product_id': storeProductId,
+    'purchase_token': purchaseToken,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -124,12 +113,11 @@ final class StoreTransactionGooglePlay extends StoreTransaction {
     String? packageName,
     String? storeProductId,
     String? purchaseToken,
-  }) =>
-      StoreTransactionGooglePlay(
-        packageName: packageName ?? this.packageName,
-        storeProductId: storeProductId ?? this.storeProductId,
-        purchaseToken: purchaseToken ?? this.purchaseToken,
-      );
+  }) => StoreTransactionGooglePlay(
+    packageName: packageName ?? this.packageName,
+    storeProductId: storeProductId ?? this.storeProductId,
+    purchaseToken: purchaseToken ?? this.purchaseToken,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storeTransactionGooglePlay';

@@ -23,18 +23,18 @@ final class Location extends TdObject {
 
   /// Parses a [Location] from TDLib JSON.
   factory Location.fromJson(Map<String, dynamic> json) => Location(
-        latitude: _readDouble(json['latitude']),
-        longitude: _readDouble(json['longitude']),
-        horizontalAccuracy: _readDouble(json['horizontal_accuracy']),
-      );
+    latitude: _readDouble(json['latitude']),
+    longitude: _readDouble(json['longitude']),
+    horizontalAccuracy: _readDouble(json['horizontal_accuracy']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'latitude': latitude,
-        'longitude': longitude,
-        'horizontal_accuracy': horizontalAccuracy,
-      };
+    '@type': CONSTRUCTOR,
+    'latitude': latitude,
+    'longitude': longitude,
+    'horizontal_accuracy': horizontalAccuracy,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -42,12 +42,11 @@ final class Location extends TdObject {
     double? latitude,
     double? longitude,
     double? horizontalAccuracy,
-  }) =>
-      Location(
-        latitude: latitude ?? this.latitude,
-        longitude: longitude ?? this.longitude,
-        horizontalAccuracy: horizontalAccuracy ?? this.horizontalAccuracy,
-      );
+  }) => Location(
+    latitude: latitude ?? this.latitude,
+    longitude: longitude ?? this.longitude,
+    horizontalAccuracy: horizontalAccuracy ?? this.horizontalAccuracy,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'location';

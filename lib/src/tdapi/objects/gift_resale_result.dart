@@ -47,10 +47,7 @@ final class UndecodedGiftResaleResult extends GiftResaleResult {
 /// Operation was successfully completed
 final class GiftResaleResultOk extends GiftResaleResult {
   /// Operation was successfully completed
-  const GiftResaleResultOk({
-    this.extra,
-    this.clientId,
-  });
+  const GiftResaleResultOk({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -68,17 +65,12 @@ final class GiftResaleResultOk extends GiftResaleResult {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  GiftResaleResultOk copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  GiftResaleResultOk copyWith({dynamic extra, int? clientId}) =>
       GiftResaleResultOk(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -121,9 +113,9 @@ final class GiftResaleResultPriceIncreased extends GiftResaleResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'price': price.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'price': price.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -132,12 +124,11 @@ final class GiftResaleResultPriceIncreased extends GiftResaleResult {
     GiftResalePrice? price,
     dynamic extra,
     int? clientId,
-  }) =>
-      GiftResaleResultPriceIncreased(
-        price: price ?? this.price,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => GiftResaleResultPriceIncreased(
+    price: price ?? this.price,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giftResaleResultPriceIncreased';

@@ -27,20 +27,20 @@ final class EmojiCategory extends TdObject {
 
   /// Parses a [EmojiCategory] from TDLib JSON.
   factory EmojiCategory.fromJson(Map<String, dynamic> json) => EmojiCategory(
-        name: _readString(json['name']),
-        icon: _readObject(json['icon'], Sticker.fromJson),
-        source: _readObject(json['source'], EmojiCategorySource.fromJson),
-        isGreeting: _readBool(json['is_greeting']),
-      );
+    name: _readString(json['name']),
+    icon: _readObject(json['icon'], Sticker.fromJson),
+    source: _readObject(json['source'], EmojiCategorySource.fromJson),
+    isGreeting: _readBool(json['is_greeting']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        'icon': icon.toJson(),
-        'source': source.toJson(),
-        'is_greeting': isGreeting,
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    'icon': icon.toJson(),
+    'source': source.toJson(),
+    'is_greeting': isGreeting,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class EmojiCategory extends TdObject {
     Sticker? icon,
     EmojiCategorySource? source,
     bool? isGreeting,
-  }) =>
-      EmojiCategory(
-        name: name ?? this.name,
-        icon: icon ?? this.icon,
-        source: source ?? this.source,
-        isGreeting: isGreeting ?? this.isGreeting,
-      );
+  }) => EmojiCategory(
+    name: name ?? this.name,
+    icon: icon ?? this.icon,
+    source: source ?? this.source,
+    isGreeting: isGreeting ?? this.isGreeting,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'emojiCategory';

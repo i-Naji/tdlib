@@ -54,9 +54,7 @@ final class GroupCallVideoQualityThumbnail extends GroupCallVideoQuality {
       const GroupCallVideoQualityThumbnail();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -81,9 +79,7 @@ final class GroupCallVideoQualityMedium extends GroupCallVideoQuality {
       const GroupCallVideoQualityMedium();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -107,9 +103,7 @@ final class GroupCallVideoQualityFull extends GroupCallVideoQuality {
       const GroupCallVideoQualityFull();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

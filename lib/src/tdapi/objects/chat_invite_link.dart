@@ -77,43 +77,45 @@ final class ChatInviteLink extends TdObject {
 
   /// Parses a [ChatInviteLink] from TDLib JSON.
   factory ChatInviteLink.fromJson(Map<String, dynamic> json) => ChatInviteLink(
-        inviteLink: _readString(json['invite_link']),
-        name: _readString(json['name']),
-        creatorUserId: _readInt(json['creator_user_id']),
-        date: _readInt(json['date']),
-        editDate: _readInt(json['edit_date']),
-        expirationDate: _readInt(json['expiration_date']),
-        subscriptionPricing: _readOptional(
-            json['subscription_pricing'], StarSubscriptionPricing.fromJson),
-        memberLimit: _readInt(json['member_limit']),
-        memberCount: _readInt(json['member_count']),
-        expiredMemberCount: _readInt(json['expired_member_count']),
-        pendingJoinRequestCount: _readInt(json['pending_join_request_count']),
-        createsJoinRequest: _readBool(json['creates_join_request']),
-        isPrimary: _readBool(json['is_primary']),
-        isRevoked: _readBool(json['is_revoked']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    inviteLink: _readString(json['invite_link']),
+    name: _readString(json['name']),
+    creatorUserId: _readInt(json['creator_user_id']),
+    date: _readInt(json['date']),
+    editDate: _readInt(json['edit_date']),
+    expirationDate: _readInt(json['expiration_date']),
+    subscriptionPricing: _readOptional(
+      json['subscription_pricing'],
+      StarSubscriptionPricing.fromJson,
+    ),
+    memberLimit: _readInt(json['member_limit']),
+    memberCount: _readInt(json['member_count']),
+    expiredMemberCount: _readInt(json['expired_member_count']),
+    pendingJoinRequestCount: _readInt(json['pending_join_request_count']),
+    createsJoinRequest: _readBool(json['creates_join_request']),
+    isPrimary: _readBool(json['is_primary']),
+    isRevoked: _readBool(json['is_revoked']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'invite_link': inviteLink,
-        'name': name,
-        'creator_user_id': creatorUserId,
-        'date': date,
-        'edit_date': editDate,
-        'expiration_date': expirationDate,
-        'subscription_pricing': subscriptionPricing?.toJson(),
-        'member_limit': memberLimit,
-        'member_count': memberCount,
-        'expired_member_count': expiredMemberCount,
-        'pending_join_request_count': pendingJoinRequestCount,
-        'creates_join_request': createsJoinRequest,
-        'is_primary': isPrimary,
-        'is_revoked': isRevoked,
-      };
+    '@type': CONSTRUCTOR,
+    'invite_link': inviteLink,
+    'name': name,
+    'creator_user_id': creatorUserId,
+    'date': date,
+    'edit_date': editDate,
+    'expiration_date': expirationDate,
+    'subscription_pricing': subscriptionPricing?.toJson(),
+    'member_limit': memberLimit,
+    'member_count': memberCount,
+    'expired_member_count': expiredMemberCount,
+    'pending_join_request_count': pendingJoinRequestCount,
+    'creates_join_request': createsJoinRequest,
+    'is_primary': isPrimary,
+    'is_revoked': isRevoked,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -134,28 +136,27 @@ final class ChatInviteLink extends TdObject {
     bool? isRevoked,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatInviteLink(
-        inviteLink: inviteLink ?? this.inviteLink,
-        name: name ?? this.name,
-        creatorUserId: creatorUserId ?? this.creatorUserId,
-        date: date ?? this.date,
-        editDate: editDate ?? this.editDate,
-        expirationDate: expirationDate ?? this.expirationDate,
-        subscriptionPricing: subscriptionPricing != null
-            ? subscriptionPricing()
-            : this.subscriptionPricing,
-        memberLimit: memberLimit ?? this.memberLimit,
-        memberCount: memberCount ?? this.memberCount,
-        expiredMemberCount: expiredMemberCount ?? this.expiredMemberCount,
-        pendingJoinRequestCount:
-            pendingJoinRequestCount ?? this.pendingJoinRequestCount,
-        createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
-        isPrimary: isPrimary ?? this.isPrimary,
-        isRevoked: isRevoked ?? this.isRevoked,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatInviteLink(
+    inviteLink: inviteLink ?? this.inviteLink,
+    name: name ?? this.name,
+    creatorUserId: creatorUserId ?? this.creatorUserId,
+    date: date ?? this.date,
+    editDate: editDate ?? this.editDate,
+    expirationDate: expirationDate ?? this.expirationDate,
+    subscriptionPricing: subscriptionPricing != null
+        ? subscriptionPricing()
+        : this.subscriptionPricing,
+    memberLimit: memberLimit ?? this.memberLimit,
+    memberCount: memberCount ?? this.memberCount,
+    expiredMemberCount: expiredMemberCount ?? this.expiredMemberCount,
+    pendingJoinRequestCount:
+        pendingJoinRequestCount ?? this.pendingJoinRequestCount,
+    createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
+    isPrimary: isPrimary ?? this.isPrimary,
+    isRevoked: isRevoked ?? this.isRevoked,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatInviteLink';

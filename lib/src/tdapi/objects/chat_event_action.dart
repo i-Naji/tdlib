@@ -65,18 +65,15 @@ final class ChatEventMessageEdited extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_message': oldMessage.toJson(),
-        'new_message': newMessage.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'old_message': oldMessage.toJson(),
+    'new_message': newMessage.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventMessageEdited copyWith({
-    Message? oldMessage,
-    Message? newMessage,
-  }) =>
+  ChatEventMessageEdited copyWith({Message? oldMessage, Message? newMessage}) =>
       ChatEventMessageEdited(
         oldMessage: oldMessage ?? this.oldMessage,
         newMessage: newMessage ?? this.newMessage,
@@ -107,16 +104,17 @@ final class ChatEventMessageDeleted extends ChatEventAction {
   factory ChatEventMessageDeleted.fromJson(Map<String, dynamic> json) =>
       ChatEventMessageDeleted(
         message: _readObject(json['message'], Message.fromJson),
-        canReportAntiSpamFalsePositive:
-            _readBool(json['can_report_anti_spam_false_positive']),
+        canReportAntiSpamFalsePositive: _readBool(
+          json['can_report_anti_spam_false_positive'],
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message': message.toJson(),
-        'can_report_anti_spam_false_positive': canReportAntiSpamFalsePositive,
-      };
+    '@type': CONSTRUCTOR,
+    'message': message.toJson(),
+    'can_report_anti_spam_false_positive': canReportAntiSpamFalsePositive,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -124,12 +122,11 @@ final class ChatEventMessageDeleted extends ChatEventAction {
   ChatEventMessageDeleted copyWith({
     Message? message,
     bool? canReportAntiSpamFalsePositive,
-  }) =>
-      ChatEventMessageDeleted(
-        message: message ?? this.message,
-        canReportAntiSpamFalsePositive: canReportAntiSpamFalsePositive ??
-            this.canReportAntiSpamFalsePositive,
-      );
+  }) => ChatEventMessageDeleted(
+    message: message ?? this.message,
+    canReportAntiSpamFalsePositive:
+        canReportAntiSpamFalsePositive ?? this.canReportAntiSpamFalsePositive,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventMessageDeleted';
@@ -141,9 +138,7 @@ final class ChatEventMessageDeleted extends ChatEventAction {
 /// A message was pinned
 final class ChatEventMessagePinned extends ChatEventAction {
   /// A message was pinned
-  const ChatEventMessagePinned({
-    required this.message,
-  });
+  const ChatEventMessagePinned({required this.message});
 
   /// Pinned message
   final Message message;
@@ -156,19 +151,15 @@ final class ChatEventMessagePinned extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message': message.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'message': message.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventMessagePinned copyWith({
-    Message? message,
-  }) =>
-      ChatEventMessagePinned(
-        message: message ?? this.message,
-      );
+  ChatEventMessagePinned copyWith({Message? message}) =>
+      ChatEventMessagePinned(message: message ?? this.message);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventMessagePinned';
@@ -180,9 +171,7 @@ final class ChatEventMessagePinned extends ChatEventAction {
 /// A message was unpinned
 final class ChatEventMessageUnpinned extends ChatEventAction {
   /// A message was unpinned
-  const ChatEventMessageUnpinned({
-    required this.message,
-  });
+  const ChatEventMessageUnpinned({required this.message});
 
   /// Unpinned message
   final Message message;
@@ -195,19 +184,15 @@ final class ChatEventMessageUnpinned extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message': message.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'message': message.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventMessageUnpinned copyWith({
-    Message? message,
-  }) =>
-      ChatEventMessageUnpinned(
-        message: message ?? this.message,
-      );
+  ChatEventMessageUnpinned copyWith({Message? message}) =>
+      ChatEventMessageUnpinned(message: message ?? this.message);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventMessageUnpinned';
@@ -219,9 +204,7 @@ final class ChatEventMessageUnpinned extends ChatEventAction {
 /// A poll in a message was stopped
 final class ChatEventPollStopped extends ChatEventAction {
   /// A poll in a message was stopped
-  const ChatEventPollStopped({
-    required this.message,
-  });
+  const ChatEventPollStopped({required this.message});
 
   /// The message with the poll
   final Message message;
@@ -234,19 +217,15 @@ final class ChatEventPollStopped extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message': message.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'message': message.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventPollStopped copyWith({
-    Message? message,
-  }) =>
-      ChatEventPollStopped(
-        message: message ?? this.message,
-      );
+  ChatEventPollStopped copyWith({Message? message}) =>
+      ChatEventPollStopped(message: message ?? this.message);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventPollStopped';
@@ -265,9 +244,7 @@ final class ChatEventMemberJoined extends ChatEventAction {
       const ChatEventMemberJoined();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -297,18 +274,18 @@ final class ChatEventMemberJoinedByInviteLink extends ChatEventAction {
 
   /// Parses a [ChatEventMemberJoinedByInviteLink] from TDLib JSON.
   factory ChatEventMemberJoinedByInviteLink.fromJson(
-          Map<String, dynamic> json) =>
-      ChatEventMemberJoinedByInviteLink(
-        inviteLink: _readObject(json['invite_link'], ChatInviteLink.fromJson),
-        viaChatFolderInviteLink: _readBool(json['via_chat_folder_invite_link']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatEventMemberJoinedByInviteLink(
+    inviteLink: _readObject(json['invite_link'], ChatInviteLink.fromJson),
+    viaChatFolderInviteLink: _readBool(json['via_chat_folder_invite_link']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'invite_link': inviteLink.toJson(),
-        'via_chat_folder_invite_link': viaChatFolderInviteLink,
-      };
+    '@type': CONSTRUCTOR,
+    'invite_link': inviteLink.toJson(),
+    'via_chat_folder_invite_link': viaChatFolderInviteLink,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -316,12 +293,11 @@ final class ChatEventMemberJoinedByInviteLink extends ChatEventAction {
   ChatEventMemberJoinedByInviteLink copyWith({
     ChatInviteLink? inviteLink,
     bool? viaChatFolderInviteLink,
-  }) =>
-      ChatEventMemberJoinedByInviteLink(
-        inviteLink: inviteLink ?? this.inviteLink,
-        viaChatFolderInviteLink:
-            viaChatFolderInviteLink ?? this.viaChatFolderInviteLink,
-      );
+  }) => ChatEventMemberJoinedByInviteLink(
+    inviteLink: inviteLink ?? this.inviteLink,
+    viaChatFolderInviteLink:
+        viaChatFolderInviteLink ?? this.viaChatFolderInviteLink,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventMemberJoinedByInviteLink';
@@ -353,10 +329,10 @@ final class ChatEventMemberJoinedByRequest extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'approver_user_id': approverUserId,
-        'invite_link': inviteLink?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'approver_user_id': approverUserId,
+    'invite_link': inviteLink?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -364,11 +340,10 @@ final class ChatEventMemberJoinedByRequest extends ChatEventAction {
   ChatEventMemberJoinedByRequest copyWith({
     int? approverUserId,
     ChatInviteLink? Function()? inviteLink,
-  }) =>
-      ChatEventMemberJoinedByRequest(
-        approverUserId: approverUserId ?? this.approverUserId,
-        inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
-      );
+  }) => ChatEventMemberJoinedByRequest(
+    approverUserId: approverUserId ?? this.approverUserId,
+    inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventMemberJoinedByRequest';
@@ -380,10 +355,7 @@ final class ChatEventMemberJoinedByRequest extends ChatEventAction {
 /// A new chat member was invited
 final class ChatEventMemberInvited extends ChatEventAction {
   /// A new chat member was invited
-  const ChatEventMemberInvited({
-    required this.userId,
-    required this.status,
-  });
+  const ChatEventMemberInvited({required this.userId, required this.status});
 
   /// New member user identifier
   final int userId;
@@ -400,18 +372,15 @@ final class ChatEventMemberInvited extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'status': status.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'status': status.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventMemberInvited copyWith({
-    int? userId,
-    ChatMemberStatus? status,
-  }) =>
+  ChatEventMemberInvited copyWith({int? userId, ChatMemberStatus? status}) =>
       ChatEventMemberInvited(
         userId: userId ?? this.userId,
         status: status ?? this.status,
@@ -434,9 +403,7 @@ final class ChatEventMemberLeft extends ChatEventAction {
       const ChatEventMemberLeft();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -478,11 +445,11 @@ final class ChatEventMemberPromoted extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'old_status': oldStatus.toJson(),
-        'new_status': newStatus.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'old_status': oldStatus.toJson(),
+    'new_status': newStatus.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -491,12 +458,11 @@ final class ChatEventMemberPromoted extends ChatEventAction {
     int? userId,
     ChatMemberStatus? oldStatus,
     ChatMemberStatus? newStatus,
-  }) =>
-      ChatEventMemberPromoted(
-        userId: userId ?? this.userId,
-        oldStatus: oldStatus ?? this.oldStatus,
-        newStatus: newStatus ?? this.newStatus,
-      );
+  }) => ChatEventMemberPromoted(
+    userId: userId ?? this.userId,
+    oldStatus: oldStatus ?? this.oldStatus,
+    newStatus: newStatus ?? this.newStatus,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventMemberPromoted';
@@ -533,11 +499,11 @@ final class ChatEventMemberRestricted extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'member_id': memberId.toJson(),
-        'old_status': oldStatus.toJson(),
-        'new_status': newStatus.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'member_id': memberId.toJson(),
+    'old_status': oldStatus.toJson(),
+    'new_status': newStatus.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -546,12 +512,11 @@ final class ChatEventMemberRestricted extends ChatEventAction {
     MessageSender? memberId,
     ChatMemberStatus? oldStatus,
     ChatMemberStatus? newStatus,
-  }) =>
-      ChatEventMemberRestricted(
-        memberId: memberId ?? this.memberId,
-        oldStatus: oldStatus ?? this.oldStatus,
-        newStatus: newStatus ?? this.newStatus,
-      );
+  }) => ChatEventMemberRestricted(
+    memberId: memberId ?? this.memberId,
+    oldStatus: oldStatus ?? this.oldStatus,
+    newStatus: newStatus ?? this.newStatus,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventMemberRestricted';
@@ -580,20 +545,20 @@ final class ChatEventMemberSubscriptionExtended extends ChatEventAction {
 
   /// Parses a [ChatEventMemberSubscriptionExtended] from TDLib JSON.
   factory ChatEventMemberSubscriptionExtended.fromJson(
-          Map<String, dynamic> json) =>
-      ChatEventMemberSubscriptionExtended(
-        userId: _readInt(json['user_id']),
-        oldStatus: _readObject(json['old_status'], ChatMemberStatus.fromJson),
-        newStatus: _readObject(json['new_status'], ChatMemberStatus.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => ChatEventMemberSubscriptionExtended(
+    userId: _readInt(json['user_id']),
+    oldStatus: _readObject(json['old_status'], ChatMemberStatus.fromJson),
+    newStatus: _readObject(json['new_status'], ChatMemberStatus.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'old_status': oldStatus.toJson(),
-        'new_status': newStatus.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'old_status': oldStatus.toJson(),
+    'new_status': newStatus.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -602,12 +567,11 @@ final class ChatEventMemberSubscriptionExtended extends ChatEventAction {
     int? userId,
     ChatMemberStatus? oldStatus,
     ChatMemberStatus? newStatus,
-  }) =>
-      ChatEventMemberSubscriptionExtended(
-        userId: userId ?? this.userId,
-        oldStatus: oldStatus ?? this.oldStatus,
-        newStatus: newStatus ?? this.newStatus,
-      );
+  }) => ChatEventMemberSubscriptionExtended(
+    userId: userId ?? this.userId,
+    oldStatus: oldStatus ?? this.oldStatus,
+    newStatus: newStatus ?? this.newStatus,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventMemberSubscriptionExtended';
@@ -632,20 +596,24 @@ final class ChatEventAvailableReactionsChanged extends ChatEventAction {
 
   /// Parses a [ChatEventAvailableReactionsChanged] from TDLib JSON.
   factory ChatEventAvailableReactionsChanged.fromJson(
-          Map<String, dynamic> json) =>
-      ChatEventAvailableReactionsChanged(
-        oldAvailableReactions: _readObject(
-            json['old_available_reactions'], ChatAvailableReactions.fromJson),
-        newAvailableReactions: _readObject(
-            json['new_available_reactions'], ChatAvailableReactions.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => ChatEventAvailableReactionsChanged(
+    oldAvailableReactions: _readObject(
+      json['old_available_reactions'],
+      ChatAvailableReactions.fromJson,
+    ),
+    newAvailableReactions: _readObject(
+      json['new_available_reactions'],
+      ChatAvailableReactions.fromJson,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_available_reactions': oldAvailableReactions.toJson(),
-        'new_available_reactions': newAvailableReactions.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'old_available_reactions': oldAvailableReactions.toJson(),
+    'new_available_reactions': newAvailableReactions.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -653,13 +621,10 @@ final class ChatEventAvailableReactionsChanged extends ChatEventAction {
   ChatEventAvailableReactionsChanged copyWith({
     ChatAvailableReactions? oldAvailableReactions,
     ChatAvailableReactions? newAvailableReactions,
-  }) =>
-      ChatEventAvailableReactionsChanged(
-        oldAvailableReactions:
-            oldAvailableReactions ?? this.oldAvailableReactions,
-        newAvailableReactions:
-            newAvailableReactions ?? this.newAvailableReactions,
-      );
+  }) => ChatEventAvailableReactionsChanged(
+    oldAvailableReactions: oldAvailableReactions ?? this.oldAvailableReactions,
+    newAvailableReactions: newAvailableReactions ?? this.newAvailableReactions,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventAvailableReactionsChanged';
@@ -671,10 +636,7 @@ final class ChatEventAvailableReactionsChanged extends ChatEventAction {
 /// The chat background was changed
 final class ChatEventBackgroundChanged extends ChatEventAction {
   /// The chat background was changed
-  const ChatEventBackgroundChanged({
-    this.oldBackground,
-    this.newBackground,
-  });
+  const ChatEventBackgroundChanged({this.oldBackground, this.newBackground});
 
   /// Previous background; may be null if none
   final ChatBackground? oldBackground;
@@ -685,18 +647,22 @@ final class ChatEventBackgroundChanged extends ChatEventAction {
   /// Parses a [ChatEventBackgroundChanged] from TDLib JSON.
   factory ChatEventBackgroundChanged.fromJson(Map<String, dynamic> json) =>
       ChatEventBackgroundChanged(
-        oldBackground:
-            _readOptional(json['old_background'], ChatBackground.fromJson),
-        newBackground:
-            _readOptional(json['new_background'], ChatBackground.fromJson),
+        oldBackground: _readOptional(
+          json['old_background'],
+          ChatBackground.fromJson,
+        ),
+        newBackground: _readOptional(
+          json['new_background'],
+          ChatBackground.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_background': oldBackground?.toJson(),
-        'new_background': newBackground?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'old_background': oldBackground?.toJson(),
+    'new_background': newBackground?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -704,13 +670,10 @@ final class ChatEventBackgroundChanged extends ChatEventAction {
   ChatEventBackgroundChanged copyWith({
     ChatBackground? Function()? oldBackground,
     ChatBackground? Function()? newBackground,
-  }) =>
-      ChatEventBackgroundChanged(
-        oldBackground:
-            oldBackground != null ? oldBackground() : this.oldBackground,
-        newBackground:
-            newBackground != null ? newBackground() : this.newBackground,
-      );
+  }) => ChatEventBackgroundChanged(
+    oldBackground: oldBackground != null ? oldBackground() : this.oldBackground,
+    newBackground: newBackground != null ? newBackground() : this.newBackground,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventBackgroundChanged';
@@ -742,10 +705,10 @@ final class ChatEventDescriptionChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_description': oldDescription,
-        'new_description': newDescription,
-      };
+    '@type': CONSTRUCTOR,
+    'old_description': oldDescription,
+    'new_description': newDescription,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -753,11 +716,10 @@ final class ChatEventDescriptionChanged extends ChatEventAction {
   ChatEventDescriptionChanged copyWith({
     String? oldDescription,
     String? newDescription,
-  }) =>
-      ChatEventDescriptionChanged(
-        oldDescription: oldDescription ?? this.oldDescription,
-        newDescription: newDescription ?? this.newDescription,
-      );
+  }) => ChatEventDescriptionChanged(
+    oldDescription: oldDescription ?? this.oldDescription,
+    newDescription: newDescription ?? this.newDescription,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventDescriptionChanged';
@@ -769,10 +731,7 @@ final class ChatEventDescriptionChanged extends ChatEventAction {
 /// The chat emoji status was changed
 final class ChatEventEmojiStatusChanged extends ChatEventAction {
   /// The chat emoji status was changed
-  const ChatEventEmojiStatusChanged({
-    this.oldEmojiStatus,
-    this.newEmojiStatus,
-  });
+  const ChatEventEmojiStatusChanged({this.oldEmojiStatus, this.newEmojiStatus});
 
   /// Previous emoji status; may be null if none
   final EmojiStatus? oldEmojiStatus;
@@ -783,18 +742,22 @@ final class ChatEventEmojiStatusChanged extends ChatEventAction {
   /// Parses a [ChatEventEmojiStatusChanged] from TDLib JSON.
   factory ChatEventEmojiStatusChanged.fromJson(Map<String, dynamic> json) =>
       ChatEventEmojiStatusChanged(
-        oldEmojiStatus:
-            _readOptional(json['old_emoji_status'], EmojiStatus.fromJson),
-        newEmojiStatus:
-            _readOptional(json['new_emoji_status'], EmojiStatus.fromJson),
+        oldEmojiStatus: _readOptional(
+          json['old_emoji_status'],
+          EmojiStatus.fromJson,
+        ),
+        newEmojiStatus: _readOptional(
+          json['new_emoji_status'],
+          EmojiStatus.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_emoji_status': oldEmojiStatus?.toJson(),
-        'new_emoji_status': newEmojiStatus?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'old_emoji_status': oldEmojiStatus?.toJson(),
+    'new_emoji_status': newEmojiStatus?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -802,13 +765,14 @@ final class ChatEventEmojiStatusChanged extends ChatEventAction {
   ChatEventEmojiStatusChanged copyWith({
     EmojiStatus? Function()? oldEmojiStatus,
     EmojiStatus? Function()? newEmojiStatus,
-  }) =>
-      ChatEventEmojiStatusChanged(
-        oldEmojiStatus:
-            oldEmojiStatus != null ? oldEmojiStatus() : this.oldEmojiStatus,
-        newEmojiStatus:
-            newEmojiStatus != null ? newEmojiStatus() : this.newEmojiStatus,
-      );
+  }) => ChatEventEmojiStatusChanged(
+    oldEmojiStatus: oldEmojiStatus != null
+        ? oldEmojiStatus()
+        : this.oldEmojiStatus,
+    newEmojiStatus: newEmojiStatus != null
+        ? newEmojiStatus()
+        : this.newEmojiStatus,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventEmojiStatusChanged';
@@ -840,10 +804,10 @@ final class ChatEventLinkedChatChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_linked_chat_id': oldLinkedChatId,
-        'new_linked_chat_id': newLinkedChatId,
-      };
+    '@type': CONSTRUCTOR,
+    'old_linked_chat_id': oldLinkedChatId,
+    'new_linked_chat_id': newLinkedChatId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -851,11 +815,10 @@ final class ChatEventLinkedChatChanged extends ChatEventAction {
   ChatEventLinkedChatChanged copyWith({
     int? oldLinkedChatId,
     int? newLinkedChatId,
-  }) =>
-      ChatEventLinkedChatChanged(
-        oldLinkedChatId: oldLinkedChatId ?? this.oldLinkedChatId,
-        newLinkedChatId: newLinkedChatId ?? this.newLinkedChatId,
-      );
+  }) => ChatEventLinkedChatChanged(
+    oldLinkedChatId: oldLinkedChatId ?? this.oldLinkedChatId,
+    newLinkedChatId: newLinkedChatId ?? this.newLinkedChatId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventLinkedChatChanged';
@@ -867,10 +830,7 @@ final class ChatEventLinkedChatChanged extends ChatEventAction {
 /// The supergroup location was changed
 final class ChatEventLocationChanged extends ChatEventAction {
   /// The supergroup location was changed
-  const ChatEventLocationChanged({
-    this.oldLocation,
-    this.newLocation,
-  });
+  const ChatEventLocationChanged({this.oldLocation, this.newLocation});
 
   /// Previous location; may be null
   final ChatLocation? oldLocation;
@@ -887,10 +847,10 @@ final class ChatEventLocationChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_location': oldLocation?.toJson(),
-        'new_location': newLocation?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'old_location': oldLocation?.toJson(),
+    'new_location': newLocation?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -898,11 +858,10 @@ final class ChatEventLocationChanged extends ChatEventAction {
   ChatEventLocationChanged copyWith({
     ChatLocation? Function()? oldLocation,
     ChatLocation? Function()? newLocation,
-  }) =>
-      ChatEventLocationChanged(
-        oldLocation: oldLocation != null ? oldLocation() : this.oldLocation,
-        newLocation: newLocation != null ? newLocation() : this.newLocation,
-      );
+  }) => ChatEventLocationChanged(
+    oldLocation: oldLocation != null ? oldLocation() : this.oldLocation,
+    newLocation: newLocation != null ? newLocation() : this.newLocation,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventLocationChanged';
@@ -927,20 +886,18 @@ final class ChatEventMessageAutoDeleteTimeChanged extends ChatEventAction {
 
   /// Parses a [ChatEventMessageAutoDeleteTimeChanged] from TDLib JSON.
   factory ChatEventMessageAutoDeleteTimeChanged.fromJson(
-          Map<String, dynamic> json) =>
-      ChatEventMessageAutoDeleteTimeChanged(
-        oldMessageAutoDeleteTime:
-            _readInt(json['old_message_auto_delete_time']),
-        newMessageAutoDeleteTime:
-            _readInt(json['new_message_auto_delete_time']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatEventMessageAutoDeleteTimeChanged(
+    oldMessageAutoDeleteTime: _readInt(json['old_message_auto_delete_time']),
+    newMessageAutoDeleteTime: _readInt(json['new_message_auto_delete_time']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_message_auto_delete_time': oldMessageAutoDeleteTime,
-        'new_message_auto_delete_time': newMessageAutoDeleteTime,
-      };
+    '@type': CONSTRUCTOR,
+    'old_message_auto_delete_time': oldMessageAutoDeleteTime,
+    'new_message_auto_delete_time': newMessageAutoDeleteTime,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -948,13 +905,12 @@ final class ChatEventMessageAutoDeleteTimeChanged extends ChatEventAction {
   ChatEventMessageAutoDeleteTimeChanged copyWith({
     int? oldMessageAutoDeleteTime,
     int? newMessageAutoDeleteTime,
-  }) =>
-      ChatEventMessageAutoDeleteTimeChanged(
-        oldMessageAutoDeleteTime:
-            oldMessageAutoDeleteTime ?? this.oldMessageAutoDeleteTime,
-        newMessageAutoDeleteTime:
-            newMessageAutoDeleteTime ?? this.newMessageAutoDeleteTime,
-      );
+  }) => ChatEventMessageAutoDeleteTimeChanged(
+    oldMessageAutoDeleteTime:
+        oldMessageAutoDeleteTime ?? this.oldMessageAutoDeleteTime,
+    newMessageAutoDeleteTime:
+        newMessageAutoDeleteTime ?? this.newMessageAutoDeleteTime,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventMessageAutoDeleteTimeChanged';
@@ -980,18 +936,22 @@ final class ChatEventPermissionsChanged extends ChatEventAction {
   /// Parses a [ChatEventPermissionsChanged] from TDLib JSON.
   factory ChatEventPermissionsChanged.fromJson(Map<String, dynamic> json) =>
       ChatEventPermissionsChanged(
-        oldPermissions:
-            _readObject(json['old_permissions'], ChatPermissions.fromJson),
-        newPermissions:
-            _readObject(json['new_permissions'], ChatPermissions.fromJson),
+        oldPermissions: _readObject(
+          json['old_permissions'],
+          ChatPermissions.fromJson,
+        ),
+        newPermissions: _readObject(
+          json['new_permissions'],
+          ChatPermissions.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_permissions': oldPermissions.toJson(),
-        'new_permissions': newPermissions.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'old_permissions': oldPermissions.toJson(),
+    'new_permissions': newPermissions.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -999,11 +959,10 @@ final class ChatEventPermissionsChanged extends ChatEventAction {
   ChatEventPermissionsChanged copyWith({
     ChatPermissions? oldPermissions,
     ChatPermissions? newPermissions,
-  }) =>
-      ChatEventPermissionsChanged(
-        oldPermissions: oldPermissions ?? this.oldPermissions,
-        newPermissions: newPermissions ?? this.newPermissions,
-      );
+  }) => ChatEventPermissionsChanged(
+    oldPermissions: oldPermissions ?? this.oldPermissions,
+    newPermissions: newPermissions ?? this.newPermissions,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventPermissionsChanged';
@@ -1015,10 +974,7 @@ final class ChatEventPermissionsChanged extends ChatEventAction {
 /// The chat photo was changed
 final class ChatEventPhotoChanged extends ChatEventAction {
   /// The chat photo was changed
-  const ChatEventPhotoChanged({
-    this.oldPhoto,
-    this.newPhoto,
-  });
+  const ChatEventPhotoChanged({this.oldPhoto, this.newPhoto});
 
   /// Previous chat photo value; may be null
   final ChatPhoto? oldPhoto;
@@ -1035,10 +991,10 @@ final class ChatEventPhotoChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_photo': oldPhoto?.toJson(),
-        'new_photo': newPhoto?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'old_photo': oldPhoto?.toJson(),
+    'new_photo': newPhoto?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1046,11 +1002,10 @@ final class ChatEventPhotoChanged extends ChatEventAction {
   ChatEventPhotoChanged copyWith({
     ChatPhoto? Function()? oldPhoto,
     ChatPhoto? Function()? newPhoto,
-  }) =>
-      ChatEventPhotoChanged(
-        oldPhoto: oldPhoto != null ? oldPhoto() : this.oldPhoto,
-        newPhoto: newPhoto != null ? newPhoto() : this.newPhoto,
-      );
+  }) => ChatEventPhotoChanged(
+    oldPhoto: oldPhoto != null ? oldPhoto() : this.oldPhoto,
+    newPhoto: newPhoto != null ? newPhoto() : this.newPhoto,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventPhotoChanged';
@@ -1082,10 +1037,10 @@ final class ChatEventSlowModeDelayChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_slow_mode_delay': oldSlowModeDelay,
-        'new_slow_mode_delay': newSlowModeDelay,
-      };
+    '@type': CONSTRUCTOR,
+    'old_slow_mode_delay': oldSlowModeDelay,
+    'new_slow_mode_delay': newSlowModeDelay,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1093,11 +1048,10 @@ final class ChatEventSlowModeDelayChanged extends ChatEventAction {
   ChatEventSlowModeDelayChanged copyWith({
     int? oldSlowModeDelay,
     int? newSlowModeDelay,
-  }) =>
-      ChatEventSlowModeDelayChanged(
-        oldSlowModeDelay: oldSlowModeDelay ?? this.oldSlowModeDelay,
-        newSlowModeDelay: newSlowModeDelay ?? this.newSlowModeDelay,
-      );
+  }) => ChatEventSlowModeDelayChanged(
+    oldSlowModeDelay: oldSlowModeDelay ?? this.oldSlowModeDelay,
+    newSlowModeDelay: newSlowModeDelay ?? this.newSlowModeDelay,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventSlowModeDelayChanged';
@@ -1129,10 +1083,10 @@ final class ChatEventStickerSetChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_sticker_set_id': oldStickerSetId.toString(),
-        'new_sticker_set_id': newStickerSetId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'old_sticker_set_id': oldStickerSetId.toString(),
+    'new_sticker_set_id': newStickerSetId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1140,11 +1094,10 @@ final class ChatEventStickerSetChanged extends ChatEventAction {
   ChatEventStickerSetChanged copyWith({
     int? oldStickerSetId,
     int? newStickerSetId,
-  }) =>
-      ChatEventStickerSetChanged(
-        oldStickerSetId: oldStickerSetId ?? this.oldStickerSetId,
-        newStickerSetId: newStickerSetId ?? this.newStickerSetId,
-      );
+  }) => ChatEventStickerSetChanged(
+    oldStickerSetId: oldStickerSetId ?? this.oldStickerSetId,
+    newStickerSetId: newStickerSetId ?? this.newStickerSetId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventStickerSetChanged';
@@ -1169,18 +1122,18 @@ final class ChatEventCustomEmojiStickerSetChanged extends ChatEventAction {
 
   /// Parses a [ChatEventCustomEmojiStickerSetChanged] from TDLib JSON.
   factory ChatEventCustomEmojiStickerSetChanged.fromJson(
-          Map<String, dynamic> json) =>
-      ChatEventCustomEmojiStickerSetChanged(
-        oldStickerSetId: _readInt(json['old_sticker_set_id']),
-        newStickerSetId: _readInt(json['new_sticker_set_id']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatEventCustomEmojiStickerSetChanged(
+    oldStickerSetId: _readInt(json['old_sticker_set_id']),
+    newStickerSetId: _readInt(json['new_sticker_set_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_sticker_set_id': oldStickerSetId.toString(),
-        'new_sticker_set_id': newStickerSetId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'old_sticker_set_id': oldStickerSetId.toString(),
+    'new_sticker_set_id': newStickerSetId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1188,11 +1141,10 @@ final class ChatEventCustomEmojiStickerSetChanged extends ChatEventAction {
   ChatEventCustomEmojiStickerSetChanged copyWith({
     int? oldStickerSetId,
     int? newStickerSetId,
-  }) =>
-      ChatEventCustomEmojiStickerSetChanged(
-        oldStickerSetId: oldStickerSetId ?? this.oldStickerSetId,
-        newStickerSetId: newStickerSetId ?? this.newStickerSetId,
-      );
+  }) => ChatEventCustomEmojiStickerSetChanged(
+    oldStickerSetId: oldStickerSetId ?? this.oldStickerSetId,
+    newStickerSetId: newStickerSetId ?? this.newStickerSetId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventCustomEmojiStickerSetChanged';
@@ -1204,10 +1156,7 @@ final class ChatEventCustomEmojiStickerSetChanged extends ChatEventAction {
 /// The chat title was changed
 final class ChatEventTitleChanged extends ChatEventAction {
   /// The chat title was changed
-  const ChatEventTitleChanged({
-    required this.oldTitle,
-    required this.newTitle,
-  });
+  const ChatEventTitleChanged({required this.oldTitle, required this.newTitle});
 
   /// Previous chat title
   final String oldTitle;
@@ -1224,18 +1173,15 @@ final class ChatEventTitleChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_title': oldTitle,
-        'new_title': newTitle,
-      };
+    '@type': CONSTRUCTOR,
+    'old_title': oldTitle,
+    'new_title': newTitle,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventTitleChanged copyWith({
-    String? oldTitle,
-    String? newTitle,
-  }) =>
+  ChatEventTitleChanged copyWith({String? oldTitle, String? newTitle}) =>
       ChatEventTitleChanged(
         oldTitle: oldTitle ?? this.oldTitle,
         newTitle: newTitle ?? this.newTitle,
@@ -1271,10 +1217,10 @@ final class ChatEventUsernameChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_username': oldUsername,
-        'new_username': newUsername,
-      };
+    '@type': CONSTRUCTOR,
+    'old_username': oldUsername,
+    'new_username': newUsername,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1282,11 +1228,10 @@ final class ChatEventUsernameChanged extends ChatEventAction {
   ChatEventUsernameChanged copyWith({
     String? oldUsername,
     String? newUsername,
-  }) =>
-      ChatEventUsernameChanged(
-        oldUsername: oldUsername ?? this.oldUsername,
-        newUsername: newUsername ?? this.newUsername,
-      );
+  }) => ChatEventUsernameChanged(
+    oldUsername: oldUsername ?? this.oldUsername,
+    newUsername: newUsername ?? this.newUsername,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventUsernameChanged';
@@ -1318,10 +1263,10 @@ final class ChatEventActiveUsernamesChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_usernames': oldUsernames,
-        'new_usernames': newUsernames,
-      };
+    '@type': CONSTRUCTOR,
+    'old_usernames': oldUsernames,
+    'new_usernames': newUsernames,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1329,11 +1274,10 @@ final class ChatEventActiveUsernamesChanged extends ChatEventAction {
   ChatEventActiveUsernamesChanged copyWith({
     List<String>? oldUsernames,
     List<String>? newUsernames,
-  }) =>
-      ChatEventActiveUsernamesChanged(
-        oldUsernames: oldUsernames ?? this.oldUsernames,
-        newUsernames: newUsernames ?? this.newUsernames,
-      );
+  }) => ChatEventActiveUsernamesChanged(
+    oldUsernames: oldUsernames ?? this.oldUsernames,
+    newUsernames: newUsernames ?? this.newUsernames,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventActiveUsernamesChanged';
@@ -1368,21 +1312,23 @@ final class ChatEventAccentColorChanged extends ChatEventAction {
   factory ChatEventAccentColorChanged.fromJson(Map<String, dynamic> json) =>
       ChatEventAccentColorChanged(
         oldAccentColorId: _readInt(json['old_accent_color_id']),
-        oldBackgroundCustomEmojiId:
-            _readInt(json['old_background_custom_emoji_id']),
+        oldBackgroundCustomEmojiId: _readInt(
+          json['old_background_custom_emoji_id'],
+        ),
         newAccentColorId: _readInt(json['new_accent_color_id']),
-        newBackgroundCustomEmojiId:
-            _readInt(json['new_background_custom_emoji_id']),
+        newBackgroundCustomEmojiId: _readInt(
+          json['new_background_custom_emoji_id'],
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_accent_color_id': oldAccentColorId,
-        'old_background_custom_emoji_id': oldBackgroundCustomEmojiId.toString(),
-        'new_accent_color_id': newAccentColorId,
-        'new_background_custom_emoji_id': newBackgroundCustomEmojiId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'old_accent_color_id': oldAccentColorId,
+    'old_background_custom_emoji_id': oldBackgroundCustomEmojiId.toString(),
+    'new_accent_color_id': newAccentColorId,
+    'new_background_custom_emoji_id': newBackgroundCustomEmojiId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1392,15 +1338,14 @@ final class ChatEventAccentColorChanged extends ChatEventAction {
     int? oldBackgroundCustomEmojiId,
     int? newAccentColorId,
     int? newBackgroundCustomEmojiId,
-  }) =>
-      ChatEventAccentColorChanged(
-        oldAccentColorId: oldAccentColorId ?? this.oldAccentColorId,
-        oldBackgroundCustomEmojiId:
-            oldBackgroundCustomEmojiId ?? this.oldBackgroundCustomEmojiId,
-        newAccentColorId: newAccentColorId ?? this.newAccentColorId,
-        newBackgroundCustomEmojiId:
-            newBackgroundCustomEmojiId ?? this.newBackgroundCustomEmojiId,
-      );
+  }) => ChatEventAccentColorChanged(
+    oldAccentColorId: oldAccentColorId ?? this.oldAccentColorId,
+    oldBackgroundCustomEmojiId:
+        oldBackgroundCustomEmojiId ?? this.oldBackgroundCustomEmojiId,
+    newAccentColorId: newAccentColorId ?? this.newAccentColorId,
+    newBackgroundCustomEmojiId:
+        newBackgroundCustomEmojiId ?? this.newBackgroundCustomEmojiId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventAccentColorChanged';
@@ -1433,26 +1378,28 @@ final class ChatEventProfileAccentColorChanged extends ChatEventAction {
 
   /// Parses a [ChatEventProfileAccentColorChanged] from TDLib JSON.
   factory ChatEventProfileAccentColorChanged.fromJson(
-          Map<String, dynamic> json) =>
-      ChatEventProfileAccentColorChanged(
-        oldProfileAccentColorId: _readInt(json['old_profile_accent_color_id']),
-        oldProfileBackgroundCustomEmojiId:
-            _readInt(json['old_profile_background_custom_emoji_id']),
-        newProfileAccentColorId: _readInt(json['new_profile_accent_color_id']),
-        newProfileBackgroundCustomEmojiId:
-            _readInt(json['new_profile_background_custom_emoji_id']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatEventProfileAccentColorChanged(
+    oldProfileAccentColorId: _readInt(json['old_profile_accent_color_id']),
+    oldProfileBackgroundCustomEmojiId: _readInt(
+      json['old_profile_background_custom_emoji_id'],
+    ),
+    newProfileAccentColorId: _readInt(json['new_profile_accent_color_id']),
+    newProfileBackgroundCustomEmojiId: _readInt(
+      json['new_profile_background_custom_emoji_id'],
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_profile_accent_color_id': oldProfileAccentColorId,
-        'old_profile_background_custom_emoji_id':
-            oldProfileBackgroundCustomEmojiId.toString(),
-        'new_profile_accent_color_id': newProfileAccentColorId,
-        'new_profile_background_custom_emoji_id':
-            newProfileBackgroundCustomEmojiId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'old_profile_accent_color_id': oldProfileAccentColorId,
+    'old_profile_background_custom_emoji_id': oldProfileBackgroundCustomEmojiId
+        .toString(),
+    'new_profile_accent_color_id': newProfileAccentColorId,
+    'new_profile_background_custom_emoji_id': newProfileBackgroundCustomEmojiId
+        .toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1462,17 +1409,18 @@ final class ChatEventProfileAccentColorChanged extends ChatEventAction {
     int? oldProfileBackgroundCustomEmojiId,
     int? newProfileAccentColorId,
     int? newProfileBackgroundCustomEmojiId,
-  }) =>
-      ChatEventProfileAccentColorChanged(
-        oldProfileAccentColorId:
-            oldProfileAccentColorId ?? this.oldProfileAccentColorId,
-        oldProfileBackgroundCustomEmojiId: oldProfileBackgroundCustomEmojiId ??
-            this.oldProfileBackgroundCustomEmojiId,
-        newProfileAccentColorId:
-            newProfileAccentColorId ?? this.newProfileAccentColorId,
-        newProfileBackgroundCustomEmojiId: newProfileBackgroundCustomEmojiId ??
-            this.newProfileBackgroundCustomEmojiId,
-      );
+  }) => ChatEventProfileAccentColorChanged(
+    oldProfileAccentColorId:
+        oldProfileAccentColorId ?? this.oldProfileAccentColorId,
+    oldProfileBackgroundCustomEmojiId:
+        oldProfileBackgroundCustomEmojiId ??
+        this.oldProfileBackgroundCustomEmojiId,
+    newProfileAccentColorId:
+        newProfileAccentColorId ?? this.newProfileAccentColorId,
+    newProfileBackgroundCustomEmojiId:
+        newProfileBackgroundCustomEmojiId ??
+        this.newProfileBackgroundCustomEmojiId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventProfileAccentColorChanged';
@@ -1493,23 +1441,21 @@ final class ChatEventHasProtectedContentToggled extends ChatEventAction {
 
   /// Parses a [ChatEventHasProtectedContentToggled] from TDLib JSON.
   factory ChatEventHasProtectedContentToggled.fromJson(
-          Map<String, dynamic> json) =>
-      ChatEventHasProtectedContentToggled(
-        hasProtectedContent: _readBool(json['has_protected_content']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatEventHasProtectedContentToggled(
+    hasProtectedContent: _readBool(json['has_protected_content']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'has_protected_content': hasProtectedContent,
-      };
+    '@type': CONSTRUCTOR,
+    'has_protected_content': hasProtectedContent,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventHasProtectedContentToggled copyWith({
-    bool? hasProtectedContent,
-  }) =>
+  ChatEventHasProtectedContentToggled copyWith({bool? hasProtectedContent}) =>
       ChatEventHasProtectedContentToggled(
         hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
       );
@@ -1524,9 +1470,7 @@ final class ChatEventHasProtectedContentToggled extends ChatEventAction {
 /// The can_invite_users permission of a supergroup chat was toggled
 final class ChatEventInvitesToggled extends ChatEventAction {
   /// The can_invite_users permission of a supergroup chat was toggled
-  const ChatEventInvitesToggled({
-    required this.canInviteUsers,
-  });
+  const ChatEventInvitesToggled({required this.canInviteUsers});
 
   /// New value of can_invite_users permission
   final bool canInviteUsers;
@@ -1539,16 +1483,14 @@ final class ChatEventInvitesToggled extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'can_invite_users': canInviteUsers,
-      };
+    '@type': CONSTRUCTOR,
+    'can_invite_users': canInviteUsers,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventInvitesToggled copyWith({
-    bool? canInviteUsers,
-  }) =>
+  ChatEventInvitesToggled copyWith({bool? canInviteUsers}) =>
       ChatEventInvitesToggled(
         canInviteUsers: canInviteUsers ?? this.canInviteUsers,
       );
@@ -1572,27 +1514,25 @@ final class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
 
   /// Parses a [ChatEventIsAllHistoryAvailableToggled] from TDLib JSON.
   factory ChatEventIsAllHistoryAvailableToggled.fromJson(
-          Map<String, dynamic> json) =>
-      ChatEventIsAllHistoryAvailableToggled(
-        isAllHistoryAvailable: _readBool(json['is_all_history_available']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatEventIsAllHistoryAvailableToggled(
+    isAllHistoryAvailable: _readBool(json['is_all_history_available']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_all_history_available': isAllHistoryAvailable,
-      };
+    '@type': CONSTRUCTOR,
+    'is_all_history_available': isAllHistoryAvailable,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventIsAllHistoryAvailableToggled copyWith({
     bool? isAllHistoryAvailable,
-  }) =>
-      ChatEventIsAllHistoryAvailableToggled(
-        isAllHistoryAvailable:
-            isAllHistoryAvailable ?? this.isAllHistoryAvailable,
-      );
+  }) => ChatEventIsAllHistoryAvailableToggled(
+    isAllHistoryAvailable: isAllHistoryAvailable ?? this.isAllHistoryAvailable,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventIsAllHistoryAvailableToggled';
@@ -1614,28 +1554,28 @@ final class ChatEventHasAggressiveAntiSpamEnabledToggled
 
   /// Parses a [ChatEventHasAggressiveAntiSpamEnabledToggled] from TDLib JSON.
   factory ChatEventHasAggressiveAntiSpamEnabledToggled.fromJson(
-          Map<String, dynamic> json) =>
-      ChatEventHasAggressiveAntiSpamEnabledToggled(
-        hasAggressiveAntiSpamEnabled:
-            _readBool(json['has_aggressive_anti_spam_enabled']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatEventHasAggressiveAntiSpamEnabledToggled(
+    hasAggressiveAntiSpamEnabled: _readBool(
+      json['has_aggressive_anti_spam_enabled'],
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
-      };
+    '@type': CONSTRUCTOR,
+    'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventHasAggressiveAntiSpamEnabledToggled copyWith({
     bool? hasAggressiveAntiSpamEnabled,
-  }) =>
-      ChatEventHasAggressiveAntiSpamEnabledToggled(
-        hasAggressiveAntiSpamEnabled:
-            hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
-      );
+  }) => ChatEventHasAggressiveAntiSpamEnabledToggled(
+    hasAggressiveAntiSpamEnabled:
+        hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -1648,9 +1588,7 @@ final class ChatEventHasAggressiveAntiSpamEnabledToggled
 /// The sign_messages setting of a channel was toggled
 final class ChatEventSignMessagesToggled extends ChatEventAction {
   /// The sign_messages setting of a channel was toggled
-  const ChatEventSignMessagesToggled({
-    required this.signMessages,
-  });
+  const ChatEventSignMessagesToggled({required this.signMessages});
 
   /// New value of sign_messages
   final bool signMessages;
@@ -1663,16 +1601,14 @@ final class ChatEventSignMessagesToggled extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sign_messages': signMessages,
-      };
+    '@type': CONSTRUCTOR,
+    'sign_messages': signMessages,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventSignMessagesToggled copyWith({
-    bool? signMessages,
-  }) =>
+  ChatEventSignMessagesToggled copyWith({bool? signMessages}) =>
       ChatEventSignMessagesToggled(
         signMessages: signMessages ?? this.signMessages,
       );
@@ -1687,32 +1623,28 @@ final class ChatEventSignMessagesToggled extends ChatEventAction {
 /// The show_message_sender setting of a channel was toggled
 final class ChatEventShowMessageSenderToggled extends ChatEventAction {
   /// The show_message_sender setting of a channel was toggled
-  const ChatEventShowMessageSenderToggled({
-    required this.showMessageSender,
-  });
+  const ChatEventShowMessageSenderToggled({required this.showMessageSender});
 
   /// New value of show_message_sender
   final bool showMessageSender;
 
   /// Parses a [ChatEventShowMessageSenderToggled] from TDLib JSON.
   factory ChatEventShowMessageSenderToggled.fromJson(
-          Map<String, dynamic> json) =>
-      ChatEventShowMessageSenderToggled(
-        showMessageSender: _readBool(json['show_message_sender']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatEventShowMessageSenderToggled(
+    showMessageSender: _readBool(json['show_message_sender']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'show_message_sender': showMessageSender,
-      };
+    '@type': CONSTRUCTOR,
+    'show_message_sender': showMessageSender,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventShowMessageSenderToggled copyWith({
-    bool? showMessageSender,
-  }) =>
+  ChatEventShowMessageSenderToggled copyWith({bool? showMessageSender}) =>
       ChatEventShowMessageSenderToggled(
         showMessageSender: showMessageSender ?? this.showMessageSender,
       );
@@ -1736,27 +1668,26 @@ final class ChatEventAutomaticTranslationToggled extends ChatEventAction {
 
   /// Parses a [ChatEventAutomaticTranslationToggled] from TDLib JSON.
   factory ChatEventAutomaticTranslationToggled.fromJson(
-          Map<String, dynamic> json) =>
-      ChatEventAutomaticTranslationToggled(
-        hasAutomaticTranslation: _readBool(json['has_automatic_translation']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatEventAutomaticTranslationToggled(
+    hasAutomaticTranslation: _readBool(json['has_automatic_translation']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'has_automatic_translation': hasAutomaticTranslation,
-      };
+    '@type': CONSTRUCTOR,
+    'has_automatic_translation': hasAutomaticTranslation,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventAutomaticTranslationToggled copyWith({
     bool? hasAutomaticTranslation,
-  }) =>
-      ChatEventAutomaticTranslationToggled(
-        hasAutomaticTranslation:
-            hasAutomaticTranslation ?? this.hasAutomaticTranslation,
-      );
+  }) => ChatEventAutomaticTranslationToggled(
+    hasAutomaticTranslation:
+        hasAutomaticTranslation ?? this.hasAutomaticTranslation,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventAutomaticTranslationToggled';
@@ -1782,18 +1713,22 @@ final class ChatEventInviteLinkEdited extends ChatEventAction {
   /// Parses a [ChatEventInviteLinkEdited] from TDLib JSON.
   factory ChatEventInviteLinkEdited.fromJson(Map<String, dynamic> json) =>
       ChatEventInviteLinkEdited(
-        oldInviteLink:
-            _readObject(json['old_invite_link'], ChatInviteLink.fromJson),
-        newInviteLink:
-            _readObject(json['new_invite_link'], ChatInviteLink.fromJson),
+        oldInviteLink: _readObject(
+          json['old_invite_link'],
+          ChatInviteLink.fromJson,
+        ),
+        newInviteLink: _readObject(
+          json['new_invite_link'],
+          ChatInviteLink.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_invite_link': oldInviteLink.toJson(),
-        'new_invite_link': newInviteLink.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'old_invite_link': oldInviteLink.toJson(),
+    'new_invite_link': newInviteLink.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1801,11 +1736,10 @@ final class ChatEventInviteLinkEdited extends ChatEventAction {
   ChatEventInviteLinkEdited copyWith({
     ChatInviteLink? oldInviteLink,
     ChatInviteLink? newInviteLink,
-  }) =>
-      ChatEventInviteLinkEdited(
-        oldInviteLink: oldInviteLink ?? this.oldInviteLink,
-        newInviteLink: newInviteLink ?? this.newInviteLink,
-      );
+  }) => ChatEventInviteLinkEdited(
+    oldInviteLink: oldInviteLink ?? this.oldInviteLink,
+    newInviteLink: newInviteLink ?? this.newInviteLink,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventInviteLinkEdited';
@@ -1817,9 +1751,7 @@ final class ChatEventInviteLinkEdited extends ChatEventAction {
 /// A chat invite link was revoked
 final class ChatEventInviteLinkRevoked extends ChatEventAction {
   /// A chat invite link was revoked
-  const ChatEventInviteLinkRevoked({
-    required this.inviteLink,
-  });
+  const ChatEventInviteLinkRevoked({required this.inviteLink});
 
   /// The invite link
   final ChatInviteLink inviteLink;
@@ -1832,19 +1764,15 @@ final class ChatEventInviteLinkRevoked extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'invite_link': inviteLink.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'invite_link': inviteLink.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventInviteLinkRevoked copyWith({
-    ChatInviteLink? inviteLink,
-  }) =>
-      ChatEventInviteLinkRevoked(
-        inviteLink: inviteLink ?? this.inviteLink,
-      );
+  ChatEventInviteLinkRevoked copyWith({ChatInviteLink? inviteLink}) =>
+      ChatEventInviteLinkRevoked(inviteLink: inviteLink ?? this.inviteLink);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventInviteLinkRevoked';
@@ -1856,9 +1784,7 @@ final class ChatEventInviteLinkRevoked extends ChatEventAction {
 /// A revoked chat invite link was deleted
 final class ChatEventInviteLinkDeleted extends ChatEventAction {
   /// A revoked chat invite link was deleted
-  const ChatEventInviteLinkDeleted({
-    required this.inviteLink,
-  });
+  const ChatEventInviteLinkDeleted({required this.inviteLink});
 
   /// The invite link
   final ChatInviteLink inviteLink;
@@ -1871,19 +1797,15 @@ final class ChatEventInviteLinkDeleted extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'invite_link': inviteLink.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'invite_link': inviteLink.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventInviteLinkDeleted copyWith({
-    ChatInviteLink? inviteLink,
-  }) =>
-      ChatEventInviteLinkDeleted(
-        inviteLink: inviteLink ?? this.inviteLink,
-      );
+  ChatEventInviteLinkDeleted copyWith({ChatInviteLink? inviteLink}) =>
+      ChatEventInviteLinkDeleted(inviteLink: inviteLink ?? this.inviteLink);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventInviteLinkDeleted';
@@ -1895,34 +1817,26 @@ final class ChatEventInviteLinkDeleted extends ChatEventAction {
 /// A video chat was created
 final class ChatEventVideoChatCreated extends ChatEventAction {
   /// A video chat was created
-  const ChatEventVideoChatCreated({
-    required this.groupCallId,
-  });
+  const ChatEventVideoChatCreated({required this.groupCallId});
 
   /// Identifier of the video chat. The video chat can be received through the method getGroupCall
   final int groupCallId;
 
   /// Parses a [ChatEventVideoChatCreated] from TDLib JSON.
   factory ChatEventVideoChatCreated.fromJson(Map<String, dynamic> json) =>
-      ChatEventVideoChatCreated(
-        groupCallId: _readInt(json['group_call_id']),
-      );
+      ChatEventVideoChatCreated(groupCallId: _readInt(json['group_call_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventVideoChatCreated copyWith({
-    int? groupCallId,
-  }) =>
-      ChatEventVideoChatCreated(
-        groupCallId: groupCallId ?? this.groupCallId,
-      );
+  ChatEventVideoChatCreated copyWith({int? groupCallId}) =>
+      ChatEventVideoChatCreated(groupCallId: groupCallId ?? this.groupCallId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventVideoChatCreated';
@@ -1934,34 +1848,26 @@ final class ChatEventVideoChatCreated extends ChatEventAction {
 /// A video chat was ended
 final class ChatEventVideoChatEnded extends ChatEventAction {
   /// A video chat was ended
-  const ChatEventVideoChatEnded({
-    required this.groupCallId,
-  });
+  const ChatEventVideoChatEnded({required this.groupCallId});
 
   /// Identifier of the video chat. The video chat can be received through the method getGroupCall
   final int groupCallId;
 
   /// Parses a [ChatEventVideoChatEnded] from TDLib JSON.
   factory ChatEventVideoChatEnded.fromJson(Map<String, dynamic> json) =>
-      ChatEventVideoChatEnded(
-        groupCallId: _readInt(json['group_call_id']),
-      );
+      ChatEventVideoChatEnded(groupCallId: _readInt(json['group_call_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventVideoChatEnded copyWith({
-    int? groupCallId,
-  }) =>
-      ChatEventVideoChatEnded(
-        groupCallId: groupCallId ?? this.groupCallId,
-      );
+  ChatEventVideoChatEnded copyWith({int? groupCallId}) =>
+      ChatEventVideoChatEnded(groupCallId: groupCallId ?? this.groupCallId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventVideoChatEnded';
@@ -1983,26 +1889,25 @@ final class ChatEventVideoChatMuteNewParticipantsToggled
 
   /// Parses a [ChatEventVideoChatMuteNewParticipantsToggled] from TDLib JSON.
   factory ChatEventVideoChatMuteNewParticipantsToggled.fromJson(
-          Map<String, dynamic> json) =>
-      ChatEventVideoChatMuteNewParticipantsToggled(
-        muteNewParticipants: _readBool(json['mute_new_participants']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatEventVideoChatMuteNewParticipantsToggled(
+    muteNewParticipants: _readBool(json['mute_new_participants']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'mute_new_participants': muteNewParticipants,
-      };
+    '@type': CONSTRUCTOR,
+    'mute_new_participants': muteNewParticipants,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventVideoChatMuteNewParticipantsToggled copyWith({
     bool? muteNewParticipants,
-  }) =>
-      ChatEventVideoChatMuteNewParticipantsToggled(
-        muteNewParticipants: muteNewParticipants ?? this.muteNewParticipants,
-      );
+  }) => ChatEventVideoChatMuteNewParticipantsToggled(
+    muteNewParticipants: muteNewParticipants ?? this.muteNewParticipants,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -2029,19 +1934,18 @@ final class ChatEventVideoChatParticipantIsMutedToggled
 
   /// Parses a [ChatEventVideoChatParticipantIsMutedToggled] from TDLib JSON.
   factory ChatEventVideoChatParticipantIsMutedToggled.fromJson(
-          Map<String, dynamic> json) =>
-      ChatEventVideoChatParticipantIsMutedToggled(
-        participantId:
-            _readObject(json['participant_id'], MessageSender.fromJson),
-        isMuted: _readBool(json['is_muted']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatEventVideoChatParticipantIsMutedToggled(
+    participantId: _readObject(json['participant_id'], MessageSender.fromJson),
+    isMuted: _readBool(json['is_muted']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'participant_id': participantId.toJson(),
-        'is_muted': isMuted,
-      };
+    '@type': CONSTRUCTOR,
+    'participant_id': participantId.toJson(),
+    'is_muted': isMuted,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2049,11 +1953,10 @@ final class ChatEventVideoChatParticipantIsMutedToggled
   ChatEventVideoChatParticipantIsMutedToggled copyWith({
     MessageSender? participantId,
     bool? isMuted,
-  }) =>
-      ChatEventVideoChatParticipantIsMutedToggled(
-        participantId: participantId ?? this.participantId,
-        isMuted: isMuted ?? this.isMuted,
-      );
+  }) => ChatEventVideoChatParticipantIsMutedToggled(
+    participantId: participantId ?? this.participantId,
+    isMuted: isMuted ?? this.isMuted,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -2080,19 +1983,18 @@ final class ChatEventVideoChatParticipantVolumeLevelChanged
 
   /// Parses a [ChatEventVideoChatParticipantVolumeLevelChanged] from TDLib JSON.
   factory ChatEventVideoChatParticipantVolumeLevelChanged.fromJson(
-          Map<String, dynamic> json) =>
-      ChatEventVideoChatParticipantVolumeLevelChanged(
-        participantId:
-            _readObject(json['participant_id'], MessageSender.fromJson),
-        volumeLevel: _readInt(json['volume_level']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatEventVideoChatParticipantVolumeLevelChanged(
+    participantId: _readObject(json['participant_id'], MessageSender.fromJson),
+    volumeLevel: _readInt(json['volume_level']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'participant_id': participantId.toJson(),
-        'volume_level': volumeLevel,
-      };
+    '@type': CONSTRUCTOR,
+    'participant_id': participantId.toJson(),
+    'volume_level': volumeLevel,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2100,11 +2002,10 @@ final class ChatEventVideoChatParticipantVolumeLevelChanged
   ChatEventVideoChatParticipantVolumeLevelChanged copyWith({
     MessageSender? participantId,
     int? volumeLevel,
-  }) =>
-      ChatEventVideoChatParticipantVolumeLevelChanged(
-        participantId: participantId ?? this.participantId,
-        volumeLevel: volumeLevel ?? this.volumeLevel,
-      );
+  }) => ChatEventVideoChatParticipantVolumeLevelChanged(
+    participantId: participantId ?? this.participantId,
+    volumeLevel: volumeLevel ?? this.volumeLevel,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -2117,34 +2018,23 @@ final class ChatEventVideoChatParticipantVolumeLevelChanged
 /// The is_forum setting of a channel was toggled
 final class ChatEventIsForumToggled extends ChatEventAction {
   /// The is_forum setting of a channel was toggled
-  const ChatEventIsForumToggled({
-    required this.isForum,
-  });
+  const ChatEventIsForumToggled({required this.isForum});
 
   /// New value of is_forum
   final bool isForum;
 
   /// Parses a [ChatEventIsForumToggled] from TDLib JSON.
   factory ChatEventIsForumToggled.fromJson(Map<String, dynamic> json) =>
-      ChatEventIsForumToggled(
-        isForum: _readBool(json['is_forum']),
-      );
+      ChatEventIsForumToggled(isForum: _readBool(json['is_forum']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_forum': isForum,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'is_forum': isForum};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventIsForumToggled copyWith({
-    bool? isForum,
-  }) =>
-      ChatEventIsForumToggled(
-        isForum: isForum ?? this.isForum,
-      );
+  ChatEventIsForumToggled copyWith({bool? isForum}) =>
+      ChatEventIsForumToggled(isForum: isForum ?? this.isForum);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventIsForumToggled';
@@ -2156,9 +2046,7 @@ final class ChatEventIsForumToggled extends ChatEventAction {
 /// A new forum topic was created
 final class ChatEventForumTopicCreated extends ChatEventAction {
   /// A new forum topic was created
-  const ChatEventForumTopicCreated({
-    required this.topicInfo,
-  });
+  const ChatEventForumTopicCreated({required this.topicInfo});
 
   /// Information about the topic
   final ForumTopicInfo topicInfo;
@@ -2171,19 +2059,15 @@ final class ChatEventForumTopicCreated extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'topic_info': topicInfo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'topic_info': topicInfo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventForumTopicCreated copyWith({
-    ForumTopicInfo? topicInfo,
-  }) =>
-      ChatEventForumTopicCreated(
-        topicInfo: topicInfo ?? this.topicInfo,
-      );
+  ChatEventForumTopicCreated copyWith({ForumTopicInfo? topicInfo}) =>
+      ChatEventForumTopicCreated(topicInfo: topicInfo ?? this.topicInfo);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventForumTopicCreated';
@@ -2207,20 +2091,19 @@ final class ChatEventForumTopicEdited extends ChatEventAction {
   final ForumTopicInfo newTopicInfo;
 
   /// Parses a [ChatEventForumTopicEdited] from TDLib JSON.
-  factory ChatEventForumTopicEdited.fromJson(Map<String, dynamic> json) =>
-      ChatEventForumTopicEdited(
-        oldTopicInfo:
-            _readObject(json['old_topic_info'], ForumTopicInfo.fromJson),
-        newTopicInfo:
-            _readObject(json['new_topic_info'], ForumTopicInfo.fromJson),
-      );
+  factory ChatEventForumTopicEdited.fromJson(
+    Map<String, dynamic> json,
+  ) => ChatEventForumTopicEdited(
+    oldTopicInfo: _readObject(json['old_topic_info'], ForumTopicInfo.fromJson),
+    newTopicInfo: _readObject(json['new_topic_info'], ForumTopicInfo.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_topic_info': oldTopicInfo.toJson(),
-        'new_topic_info': newTopicInfo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'old_topic_info': oldTopicInfo.toJson(),
+    'new_topic_info': newTopicInfo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2228,11 +2111,10 @@ final class ChatEventForumTopicEdited extends ChatEventAction {
   ChatEventForumTopicEdited copyWith({
     ForumTopicInfo? oldTopicInfo,
     ForumTopicInfo? newTopicInfo,
-  }) =>
-      ChatEventForumTopicEdited(
-        oldTopicInfo: oldTopicInfo ?? this.oldTopicInfo,
-        newTopicInfo: newTopicInfo ?? this.newTopicInfo,
-      );
+  }) => ChatEventForumTopicEdited(
+    oldTopicInfo: oldTopicInfo ?? this.oldTopicInfo,
+    newTopicInfo: newTopicInfo ?? this.newTopicInfo,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventForumTopicEdited';
@@ -2244,35 +2126,29 @@ final class ChatEventForumTopicEdited extends ChatEventAction {
 /// A forum topic was closed or reopened
 final class ChatEventForumTopicToggleIsClosed extends ChatEventAction {
   /// A forum topic was closed or reopened
-  const ChatEventForumTopicToggleIsClosed({
-    required this.topicInfo,
-  });
+  const ChatEventForumTopicToggleIsClosed({required this.topicInfo});
 
   /// New information about the topic
   final ForumTopicInfo topicInfo;
 
   /// Parses a [ChatEventForumTopicToggleIsClosed] from TDLib JSON.
   factory ChatEventForumTopicToggleIsClosed.fromJson(
-          Map<String, dynamic> json) =>
-      ChatEventForumTopicToggleIsClosed(
-        topicInfo: _readObject(json['topic_info'], ForumTopicInfo.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => ChatEventForumTopicToggleIsClosed(
+    topicInfo: _readObject(json['topic_info'], ForumTopicInfo.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'topic_info': topicInfo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'topic_info': topicInfo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventForumTopicToggleIsClosed copyWith({
-    ForumTopicInfo? topicInfo,
-  }) =>
-      ChatEventForumTopicToggleIsClosed(
-        topicInfo: topicInfo ?? this.topicInfo,
-      );
+  ChatEventForumTopicToggleIsClosed copyWith({ForumTopicInfo? topicInfo}) =>
+      ChatEventForumTopicToggleIsClosed(topicInfo: topicInfo ?? this.topicInfo);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventForumTopicToggleIsClosed';
@@ -2284,35 +2160,29 @@ final class ChatEventForumTopicToggleIsClosed extends ChatEventAction {
 /// The General forum topic was hidden or unhidden
 final class ChatEventForumTopicToggleIsHidden extends ChatEventAction {
   /// The General forum topic was hidden or unhidden
-  const ChatEventForumTopicToggleIsHidden({
-    required this.topicInfo,
-  });
+  const ChatEventForumTopicToggleIsHidden({required this.topicInfo});
 
   /// New information about the topic
   final ForumTopicInfo topicInfo;
 
   /// Parses a [ChatEventForumTopicToggleIsHidden] from TDLib JSON.
   factory ChatEventForumTopicToggleIsHidden.fromJson(
-          Map<String, dynamic> json) =>
-      ChatEventForumTopicToggleIsHidden(
-        topicInfo: _readObject(json['topic_info'], ForumTopicInfo.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => ChatEventForumTopicToggleIsHidden(
+    topicInfo: _readObject(json['topic_info'], ForumTopicInfo.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'topic_info': topicInfo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'topic_info': topicInfo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventForumTopicToggleIsHidden copyWith({
-    ForumTopicInfo? topicInfo,
-  }) =>
-      ChatEventForumTopicToggleIsHidden(
-        topicInfo: topicInfo ?? this.topicInfo,
-      );
+  ChatEventForumTopicToggleIsHidden copyWith({ForumTopicInfo? topicInfo}) =>
+      ChatEventForumTopicToggleIsHidden(topicInfo: topicInfo ?? this.topicInfo);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventForumTopicToggleIsHidden';
@@ -2324,9 +2194,7 @@ final class ChatEventForumTopicToggleIsHidden extends ChatEventAction {
 /// A forum topic was deleted
 final class ChatEventForumTopicDeleted extends ChatEventAction {
   /// A forum topic was deleted
-  const ChatEventForumTopicDeleted({
-    required this.topicInfo,
-  });
+  const ChatEventForumTopicDeleted({required this.topicInfo});
 
   /// Information about the topic
   final ForumTopicInfo topicInfo;
@@ -2339,19 +2207,15 @@ final class ChatEventForumTopicDeleted extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'topic_info': topicInfo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'topic_info': topicInfo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatEventForumTopicDeleted copyWith({
-    ForumTopicInfo? topicInfo,
-  }) =>
-      ChatEventForumTopicDeleted(
-        topicInfo: topicInfo ?? this.topicInfo,
-      );
+  ChatEventForumTopicDeleted copyWith({ForumTopicInfo? topicInfo}) =>
+      ChatEventForumTopicDeleted(topicInfo: topicInfo ?? this.topicInfo);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventForumTopicDeleted';
@@ -2363,10 +2227,7 @@ final class ChatEventForumTopicDeleted extends ChatEventAction {
 /// A pinned forum topic was changed
 final class ChatEventForumTopicPinned extends ChatEventAction {
   /// A pinned forum topic was changed
-  const ChatEventForumTopicPinned({
-    this.oldTopicInfo,
-    this.newTopicInfo,
-  });
+  const ChatEventForumTopicPinned({this.oldTopicInfo, this.newTopicInfo});
 
   /// Information about the old pinned topic; may be null
   final ForumTopicInfo? oldTopicInfo;
@@ -2377,18 +2238,22 @@ final class ChatEventForumTopicPinned extends ChatEventAction {
   /// Parses a [ChatEventForumTopicPinned] from TDLib JSON.
   factory ChatEventForumTopicPinned.fromJson(Map<String, dynamic> json) =>
       ChatEventForumTopicPinned(
-        oldTopicInfo:
-            _readOptional(json['old_topic_info'], ForumTopicInfo.fromJson),
-        newTopicInfo:
-            _readOptional(json['new_topic_info'], ForumTopicInfo.fromJson),
+        oldTopicInfo: _readOptional(
+          json['old_topic_info'],
+          ForumTopicInfo.fromJson,
+        ),
+        newTopicInfo: _readOptional(
+          json['new_topic_info'],
+          ForumTopicInfo.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_topic_info': oldTopicInfo?.toJson(),
-        'new_topic_info': newTopicInfo?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'old_topic_info': oldTopicInfo?.toJson(),
+    'new_topic_info': newTopicInfo?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2396,11 +2261,10 @@ final class ChatEventForumTopicPinned extends ChatEventAction {
   ChatEventForumTopicPinned copyWith({
     ForumTopicInfo? Function()? oldTopicInfo,
     ForumTopicInfo? Function()? newTopicInfo,
-  }) =>
-      ChatEventForumTopicPinned(
-        oldTopicInfo: oldTopicInfo != null ? oldTopicInfo() : this.oldTopicInfo,
-        newTopicInfo: newTopicInfo != null ? newTopicInfo() : this.newTopicInfo,
-      );
+  }) => ChatEventForumTopicPinned(
+    oldTopicInfo: oldTopicInfo != null ? oldTopicInfo() : this.oldTopicInfo,
+    newTopicInfo: newTopicInfo != null ? newTopicInfo() : this.newTopicInfo,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventForumTopicPinned';

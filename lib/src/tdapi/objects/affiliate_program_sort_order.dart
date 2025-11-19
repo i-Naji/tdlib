@@ -53,13 +53,11 @@ final class AffiliateProgramSortOrderProfitability
 
   /// Parses a [AffiliateProgramSortOrderProfitability] from TDLib JSON.
   factory AffiliateProgramSortOrderProfitability.fromJson(
-          Map<String, dynamic> json) =>
-      const AffiliateProgramSortOrderProfitability();
+    Map<String, dynamic> json,
+  ) => const AffiliateProgramSortOrderProfitability();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -82,13 +80,11 @@ final class AffiliateProgramSortOrderCreationDate
 
   /// Parses a [AffiliateProgramSortOrderCreationDate] from TDLib JSON.
   factory AffiliateProgramSortOrderCreationDate.fromJson(
-          Map<String, dynamic> json) =>
-      const AffiliateProgramSortOrderCreationDate();
+    Map<String, dynamic> json,
+  ) => const AffiliateProgramSortOrderCreationDate();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -110,13 +106,11 @@ final class AffiliateProgramSortOrderRevenue extends AffiliateProgramSortOrder {
 
   /// Parses a [AffiliateProgramSortOrderRevenue] from TDLib JSON.
   factory AffiliateProgramSortOrderRevenue.fromJson(
-          Map<String, dynamic> json) =>
-      const AffiliateProgramSortOrderRevenue();
+    Map<String, dynamic> json,
+  ) => const AffiliateProgramSortOrderRevenue();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

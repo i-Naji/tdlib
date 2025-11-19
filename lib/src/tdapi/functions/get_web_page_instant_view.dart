@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [WebPageInstantView].
 final class GetWebPageInstantView extends TdFunction<WebPageInstantView> {
   /// Returns an instant view version of a web page if available. This is an offline method if only_local is true. Returns a 404 error if the web page has no instant view page
-  const GetWebPageInstantView({
-    required this.url,
-    required this.onlyLocal,
-  });
+  const GetWebPageInstantView({required this.url, required this.onlyLocal});
 
   /// The web page URL
   final String url;
@@ -21,18 +18,15 @@ final class GetWebPageInstantView extends TdFunction<WebPageInstantView> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'only_local': onlyLocal,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'only_local': onlyLocal,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetWebPageInstantView copyWith({
-    String? url,
-    bool? onlyLocal,
-  }) =>
+  GetWebPageInstantView copyWith({String? url, bool? onlyLocal}) =>
       GetWebPageInstantView(
         url: url ?? this.url,
         onlyLocal: onlyLocal ?? this.onlyLocal,

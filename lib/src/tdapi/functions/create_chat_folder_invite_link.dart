@@ -26,12 +26,12 @@ final class CreateChatFolderInviteLink
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_folder_id': chatFolderId,
-        'name': name,
-        'chat_ids': chatIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_folder_id': chatFolderId,
+    'name': name,
+    'chat_ids': chatIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -39,12 +39,11 @@ final class CreateChatFolderInviteLink
     int? chatFolderId,
     String? name,
     List<int>? chatIds,
-  }) =>
-      CreateChatFolderInviteLink(
-        chatFolderId: chatFolderId ?? this.chatFolderId,
-        name: name ?? this.name,
-        chatIds: chatIds ?? this.chatIds,
-      );
+  }) => CreateChatFolderInviteLink(
+    chatFolderId: chatFolderId ?? this.chatFolderId,
+    name: name ?? this.name,
+    chatIds: chatIds ?? this.chatIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'createChatFolderInviteLink';

@@ -25,20 +25,16 @@ final class GetStoryStatistics extends TdFunction<StoryStatistics> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'story_id': storyId,
-        'is_dark': isDark,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'story_id': storyId,
+    'is_dark': isDark,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetStoryStatistics copyWith({
-    int? chatId,
-    int? storyId,
-    bool? isDark,
-  }) =>
+  GetStoryStatistics copyWith({int? chatId, int? storyId, bool? isDark}) =>
       GetStoryStatistics(
         chatId: chatId ?? this.chatId,
         storyId: storyId ?? this.storyId,

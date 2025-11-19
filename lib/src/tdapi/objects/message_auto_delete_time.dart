@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains default auto-delete timer setting for new chats
 final class MessageAutoDeleteTime extends TdObject {
   /// Contains default auto-delete timer setting for new chats
-  const MessageAutoDeleteTime({
-    required this.time,
-    this.extra,
-    this.clientId,
-  });
+  const MessageAutoDeleteTime({required this.time, this.extra, this.clientId});
 
   /// Message auto-delete time, in seconds. If 0, then messages aren't deleted automatically
   final int time;
@@ -32,18 +28,11 @@ final class MessageAutoDeleteTime extends TdObject {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'time': time,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'time': time};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  MessageAutoDeleteTime copyWith({
-    int? time,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  MessageAutoDeleteTime copyWith({int? time, dynamic extra, int? clientId}) =>
       MessageAutoDeleteTime(
         time: time ?? this.time,
         extra: extra ?? this.extra,

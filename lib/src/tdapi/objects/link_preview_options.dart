@@ -41,13 +41,13 @@ final class LinkPreviewOptions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_disabled': isDisabled,
-        'url': url,
-        'force_small_media': forceSmallMedia,
-        'force_large_media': forceLargeMedia,
-        'show_above_text': showAboveText,
-      };
+    '@type': CONSTRUCTOR,
+    'is_disabled': isDisabled,
+    'url': url,
+    'force_small_media': forceSmallMedia,
+    'force_large_media': forceLargeMedia,
+    'show_above_text': showAboveText,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,14 +57,13 @@ final class LinkPreviewOptions extends TdObject {
     bool? forceSmallMedia,
     bool? forceLargeMedia,
     bool? showAboveText,
-  }) =>
-      LinkPreviewOptions(
-        isDisabled: isDisabled ?? this.isDisabled,
-        url: url ?? this.url,
-        forceSmallMedia: forceSmallMedia ?? this.forceSmallMedia,
-        forceLargeMedia: forceLargeMedia ?? this.forceLargeMedia,
-        showAboveText: showAboveText ?? this.showAboveText,
-      );
+  }) => LinkPreviewOptions(
+    isDisabled: isDisabled ?? this.isDisabled,
+    url: url ?? this.url,
+    forceSmallMedia: forceSmallMedia ?? this.forceSmallMedia,
+    forceLargeMedia: forceLargeMedia ?? this.forceLargeMedia,
+    showAboveText: showAboveText ?? this.showAboveText,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewOptions';

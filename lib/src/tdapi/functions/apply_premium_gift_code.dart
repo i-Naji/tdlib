@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ApplyPremiumGiftCode extends TdFunction<Ok> {
   /// Applies a Telegram Premium gift code
-  const ApplyPremiumGiftCode({
-    required this.code,
-  });
+  const ApplyPremiumGiftCode({required this.code});
 
   /// The code to apply
   final String code;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'code': code,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'code': code,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ApplyPremiumGiftCode copyWith({
-    String? code,
-  }) =>
-      ApplyPremiumGiftCode(
-        code: code ?? this.code,
-      );
+  ApplyPremiumGiftCode copyWith({String? code}) =>
+      ApplyPremiumGiftCode(code: code ?? this.code);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'applyPremiumGiftCode';

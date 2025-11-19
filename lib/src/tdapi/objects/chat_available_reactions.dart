@@ -47,9 +47,7 @@ final class UndecodedChatAvailableReactions extends ChatAvailableReactions {
 /// All reactions are available in the chat, excluding the paid reaction and custom reactions in channel chats
 final class ChatAvailableReactionsAll extends ChatAvailableReactions {
   /// All reactions are available in the chat, excluding the paid reaction and custom reactions in channel chats
-  const ChatAvailableReactionsAll({
-    required this.maxReactionCount,
-  });
+  const ChatAvailableReactionsAll({required this.maxReactionCount});
 
   /// The maximum allowed number of reactions per message; 1-11
   final int maxReactionCount;
@@ -62,16 +60,14 @@ final class ChatAvailableReactionsAll extends ChatAvailableReactions {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'max_reaction_count': maxReactionCount,
-      };
+    '@type': CONSTRUCTOR,
+    'max_reaction_count': maxReactionCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatAvailableReactionsAll copyWith({
-    int? maxReactionCount,
-  }) =>
+  ChatAvailableReactionsAll copyWith({int? maxReactionCount}) =>
       ChatAvailableReactionsAll(
         maxReactionCount: maxReactionCount ?? this.maxReactionCount,
       );
@@ -101,16 +97,18 @@ final class ChatAvailableReactionsSome extends ChatAvailableReactions {
   factory ChatAvailableReactionsSome.fromJson(Map<String, dynamic> json) =>
       ChatAvailableReactionsSome(
         reactions: _readList<ReactionType>(
-            json['reactions'], (e) => _readObject(e, ReactionType.fromJson)),
+          json['reactions'],
+          (e) => _readObject(e, ReactionType.fromJson),
+        ),
         maxReactionCount: _readInt(json['max_reaction_count']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'reactions': [for (final e in reactions) e.toJson()],
-        'max_reaction_count': maxReactionCount,
-      };
+    '@type': CONSTRUCTOR,
+    'reactions': [for (final e in reactions) e.toJson()],
+    'max_reaction_count': maxReactionCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -118,11 +116,10 @@ final class ChatAvailableReactionsSome extends ChatAvailableReactions {
   ChatAvailableReactionsSome copyWith({
     List<ReactionType>? reactions,
     int? maxReactionCount,
-  }) =>
-      ChatAvailableReactionsSome(
-        reactions: reactions ?? this.reactions,
-        maxReactionCount: maxReactionCount ?? this.maxReactionCount,
-      );
+  }) => ChatAvailableReactionsSome(
+    reactions: reactions ?? this.reactions,
+    maxReactionCount: maxReactionCount ?? this.maxReactionCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatAvailableReactionsSome';

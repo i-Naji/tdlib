@@ -54,9 +54,7 @@ final class EmojiCategoryTypeDefault extends EmojiCategoryType {
       const EmojiCategoryTypeDefault();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -77,13 +75,11 @@ final class EmojiCategoryTypeRegularStickers extends EmojiCategoryType {
 
   /// Parses a [EmojiCategoryTypeRegularStickers] from TDLib JSON.
   factory EmojiCategoryTypeRegularStickers.fromJson(
-          Map<String, dynamic> json) =>
-      const EmojiCategoryTypeRegularStickers();
+    Map<String, dynamic> json,
+  ) => const EmojiCategoryTypeRegularStickers();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -108,9 +104,7 @@ final class EmojiCategoryTypeEmojiStatus extends EmojiCategoryType {
       const EmojiCategoryTypeEmojiStatus();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -135,9 +129,7 @@ final class EmojiCategoryTypeChatPhoto extends EmojiCategoryType {
       const EmojiCategoryTypeChatPhoto();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

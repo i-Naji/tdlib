@@ -72,24 +72,24 @@ final class TelegramPaymentPurposePremiumGift extends TelegramPaymentPurpose {
 
   /// Parses a [TelegramPaymentPurposePremiumGift] from TDLib JSON.
   factory TelegramPaymentPurposePremiumGift.fromJson(
-          Map<String, dynamic> json) =>
-      TelegramPaymentPurposePremiumGift(
-        currency: _readString(json['currency']),
-        amount: _readInt(json['amount']),
-        userId: _readInt(json['user_id']),
-        monthCount: _readInt(json['month_count']),
-        text: _readObject(json['text'], FormattedText.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => TelegramPaymentPurposePremiumGift(
+    currency: _readString(json['currency']),
+    amount: _readInt(json['amount']),
+    userId: _readInt(json['user_id']),
+    monthCount: _readInt(json['month_count']),
+    text: _readObject(json['text'], FormattedText.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'currency': currency,
-        'amount': amount,
-        'user_id': userId,
-        'month_count': monthCount,
-        'text': text.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'currency': currency,
+    'amount': amount,
+    'user_id': userId,
+    'month_count': monthCount,
+    'text': text.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -100,14 +100,13 @@ final class TelegramPaymentPurposePremiumGift extends TelegramPaymentPurpose {
     int? userId,
     int? monthCount,
     FormattedText? text,
-  }) =>
-      TelegramPaymentPurposePremiumGift(
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        userId: userId ?? this.userId,
-        monthCount: monthCount ?? this.monthCount,
-        text: text ?? this.text,
-      );
+  }) => TelegramPaymentPurposePremiumGift(
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    userId: userId ?? this.userId,
+    monthCount: monthCount ?? this.monthCount,
+    text: text ?? this.text,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'telegramPaymentPurposePremiumGift';
@@ -149,26 +148,26 @@ final class TelegramPaymentPurposePremiumGiftCodes
 
   /// Parses a [TelegramPaymentPurposePremiumGiftCodes] from TDLib JSON.
   factory TelegramPaymentPurposePremiumGiftCodes.fromJson(
-          Map<String, dynamic> json) =>
-      TelegramPaymentPurposePremiumGiftCodes(
-        boostedChatId: _readInt(json['boosted_chat_id']),
-        currency: _readString(json['currency']),
-        amount: _readInt(json['amount']),
-        userIds: _readList<int>(json['user_ids'], _readInt),
-        monthCount: _readInt(json['month_count']),
-        text: _readObject(json['text'], FormattedText.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => TelegramPaymentPurposePremiumGiftCodes(
+    boostedChatId: _readInt(json['boosted_chat_id']),
+    currency: _readString(json['currency']),
+    amount: _readInt(json['amount']),
+    userIds: _readList<int>(json['user_ids'], _readInt),
+    monthCount: _readInt(json['month_count']),
+    text: _readObject(json['text'], FormattedText.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'boosted_chat_id': boostedChatId,
-        'currency': currency,
-        'amount': amount,
-        'user_ids': userIds,
-        'month_count': monthCount,
-        'text': text.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'boosted_chat_id': boostedChatId,
+    'currency': currency,
+    'amount': amount,
+    'user_ids': userIds,
+    'month_count': monthCount,
+    'text': text.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -180,15 +179,14 @@ final class TelegramPaymentPurposePremiumGiftCodes
     List<int>? userIds,
     int? monthCount,
     FormattedText? text,
-  }) =>
-      TelegramPaymentPurposePremiumGiftCodes(
-        boostedChatId: boostedChatId ?? this.boostedChatId,
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        userIds: userIds ?? this.userIds,
-        monthCount: monthCount ?? this.monthCount,
-        text: text ?? this.text,
-      );
+  }) => TelegramPaymentPurposePremiumGiftCodes(
+    boostedChatId: boostedChatId ?? this.boostedChatId,
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    userIds: userIds ?? this.userIds,
+    monthCount: monthCount ?? this.monthCount,
+    text: text ?? this.text,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'telegramPaymentPurposePremiumGiftCodes';
@@ -226,25 +224,24 @@ final class TelegramPaymentPurposePremiumGiveaway
 
   /// Parses a [TelegramPaymentPurposePremiumGiveaway] from TDLib JSON.
   factory TelegramPaymentPurposePremiumGiveaway.fromJson(
-          Map<String, dynamic> json) =>
-      TelegramPaymentPurposePremiumGiveaway(
-        parameters:
-            _readObject(json['parameters'], GiveawayParameters.fromJson),
-        currency: _readString(json['currency']),
-        amount: _readInt(json['amount']),
-        winnerCount: _readInt(json['winner_count']),
-        monthCount: _readInt(json['month_count']),
-      );
+    Map<String, dynamic> json,
+  ) => TelegramPaymentPurposePremiumGiveaway(
+    parameters: _readObject(json['parameters'], GiveawayParameters.fromJson),
+    currency: _readString(json['currency']),
+    amount: _readInt(json['amount']),
+    winnerCount: _readInt(json['winner_count']),
+    monthCount: _readInt(json['month_count']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'parameters': parameters.toJson(),
-        'currency': currency,
-        'amount': amount,
-        'winner_count': winnerCount,
-        'month_count': monthCount,
-      };
+    '@type': CONSTRUCTOR,
+    'parameters': parameters.toJson(),
+    'currency': currency,
+    'amount': amount,
+    'winner_count': winnerCount,
+    'month_count': monthCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -255,14 +252,13 @@ final class TelegramPaymentPurposePremiumGiveaway
     int? amount,
     int? winnerCount,
     int? monthCount,
-  }) =>
-      TelegramPaymentPurposePremiumGiveaway(
-        parameters: parameters ?? this.parameters,
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        winnerCount: winnerCount ?? this.winnerCount,
-        monthCount: monthCount ?? this.monthCount,
-      );
+  }) => TelegramPaymentPurposePremiumGiveaway(
+    parameters: parameters ?? this.parameters,
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    winnerCount: winnerCount ?? this.winnerCount,
+    monthCount: monthCount ?? this.monthCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'telegramPaymentPurposePremiumGiveaway';
@@ -304,12 +300,12 @@ final class TelegramPaymentPurposeStars extends TelegramPaymentPurpose {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'currency': currency,
-        'amount': amount,
-        'star_count': starCount,
-        'chat_id': chatId,
-      };
+    '@type': CONSTRUCTOR,
+    'currency': currency,
+    'amount': amount,
+    'star_count': starCount,
+    'chat_id': chatId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -319,13 +315,12 @@ final class TelegramPaymentPurposeStars extends TelegramPaymentPurpose {
     int? amount,
     int? starCount,
     int? chatId,
-  }) =>
-      TelegramPaymentPurposeStars(
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        starCount: starCount ?? this.starCount,
-        chatId: chatId ?? this.chatId,
-      );
+  }) => TelegramPaymentPurposeStars(
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    starCount: starCount ?? this.starCount,
+    chatId: chatId ?? this.chatId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'telegramPaymentPurposeStars';
@@ -358,22 +353,22 @@ final class TelegramPaymentPurposeGiftedStars extends TelegramPaymentPurpose {
 
   /// Parses a [TelegramPaymentPurposeGiftedStars] from TDLib JSON.
   factory TelegramPaymentPurposeGiftedStars.fromJson(
-          Map<String, dynamic> json) =>
-      TelegramPaymentPurposeGiftedStars(
-        userId: _readInt(json['user_id']),
-        currency: _readString(json['currency']),
-        amount: _readInt(json['amount']),
-        starCount: _readInt(json['star_count']),
-      );
+    Map<String, dynamic> json,
+  ) => TelegramPaymentPurposeGiftedStars(
+    userId: _readInt(json['user_id']),
+    currency: _readString(json['currency']),
+    amount: _readInt(json['amount']),
+    starCount: _readInt(json['star_count']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'currency': currency,
-        'amount': amount,
-        'star_count': starCount,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'currency': currency,
+    'amount': amount,
+    'star_count': starCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -383,13 +378,12 @@ final class TelegramPaymentPurposeGiftedStars extends TelegramPaymentPurpose {
     String? currency,
     int? amount,
     int? starCount,
-  }) =>
-      TelegramPaymentPurposeGiftedStars(
-        userId: userId ?? this.userId,
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        starCount: starCount ?? this.starCount,
-      );
+  }) => TelegramPaymentPurposeGiftedStars(
+    userId: userId ?? this.userId,
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    starCount: starCount ?? this.starCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'telegramPaymentPurposeGiftedStars';
@@ -426,25 +420,24 @@ final class TelegramPaymentPurposeStarGiveaway extends TelegramPaymentPurpose {
 
   /// Parses a [TelegramPaymentPurposeStarGiveaway] from TDLib JSON.
   factory TelegramPaymentPurposeStarGiveaway.fromJson(
-          Map<String, dynamic> json) =>
-      TelegramPaymentPurposeStarGiveaway(
-        parameters:
-            _readObject(json['parameters'], GiveawayParameters.fromJson),
-        currency: _readString(json['currency']),
-        amount: _readInt(json['amount']),
-        winnerCount: _readInt(json['winner_count']),
-        starCount: _readInt(json['star_count']),
-      );
+    Map<String, dynamic> json,
+  ) => TelegramPaymentPurposeStarGiveaway(
+    parameters: _readObject(json['parameters'], GiveawayParameters.fromJson),
+    currency: _readString(json['currency']),
+    amount: _readInt(json['amount']),
+    winnerCount: _readInt(json['winner_count']),
+    starCount: _readInt(json['star_count']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'parameters': parameters.toJson(),
-        'currency': currency,
-        'amount': amount,
-        'winner_count': winnerCount,
-        'star_count': starCount,
-      };
+    '@type': CONSTRUCTOR,
+    'parameters': parameters.toJson(),
+    'currency': currency,
+    'amount': amount,
+    'winner_count': winnerCount,
+    'star_count': starCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -455,14 +448,13 @@ final class TelegramPaymentPurposeStarGiveaway extends TelegramPaymentPurpose {
     int? amount,
     int? winnerCount,
     int? starCount,
-  }) =>
-      TelegramPaymentPurposeStarGiveaway(
-        parameters: parameters ?? this.parameters,
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        winnerCount: winnerCount ?? this.winnerCount,
-        starCount: starCount ?? this.starCount,
-      );
+  }) => TelegramPaymentPurposeStarGiveaway(
+    parameters: parameters ?? this.parameters,
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    winnerCount: winnerCount ?? this.winnerCount,
+    starCount: starCount ?? this.starCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'telegramPaymentPurposeStarGiveaway';
@@ -474,9 +466,7 @@ final class TelegramPaymentPurposeStarGiveaway extends TelegramPaymentPurpose {
 /// The user joins a chat and subscribes to regular payments in Telegram Stars
 final class TelegramPaymentPurposeJoinChat extends TelegramPaymentPurpose {
   /// The user joins a chat and subscribes to regular payments in Telegram Stars
-  const TelegramPaymentPurposeJoinChat({
-    required this.inviteLink,
-  });
+  const TelegramPaymentPurposeJoinChat({required this.inviteLink});
 
   /// Invite link to use
   final String inviteLink;
@@ -489,19 +479,15 @@ final class TelegramPaymentPurposeJoinChat extends TelegramPaymentPurpose {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'invite_link': inviteLink,
-      };
+    '@type': CONSTRUCTOR,
+    'invite_link': inviteLink,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  TelegramPaymentPurposeJoinChat copyWith({
-    String? inviteLink,
-  }) =>
-      TelegramPaymentPurposeJoinChat(
-        inviteLink: inviteLink ?? this.inviteLink,
-      );
+  TelegramPaymentPurposeJoinChat copyWith({String? inviteLink}) =>
+      TelegramPaymentPurposeJoinChat(inviteLink: inviteLink ?? this.inviteLink);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'telegramPaymentPurposeJoinChat';

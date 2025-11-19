@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Stickers].
 final class GetPremiumStickers extends TdFunction<Stickers> {
   /// Returns premium stickers from regular sticker sets
-  const GetPremiumStickers({
-    required this.limit,
-  });
+  const GetPremiumStickers({required this.limit});
 
   /// The maximum number of stickers to be returned; 0-100
   final int limit;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetPremiumStickers copyWith({
-    int? limit,
-  }) =>
-      GetPremiumStickers(
-        limit: limit ?? this.limit,
-      );
+  GetPremiumStickers copyWith({int? limit}) =>
+      GetPremiumStickers(limit: limit ?? this.limit);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getPremiumStickers';

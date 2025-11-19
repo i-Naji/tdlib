@@ -41,20 +41,22 @@ final class SavedMessagesTopic extends TdObject {
         isPinned: _readBool(json['is_pinned']),
         order: _readInt(json['order']),
         lastMessage: _readOptional(json['last_message'], Message.fromJson),
-        draftMessage:
-            _readOptional(json['draft_message'], DraftMessage.fromJson),
+        draftMessage: _readOptional(
+          json['draft_message'],
+          DraftMessage.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'type': type.toJson(),
-        'is_pinned': isPinned,
-        'order': order.toString(),
-        'last_message': lastMessage?.toJson(),
-        'draft_message': draftMessage?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'type': type.toJson(),
+    'is_pinned': isPinned,
+    'order': order.toString(),
+    'last_message': lastMessage?.toJson(),
+    'draft_message': draftMessage?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -65,15 +67,14 @@ final class SavedMessagesTopic extends TdObject {
     int? order,
     Message? Function()? lastMessage,
     DraftMessage? Function()? draftMessage,
-  }) =>
-      SavedMessagesTopic(
-        id: id ?? this.id,
-        type: type ?? this.type,
-        isPinned: isPinned ?? this.isPinned,
-        order: order ?? this.order,
-        lastMessage: lastMessage != null ? lastMessage() : this.lastMessage,
-        draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
-      );
+  }) => SavedMessagesTopic(
+    id: id ?? this.id,
+    type: type ?? this.type,
+    isPinned: isPinned ?? this.isPinned,
+    order: order ?? this.order,
+    lastMessage: lastMessage != null ? lastMessage() : this.lastMessage,
+    draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'savedMessagesTopic';

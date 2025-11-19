@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [FoundUsers].
 final class GetGrossingWebAppBots extends TdFunction<FoundUsers> {
   /// Returns the most grossing Web App bots
-  const GetGrossingWebAppBots({
-    required this.offset,
-    required this.limit,
-  });
+  const GetGrossingWebAppBots({required this.offset, required this.limit});
 
   /// Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
   final String offset;
@@ -21,18 +18,15 @@ final class GetGrossingWebAppBots extends TdFunction<FoundUsers> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetGrossingWebAppBots copyWith({
-    String? offset,
-    int? limit,
-  }) =>
+  GetGrossingWebAppBots copyWith({String? offset, int? limit}) =>
       GetGrossingWebAppBots(
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,

@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class DeleteForumTopic extends TdFunction<Ok> {
   /// Deletes all messages from a topic in a forum supergroup chat or a chat with a bot with topics; requires can_delete_messages administrator right in the supergroup unless the user is creator of the topic, the topic has no messages from other users and has at most 11 messages
-  const DeleteForumTopic({
-    required this.chatId,
-    required this.forumTopicId,
-  });
+  const DeleteForumTopic({required this.chatId, required this.forumTopicId});
 
   /// Identifier of the chat
   final int chatId;
@@ -21,18 +18,15 @@ final class DeleteForumTopic extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'forum_topic_id': forumTopicId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'forum_topic_id': forumTopicId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteForumTopic copyWith({
-    int? chatId,
-    int? forumTopicId,
-  }) =>
+  DeleteForumTopic copyWith({int? chatId, int? forumTopicId}) =>
       DeleteForumTopic(
         chatId: chatId ?? this.chatId,
         forumTopicId: forumTopicId ?? this.forumTopicId,

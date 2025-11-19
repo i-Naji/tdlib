@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [MessageReadDate].
 final class GetMessageReadDate extends TdFunction<MessageReadDate> {
   /// Returns read date of a recent outgoing message in a private chat. The method can be called if messageProperties.can_get_read_date == true
-  const GetMessageReadDate({
-    required this.chatId,
-    required this.messageId,
-  });
+  const GetMessageReadDate({required this.chatId, required this.messageId});
 
   /// Chat identifier
   final int chatId;
@@ -21,18 +18,15 @@ final class GetMessageReadDate extends TdFunction<MessageReadDate> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetMessageReadDate copyWith({
-    int? chatId,
-    int? messageId,
-  }) =>
+  GetMessageReadDate copyWith({int? chatId, int? messageId}) =>
       GetMessageReadDate(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,

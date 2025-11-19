@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains 0-based match position
 final class FoundPosition extends TdObject {
   /// Contains 0-based match position
-  const FoundPosition({
-    required this.position,
-    this.extra,
-    this.clientId,
-  });
+  const FoundPosition({required this.position, this.extra, this.clientId});
 
   /// The position of the match
   final int position;
@@ -25,24 +21,17 @@ final class FoundPosition extends TdObject {
 
   /// Parses a [FoundPosition] from TDLib JSON.
   factory FoundPosition.fromJson(Map<String, dynamic> json) => FoundPosition(
-        position: _readInt(json['position']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    position: _readInt(json['position']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'position': position,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'position': position};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  FoundPosition copyWith({
-    int? position,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  FoundPosition copyWith({int? position, dynamic extra, int? clientId}) =>
       FoundPosition(
         position: position ?? this.position,
         extra: extra ?? this.extra,

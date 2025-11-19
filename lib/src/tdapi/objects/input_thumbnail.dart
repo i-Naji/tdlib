@@ -23,26 +23,22 @@ final class InputThumbnail extends TdObject {
 
   /// Parses a [InputThumbnail] from TDLib JSON.
   factory InputThumbnail.fromJson(Map<String, dynamic> json) => InputThumbnail(
-        thumbnail: _readObject(json['thumbnail'], InputFile.fromJson),
-        width: _readInt(json['width']),
-        height: _readInt(json['height']),
-      );
+    thumbnail: _readObject(json['thumbnail'], InputFile.fromJson),
+    width: _readInt(json['width']),
+    height: _readInt(json['height']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'thumbnail': thumbnail.toJson(),
-        'width': width,
-        'height': height,
-      };
+    '@type': CONSTRUCTOR,
+    'thumbnail': thumbnail.toJson(),
+    'width': width,
+    'height': height,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  InputThumbnail copyWith({
-    InputFile? thumbnail,
-    int? width,
-    int? height,
-  }) =>
+  InputThumbnail copyWith({InputFile? thumbnail, int? width, int? height}) =>
       InputThumbnail(
         thumbnail: thumbnail ?? this.thumbnail,
         width: width ?? this.width,

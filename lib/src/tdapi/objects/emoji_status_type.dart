@@ -45,9 +45,7 @@ final class UndecodedEmojiStatusType extends EmojiStatusType {
 /// A custom emoji set as emoji status
 final class EmojiStatusTypeCustomEmoji extends EmojiStatusType {
   /// A custom emoji set as emoji status
-  const EmojiStatusTypeCustomEmoji({
-    required this.customEmojiId,
-  });
+  const EmojiStatusTypeCustomEmoji({required this.customEmojiId});
 
   /// Identifier of the custom emoji in stickerFormatTgs format
   final int customEmojiId;
@@ -60,16 +58,14 @@ final class EmojiStatusTypeCustomEmoji extends EmojiStatusType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'custom_emoji_id': customEmojiId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'custom_emoji_id': customEmojiId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  EmojiStatusTypeCustomEmoji copyWith({
-    int? customEmojiId,
-  }) =>
+  EmojiStatusTypeCustomEmoji copyWith({int? customEmojiId}) =>
       EmojiStatusTypeCustomEmoji(
         customEmojiId: customEmojiId ?? this.customEmojiId,
       );
@@ -120,19 +116,21 @@ final class EmojiStatusTypeUpgradedGift extends EmojiStatusType {
         modelCustomEmojiId: _readInt(json['model_custom_emoji_id']),
         symbolCustomEmojiId: _readInt(json['symbol_custom_emoji_id']),
         backdropColors: _readObject(
-            json['backdrop_colors'], UpgradedGiftBackdropColors.fromJson),
+          json['backdrop_colors'],
+          UpgradedGiftBackdropColors.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'upgraded_gift_id': upgradedGiftId.toString(),
-        'gift_title': giftTitle,
-        'gift_name': giftName,
-        'model_custom_emoji_id': modelCustomEmojiId.toString(),
-        'symbol_custom_emoji_id': symbolCustomEmojiId.toString(),
-        'backdrop_colors': backdropColors.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'upgraded_gift_id': upgradedGiftId.toString(),
+    'gift_title': giftTitle,
+    'gift_name': giftName,
+    'model_custom_emoji_id': modelCustomEmojiId.toString(),
+    'symbol_custom_emoji_id': symbolCustomEmojiId.toString(),
+    'backdrop_colors': backdropColors.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -144,15 +142,14 @@ final class EmojiStatusTypeUpgradedGift extends EmojiStatusType {
     int? modelCustomEmojiId,
     int? symbolCustomEmojiId,
     UpgradedGiftBackdropColors? backdropColors,
-  }) =>
-      EmojiStatusTypeUpgradedGift(
-        upgradedGiftId: upgradedGiftId ?? this.upgradedGiftId,
-        giftTitle: giftTitle ?? this.giftTitle,
-        giftName: giftName ?? this.giftName,
-        modelCustomEmojiId: modelCustomEmojiId ?? this.modelCustomEmojiId,
-        symbolCustomEmojiId: symbolCustomEmojiId ?? this.symbolCustomEmojiId,
-        backdropColors: backdropColors ?? this.backdropColors,
-      );
+  }) => EmojiStatusTypeUpgradedGift(
+    upgradedGiftId: upgradedGiftId ?? this.upgradedGiftId,
+    giftTitle: giftTitle ?? this.giftTitle,
+    giftName: giftName ?? this.giftName,
+    modelCustomEmojiId: modelCustomEmojiId ?? this.modelCustomEmojiId,
+    symbolCustomEmojiId: symbolCustomEmojiId ?? this.symbolCustomEmojiId,
+    backdropColors: backdropColors ?? this.backdropColors,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'emojiStatusTypeUpgradedGift';

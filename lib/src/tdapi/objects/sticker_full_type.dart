@@ -45,9 +45,7 @@ final class UndecodedStickerFullType extends StickerFullType {
 /// The sticker is a regular sticker
 final class StickerFullTypeRegular extends StickerFullType {
   /// The sticker is a regular sticker
-  const StickerFullTypeRegular({
-    this.premiumAnimation,
-  });
+  const StickerFullTypeRegular({this.premiumAnimation});
 
   /// Premium animation of the sticker; may be null. If present, only Telegram Premium users can use the sticker
   final File? premiumAnimation;
@@ -55,22 +53,22 @@ final class StickerFullTypeRegular extends StickerFullType {
   /// Parses a [StickerFullTypeRegular] from TDLib JSON.
   factory StickerFullTypeRegular.fromJson(Map<String, dynamic> json) =>
       StickerFullTypeRegular(
-        premiumAnimation:
-            _readOptional(json['premium_animation'], File.fromJson),
+        premiumAnimation: _readOptional(
+          json['premium_animation'],
+          File.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'premium_animation': premiumAnimation?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'premium_animation': premiumAnimation?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StickerFullTypeRegular copyWith({
-    File? Function()? premiumAnimation,
-  }) =>
+  StickerFullTypeRegular copyWith({File? Function()? premiumAnimation}) =>
       StickerFullTypeRegular(
         premiumAnimation: premiumAnimation != null
             ? premiumAnimation()
@@ -87,9 +85,7 @@ final class StickerFullTypeRegular extends StickerFullType {
 /// The sticker is a mask in WEBP format to be placed on photos or videos
 final class StickerFullTypeMask extends StickerFullType {
   /// The sticker is a mask in WEBP format to be placed on photos or videos
-  const StickerFullTypeMask({
-    this.maskPosition,
-  });
+  const StickerFullTypeMask({this.maskPosition});
 
   /// Position where the mask is placed; may be null
   final MaskPosition? maskPosition;
@@ -97,22 +93,22 @@ final class StickerFullTypeMask extends StickerFullType {
   /// Parses a [StickerFullTypeMask] from TDLib JSON.
   factory StickerFullTypeMask.fromJson(Map<String, dynamic> json) =>
       StickerFullTypeMask(
-        maskPosition:
-            _readOptional(json['mask_position'], MaskPosition.fromJson),
+        maskPosition: _readOptional(
+          json['mask_position'],
+          MaskPosition.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'mask_position': maskPosition?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'mask_position': maskPosition?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StickerFullTypeMask copyWith({
-    MaskPosition? Function()? maskPosition,
-  }) =>
+  StickerFullTypeMask copyWith({MaskPosition? Function()? maskPosition}) =>
       StickerFullTypeMask(
         maskPosition: maskPosition != null ? maskPosition() : this.maskPosition,
       );
@@ -147,10 +143,10 @@ final class StickerFullTypeCustomEmoji extends StickerFullType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'custom_emoji_id': customEmojiId.toString(),
-        'needs_repainting': needsRepainting,
-      };
+    '@type': CONSTRUCTOR,
+    'custom_emoji_id': customEmojiId.toString(),
+    'needs_repainting': needsRepainting,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -158,11 +154,10 @@ final class StickerFullTypeCustomEmoji extends StickerFullType {
   StickerFullTypeCustomEmoji copyWith({
     int? customEmojiId,
     bool? needsRepainting,
-  }) =>
-      StickerFullTypeCustomEmoji(
-        customEmojiId: customEmojiId ?? this.customEmojiId,
-        needsRepainting: needsRepainting ?? this.needsRepainting,
-      );
+  }) => StickerFullTypeCustomEmoji(
+    customEmojiId: customEmojiId ?? this.customEmojiId,
+    needsRepainting: needsRepainting ?? this.needsRepainting,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'stickerFullTypeCustomEmoji';

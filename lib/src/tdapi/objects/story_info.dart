@@ -23,26 +23,22 @@ final class StoryInfo extends TdObject {
 
   /// Parses a [StoryInfo] from TDLib JSON.
   factory StoryInfo.fromJson(Map<String, dynamic> json) => StoryInfo(
-        storyId: _readInt(json['story_id']),
-        date: _readInt(json['date']),
-        isForCloseFriends: _readBool(json['is_for_close_friends']),
-      );
+    storyId: _readInt(json['story_id']),
+    date: _readInt(json['date']),
+    isForCloseFriends: _readBool(json['is_for_close_friends']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'story_id': storyId,
-        'date': date,
-        'is_for_close_friends': isForCloseFriends,
-      };
+    '@type': CONSTRUCTOR,
+    'story_id': storyId,
+    'date': date,
+    'is_for_close_friends': isForCloseFriends,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  StoryInfo copyWith({
-    int? storyId,
-    int? date,
-    bool? isForCloseFriends,
-  }) =>
+  StoryInfo copyWith({int? storyId, int? date, bool? isForCloseFriends}) =>
       StoryInfo(
         storyId: storyId ?? this.storyId,
         date: date ?? this.date,

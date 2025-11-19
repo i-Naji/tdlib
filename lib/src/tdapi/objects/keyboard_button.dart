@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Represents a single button in a bot keyboard
 final class KeyboardButton extends TdObject {
   /// Represents a single button in a bot keyboard
-  const KeyboardButton({
-    required this.text,
-    required this.type,
-  });
+  const KeyboardButton({required this.text, required this.type});
 
   /// Text of the button
   final String text;
@@ -19,27 +16,21 @@ final class KeyboardButton extends TdObject {
 
   /// Parses a [KeyboardButton] from TDLib JSON.
   factory KeyboardButton.fromJson(Map<String, dynamic> json) => KeyboardButton(
-        text: _readString(json['text']),
-        type: _readObject(json['type'], KeyboardButtonType.fromJson),
-      );
+    text: _readString(json['text']),
+    type: _readObject(json['type'], KeyboardButtonType.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text,
-        'type': type.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'text': text,
+    'type': type.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  KeyboardButton copyWith({
-    String? text,
-    KeyboardButtonType? type,
-  }) =>
-      KeyboardButton(
-        text: text ?? this.text,
-        type: type ?? this.type,
-      );
+  KeyboardButton copyWith({String? text, KeyboardButtonType? type}) =>
+      KeyboardButton(text: text ?? this.text, type: type ?? this.type);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'keyboardButton';

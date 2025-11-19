@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [EmojiKeywords].
 final class SearchEmojis extends TdFunction<EmojiKeywords> {
   /// Searches for emojis by keywords. Supported only if the file database is enabled. Order of results is unspecified
-  const SearchEmojis({
-    required this.text,
-    required this.inputLanguageCodes,
-  });
+  const SearchEmojis({required this.text, required this.inputLanguageCodes});
 
   /// Text to search for
   final String text;
@@ -21,18 +18,15 @@ final class SearchEmojis extends TdFunction<EmojiKeywords> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'text': text,
-        'input_language_codes': inputLanguageCodes,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text,
+    'input_language_codes': inputLanguageCodes,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchEmojis copyWith({
-    String? text,
-    List<String>? inputLanguageCodes,
-  }) =>
+  SearchEmojis copyWith({String? text, List<String>? inputLanguageCodes}) =>
       SearchEmojis(
         text: text ?? this.text,
         inputLanguageCodes: inputLanguageCodes ?? this.inputLanguageCodes,

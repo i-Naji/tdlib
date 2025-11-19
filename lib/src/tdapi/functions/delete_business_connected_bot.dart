@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class DeleteBusinessConnectedBot extends TdFunction<Ok> {
   /// Deletes the business bot that is connected to the current user account
-  const DeleteBusinessConnectedBot({
-    required this.botUserId,
-  });
+  const DeleteBusinessConnectedBot({required this.botUserId});
 
   /// Unique user identifier for the bot
   final int botUserId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteBusinessConnectedBot copyWith({
-    int? botUserId,
-  }) =>
-      DeleteBusinessConnectedBot(
-        botUserId: botUserId ?? this.botUserId,
-      );
+  DeleteBusinessConnectedBot copyWith({int? botUserId}) =>
+      DeleteBusinessConnectedBot(botUserId: botUserId ?? this.botUserId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deleteBusinessConnectedBot';

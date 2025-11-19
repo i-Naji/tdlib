@@ -33,8 +33,10 @@ final class MessageReplyInfo extends TdObject {
   factory MessageReplyInfo.fromJson(Map<String, dynamic> json) =>
       MessageReplyInfo(
         replyCount: _readInt(json['reply_count']),
-        recentReplierIds: _readList<MessageSender>(json['recent_replier_ids'],
-            (e) => _readObject(e, MessageSender.fromJson)),
+        recentReplierIds: _readList<MessageSender>(
+          json['recent_replier_ids'],
+          (e) => _readObject(e, MessageSender.fromJson),
+        ),
         lastReadInboxMessageId: _readInt(json['last_read_inbox_message_id']),
         lastReadOutboxMessageId: _readInt(json['last_read_outbox_message_id']),
         lastMessageId: _readInt(json['last_message_id']),
@@ -42,13 +44,13 @@ final class MessageReplyInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'reply_count': replyCount,
-        'recent_replier_ids': [for (final e in recentReplierIds) e.toJson()],
-        'last_read_inbox_message_id': lastReadInboxMessageId,
-        'last_read_outbox_message_id': lastReadOutboxMessageId,
-        'last_message_id': lastMessageId,
-      };
+    '@type': CONSTRUCTOR,
+    'reply_count': replyCount,
+    'recent_replier_ids': [for (final e in recentReplierIds) e.toJson()],
+    'last_read_inbox_message_id': lastReadInboxMessageId,
+    'last_read_outbox_message_id': lastReadOutboxMessageId,
+    'last_message_id': lastMessageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -58,16 +60,15 @@ final class MessageReplyInfo extends TdObject {
     int? lastReadInboxMessageId,
     int? lastReadOutboxMessageId,
     int? lastMessageId,
-  }) =>
-      MessageReplyInfo(
-        replyCount: replyCount ?? this.replyCount,
-        recentReplierIds: recentReplierIds ?? this.recentReplierIds,
-        lastReadInboxMessageId:
-            lastReadInboxMessageId ?? this.lastReadInboxMessageId,
-        lastReadOutboxMessageId:
-            lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
-        lastMessageId: lastMessageId ?? this.lastMessageId,
-      );
+  }) => MessageReplyInfo(
+    replyCount: replyCount ?? this.replyCount,
+    recentReplierIds: recentReplierIds ?? this.recentReplierIds,
+    lastReadInboxMessageId:
+        lastReadInboxMessageId ?? this.lastReadInboxMessageId,
+    lastReadOutboxMessageId:
+        lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
+    lastMessageId: lastMessageId ?? this.lastMessageId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageReplyInfo';

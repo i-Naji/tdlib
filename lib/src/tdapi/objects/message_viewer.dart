@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Represents a viewer of a message
 final class MessageViewer extends TdObject {
   /// Represents a viewer of a message
-  const MessageViewer({
-    required this.userId,
-    required this.viewDate,
-  });
+  const MessageViewer({required this.userId, required this.viewDate});
 
   /// User identifier of the viewer
   final int userId;
@@ -19,27 +16,23 @@ final class MessageViewer extends TdObject {
 
   /// Parses a [MessageViewer] from TDLib JSON.
   factory MessageViewer.fromJson(Map<String, dynamic> json) => MessageViewer(
-        userId: _readInt(json['user_id']),
-        viewDate: _readInt(json['view_date']),
-      );
+    userId: _readInt(json['user_id']),
+    viewDate: _readInt(json['view_date']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'view_date': viewDate,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'view_date': viewDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  MessageViewer copyWith({
-    int? userId,
-    int? viewDate,
-  }) =>
-      MessageViewer(
-        userId: userId ?? this.userId,
-        viewDate: viewDate ?? this.viewDate,
-      );
+  MessageViewer copyWith({int? userId, int? viewDate}) => MessageViewer(
+    userId: userId ?? this.userId,
+    viewDate: viewDate ?? this.viewDate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageViewer';

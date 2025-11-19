@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Chat].
 final class UpgradeBasicGroupChatToSupergroupChat extends TdFunction<Chat> {
   /// Creates a new supergroup from an existing basic group and sends a corresponding messageChatUpgradeTo and messageChatUpgradeFrom; requires owner privileges. Deactivates the original basic group
-  const UpgradeBasicGroupChatToSupergroupChat({
-    required this.chatId,
-  });
+  const UpgradeBasicGroupChatToSupergroupChat({required this.chatId});
 
   /// Identifier of the chat to upgrade
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  UpgradeBasicGroupChatToSupergroupChat copyWith({
-    int? chatId,
-  }) =>
-      UpgradeBasicGroupChatToSupergroupChat(
-        chatId: chatId ?? this.chatId,
-      );
+  UpgradeBasicGroupChatToSupergroupChat copyWith({int? chatId}) =>
+      UpgradeBasicGroupChatToSupergroupChat(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradeBasicGroupChatToSupergroupChat';

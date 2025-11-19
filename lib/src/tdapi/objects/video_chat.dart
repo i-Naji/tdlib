@@ -23,19 +23,21 @@ final class VideoChat extends TdObject {
 
   /// Parses a [VideoChat] from TDLib JSON.
   factory VideoChat.fromJson(Map<String, dynamic> json) => VideoChat(
-        groupCallId: _readInt(json['group_call_id']),
-        hasParticipants: _readBool(json['has_participants']),
-        defaultParticipantId: _readOptional(
-            json['default_participant_id'], MessageSender.fromJson),
-      );
+    groupCallId: _readInt(json['group_call_id']),
+    hasParticipants: _readBool(json['has_participants']),
+    defaultParticipantId: _readOptional(
+      json['default_participant_id'],
+      MessageSender.fromJson,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'has_participants': hasParticipants,
-        'default_participant_id': defaultParticipantId?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'has_participants': hasParticipants,
+    'default_participant_id': defaultParticipantId?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,14 +45,13 @@ final class VideoChat extends TdObject {
     int? groupCallId,
     bool? hasParticipants,
     MessageSender? Function()? defaultParticipantId,
-  }) =>
-      VideoChat(
-        groupCallId: groupCallId ?? this.groupCallId,
-        hasParticipants: hasParticipants ?? this.hasParticipants,
-        defaultParticipantId: defaultParticipantId != null
-            ? defaultParticipantId()
-            : this.defaultParticipantId,
-      );
+  }) => VideoChat(
+    groupCallId: groupCallId ?? this.groupCallId,
+    hasParticipants: hasParticipants ?? this.hasParticipants,
+    defaultParticipantId: defaultParticipantId != null
+        ? defaultParticipantId()
+        : this.defaultParticipantId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'videoChat';

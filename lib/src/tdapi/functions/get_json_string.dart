@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Text].
 final class GetJsonString extends TdFunction<Text> {
   /// Converts a JsonValue object to corresponding JSON-serialized string. Can be called synchronously
-  const GetJsonString({
-    required this.jsonValue,
-  });
+  const GetJsonString({required this.jsonValue});
 
   /// The JsonValue object
   final JsonValue jsonValue;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'json_value': jsonValue.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'json_value': jsonValue.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetJsonString copyWith({
-    JsonValue? jsonValue,
-  }) =>
-      GetJsonString(
-        jsonValue: jsonValue ?? this.jsonValue,
-      );
+  GetJsonString copyWith({JsonValue? jsonValue}) =>
+      GetJsonString(jsonValue: jsonValue ?? this.jsonValue);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getJsonString';

@@ -49,32 +49,28 @@ final class UndecodedInputPassportElementErrorSource
 final class InputPassportElementErrorSourceUnspecified
     extends InputPassportElementErrorSource {
   /// The element contains an error in an unspecified place. The error will be considered resolved when new data is added
-  const InputPassportElementErrorSourceUnspecified({
-    required this.elementHash,
-  });
+  const InputPassportElementErrorSourceUnspecified({required this.elementHash});
 
   /// Current hash of the entire element
   final String elementHash;
 
   /// Parses a [InputPassportElementErrorSourceUnspecified] from TDLib JSON.
   factory InputPassportElementErrorSourceUnspecified.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementErrorSourceUnspecified(
-        elementHash: _readString(json['element_hash']),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementErrorSourceUnspecified(
+    elementHash: _readString(json['element_hash']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'element_hash': elementHash,
-      };
+    '@type': CONSTRUCTOR,
+    'element_hash': elementHash,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputPassportElementErrorSourceUnspecified copyWith({
-    String? elementHash,
-  }) =>
+  InputPassportElementErrorSourceUnspecified copyWith({String? elementHash}) =>
       InputPassportElementErrorSourceUnspecified(
         elementHash: elementHash ?? this.elementHash,
       );
@@ -104,18 +100,18 @@ final class InputPassportElementErrorSourceDataField
 
   /// Parses a [InputPassportElementErrorSourceDataField] from TDLib JSON.
   factory InputPassportElementErrorSourceDataField.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementErrorSourceDataField(
-        fieldName: _readString(json['field_name']),
-        dataHash: _readString(json['data_hash']),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementErrorSourceDataField(
+    fieldName: _readString(json['field_name']),
+    dataHash: _readString(json['data_hash']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'field_name': fieldName,
-        'data_hash': dataHash,
-      };
+    '@type': CONSTRUCTOR,
+    'field_name': fieldName,
+    'data_hash': dataHash,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -123,11 +119,10 @@ final class InputPassportElementErrorSourceDataField
   InputPassportElementErrorSourceDataField copyWith({
     String? fieldName,
     String? dataHash,
-  }) =>
-      InputPassportElementErrorSourceDataField(
-        fieldName: fieldName ?? this.fieldName,
-        dataHash: dataHash ?? this.dataHash,
-      );
+  }) => InputPassportElementErrorSourceDataField(
+    fieldName: fieldName ?? this.fieldName,
+    dataHash: dataHash ?? this.dataHash,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPassportElementErrorSourceDataField';
@@ -140,32 +135,28 @@ final class InputPassportElementErrorSourceDataField
 final class InputPassportElementErrorSourceFrontSide
     extends InputPassportElementErrorSource {
   /// The front side of the document contains an error. The error is considered resolved when the file with the front side of the document changes
-  const InputPassportElementErrorSourceFrontSide({
-    required this.fileHash,
-  });
+  const InputPassportElementErrorSourceFrontSide({required this.fileHash});
 
   /// Current hash of the file containing the front side
   final String fileHash;
 
   /// Parses a [InputPassportElementErrorSourceFrontSide] from TDLib JSON.
   factory InputPassportElementErrorSourceFrontSide.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementErrorSourceFrontSide(
-        fileHash: _readString(json['file_hash']),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementErrorSourceFrontSide(
+    fileHash: _readString(json['file_hash']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file_hash': fileHash,
-      };
+    '@type': CONSTRUCTOR,
+    'file_hash': fileHash,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputPassportElementErrorSourceFrontSide copyWith({
-    String? fileHash,
-  }) =>
+  InputPassportElementErrorSourceFrontSide copyWith({String? fileHash}) =>
       InputPassportElementErrorSourceFrontSide(
         fileHash: fileHash ?? this.fileHash,
       );
@@ -181,32 +172,28 @@ final class InputPassportElementErrorSourceFrontSide
 final class InputPassportElementErrorSourceReverseSide
     extends InputPassportElementErrorSource {
   /// The reverse side of the document contains an error. The error is considered resolved when the file with the reverse side of the document changes
-  const InputPassportElementErrorSourceReverseSide({
-    required this.fileHash,
-  });
+  const InputPassportElementErrorSourceReverseSide({required this.fileHash});
 
   /// Current hash of the file containing the reverse side
   final String fileHash;
 
   /// Parses a [InputPassportElementErrorSourceReverseSide] from TDLib JSON.
   factory InputPassportElementErrorSourceReverseSide.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementErrorSourceReverseSide(
-        fileHash: _readString(json['file_hash']),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementErrorSourceReverseSide(
+    fileHash: _readString(json['file_hash']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file_hash': fileHash,
-      };
+    '@type': CONSTRUCTOR,
+    'file_hash': fileHash,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputPassportElementErrorSourceReverseSide copyWith({
-    String? fileHash,
-  }) =>
+  InputPassportElementErrorSourceReverseSide copyWith({String? fileHash}) =>
       InputPassportElementErrorSourceReverseSide(
         fileHash: fileHash ?? this.fileHash,
       );
@@ -223,32 +210,28 @@ final class InputPassportElementErrorSourceReverseSide
 final class InputPassportElementErrorSourceSelfie
     extends InputPassportElementErrorSource {
   /// The selfie contains an error. The error is considered resolved when the file with the selfie changes
-  const InputPassportElementErrorSourceSelfie({
-    required this.fileHash,
-  });
+  const InputPassportElementErrorSourceSelfie({required this.fileHash});
 
   /// Current hash of the file containing the selfie
   final String fileHash;
 
   /// Parses a [InputPassportElementErrorSourceSelfie] from TDLib JSON.
   factory InputPassportElementErrorSourceSelfie.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementErrorSourceSelfie(
-        fileHash: _readString(json['file_hash']),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementErrorSourceSelfie(
+    fileHash: _readString(json['file_hash']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file_hash': fileHash,
-      };
+    '@type': CONSTRUCTOR,
+    'file_hash': fileHash,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputPassportElementErrorSourceSelfie copyWith({
-    String? fileHash,
-  }) =>
+  InputPassportElementErrorSourceSelfie copyWith({String? fileHash}) =>
       InputPassportElementErrorSourceSelfie(
         fileHash: fileHash ?? this.fileHash,
       );
@@ -273,23 +256,21 @@ final class InputPassportElementErrorSourceTranslationFile
 
   /// Parses a [InputPassportElementErrorSourceTranslationFile] from TDLib JSON.
   factory InputPassportElementErrorSourceTranslationFile.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementErrorSourceTranslationFile(
-        fileHash: _readString(json['file_hash']),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementErrorSourceTranslationFile(
+    fileHash: _readString(json['file_hash']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file_hash': fileHash,
-      };
+    '@type': CONSTRUCTOR,
+    'file_hash': fileHash,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputPassportElementErrorSourceTranslationFile copyWith({
-    String? fileHash,
-  }) =>
+  InputPassportElementErrorSourceTranslationFile copyWith({String? fileHash}) =>
       InputPassportElementErrorSourceTranslationFile(
         fileHash: fileHash ?? this.fileHash,
       );
@@ -315,26 +296,25 @@ final class InputPassportElementErrorSourceTranslationFiles
 
   /// Parses a [InputPassportElementErrorSourceTranslationFiles] from TDLib JSON.
   factory InputPassportElementErrorSourceTranslationFiles.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementErrorSourceTranslationFiles(
-        fileHashes: _readList<String>(json['file_hashes'], _readString),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementErrorSourceTranslationFiles(
+    fileHashes: _readList<String>(json['file_hashes'], _readString),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file_hashes': fileHashes,
-      };
+    '@type': CONSTRUCTOR,
+    'file_hashes': fileHashes,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementErrorSourceTranslationFiles copyWith({
     List<String>? fileHashes,
-  }) =>
-      InputPassportElementErrorSourceTranslationFiles(
-        fileHashes: fileHashes ?? this.fileHashes,
-      );
+  }) => InputPassportElementErrorSourceTranslationFiles(
+    fileHashes: fileHashes ?? this.fileHashes,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -348,35 +328,29 @@ final class InputPassportElementErrorSourceTranslationFiles
 final class InputPassportElementErrorSourceFile
     extends InputPassportElementErrorSource {
   /// The file contains an error. The error is considered resolved when the file changes
-  const InputPassportElementErrorSourceFile({
-    required this.fileHash,
-  });
+  const InputPassportElementErrorSourceFile({required this.fileHash});
 
   /// Current hash of the file which has the error
   final String fileHash;
 
   /// Parses a [InputPassportElementErrorSourceFile] from TDLib JSON.
   factory InputPassportElementErrorSourceFile.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementErrorSourceFile(
-        fileHash: _readString(json['file_hash']),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementErrorSourceFile(
+    fileHash: _readString(json['file_hash']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file_hash': fileHash,
-      };
+    '@type': CONSTRUCTOR,
+    'file_hash': fileHash,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputPassportElementErrorSourceFile copyWith({
-    String? fileHash,
-  }) =>
-      InputPassportElementErrorSourceFile(
-        fileHash: fileHash ?? this.fileHash,
-      );
+  InputPassportElementErrorSourceFile copyWith({String? fileHash}) =>
+      InputPassportElementErrorSourceFile(fileHash: fileHash ?? this.fileHash);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPassportElementErrorSourceFile';
@@ -389,32 +363,28 @@ final class InputPassportElementErrorSourceFile
 final class InputPassportElementErrorSourceFiles
     extends InputPassportElementErrorSource {
   /// The list of attached files contains an error. The error is considered resolved when the file list changes
-  const InputPassportElementErrorSourceFiles({
-    required this.fileHashes,
-  });
+  const InputPassportElementErrorSourceFiles({required this.fileHashes});
 
   /// Current hashes of all attached files
   final List<String> fileHashes;
 
   /// Parses a [InputPassportElementErrorSourceFiles] from TDLib JSON.
   factory InputPassportElementErrorSourceFiles.fromJson(
-          Map<String, dynamic> json) =>
-      InputPassportElementErrorSourceFiles(
-        fileHashes: _readList<String>(json['file_hashes'], _readString),
-      );
+    Map<String, dynamic> json,
+  ) => InputPassportElementErrorSourceFiles(
+    fileHashes: _readList<String>(json['file_hashes'], _readString),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file_hashes': fileHashes,
-      };
+    '@type': CONSTRUCTOR,
+    'file_hashes': fileHashes,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputPassportElementErrorSourceFiles copyWith({
-    List<String>? fileHashes,
-  }) =>
+  InputPassportElementErrorSourceFiles copyWith({List<String>? fileHashes}) =>
       InputPassportElementErrorSourceFiles(
         fileHashes: fileHashes ?? this.fileHashes,
       );

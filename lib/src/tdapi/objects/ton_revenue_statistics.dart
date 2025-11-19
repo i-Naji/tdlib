@@ -35,7 +35,9 @@ final class TonRevenueStatistics extends TdObject {
   factory TonRevenueStatistics.fromJson(Map<String, dynamic> json) =>
       TonRevenueStatistics(
         revenueByDayGraph: _readObject(
-            json['revenue_by_day_graph'], StatisticalGraph.fromJson),
+          json['revenue_by_day_graph'],
+          StatisticalGraph.fromJson,
+        ),
         status: _readObject(json['status'], TonRevenueStatus.fromJson),
         usdRate: _readDouble(json['usd_rate']),
         extra: json['@extra'],
@@ -44,11 +46,11 @@ final class TonRevenueStatistics extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'revenue_by_day_graph': revenueByDayGraph.toJson(),
-        'status': status.toJson(),
-        'usd_rate': usdRate,
-      };
+    '@type': CONSTRUCTOR,
+    'revenue_by_day_graph': revenueByDayGraph.toJson(),
+    'status': status.toJson(),
+    'usd_rate': usdRate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -58,14 +60,13 @@ final class TonRevenueStatistics extends TdObject {
     double? usdRate,
     dynamic extra,
     int? clientId,
-  }) =>
-      TonRevenueStatistics(
-        revenueByDayGraph: revenueByDayGraph ?? this.revenueByDayGraph,
-        status: status ?? this.status,
-        usdRate: usdRate ?? this.usdRate,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => TonRevenueStatistics(
+    revenueByDayGraph: revenueByDayGraph ?? this.revenueByDayGraph,
+    status: status ?? this.status,
+    usdRate: usdRate ?? this.usdRate,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'tonRevenueStatistics';

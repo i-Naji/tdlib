@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class CheckAuthenticationPassword extends TdFunction<Ok> {
   /// Checks the 2-step verification password for correctness. Works only when the current authorization state is authorizationStateWaitPassword
-  const CheckAuthenticationPassword({
-    required this.password,
-  });
+  const CheckAuthenticationPassword({required this.password});
 
   /// The 2-step verification password to check
   final String password;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'password': password,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'password': password,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CheckAuthenticationPassword copyWith({
-    String? password,
-  }) =>
-      CheckAuthenticationPassword(
-        password: password ?? this.password,
-      );
+  CheckAuthenticationPassword copyWith({String? password}) =>
+      CheckAuthenticationPassword(password: password ?? this.password);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkAuthenticationPassword';

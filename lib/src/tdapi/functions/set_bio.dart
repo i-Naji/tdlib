@@ -8,28 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetBio extends TdFunction<Ok> {
   /// Changes the bio of the current user
-  const SetBio({
-    required this.bio,
-  });
+  const SetBio({required this.bio});
 
   /// The new value of the user bio; 0-getOption("bio_length_max") characters without line feeds
   final String bio;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bio': bio,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bio': bio,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetBio copyWith({
-    String? bio,
-  }) =>
-      SetBio(
-        bio: bio ?? this.bio,
-      );
+  SetBio copyWith({String? bio}) => SetBio(bio: bio ?? this.bio);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setBio';

@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Represents a list of animations
 final class Animations extends TdObject {
   /// Represents a list of animations
-  const Animations({
-    required this.animations,
-    this.extra,
-    this.clientId,
-  });
+  const Animations({required this.animations, this.extra, this.clientId});
 
   /// List of animations
   final List<Animation> animations;
@@ -25,17 +21,19 @@ final class Animations extends TdObject {
 
   /// Parses a [Animations] from TDLib JSON.
   factory Animations.fromJson(Map<String, dynamic> json) => Animations(
-        animations: _readList<Animation>(
-            json['animations'], (e) => _readObject(e, Animation.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    animations: _readList<Animation>(
+      json['animations'],
+      (e) => _readObject(e, Animation.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'animations': [for (final e in animations) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'animations': [for (final e in animations) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +41,11 @@ final class Animations extends TdObject {
     List<Animation>? animations,
     dynamic extra,
     int? clientId,
-  }) =>
-      Animations(
-        animations: animations ?? this.animations,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => Animations(
+    animations: animations ?? this.animations,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'animations';

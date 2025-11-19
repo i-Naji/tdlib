@@ -29,19 +29,21 @@ final class BotCommands extends TdObject {
 
   /// Parses a [BotCommands] from TDLib JSON.
   factory BotCommands.fromJson(Map<String, dynamic> json) => BotCommands(
-        botUserId: _readInt(json['bot_user_id']),
-        commands: _readList<BotCommand>(
-            json['commands'], (e) => _readObject(e, BotCommand.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    botUserId: _readInt(json['bot_user_id']),
+    commands: _readList<BotCommand>(
+      json['commands'],
+      (e) => _readObject(e, BotCommand.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'commands': [for (final e in commands) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'commands': [for (final e in commands) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +52,12 @@ final class BotCommands extends TdObject {
     List<BotCommand>? commands,
     dynamic extra,
     int? clientId,
-  }) =>
-      BotCommands(
-        botUserId: botUserId ?? this.botUserId,
-        commands: commands ?? this.commands,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => BotCommands(
+    botUserId: botUserId ?? this.botUserId,
+    commands: commands ?? this.commands,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'botCommands';

@@ -26,17 +26,19 @@ final class UserPrivacySettingRules extends TdObject {
   /// Parses a [UserPrivacySettingRules] from TDLib JSON.
   factory UserPrivacySettingRules.fromJson(Map<String, dynamic> json) =>
       UserPrivacySettingRules(
-        rules: _readList<UserPrivacySettingRule>(json['rules'],
-            (e) => _readObject(e, UserPrivacySettingRule.fromJson)),
+        rules: _readList<UserPrivacySettingRule>(
+          json['rules'],
+          (e) => _readObject(e, UserPrivacySettingRule.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'rules': [for (final e in rules) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'rules': [for (final e in rules) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +46,11 @@ final class UserPrivacySettingRules extends TdObject {
     List<UserPrivacySettingRule>? rules,
     dynamic extra,
     int? clientId,
-  }) =>
-      UserPrivacySettingRules(
-        rules: rules ?? this.rules,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UserPrivacySettingRules(
+    rules: rules ?? this.rules,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userPrivacySettingRules';

@@ -54,9 +54,7 @@ final class CallDiscardReasonEmpty extends CallDiscardReason {
       const CallDiscardReasonEmpty();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -80,9 +78,7 @@ final class CallDiscardReasonMissed extends CallDiscardReason {
       const CallDiscardReasonMissed();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -106,9 +102,7 @@ final class CallDiscardReasonDeclined extends CallDiscardReason {
       const CallDiscardReasonDeclined();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -132,9 +126,7 @@ final class CallDiscardReasonDisconnected extends CallDiscardReason {
       const CallDiscardReasonDisconnected();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -159,9 +151,7 @@ final class CallDiscardReasonHungUp extends CallDiscardReason {
       const CallDiscardReasonHungUp();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -178,32 +168,28 @@ final class CallDiscardReasonHungUp extends CallDiscardReason {
 /// The call was ended because it has been upgraded to a group call
 final class CallDiscardReasonUpgradeToGroupCall extends CallDiscardReason {
   /// The call was ended because it has been upgraded to a group call
-  const CallDiscardReasonUpgradeToGroupCall({
-    required this.inviteLink,
-  });
+  const CallDiscardReasonUpgradeToGroupCall({required this.inviteLink});
 
   /// Invite link for the group call
   final String inviteLink;
 
   /// Parses a [CallDiscardReasonUpgradeToGroupCall] from TDLib JSON.
   factory CallDiscardReasonUpgradeToGroupCall.fromJson(
-          Map<String, dynamic> json) =>
-      CallDiscardReasonUpgradeToGroupCall(
-        inviteLink: _readString(json['invite_link']),
-      );
+    Map<String, dynamic> json,
+  ) => CallDiscardReasonUpgradeToGroupCall(
+    inviteLink: _readString(json['invite_link']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'invite_link': inviteLink,
-      };
+    '@type': CONSTRUCTOR,
+    'invite_link': inviteLink,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  CallDiscardReasonUpgradeToGroupCall copyWith({
-    String? inviteLink,
-  }) =>
+  CallDiscardReasonUpgradeToGroupCall copyWith({String? inviteLink}) =>
       CallDiscardReasonUpgradeToGroupCall(
         inviteLink: inviteLink ?? this.inviteLink,
       );

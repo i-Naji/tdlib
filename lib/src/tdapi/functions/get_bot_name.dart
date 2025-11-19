@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Text].
 final class GetBotName extends TdFunction<Text> {
   /// Returns the name of a bot in the given language. Can be called only if userTypeBot.can_be_edited == true
-  const GetBotName({
-    required this.botUserId,
-    required this.languageCode,
-  });
+  const GetBotName({required this.botUserId, required this.languageCode});
 
   /// Identifier of the target bot
   final int botUserId;
@@ -21,22 +18,18 @@ final class GetBotName extends TdFunction<Text> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'language_code': languageCode,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'language_code': languageCode,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetBotName copyWith({
-    int? botUserId,
-    String? languageCode,
-  }) =>
-      GetBotName(
-        botUserId: botUserId ?? this.botUserId,
-        languageCode: languageCode ?? this.languageCode,
-      );
+  GetBotName copyWith({int? botUserId, String? languageCode}) => GetBotName(
+    botUserId: botUserId ?? this.botUserId,
+    languageCode: languageCode ?? this.languageCode,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getBotName';

@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Chat].
 final class CreateBasicGroupChat extends TdFunction<Chat> {
   /// Returns an existing chat corresponding to a known basic group
-  const CreateBasicGroupChat({
-    required this.basicGroupId,
-    required this.force,
-  });
+  const CreateBasicGroupChat({required this.basicGroupId, required this.force});
 
   /// Basic group identifier
   final int basicGroupId;
@@ -21,18 +18,15 @@ final class CreateBasicGroupChat extends TdFunction<Chat> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'basic_group_id': basicGroupId,
-        'force': force,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'basic_group_id': basicGroupId,
+    'force': force,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CreateBasicGroupChat copyWith({
-    int? basicGroupId,
-    bool? force,
-  }) =>
+  CreateBasicGroupChat copyWith({int? basicGroupId, bool? force}) =>
       CreateBasicGroupChat(
         basicGroupId: basicGroupId ?? this.basicGroupId,
         force: force ?? this.force,

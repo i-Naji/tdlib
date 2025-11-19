@@ -21,18 +21,15 @@ final class RefundStarPayment extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'telegram_payment_charge_id': telegramPaymentChargeId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'telegram_payment_charge_id': telegramPaymentChargeId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RefundStarPayment copyWith({
-    int? userId,
-    String? telegramPaymentChargeId,
-  }) =>
+  RefundStarPayment copyWith({int? userId, String? telegramPaymentChargeId}) =>
       RefundStarPayment(
         userId: userId ?? this.userId,
         telegramPaymentChargeId:

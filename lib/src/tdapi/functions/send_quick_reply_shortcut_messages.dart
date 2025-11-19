@@ -25,12 +25,12 @@ final class SendQuickReplyShortcutMessages extends TdFunction<Messages> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'shortcut_id': shortcutId,
-        'sending_id': sendingId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'shortcut_id': shortcutId,
+    'sending_id': sendingId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SendQuickReplyShortcutMessages extends TdFunction<Messages> {
     int? chatId,
     int? shortcutId,
     int? sendingId,
-  }) =>
-      SendQuickReplyShortcutMessages(
-        chatId: chatId ?? this.chatId,
-        shortcutId: shortcutId ?? this.shortcutId,
-        sendingId: sendingId ?? this.sendingId,
-      );
+  }) => SendQuickReplyShortcutMessages(
+    chatId: chatId ?? this.chatId,
+    shortcutId: shortcutId ?? this.shortcutId,
+    sendingId: sendingId ?? this.sendingId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sendQuickReplyShortcutMessages';

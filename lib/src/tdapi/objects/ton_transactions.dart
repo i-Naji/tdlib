@@ -35,8 +35,10 @@ final class TonTransactions extends TdObject {
   factory TonTransactions.fromJson(Map<String, dynamic> json) =>
       TonTransactions(
         tonAmount: _readInt(json['ton_amount']),
-        transactions: _readList<TonTransaction>(json['transactions'],
-            (e) => _readObject(e, TonTransaction.fromJson)),
+        transactions: _readList<TonTransaction>(
+          json['transactions'],
+          (e) => _readObject(e, TonTransaction.fromJson),
+        ),
         nextOffset: _readString(json['next_offset']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -44,11 +46,11 @@ final class TonTransactions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'ton_amount': tonAmount,
-        'transactions': [for (final e in transactions) e.toJson()],
-        'next_offset': nextOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'ton_amount': tonAmount,
+    'transactions': [for (final e in transactions) e.toJson()],
+    'next_offset': nextOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -58,14 +60,13 @@ final class TonTransactions extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) =>
-      TonTransactions(
-        tonAmount: tonAmount ?? this.tonAmount,
-        transactions: transactions ?? this.transactions,
-        nextOffset: nextOffset ?? this.nextOffset,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => TonTransactions(
+    tonAmount: tonAmount ?? this.tonAmount,
+    transactions: transactions ?? this.transactions,
+    nextOffset: nextOffset ?? this.nextOffset,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'tonTransactions';

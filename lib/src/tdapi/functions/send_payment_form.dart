@@ -37,15 +37,15 @@ final class SendPaymentForm extends TdFunction<PaymentResult> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'input_invoice': inputInvoice.toJson(),
-        'payment_form_id': paymentFormId.toString(),
-        'order_info_id': orderInfoId,
-        'shipping_option_id': shippingOptionId,
-        'credentials': credentials?.toJson(),
-        'tip_amount': tipAmount,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'input_invoice': inputInvoice.toJson(),
+    'payment_form_id': paymentFormId.toString(),
+    'order_info_id': orderInfoId,
+    'shipping_option_id': shippingOptionId,
+    'credentials': credentials?.toJson(),
+    'tip_amount': tipAmount,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class SendPaymentForm extends TdFunction<PaymentResult> {
     String? shippingOptionId,
     InputCredentials? Function()? credentials,
     int? tipAmount,
-  }) =>
-      SendPaymentForm(
-        inputInvoice: inputInvoice ?? this.inputInvoice,
-        paymentFormId: paymentFormId ?? this.paymentFormId,
-        orderInfoId: orderInfoId ?? this.orderInfoId,
-        shippingOptionId: shippingOptionId ?? this.shippingOptionId,
-        credentials: credentials != null ? credentials() : this.credentials,
-        tipAmount: tipAmount ?? this.tipAmount,
-      );
+  }) => SendPaymentForm(
+    inputInvoice: inputInvoice ?? this.inputInvoice,
+    paymentFormId: paymentFormId ?? this.paymentFormId,
+    orderInfoId: orderInfoId ?? this.orderInfoId,
+    shippingOptionId: shippingOptionId ?? this.shippingOptionId,
+    credentials: credentials != null ? credentials() : this.credentials,
+    tipAmount: tipAmount ?? this.tipAmount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sendPaymentForm';

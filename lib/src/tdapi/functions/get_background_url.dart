@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [HttpUrl].
 final class GetBackgroundUrl extends TdFunction<HttpUrl> {
   /// Constructs a persistent HTTP URL for a background
-  const GetBackgroundUrl({
-    required this.name,
-    required this.type,
-  });
+  const GetBackgroundUrl({required this.name, required this.type});
 
   /// Background name
   final String name;
@@ -21,22 +18,16 @@ final class GetBackgroundUrl extends TdFunction<HttpUrl> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        'type': type.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    'type': type.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetBackgroundUrl copyWith({
-    String? name,
-    BackgroundType? type,
-  }) =>
-      GetBackgroundUrl(
-        name: name ?? this.name,
-        type: type ?? this.type,
-      );
+  GetBackgroundUrl copyWith({String? name, BackgroundType? type}) =>
+      GetBackgroundUrl(name: name ?? this.name, type: type ?? this.type);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getBackgroundUrl';

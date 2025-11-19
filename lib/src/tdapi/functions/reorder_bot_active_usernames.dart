@@ -21,22 +21,21 @@ final class ReorderBotActiveUsernames extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'usernames': usernames,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'usernames': usernames,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ReorderBotActiveUsernames copyWith({
     int? botUserId,
     List<String>? usernames,
-  }) =>
-      ReorderBotActiveUsernames(
-        botUserId: botUserId ?? this.botUserId,
-        usernames: usernames ?? this.usernames,
-      );
+  }) => ReorderBotActiveUsernames(
+    botUserId: botUserId ?? this.botUserId,
+    usernames: usernames ?? this.usernames,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reorderBotActiveUsernames';

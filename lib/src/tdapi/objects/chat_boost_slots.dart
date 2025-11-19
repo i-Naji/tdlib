@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of chat boost slots
 final class ChatBoostSlots extends TdObject {
   /// Contains a list of chat boost slots
-  const ChatBoostSlots({
-    required this.slots,
-    this.extra,
-    this.clientId,
-  });
+  const ChatBoostSlots({required this.slots, this.extra, this.clientId});
 
   /// List of boost slots
   final List<ChatBoostSlot> slots;
@@ -25,17 +21,19 @@ final class ChatBoostSlots extends TdObject {
 
   /// Parses a [ChatBoostSlots] from TDLib JSON.
   factory ChatBoostSlots.fromJson(Map<String, dynamic> json) => ChatBoostSlots(
-        slots: _readList<ChatBoostSlot>(
-            json['slots'], (e) => _readObject(e, ChatBoostSlot.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    slots: _readList<ChatBoostSlot>(
+      json['slots'],
+      (e) => _readObject(e, ChatBoostSlot.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'slots': [for (final e in slots) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'slots': [for (final e in slots) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +41,11 @@ final class ChatBoostSlots extends TdObject {
     List<ChatBoostSlot>? slots,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatBoostSlots(
-        slots: slots ?? this.slots,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatBoostSlots(
+    slots: slots ?? this.slots,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatBoostSlots';

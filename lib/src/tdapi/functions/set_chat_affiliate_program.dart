@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetChatAffiliateProgram extends TdFunction<Ok> {
   /// Changes affiliate program for a bot
-  const SetChatAffiliateProgram({
-    required this.chatId,
-    this.parameters,
-  });
+  const SetChatAffiliateProgram({required this.chatId, this.parameters});
 
   /// Identifier of the chat with an owned bot for which affiliate program is changed
   final int chatId;
@@ -21,22 +18,21 @@ final class SetChatAffiliateProgram extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'parameters': parameters?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'parameters': parameters?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetChatAffiliateProgram copyWith({
     int? chatId,
     AffiliateProgramParameters? Function()? parameters,
-  }) =>
-      SetChatAffiliateProgram(
-        chatId: chatId ?? this.chatId,
-        parameters: parameters != null ? parameters() : this.parameters,
-      );
+  }) => SetChatAffiliateProgram(
+    chatId: chatId ?? this.chatId,
+    parameters: parameters != null ? parameters() : this.parameters,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setChatAffiliateProgram';

@@ -25,12 +25,12 @@ final class ToggleBotUsernameIsActive extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'username': username,
-        'is_active': isActive,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'username': username,
+    'is_active': isActive,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class ToggleBotUsernameIsActive extends TdFunction<Ok> {
     int? botUserId,
     String? username,
     bool? isActive,
-  }) =>
-      ToggleBotUsernameIsActive(
-        botUserId: botUserId ?? this.botUserId,
-        username: username ?? this.username,
-        isActive: isActive ?? this.isActive,
-      );
+  }) => ToggleBotUsernameIsActive(
+    botUserId: botUserId ?? this.botUserId,
+    username: username ?? this.username,
+    isActive: isActive ?? this.isActive,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleBotUsernameIsActive';

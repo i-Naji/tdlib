@@ -53,13 +53,13 @@ final class PublicPostSearchLimits extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'daily_free_query_count': dailyFreeQueryCount,
-        'remaining_free_query_count': remainingFreeQueryCount,
-        'next_free_query_in': nextFreeQueryIn,
-        'star_count': starCount.toString(),
-        'is_current_query_free': isCurrentQueryFree,
-      };
+    '@type': CONSTRUCTOR,
+    'daily_free_query_count': dailyFreeQueryCount,
+    'remaining_free_query_count': remainingFreeQueryCount,
+    'next_free_query_in': nextFreeQueryIn,
+    'star_count': starCount.toString(),
+    'is_current_query_free': isCurrentQueryFree,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -71,17 +71,16 @@ final class PublicPostSearchLimits extends TdObject {
     bool? isCurrentQueryFree,
     dynamic extra,
     int? clientId,
-  }) =>
-      PublicPostSearchLimits(
-        dailyFreeQueryCount: dailyFreeQueryCount ?? this.dailyFreeQueryCount,
-        remainingFreeQueryCount:
-            remainingFreeQueryCount ?? this.remainingFreeQueryCount,
-        nextFreeQueryIn: nextFreeQueryIn ?? this.nextFreeQueryIn,
-        starCount: starCount ?? this.starCount,
-        isCurrentQueryFree: isCurrentQueryFree ?? this.isCurrentQueryFree,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PublicPostSearchLimits(
+    dailyFreeQueryCount: dailyFreeQueryCount ?? this.dailyFreeQueryCount,
+    remainingFreeQueryCount:
+        remainingFreeQueryCount ?? this.remainingFreeQueryCount,
+    nextFreeQueryIn: nextFreeQueryIn ?? this.nextFreeQueryIn,
+    starCount: starCount ?? this.starCount,
+    isCurrentQueryFree: isCurrentQueryFree ?? this.isCurrentQueryFree,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'publicPostSearchLimits';

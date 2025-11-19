@@ -29,19 +29,21 @@ final class BankCardInfo extends TdObject {
 
   /// Parses a [BankCardInfo] from TDLib JSON.
   factory BankCardInfo.fromJson(Map<String, dynamic> json) => BankCardInfo(
-        title: _readString(json['title']),
-        actions: _readList<BankCardActionOpenUrl>(json['actions'],
-            (e) => _readObject(e, BankCardActionOpenUrl.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    title: _readString(json['title']),
+    actions: _readList<BankCardActionOpenUrl>(
+      json['actions'],
+      (e) => _readObject(e, BankCardActionOpenUrl.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-        'actions': [for (final e in actions) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'title': title,
+    'actions': [for (final e in actions) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +52,12 @@ final class BankCardInfo extends TdObject {
     List<BankCardActionOpenUrl>? actions,
     dynamic extra,
     int? clientId,
-  }) =>
-      BankCardInfo(
-        title: title ?? this.title,
-        actions: actions ?? this.actions,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => BankCardInfo(
+    title: title ?? this.title,
+    actions: actions ?? this.actions,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'bankCardInfo';

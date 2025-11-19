@@ -37,22 +37,22 @@ final class PaymentForm extends TdObject {
 
   /// Parses a [PaymentForm] from TDLib JSON.
   factory PaymentForm.fromJson(Map<String, dynamic> json) => PaymentForm(
-        id: _readInt(json['id']),
-        type: _readObject(json['type'], PaymentFormType.fromJson),
-        sellerBotUserId: _readInt(json['seller_bot_user_id']),
-        productInfo: _readObject(json['product_info'], ProductInfo.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    id: _readInt(json['id']),
+    type: _readObject(json['type'], PaymentFormType.fromJson),
+    sellerBotUserId: _readInt(json['seller_bot_user_id']),
+    productInfo: _readObject(json['product_info'], ProductInfo.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'type': type.toJson(),
-        'seller_bot_user_id': sellerBotUserId,
-        'product_info': productInfo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'type': type.toJson(),
+    'seller_bot_user_id': sellerBotUserId,
+    'product_info': productInfo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -63,15 +63,14 @@ final class PaymentForm extends TdObject {
     ProductInfo? productInfo,
     dynamic extra,
     int? clientId,
-  }) =>
-      PaymentForm(
-        id: id ?? this.id,
-        type: type ?? this.type,
-        sellerBotUserId: sellerBotUserId ?? this.sellerBotUserId,
-        productInfo: productInfo ?? this.productInfo,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PaymentForm(
+    id: id ?? this.id,
+    type: type ?? this.type,
+    sellerBotUserId: sellerBotUserId ?? this.sellerBotUserId,
+    productInfo: productInfo ?? this.productInfo,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'paymentForm';

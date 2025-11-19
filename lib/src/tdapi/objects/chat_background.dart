@@ -19,23 +19,20 @@ final class ChatBackground extends TdObject {
 
   /// Parses a [ChatBackground] from TDLib JSON.
   factory ChatBackground.fromJson(Map<String, dynamic> json) => ChatBackground(
-        background: _readObject(json['background'], Background.fromJson),
-        darkThemeDimming: _readInt(json['dark_theme_dimming']),
-      );
+    background: _readObject(json['background'], Background.fromJson),
+    darkThemeDimming: _readInt(json['dark_theme_dimming']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'background': background.toJson(),
-        'dark_theme_dimming': darkThemeDimming,
-      };
+    '@type': CONSTRUCTOR,
+    'background': background.toJson(),
+    'dark_theme_dimming': darkThemeDimming,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ChatBackground copyWith({
-    Background? background,
-    int? darkThemeDimming,
-  }) =>
+  ChatBackground copyWith({Background? background, int? darkThemeDimming}) =>
       ChatBackground(
         background: background ?? this.background,
         darkThemeDimming: darkThemeDimming ?? this.darkThemeDimming,

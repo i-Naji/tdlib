@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ReportPhoneNumberCodeMissing extends TdFunction<Ok> {
   /// Reports that authentication code wasn't delivered via SMS to the specified phone number; for official mobile applications only
-  const ReportPhoneNumberCodeMissing({
-    required this.mobileNetworkCode,
-  });
+  const ReportPhoneNumberCodeMissing({required this.mobileNetworkCode});
 
   /// Current mobile network code
   final String mobileNetworkCode;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'mobile_network_code': mobileNetworkCode,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'mobile_network_code': mobileNetworkCode,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ReportPhoneNumberCodeMissing copyWith({
-    String? mobileNetworkCode,
-  }) =>
+  ReportPhoneNumberCodeMissing copyWith({String? mobileNetworkCode}) =>
       ReportPhoneNumberCodeMissing(
         mobileNetworkCode: mobileNetworkCode ?? this.mobileNetworkCode,
       );

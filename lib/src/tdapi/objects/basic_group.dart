@@ -41,24 +41,24 @@ final class BasicGroup extends TdObject {
 
   /// Parses a [BasicGroup] from TDLib JSON.
   factory BasicGroup.fromJson(Map<String, dynamic> json) => BasicGroup(
-        id: _readInt(json['id']),
-        memberCount: _readInt(json['member_count']),
-        status: _readObject(json['status'], ChatMemberStatus.fromJson),
-        isActive: _readBool(json['is_active']),
-        upgradedToSupergroupId: _readInt(json['upgraded_to_supergroup_id']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    id: _readInt(json['id']),
+    memberCount: _readInt(json['member_count']),
+    status: _readObject(json['status'], ChatMemberStatus.fromJson),
+    isActive: _readBool(json['is_active']),
+    upgradedToSupergroupId: _readInt(json['upgraded_to_supergroup_id']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'member_count': memberCount,
-        'status': status.toJson(),
-        'is_active': isActive,
-        'upgraded_to_supergroup_id': upgradedToSupergroupId,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'member_count': memberCount,
+    'status': status.toJson(),
+    'is_active': isActive,
+    'upgraded_to_supergroup_id': upgradedToSupergroupId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -70,17 +70,16 @@ final class BasicGroup extends TdObject {
     int? upgradedToSupergroupId,
     dynamic extra,
     int? clientId,
-  }) =>
-      BasicGroup(
-        id: id ?? this.id,
-        memberCount: memberCount ?? this.memberCount,
-        status: status ?? this.status,
-        isActive: isActive ?? this.isActive,
-        upgradedToSupergroupId:
-            upgradedToSupergroupId ?? this.upgradedToSupergroupId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => BasicGroup(
+    id: id ?? this.id,
+    memberCount: memberCount ?? this.memberCount,
+    status: status ?? this.status,
+    isActive: isActive ?? this.isActive,
+    upgradedToSupergroupId:
+        upgradedToSupergroupId ?? this.upgradedToSupergroupId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'basicGroup';

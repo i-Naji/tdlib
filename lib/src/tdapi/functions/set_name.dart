@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetName extends TdFunction<Ok> {
   /// Changes the first and last name of the current user
-  const SetName({
-    required this.firstName,
-    required this.lastName,
-  });
+  const SetName({required this.firstName, required this.lastName});
 
   /// The new value of the first name for the current user; 1-64 characters
   final String firstName;
@@ -21,22 +18,18 @@ final class SetName extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'first_name': firstName,
-        'last_name': lastName,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'first_name': firstName,
+    'last_name': lastName,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetName copyWith({
-    String? firstName,
-    String? lastName,
-  }) =>
-      SetName(
-        firstName: firstName ?? this.firstName,
-        lastName: lastName ?? this.lastName,
-      );
+  SetName copyWith({String? firstName, String? lastName}) => SetName(
+    firstName: firstName ?? this.firstName,
+    lastName: lastName ?? this.lastName,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setName';

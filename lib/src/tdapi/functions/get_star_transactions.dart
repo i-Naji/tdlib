@@ -33,14 +33,14 @@ final class GetStarTransactions extends TdFunction<StarTransactions> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'owner_id': ownerId.toJson(),
-        'subscription_id': subscriptionId,
-        'direction': direction?.toJson(),
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'owner_id': ownerId.toJson(),
+    'subscription_id': subscriptionId,
+    'direction': direction?.toJson(),
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class GetStarTransactions extends TdFunction<StarTransactions> {
     TransactionDirection? Function()? direction,
     String? offset,
     int? limit,
-  }) =>
-      GetStarTransactions(
-        ownerId: ownerId ?? this.ownerId,
-        subscriptionId: subscriptionId ?? this.subscriptionId,
-        direction: direction != null ? direction() : this.direction,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => GetStarTransactions(
+    ownerId: ownerId ?? this.ownerId,
+    subscriptionId: subscriptionId ?? this.subscriptionId,
+    direction: direction != null ? direction() : this.direction,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getStarTransactions';

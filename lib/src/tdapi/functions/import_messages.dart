@@ -25,12 +25,12 @@ final class ImportMessages extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_file': messageFile.toJson(),
-        'attached_files': [for (final e in attachedFiles) e.toJson()],
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_file': messageFile.toJson(),
+    'attached_files': [for (final e in attachedFiles) e.toJson()],
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class ImportMessages extends TdFunction<Ok> {
     int? chatId,
     InputFile? messageFile,
     List<InputFile>? attachedFiles,
-  }) =>
-      ImportMessages(
-        chatId: chatId ?? this.chatId,
-        messageFile: messageFile ?? this.messageFile,
-        attachedFiles: attachedFiles ?? this.attachedFiles,
-      );
+  }) => ImportMessages(
+    chatId: chatId ?? this.chatId,
+    messageFile: messageFile ?? this.messageFile,
+    attachedFiles: attachedFiles ?? this.attachedFiles,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'importMessages';

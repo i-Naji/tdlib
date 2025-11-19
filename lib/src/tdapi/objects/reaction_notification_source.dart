@@ -55,9 +55,7 @@ final class ReactionNotificationSourceNone extends ReactionNotificationSource {
       const ReactionNotificationSourceNone();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -80,13 +78,11 @@ final class ReactionNotificationSourceContacts
 
   /// Parses a [ReactionNotificationSourceContacts] from TDLib JSON.
   factory ReactionNotificationSourceContacts.fromJson(
-          Map<String, dynamic> json) =>
-      const ReactionNotificationSourceContacts();
+    Map<String, dynamic> json,
+  ) => const ReactionNotificationSourceContacts();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -111,9 +107,7 @@ final class ReactionNotificationSourceAll extends ReactionNotificationSource {
       const ReactionNotificationSourceAll();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

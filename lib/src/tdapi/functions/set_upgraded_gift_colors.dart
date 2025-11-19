@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetUpgradedGiftColors extends TdFunction<Ok> {
   /// Changes color scheme for the current user based on an owned or a hosted upgraded gift; for Telegram Premium users only
-  const SetUpgradedGiftColors({
-    required this.upgradedGiftColorsId,
-  });
+  const SetUpgradedGiftColors({required this.upgradedGiftColorsId});
 
   /// Identifier of the upgradedGiftColors scheme to use
   final int upgradedGiftColorsId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'upgraded_gift_colors_id': upgradedGiftColorsId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'upgraded_gift_colors_id': upgradedGiftColorsId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetUpgradedGiftColors copyWith({
-    int? upgradedGiftColorsId,
-  }) =>
+  SetUpgradedGiftColors copyWith({int? upgradedGiftColorsId}) =>
       SetUpgradedGiftColors(
         upgradedGiftColorsId: upgradedGiftColorsId ?? this.upgradedGiftColorsId,
       );

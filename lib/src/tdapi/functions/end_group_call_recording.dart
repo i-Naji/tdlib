@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class EndGroupCallRecording extends TdFunction<Ok> {
   /// Ends recording of an active group call; for video chats only. Requires groupCall.can_be_managed right
-  const EndGroupCallRecording({
-    required this.groupCallId,
-  });
+  const EndGroupCallRecording({required this.groupCallId});
 
   /// Group call identifier
   final int groupCallId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  EndGroupCallRecording copyWith({
-    int? groupCallId,
-  }) =>
-      EndGroupCallRecording(
-        groupCallId: groupCallId ?? this.groupCallId,
-      );
+  EndGroupCallRecording copyWith({int? groupCallId}) =>
+      EndGroupCallRecording(groupCallId: groupCallId ?? this.groupCallId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'endGroupCallRecording';

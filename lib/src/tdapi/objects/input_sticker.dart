@@ -31,23 +31,22 @@ final class InputSticker extends TdObject {
 
   /// Parses a [InputSticker] from TDLib JSON.
   factory InputSticker.fromJson(Map<String, dynamic> json) => InputSticker(
-        sticker: _readObject(json['sticker'], InputFile.fromJson),
-        format: _readObject(json['format'], StickerFormat.fromJson),
-        emojis: _readString(json['emojis']),
-        maskPosition:
-            _readOptional(json['mask_position'], MaskPosition.fromJson),
-        keywords: _readList<String>(json['keywords'], _readString),
-      );
+    sticker: _readObject(json['sticker'], InputFile.fromJson),
+    format: _readObject(json['format'], StickerFormat.fromJson),
+    emojis: _readString(json['emojis']),
+    maskPosition: _readOptional(json['mask_position'], MaskPosition.fromJson),
+    keywords: _readList<String>(json['keywords'], _readString),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker': sticker.toJson(),
-        'format': format.toJson(),
-        'emojis': emojis,
-        'mask_position': maskPosition?.toJson(),
-        'keywords': keywords,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker': sticker.toJson(),
+    'format': format.toJson(),
+    'emojis': emojis,
+    'mask_position': maskPosition?.toJson(),
+    'keywords': keywords,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,14 +56,13 @@ final class InputSticker extends TdObject {
     String? emojis,
     MaskPosition? Function()? maskPosition,
     List<String>? keywords,
-  }) =>
-      InputSticker(
-        sticker: sticker ?? this.sticker,
-        format: format ?? this.format,
-        emojis: emojis ?? this.emojis,
-        maskPosition: maskPosition != null ? maskPosition() : this.maskPosition,
-        keywords: keywords ?? this.keywords,
-      );
+  }) => InputSticker(
+    sticker: sticker ?? this.sticker,
+    format: format ?? this.format,
+    emojis: emojis ?? this.emojis,
+    maskPosition: maskPosition != null ? maskPosition() : this.maskPosition,
+    keywords: keywords ?? this.keywords,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputSticker';

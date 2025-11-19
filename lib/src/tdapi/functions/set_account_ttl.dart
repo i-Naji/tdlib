@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetAccountTtl extends TdFunction<Ok> {
   /// Changes the period of inactivity after which the account of the current user will automatically be deleted
-  const SetAccountTtl({
-    required this.ttl,
-  });
+  const SetAccountTtl({required this.ttl});
 
   /// New account TTL
   final AccountTtl ttl;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'ttl': ttl.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'ttl': ttl.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetAccountTtl copyWith({
-    AccountTtl? ttl,
-  }) =>
-      SetAccountTtl(
-        ttl: ttl ?? this.ttl,
-      );
+  SetAccountTtl copyWith({AccountTtl? ttl}) =>
+      SetAccountTtl(ttl: ttl ?? this.ttl);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setAccountTtl';

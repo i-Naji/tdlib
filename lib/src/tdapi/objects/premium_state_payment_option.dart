@@ -28,8 +28,10 @@ final class PremiumStatePaymentOption extends TdObject {
   /// Parses a [PremiumStatePaymentOption] from TDLib JSON.
   factory PremiumStatePaymentOption.fromJson(Map<String, dynamic> json) =>
       PremiumStatePaymentOption(
-        paymentOption:
-            _readObject(json['payment_option'], PremiumPaymentOption.fromJson),
+        paymentOption: _readObject(
+          json['payment_option'],
+          PremiumPaymentOption.fromJson,
+        ),
         isCurrent: _readBool(json['is_current']),
         isUpgrade: _readBool(json['is_upgrade']),
         lastTransactionId: _readString(json['last_transaction_id']),
@@ -37,12 +39,12 @@ final class PremiumStatePaymentOption extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'payment_option': paymentOption.toJson(),
-        'is_current': isCurrent,
-        'is_upgrade': isUpgrade,
-        'last_transaction_id': lastTransactionId,
-      };
+    '@type': CONSTRUCTOR,
+    'payment_option': paymentOption.toJson(),
+    'is_current': isCurrent,
+    'is_upgrade': isUpgrade,
+    'last_transaction_id': lastTransactionId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,13 +53,12 @@ final class PremiumStatePaymentOption extends TdObject {
     bool? isCurrent,
     bool? isUpgrade,
     String? lastTransactionId,
-  }) =>
-      PremiumStatePaymentOption(
-        paymentOption: paymentOption ?? this.paymentOption,
-        isCurrent: isCurrent ?? this.isCurrent,
-        isUpgrade: isUpgrade ?? this.isUpgrade,
-        lastTransactionId: lastTransactionId ?? this.lastTransactionId,
-      );
+  }) => PremiumStatePaymentOption(
+    paymentOption: paymentOption ?? this.paymentOption,
+    isCurrent: isCurrent ?? this.isCurrent,
+    isUpgrade: isUpgrade ?? this.isUpgrade,
+    lastTransactionId: lastTransactionId ?? this.lastTransactionId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumStatePaymentOption';

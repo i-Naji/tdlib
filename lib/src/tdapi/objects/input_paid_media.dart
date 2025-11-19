@@ -35,25 +35,27 @@ final class InputPaidMedia extends TdObject {
 
   /// Parses a [InputPaidMedia] from TDLib JSON.
   factory InputPaidMedia.fromJson(Map<String, dynamic> json) => InputPaidMedia(
-        type: _readObject(json['type'], InputPaidMediaType.fromJson),
-        media: _readObject(json['media'], InputFile.fromJson),
-        thumbnail: _readOptional(json['thumbnail'], InputThumbnail.fromJson),
-        addedStickerFileIds:
-            _readList<int>(json['added_sticker_file_ids'], _readInt),
-        width: _readInt(json['width']),
-        height: _readInt(json['height']),
-      );
+    type: _readObject(json['type'], InputPaidMediaType.fromJson),
+    media: _readObject(json['media'], InputFile.fromJson),
+    thumbnail: _readOptional(json['thumbnail'], InputThumbnail.fromJson),
+    addedStickerFileIds: _readList<int>(
+      json['added_sticker_file_ids'],
+      _readInt,
+    ),
+    width: _readInt(json['width']),
+    height: _readInt(json['height']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-        'media': media.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'added_sticker_file_ids': addedStickerFileIds,
-        'width': width,
-        'height': height,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+    'media': media.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'added_sticker_file_ids': addedStickerFileIds,
+    'width': width,
+    'height': height,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -64,15 +66,14 @@ final class InputPaidMedia extends TdObject {
     List<int>? addedStickerFileIds,
     int? width,
     int? height,
-  }) =>
-      InputPaidMedia(
-        type: type ?? this.type,
-        media: media ?? this.media,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
-        width: width ?? this.width,
-        height: height ?? this.height,
-      );
+  }) => InputPaidMedia(
+    type: type ?? this.type,
+    media: media ?? this.media,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
+    width: width ?? this.width,
+    height: height ?? this.height,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPaidMedia';

@@ -36,7 +36,9 @@ final class FoundChatBoosts extends TdObject {
       FoundChatBoosts(
         totalCount: _readInt(json['total_count']),
         boosts: _readList<ChatBoost>(
-            json['boosts'], (e) => _readObject(e, ChatBoost.fromJson)),
+          json['boosts'],
+          (e) => _readObject(e, ChatBoost.fromJson),
+        ),
         nextOffset: _readString(json['next_offset']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -44,11 +46,11 @@ final class FoundChatBoosts extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'boosts': [for (final e in boosts) e.toJson()],
-        'next_offset': nextOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'boosts': [for (final e in boosts) e.toJson()],
+    'next_offset': nextOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -58,14 +60,13 @@ final class FoundChatBoosts extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) =>
-      FoundChatBoosts(
-        totalCount: totalCount ?? this.totalCount,
-        boosts: boosts ?? this.boosts,
-        nextOffset: nextOffset ?? this.nextOffset,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => FoundChatBoosts(
+    totalCount: totalCount ?? this.totalCount,
+    boosts: boosts ?? this.boosts,
+    nextOffset: nextOffset ?? this.nextOffset,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'foundChatBoosts';

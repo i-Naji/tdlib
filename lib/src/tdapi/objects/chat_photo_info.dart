@@ -31,23 +31,22 @@ final class ChatPhotoInfo extends TdObject {
 
   /// Parses a [ChatPhotoInfo] from TDLib JSON.
   factory ChatPhotoInfo.fromJson(Map<String, dynamic> json) => ChatPhotoInfo(
-        small: _readObject(json['small'], File.fromJson),
-        big: _readObject(json['big'], File.fromJson),
-        minithumbnail:
-            _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
-        hasAnimation: _readBool(json['has_animation']),
-        isPersonal: _readBool(json['is_personal']),
-      );
+    small: _readObject(json['small'], File.fromJson),
+    big: _readObject(json['big'], File.fromJson),
+    minithumbnail: _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
+    hasAnimation: _readBool(json['has_animation']),
+    isPersonal: _readBool(json['is_personal']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'small': small.toJson(),
-        'big': big.toJson(),
-        'minithumbnail': minithumbnail?.toJson(),
-        'has_animation': hasAnimation,
-        'is_personal': isPersonal,
-      };
+    '@type': CONSTRUCTOR,
+    'small': small.toJson(),
+    'big': big.toJson(),
+    'minithumbnail': minithumbnail?.toJson(),
+    'has_animation': hasAnimation,
+    'is_personal': isPersonal,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,15 +56,13 @@ final class ChatPhotoInfo extends TdObject {
     Minithumbnail? Function()? minithumbnail,
     bool? hasAnimation,
     bool? isPersonal,
-  }) =>
-      ChatPhotoInfo(
-        small: small ?? this.small,
-        big: big ?? this.big,
-        minithumbnail:
-            minithumbnail != null ? minithumbnail() : this.minithumbnail,
-        hasAnimation: hasAnimation ?? this.hasAnimation,
-        isPersonal: isPersonal ?? this.isPersonal,
-      );
+  }) => ChatPhotoInfo(
+    small: small ?? this.small,
+    big: big ?? this.big,
+    minithumbnail: minithumbnail != null ? minithumbnail() : this.minithumbnail,
+    hasAnimation: hasAnimation ?? this.hasAnimation,
+    isPersonal: isPersonal ?? this.isPersonal,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatPhotoInfo';

@@ -65,10 +65,10 @@ final class PaymentProviderSmartGlocal extends PaymentProvider {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'public_token': publicToken,
-        'tokenize_url': tokenizeUrl,
-      };
+    '@type': CONSTRUCTOR,
+    'public_token': publicToken,
+    'tokenize_url': tokenizeUrl,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -76,11 +76,10 @@ final class PaymentProviderSmartGlocal extends PaymentProvider {
   PaymentProviderSmartGlocal copyWith({
     String? publicToken,
     String? tokenizeUrl,
-  }) =>
-      PaymentProviderSmartGlocal(
-        publicToken: publicToken ?? this.publicToken,
-        tokenizeUrl: tokenizeUrl ?? this.tokenizeUrl,
-      );
+  }) => PaymentProviderSmartGlocal(
+    publicToken: publicToken ?? this.publicToken,
+    tokenizeUrl: tokenizeUrl ?? this.tokenizeUrl,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'paymentProviderSmartGlocal';
@@ -122,12 +121,12 @@ final class PaymentProviderStripe extends PaymentProvider {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'publishable_key': publishableKey,
-        'need_country': needCountry,
-        'need_postal_code': needPostalCode,
-        'need_cardholder_name': needCardholderName,
-      };
+    '@type': CONSTRUCTOR,
+    'publishable_key': publishableKey,
+    'need_country': needCountry,
+    'need_postal_code': needPostalCode,
+    'need_cardholder_name': needCardholderName,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -137,13 +136,12 @@ final class PaymentProviderStripe extends PaymentProvider {
     bool? needCountry,
     bool? needPostalCode,
     bool? needCardholderName,
-  }) =>
-      PaymentProviderStripe(
-        publishableKey: publishableKey ?? this.publishableKey,
-        needCountry: needCountry ?? this.needCountry,
-        needPostalCode: needPostalCode ?? this.needPostalCode,
-        needCardholderName: needCardholderName ?? this.needCardholderName,
-      );
+  }) => PaymentProviderStripe(
+    publishableKey: publishableKey ?? this.publishableKey,
+    needCountry: needCountry ?? this.needCountry,
+    needPostalCode: needPostalCode ?? this.needPostalCode,
+    needCardholderName: needCardholderName ?? this.needCardholderName,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'paymentProviderStripe';
@@ -155,34 +153,23 @@ final class PaymentProviderStripe extends PaymentProvider {
 /// Some other payment provider, for which a web payment form must be shown
 final class PaymentProviderOther extends PaymentProvider {
   /// Some other payment provider, for which a web payment form must be shown
-  const PaymentProviderOther({
-    required this.url,
-  });
+  const PaymentProviderOther({required this.url});
 
   /// Payment form URL
   final String url;
 
   /// Parses a [PaymentProviderOther] from TDLib JSON.
   factory PaymentProviderOther.fromJson(Map<String, dynamic> json) =>
-      PaymentProviderOther(
-        url: _readString(json['url']),
-      );
+      PaymentProviderOther(url: _readString(json['url']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'url': url};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PaymentProviderOther copyWith({
-    String? url,
-  }) =>
-      PaymentProviderOther(
-        url: url ?? this.url,
-      );
+  PaymentProviderOther copyWith({String? url}) =>
+      PaymentProviderOther(url: url ?? this.url);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'paymentProviderOther';

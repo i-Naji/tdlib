@@ -36,12 +36,12 @@ final class LocationAddress extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'country_code': countryCode,
-        'state': state,
-        'city': city,
-        'street': street,
-      };
+    '@type': CONSTRUCTOR,
+    'country_code': countryCode,
+    'state': state,
+    'city': city,
+    'street': street,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class LocationAddress extends TdObject {
     String? state,
     String? city,
     String? street,
-  }) =>
-      LocationAddress(
-        countryCode: countryCode ?? this.countryCode,
-        state: state ?? this.state,
-        city: city ?? this.city,
-        street: street ?? this.street,
-      );
+  }) => LocationAddress(
+    countryCode: countryCode ?? this.countryCode,
+    state: state ?? this.state,
+    city: city ?? this.city,
+    street: street ?? this.street,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'locationAddress';

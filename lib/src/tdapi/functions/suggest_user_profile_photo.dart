@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SuggestUserProfilePhoto extends TdFunction<Ok> {
   /// Suggests a profile photo to another regular user with common messages and allowing non-paid messages
-  const SuggestUserProfilePhoto({
-    required this.userId,
-    required this.photo,
-  });
+  const SuggestUserProfilePhoto({required this.userId, required this.photo});
 
   /// User identifier
   final int userId;
@@ -21,18 +18,15 @@ final class SuggestUserProfilePhoto extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'photo': photo.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'photo': photo.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SuggestUserProfilePhoto copyWith({
-    int? userId,
-    InputChatPhoto? photo,
-  }) =>
+  SuggestUserProfilePhoto copyWith({int? userId, InputChatPhoto? photo}) =>
       SuggestUserProfilePhoto(
         userId: userId ?? this.userId,
         photo: photo ?? this.photo,

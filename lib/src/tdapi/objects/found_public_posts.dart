@@ -39,10 +39,14 @@ final class FoundPublicPosts extends TdObject {
   factory FoundPublicPosts.fromJson(Map<String, dynamic> json) =>
       FoundPublicPosts(
         messages: _readList<Message>(
-            json['messages'], (e) => _readObject(e, Message.fromJson)),
+          json['messages'],
+          (e) => _readObject(e, Message.fromJson),
+        ),
         nextOffset: _readString(json['next_offset']),
         searchLimits: _readOptional(
-            json['search_limits'], PublicPostSearchLimits.fromJson),
+          json['search_limits'],
+          PublicPostSearchLimits.fromJson,
+        ),
         areLimitsExceeded: _readBool(json['are_limits_exceeded']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -50,12 +54,12 @@ final class FoundPublicPosts extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'messages': [for (final e in messages) e.toJson()],
-        'next_offset': nextOffset,
-        'search_limits': searchLimits?.toJson(),
-        'are_limits_exceeded': areLimitsExceeded,
-      };
+    '@type': CONSTRUCTOR,
+    'messages': [for (final e in messages) e.toJson()],
+    'next_offset': nextOffset,
+    'search_limits': searchLimits?.toJson(),
+    'are_limits_exceeded': areLimitsExceeded,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -66,15 +70,14 @@ final class FoundPublicPosts extends TdObject {
     bool? areLimitsExceeded,
     dynamic extra,
     int? clientId,
-  }) =>
-      FoundPublicPosts(
-        messages: messages ?? this.messages,
-        nextOffset: nextOffset ?? this.nextOffset,
-        searchLimits: searchLimits != null ? searchLimits() : this.searchLimits,
-        areLimitsExceeded: areLimitsExceeded ?? this.areLimitsExceeded,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => FoundPublicPosts(
+    messages: messages ?? this.messages,
+    nextOffset: nextOffset ?? this.nextOffset,
+    searchLimits: searchLimits != null ? searchLimits() : this.searchLimits,
+    areLimitsExceeded: areLimitsExceeded ?? this.areLimitsExceeded,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'foundPublicPosts';

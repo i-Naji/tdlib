@@ -31,22 +31,22 @@ final class CallServer extends TdObject {
 
   /// Parses a [CallServer] from TDLib JSON.
   factory CallServer.fromJson(Map<String, dynamic> json) => CallServer(
-        id: _readInt(json['id']),
-        ipAddress: _readString(json['ip_address']),
-        ipv6Address: _readString(json['ipv6_address']),
-        port: _readInt(json['port']),
-        type: _readObject(json['type'], CallServerType.fromJson),
-      );
+    id: _readInt(json['id']),
+    ipAddress: _readString(json['ip_address']),
+    ipv6Address: _readString(json['ipv6_address']),
+    port: _readInt(json['port']),
+    type: _readObject(json['type'], CallServerType.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'ip_address': ipAddress,
-        'ipv6_address': ipv6Address,
-        'port': port,
-        'type': type.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'ip_address': ipAddress,
+    'ipv6_address': ipv6Address,
+    'port': port,
+    'type': type.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,14 +56,13 @@ final class CallServer extends TdObject {
     String? ipv6Address,
     int? port,
     CallServerType? type,
-  }) =>
-      CallServer(
-        id: id ?? this.id,
-        ipAddress: ipAddress ?? this.ipAddress,
-        ipv6Address: ipv6Address ?? this.ipv6Address,
-        port: port ?? this.port,
-        type: type ?? this.type,
-      );
+  }) => CallServer(
+    id: id ?? this.id,
+    ipAddress: ipAddress ?? this.ipAddress,
+    ipv6Address: ipv6Address ?? this.ipv6Address,
+    port: port ?? this.port,
+    type: type ?? this.type,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'callServer';

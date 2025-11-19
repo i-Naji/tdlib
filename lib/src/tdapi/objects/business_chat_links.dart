@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of business chat links created by the user
 final class BusinessChatLinks extends TdObject {
   /// Contains a list of business chat links created by the user
-  const BusinessChatLinks({
-    required this.links,
-    this.extra,
-    this.clientId,
-  });
+  const BusinessChatLinks({required this.links, this.extra, this.clientId});
 
   /// List of links
   final List<BusinessChatLink> links;
@@ -27,16 +23,18 @@ final class BusinessChatLinks extends TdObject {
   factory BusinessChatLinks.fromJson(Map<String, dynamic> json) =>
       BusinessChatLinks(
         links: _readList<BusinessChatLink>(
-            json['links'], (e) => _readObject(e, BusinessChatLink.fromJson)),
+          json['links'],
+          (e) => _readObject(e, BusinessChatLink.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'links': [for (final e in links) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'links': [for (final e in links) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +42,11 @@ final class BusinessChatLinks extends TdObject {
     List<BusinessChatLink>? links,
     dynamic extra,
     int? clientId,
-  }) =>
-      BusinessChatLinks(
-        links: links ?? this.links,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => BusinessChatLinks(
+    links: links ?? this.links,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'businessChatLinks';

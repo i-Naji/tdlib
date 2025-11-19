@@ -43,11 +43,11 @@ final class CallbackQueryAnswer extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text,
-        'show_alert': showAlert,
-        'url': url,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text,
+    'show_alert': showAlert,
+    'url': url,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,14 +57,13 @@ final class CallbackQueryAnswer extends TdObject {
     String? url,
     dynamic extra,
     int? clientId,
-  }) =>
-      CallbackQueryAnswer(
-        text: text ?? this.text,
-        showAlert: showAlert ?? this.showAlert,
-        url: url ?? this.url,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CallbackQueryAnswer(
+    text: text ?? this.text,
+    showAlert: showAlert ?? this.showAlert,
+    url: url ?? this.url,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'callbackQueryAnswer';

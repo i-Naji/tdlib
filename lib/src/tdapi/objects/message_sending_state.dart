@@ -47,34 +47,26 @@ final class UndecodedMessageSendingState extends MessageSendingState {
 /// The message is being sent now, but has not yet been delivered to the server
 final class MessageSendingStatePending extends MessageSendingState {
   /// The message is being sent now, but has not yet been delivered to the server
-  const MessageSendingStatePending({
-    required this.sendingId,
-  });
+  const MessageSendingStatePending({required this.sendingId});
 
   /// Non-persistent message sending identifier, specified by the application
   final int sendingId;
 
   /// Parses a [MessageSendingStatePending] from TDLib JSON.
   factory MessageSendingStatePending.fromJson(Map<String, dynamic> json) =>
-      MessageSendingStatePending(
-        sendingId: _readInt(json['sending_id']),
-      );
+      MessageSendingStatePending(sendingId: _readInt(json['sending_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sending_id': sendingId,
-      };
+    '@type': CONSTRUCTOR,
+    'sending_id': sendingId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageSendingStatePending copyWith({
-    int? sendingId,
-  }) =>
-      MessageSendingStatePending(
-        sendingId: sendingId ?? this.sendingId,
-      );
+  MessageSendingStatePending copyWith({int? sendingId}) =>
+      MessageSendingStatePending(sendingId: sendingId ?? this.sendingId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageSendingStatePending';
@@ -125,22 +117,23 @@ final class MessageSendingStateFailed extends MessageSendingState {
         needAnotherSender: _readBool(json['need_another_sender']),
         needAnotherReplyQuote: _readBool(json['need_another_reply_quote']),
         needDropReply: _readBool(json['need_drop_reply']),
-        requiredPaidMessageStarCount:
-            _readInt(json['required_paid_message_star_count']),
+        requiredPaidMessageStarCount: _readInt(
+          json['required_paid_message_star_count'],
+        ),
         retryAfter: _readDouble(json['retry_after']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'error': error.toJson(),
-        'can_retry': canRetry,
-        'need_another_sender': needAnotherSender,
-        'need_another_reply_quote': needAnotherReplyQuote,
-        'need_drop_reply': needDropReply,
-        'required_paid_message_star_count': requiredPaidMessageStarCount,
-        'retry_after': retryAfter,
-      };
+    '@type': CONSTRUCTOR,
+    'error': error.toJson(),
+    'can_retry': canRetry,
+    'need_another_sender': needAnotherSender,
+    'need_another_reply_quote': needAnotherReplyQuote,
+    'need_drop_reply': needDropReply,
+    'required_paid_message_star_count': requiredPaidMessageStarCount,
+    'retry_after': retryAfter,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -153,18 +146,16 @@ final class MessageSendingStateFailed extends MessageSendingState {
     bool? needDropReply,
     int? requiredPaidMessageStarCount,
     double? retryAfter,
-  }) =>
-      MessageSendingStateFailed(
-        error: error ?? this.error,
-        canRetry: canRetry ?? this.canRetry,
-        needAnotherSender: needAnotherSender ?? this.needAnotherSender,
-        needAnotherReplyQuote:
-            needAnotherReplyQuote ?? this.needAnotherReplyQuote,
-        needDropReply: needDropReply ?? this.needDropReply,
-        requiredPaidMessageStarCount:
-            requiredPaidMessageStarCount ?? this.requiredPaidMessageStarCount,
-        retryAfter: retryAfter ?? this.retryAfter,
-      );
+  }) => MessageSendingStateFailed(
+    error: error ?? this.error,
+    canRetry: canRetry ?? this.canRetry,
+    needAnotherSender: needAnotherSender ?? this.needAnotherSender,
+    needAnotherReplyQuote: needAnotherReplyQuote ?? this.needAnotherReplyQuote,
+    needDropReply: needDropReply ?? this.needDropReply,
+    requiredPaidMessageStarCount:
+        requiredPaidMessageStarCount ?? this.requiredPaidMessageStarCount,
+    retryAfter: retryAfter ?? this.retryAfter,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageSendingStateFailed';

@@ -29,13 +29,13 @@ final class ReportStory extends TdFunction<ReportStoryResult> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'story_id': storyId,
-        'option_id': optionId,
-        'text': text,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+    'option_id': optionId,
+    'text': text,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class ReportStory extends TdFunction<ReportStoryResult> {
     int? storyId,
     String? optionId,
     String? text,
-  }) =>
-      ReportStory(
-        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-        storyId: storyId ?? this.storyId,
-        optionId: optionId ?? this.optionId,
-        text: text ?? this.text,
-      );
+  }) => ReportStory(
+    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+    storyId: storyId ?? this.storyId,
+    optionId: optionId ?? this.optionId,
+    text: text ?? this.text,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reportStory';

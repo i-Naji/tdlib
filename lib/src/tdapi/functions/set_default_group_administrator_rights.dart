@@ -17,22 +17,21 @@ final class SetDefaultGroupAdministratorRights extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'default_group_administrator_rights':
-            defaultGroupAdministratorRights?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'default_group_administrator_rights': defaultGroupAdministratorRights
+        ?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetDefaultGroupAdministratorRights copyWith({
     ChatAdministratorRights? Function()? defaultGroupAdministratorRights,
-  }) =>
-      SetDefaultGroupAdministratorRights(
-        defaultGroupAdministratorRights: defaultGroupAdministratorRights != null
-            ? defaultGroupAdministratorRights()
-            : this.defaultGroupAdministratorRights,
-      );
+  }) => SetDefaultGroupAdministratorRights(
+    defaultGroupAdministratorRights: defaultGroupAdministratorRights != null
+        ? defaultGroupAdministratorRights()
+        : this.defaultGroupAdministratorRights,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setDefaultGroupAdministratorRights';

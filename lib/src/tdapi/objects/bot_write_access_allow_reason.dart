@@ -49,32 +49,28 @@ final class UndecodedBotWriteAccessAllowReason
 final class BotWriteAccessAllowReasonConnectedWebsite
     extends BotWriteAccessAllowReason {
   /// The user connected a website by logging in using Telegram Login Widget on it
-  const BotWriteAccessAllowReasonConnectedWebsite({
-    required this.domainName,
-  });
+  const BotWriteAccessAllowReasonConnectedWebsite({required this.domainName});
 
   /// Domain name of the connected website
   final String domainName;
 
   /// Parses a [BotWriteAccessAllowReasonConnectedWebsite] from TDLib JSON.
   factory BotWriteAccessAllowReasonConnectedWebsite.fromJson(
-          Map<String, dynamic> json) =>
-      BotWriteAccessAllowReasonConnectedWebsite(
-        domainName: _readString(json['domain_name']),
-      );
+    Map<String, dynamic> json,
+  ) => BotWriteAccessAllowReasonConnectedWebsite(
+    domainName: _readString(json['domain_name']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'domain_name': domainName,
-      };
+    '@type': CONSTRUCTOR,
+    'domain_name': domainName,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  BotWriteAccessAllowReasonConnectedWebsite copyWith({
-    String? domainName,
-  }) =>
+  BotWriteAccessAllowReasonConnectedWebsite copyWith({String? domainName}) =>
       BotWriteAccessAllowReasonConnectedWebsite(
         domainName: domainName ?? this.domainName,
       );
@@ -94,13 +90,11 @@ final class BotWriteAccessAllowReasonAddedToAttachmentMenu
 
   /// Parses a [BotWriteAccessAllowReasonAddedToAttachmentMenu] from TDLib JSON.
   factory BotWriteAccessAllowReasonAddedToAttachmentMenu.fromJson(
-          Map<String, dynamic> json) =>
-      const BotWriteAccessAllowReasonAddedToAttachmentMenu();
+    Map<String, dynamic> json,
+  ) => const BotWriteAccessAllowReasonAddedToAttachmentMenu();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -120,35 +114,29 @@ final class BotWriteAccessAllowReasonAddedToAttachmentMenu
 final class BotWriteAccessAllowReasonLaunchedWebApp
     extends BotWriteAccessAllowReason {
   /// The user launched a Web App using getWebAppLinkUrl
-  const BotWriteAccessAllowReasonLaunchedWebApp({
-    required this.webApp,
-  });
+  const BotWriteAccessAllowReasonLaunchedWebApp({required this.webApp});
 
   /// Information about the Web App
   final WebApp webApp;
 
   /// Parses a [BotWriteAccessAllowReasonLaunchedWebApp] from TDLib JSON.
   factory BotWriteAccessAllowReasonLaunchedWebApp.fromJson(
-          Map<String, dynamic> json) =>
-      BotWriteAccessAllowReasonLaunchedWebApp(
-        webApp: _readObject(json['web_app'], WebApp.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => BotWriteAccessAllowReasonLaunchedWebApp(
+    webApp: _readObject(json['web_app'], WebApp.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'web_app': webApp.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'web_app': webApp.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  BotWriteAccessAllowReasonLaunchedWebApp copyWith({
-    WebApp? webApp,
-  }) =>
-      BotWriteAccessAllowReasonLaunchedWebApp(
-        webApp: webApp ?? this.webApp,
-      );
+  BotWriteAccessAllowReasonLaunchedWebApp copyWith({WebApp? webApp}) =>
+      BotWriteAccessAllowReasonLaunchedWebApp(webApp: webApp ?? this.webApp);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'botWriteAccessAllowReasonLaunchedWebApp';
@@ -165,13 +153,11 @@ final class BotWriteAccessAllowReasonAcceptedRequest
 
   /// Parses a [BotWriteAccessAllowReasonAcceptedRequest] from TDLib JSON.
   factory BotWriteAccessAllowReasonAcceptedRequest.fromJson(
-          Map<String, dynamic> json) =>
-      const BotWriteAccessAllowReasonAcceptedRequest();
+    Map<String, dynamic> json,
+  ) => const BotWriteAccessAllowReasonAcceptedRequest();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

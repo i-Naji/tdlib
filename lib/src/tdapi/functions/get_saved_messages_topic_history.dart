@@ -29,13 +29,13 @@ final class GetSavedMessagesTopicHistory extends TdFunction<Messages> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'saved_messages_topic_id': savedMessagesTopicId,
-        'from_message_id': fromMessageId,
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'saved_messages_topic_id': savedMessagesTopicId,
+    'from_message_id': fromMessageId,
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class GetSavedMessagesTopicHistory extends TdFunction<Messages> {
     int? fromMessageId,
     int? offset,
     int? limit,
-  }) =>
-      GetSavedMessagesTopicHistory(
-        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-        fromMessageId: fromMessageId ?? this.fromMessageId,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => GetSavedMessagesTopicHistory(
+    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+    fromMessageId: fromMessageId ?? this.fromMessageId,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getSavedMessagesTopicHistory';

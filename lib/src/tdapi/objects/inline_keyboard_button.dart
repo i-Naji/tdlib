@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Represents a single button in an inline keyboard
 final class InlineKeyboardButton extends TdObject {
   /// Represents a single button in an inline keyboard
-  const InlineKeyboardButton({
-    required this.text,
-    required this.type,
-  });
+  const InlineKeyboardButton({required this.text, required this.type});
 
   /// Text of the button
   final String text;
@@ -26,21 +23,17 @@ final class InlineKeyboardButton extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text,
-        'type': type.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'text': text,
+    'type': type.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   InlineKeyboardButton copyWith({
     String? text,
     InlineKeyboardButtonType? type,
-  }) =>
-      InlineKeyboardButton(
-        text: text ?? this.text,
-        type: type ?? this.type,
-      );
+  }) => InlineKeyboardButton(text: text ?? this.text, type: type ?? this.type);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineKeyboardButton';

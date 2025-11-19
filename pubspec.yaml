@@ -4,8 +4,8 @@ version: 1.8.56
 homepage: https://github.com/i-Naji/tdlib
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
-  flutter: ">=3.13.0"
+  sdk: ">=3.10.0 <4.0.0"
+  flutter: ">=3.38.0"
 
 dependencies:
   flutter:
@@ -14,6 +14,11 @@ dependencies:
     sdk: flutter
   ffi: ^2.1.0
   js: ^0.6.7
+  # hook/build.dart
+  hooks: ^1.0.0
+  code_assets: ^1.0.0
+  archive: ^4.0.0
+  crypto: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -41,8 +46,6 @@ flutter:
   plugin:
     platforms:
       android:
-        package: org.naji.td.tdlib
-        pluginClass: TdlibPlugin
         dartPluginClass: TdNativePlugin
       ios:
         dartPluginClass: TdNativePlugin
@@ -85,9 +88,3 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.dev/custom-fonts/#from-packages
-
-false_secrets:
-  - /android/src/main/jniLibs/arm64-v8a/libtdjson.so
-  - /android/src/main/jniLibs/armeabi-v7a/libtdjson.so
-  - /android/src/main/jniLibs/x86/libtdjson.so
-  - /android/src/main/jniLibs/x86_64/libtdjson.so

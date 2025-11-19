@@ -26,21 +26,20 @@ final class UpgradedGiftSymbolCount extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'symbol': symbol.toJson(),
-        'total_count': totalCount,
-      };
+    '@type': CONSTRUCTOR,
+    'symbol': symbol.toJson(),
+    'total_count': totalCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   UpgradedGiftSymbolCount copyWith({
     UpgradedGiftSymbol? symbol,
     int? totalCount,
-  }) =>
-      UpgradedGiftSymbolCount(
-        symbol: symbol ?? this.symbol,
-        totalCount: totalCount ?? this.totalCount,
-      );
+  }) => UpgradedGiftSymbolCount(
+    symbol: symbol ?? this.symbol,
+    totalCount: totalCount ?? this.totalCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradedGiftSymbolCount';

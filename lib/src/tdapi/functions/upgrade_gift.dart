@@ -29,13 +29,13 @@ final class UpgradeGift extends TdFunction<UpgradeGiftResult> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'business_connection_id': businessConnectionId,
-        'received_gift_id': receivedGiftId,
-        'keep_original_details': keepOriginalDetails,
-        'star_count': starCount,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'business_connection_id': businessConnectionId,
+    'received_gift_id': receivedGiftId,
+    'keep_original_details': keepOriginalDetails,
+    'star_count': starCount,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class UpgradeGift extends TdFunction<UpgradeGiftResult> {
     String? receivedGiftId,
     bool? keepOriginalDetails,
     int? starCount,
-  }) =>
-      UpgradeGift(
-        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-        receivedGiftId: receivedGiftId ?? this.receivedGiftId,
-        keepOriginalDetails: keepOriginalDetails ?? this.keepOriginalDetails,
-        starCount: starCount ?? this.starCount,
-      );
+  }) => UpgradeGift(
+    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+    receivedGiftId: receivedGiftId ?? this.receivedGiftId,
+    keepOriginalDetails: keepOriginalDetails ?? this.keepOriginalDetails,
+    starCount: starCount ?? this.starCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradeGift';

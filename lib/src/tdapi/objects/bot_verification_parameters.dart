@@ -31,18 +31,20 @@ final class BotVerificationParameters extends TdObject {
         iconCustomEmojiId: _readInt(json['icon_custom_emoji_id']),
         organizationName: _readString(json['organization_name']),
         defaultCustomDescription: _readOptional(
-            json['default_custom_description'], FormattedText.fromJson),
+          json['default_custom_description'],
+          FormattedText.fromJson,
+        ),
         canSetCustomDescription: _readBool(json['can_set_custom_description']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'icon_custom_emoji_id': iconCustomEmojiId.toString(),
-        'organization_name': organizationName,
-        'default_custom_description': defaultCustomDescription?.toJson(),
-        'can_set_custom_description': canSetCustomDescription,
-      };
+    '@type': CONSTRUCTOR,
+    'icon_custom_emoji_id': iconCustomEmojiId.toString(),
+    'organization_name': organizationName,
+    'default_custom_description': defaultCustomDescription?.toJson(),
+    'can_set_custom_description': canSetCustomDescription,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,16 +53,15 @@ final class BotVerificationParameters extends TdObject {
     String? organizationName,
     FormattedText? Function()? defaultCustomDescription,
     bool? canSetCustomDescription,
-  }) =>
-      BotVerificationParameters(
-        iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
-        organizationName: organizationName ?? this.organizationName,
-        defaultCustomDescription: defaultCustomDescription != null
-            ? defaultCustomDescription()
-            : this.defaultCustomDescription,
-        canSetCustomDescription:
-            canSetCustomDescription ?? this.canSetCustomDescription,
-      );
+  }) => BotVerificationParameters(
+    iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
+    organizationName: organizationName ?? this.organizationName,
+    defaultCustomDescription: defaultCustomDescription != null
+        ? defaultCustomDescription()
+        : this.defaultCustomDescription,
+    canSetCustomDescription:
+        canSetCustomDescription ?? this.canSetCustomDescription,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'botVerificationParameters';

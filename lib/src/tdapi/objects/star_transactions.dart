@@ -35,8 +35,10 @@ final class StarTransactions extends TdObject {
   factory StarTransactions.fromJson(Map<String, dynamic> json) =>
       StarTransactions(
         starAmount: _readObject(json['star_amount'], StarAmount.fromJson),
-        transactions: _readList<StarTransaction>(json['transactions'],
-            (e) => _readObject(e, StarTransaction.fromJson)),
+        transactions: _readList<StarTransaction>(
+          json['transactions'],
+          (e) => _readObject(e, StarTransaction.fromJson),
+        ),
         nextOffset: _readString(json['next_offset']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -44,11 +46,11 @@ final class StarTransactions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_amount': starAmount.toJson(),
-        'transactions': [for (final e in transactions) e.toJson()],
-        'next_offset': nextOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'star_amount': starAmount.toJson(),
+    'transactions': [for (final e in transactions) e.toJson()],
+    'next_offset': nextOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -58,14 +60,13 @@ final class StarTransactions extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) =>
-      StarTransactions(
-        starAmount: starAmount ?? this.starAmount,
-        transactions: transactions ?? this.transactions,
-        nextOffset: nextOffset ?? this.nextOffset,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => StarTransactions(
+    starAmount: starAmount ?? this.starAmount,
+    transactions: transactions ?? this.transactions,
+    nextOffset: nextOffset ?? this.nextOffset,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactions';

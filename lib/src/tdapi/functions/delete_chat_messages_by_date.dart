@@ -29,13 +29,13 @@ final class DeleteChatMessagesByDate extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'min_date': minDate,
-        'max_date': maxDate,
-        'revoke': revoke,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'min_date': minDate,
+    'max_date': maxDate,
+    'revoke': revoke,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class DeleteChatMessagesByDate extends TdFunction<Ok> {
     int? minDate,
     int? maxDate,
     bool? revoke,
-  }) =>
-      DeleteChatMessagesByDate(
-        chatId: chatId ?? this.chatId,
-        minDate: minDate ?? this.minDate,
-        maxDate: maxDate ?? this.maxDate,
-        revoke: revoke ?? this.revoke,
-      );
+  }) => DeleteChatMessagesByDate(
+    chatId: chatId ?? this.chatId,
+    minDate: minDate ?? this.minDate,
+    maxDate: maxDate ?? this.maxDate,
+    revoke: revoke ?? this.revoke,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deleteChatMessagesByDate';

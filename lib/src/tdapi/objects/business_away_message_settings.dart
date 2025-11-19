@@ -29,21 +29,25 @@ final class BusinessAwayMessageSettings extends TdObject {
   factory BusinessAwayMessageSettings.fromJson(Map<String, dynamic> json) =>
       BusinessAwayMessageSettings(
         shortcutId: _readInt(json['shortcut_id']),
-        recipients:
-            _readObject(json['recipients'], BusinessRecipients.fromJson),
-        schedule:
-            _readObject(json['schedule'], BusinessAwayMessageSchedule.fromJson),
+        recipients: _readObject(
+          json['recipients'],
+          BusinessRecipients.fromJson,
+        ),
+        schedule: _readObject(
+          json['schedule'],
+          BusinessAwayMessageSchedule.fromJson,
+        ),
         offlineOnly: _readBool(json['offline_only']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'shortcut_id': shortcutId,
-        'recipients': recipients.toJson(),
-        'schedule': schedule.toJson(),
-        'offline_only': offlineOnly,
-      };
+    '@type': CONSTRUCTOR,
+    'shortcut_id': shortcutId,
+    'recipients': recipients.toJson(),
+    'schedule': schedule.toJson(),
+    'offline_only': offlineOnly,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -52,13 +56,12 @@ final class BusinessAwayMessageSettings extends TdObject {
     BusinessRecipients? recipients,
     BusinessAwayMessageSchedule? schedule,
     bool? offlineOnly,
-  }) =>
-      BusinessAwayMessageSettings(
-        shortcutId: shortcutId ?? this.shortcutId,
-        recipients: recipients ?? this.recipients,
-        schedule: schedule ?? this.schedule,
-        offlineOnly: offlineOnly ?? this.offlineOnly,
-      );
+  }) => BusinessAwayMessageSettings(
+    shortcutId: shortcutId ?? this.shortcutId,
+    recipients: recipients ?? this.recipients,
+    schedule: schedule ?? this.schedule,
+    offlineOnly: offlineOnly ?? this.offlineOnly,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'businessAwayMessageSettings';

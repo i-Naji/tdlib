@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class AddFavoriteSticker extends TdFunction<Ok> {
   /// Adds a new sticker to the list of favorite stickers. The new sticker is added to the top of the list. If the sticker was already in the list, it is removed from the list first. Only stickers belonging to a sticker set or in WEBP or WEBM format can be added to this list. Emoji stickers can't be added to favorite stickers
-  const AddFavoriteSticker({
-    required this.sticker,
-  });
+  const AddFavoriteSticker({required this.sticker});
 
   /// Sticker file to add
   final InputFile sticker;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker': sticker.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker': sticker.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  AddFavoriteSticker copyWith({
-    InputFile? sticker,
-  }) =>
-      AddFavoriteSticker(
-        sticker: sticker ?? this.sticker,
-      );
+  AddFavoriteSticker copyWith({InputFile? sticker}) =>
+      AddFavoriteSticker(sticker: sticker ?? this.sticker);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addFavoriteSticker';

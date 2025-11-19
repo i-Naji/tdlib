@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Describes name of a chat folder
 final class ChatFolderName extends TdObject {
   /// Describes name of a chat folder
-  const ChatFolderName({
-    required this.text,
-    required this.animateCustomEmoji,
-  });
+  const ChatFolderName({required this.text, required this.animateCustomEmoji});
 
   /// The text of the chat folder name; 1-12 characters without line feeds. May contain only CustomEmoji entities
   final FormattedText text;
@@ -19,23 +16,20 @@ final class ChatFolderName extends TdObject {
 
   /// Parses a [ChatFolderName] from TDLib JSON.
   factory ChatFolderName.fromJson(Map<String, dynamic> json) => ChatFolderName(
-        text: _readObject(json['text'], FormattedText.fromJson),
-        animateCustomEmoji: _readBool(json['animate_custom_emoji']),
-      );
+    text: _readObject(json['text'], FormattedText.fromJson),
+    animateCustomEmoji: _readBool(json['animate_custom_emoji']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'animate_custom_emoji': animateCustomEmoji,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'animate_custom_emoji': animateCustomEmoji,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ChatFolderName copyWith({
-    FormattedText? text,
-    bool? animateCustomEmoji,
-  }) =>
+  ChatFolderName copyWith({FormattedText? text, bool? animateCustomEmoji}) =>
       ChatFolderName(
         text: text ?? this.text,
         animateCustomEmoji: animateCustomEmoji ?? this.animateCustomEmoji,

@@ -26,12 +26,12 @@ final class SetGroupCallParticipantIsSpeaking
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'audio_source': audioSource,
-        'is_speaking': isSpeaking,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'audio_source': audioSource,
+    'is_speaking': isSpeaking,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -39,12 +39,11 @@ final class SetGroupCallParticipantIsSpeaking
     int? groupCallId,
     int? audioSource,
     bool? isSpeaking,
-  }) =>
-      SetGroupCallParticipantIsSpeaking(
-        groupCallId: groupCallId ?? this.groupCallId,
-        audioSource: audioSource ?? this.audioSource,
-        isSpeaking: isSpeaking ?? this.isSpeaking,
-      );
+  }) => SetGroupCallParticipantIsSpeaking(
+    groupCallId: groupCallId ?? this.groupCallId,
+    audioSource: audioSource ?? this.audioSource,
+    isSpeaking: isSpeaking ?? this.isSpeaking,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setGroupCallParticipantIsSpeaking';

@@ -29,19 +29,21 @@ final class GiftChatThemes extends TdObject {
 
   /// Parses a [GiftChatThemes] from TDLib JSON.
   factory GiftChatThemes.fromJson(Map<String, dynamic> json) => GiftChatThemes(
-        themes: _readList<GiftChatTheme>(
-            json['themes'], (e) => _readObject(e, GiftChatTheme.fromJson)),
-        nextOffset: _readString(json['next_offset']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    themes: _readList<GiftChatTheme>(
+      json['themes'],
+      (e) => _readObject(e, GiftChatTheme.fromJson),
+    ),
+    nextOffset: _readString(json['next_offset']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'themes': [for (final e in themes) e.toJson()],
-        'next_offset': nextOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'themes': [for (final e in themes) e.toJson()],
+    'next_offset': nextOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +52,12 @@ final class GiftChatThemes extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) =>
-      GiftChatThemes(
-        themes: themes ?? this.themes,
-        nextOffset: nextOffset ?? this.nextOffset,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => GiftChatThemes(
+    themes: themes ?? this.themes,
+    nextOffset: nextOffset ?? this.nextOffset,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giftChatThemes';

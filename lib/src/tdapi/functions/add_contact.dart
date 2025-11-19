@@ -25,12 +25,12 @@ final class AddContact extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'contact': contact.toJson(),
-        'share_phone_number': sharePhoneNumber,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'contact': contact.toJson(),
+    'share_phone_number': sharePhoneNumber,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class AddContact extends TdFunction<Ok> {
     int? userId,
     ImportedContact? contact,
     bool? sharePhoneNumber,
-  }) =>
-      AddContact(
-        userId: userId ?? this.userId,
-        contact: contact ?? this.contact,
-        sharePhoneNumber: sharePhoneNumber ?? this.sharePhoneNumber,
-      );
+  }) => AddContact(
+    userId: userId ?? this.userId,
+    contact: contact ?? this.contact,
+    sharePhoneNumber: sharePhoneNumber ?? this.sharePhoneNumber,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addContact';

@@ -37,15 +37,15 @@ final class GetChatInviteLinks extends TdFunction<ChatInviteLinks> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'creator_user_id': creatorUserId,
-        'is_revoked': isRevoked,
-        'offset_date': offsetDate,
-        'offset_invite_link': offsetInviteLink,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'creator_user_id': creatorUserId,
+    'is_revoked': isRevoked,
+    'offset_date': offsetDate,
+    'offset_invite_link': offsetInviteLink,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class GetChatInviteLinks extends TdFunction<ChatInviteLinks> {
     int? offsetDate,
     String? offsetInviteLink,
     int? limit,
-  }) =>
-      GetChatInviteLinks(
-        chatId: chatId ?? this.chatId,
-        creatorUserId: creatorUserId ?? this.creatorUserId,
-        isRevoked: isRevoked ?? this.isRevoked,
-        offsetDate: offsetDate ?? this.offsetDate,
-        offsetInviteLink: offsetInviteLink ?? this.offsetInviteLink,
-        limit: limit ?? this.limit,
-      );
+  }) => GetChatInviteLinks(
+    chatId: chatId ?? this.chatId,
+    creatorUserId: creatorUserId ?? this.creatorUserId,
+    isRevoked: isRevoked ?? this.isRevoked,
+    offsetDate: offsetDate ?? this.offsetDate,
+    offsetInviteLink: offsetInviteLink ?? this.offsetInviteLink,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatInviteLinks';

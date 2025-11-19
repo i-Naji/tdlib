@@ -27,20 +27,20 @@ final class ChecklistTask extends TdObject {
 
   /// Parses a [ChecklistTask] from TDLib JSON.
   factory ChecklistTask.fromJson(Map<String, dynamic> json) => ChecklistTask(
-        id: _readInt(json['id']),
-        text: _readObject(json['text'], FormattedText.fromJson),
-        completedByUserId: _readInt(json['completed_by_user_id']),
-        completionDate: _readInt(json['completion_date']),
-      );
+    id: _readInt(json['id']),
+    text: _readObject(json['text'], FormattedText.fromJson),
+    completedByUserId: _readInt(json['completed_by_user_id']),
+    completionDate: _readInt(json['completion_date']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'text': text.toJson(),
-        'completed_by_user_id': completedByUserId,
-        'completion_date': completionDate,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'text': text.toJson(),
+    'completed_by_user_id': completedByUserId,
+    'completion_date': completionDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class ChecklistTask extends TdObject {
     FormattedText? text,
     int? completedByUserId,
     int? completionDate,
-  }) =>
-      ChecklistTask(
-        id: id ?? this.id,
-        text: text ?? this.text,
-        completedByUserId: completedByUserId ?? this.completedByUserId,
-        completionDate: completionDate ?? this.completionDate,
-      );
+  }) => ChecklistTask(
+    id: id ?? this.id,
+    text: text ?? this.text,
+    completedByUserId: completedByUserId ?? this.completedByUserId,
+    completionDate: completionDate ?? this.completionDate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checklistTask';

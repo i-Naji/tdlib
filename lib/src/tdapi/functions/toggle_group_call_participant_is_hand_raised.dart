@@ -25,12 +25,12 @@ final class ToggleGroupCallParticipantIsHandRaised extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'participant_id': participantId.toJson(),
-        'is_hand_raised': isHandRaised,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'participant_id': participantId.toJson(),
+    'is_hand_raised': isHandRaised,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class ToggleGroupCallParticipantIsHandRaised extends TdFunction<Ok> {
     int? groupCallId,
     MessageSender? participantId,
     bool? isHandRaised,
-  }) =>
-      ToggleGroupCallParticipantIsHandRaised(
-        groupCallId: groupCallId ?? this.groupCallId,
-        participantId: participantId ?? this.participantId,
-        isHandRaised: isHandRaised ?? this.isHandRaised,
-      );
+  }) => ToggleGroupCallParticipantIsHandRaised(
+    groupCallId: groupCallId ?? this.groupCallId,
+    participantId: participantId ?? this.participantId,
+    isHandRaised: isHandRaised ?? this.isHandRaised,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleGroupCallParticipantIsHandRaised';

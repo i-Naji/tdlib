@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class RemoveRecentlyFoundChat extends TdFunction<Ok> {
   /// Removes a chat from the list of recently found chats
-  const RemoveRecentlyFoundChat({
-    required this.chatId,
-  });
+  const RemoveRecentlyFoundChat({required this.chatId});
 
   /// Identifier of the chat to be removed
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RemoveRecentlyFoundChat copyWith({
-    int? chatId,
-  }) =>
-      RemoveRecentlyFoundChat(
-        chatId: chatId ?? this.chatId,
-      );
+  RemoveRecentlyFoundChat copyWith({int? chatId}) =>
+      RemoveRecentlyFoundChat(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'removeRecentlyFoundChat';

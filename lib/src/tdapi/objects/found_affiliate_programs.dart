@@ -35,8 +35,10 @@ final class FoundAffiliatePrograms extends TdObject {
   factory FoundAffiliatePrograms.fromJson(Map<String, dynamic> json) =>
       FoundAffiliatePrograms(
         totalCount: _readInt(json['total_count']),
-        programs: _readList<FoundAffiliateProgram>(json['programs'],
-            (e) => _readObject(e, FoundAffiliateProgram.fromJson)),
+        programs: _readList<FoundAffiliateProgram>(
+          json['programs'],
+          (e) => _readObject(e, FoundAffiliateProgram.fromJson),
+        ),
         nextOffset: _readString(json['next_offset']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -44,11 +46,11 @@ final class FoundAffiliatePrograms extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'programs': [for (final e in programs) e.toJson()],
-        'next_offset': nextOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'programs': [for (final e in programs) e.toJson()],
+    'next_offset': nextOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -58,14 +60,13 @@ final class FoundAffiliatePrograms extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) =>
-      FoundAffiliatePrograms(
-        totalCount: totalCount ?? this.totalCount,
-        programs: programs ?? this.programs,
-        nextOffset: nextOffset ?? this.nextOffset,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => FoundAffiliatePrograms(
+    totalCount: totalCount ?? this.totalCount,
+    programs: programs ?? this.programs,
+    nextOffset: nextOffset ?? this.nextOffset,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'foundAffiliatePrograms';

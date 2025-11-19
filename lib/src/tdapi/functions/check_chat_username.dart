@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [CheckChatUsernameResult].
 final class CheckChatUsername extends TdFunction<CheckChatUsernameResult> {
   /// Checks whether a username can be set for a chat
-  const CheckChatUsername({
-    required this.chatId,
-    required this.username,
-  });
+  const CheckChatUsername({required this.chatId, required this.username});
 
   /// Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or 0 if the chat is being created
   final int chatId;
@@ -21,18 +18,15 @@ final class CheckChatUsername extends TdFunction<CheckChatUsernameResult> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'username': username,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'username': username,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CheckChatUsername copyWith({
-    int? chatId,
-    String? username,
-  }) =>
+  CheckChatUsername copyWith({int? chatId, String? username}) =>
       CheckChatUsername(
         chatId: chatId ?? this.chatId,
         username: username ?? this.username,

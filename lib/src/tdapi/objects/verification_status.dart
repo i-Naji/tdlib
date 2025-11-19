@@ -31,19 +31,20 @@ final class VerificationStatus extends TdObject {
         isVerified: _readBool(json['is_verified']),
         isScam: _readBool(json['is_scam']),
         isFake: _readBool(json['is_fake']),
-        botVerificationIconCustomEmojiId:
-            _readInt(json['bot_verification_icon_custom_emoji_id']),
+        botVerificationIconCustomEmojiId: _readInt(
+          json['bot_verification_icon_custom_emoji_id'],
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_verified': isVerified,
-        'is_scam': isScam,
-        'is_fake': isFake,
-        'bot_verification_icon_custom_emoji_id':
-            botVerificationIconCustomEmojiId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'is_verified': isVerified,
+    'is_scam': isScam,
+    'is_fake': isFake,
+    'bot_verification_icon_custom_emoji_id': botVerificationIconCustomEmojiId
+        .toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -52,14 +53,14 @@ final class VerificationStatus extends TdObject {
     bool? isScam,
     bool? isFake,
     int? botVerificationIconCustomEmojiId,
-  }) =>
-      VerificationStatus(
-        isVerified: isVerified ?? this.isVerified,
-        isScam: isScam ?? this.isScam,
-        isFake: isFake ?? this.isFake,
-        botVerificationIconCustomEmojiId: botVerificationIconCustomEmojiId ??
-            this.botVerificationIconCustomEmojiId,
-      );
+  }) => VerificationStatus(
+    isVerified: isVerified ?? this.isVerified,
+    isScam: isScam ?? this.isScam,
+    isFake: isFake ?? this.isFake,
+    botVerificationIconCustomEmojiId:
+        botVerificationIconCustomEmojiId ??
+        this.botVerificationIconCustomEmojiId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'verificationStatus';

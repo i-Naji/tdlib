@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetUserNote extends TdFunction<Ok> {
   /// Changes a note of a contact user
-  const SetUserNote({
-    required this.userId,
-    required this.note,
-  });
+  const SetUserNote({required this.userId, required this.note});
 
   /// User identifier
   final int userId;
@@ -21,22 +18,16 @@ final class SetUserNote extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'note': note.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'note': note.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetUserNote copyWith({
-    int? userId,
-    FormattedText? note,
-  }) =>
-      SetUserNote(
-        userId: userId ?? this.userId,
-        note: note ?? this.note,
-      );
+  SetUserNote copyWith({int? userId, FormattedText? note}) =>
+      SetUserNote(userId: userId ?? this.userId, note: note ?? this.note);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setUserNote';

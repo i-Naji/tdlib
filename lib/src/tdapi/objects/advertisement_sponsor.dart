@@ -31,11 +31,11 @@ final class AdvertisementSponsor extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'photo': photo?.toJson(),
-        'info': info,
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'photo': photo?.toJson(),
+    'info': info,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class AdvertisementSponsor extends TdObject {
     String? url,
     Photo? Function()? photo,
     String? info,
-  }) =>
-      AdvertisementSponsor(
-        url: url ?? this.url,
-        photo: photo != null ? photo() : this.photo,
-        info: info ?? this.info,
-      );
+  }) => AdvertisementSponsor(
+    url: url ?? this.url,
+    photo: photo != null ? photo() : this.photo,
+    info: info ?? this.info,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'advertisementSponsor';

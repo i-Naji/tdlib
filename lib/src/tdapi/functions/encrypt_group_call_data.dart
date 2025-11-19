@@ -29,13 +29,13 @@ final class EncryptGroupCallData extends TdFunction<Data> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'data_channel': dataChannel.toJson(),
-        'data': data,
-        'unencrypted_prefix_size': unencryptedPrefixSize,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'data_channel': dataChannel.toJson(),
+    'data': data,
+    'unencrypted_prefix_size': unencryptedPrefixSize,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,14 +44,12 @@ final class EncryptGroupCallData extends TdFunction<Data> {
     GroupCallDataChannel? dataChannel,
     String? data,
     int? unencryptedPrefixSize,
-  }) =>
-      EncryptGroupCallData(
-        groupCallId: groupCallId ?? this.groupCallId,
-        dataChannel: dataChannel ?? this.dataChannel,
-        data: data ?? this.data,
-        unencryptedPrefixSize:
-            unencryptedPrefixSize ?? this.unencryptedPrefixSize,
-      );
+  }) => EncryptGroupCallData(
+    groupCallId: groupCallId ?? this.groupCallId,
+    dataChannel: dataChannel ?? this.dataChannel,
+    data: data ?? this.data,
+    unencryptedPrefixSize: unencryptedPrefixSize ?? this.unencryptedPrefixSize,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'encryptGroupCallData';

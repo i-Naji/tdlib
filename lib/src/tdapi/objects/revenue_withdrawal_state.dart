@@ -54,9 +54,7 @@ final class RevenueWithdrawalStatePending extends RevenueWithdrawalState {
       const RevenueWithdrawalStatePending();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -94,18 +92,15 @@ final class RevenueWithdrawalStateSucceeded extends RevenueWithdrawalState {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'date': date,
-        'url': url,
-      };
+    '@type': CONSTRUCTOR,
+    'date': date,
+    'url': url,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  RevenueWithdrawalStateSucceeded copyWith({
-    int? date,
-    String? url,
-  }) =>
+  RevenueWithdrawalStateSucceeded copyWith({int? date, String? url}) =>
       RevenueWithdrawalStateSucceeded(
         date: date ?? this.date,
         url: url ?? this.url,
@@ -128,9 +123,7 @@ final class RevenueWithdrawalStateFailed extends RevenueWithdrawalState {
       const RevenueWithdrawalStateFailed();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

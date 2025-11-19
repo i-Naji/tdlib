@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Text].
 final class GetPreferredCountryLanguage extends TdFunction<Text> {
   /// Returns an IETF language tag of the language preferred in the country, which must be used to fill native fields in Telegram Passport personal details. Returns a 404 error if unknown
-  const GetPreferredCountryLanguage({
-    required this.countryCode,
-  });
+  const GetPreferredCountryLanguage({required this.countryCode});
 
   /// A two-letter ISO 3166-1 alpha-2 country code
   final String countryCode;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'country_code': countryCode,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'country_code': countryCode,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetPreferredCountryLanguage copyWith({
-    String? countryCode,
-  }) =>
-      GetPreferredCountryLanguage(
-        countryCode: countryCode ?? this.countryCode,
-      );
+  GetPreferredCountryLanguage copyWith({String? countryCode}) =>
+      GetPreferredCountryLanguage(countryCode: countryCode ?? this.countryCode);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getPreferredCountryLanguage';

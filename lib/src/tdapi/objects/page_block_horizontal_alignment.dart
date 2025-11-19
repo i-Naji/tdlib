@@ -53,13 +53,11 @@ final class PageBlockHorizontalAlignmentLeft
 
   /// Parses a [PageBlockHorizontalAlignmentLeft] from TDLib JSON.
   factory PageBlockHorizontalAlignmentLeft.fromJson(
-          Map<String, dynamic> json) =>
-      const PageBlockHorizontalAlignmentLeft();
+    Map<String, dynamic> json,
+  ) => const PageBlockHorizontalAlignmentLeft();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -82,13 +80,11 @@ final class PageBlockHorizontalAlignmentCenter
 
   /// Parses a [PageBlockHorizontalAlignmentCenter] from TDLib JSON.
   factory PageBlockHorizontalAlignmentCenter.fromJson(
-          Map<String, dynamic> json) =>
-      const PageBlockHorizontalAlignmentCenter();
+    Map<String, dynamic> json,
+  ) => const PageBlockHorizontalAlignmentCenter();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -111,13 +107,11 @@ final class PageBlockHorizontalAlignmentRight
 
   /// Parses a [PageBlockHorizontalAlignmentRight] from TDLib JSON.
   factory PageBlockHorizontalAlignmentRight.fromJson(
-          Map<String, dynamic> json) =>
-      const PageBlockHorizontalAlignmentRight();
+    Map<String, dynamic> json,
+  ) => const PageBlockHorizontalAlignmentRight();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

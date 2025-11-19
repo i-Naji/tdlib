@@ -29,18 +29,18 @@ final class FoundUsers extends TdObject {
 
   /// Parses a [FoundUsers] from TDLib JSON.
   factory FoundUsers.fromJson(Map<String, dynamic> json) => FoundUsers(
-        userIds: _readList<int>(json['user_ids'], _readInt),
-        nextOffset: _readString(json['next_offset']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    userIds: _readList<int>(json['user_ids'], _readInt),
+    nextOffset: _readString(json['next_offset']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_ids': userIds,
-        'next_offset': nextOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'user_ids': userIds,
+    'next_offset': nextOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class FoundUsers extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) =>
-      FoundUsers(
-        userIds: userIds ?? this.userIds,
-        nextOffset: nextOffset ?? this.nextOffset,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => FoundUsers(
+    userIds: userIds ?? this.userIds,
+    nextOffset: nextOffset ?? this.nextOffset,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'foundUsers';

@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Represents one member of a JSON object
 final class JsonObjectMember extends TdObject {
   /// Represents one member of a JSON object
-  const JsonObjectMember({
-    required this.key,
-    required this.value,
-  });
+  const JsonObjectMember({required this.key, required this.value});
 
   /// Member's key
   final String key;
@@ -26,21 +23,15 @@ final class JsonObjectMember extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'key': key,
-        'value': value.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'key': key,
+    'value': value.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  JsonObjectMember copyWith({
-    String? key,
-    JsonValue? value,
-  }) =>
-      JsonObjectMember(
-        key: key ?? this.key,
-        value: value ?? this.value,
-      );
+  JsonObjectMember copyWith({String? key, JsonValue? value}) =>
+      JsonObjectMember(key: key ?? this.key, value: value ?? this.value);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'jsonObjectMember';

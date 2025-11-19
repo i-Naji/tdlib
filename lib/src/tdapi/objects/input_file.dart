@@ -45,33 +45,22 @@ final class UndecodedInputFile extends InputFile {
 /// A file defined by its unique identifier
 final class InputFileId extends InputFile {
   /// A file defined by its unique identifier
-  const InputFileId({
-    required this.id,
-  });
+  const InputFileId({required this.id});
 
   /// Unique file identifier
   final int id;
 
   /// Parses a [InputFileId] from TDLib JSON.
-  factory InputFileId.fromJson(Map<String, dynamic> json) => InputFileId(
-        id: _readInt(json['id']),
-      );
+  factory InputFileId.fromJson(Map<String, dynamic> json) =>
+      InputFileId(id: _readInt(json['id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'id': id};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputFileId copyWith({
-    int? id,
-  }) =>
-      InputFileId(
-        id: id ?? this.id,
-      );
+  InputFileId copyWith({int? id}) => InputFileId(id: id ?? this.id);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputFileId';
@@ -83,34 +72,22 @@ final class InputFileId extends InputFile {
 /// A file defined by its remote identifier. The remote identifier is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application
 final class InputFileRemote extends InputFile {
   /// A file defined by its remote identifier. The remote identifier is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application
-  const InputFileRemote({
-    required this.id,
-  });
+  const InputFileRemote({required this.id});
 
   /// Remote file identifier
   final String id;
 
   /// Parses a [InputFileRemote] from TDLib JSON.
   factory InputFileRemote.fromJson(Map<String, dynamic> json) =>
-      InputFileRemote(
-        id: _readString(json['id']),
-      );
+      InputFileRemote(id: _readString(json['id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'id': id};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputFileRemote copyWith({
-    String? id,
-  }) =>
-      InputFileRemote(
-        id: id ?? this.id,
-      );
+  InputFileRemote copyWith({String? id}) => InputFileRemote(id: id ?? this.id);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputFileRemote';
@@ -122,33 +99,23 @@ final class InputFileRemote extends InputFile {
 /// A file defined by a local path
 final class InputFileLocal extends InputFile {
   /// A file defined by a local path
-  const InputFileLocal({
-    required this.path,
-  });
+  const InputFileLocal({required this.path});
 
   /// Local path to the file
   final String path;
 
   /// Parses a [InputFileLocal] from TDLib JSON.
-  factory InputFileLocal.fromJson(Map<String, dynamic> json) => InputFileLocal(
-        path: _readString(json['path']),
-      );
+  factory InputFileLocal.fromJson(Map<String, dynamic> json) =>
+      InputFileLocal(path: _readString(json['path']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'path': path,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'path': path};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputFileLocal copyWith({
-    String? path,
-  }) =>
-      InputFileLocal(
-        path: path ?? this.path,
-      );
+  InputFileLocal copyWith({String? path}) =>
+      InputFileLocal(path: path ?? this.path);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputFileLocal';
@@ -185,11 +152,11 @@ final class InputFileGenerated extends InputFile {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'original_path': originalPath,
-        'conversion': conversion,
-        'expected_size': expectedSize,
-      };
+    '@type': CONSTRUCTOR,
+    'original_path': originalPath,
+    'conversion': conversion,
+    'expected_size': expectedSize,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -198,12 +165,11 @@ final class InputFileGenerated extends InputFile {
     String? originalPath,
     String? conversion,
     int? expectedSize,
-  }) =>
-      InputFileGenerated(
-        originalPath: originalPath ?? this.originalPath,
-        conversion: conversion ?? this.conversion,
-        expectedSize: expectedSize ?? this.expectedSize,
-      );
+  }) => InputFileGenerated(
+    originalPath: originalPath ?? this.originalPath,
+    conversion: conversion ?? this.conversion,
+    expectedSize: expectedSize ?? this.expectedSize,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputFileGenerated';

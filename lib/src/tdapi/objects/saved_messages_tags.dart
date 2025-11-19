@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of tags used in Saved Messages
 final class SavedMessagesTags extends TdObject {
   /// Contains a list of tags used in Saved Messages
-  const SavedMessagesTags({
-    required this.tags,
-    this.extra,
-    this.clientId,
-  });
+  const SavedMessagesTags({required this.tags, this.extra, this.clientId});
 
   /// List of tags
   final List<SavedMessagesTag> tags;
@@ -27,16 +23,18 @@ final class SavedMessagesTags extends TdObject {
   factory SavedMessagesTags.fromJson(Map<String, dynamic> json) =>
       SavedMessagesTags(
         tags: _readList<SavedMessagesTag>(
-            json['tags'], (e) => _readObject(e, SavedMessagesTag.fromJson)),
+          json['tags'],
+          (e) => _readObject(e, SavedMessagesTag.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'tags': [for (final e in tags) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'tags': [for (final e in tags) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +42,11 @@ final class SavedMessagesTags extends TdObject {
     List<SavedMessagesTag>? tags,
     dynamic extra,
     int? clientId,
-  }) =>
-      SavedMessagesTags(
-        tags: tags ?? this.tags,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => SavedMessagesTags(
+    tags: tags ?? this.tags,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'savedMessagesTags';

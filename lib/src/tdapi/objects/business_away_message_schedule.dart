@@ -53,13 +53,11 @@ final class BusinessAwayMessageScheduleAlways
 
   /// Parses a [BusinessAwayMessageScheduleAlways] from TDLib JSON.
   factory BusinessAwayMessageScheduleAlways.fromJson(
-          Map<String, dynamic> json) =>
-      const BusinessAwayMessageScheduleAlways();
+    Map<String, dynamic> json,
+  ) => const BusinessAwayMessageScheduleAlways();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -82,13 +80,11 @@ final class BusinessAwayMessageScheduleOutsideOfOpeningHours
 
   /// Parses a [BusinessAwayMessageScheduleOutsideOfOpeningHours] from TDLib JSON.
   factory BusinessAwayMessageScheduleOutsideOfOpeningHours.fromJson(
-          Map<String, dynamic> json) =>
-      const BusinessAwayMessageScheduleOutsideOfOpeningHours();
+    Map<String, dynamic> json,
+  ) => const BusinessAwayMessageScheduleOutsideOfOpeningHours();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -121,26 +117,23 @@ final class BusinessAwayMessageScheduleCustom
 
   /// Parses a [BusinessAwayMessageScheduleCustom] from TDLib JSON.
   factory BusinessAwayMessageScheduleCustom.fromJson(
-          Map<String, dynamic> json) =>
-      BusinessAwayMessageScheduleCustom(
-        startDate: _readInt(json['start_date']),
-        endDate: _readInt(json['end_date']),
-      );
+    Map<String, dynamic> json,
+  ) => BusinessAwayMessageScheduleCustom(
+    startDate: _readInt(json['start_date']),
+    endDate: _readInt(json['end_date']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'start_date': startDate,
-        'end_date': endDate,
-      };
+    '@type': CONSTRUCTOR,
+    'start_date': startDate,
+    'end_date': endDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  BusinessAwayMessageScheduleCustom copyWith({
-    int? startDate,
-    int? endDate,
-  }) =>
+  BusinessAwayMessageScheduleCustom copyWith({int? startDate, int? endDate}) =>
       BusinessAwayMessageScheduleCustom(
         startDate: startDate ?? this.startDate,
         endDate: endDate ?? this.endDate,

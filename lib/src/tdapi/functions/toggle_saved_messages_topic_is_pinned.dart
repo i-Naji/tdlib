@@ -21,22 +21,21 @@ final class ToggleSavedMessagesTopicIsPinned extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'saved_messages_topic_id': savedMessagesTopicId,
-        'is_pinned': isPinned,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'saved_messages_topic_id': savedMessagesTopicId,
+    'is_pinned': isPinned,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleSavedMessagesTopicIsPinned copyWith({
     int? savedMessagesTopicId,
     bool? isPinned,
-  }) =>
-      ToggleSavedMessagesTopicIsPinned(
-        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-        isPinned: isPinned ?? this.isPinned,
-      );
+  }) => ToggleSavedMessagesTopicIsPinned(
+    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+    isPinned: isPinned ?? this.isPinned,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleSavedMessagesTopicIsPinned';

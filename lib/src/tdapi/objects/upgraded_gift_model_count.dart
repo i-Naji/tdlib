@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Describes a model of an upgraded gift with the number of gifts found
 final class UpgradedGiftModelCount extends TdObject {
   /// Describes a model of an upgraded gift with the number of gifts found
-  const UpgradedGiftModelCount({
-    required this.model,
-    required this.totalCount,
-  });
+  const UpgradedGiftModelCount({required this.model, required this.totalCount});
 
   /// The model
   final UpgradedGiftModel model;
@@ -26,21 +23,20 @@ final class UpgradedGiftModelCount extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'model': model.toJson(),
-        'total_count': totalCount,
-      };
+    '@type': CONSTRUCTOR,
+    'model': model.toJson(),
+    'total_count': totalCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   UpgradedGiftModelCount copyWith({
     UpgradedGiftModel? model,
     int? totalCount,
-  }) =>
-      UpgradedGiftModelCount(
-        model: model ?? this.model,
-        totalCount: totalCount ?? this.totalCount,
-      );
+  }) => UpgradedGiftModelCount(
+    model: model ?? this.model,
+    totalCount: totalCount ?? this.totalCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradedGiftModelCount';

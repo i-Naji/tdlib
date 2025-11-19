@@ -29,13 +29,13 @@ final class SearchPublicStoriesByVenue extends TdFunction<FoundStories> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'venue_provider': venueProvider,
-        'venue_id': venueId,
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'venue_provider': venueProvider,
+    'venue_id': venueId,
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class SearchPublicStoriesByVenue extends TdFunction<FoundStories> {
     String? venueId,
     String? offset,
     int? limit,
-  }) =>
-      SearchPublicStoriesByVenue(
-        venueProvider: venueProvider ?? this.venueProvider,
-        venueId: venueId ?? this.venueId,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => SearchPublicStoriesByVenue(
+    venueProvider: venueProvider ?? this.venueProvider,
+    venueId: venueId ?? this.venueId,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchPublicStoriesByVenue';

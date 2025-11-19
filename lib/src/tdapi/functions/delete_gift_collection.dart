@@ -21,18 +21,15 @@ final class DeleteGiftCollection extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'owner_id': ownerId.toJson(),
-        'collection_id': collectionId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'owner_id': ownerId.toJson(),
+    'collection_id': collectionId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteGiftCollection copyWith({
-    MessageSender? ownerId,
-    int? collectionId,
-  }) =>
+  DeleteGiftCollection copyWith({MessageSender? ownerId, int? collectionId}) =>
       DeleteGiftCollection(
         ownerId: ownerId ?? this.ownerId,
         collectionId: collectionId ?? this.collectionId,

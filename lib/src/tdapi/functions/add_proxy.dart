@@ -29,13 +29,13 @@ final class AddProxy extends TdFunction<Proxy> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'server': server,
-        'port': port,
-        'enable': enable,
-        'type': type.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'server': server,
+    'port': port,
+    'enable': enable,
+    'type': type.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class AddProxy extends TdFunction<Proxy> {
     int? port,
     bool? enable,
     ProxyType? type,
-  }) =>
-      AddProxy(
-        server: server ?? this.server,
-        port: port ?? this.port,
-        enable: enable ?? this.enable,
-        type: type ?? this.type,
-      );
+  }) => AddProxy(
+    server: server ?? this.server,
+    port: port ?? this.port,
+    enable: enable ?? this.enable,
+    type: type ?? this.type,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addProxy';

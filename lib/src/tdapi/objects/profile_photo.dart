@@ -35,25 +35,24 @@ final class ProfilePhoto extends TdObject {
 
   /// Parses a [ProfilePhoto] from TDLib JSON.
   factory ProfilePhoto.fromJson(Map<String, dynamic> json) => ProfilePhoto(
-        id: _readInt(json['id']),
-        small: _readObject(json['small'], File.fromJson),
-        big: _readObject(json['big'], File.fromJson),
-        minithumbnail:
-            _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
-        hasAnimation: _readBool(json['has_animation']),
-        isPersonal: _readBool(json['is_personal']),
-      );
+    id: _readInt(json['id']),
+    small: _readObject(json['small'], File.fromJson),
+    big: _readObject(json['big'], File.fromJson),
+    minithumbnail: _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
+    hasAnimation: _readBool(json['has_animation']),
+    isPersonal: _readBool(json['is_personal']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'small': small.toJson(),
-        'big': big.toJson(),
-        'minithumbnail': minithumbnail?.toJson(),
-        'has_animation': hasAnimation,
-        'is_personal': isPersonal,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'small': small.toJson(),
+    'big': big.toJson(),
+    'minithumbnail': minithumbnail?.toJson(),
+    'has_animation': hasAnimation,
+    'is_personal': isPersonal,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -64,16 +63,14 @@ final class ProfilePhoto extends TdObject {
     Minithumbnail? Function()? minithumbnail,
     bool? hasAnimation,
     bool? isPersonal,
-  }) =>
-      ProfilePhoto(
-        id: id ?? this.id,
-        small: small ?? this.small,
-        big: big ?? this.big,
-        minithumbnail:
-            minithumbnail != null ? minithumbnail() : this.minithumbnail,
-        hasAnimation: hasAnimation ?? this.hasAnimation,
-        isPersonal: isPersonal ?? this.isPersonal,
-      );
+  }) => ProfilePhoto(
+    id: id ?? this.id,
+    small: small ?? this.small,
+    big: big ?? this.big,
+    minithumbnail: minithumbnail != null ? minithumbnail() : this.minithumbnail,
+    hasAnimation: hasAnimation ?? this.hasAnimation,
+    isPersonal: isPersonal ?? this.isPersonal,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'profilePhoto';

@@ -64,16 +64,14 @@ final class InviteGroupCallParticipantResultUserPrivacyRestricted
 
   /// Parses a [InviteGroupCallParticipantResultUserPrivacyRestricted] from TDLib JSON.
   factory InviteGroupCallParticipantResultUserPrivacyRestricted.fromJson(
-          Map<String, dynamic> json) =>
-      InviteGroupCallParticipantResultUserPrivacyRestricted(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InviteGroupCallParticipantResultUserPrivacyRestricted(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -81,11 +79,10 @@ final class InviteGroupCallParticipantResultUserPrivacyRestricted
   InviteGroupCallParticipantResultUserPrivacyRestricted copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      InviteGroupCallParticipantResultUserPrivacyRestricted(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InviteGroupCallParticipantResultUserPrivacyRestricted(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -114,16 +111,14 @@ final class InviteGroupCallParticipantResultUserAlreadyParticipant
 
   /// Parses a [InviteGroupCallParticipantResultUserAlreadyParticipant] from TDLib JSON.
   factory InviteGroupCallParticipantResultUserAlreadyParticipant.fromJson(
-          Map<String, dynamic> json) =>
-      InviteGroupCallParticipantResultUserAlreadyParticipant(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InviteGroupCallParticipantResultUserAlreadyParticipant(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -131,11 +126,10 @@ final class InviteGroupCallParticipantResultUserAlreadyParticipant
   InviteGroupCallParticipantResultUserAlreadyParticipant copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      InviteGroupCallParticipantResultUserAlreadyParticipant(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InviteGroupCallParticipantResultUserAlreadyParticipant(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -164,16 +158,14 @@ final class InviteGroupCallParticipantResultUserWasBanned
 
   /// Parses a [InviteGroupCallParticipantResultUserWasBanned] from TDLib JSON.
   factory InviteGroupCallParticipantResultUserWasBanned.fromJson(
-          Map<String, dynamic> json) =>
-      InviteGroupCallParticipantResultUserWasBanned(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InviteGroupCallParticipantResultUserWasBanned(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -181,11 +173,10 @@ final class InviteGroupCallParticipantResultUserWasBanned
   InviteGroupCallParticipantResultUserWasBanned copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      InviteGroupCallParticipantResultUserWasBanned(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InviteGroupCallParticipantResultUserWasBanned(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -222,20 +213,20 @@ final class InviteGroupCallParticipantResultSuccess
 
   /// Parses a [InviteGroupCallParticipantResultSuccess] from TDLib JSON.
   factory InviteGroupCallParticipantResultSuccess.fromJson(
-          Map<String, dynamic> json) =>
-      InviteGroupCallParticipantResultSuccess(
-        chatId: _readInt(json['chat_id']),
-        messageId: _readInt(json['message_id']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InviteGroupCallParticipantResultSuccess(
+    chatId: _readInt(json['chat_id']),
+    messageId: _readInt(json['message_id']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -245,13 +236,12 @@ final class InviteGroupCallParticipantResultSuccess
     int? messageId,
     dynamic extra,
     int? clientId,
-  }) =>
-      InviteGroupCallParticipantResultSuccess(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => InviteGroupCallParticipantResultSuccess(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inviteGroupCallParticipantResultSuccess';

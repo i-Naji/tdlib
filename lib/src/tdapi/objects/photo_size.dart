@@ -31,22 +31,22 @@ final class PhotoSize extends TdObject {
 
   /// Parses a [PhotoSize] from TDLib JSON.
   factory PhotoSize.fromJson(Map<String, dynamic> json) => PhotoSize(
-        type: _readString(json['type']),
-        photo: _readObject(json['photo'], File.fromJson),
-        width: _readInt(json['width']),
-        height: _readInt(json['height']),
-        progressiveSizes: _readList<int>(json['progressive_sizes'], _readInt),
-      );
+    type: _readString(json['type']),
+    photo: _readObject(json['photo'], File.fromJson),
+    width: _readInt(json['width']),
+    height: _readInt(json['height']),
+    progressiveSizes: _readList<int>(json['progressive_sizes'], _readInt),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'type': type,
-        'photo': photo.toJson(),
-        'width': width,
-        'height': height,
-        'progressive_sizes': progressiveSizes,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type,
+    'photo': photo.toJson(),
+    'width': width,
+    'height': height,
+    'progressive_sizes': progressiveSizes,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,14 +56,13 @@ final class PhotoSize extends TdObject {
     int? width,
     int? height,
     List<int>? progressiveSizes,
-  }) =>
-      PhotoSize(
-        type: type ?? this.type,
-        photo: photo ?? this.photo,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        progressiveSizes: progressiveSizes ?? this.progressiveSizes,
-      );
+  }) => PhotoSize(
+    type: type ?? this.type,
+    photo: photo ?? this.photo,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    progressiveSizes: progressiveSizes ?? this.progressiveSizes,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'photoSize';

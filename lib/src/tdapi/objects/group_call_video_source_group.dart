@@ -26,21 +26,20 @@ final class GroupCallVideoSourceGroup extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'semantics': semantics,
-        'source_ids': sourceIds,
-      };
+    '@type': CONSTRUCTOR,
+    'semantics': semantics,
+    'source_ids': sourceIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GroupCallVideoSourceGroup copyWith({
     String? semantics,
     List<int>? sourceIds,
-  }) =>
-      GroupCallVideoSourceGroup(
-        semantics: semantics ?? this.semantics,
-        sourceIds: sourceIds ?? this.sourceIds,
-      );
+  }) => GroupCallVideoSourceGroup(
+    semantics: semantics ?? this.semantics,
+    sourceIds: sourceIds ?? this.sourceIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'groupCallVideoSourceGroup';

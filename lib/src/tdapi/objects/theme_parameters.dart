@@ -91,23 +91,23 @@ final class ThemeParameters extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'background_color': backgroundColor,
-        'secondary_background_color': secondaryBackgroundColor,
-        'header_background_color': headerBackgroundColor,
-        'bottom_bar_background_color': bottomBarBackgroundColor,
-        'section_background_color': sectionBackgroundColor,
-        'section_separator_color': sectionSeparatorColor,
-        'text_color': textColor,
-        'accent_text_color': accentTextColor,
-        'section_header_text_color': sectionHeaderTextColor,
-        'subtitle_text_color': subtitleTextColor,
-        'destructive_text_color': destructiveTextColor,
-        'hint_color': hintColor,
-        'link_color': linkColor,
-        'button_color': buttonColor,
-        'button_text_color': buttonTextColor,
-      };
+    '@type': CONSTRUCTOR,
+    'background_color': backgroundColor,
+    'secondary_background_color': secondaryBackgroundColor,
+    'header_background_color': headerBackgroundColor,
+    'bottom_bar_background_color': bottomBarBackgroundColor,
+    'section_background_color': sectionBackgroundColor,
+    'section_separator_color': sectionSeparatorColor,
+    'text_color': textColor,
+    'accent_text_color': accentTextColor,
+    'section_header_text_color': sectionHeaderTextColor,
+    'subtitle_text_color': subtitleTextColor,
+    'destructive_text_color': destructiveTextColor,
+    'hint_color': hintColor,
+    'link_color': linkColor,
+    'button_color': buttonColor,
+    'button_text_color': buttonTextColor,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -127,30 +127,27 @@ final class ThemeParameters extends TdObject {
     int? linkColor,
     int? buttonColor,
     int? buttonTextColor,
-  }) =>
-      ThemeParameters(
-        backgroundColor: backgroundColor ?? this.backgroundColor,
-        secondaryBackgroundColor:
-            secondaryBackgroundColor ?? this.secondaryBackgroundColor,
-        headerBackgroundColor:
-            headerBackgroundColor ?? this.headerBackgroundColor,
-        bottomBarBackgroundColor:
-            bottomBarBackgroundColor ?? this.bottomBarBackgroundColor,
-        sectionBackgroundColor:
-            sectionBackgroundColor ?? this.sectionBackgroundColor,
-        sectionSeparatorColor:
-            sectionSeparatorColor ?? this.sectionSeparatorColor,
-        textColor: textColor ?? this.textColor,
-        accentTextColor: accentTextColor ?? this.accentTextColor,
-        sectionHeaderTextColor:
-            sectionHeaderTextColor ?? this.sectionHeaderTextColor,
-        subtitleTextColor: subtitleTextColor ?? this.subtitleTextColor,
-        destructiveTextColor: destructiveTextColor ?? this.destructiveTextColor,
-        hintColor: hintColor ?? this.hintColor,
-        linkColor: linkColor ?? this.linkColor,
-        buttonColor: buttonColor ?? this.buttonColor,
-        buttonTextColor: buttonTextColor ?? this.buttonTextColor,
-      );
+  }) => ThemeParameters(
+    backgroundColor: backgroundColor ?? this.backgroundColor,
+    secondaryBackgroundColor:
+        secondaryBackgroundColor ?? this.secondaryBackgroundColor,
+    headerBackgroundColor: headerBackgroundColor ?? this.headerBackgroundColor,
+    bottomBarBackgroundColor:
+        bottomBarBackgroundColor ?? this.bottomBarBackgroundColor,
+    sectionBackgroundColor:
+        sectionBackgroundColor ?? this.sectionBackgroundColor,
+    sectionSeparatorColor: sectionSeparatorColor ?? this.sectionSeparatorColor,
+    textColor: textColor ?? this.textColor,
+    accentTextColor: accentTextColor ?? this.accentTextColor,
+    sectionHeaderTextColor:
+        sectionHeaderTextColor ?? this.sectionHeaderTextColor,
+    subtitleTextColor: subtitleTextColor ?? this.subtitleTextColor,
+    destructiveTextColor: destructiveTextColor ?? this.destructiveTextColor,
+    hintColor: hintColor ?? this.hintColor,
+    linkColor: linkColor ?? this.linkColor,
+    buttonColor: buttonColor ?? this.buttonColor,
+    buttonTextColor: buttonTextColor ?? this.buttonTextColor,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'themeParameters';

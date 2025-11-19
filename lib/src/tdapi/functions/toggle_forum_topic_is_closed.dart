@@ -25,12 +25,12 @@ final class ToggleForumTopicIsClosed extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'forum_topic_id': forumTopicId,
-        'is_closed': isClosed,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'forum_topic_id': forumTopicId,
+    'is_closed': isClosed,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class ToggleForumTopicIsClosed extends TdFunction<Ok> {
     int? chatId,
     int? forumTopicId,
     bool? isClosed,
-  }) =>
-      ToggleForumTopicIsClosed(
-        chatId: chatId ?? this.chatId,
-        forumTopicId: forumTopicId ?? this.forumTopicId,
-        isClosed: isClosed ?? this.isClosed,
-      );
+  }) => ToggleForumTopicIsClosed(
+    chatId: chatId ?? this.chatId,
+    forumTopicId: forumTopicId ?? this.forumTopicId,
+    isClosed: isClosed ?? this.isClosed,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleForumTopicIsClosed';

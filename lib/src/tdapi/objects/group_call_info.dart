@@ -29,18 +29,18 @@ final class GroupCallInfo extends TdObject {
 
   /// Parses a [GroupCallInfo] from TDLib JSON.
   factory GroupCallInfo.fromJson(Map<String, dynamic> json) => GroupCallInfo(
-        groupCallId: _readInt(json['group_call_id']),
-        joinPayload: _readString(json['join_payload']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    groupCallId: _readInt(json['group_call_id']),
+    joinPayload: _readString(json['join_payload']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'join_payload': joinPayload,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'join_payload': joinPayload,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class GroupCallInfo extends TdObject {
     String? joinPayload,
     dynamic extra,
     int? clientId,
-  }) =>
-      GroupCallInfo(
-        groupCallId: groupCallId ?? this.groupCallId,
-        joinPayload: joinPayload ?? this.joinPayload,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => GroupCallInfo(
+    groupCallId: groupCallId ?? this.groupCallId,
+    joinPayload: joinPayload ?? this.joinPayload,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'groupCallInfo';

@@ -29,18 +29,18 @@ final class CurrentWeather extends TdObject {
 
   /// Parses a [CurrentWeather] from TDLib JSON.
   factory CurrentWeather.fromJson(Map<String, dynamic> json) => CurrentWeather(
-        temperature: _readDouble(json['temperature']),
-        emoji: _readString(json['emoji']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    temperature: _readDouble(json['temperature']),
+    emoji: _readString(json['emoji']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'temperature': temperature,
-        'emoji': emoji,
-      };
+    '@type': CONSTRUCTOR,
+    'temperature': temperature,
+    'emoji': emoji,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class CurrentWeather extends TdObject {
     String? emoji,
     dynamic extra,
     int? clientId,
-  }) =>
-      CurrentWeather(
-        temperature: temperature ?? this.temperature,
-        emoji: emoji ?? this.emoji,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CurrentWeather(
+    temperature: temperature ?? this.temperature,
+    emoji: emoji ?? this.emoji,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'currentWeather';

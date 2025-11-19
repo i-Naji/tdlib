@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [FormattedText].
 final class ParseTextEntities extends TdFunction<FormattedText> {
   /// Parses Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, ExpandableBlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities from a marked-up text. Can be called synchronously
-  const ParseTextEntities({
-    required this.text,
-    required this.parseMode,
-  });
+  const ParseTextEntities({required this.text, required this.parseMode});
 
   /// The text to parse
   final String text;
@@ -21,18 +18,15 @@ final class ParseTextEntities extends TdFunction<FormattedText> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'text': text,
-        'parse_mode': parseMode.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text,
+    'parse_mode': parseMode.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ParseTextEntities copyWith({
-    String? text,
-    TextParseMode? parseMode,
-  }) =>
+  ParseTextEntities copyWith({String? text, TextParseMode? parseMode}) =>
       ParseTextEntities(
         text: text ?? this.text,
         parseMode: parseMode ?? this.parseMode,

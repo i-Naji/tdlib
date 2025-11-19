@@ -21,22 +21,21 @@ final class ReorderGiftCollections extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'owner_id': ownerId.toJson(),
-        'collection_ids': collectionIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'owner_id': ownerId.toJson(),
+    'collection_ids': collectionIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ReorderGiftCollections copyWith({
     MessageSender? ownerId,
     List<int>? collectionIds,
-  }) =>
-      ReorderGiftCollections(
-        ownerId: ownerId ?? this.ownerId,
-        collectionIds: collectionIds ?? this.collectionIds,
-      );
+  }) => ReorderGiftCollections(
+    ownerId: ownerId ?? this.ownerId,
+    collectionIds: collectionIds ?? this.collectionIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reorderGiftCollections';

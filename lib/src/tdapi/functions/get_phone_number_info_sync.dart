@@ -21,22 +21,21 @@ final class GetPhoneNumberInfoSync extends TdFunction<PhoneNumberInfo> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'language_code': languageCode,
-        'phone_number_prefix': phoneNumberPrefix,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'language_code': languageCode,
+    'phone_number_prefix': phoneNumberPrefix,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetPhoneNumberInfoSync copyWith({
     String? languageCode,
     String? phoneNumberPrefix,
-  }) =>
-      GetPhoneNumberInfoSync(
-        languageCode: languageCode ?? this.languageCode,
-        phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix,
-      );
+  }) => GetPhoneNumberInfoSync(
+    languageCode: languageCode ?? this.languageCode,
+    phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getPhoneNumberInfoSync';

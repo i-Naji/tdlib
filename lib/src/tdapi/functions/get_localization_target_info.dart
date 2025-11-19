@@ -9,28 +9,22 @@ part of '../tdapi.dart';
 final class GetLocalizationTargetInfo
     extends TdFunction<LocalizationTargetInfo> {
   /// Returns information about the current localization target. This is an offline method if only_local is true. Can be called before authorization
-  const GetLocalizationTargetInfo({
-    required this.onlyLocal,
-  });
+  const GetLocalizationTargetInfo({required this.onlyLocal});
 
   /// Pass true to get only locally available information without sending network requests
   final bool onlyLocal;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'only_local': onlyLocal,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'only_local': onlyLocal,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetLocalizationTargetInfo copyWith({
-    bool? onlyLocal,
-  }) =>
-      GetLocalizationTargetInfo(
-        onlyLocal: onlyLocal ?? this.onlyLocal,
-      );
+  GetLocalizationTargetInfo copyWith({bool? onlyLocal}) =>
+      GetLocalizationTargetInfo(onlyLocal: onlyLocal ?? this.onlyLocal);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getLocalizationTargetInfo';

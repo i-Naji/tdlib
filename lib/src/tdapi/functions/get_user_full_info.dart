@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [UserFullInfo].
 final class GetUserFullInfo extends TdFunction<UserFullInfo> {
   /// Returns full information about a user by their identifier
-  const GetUserFullInfo({
-    required this.userId,
-  });
+  const GetUserFullInfo({required this.userId});
 
   /// User identifier
   final int userId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetUserFullInfo copyWith({
-    int? userId,
-  }) =>
-      GetUserFullInfo(
-        userId: userId ?? this.userId,
-      );
+  GetUserFullInfo copyWith({int? userId}) =>
+      GetUserFullInfo(userId: userId ?? this.userId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getUserFullInfo';

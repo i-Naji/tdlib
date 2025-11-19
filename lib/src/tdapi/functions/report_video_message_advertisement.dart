@@ -22,23 +22,21 @@ final class ReportVideoMessageAdvertisement
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'advertisement_unique_id': advertisementUniqueId,
-        'option_id': optionId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'advertisement_unique_id': advertisementUniqueId,
+    'option_id': optionId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ReportVideoMessageAdvertisement copyWith({
     int? advertisementUniqueId,
     String? optionId,
-  }) =>
-      ReportVideoMessageAdvertisement(
-        advertisementUniqueId:
-            advertisementUniqueId ?? this.advertisementUniqueId,
-        optionId: optionId ?? this.optionId,
-      );
+  }) => ReportVideoMessageAdvertisement(
+    advertisementUniqueId: advertisementUniqueId ?? this.advertisementUniqueId,
+    optionId: optionId ?? this.optionId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reportVideoMessageAdvertisement';

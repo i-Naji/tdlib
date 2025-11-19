@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class StartScheduledVideoChat extends TdFunction<Ok> {
   /// Starts a scheduled video chat
-  const StartScheduledVideoChat({
-    required this.groupCallId,
-  });
+  const StartScheduledVideoChat({required this.groupCallId});
 
   /// Group call identifier of the video chat
   final int groupCallId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  StartScheduledVideoChat copyWith({
-    int? groupCallId,
-  }) =>
-      StartScheduledVideoChat(
-        groupCallId: groupCallId ?? this.groupCallId,
-      );
+  StartScheduledVideoChat copyWith({int? groupCallId}) =>
+      StartScheduledVideoChat(groupCallId: groupCallId ?? this.groupCallId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'startScheduledVideoChat';

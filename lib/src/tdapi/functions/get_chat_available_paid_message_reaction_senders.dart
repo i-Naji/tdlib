@@ -9,28 +9,22 @@ part of '../tdapi.dart';
 final class GetChatAvailablePaidMessageReactionSenders
     extends TdFunction<MessageSenders> {
   /// Returns the list of message sender identifiers, which can be used to send a paid reaction in a chat
-  const GetChatAvailablePaidMessageReactionSenders({
-    required this.chatId,
-  });
+  const GetChatAvailablePaidMessageReactionSenders({required this.chatId});
 
   /// Chat identifier
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatAvailablePaidMessageReactionSenders copyWith({
-    int? chatId,
-  }) =>
-      GetChatAvailablePaidMessageReactionSenders(
-        chatId: chatId ?? this.chatId,
-      );
+  GetChatAvailablePaidMessageReactionSenders copyWith({int? chatId}) =>
+      GetChatAvailablePaidMessageReactionSenders(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR =

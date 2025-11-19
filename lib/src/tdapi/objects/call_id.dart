@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains the call identifier
 final class CallId extends TdObject {
   /// Contains the call identifier
-  const CallId({
-    required this.id,
-    this.extra,
-    this.clientId,
-  });
+  const CallId({required this.id, this.extra, this.clientId});
 
   /// Call identifier
   final int id;
@@ -25,29 +21,21 @@ final class CallId extends TdObject {
 
   /// Parses a [CallId] from TDLib JSON.
   factory CallId.fromJson(Map<String, dynamic> json) => CallId(
-        id: _readInt(json['id']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    id: _readInt(json['id']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'id': id};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CallId copyWith({
-    int? id,
-    dynamic extra,
-    int? clientId,
-  }) =>
-      CallId(
-        id: id ?? this.id,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  CallId copyWith({int? id, dynamic extra, int? clientId}) => CallId(
+    id: id ?? this.id,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'callId';

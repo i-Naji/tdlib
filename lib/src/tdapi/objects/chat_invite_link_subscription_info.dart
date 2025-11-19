@@ -31,11 +31,11 @@ final class ChatInviteLinkSubscriptionInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'pricing': pricing.toJson(),
-        'can_reuse': canReuse,
-        'form_id': formId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'pricing': pricing.toJson(),
+    'can_reuse': canReuse,
+    'form_id': formId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class ChatInviteLinkSubscriptionInfo extends TdObject {
     StarSubscriptionPricing? pricing,
     bool? canReuse,
     int? formId,
-  }) =>
-      ChatInviteLinkSubscriptionInfo(
-        pricing: pricing ?? this.pricing,
-        canReuse: canReuse ?? this.canReuse,
-        formId: formId ?? this.formId,
-      );
+  }) => ChatInviteLinkSubscriptionInfo(
+    pricing: pricing ?? this.pricing,
+    canReuse: canReuse ?? this.canReuse,
+    formId: formId ?? this.formId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatInviteLinkSubscriptionInfo';

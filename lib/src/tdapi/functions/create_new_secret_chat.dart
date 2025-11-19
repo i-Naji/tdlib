@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Chat].
 final class CreateNewSecretChat extends TdFunction<Chat> {
   /// Creates a new secret chat. Returns the newly created chat
-  const CreateNewSecretChat({
-    required this.userId,
-  });
+  const CreateNewSecretChat({required this.userId});
 
   /// Identifier of the target user
   final int userId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CreateNewSecretChat copyWith({
-    int? userId,
-  }) =>
-      CreateNewSecretChat(
-        userId: userId ?? this.userId,
-      );
+  CreateNewSecretChat copyWith({int? userId}) =>
+      CreateNewSecretChat(userId: userId ?? this.userId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'createNewSecretChat';

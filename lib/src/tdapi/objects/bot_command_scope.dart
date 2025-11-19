@@ -52,9 +52,7 @@ final class BotCommandScopeDefault extends BotCommandScope {
       const BotCommandScopeDefault();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -78,9 +76,7 @@ final class BotCommandScopeAllPrivateChats extends BotCommandScope {
       const BotCommandScopeAllPrivateChats();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -105,9 +101,7 @@ final class BotCommandScopeAllGroupChats extends BotCommandScope {
       const BotCommandScopeAllGroupChats();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -129,13 +123,11 @@ final class BotCommandScopeAllChatAdministrators extends BotCommandScope {
 
   /// Parses a [BotCommandScopeAllChatAdministrators] from TDLib JSON.
   factory BotCommandScopeAllChatAdministrators.fromJson(
-          Map<String, dynamic> json) =>
-      const BotCommandScopeAllChatAdministrators();
+    Map<String, dynamic> json,
+  ) => const BotCommandScopeAllChatAdministrators();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -153,34 +145,23 @@ final class BotCommandScopeAllChatAdministrators extends BotCommandScope {
 /// A scope covering all members of a chat
 final class BotCommandScopeChat extends BotCommandScope {
   /// A scope covering all members of a chat
-  const BotCommandScopeChat({
-    required this.chatId,
-  });
+  const BotCommandScopeChat({required this.chatId});
 
   /// Chat identifier
   final int chatId;
 
   /// Parses a [BotCommandScopeChat] from TDLib JSON.
   factory BotCommandScopeChat.fromJson(Map<String, dynamic> json) =>
-      BotCommandScopeChat(
-        chatId: _readInt(json['chat_id']),
-      );
+      BotCommandScopeChat(chatId: _readInt(json['chat_id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'chat_id': chatId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  BotCommandScopeChat copyWith({
-    int? chatId,
-  }) =>
-      BotCommandScopeChat(
-        chatId: chatId ?? this.chatId,
-      );
+  BotCommandScopeChat copyWith({int? chatId}) =>
+      BotCommandScopeChat(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'botCommandScopeChat';
@@ -192,35 +173,24 @@ final class BotCommandScopeChat extends BotCommandScope {
 /// A scope covering all administrators of a chat
 final class BotCommandScopeChatAdministrators extends BotCommandScope {
   /// A scope covering all administrators of a chat
-  const BotCommandScopeChatAdministrators({
-    required this.chatId,
-  });
+  const BotCommandScopeChatAdministrators({required this.chatId});
 
   /// Chat identifier
   final int chatId;
 
   /// Parses a [BotCommandScopeChatAdministrators] from TDLib JSON.
   factory BotCommandScopeChatAdministrators.fromJson(
-          Map<String, dynamic> json) =>
-      BotCommandScopeChatAdministrators(
-        chatId: _readInt(json['chat_id']),
-      );
+    Map<String, dynamic> json,
+  ) => BotCommandScopeChatAdministrators(chatId: _readInt(json['chat_id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'chat_id': chatId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  BotCommandScopeChatAdministrators copyWith({
-    int? chatId,
-  }) =>
-      BotCommandScopeChatAdministrators(
-        chatId: chatId ?? this.chatId,
-      );
+  BotCommandScopeChatAdministrators copyWith({int? chatId}) =>
+      BotCommandScopeChatAdministrators(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'botCommandScopeChatAdministrators';
@@ -232,10 +202,7 @@ final class BotCommandScopeChatAdministrators extends BotCommandScope {
 /// A scope covering a member of a chat
 final class BotCommandScopeChatMember extends BotCommandScope {
   /// A scope covering a member of a chat
-  const BotCommandScopeChatMember({
-    required this.chatId,
-    required this.userId,
-  });
+  const BotCommandScopeChatMember({required this.chatId, required this.userId});
 
   /// Chat identifier
   final int chatId;
@@ -252,18 +219,15 @@ final class BotCommandScopeChatMember extends BotCommandScope {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'user_id': userId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'user_id': userId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  BotCommandScopeChatMember copyWith({
-    int? chatId,
-    int? userId,
-  }) =>
+  BotCommandScopeChatMember copyWith({int? chatId, int? userId}) =>
       BotCommandScopeChatMember(
         chatId: chatId ?? this.chatId,
         userId: userId ?? this.userId,

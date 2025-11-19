@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [CurrentWeather].
 final class GetCurrentWeather extends TdFunction<CurrentWeather> {
   /// Returns the current weather in the given location
-  const GetCurrentWeather({
-    required this.location,
-  });
+  const GetCurrentWeather({required this.location});
 
   /// The location
   final Location location;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'location': location.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'location': location.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetCurrentWeather copyWith({
-    Location? location,
-  }) =>
-      GetCurrentWeather(
-        location: location ?? this.location,
-      );
+  GetCurrentWeather copyWith({Location? location}) =>
+      GetCurrentWeather(location: location ?? this.location);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getCurrentWeather';

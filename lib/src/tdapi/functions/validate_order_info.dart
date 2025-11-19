@@ -25,12 +25,12 @@ final class ValidateOrderInfo extends TdFunction<ValidatedOrderInfo> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'input_invoice': inputInvoice.toJson(),
-        'order_info': orderInfo?.toJson(),
-        'allow_save': allowSave,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'input_invoice': inputInvoice.toJson(),
+    'order_info': orderInfo?.toJson(),
+    'allow_save': allowSave,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class ValidateOrderInfo extends TdFunction<ValidatedOrderInfo> {
     InputInvoice? inputInvoice,
     OrderInfo? Function()? orderInfo,
     bool? allowSave,
-  }) =>
-      ValidateOrderInfo(
-        inputInvoice: inputInvoice ?? this.inputInvoice,
-        orderInfo: orderInfo != null ? orderInfo() : this.orderInfo,
-        allowSave: allowSave ?? this.allowSave,
-      );
+  }) => ValidateOrderInfo(
+    inputInvoice: inputInvoice ?? this.inputInvoice,
+    orderInfo: orderInfo != null ? orderInfo() : this.orderInfo,
+    allowSave: allowSave ?? this.allowSave,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'validateOrderInfo';

@@ -36,12 +36,12 @@ final class ChatInviteLinkMember extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'joined_chat_date': joinedChatDate,
-        'via_chat_folder_invite_link': viaChatFolderInviteLink,
-        'approver_user_id': approverUserId,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'joined_chat_date': joinedChatDate,
+    'via_chat_folder_invite_link': viaChatFolderInviteLink,
+    'approver_user_id': approverUserId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class ChatInviteLinkMember extends TdObject {
     int? joinedChatDate,
     bool? viaChatFolderInviteLink,
     int? approverUserId,
-  }) =>
-      ChatInviteLinkMember(
-        userId: userId ?? this.userId,
-        joinedChatDate: joinedChatDate ?? this.joinedChatDate,
-        viaChatFolderInviteLink:
-            viaChatFolderInviteLink ?? this.viaChatFolderInviteLink,
-        approverUserId: approverUserId ?? this.approverUserId,
-      );
+  }) => ChatInviteLinkMember(
+    userId: userId ?? this.userId,
+    joinedChatDate: joinedChatDate ?? this.joinedChatDate,
+    viaChatFolderInviteLink:
+        viaChatFolderInviteLink ?? this.viaChatFolderInviteLink,
+    approverUserId: approverUserId ?? this.approverUserId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatInviteLinkMember';

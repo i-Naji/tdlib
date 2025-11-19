@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetUserPersonalProfilePhoto extends TdFunction<Ok> {
   /// Changes a personal profile photo of a contact user
-  const SetUserPersonalProfilePhoto({
-    required this.userId,
-    this.photo,
-  });
+  const SetUserPersonalProfilePhoto({required this.userId, this.photo});
 
   /// User identifier
   final int userId;
@@ -21,22 +18,21 @@ final class SetUserPersonalProfilePhoto extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'photo': photo?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'photo': photo?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetUserPersonalProfilePhoto copyWith({
     int? userId,
     InputChatPhoto? Function()? photo,
-  }) =>
-      SetUserPersonalProfilePhoto(
-        userId: userId ?? this.userId,
-        photo: photo != null ? photo() : this.photo,
-      );
+  }) => SetUserPersonalProfilePhoto(
+    userId: userId ?? this.userId,
+    photo: photo != null ? photo() : this.photo,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setUserPersonalProfilePhoto';

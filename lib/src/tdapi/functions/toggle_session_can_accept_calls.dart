@@ -21,22 +21,21 @@ final class ToggleSessionCanAcceptCalls extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'session_id': sessionId.toString(),
-        'can_accept_calls': canAcceptCalls,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'session_id': sessionId.toString(),
+    'can_accept_calls': canAcceptCalls,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleSessionCanAcceptCalls copyWith({
     int? sessionId,
     bool? canAcceptCalls,
-  }) =>
-      ToggleSessionCanAcceptCalls(
-        sessionId: sessionId ?? this.sessionId,
-        canAcceptCalls: canAcceptCalls ?? this.canAcceptCalls,
-      );
+  }) => ToggleSessionCanAcceptCalls(
+    sessionId: sessionId ?? this.sessionId,
+    canAcceptCalls: canAcceptCalls ?? this.canAcceptCalls,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleSessionCanAcceptCalls';

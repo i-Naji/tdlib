@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetChatDescription extends TdFunction<Ok> {
   /// Changes information about a chat. Available for basic groups, supergroups, and channels. Requires can_change_info member right
-  const SetChatDescription({
-    required this.chatId,
-    required this.description,
-  });
+  const SetChatDescription({required this.chatId, required this.description});
 
   /// Identifier of the chat
   final int chatId;
@@ -21,18 +18,15 @@ final class SetChatDescription extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'description': description,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'description': description,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetChatDescription copyWith({
-    int? chatId,
-    String? description,
-  }) =>
+  SetChatDescription copyWith({int? chatId, String? description}) =>
       SetChatDescription(
         chatId: chatId ?? this.chatId,
         description: description ?? this.description,

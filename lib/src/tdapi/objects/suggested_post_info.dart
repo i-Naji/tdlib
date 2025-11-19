@@ -41,13 +41,13 @@ final class SuggestedPostInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'price': price?.toJson(),
-        'send_date': sendDate,
-        'state': state.toJson(),
-        'can_be_approved': canBeApproved,
-        'can_be_declined': canBeDeclined,
-      };
+    '@type': CONSTRUCTOR,
+    'price': price?.toJson(),
+    'send_date': sendDate,
+    'state': state.toJson(),
+    'can_be_approved': canBeApproved,
+    'can_be_declined': canBeDeclined,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,14 +57,13 @@ final class SuggestedPostInfo extends TdObject {
     SuggestedPostState? state,
     bool? canBeApproved,
     bool? canBeDeclined,
-  }) =>
-      SuggestedPostInfo(
-        price: price != null ? price() : this.price,
-        sendDate: sendDate ?? this.sendDate,
-        state: state ?? this.state,
-        canBeApproved: canBeApproved ?? this.canBeApproved,
-        canBeDeclined: canBeDeclined ?? this.canBeDeclined,
-      );
+  }) => SuggestedPostInfo(
+    price: price != null ? price() : this.price,
+    sendDate: sendDate ?? this.sendDate,
+    state: state ?? this.state,
+    canBeApproved: canBeApproved ?? this.canBeApproved,
+    canBeDeclined: canBeDeclined ?? this.canBeDeclined,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'suggestedPostInfo';

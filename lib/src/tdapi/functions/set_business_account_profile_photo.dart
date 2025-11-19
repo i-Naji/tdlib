@@ -25,12 +25,12 @@ final class SetBusinessAccountProfilePhoto extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'business_connection_id': businessConnectionId,
-        'photo': photo?.toJson(),
-        'is_public': isPublic,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'business_connection_id': businessConnectionId,
+    'photo': photo?.toJson(),
+    'is_public': isPublic,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SetBusinessAccountProfilePhoto extends TdFunction<Ok> {
     String? businessConnectionId,
     InputChatPhoto? Function()? photo,
     bool? isPublic,
-  }) =>
-      SetBusinessAccountProfilePhoto(
-        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-        photo: photo != null ? photo() : this.photo,
-        isPublic: isPublic ?? this.isPublic,
-      );
+  }) => SetBusinessAccountProfilePhoto(
+    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+    photo: photo != null ? photo() : this.photo,
+    isPublic: isPublic ?? this.isPublic,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setBusinessAccountProfilePhoto';

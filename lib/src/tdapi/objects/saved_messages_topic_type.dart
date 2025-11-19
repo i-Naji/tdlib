@@ -54,9 +54,7 @@ final class SavedMessagesTopicTypeMyNotes extends SavedMessagesTopicType {
       const SavedMessagesTopicTypeMyNotes();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -78,13 +76,11 @@ final class SavedMessagesTopicTypeAuthorHidden extends SavedMessagesTopicType {
 
   /// Parses a [SavedMessagesTopicTypeAuthorHidden] from TDLib JSON.
   factory SavedMessagesTopicTypeAuthorHidden.fromJson(
-          Map<String, dynamic> json) =>
-      const SavedMessagesTopicTypeAuthorHidden();
+    Map<String, dynamic> json,
+  ) => const SavedMessagesTopicTypeAuthorHidden();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -102,35 +98,24 @@ final class SavedMessagesTopicTypeAuthorHidden extends SavedMessagesTopicType {
 /// Topic containing messages forwarded from a specific chat
 final class SavedMessagesTopicTypeSavedFromChat extends SavedMessagesTopicType {
   /// Topic containing messages forwarded from a specific chat
-  const SavedMessagesTopicTypeSavedFromChat({
-    required this.chatId,
-  });
+  const SavedMessagesTopicTypeSavedFromChat({required this.chatId});
 
   /// Identifier of the chat
   final int chatId;
 
   /// Parses a [SavedMessagesTopicTypeSavedFromChat] from TDLib JSON.
   factory SavedMessagesTopicTypeSavedFromChat.fromJson(
-          Map<String, dynamic> json) =>
-      SavedMessagesTopicTypeSavedFromChat(
-        chatId: _readInt(json['chat_id']),
-      );
+    Map<String, dynamic> json,
+  ) => SavedMessagesTopicTypeSavedFromChat(chatId: _readInt(json['chat_id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'chat_id': chatId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  SavedMessagesTopicTypeSavedFromChat copyWith({
-    int? chatId,
-  }) =>
-      SavedMessagesTopicTypeSavedFromChat(
-        chatId: chatId ?? this.chatId,
-      );
+  SavedMessagesTopicTypeSavedFromChat copyWith({int? chatId}) =>
+      SavedMessagesTopicTypeSavedFromChat(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'savedMessagesTopicTypeSavedFromChat';

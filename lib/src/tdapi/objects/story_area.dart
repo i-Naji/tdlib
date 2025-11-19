@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Describes a clickable rectangle area on a story media
 final class StoryArea extends TdObject {
   /// Describes a clickable rectangle area on a story media
-  const StoryArea({
-    required this.position,
-    required this.type,
-  });
+  const StoryArea({required this.position, required this.type});
 
   /// Position of the area
   final StoryAreaPosition position;
@@ -19,27 +16,21 @@ final class StoryArea extends TdObject {
 
   /// Parses a [StoryArea] from TDLib JSON.
   factory StoryArea.fromJson(Map<String, dynamic> json) => StoryArea(
-        position: _readObject(json['position'], StoryAreaPosition.fromJson),
-        type: _readObject(json['type'], StoryAreaType.fromJson),
-      );
+    position: _readObject(json['position'], StoryAreaPosition.fromJson),
+    type: _readObject(json['type'], StoryAreaType.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'position': position.toJson(),
-        'type': type.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'position': position.toJson(),
+    'type': type.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  StoryArea copyWith({
-    StoryAreaPosition? position,
-    StoryAreaType? type,
-  }) =>
-      StoryArea(
-        position: position ?? this.position,
-        type: type ?? this.type,
-      );
+  StoryArea copyWith({StoryAreaPosition? position, StoryAreaType? type}) =>
+      StoryArea(position: position ?? this.position, type: type ?? this.type);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyArea';

@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [MessageLink].
 final class GetForumTopicLink extends TdFunction<MessageLink> {
   /// Returns an HTTPS link to a topic in a forum supergroup chat. This is an offline method
-  const GetForumTopicLink({
-    required this.chatId,
-    required this.forumTopicId,
-  });
+  const GetForumTopicLink({required this.chatId, required this.forumTopicId});
 
   /// Identifier of the chat
   final int chatId;
@@ -21,18 +18,15 @@ final class GetForumTopicLink extends TdFunction<MessageLink> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'forum_topic_id': forumTopicId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'forum_topic_id': forumTopicId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetForumTopicLink copyWith({
-    int? chatId,
-    int? forumTopicId,
-  }) =>
+  GetForumTopicLink copyWith({int? chatId, int? forumTopicId}) =>
       GetForumTopicLink(
         chatId: chatId ?? this.chatId,
         forumTopicId: forumTopicId ?? this.forumTopicId,

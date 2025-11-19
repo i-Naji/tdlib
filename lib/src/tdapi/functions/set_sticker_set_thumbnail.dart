@@ -29,13 +29,13 @@ final class SetStickerSetThumbnail extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'name': name,
-        'thumbnail': thumbnail?.toJson(),
-        'format': format?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'name': name,
+    'thumbnail': thumbnail?.toJson(),
+    'format': format?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class SetStickerSetThumbnail extends TdFunction<Ok> {
     String? name,
     InputFile? Function()? thumbnail,
     StickerFormat? Function()? format,
-  }) =>
-      SetStickerSetThumbnail(
-        userId: userId ?? this.userId,
-        name: name ?? this.name,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        format: format != null ? format() : this.format,
-      );
+  }) => SetStickerSetThumbnail(
+    userId: userId ?? this.userId,
+    name: name ?? this.name,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    format: format != null ? format() : this.format,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setStickerSetThumbnail';

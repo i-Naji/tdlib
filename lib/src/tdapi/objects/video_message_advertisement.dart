@@ -56,16 +56,16 @@ final class VideoMessageAdvertisement extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'unique_id': uniqueId,
-        'text': text,
-        'min_display_duration': minDisplayDuration,
-        'max_display_duration': maxDisplayDuration,
-        'can_be_reported': canBeReported,
-        'sponsor': sponsor.toJson(),
-        'title': title,
-        'additional_info': additionalInfo,
-      };
+    '@type': CONSTRUCTOR,
+    'unique_id': uniqueId,
+    'text': text,
+    'min_display_duration': minDisplayDuration,
+    'max_display_duration': maxDisplayDuration,
+    'can_be_reported': canBeReported,
+    'sponsor': sponsor.toJson(),
+    'title': title,
+    'additional_info': additionalInfo,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -78,17 +78,16 @@ final class VideoMessageAdvertisement extends TdObject {
     AdvertisementSponsor? sponsor,
     String? title,
     String? additionalInfo,
-  }) =>
-      VideoMessageAdvertisement(
-        uniqueId: uniqueId ?? this.uniqueId,
-        text: text ?? this.text,
-        minDisplayDuration: minDisplayDuration ?? this.minDisplayDuration,
-        maxDisplayDuration: maxDisplayDuration ?? this.maxDisplayDuration,
-        canBeReported: canBeReported ?? this.canBeReported,
-        sponsor: sponsor ?? this.sponsor,
-        title: title ?? this.title,
-        additionalInfo: additionalInfo ?? this.additionalInfo,
-      );
+  }) => VideoMessageAdvertisement(
+    uniqueId: uniqueId ?? this.uniqueId,
+    text: text ?? this.text,
+    minDisplayDuration: minDisplayDuration ?? this.minDisplayDuration,
+    maxDisplayDuration: maxDisplayDuration ?? this.maxDisplayDuration,
+    canBeReported: canBeReported ?? this.canBeReported,
+    sponsor: sponsor ?? this.sponsor,
+    title: title ?? this.title,
+    additionalInfo: additionalInfo ?? this.additionalInfo,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'videoMessageAdvertisement';

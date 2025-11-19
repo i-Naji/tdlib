@@ -45,10 +45,7 @@ final class UndecodedLinkPreviewType extends LinkPreviewType {
 /// The link is a link to a media album consisting of photos and videos
 final class LinkPreviewTypeAlbum extends LinkPreviewType {
   /// The link is a link to a media album consisting of photos and videos
-  const LinkPreviewTypeAlbum({
-    required this.media,
-    required this.caption,
-  });
+  const LinkPreviewTypeAlbum({required this.media, required this.caption});
 
   /// The list of album media
   final List<LinkPreviewAlbumMedia> media;
@@ -59,17 +56,19 @@ final class LinkPreviewTypeAlbum extends LinkPreviewType {
   /// Parses a [LinkPreviewTypeAlbum] from TDLib JSON.
   factory LinkPreviewTypeAlbum.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypeAlbum(
-        media: _readList<LinkPreviewAlbumMedia>(json['media'],
-            (e) => _readObject(e, LinkPreviewAlbumMedia.fromJson)),
+        media: _readList<LinkPreviewAlbumMedia>(
+          json['media'],
+          (e) => _readObject(e, LinkPreviewAlbumMedia.fromJson),
+        ),
         caption: _readString(json['caption']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'media': [for (final e in media) e.toJson()],
-        'caption': caption,
-      };
+    '@type': CONSTRUCTOR,
+    'media': [for (final e in media) e.toJson()],
+    'caption': caption,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -77,11 +76,10 @@ final class LinkPreviewTypeAlbum extends LinkPreviewType {
   LinkPreviewTypeAlbum copyWith({
     List<LinkPreviewAlbumMedia>? media,
     String? caption,
-  }) =>
-      LinkPreviewTypeAlbum(
-        media: media ?? this.media,
-        caption: caption ?? this.caption,
-      );
+  }) => LinkPreviewTypeAlbum(
+    media: media ?? this.media,
+    caption: caption ?? this.caption,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeAlbum';
@@ -93,9 +91,7 @@ final class LinkPreviewTypeAlbum extends LinkPreviewType {
 /// The link is a link to an animation
 final class LinkPreviewTypeAnimation extends LinkPreviewType {
   /// The link is a link to an animation
-  const LinkPreviewTypeAnimation({
-    required this.animation,
-  });
+  const LinkPreviewTypeAnimation({required this.animation});
 
   /// The animation
   final Animation animation;
@@ -108,19 +104,15 @@ final class LinkPreviewTypeAnimation extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'animation': animation.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'animation': animation.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypeAnimation copyWith({
-    Animation? animation,
-  }) =>
-      LinkPreviewTypeAnimation(
-        animation: animation ?? this.animation,
-      );
+  LinkPreviewTypeAnimation copyWith({Animation? animation}) =>
+      LinkPreviewTypeAnimation(animation: animation ?? this.animation);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeAnimation';
@@ -132,34 +124,26 @@ final class LinkPreviewTypeAnimation extends LinkPreviewType {
 /// The link is a link to an app at App Store or Google Play
 final class LinkPreviewTypeApp extends LinkPreviewType {
   /// The link is a link to an app at App Store or Google Play
-  const LinkPreviewTypeApp({
-    required this.photo,
-  });
+  const LinkPreviewTypeApp({required this.photo});
 
   /// Photo for the app
   final Photo photo;
 
   /// Parses a [LinkPreviewTypeApp] from TDLib JSON.
   factory LinkPreviewTypeApp.fromJson(Map<String, dynamic> json) =>
-      LinkPreviewTypeApp(
-        photo: _readObject(json['photo'], Photo.fromJson),
-      );
+      LinkPreviewTypeApp(photo: _readObject(json['photo'], Photo.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypeApp copyWith({
-    Photo? photo,
-  }) =>
-      LinkPreviewTypeApp(
-        photo: photo ?? this.photo,
-      );
+  LinkPreviewTypeApp copyWith({Photo? photo}) =>
+      LinkPreviewTypeApp(photo: photo ?? this.photo);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeApp';
@@ -171,9 +155,7 @@ final class LinkPreviewTypeApp extends LinkPreviewType {
 /// The link is a link to a web site
 final class LinkPreviewTypeArticle extends LinkPreviewType {
   /// The link is a link to a web site
-  const LinkPreviewTypeArticle({
-    this.photo,
-  });
+  const LinkPreviewTypeArticle({this.photo});
 
   /// Article's main photo; may be null
   final Photo? photo;
@@ -186,19 +168,15 @@ final class LinkPreviewTypeArticle extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypeArticle copyWith({
-    Photo? Function()? photo,
-  }) =>
-      LinkPreviewTypeArticle(
-        photo: photo != null ? photo() : this.photo,
-      );
+  LinkPreviewTypeArticle copyWith({Photo? Function()? photo}) =>
+      LinkPreviewTypeArticle(photo: photo != null ? photo() : this.photo);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeArticle';
@@ -210,34 +188,26 @@ final class LinkPreviewTypeArticle extends LinkPreviewType {
 /// The link is a link to an audio
 final class LinkPreviewTypeAudio extends LinkPreviewType {
   /// The link is a link to an audio
-  const LinkPreviewTypeAudio({
-    required this.audio,
-  });
+  const LinkPreviewTypeAudio({required this.audio});
 
   /// The audio description
   final Audio audio;
 
   /// Parses a [LinkPreviewTypeAudio] from TDLib JSON.
   factory LinkPreviewTypeAudio.fromJson(Map<String, dynamic> json) =>
-      LinkPreviewTypeAudio(
-        audio: _readObject(json['audio'], Audio.fromJson),
-      );
+      LinkPreviewTypeAudio(audio: _readObject(json['audio'], Audio.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'audio': audio.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'audio': audio.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypeAudio copyWith({
-    Audio? audio,
-  }) =>
-      LinkPreviewTypeAudio(
-        audio: audio ?? this.audio,
-      );
+  LinkPreviewTypeAudio copyWith({Audio? audio}) =>
+      LinkPreviewTypeAudio(audio: audio ?? this.audio);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeAudio';
@@ -249,10 +219,7 @@ final class LinkPreviewTypeAudio extends LinkPreviewType {
 /// The link is a link to a background. Link preview title and description are available only for filled backgrounds
 final class LinkPreviewTypeBackground extends LinkPreviewType {
   /// The link is a link to a background. Link preview title and description are available only for filled backgrounds
-  const LinkPreviewTypeBackground({
-    this.document,
-    this.backgroundType,
-  });
+  const LinkPreviewTypeBackground({this.document, this.backgroundType});
 
   /// Document with the background; may be null for filled backgrounds
   final Document? document;
@@ -264,16 +231,18 @@ final class LinkPreviewTypeBackground extends LinkPreviewType {
   factory LinkPreviewTypeBackground.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypeBackground(
         document: _readOptional(json['document'], Document.fromJson),
-        backgroundType:
-            _readOptional(json['background_type'], BackgroundType.fromJson),
+        backgroundType: _readOptional(
+          json['background_type'],
+          BackgroundType.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'document': document?.toJson(),
-        'background_type': backgroundType?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'document': document?.toJson(),
+    'background_type': backgroundType?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -281,12 +250,12 @@ final class LinkPreviewTypeBackground extends LinkPreviewType {
   LinkPreviewTypeBackground copyWith({
     Document? Function()? document,
     BackgroundType? Function()? backgroundType,
-  }) =>
-      LinkPreviewTypeBackground(
-        document: document != null ? document() : this.document,
-        backgroundType:
-            backgroundType != null ? backgroundType() : this.backgroundType,
-      );
+  }) => LinkPreviewTypeBackground(
+    document: document != null ? document() : this.document,
+    backgroundType: backgroundType != null
+        ? backgroundType()
+        : this.backgroundType,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeBackground';
@@ -298,9 +267,7 @@ final class LinkPreviewTypeBackground extends LinkPreviewType {
 /// The link is a link to boost a channel chat
 final class LinkPreviewTypeChannelBoost extends LinkPreviewType {
   /// The link is a link to boost a channel chat
-  const LinkPreviewTypeChannelBoost({
-    this.photo,
-  });
+  const LinkPreviewTypeChannelBoost({this.photo});
 
   /// Photo of the chat; may be null
   final ChatPhoto? photo;
@@ -313,19 +280,15 @@ final class LinkPreviewTypeChannelBoost extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypeChannelBoost copyWith({
-    ChatPhoto? Function()? photo,
-  }) =>
-      LinkPreviewTypeChannelBoost(
-        photo: photo != null ? photo() : this.photo,
-      );
+  LinkPreviewTypeChannelBoost copyWith({ChatPhoto? Function()? photo}) =>
+      LinkPreviewTypeChannelBoost(photo: photo != null ? photo() : this.photo);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeChannelBoost';
@@ -362,11 +325,11 @@ final class LinkPreviewTypeChat extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-        'photo': photo?.toJson(),
-        'creates_join_request': createsJoinRequest,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+    'photo': photo?.toJson(),
+    'creates_join_request': createsJoinRequest,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -375,12 +338,11 @@ final class LinkPreviewTypeChat extends LinkPreviewType {
     InviteLinkChatType? type,
     ChatPhoto? Function()? photo,
     bool? createsJoinRequest,
-  }) =>
-      LinkPreviewTypeChat(
-        type: type ?? this.type,
-        photo: photo != null ? photo() : this.photo,
-        createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
-      );
+  }) => LinkPreviewTypeChat(
+    type: type ?? this.type,
+    photo: photo != null ? photo() : this.photo,
+    createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeChat';
@@ -392,32 +354,28 @@ final class LinkPreviewTypeChat extends LinkPreviewType {
 /// The link is a link to a direct messages chat of a channel
 final class LinkPreviewTypeDirectMessagesChat extends LinkPreviewType {
   /// The link is a link to a direct messages chat of a channel
-  const LinkPreviewTypeDirectMessagesChat({
-    this.photo,
-  });
+  const LinkPreviewTypeDirectMessagesChat({this.photo});
 
   /// Photo of the channel chat; may be null
   final ChatPhoto? photo;
 
   /// Parses a [LinkPreviewTypeDirectMessagesChat] from TDLib JSON.
   factory LinkPreviewTypeDirectMessagesChat.fromJson(
-          Map<String, dynamic> json) =>
-      LinkPreviewTypeDirectMessagesChat(
-        photo: _readOptional(json['photo'], ChatPhoto.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => LinkPreviewTypeDirectMessagesChat(
+    photo: _readOptional(json['photo'], ChatPhoto.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypeDirectMessagesChat copyWith({
-    ChatPhoto? Function()? photo,
-  }) =>
+  LinkPreviewTypeDirectMessagesChat copyWith({ChatPhoto? Function()? photo}) =>
       LinkPreviewTypeDirectMessagesChat(
         photo: photo != null ? photo() : this.photo,
       );
@@ -432,9 +390,7 @@ final class LinkPreviewTypeDirectMessagesChat extends LinkPreviewType {
 /// The link is a link to a general file
 final class LinkPreviewTypeDocument extends LinkPreviewType {
   /// The link is a link to a general file
-  const LinkPreviewTypeDocument({
-    required this.document,
-  });
+  const LinkPreviewTypeDocument({required this.document});
 
   /// The document description
   final Document document;
@@ -447,19 +403,15 @@ final class LinkPreviewTypeDocument extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'document': document.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'document': document.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypeDocument copyWith({
-    Document? document,
-  }) =>
-      LinkPreviewTypeDocument(
-        document: document ?? this.document,
-      );
+  LinkPreviewTypeDocument copyWith({Document? document}) =>
+      LinkPreviewTypeDocument(document: document ?? this.document);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeDocument';
@@ -496,24 +448,24 @@ final class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
 
   /// Parses a [LinkPreviewTypeEmbeddedAnimationPlayer] from TDLib JSON.
   factory LinkPreviewTypeEmbeddedAnimationPlayer.fromJson(
-          Map<String, dynamic> json) =>
-      LinkPreviewTypeEmbeddedAnimationPlayer(
-        url: _readString(json['url']),
-        thumbnail: _readOptional(json['thumbnail'], Photo.fromJson),
-        duration: _readInt(json['duration']),
-        width: _readInt(json['width']),
-        height: _readInt(json['height']),
-      );
+    Map<String, dynamic> json,
+  ) => LinkPreviewTypeEmbeddedAnimationPlayer(
+    url: _readString(json['url']),
+    thumbnail: _readOptional(json['thumbnail'], Photo.fromJson),
+    duration: _readInt(json['duration']),
+    width: _readInt(json['width']),
+    height: _readInt(json['height']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'thumbnail': thumbnail?.toJson(),
-        'duration': duration,
-        'width': width,
-        'height': height,
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'thumbnail': thumbnail?.toJson(),
+    'duration': duration,
+    'width': width,
+    'height': height,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -524,14 +476,13 @@ final class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
     int? duration,
     int? width,
     int? height,
-  }) =>
-      LinkPreviewTypeEmbeddedAnimationPlayer(
-        url: url ?? this.url,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        duration: duration ?? this.duration,
-        width: width ?? this.width,
-        height: height ?? this.height,
-      );
+  }) => LinkPreviewTypeEmbeddedAnimationPlayer(
+    url: url ?? this.url,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    duration: duration ?? this.duration,
+    width: width ?? this.width,
+    height: height ?? this.height,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeEmbeddedAnimationPlayer';
@@ -568,24 +519,24 @@ final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
 
   /// Parses a [LinkPreviewTypeEmbeddedAudioPlayer] from TDLib JSON.
   factory LinkPreviewTypeEmbeddedAudioPlayer.fromJson(
-          Map<String, dynamic> json) =>
-      LinkPreviewTypeEmbeddedAudioPlayer(
-        url: _readString(json['url']),
-        thumbnail: _readOptional(json['thumbnail'], Photo.fromJson),
-        duration: _readInt(json['duration']),
-        width: _readInt(json['width']),
-        height: _readInt(json['height']),
-      );
+    Map<String, dynamic> json,
+  ) => LinkPreviewTypeEmbeddedAudioPlayer(
+    url: _readString(json['url']),
+    thumbnail: _readOptional(json['thumbnail'], Photo.fromJson),
+    duration: _readInt(json['duration']),
+    width: _readInt(json['width']),
+    height: _readInt(json['height']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'thumbnail': thumbnail?.toJson(),
-        'duration': duration,
-        'width': width,
-        'height': height,
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'thumbnail': thumbnail?.toJson(),
+    'duration': duration,
+    'width': width,
+    'height': height,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -596,14 +547,13 @@ final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
     int? duration,
     int? width,
     int? height,
-  }) =>
-      LinkPreviewTypeEmbeddedAudioPlayer(
-        url: url ?? this.url,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        duration: duration ?? this.duration,
-        width: width ?? this.width,
-        height: height ?? this.height,
-      );
+  }) => LinkPreviewTypeEmbeddedAudioPlayer(
+    url: url ?? this.url,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    duration: duration ?? this.duration,
+    width: width ?? this.width,
+    height: height ?? this.height,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeEmbeddedAudioPlayer';
@@ -640,24 +590,24 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
 
   /// Parses a [LinkPreviewTypeEmbeddedVideoPlayer] from TDLib JSON.
   factory LinkPreviewTypeEmbeddedVideoPlayer.fromJson(
-          Map<String, dynamic> json) =>
-      LinkPreviewTypeEmbeddedVideoPlayer(
-        url: _readString(json['url']),
-        thumbnail: _readOptional(json['thumbnail'], Photo.fromJson),
-        duration: _readInt(json['duration']),
-        width: _readInt(json['width']),
-        height: _readInt(json['height']),
-      );
+    Map<String, dynamic> json,
+  ) => LinkPreviewTypeEmbeddedVideoPlayer(
+    url: _readString(json['url']),
+    thumbnail: _readOptional(json['thumbnail'], Photo.fromJson),
+    duration: _readInt(json['duration']),
+    width: _readInt(json['width']),
+    height: _readInt(json['height']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'thumbnail': thumbnail?.toJson(),
-        'duration': duration,
-        'width': width,
-        'height': height,
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'thumbnail': thumbnail?.toJson(),
+    'duration': duration,
+    'width': width,
+    'height': height,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -668,14 +618,13 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
     int? duration,
     int? width,
     int? height,
-  }) =>
-      LinkPreviewTypeEmbeddedVideoPlayer(
-        url: url ?? this.url,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        duration: duration ?? this.duration,
-        width: width ?? this.width,
-        height: height ?? this.height,
-      );
+  }) => LinkPreviewTypeEmbeddedVideoPlayer(
+    url: url ?? this.url,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    duration: duration ?? this.duration,
+    width: width ?? this.width,
+    height: height ?? this.height,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeEmbeddedVideoPlayer';
@@ -712,11 +661,11 @@ final class LinkPreviewTypeExternalAudio extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'mime_type': mimeType,
-        'duration': duration,
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'mime_type': mimeType,
+    'duration': duration,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -725,12 +674,11 @@ final class LinkPreviewTypeExternalAudio extends LinkPreviewType {
     String? url,
     String? mimeType,
     int? duration,
-  }) =>
-      LinkPreviewTypeExternalAudio(
-        url: url ?? this.url,
-        mimeType: mimeType ?? this.mimeType,
-        duration: duration ?? this.duration,
-      );
+  }) => LinkPreviewTypeExternalAudio(
+    url: url ?? this.url,
+    mimeType: mimeType ?? this.mimeType,
+    duration: duration ?? this.duration,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeExternalAudio';
@@ -777,13 +725,13 @@ final class LinkPreviewTypeExternalVideo extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'mime_type': mimeType,
-        'width': width,
-        'height': height,
-        'duration': duration,
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'mime_type': mimeType,
+    'width': width,
+    'height': height,
+    'duration': duration,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -794,14 +742,13 @@ final class LinkPreviewTypeExternalVideo extends LinkPreviewType {
     int? width,
     int? height,
     int? duration,
-  }) =>
-      LinkPreviewTypeExternalVideo(
-        url: url ?? this.url,
-        mimeType: mimeType ?? this.mimeType,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        duration: duration ?? this.duration,
-      );
+  }) => LinkPreviewTypeExternalVideo(
+    url: url ?? this.url,
+    mimeType: mimeType ?? this.mimeType,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    duration: duration ?? this.duration,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeExternalVideo';
@@ -813,9 +760,7 @@ final class LinkPreviewTypeExternalVideo extends LinkPreviewType {
 /// The link is a link to a gift collection
 final class LinkPreviewTypeGiftCollection extends LinkPreviewType {
   /// The link is a link to a gift collection
-  const LinkPreviewTypeGiftCollection({
-    required this.icons,
-  });
+  const LinkPreviewTypeGiftCollection({required this.icons});
 
   /// Icons for some gifts from the collection; may be empty
   final List<Sticker> icons;
@@ -824,24 +769,22 @@ final class LinkPreviewTypeGiftCollection extends LinkPreviewType {
   factory LinkPreviewTypeGiftCollection.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypeGiftCollection(
         icons: _readList<Sticker>(
-            json['icons'], (e) => _readObject(e, Sticker.fromJson)),
+          json['icons'],
+          (e) => _readObject(e, Sticker.fromJson),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'icons': [for (final e in icons) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'icons': [for (final e in icons) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypeGiftCollection copyWith({
-    List<Sticker>? icons,
-  }) =>
-      LinkPreviewTypeGiftCollection(
-        icons: icons ?? this.icons,
-      );
+  LinkPreviewTypeGiftCollection copyWith({List<Sticker>? icons}) =>
+      LinkPreviewTypeGiftCollection(icons: icons ?? this.icons);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeGiftCollection';
@@ -860,9 +803,7 @@ final class LinkPreviewTypeGroupCall extends LinkPreviewType {
       const LinkPreviewTypeGroupCall();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -886,9 +827,7 @@ final class LinkPreviewTypeInvoice extends LinkPreviewType {
       const LinkPreviewTypeInvoice();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -912,9 +851,7 @@ final class LinkPreviewTypeMessage extends LinkPreviewType {
       const LinkPreviewTypeMessage();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -931,34 +868,26 @@ final class LinkPreviewTypeMessage extends LinkPreviewType {
 /// The link is a link to a photo
 final class LinkPreviewTypePhoto extends LinkPreviewType {
   /// The link is a link to a photo
-  const LinkPreviewTypePhoto({
-    required this.photo,
-  });
+  const LinkPreviewTypePhoto({required this.photo});
 
   /// The photo
   final Photo photo;
 
   /// Parses a [LinkPreviewTypePhoto] from TDLib JSON.
   factory LinkPreviewTypePhoto.fromJson(Map<String, dynamic> json) =>
-      LinkPreviewTypePhoto(
-        photo: _readObject(json['photo'], Photo.fromJson),
-      );
+      LinkPreviewTypePhoto(photo: _readObject(json['photo'], Photo.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypePhoto copyWith({
-    Photo? photo,
-  }) =>
-      LinkPreviewTypePhoto(
-        photo: photo ?? this.photo,
-      );
+  LinkPreviewTypePhoto copyWith({Photo? photo}) =>
+      LinkPreviewTypePhoto(photo: photo ?? this.photo);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypePhoto';
@@ -977,9 +906,7 @@ final class LinkPreviewTypePremiumGiftCode extends LinkPreviewType {
       const LinkPreviewTypePremiumGiftCode();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1001,13 +928,11 @@ final class LinkPreviewTypeShareableChatFolder extends LinkPreviewType {
 
   /// Parses a [LinkPreviewTypeShareableChatFolder] from TDLib JSON.
   factory LinkPreviewTypeShareableChatFolder.fromJson(
-          Map<String, dynamic> json) =>
-      const LinkPreviewTypeShareableChatFolder();
+    Map<String, dynamic> json,
+  ) => const LinkPreviewTypeShareableChatFolder();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1025,9 +950,7 @@ final class LinkPreviewTypeShareableChatFolder extends LinkPreviewType {
 /// The link is a link to a sticker
 final class LinkPreviewTypeSticker extends LinkPreviewType {
   /// The link is a link to a sticker
-  const LinkPreviewTypeSticker({
-    required this.sticker,
-  });
+  const LinkPreviewTypeSticker({required this.sticker});
 
   /// The sticker. It can be an arbitrary WEBP image and can have dimensions bigger than 512
   final Sticker sticker;
@@ -1040,19 +963,15 @@ final class LinkPreviewTypeSticker extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker': sticker.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'sticker': sticker.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypeSticker copyWith({
-    Sticker? sticker,
-  }) =>
-      LinkPreviewTypeSticker(
-        sticker: sticker ?? this.sticker,
-      );
+  LinkPreviewTypeSticker copyWith({Sticker? sticker}) =>
+      LinkPreviewTypeSticker(sticker: sticker ?? this.sticker);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeSticker';
@@ -1064,9 +983,7 @@ final class LinkPreviewTypeSticker extends LinkPreviewType {
 /// The link is a link to a sticker set
 final class LinkPreviewTypeStickerSet extends LinkPreviewType {
   /// The link is a link to a sticker set
-  const LinkPreviewTypeStickerSet({
-    required this.stickers,
-  });
+  const LinkPreviewTypeStickerSet({required this.stickers});
 
   /// Up to 4 stickers from the sticker set
   final List<Sticker> stickers;
@@ -1075,24 +992,22 @@ final class LinkPreviewTypeStickerSet extends LinkPreviewType {
   factory LinkPreviewTypeStickerSet.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypeStickerSet(
         stickers: _readList<Sticker>(
-            json['stickers'], (e) => _readObject(e, Sticker.fromJson)),
+          json['stickers'],
+          (e) => _readObject(e, Sticker.fromJson),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'stickers': [for (final e in stickers) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'stickers': [for (final e in stickers) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypeStickerSet copyWith({
-    List<Sticker>? stickers,
-  }) =>
-      LinkPreviewTypeStickerSet(
-        stickers: stickers ?? this.stickers,
-      );
+  LinkPreviewTypeStickerSet copyWith({List<Sticker>? stickers}) =>
+      LinkPreviewTypeStickerSet(stickers: stickers ?? this.stickers);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeStickerSet';
@@ -1124,18 +1039,15 @@ final class LinkPreviewTypeStory extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'story_id': storyId,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypeStory copyWith({
-    int? storyPosterChatId,
-    int? storyId,
-  }) =>
+  LinkPreviewTypeStory copyWith({int? storyPosterChatId, int? storyId}) =>
       LinkPreviewTypeStory(
         storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
         storyId: storyId ?? this.storyId,
@@ -1151,10 +1063,7 @@ final class LinkPreviewTypeStory extends LinkPreviewType {
 /// The link is a link to an album of stories
 final class LinkPreviewTypeStoryAlbum extends LinkPreviewType {
   /// The link is a link to an album of stories
-  const LinkPreviewTypeStoryAlbum({
-    this.photoIcon,
-    this.videoIcon,
-  });
+  const LinkPreviewTypeStoryAlbum({this.photoIcon, this.videoIcon});
 
   /// Icon of the album; may be null if none
   final Photo? photoIcon;
@@ -1171,10 +1080,10 @@ final class LinkPreviewTypeStoryAlbum extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo_icon': photoIcon?.toJson(),
-        'video_icon': videoIcon?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'photo_icon': photoIcon?.toJson(),
+    'video_icon': videoIcon?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1182,11 +1091,10 @@ final class LinkPreviewTypeStoryAlbum extends LinkPreviewType {
   LinkPreviewTypeStoryAlbum copyWith({
     Photo? Function()? photoIcon,
     Video? Function()? videoIcon,
-  }) =>
-      LinkPreviewTypeStoryAlbum(
-        photoIcon: photoIcon != null ? photoIcon() : this.photoIcon,
-        videoIcon: videoIcon != null ? videoIcon() : this.videoIcon,
-      );
+  }) => LinkPreviewTypeStoryAlbum(
+    photoIcon: photoIcon != null ? photoIcon() : this.photoIcon,
+    videoIcon: videoIcon != null ? videoIcon() : this.videoIcon,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeStoryAlbum';
@@ -1198,9 +1106,7 @@ final class LinkPreviewTypeStoryAlbum extends LinkPreviewType {
 /// The link is a link to boost a supergroup chat
 final class LinkPreviewTypeSupergroupBoost extends LinkPreviewType {
   /// The link is a link to boost a supergroup chat
-  const LinkPreviewTypeSupergroupBoost({
-    this.photo,
-  });
+  const LinkPreviewTypeSupergroupBoost({this.photo});
 
   /// Photo of the chat; may be null
   final ChatPhoto? photo;
@@ -1213,16 +1119,14 @@ final class LinkPreviewTypeSupergroupBoost extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypeSupergroupBoost copyWith({
-    ChatPhoto? Function()? photo,
-  }) =>
+  LinkPreviewTypeSupergroupBoost copyWith({ChatPhoto? Function()? photo}) =>
       LinkPreviewTypeSupergroupBoost(
         photo: photo != null ? photo() : this.photo,
       );
@@ -1237,10 +1141,7 @@ final class LinkPreviewTypeSupergroupBoost extends LinkPreviewType {
 /// The link is a link to a cloud theme. TDLib has no theme support yet
 final class LinkPreviewTypeTheme extends LinkPreviewType {
   /// The link is a link to a cloud theme. TDLib has no theme support yet
-  const LinkPreviewTypeTheme({
-    required this.documents,
-    this.settings,
-  });
+  const LinkPreviewTypeTheme({required this.documents, this.settings});
 
   /// The list of files with theme description
   final List<Document> documents;
@@ -1252,16 +1153,18 @@ final class LinkPreviewTypeTheme extends LinkPreviewType {
   factory LinkPreviewTypeTheme.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypeTheme(
         documents: _readList<Document>(
-            json['documents'], (e) => _readObject(e, Document.fromJson)),
+          json['documents'],
+          (e) => _readObject(e, Document.fromJson),
+        ),
         settings: _readOptional(json['settings'], ThemeSettings.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'documents': [for (final e in documents) e.toJson()],
-        'settings': settings?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'documents': [for (final e in documents) e.toJson()],
+    'settings': settings?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1269,11 +1172,10 @@ final class LinkPreviewTypeTheme extends LinkPreviewType {
   LinkPreviewTypeTheme copyWith({
     List<Document>? documents,
     ThemeSettings? Function()? settings,
-  }) =>
-      LinkPreviewTypeTheme(
-        documents: documents ?? this.documents,
-        settings: settings != null ? settings() : this.settings,
-      );
+  }) => LinkPreviewTypeTheme(
+    documents: documents ?? this.documents,
+    settings: settings != null ? settings() : this.settings,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeTheme';
@@ -1292,9 +1194,7 @@ final class LinkPreviewTypeUnsupported extends LinkPreviewType {
       const LinkPreviewTypeUnsupported();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1311,9 +1211,7 @@ final class LinkPreviewTypeUnsupported extends LinkPreviewType {
 /// The link is a link to an upgraded gift
 final class LinkPreviewTypeUpgradedGift extends LinkPreviewType {
   /// The link is a link to an upgraded gift
-  const LinkPreviewTypeUpgradedGift({
-    required this.gift,
-  });
+  const LinkPreviewTypeUpgradedGift({required this.gift});
 
   /// The gift
   final UpgradedGift gift;
@@ -1326,19 +1224,15 @@ final class LinkPreviewTypeUpgradedGift extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'gift': gift.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'gift': gift.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypeUpgradedGift copyWith({
-    UpgradedGift? gift,
-  }) =>
-      LinkPreviewTypeUpgradedGift(
-        gift: gift ?? this.gift,
-      );
+  LinkPreviewTypeUpgradedGift copyWith({UpgradedGift? gift}) =>
+      LinkPreviewTypeUpgradedGift(gift: gift ?? this.gift);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeUpgradedGift';
@@ -1350,10 +1244,7 @@ final class LinkPreviewTypeUpgradedGift extends LinkPreviewType {
 /// The link is a link to a user
 final class LinkPreviewTypeUser extends LinkPreviewType {
   /// The link is a link to a user
-  const LinkPreviewTypeUser({
-    this.photo,
-    required this.isBot,
-  });
+  const LinkPreviewTypeUser({this.photo, required this.isBot});
 
   /// Photo of the user; may be null if none
   final ChatPhoto? photo;
@@ -1370,18 +1261,15 @@ final class LinkPreviewTypeUser extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo?.toJson(),
-        'is_bot': isBot,
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo?.toJson(),
+    'is_bot': isBot,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypeUser copyWith({
-    ChatPhoto? Function()? photo,
-    bool? isBot,
-  }) =>
+  LinkPreviewTypeUser copyWith({ChatPhoto? Function()? photo, bool? isBot}) =>
       LinkPreviewTypeUser(
         photo: photo != null ? photo() : this.photo,
         isBot: isBot ?? this.isBot,
@@ -1422,11 +1310,11 @@ final class LinkPreviewTypeVideo extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'video': video.toJson(),
-        'cover': cover?.toJson(),
-        'start_timestamp': startTimestamp,
-      };
+    '@type': CONSTRUCTOR,
+    'video': video.toJson(),
+    'cover': cover?.toJson(),
+    'start_timestamp': startTimestamp,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1435,12 +1323,11 @@ final class LinkPreviewTypeVideo extends LinkPreviewType {
     Video? video,
     Photo? Function()? cover,
     int? startTimestamp,
-  }) =>
-      LinkPreviewTypeVideo(
-        video: video ?? this.video,
-        cover: cover != null ? cover() : this.cover,
-        startTimestamp: startTimestamp ?? this.startTimestamp,
-      );
+  }) => LinkPreviewTypeVideo(
+    video: video ?? this.video,
+    cover: cover != null ? cover() : this.cover,
+    startTimestamp: startTimestamp ?? this.startTimestamp,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeVideo';
@@ -1477,11 +1364,11 @@ final class LinkPreviewTypeVideoChat extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo?.toJson(),
-        'is_live_stream': isLiveStream,
-        'joins_as_speaker': joinsAsSpeaker,
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo?.toJson(),
+    'is_live_stream': isLiveStream,
+    'joins_as_speaker': joinsAsSpeaker,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1490,12 +1377,11 @@ final class LinkPreviewTypeVideoChat extends LinkPreviewType {
     ChatPhoto? Function()? photo,
     bool? isLiveStream,
     bool? joinsAsSpeaker,
-  }) =>
-      LinkPreviewTypeVideoChat(
-        photo: photo != null ? photo() : this.photo,
-        isLiveStream: isLiveStream ?? this.isLiveStream,
-        joinsAsSpeaker: joinsAsSpeaker ?? this.joinsAsSpeaker,
-      );
+  }) => LinkPreviewTypeVideoChat(
+    photo: photo != null ? photo() : this.photo,
+    isLiveStream: isLiveStream ?? this.isLiveStream,
+    joinsAsSpeaker: joinsAsSpeaker ?? this.joinsAsSpeaker,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeVideoChat';
@@ -1507,9 +1393,7 @@ final class LinkPreviewTypeVideoChat extends LinkPreviewType {
 /// The link is a link to a video note message
 final class LinkPreviewTypeVideoNote extends LinkPreviewType {
   /// The link is a link to a video note message
-  const LinkPreviewTypeVideoNote({
-    required this.videoNote,
-  });
+  const LinkPreviewTypeVideoNote({required this.videoNote});
 
   /// The video note
   final VideoNote videoNote;
@@ -1522,19 +1406,15 @@ final class LinkPreviewTypeVideoNote extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'video_note': videoNote.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'video_note': videoNote.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypeVideoNote copyWith({
-    VideoNote? videoNote,
-  }) =>
-      LinkPreviewTypeVideoNote(
-        videoNote: videoNote ?? this.videoNote,
-      );
+  LinkPreviewTypeVideoNote copyWith({VideoNote? videoNote}) =>
+      LinkPreviewTypeVideoNote(videoNote: videoNote ?? this.videoNote);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeVideoNote';
@@ -1546,9 +1426,7 @@ final class LinkPreviewTypeVideoNote extends LinkPreviewType {
 /// The link is a link to a voice note message
 final class LinkPreviewTypeVoiceNote extends LinkPreviewType {
   /// The link is a link to a voice note message
-  const LinkPreviewTypeVoiceNote({
-    required this.voiceNote,
-  });
+  const LinkPreviewTypeVoiceNote({required this.voiceNote});
 
   /// The voice note
   final VoiceNote voiceNote;
@@ -1561,19 +1439,15 @@ final class LinkPreviewTypeVoiceNote extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'voice_note': voiceNote.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'voice_note': voiceNote.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypeVoiceNote copyWith({
-    VoiceNote? voiceNote,
-  }) =>
-      LinkPreviewTypeVoiceNote(
-        voiceNote: voiceNote ?? this.voiceNote,
-      );
+  LinkPreviewTypeVoiceNote copyWith({VoiceNote? voiceNote}) =>
+      LinkPreviewTypeVoiceNote(voiceNote: voiceNote ?? this.voiceNote);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeVoiceNote';
@@ -1585,9 +1459,7 @@ final class LinkPreviewTypeVoiceNote extends LinkPreviewType {
 /// The link is a link to a Web App
 final class LinkPreviewTypeWebApp extends LinkPreviewType {
   /// The link is a link to a Web App
-  const LinkPreviewTypeWebApp({
-    this.photo,
-  });
+  const LinkPreviewTypeWebApp({this.photo});
 
   /// Web App photo; may be null if none
   final Photo? photo;
@@ -1600,19 +1472,15 @@ final class LinkPreviewTypeWebApp extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LinkPreviewTypeWebApp copyWith({
-    Photo? Function()? photo,
-  }) =>
-      LinkPreviewTypeWebApp(
-        photo: photo != null ? photo() : this.photo,
-      );
+  LinkPreviewTypeWebApp copyWith({Photo? Function()? photo}) =>
+      LinkPreviewTypeWebApp(photo: photo != null ? photo() : this.photo);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeWebApp';

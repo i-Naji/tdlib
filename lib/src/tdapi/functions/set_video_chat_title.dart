@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetVideoChatTitle extends TdFunction<Ok> {
   /// Sets title of a video chat; requires groupCall.can_be_managed right
-  const SetVideoChatTitle({
-    required this.groupCallId,
-    required this.title,
-  });
+  const SetVideoChatTitle({required this.groupCallId, required this.title});
 
   /// Group call identifier
   final int groupCallId;
@@ -21,18 +18,15 @@ final class SetVideoChatTitle extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'title': title,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'title': title,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetVideoChatTitle copyWith({
-    int? groupCallId,
-    String? title,
-  }) =>
+  SetVideoChatTitle copyWith({int? groupCallId, String? title}) =>
       SetVideoChatTitle(
         groupCallId: groupCallId ?? this.groupCallId,
         title: title ?? this.title,

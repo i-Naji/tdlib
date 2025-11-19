@@ -52,9 +52,7 @@ final class TextEntityTypeMention extends TextEntityType {
       const TextEntityTypeMention();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -78,9 +76,7 @@ final class TextEntityTypeHashtag extends TextEntityType {
       const TextEntityTypeHashtag();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -104,9 +100,7 @@ final class TextEntityTypeCashtag extends TextEntityType {
       const TextEntityTypeCashtag();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -130,9 +124,7 @@ final class TextEntityTypeBotCommand extends TextEntityType {
       const TextEntityTypeBotCommand();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -156,9 +148,7 @@ final class TextEntityTypeUrl extends TextEntityType {
       const TextEntityTypeUrl();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -182,9 +172,7 @@ final class TextEntityTypeEmailAddress extends TextEntityType {
       const TextEntityTypeEmailAddress();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -208,9 +196,7 @@ final class TextEntityTypePhoneNumber extends TextEntityType {
       const TextEntityTypePhoneNumber();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -234,9 +220,7 @@ final class TextEntityTypeBankCardNumber extends TextEntityType {
       const TextEntityTypeBankCardNumber();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -261,9 +245,7 @@ final class TextEntityTypeBold extends TextEntityType {
       const TextEntityTypeBold();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -287,9 +269,7 @@ final class TextEntityTypeItalic extends TextEntityType {
       const TextEntityTypeItalic();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -313,9 +293,7 @@ final class TextEntityTypeUnderline extends TextEntityType {
       const TextEntityTypeUnderline();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -339,9 +317,7 @@ final class TextEntityTypeStrikethrough extends TextEntityType {
       const TextEntityTypeStrikethrough();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -365,9 +341,7 @@ final class TextEntityTypeSpoiler extends TextEntityType {
       const TextEntityTypeSpoiler();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -391,9 +365,7 @@ final class TextEntityTypeCode extends TextEntityType {
       const TextEntityTypeCode();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -417,9 +389,7 @@ final class TextEntityTypePre extends TextEntityType {
       const TextEntityTypePre();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -436,34 +406,23 @@ final class TextEntityTypePre extends TextEntityType {
 /// Text that must be formatted as if inside pre, and code HTML tags
 final class TextEntityTypePreCode extends TextEntityType {
   /// Text that must be formatted as if inside pre, and code HTML tags
-  const TextEntityTypePreCode({
-    required this.language,
-  });
+  const TextEntityTypePreCode({required this.language});
 
   /// Programming language of the code; as defined by the sender
   final String language;
 
   /// Parses a [TextEntityTypePreCode] from TDLib JSON.
   factory TextEntityTypePreCode.fromJson(Map<String, dynamic> json) =>
-      TextEntityTypePreCode(
-        language: _readString(json['language']),
-      );
+      TextEntityTypePreCode(language: _readString(json['language']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'language': language,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'language': language};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  TextEntityTypePreCode copyWith({
-    String? language,
-  }) =>
-      TextEntityTypePreCode(
-        language: language ?? this.language,
-      );
+  TextEntityTypePreCode copyWith({String? language}) =>
+      TextEntityTypePreCode(language: language ?? this.language);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'textEntityTypePreCode';
@@ -482,9 +441,7 @@ final class TextEntityTypeBlockQuote extends TextEntityType {
       const TextEntityTypeBlockQuote();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -505,13 +462,11 @@ final class TextEntityTypeExpandableBlockQuote extends TextEntityType {
 
   /// Parses a [TextEntityTypeExpandableBlockQuote] from TDLib JSON.
   factory TextEntityTypeExpandableBlockQuote.fromJson(
-          Map<String, dynamic> json) =>
-      const TextEntityTypeExpandableBlockQuote();
+    Map<String, dynamic> json,
+  ) => const TextEntityTypeExpandableBlockQuote();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -529,34 +484,23 @@ final class TextEntityTypeExpandableBlockQuote extends TextEntityType {
 /// A text description shown instead of a raw URL
 final class TextEntityTypeTextUrl extends TextEntityType {
   /// A text description shown instead of a raw URL
-  const TextEntityTypeTextUrl({
-    required this.url,
-  });
+  const TextEntityTypeTextUrl({required this.url});
 
   /// HTTP or tg:// URL to be opened when the link is clicked
   final String url;
 
   /// Parses a [TextEntityTypeTextUrl] from TDLib JSON.
   factory TextEntityTypeTextUrl.fromJson(Map<String, dynamic> json) =>
-      TextEntityTypeTextUrl(
-        url: _readString(json['url']),
-      );
+      TextEntityTypeTextUrl(url: _readString(json['url']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'url': url};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  TextEntityTypeTextUrl copyWith({
-    String? url,
-  }) =>
-      TextEntityTypeTextUrl(
-        url: url ?? this.url,
-      );
+  TextEntityTypeTextUrl copyWith({String? url}) =>
+      TextEntityTypeTextUrl(url: url ?? this.url);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'textEntityTypeTextUrl';
@@ -568,34 +512,23 @@ final class TextEntityTypeTextUrl extends TextEntityType {
 /// A text shows instead of a raw mention of the user (e.g., when the user has no username)
 final class TextEntityTypeMentionName extends TextEntityType {
   /// A text shows instead of a raw mention of the user (e.g., when the user has no username)
-  const TextEntityTypeMentionName({
-    required this.userId,
-  });
+  const TextEntityTypeMentionName({required this.userId});
 
   /// Identifier of the mentioned user
   final int userId;
 
   /// Parses a [TextEntityTypeMentionName] from TDLib JSON.
   factory TextEntityTypeMentionName.fromJson(Map<String, dynamic> json) =>
-      TextEntityTypeMentionName(
-        userId: _readInt(json['user_id']),
-      );
+      TextEntityTypeMentionName(userId: _readInt(json['user_id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'user_id': userId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  TextEntityTypeMentionName copyWith({
-    int? userId,
-  }) =>
-      TextEntityTypeMentionName(
-        userId: userId ?? this.userId,
-      );
+  TextEntityTypeMentionName copyWith({int? userId}) =>
+      TextEntityTypeMentionName(userId: userId ?? this.userId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'textEntityTypeMentionName';
@@ -607,9 +540,7 @@ final class TextEntityTypeMentionName extends TextEntityType {
 /// A custom emoji. The text behind a custom emoji must be an emoji. Only premium users can use premium custom emoji
 final class TextEntityTypeCustomEmoji extends TextEntityType {
   /// A custom emoji. The text behind a custom emoji must be an emoji. Only premium users can use premium custom emoji
-  const TextEntityTypeCustomEmoji({
-    required this.customEmojiId,
-  });
+  const TextEntityTypeCustomEmoji({required this.customEmojiId});
 
   /// Unique identifier of the custom emoji
   final int customEmojiId;
@@ -622,16 +553,14 @@ final class TextEntityTypeCustomEmoji extends TextEntityType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'custom_emoji_id': customEmojiId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'custom_emoji_id': customEmojiId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  TextEntityTypeCustomEmoji copyWith({
-    int? customEmojiId,
-  }) =>
+  TextEntityTypeCustomEmoji copyWith({int? customEmojiId}) =>
       TextEntityTypeCustomEmoji(
         customEmojiId: customEmojiId ?? this.customEmojiId,
       );
@@ -646,9 +575,7 @@ final class TextEntityTypeCustomEmoji extends TextEntityType {
 /// A media timestamp
 final class TextEntityTypeMediaTimestamp extends TextEntityType {
   /// A media timestamp
-  const TextEntityTypeMediaTimestamp({
-    required this.mediaTimestamp,
-  });
+  const TextEntityTypeMediaTimestamp({required this.mediaTimestamp});
 
   /// Timestamp from which a video/audio/video note/voice note/story playing must start, in seconds. The media can be in the content or the link preview of the current message, or in the same places in the replied message
   final int mediaTimestamp;
@@ -661,16 +588,14 @@ final class TextEntityTypeMediaTimestamp extends TextEntityType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'media_timestamp': mediaTimestamp,
-      };
+    '@type': CONSTRUCTOR,
+    'media_timestamp': mediaTimestamp,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  TextEntityTypeMediaTimestamp copyWith({
-    int? mediaTimestamp,
-  }) =>
+  TextEntityTypeMediaTimestamp copyWith({int? mediaTimestamp}) =>
       TextEntityTypeMediaTimestamp(
         mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
       );

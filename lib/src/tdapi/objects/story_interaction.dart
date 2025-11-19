@@ -36,12 +36,12 @@ final class StoryInteraction extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'actor_id': actorId.toJson(),
-        'interaction_date': interactionDate,
-        'block_list': blockList?.toJson(),
-        'type': type.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'actor_id': actorId.toJson(),
+    'interaction_date': interactionDate,
+    'block_list': blockList?.toJson(),
+    'type': type.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class StoryInteraction extends TdObject {
     int? interactionDate,
     BlockList? Function()? blockList,
     StoryInteractionType? type,
-  }) =>
-      StoryInteraction(
-        actorId: actorId ?? this.actorId,
-        interactionDate: interactionDate ?? this.interactionDate,
-        blockList: blockList != null ? blockList() : this.blockList,
-        type: type ?? this.type,
-      );
+  }) => StoryInteraction(
+    actorId: actorId ?? this.actorId,
+    interactionDate: interactionDate ?? this.interactionDate,
+    blockList: blockList != null ? blockList() : this.blockList,
+    type: type ?? this.type,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyInteraction';

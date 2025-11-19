@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [ChatInviteLink].
 final class GetChatInviteLink extends TdFunction<ChatInviteLink> {
   /// Returns information about an invite link. Requires administrator privileges and can_invite_users right in the chat to get own links and owner privileges to get other links
-  const GetChatInviteLink({
-    required this.chatId,
-    required this.inviteLink,
-  });
+  const GetChatInviteLink({required this.chatId, required this.inviteLink});
 
   /// Chat identifier
   final int chatId;
@@ -21,18 +18,15 @@ final class GetChatInviteLink extends TdFunction<ChatInviteLink> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'invite_link': inviteLink,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'invite_link': inviteLink,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatInviteLink copyWith({
-    int? chatId,
-    String? inviteLink,
-  }) =>
+  GetChatInviteLink copyWith({int? chatId, String? inviteLink}) =>
       GetChatInviteLink(
         chatId: chatId ?? this.chatId,
         inviteLink: inviteLink ?? this.inviteLink,

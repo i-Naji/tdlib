@@ -54,9 +54,7 @@ final class GiftForResaleOrderPrice extends GiftForResaleOrder {
       const GiftForResaleOrderPrice();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -77,13 +75,11 @@ final class GiftForResaleOrderPriceChangeDate extends GiftForResaleOrder {
 
   /// Parses a [GiftForResaleOrderPriceChangeDate] from TDLib JSON.
   factory GiftForResaleOrderPriceChangeDate.fromJson(
-          Map<String, dynamic> json) =>
-      const GiftForResaleOrderPriceChangeDate();
+    Map<String, dynamic> json,
+  ) => const GiftForResaleOrderPriceChangeDate();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -108,9 +104,7 @@ final class GiftForResaleOrderNumber extends GiftForResaleOrder {
       const GiftForResaleOrderNumber();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

@@ -47,9 +47,7 @@ final class UndecodedInputCredentials extends InputCredentials {
 /// Applies if a user chooses some previously saved payment credentials. To use their previously saved credentials, the user must have a valid temporary password
 final class InputCredentialsSaved extends InputCredentials {
   /// Applies if a user chooses some previously saved payment credentials. To use their previously saved credentials, the user must have a valid temporary password
-  const InputCredentialsSaved({
-    required this.savedCredentialsId,
-  });
+  const InputCredentialsSaved({required this.savedCredentialsId});
 
   /// Identifier of the saved credentials
   final String savedCredentialsId;
@@ -62,16 +60,14 @@ final class InputCredentialsSaved extends InputCredentials {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'saved_credentials_id': savedCredentialsId,
-      };
+    '@type': CONSTRUCTOR,
+    'saved_credentials_id': savedCredentialsId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputCredentialsSaved copyWith({
-    String? savedCredentialsId,
-  }) =>
+  InputCredentialsSaved copyWith({String? savedCredentialsId}) =>
       InputCredentialsSaved(
         savedCredentialsId: savedCredentialsId ?? this.savedCredentialsId,
       );
@@ -86,10 +82,7 @@ final class InputCredentialsSaved extends InputCredentials {
 /// Applies if a user enters new credentials on a payment provider website
 final class InputCredentialsNew extends InputCredentials {
   /// Applies if a user enters new credentials on a payment provider website
-  const InputCredentialsNew({
-    required this.data,
-    required this.allowSave,
-  });
+  const InputCredentialsNew({required this.data, required this.allowSave});
 
   /// JSON-encoded data with the credential identifier from the payment provider
   final String data;
@@ -106,18 +99,15 @@ final class InputCredentialsNew extends InputCredentials {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'data': data,
-        'allow_save': allowSave,
-      };
+    '@type': CONSTRUCTOR,
+    'data': data,
+    'allow_save': allowSave,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputCredentialsNew copyWith({
-    String? data,
-    bool? allowSave,
-  }) =>
+  InputCredentialsNew copyWith({String? data, bool? allowSave}) =>
       InputCredentialsNew(
         data: data ?? this.data,
         allowSave: allowSave ?? this.allowSave,
@@ -133,34 +123,23 @@ final class InputCredentialsNew extends InputCredentials {
 /// Applies if a user enters new credentials using Apple Pay
 final class InputCredentialsApplePay extends InputCredentials {
   /// Applies if a user enters new credentials using Apple Pay
-  const InputCredentialsApplePay({
-    required this.data,
-  });
+  const InputCredentialsApplePay({required this.data});
 
   /// JSON-encoded data with the credential identifier
   final String data;
 
   /// Parses a [InputCredentialsApplePay] from TDLib JSON.
   factory InputCredentialsApplePay.fromJson(Map<String, dynamic> json) =>
-      InputCredentialsApplePay(
-        data: _readString(json['data']),
-      );
+      InputCredentialsApplePay(data: _readString(json['data']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'data': data,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'data': data};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputCredentialsApplePay copyWith({
-    String? data,
-  }) =>
-      InputCredentialsApplePay(
-        data: data ?? this.data,
-      );
+  InputCredentialsApplePay copyWith({String? data}) =>
+      InputCredentialsApplePay(data: data ?? this.data);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputCredentialsApplePay';
@@ -172,34 +151,23 @@ final class InputCredentialsApplePay extends InputCredentials {
 /// Applies if a user enters new credentials using Google Pay
 final class InputCredentialsGooglePay extends InputCredentials {
   /// Applies if a user enters new credentials using Google Pay
-  const InputCredentialsGooglePay({
-    required this.data,
-  });
+  const InputCredentialsGooglePay({required this.data});
 
   /// JSON-encoded data with the credential identifier
   final String data;
 
   /// Parses a [InputCredentialsGooglePay] from TDLib JSON.
   factory InputCredentialsGooglePay.fromJson(Map<String, dynamic> json) =>
-      InputCredentialsGooglePay(
-        data: _readString(json['data']),
-      );
+      InputCredentialsGooglePay(data: _readString(json['data']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'data': data,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'data': data};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputCredentialsGooglePay copyWith({
-    String? data,
-  }) =>
-      InputCredentialsGooglePay(
-        data: data ?? this.data,
-      );
+  InputCredentialsGooglePay copyWith({String? data}) =>
+      InputCredentialsGooglePay(data: data ?? this.data);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputCredentialsGooglePay';

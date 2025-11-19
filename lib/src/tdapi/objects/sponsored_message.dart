@@ -66,18 +66,18 @@ final class SponsoredMessage extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message_id': messageId,
-        'is_recommended': isRecommended,
-        'can_be_reported': canBeReported,
-        'content': content.toJson(),
-        'sponsor': sponsor.toJson(),
-        'title': title,
-        'button_text': buttonText,
-        'accent_color_id': accentColorId,
-        'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
-        'additional_info': additionalInfo,
-      };
+    '@type': CONSTRUCTOR,
+    'message_id': messageId,
+    'is_recommended': isRecommended,
+    'can_be_reported': canBeReported,
+    'content': content.toJson(),
+    'sponsor': sponsor.toJson(),
+    'title': title,
+    'button_text': buttonText,
+    'accent_color_id': accentColorId,
+    'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
+    'additional_info': additionalInfo,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -92,20 +92,19 @@ final class SponsoredMessage extends TdObject {
     int? accentColorId,
     int? backgroundCustomEmojiId,
     String? additionalInfo,
-  }) =>
-      SponsoredMessage(
-        messageId: messageId ?? this.messageId,
-        isRecommended: isRecommended ?? this.isRecommended,
-        canBeReported: canBeReported ?? this.canBeReported,
-        content: content ?? this.content,
-        sponsor: sponsor ?? this.sponsor,
-        title: title ?? this.title,
-        buttonText: buttonText ?? this.buttonText,
-        accentColorId: accentColorId ?? this.accentColorId,
-        backgroundCustomEmojiId:
-            backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
-        additionalInfo: additionalInfo ?? this.additionalInfo,
-      );
+  }) => SponsoredMessage(
+    messageId: messageId ?? this.messageId,
+    isRecommended: isRecommended ?? this.isRecommended,
+    canBeReported: canBeReported ?? this.canBeReported,
+    content: content ?? this.content,
+    sponsor: sponsor ?? this.sponsor,
+    title: title ?? this.title,
+    buttonText: buttonText ?? this.buttonText,
+    accentColorId: accentColorId ?? this.accentColorId,
+    backgroundCustomEmojiId:
+        backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
+    additionalInfo: additionalInfo ?? this.additionalInfo,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sponsoredMessage';

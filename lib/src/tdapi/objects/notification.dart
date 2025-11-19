@@ -27,20 +27,20 @@ final class Notification extends TdObject {
 
   /// Parses a [Notification] from TDLib JSON.
   factory Notification.fromJson(Map<String, dynamic> json) => Notification(
-        id: _readInt(json['id']),
-        date: _readInt(json['date']),
-        isSilent: _readBool(json['is_silent']),
-        type: _readObject(json['type'], NotificationType.fromJson),
-      );
+    id: _readInt(json['id']),
+    date: _readInt(json['date']),
+    isSilent: _readBool(json['is_silent']),
+    type: _readObject(json['type'], NotificationType.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'date': date,
-        'is_silent': isSilent,
-        'type': type.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'date': date,
+    'is_silent': isSilent,
+    'type': type.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class Notification extends TdObject {
     int? date,
     bool? isSilent,
     NotificationType? type,
-  }) =>
-      Notification(
-        id: id ?? this.id,
-        date: date ?? this.date,
-        isSilent: isSilent ?? this.isSilent,
-        type: type ?? this.type,
-      );
+  }) => Notification(
+    id: id ?? this.id,
+    date: date ?? this.date,
+    isSilent: isSilent ?? this.isSilent,
+    type: type ?? this.type,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'notification';

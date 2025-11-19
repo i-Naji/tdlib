@@ -31,23 +31,22 @@ final class Document extends TdObject {
 
   /// Parses a [Document] from TDLib JSON.
   factory Document.fromJson(Map<String, dynamic> json) => Document(
-        fileName: _readString(json['file_name']),
-        mimeType: _readString(json['mime_type']),
-        minithumbnail:
-            _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
-        thumbnail: _readOptional(json['thumbnail'], Thumbnail.fromJson),
-        document: _readObject(json['document'], File.fromJson),
-      );
+    fileName: _readString(json['file_name']),
+    mimeType: _readString(json['mime_type']),
+    minithumbnail: _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
+    thumbnail: _readOptional(json['thumbnail'], Thumbnail.fromJson),
+    document: _readObject(json['document'], File.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file_name': fileName,
-        'mime_type': mimeType,
-        'minithumbnail': minithumbnail?.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'document': document.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'file_name': fileName,
+    'mime_type': mimeType,
+    'minithumbnail': minithumbnail?.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'document': document.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,15 +56,13 @@ final class Document extends TdObject {
     Minithumbnail? Function()? minithumbnail,
     Thumbnail? Function()? thumbnail,
     File? document,
-  }) =>
-      Document(
-        fileName: fileName ?? this.fileName,
-        mimeType: mimeType ?? this.mimeType,
-        minithumbnail:
-            minithumbnail != null ? minithumbnail() : this.minithumbnail,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        document: document ?? this.document,
-      );
+  }) => Document(
+    fileName: fileName ?? this.fileName,
+    mimeType: mimeType ?? this.mimeType,
+    minithumbnail: minithumbnail != null ? minithumbnail() : this.minithumbnail,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    document: document ?? this.document,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'document';

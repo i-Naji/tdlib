@@ -66,16 +66,18 @@ final class UpdateAuthorizationState extends Update {
   factory UpdateAuthorizationState.fromJson(Map<String, dynamic> json) =>
       UpdateAuthorizationState(
         authorizationState: _readObject(
-            json['authorization_state'], AuthorizationState.fromJson),
+          json['authorization_state'],
+          AuthorizationState.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'authorization_state': authorizationState.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'authorization_state': authorizationState.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -84,12 +86,11 @@ final class UpdateAuthorizationState extends Update {
     AuthorizationState? authorizationState,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateAuthorizationState(
-        authorizationState: authorizationState ?? this.authorizationState,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateAuthorizationState(
+    authorizationState: authorizationState ?? this.authorizationState,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateAuthorizationState';
@@ -101,11 +102,7 @@ final class UpdateAuthorizationState extends Update {
 /// A new message was received; can also be an outgoing message
 final class UpdateNewMessage extends Update {
   /// A new message was received; can also be an outgoing message
-  const UpdateNewMessage({
-    required this.message,
-    this.extra,
-    this.clientId,
-  });
+  const UpdateNewMessage({required this.message, this.extra, this.clientId});
 
   /// The new message
   final Message message;
@@ -128,18 +125,14 @@ final class UpdateNewMessage extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message': message.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'message': message.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UpdateNewMessage copyWith({
-    Message? message,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  UpdateNewMessage copyWith({Message? message, dynamic extra, int? clientId}) =>
       UpdateNewMessage(
         message: message ?? this.message,
         extra: extra ?? this.extra,
@@ -188,10 +181,10 @@ final class UpdateMessageSendAcknowledged extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -201,13 +194,12 @@ final class UpdateMessageSendAcknowledged extends Update {
     int? messageId,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateMessageSendAcknowledged(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateMessageSendAcknowledged(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateMessageSendAcknowledged';
@@ -251,10 +243,10 @@ final class UpdateMessageSendSucceeded extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message': message.toJson(),
-        'old_message_id': oldMessageId,
-      };
+    '@type': CONSTRUCTOR,
+    'message': message.toJson(),
+    'old_message_id': oldMessageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -264,13 +256,12 @@ final class UpdateMessageSendSucceeded extends Update {
     int? oldMessageId,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateMessageSendSucceeded(
-        message: message ?? this.message,
-        oldMessageId: oldMessageId ?? this.oldMessageId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateMessageSendSucceeded(
+    message: message ?? this.message,
+    oldMessageId: oldMessageId ?? this.oldMessageId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateMessageSendSucceeded';
@@ -319,11 +310,11 @@ final class UpdateMessageSendFailed extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message': message.toJson(),
-        'old_message_id': oldMessageId,
-        'error': error.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'message': message.toJson(),
+    'old_message_id': oldMessageId,
+    'error': error.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -334,14 +325,13 @@ final class UpdateMessageSendFailed extends Update {
     TdError? error,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateMessageSendFailed(
-        message: message ?? this.message,
-        oldMessageId: oldMessageId ?? this.oldMessageId,
-        error: error ?? this.error,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateMessageSendFailed(
+    message: message ?? this.message,
+    oldMessageId: oldMessageId ?? this.oldMessageId,
+    error: error ?? this.error,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateMessageSendFailed';
@@ -390,11 +380,11 @@ final class UpdateMessageContent extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'new_content': newContent.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'new_content': newContent.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -405,14 +395,13 @@ final class UpdateMessageContent extends Update {
     MessageContent? newContent,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateMessageContent(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        newContent: newContent ?? this.newContent,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateMessageContent(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    newContent: newContent ?? this.newContent,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateMessageContent';
@@ -466,12 +455,12 @@ final class UpdateMessageEdited extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'edit_date': editDate,
-        'reply_markup': replyMarkup?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'edit_date': editDate,
+    'reply_markup': replyMarkup?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -483,15 +472,14 @@ final class UpdateMessageEdited extends Update {
     ReplyMarkup? Function()? replyMarkup,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateMessageEdited(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        editDate: editDate ?? this.editDate,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateMessageEdited(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    editDate: editDate ?? this.editDate,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateMessageEdited';
@@ -540,11 +528,11 @@ final class UpdateMessageIsPinned extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'is_pinned': isPinned,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'is_pinned': isPinned,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -555,14 +543,13 @@ final class UpdateMessageIsPinned extends Update {
     bool? isPinned,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateMessageIsPinned(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        isPinned: isPinned ?? this.isPinned,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateMessageIsPinned(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    isPinned: isPinned ?? this.isPinned,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateMessageIsPinned';
@@ -605,18 +592,20 @@ final class UpdateMessageInteractionInfo extends Update {
         chatId: _readInt(json['chat_id']),
         messageId: _readInt(json['message_id']),
         interactionInfo: _readOptional(
-            json['interaction_info'], MessageInteractionInfo.fromJson),
+          json['interaction_info'],
+          MessageInteractionInfo.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'interaction_info': interactionInfo?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'interaction_info': interactionInfo?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -627,15 +616,15 @@ final class UpdateMessageInteractionInfo extends Update {
     MessageInteractionInfo? Function()? interactionInfo,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateMessageInteractionInfo(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        interactionInfo:
-            interactionInfo != null ? interactionInfo() : this.interactionInfo,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateMessageInteractionInfo(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    interactionInfo: interactionInfo != null
+        ? interactionInfo()
+        : this.interactionInfo,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateMessageInteractionInfo';
@@ -679,10 +668,10 @@ final class UpdateMessageContentOpened extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -692,13 +681,12 @@ final class UpdateMessageContentOpened extends Update {
     int? messageId,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateMessageContentOpened(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateMessageContentOpened(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateMessageContentOpened';
@@ -747,11 +735,11 @@ final class UpdateMessageMentionRead extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'unread_mention_count': unreadMentionCount,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'unread_mention_count': unreadMentionCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -762,14 +750,13 @@ final class UpdateMessageMentionRead extends Update {
     int? unreadMentionCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateMessageMentionRead(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateMessageMentionRead(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateMessageMentionRead';
@@ -815,8 +802,10 @@ final class UpdateMessageUnreadReactions extends Update {
       UpdateMessageUnreadReactions(
         chatId: _readInt(json['chat_id']),
         messageId: _readInt(json['message_id']),
-        unreadReactions: _readList<UnreadReaction>(json['unread_reactions'],
-            (e) => _readObject(e, UnreadReaction.fromJson)),
+        unreadReactions: _readList<UnreadReaction>(
+          json['unread_reactions'],
+          (e) => _readObject(e, UnreadReaction.fromJson),
+        ),
         unreadReactionCount: _readInt(json['unread_reaction_count']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -824,12 +813,12 @@ final class UpdateMessageUnreadReactions extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'unread_reactions': [for (final e in unreadReactions) e.toJson()],
-        'unread_reaction_count': unreadReactionCount,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'unread_reactions': [for (final e in unreadReactions) e.toJson()],
+    'unread_reaction_count': unreadReactionCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -841,15 +830,14 @@ final class UpdateMessageUnreadReactions extends Update {
     int? unreadReactionCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateMessageUnreadReactions(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        unreadReactions: unreadReactions ?? this.unreadReactions,
-        unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateMessageUnreadReactions(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    unreadReactions: unreadReactions ?? this.unreadReactions,
+    unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateMessageUnreadReactions';
@@ -898,11 +886,11 @@ final class UpdateMessageFactCheck extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'fact_check': factCheck.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'fact_check': factCheck.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -913,14 +901,13 @@ final class UpdateMessageFactCheck extends Update {
     FactCheck? factCheck,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateMessageFactCheck(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        factCheck: factCheck ?? this.factCheck,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateMessageFactCheck(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    factCheck: factCheck ?? this.factCheck,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateMessageFactCheck';
@@ -963,18 +950,20 @@ final class UpdateMessageSuggestedPostInfo extends Update {
         chatId: _readInt(json['chat_id']),
         messageId: _readInt(json['message_id']),
         suggestedPostInfo: _readObject(
-            json['suggested_post_info'], SuggestedPostInfo.fromJson),
+          json['suggested_post_info'],
+          SuggestedPostInfo.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'suggested_post_info': suggestedPostInfo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'suggested_post_info': suggestedPostInfo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -985,14 +974,13 @@ final class UpdateMessageSuggestedPostInfo extends Update {
     SuggestedPostInfo? suggestedPostInfo,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateMessageSuggestedPostInfo(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        suggestedPostInfo: suggestedPostInfo ?? this.suggestedPostInfo,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateMessageSuggestedPostInfo(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    suggestedPostInfo: suggestedPostInfo ?? this.suggestedPostInfo,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateMessageSuggestedPostInfo';
@@ -1036,10 +1024,10 @@ final class UpdateMessageLiveLocationViewed extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1049,13 +1037,12 @@ final class UpdateMessageLiveLocationViewed extends Update {
     int? messageId,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateMessageLiveLocationViewed(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateMessageLiveLocationViewed(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateMessageLiveLocationViewed';
@@ -1099,10 +1086,10 @@ final class UpdateVideoPublished extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1112,13 +1099,12 @@ final class UpdateVideoPublished extends Update {
     int? messageId,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateVideoPublished(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateVideoPublished(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateVideoPublished';
@@ -1130,11 +1116,7 @@ final class UpdateVideoPublished extends Update {
 /// A new chat has been loaded/created. This update is guaranteed to come before the chat identifier is returned to the application. The chat field changes will be reported through separate updates
 final class UpdateNewChat extends Update {
   /// A new chat has been loaded/created. This update is guaranteed to come before the chat identifier is returned to the application. The chat field changes will be reported through separate updates
-  const UpdateNewChat({
-    required this.chat,
-    this.extra,
-    this.clientId,
-  });
+  const UpdateNewChat({required this.chat, this.extra, this.clientId});
 
   /// The chat
   final Chat chat;
@@ -1149,25 +1131,21 @@ final class UpdateNewChat extends Update {
 
   /// Parses a [UpdateNewChat] from TDLib JSON.
   factory UpdateNewChat.fromJson(Map<String, dynamic> json) => UpdateNewChat(
-        chat: _readObject(json['chat'], Chat.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    chat: _readObject(json['chat'], Chat.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat': chat.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat': chat.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UpdateNewChat copyWith({
-    Chat? chat,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  UpdateNewChat copyWith({Chat? chat, dynamic extra, int? clientId}) =>
       UpdateNewChat(
         chat: chat ?? this.chat,
         extra: extra ?? this.extra,
@@ -1216,10 +1194,10 @@ final class UpdateChatTitle extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'title': title,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'title': title,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1229,13 +1207,12 @@ final class UpdateChatTitle extends Update {
     String? title,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatTitle(
-        chatId: chatId ?? this.chatId,
-        title: title ?? this.title,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatTitle(
+    chatId: chatId ?? this.chatId,
+    title: title ?? this.title,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatTitle';
@@ -1279,10 +1256,10 @@ final class UpdateChatPhoto extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'photo': photo?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'photo': photo?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1292,13 +1269,12 @@ final class UpdateChatPhoto extends Update {
     ChatPhotoInfo? Function()? photo,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatPhoto(
-        chatId: chatId ?? this.chatId,
-        photo: photo != null ? photo() : this.photo,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatPhoto(
+    chatId: chatId ?? this.chatId,
+    photo: photo != null ? photo() : this.photo,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatPhoto';
@@ -1354,25 +1330,28 @@ final class UpdateChatAccentColors extends Update {
         accentColorId: _readInt(json['accent_color_id']),
         backgroundCustomEmojiId: _readInt(json['background_custom_emoji_id']),
         upgradedGiftColors: _readOptional(
-            json['upgraded_gift_colors'], UpgradedGiftColors.fromJson),
+          json['upgraded_gift_colors'],
+          UpgradedGiftColors.fromJson,
+        ),
         profileAccentColorId: _readInt(json['profile_accent_color_id']),
-        profileBackgroundCustomEmojiId:
-            _readInt(json['profile_background_custom_emoji_id']),
+        profileBackgroundCustomEmojiId: _readInt(
+          json['profile_background_custom_emoji_id'],
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'accent_color_id': accentColorId,
-        'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
-        'upgraded_gift_colors': upgradedGiftColors?.toJson(),
-        'profile_accent_color_id': profileAccentColorId,
-        'profile_background_custom_emoji_id':
-            profileBackgroundCustomEmojiId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'accent_color_id': accentColorId,
+    'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
+    'upgraded_gift_colors': upgradedGiftColors?.toJson(),
+    'profile_accent_color_id': profileAccentColorId,
+    'profile_background_custom_emoji_id': profileBackgroundCustomEmojiId
+        .toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1386,21 +1365,20 @@ final class UpdateChatAccentColors extends Update {
     int? profileBackgroundCustomEmojiId,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatAccentColors(
-        chatId: chatId ?? this.chatId,
-        accentColorId: accentColorId ?? this.accentColorId,
-        backgroundCustomEmojiId:
-            backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
-        upgradedGiftColors: upgradedGiftColors != null
-            ? upgradedGiftColors()
-            : this.upgradedGiftColors,
-        profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
-        profileBackgroundCustomEmojiId: profileBackgroundCustomEmojiId ??
-            this.profileBackgroundCustomEmojiId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatAccentColors(
+    chatId: chatId ?? this.chatId,
+    accentColorId: accentColorId ?? this.accentColorId,
+    backgroundCustomEmojiId:
+        backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
+    upgradedGiftColors: upgradedGiftColors != null
+        ? upgradedGiftColors()
+        : this.upgradedGiftColors,
+    profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
+    profileBackgroundCustomEmojiId:
+        profileBackgroundCustomEmojiId ?? this.profileBackgroundCustomEmojiId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatAccentColors';
@@ -1444,10 +1422,10 @@ final class UpdateChatPermissions extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'permissions': permissions.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'permissions': permissions.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1457,13 +1435,12 @@ final class UpdateChatPermissions extends Update {
     ChatPermissions? permissions,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatPermissions(
-        chatId: chatId ?? this.chatId,
-        permissions: permissions ?? this.permissions,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatPermissions(
+    chatId: chatId ?? this.chatId,
+    permissions: permissions ?? this.permissions,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatPermissions';
@@ -1506,18 +1483,20 @@ final class UpdateChatLastMessage extends Update {
         chatId: _readInt(json['chat_id']),
         lastMessage: _readOptional(json['last_message'], Message.fromJson),
         positions: _readList<ChatPosition>(
-            json['positions'], (e) => _readObject(e, ChatPosition.fromJson)),
+          json['positions'],
+          (e) => _readObject(e, ChatPosition.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'last_message': lastMessage?.toJson(),
-        'positions': [for (final e in positions) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'last_message': lastMessage?.toJson(),
+    'positions': [for (final e in positions) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1528,14 +1507,13 @@ final class UpdateChatLastMessage extends Update {
     List<ChatPosition>? positions,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatLastMessage(
-        chatId: chatId ?? this.chatId,
-        lastMessage: lastMessage != null ? lastMessage() : this.lastMessage,
-        positions: positions ?? this.positions,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatLastMessage(
+    chatId: chatId ?? this.chatId,
+    lastMessage: lastMessage != null ? lastMessage() : this.lastMessage,
+    positions: positions ?? this.positions,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatLastMessage';
@@ -1579,10 +1557,10 @@ final class UpdateChatPosition extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'position': position.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'position': position.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1592,13 +1570,12 @@ final class UpdateChatPosition extends Update {
     ChatPosition? position,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatPosition(
-        chatId: chatId ?? this.chatId,
-        position: position ?? this.position,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatPosition(
+    chatId: chatId ?? this.chatId,
+    position: position ?? this.position,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatPosition';
@@ -1642,10 +1619,10 @@ final class UpdateChatAddedToList extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'chat_list': chatList.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'chat_list': chatList.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1655,13 +1632,12 @@ final class UpdateChatAddedToList extends Update {
     ChatList? chatList,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatAddedToList(
-        chatId: chatId ?? this.chatId,
-        chatList: chatList ?? this.chatList,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatAddedToList(
+    chatId: chatId ?? this.chatId,
+    chatList: chatList ?? this.chatList,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatAddedToList';
@@ -1705,10 +1681,10 @@ final class UpdateChatRemovedFromList extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'chat_list': chatList.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'chat_list': chatList.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1718,13 +1694,12 @@ final class UpdateChatRemovedFromList extends Update {
     ChatList? chatList,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatRemovedFromList(
-        chatId: chatId ?? this.chatId,
-        chatList: chatList ?? this.chatList,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatRemovedFromList(
+    chatId: chatId ?? this.chatId,
+    chatList: chatList ?? this.chatList,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatRemovedFromList';
@@ -1773,11 +1748,11 @@ final class UpdateChatReadInbox extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'last_read_inbox_message_id': lastReadInboxMessageId,
-        'unread_count': unreadCount,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'last_read_inbox_message_id': lastReadInboxMessageId,
+    'unread_count': unreadCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1788,15 +1763,14 @@ final class UpdateChatReadInbox extends Update {
     int? unreadCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatReadInbox(
-        chatId: chatId ?? this.chatId,
-        lastReadInboxMessageId:
-            lastReadInboxMessageId ?? this.lastReadInboxMessageId,
-        unreadCount: unreadCount ?? this.unreadCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatReadInbox(
+    chatId: chatId ?? this.chatId,
+    lastReadInboxMessageId:
+        lastReadInboxMessageId ?? this.lastReadInboxMessageId,
+    unreadCount: unreadCount ?? this.unreadCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatReadInbox';
@@ -1840,10 +1814,10 @@ final class UpdateChatReadOutbox extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'last_read_outbox_message_id': lastReadOutboxMessageId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'last_read_outbox_message_id': lastReadOutboxMessageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1853,14 +1827,13 @@ final class UpdateChatReadOutbox extends Update {
     int? lastReadOutboxMessageId,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatReadOutbox(
-        chatId: chatId ?? this.chatId,
-        lastReadOutboxMessageId:
-            lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatReadOutbox(
+    chatId: chatId ?? this.chatId,
+    lastReadOutboxMessageId:
+        lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatReadOutbox';
@@ -1904,10 +1877,10 @@ final class UpdateChatActionBar extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'action_bar': actionBar?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'action_bar': actionBar?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1917,13 +1890,12 @@ final class UpdateChatActionBar extends Update {
     ChatActionBar? Function()? actionBar,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatActionBar(
-        chatId: chatId ?? this.chatId,
-        actionBar: actionBar != null ? actionBar() : this.actionBar,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatActionBar(
+    chatId: chatId ?? this.chatId,
+    actionBar: actionBar != null ? actionBar() : this.actionBar,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatActionBar';
@@ -1961,17 +1933,19 @@ final class UpdateChatBusinessBotManageBar extends Update {
       UpdateChatBusinessBotManageBar(
         chatId: _readInt(json['chat_id']),
         businessBotManageBar: _readOptional(
-            json['business_bot_manage_bar'], BusinessBotManageBar.fromJson),
+          json['business_bot_manage_bar'],
+          BusinessBotManageBar.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'business_bot_manage_bar': businessBotManageBar?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'business_bot_manage_bar': businessBotManageBar?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1981,15 +1955,14 @@ final class UpdateChatBusinessBotManageBar extends Update {
     BusinessBotManageBar? Function()? businessBotManageBar,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatBusinessBotManageBar(
-        chatId: chatId ?? this.chatId,
-        businessBotManageBar: businessBotManageBar != null
-            ? businessBotManageBar()
-            : this.businessBotManageBar,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatBusinessBotManageBar(
+    chatId: chatId ?? this.chatId,
+    businessBotManageBar: businessBotManageBar != null
+        ? businessBotManageBar()
+        : this.businessBotManageBar,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatBusinessBotManageBar';
@@ -2027,17 +2000,19 @@ final class UpdateChatAvailableReactions extends Update {
       UpdateChatAvailableReactions(
         chatId: _readInt(json['chat_id']),
         availableReactions: _readObject(
-            json['available_reactions'], ChatAvailableReactions.fromJson),
+          json['available_reactions'],
+          ChatAvailableReactions.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'available_reactions': availableReactions.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'available_reactions': availableReactions.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2047,13 +2022,12 @@ final class UpdateChatAvailableReactions extends Update {
     ChatAvailableReactions? availableReactions,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatAvailableReactions(
-        chatId: chatId ?? this.chatId,
-        availableReactions: availableReactions ?? this.availableReactions,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatAvailableReactions(
+    chatId: chatId ?? this.chatId,
+    availableReactions: availableReactions ?? this.availableReactions,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatAvailableReactions';
@@ -2094,21 +2068,25 @@ final class UpdateChatDraftMessage extends Update {
   factory UpdateChatDraftMessage.fromJson(Map<String, dynamic> json) =>
       UpdateChatDraftMessage(
         chatId: _readInt(json['chat_id']),
-        draftMessage:
-            _readOptional(json['draft_message'], DraftMessage.fromJson),
+        draftMessage: _readOptional(
+          json['draft_message'],
+          DraftMessage.fromJson,
+        ),
         positions: _readList<ChatPosition>(
-            json['positions'], (e) => _readObject(e, ChatPosition.fromJson)),
+          json['positions'],
+          (e) => _readObject(e, ChatPosition.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'draft_message': draftMessage?.toJson(),
-        'positions': [for (final e in positions) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'draft_message': draftMessage?.toJson(),
+    'positions': [for (final e in positions) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2119,14 +2097,13 @@ final class UpdateChatDraftMessage extends Update {
     List<ChatPosition>? positions,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatDraftMessage(
-        chatId: chatId ?? this.chatId,
-        draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
-        positions: positions ?? this.positions,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatDraftMessage(
+    chatId: chatId ?? this.chatId,
+    draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
+    positions: positions ?? this.positions,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatDraftMessage';
@@ -2170,10 +2147,10 @@ final class UpdateChatEmojiStatus extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'emoji_status': emojiStatus?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'emoji_status': emojiStatus?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2183,13 +2160,12 @@ final class UpdateChatEmojiStatus extends Update {
     EmojiStatus? Function()? emojiStatus,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatEmojiStatus(
-        chatId: chatId ?? this.chatId,
-        emojiStatus: emojiStatus != null ? emojiStatus() : this.emojiStatus,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatEmojiStatus(
+    chatId: chatId ?? this.chatId,
+    emojiStatus: emojiStatus != null ? emojiStatus() : this.emojiStatus,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatEmojiStatus';
@@ -2226,18 +2202,20 @@ final class UpdateChatMessageSender extends Update {
   factory UpdateChatMessageSender.fromJson(Map<String, dynamic> json) =>
       UpdateChatMessageSender(
         chatId: _readInt(json['chat_id']),
-        messageSenderId:
-            _readOptional(json['message_sender_id'], MessageSender.fromJson),
+        messageSenderId: _readOptional(
+          json['message_sender_id'],
+          MessageSender.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_sender_id': messageSenderId?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_sender_id': messageSenderId?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2247,14 +2225,14 @@ final class UpdateChatMessageSender extends Update {
     MessageSender? Function()? messageSenderId,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatMessageSender(
-        chatId: chatId ?? this.chatId,
-        messageSenderId:
-            messageSenderId != null ? messageSenderId() : this.messageSenderId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatMessageSender(
+    chatId: chatId ?? this.chatId,
+    messageSenderId: messageSenderId != null
+        ? messageSenderId()
+        : this.messageSenderId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatMessageSender';
@@ -2298,10 +2276,10 @@ final class UpdateChatMessageAutoDeleteTime extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_auto_delete_time': messageAutoDeleteTime,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_auto_delete_time': messageAutoDeleteTime,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2311,14 +2289,12 @@ final class UpdateChatMessageAutoDeleteTime extends Update {
     int? messageAutoDeleteTime,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatMessageAutoDeleteTime(
-        chatId: chatId ?? this.chatId,
-        messageAutoDeleteTime:
-            messageAutoDeleteTime ?? this.messageAutoDeleteTime,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatMessageAutoDeleteTime(
+    chatId: chatId ?? this.chatId,
+    messageAutoDeleteTime: messageAutoDeleteTime ?? this.messageAutoDeleteTime,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatMessageAutoDeleteTime';
@@ -2356,17 +2332,19 @@ final class UpdateChatNotificationSettings extends Update {
       UpdateChatNotificationSettings(
         chatId: _readInt(json['chat_id']),
         notificationSettings: _readObject(
-            json['notification_settings'], ChatNotificationSettings.fromJson),
+          json['notification_settings'],
+          ChatNotificationSettings.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'notification_settings': notificationSettings.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'notification_settings': notificationSettings.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2376,13 +2354,12 @@ final class UpdateChatNotificationSettings extends Update {
     ChatNotificationSettings? notificationSettings,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatNotificationSettings(
-        chatId: chatId ?? this.chatId,
-        notificationSettings: notificationSettings ?? this.notificationSettings,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatNotificationSettings(
+    chatId: chatId ?? this.chatId,
+    notificationSettings: notificationSettings ?? this.notificationSettings,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatNotificationSettings';
@@ -2420,17 +2397,19 @@ final class UpdateChatPendingJoinRequests extends Update {
       UpdateChatPendingJoinRequests(
         chatId: _readInt(json['chat_id']),
         pendingJoinRequests: _readOptional(
-            json['pending_join_requests'], ChatJoinRequestsInfo.fromJson),
+          json['pending_join_requests'],
+          ChatJoinRequestsInfo.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'pending_join_requests': pendingJoinRequests?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'pending_join_requests': pendingJoinRequests?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2440,15 +2419,14 @@ final class UpdateChatPendingJoinRequests extends Update {
     ChatJoinRequestsInfo? Function()? pendingJoinRequests,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatPendingJoinRequests(
-        chatId: chatId ?? this.chatId,
-        pendingJoinRequests: pendingJoinRequests != null
-            ? pendingJoinRequests()
-            : this.pendingJoinRequests,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatPendingJoinRequests(
+    chatId: chatId ?? this.chatId,
+    pendingJoinRequests: pendingJoinRequests != null
+        ? pendingJoinRequests()
+        : this.pendingJoinRequests,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatPendingJoinRequests';
@@ -2492,10 +2470,10 @@ final class UpdateChatReplyMarkup extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'reply_markup_message_id': replyMarkupMessageId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'reply_markup_message_id': replyMarkupMessageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2505,13 +2483,12 @@ final class UpdateChatReplyMarkup extends Update {
     int? replyMarkupMessageId,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatReplyMarkup(
-        chatId: chatId ?? this.chatId,
-        replyMarkupMessageId: replyMarkupMessageId ?? this.replyMarkupMessageId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatReplyMarkup(
+    chatId: chatId ?? this.chatId,
+    replyMarkupMessageId: replyMarkupMessageId ?? this.replyMarkupMessageId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatReplyMarkup';
@@ -2555,10 +2532,10 @@ final class UpdateChatBackground extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'background': background?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'background': background?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2568,13 +2545,12 @@ final class UpdateChatBackground extends Update {
     ChatBackground? Function()? background,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatBackground(
-        chatId: chatId ?? this.chatId,
-        background: background != null ? background() : this.background,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatBackground(
+    chatId: chatId ?? this.chatId,
+    background: background != null ? background() : this.background,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatBackground';
@@ -2618,10 +2594,10 @@ final class UpdateChatTheme extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'theme': theme?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'theme': theme?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2631,13 +2607,12 @@ final class UpdateChatTheme extends Update {
     ChatTheme? Function()? theme,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatTheme(
-        chatId: chatId ?? this.chatId,
-        theme: theme != null ? theme() : this.theme,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatTheme(
+    chatId: chatId ?? this.chatId,
+    theme: theme != null ? theme() : this.theme,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatTheme';
@@ -2681,10 +2656,10 @@ final class UpdateChatUnreadMentionCount extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'unread_mention_count': unreadMentionCount,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'unread_mention_count': unreadMentionCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2694,13 +2669,12 @@ final class UpdateChatUnreadMentionCount extends Update {
     int? unreadMentionCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatUnreadMentionCount(
-        chatId: chatId ?? this.chatId,
-        unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatUnreadMentionCount(
+    chatId: chatId ?? this.chatId,
+    unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatUnreadMentionCount';
@@ -2744,10 +2718,10 @@ final class UpdateChatUnreadReactionCount extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'unread_reaction_count': unreadReactionCount,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'unread_reaction_count': unreadReactionCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2757,13 +2731,12 @@ final class UpdateChatUnreadReactionCount extends Update {
     int? unreadReactionCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatUnreadReactionCount(
-        chatId: chatId ?? this.chatId,
-        unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatUnreadReactionCount(
+    chatId: chatId ?? this.chatId,
+    unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatUnreadReactionCount';
@@ -2807,10 +2780,10 @@ final class UpdateChatVideoChat extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'video_chat': videoChat.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'video_chat': videoChat.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2820,13 +2793,12 @@ final class UpdateChatVideoChat extends Update {
     VideoChat? videoChat,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatVideoChat(
-        chatId: chatId ?? this.chatId,
-        videoChat: videoChat ?? this.videoChat,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatVideoChat(
+    chatId: chatId ?? this.chatId,
+    videoChat: videoChat ?? this.videoChat,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatVideoChat';
@@ -2861,21 +2833,20 @@ final class UpdateChatDefaultDisableNotification extends Update {
 
   /// Parses a [UpdateChatDefaultDisableNotification] from TDLib JSON.
   factory UpdateChatDefaultDisableNotification.fromJson(
-          Map<String, dynamic> json) =>
-      UpdateChatDefaultDisableNotification(
-        chatId: _readInt(json['chat_id']),
-        defaultDisableNotification:
-            _readBool(json['default_disable_notification']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => UpdateChatDefaultDisableNotification(
+    chatId: _readInt(json['chat_id']),
+    defaultDisableNotification: _readBool(json['default_disable_notification']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'default_disable_notification': defaultDisableNotification,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'default_disable_notification': defaultDisableNotification,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2885,14 +2856,13 @@ final class UpdateChatDefaultDisableNotification extends Update {
     bool? defaultDisableNotification,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatDefaultDisableNotification(
-        chatId: chatId ?? this.chatId,
-        defaultDisableNotification:
-            defaultDisableNotification ?? this.defaultDisableNotification,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatDefaultDisableNotification(
+    chatId: chatId ?? this.chatId,
+    defaultDisableNotification:
+        defaultDisableNotification ?? this.defaultDisableNotification,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatDefaultDisableNotification';
@@ -2936,10 +2906,10 @@ final class UpdateChatHasProtectedContent extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'has_protected_content': hasProtectedContent,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'has_protected_content': hasProtectedContent,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2949,13 +2919,12 @@ final class UpdateChatHasProtectedContent extends Update {
     bool? hasProtectedContent,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatHasProtectedContent(
-        chatId: chatId ?? this.chatId,
-        hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatHasProtectedContent(
+    chatId: chatId ?? this.chatId,
+    hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatHasProtectedContent';
@@ -2999,10 +2968,10 @@ final class UpdateChatIsTranslatable extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'is_translatable': isTranslatable,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'is_translatable': isTranslatable,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3012,13 +2981,12 @@ final class UpdateChatIsTranslatable extends Update {
     bool? isTranslatable,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatIsTranslatable(
-        chatId: chatId ?? this.chatId,
-        isTranslatable: isTranslatable ?? this.isTranslatable,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatIsTranslatable(
+    chatId: chatId ?? this.chatId,
+    isTranslatable: isTranslatable ?? this.isTranslatable,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatIsTranslatable';
@@ -3062,10 +3030,10 @@ final class UpdateChatIsMarkedAsUnread extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'is_marked_as_unread': isMarkedAsUnread,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'is_marked_as_unread': isMarkedAsUnread,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3075,13 +3043,12 @@ final class UpdateChatIsMarkedAsUnread extends Update {
     bool? isMarkedAsUnread,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatIsMarkedAsUnread(
-        chatId: chatId ?? this.chatId,
-        isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatIsMarkedAsUnread(
+    chatId: chatId ?? this.chatId,
+    isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatIsMarkedAsUnread';
@@ -3125,10 +3092,10 @@ final class UpdateChatViewAsTopics extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'view_as_topics': viewAsTopics,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'view_as_topics': viewAsTopics,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3138,13 +3105,12 @@ final class UpdateChatViewAsTopics extends Update {
     bool? viewAsTopics,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatViewAsTopics(
-        chatId: chatId ?? this.chatId,
-        viewAsTopics: viewAsTopics ?? this.viewAsTopics,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatViewAsTopics(
+    chatId: chatId ?? this.chatId,
+    viewAsTopics: viewAsTopics ?? this.viewAsTopics,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatViewAsTopics';
@@ -3188,10 +3154,10 @@ final class UpdateChatBlockList extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'block_list': blockList?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'block_list': blockList?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3201,13 +3167,12 @@ final class UpdateChatBlockList extends Update {
     BlockList? Function()? blockList,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatBlockList(
-        chatId: chatId ?? this.chatId,
-        blockList: blockList != null ? blockList() : this.blockList,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatBlockList(
+    chatId: chatId ?? this.chatId,
+    blockList: blockList != null ? blockList() : this.blockList,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatBlockList';
@@ -3251,10 +3216,10 @@ final class UpdateChatHasScheduledMessages extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'has_scheduled_messages': hasScheduledMessages,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'has_scheduled_messages': hasScheduledMessages,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3264,13 +3229,12 @@ final class UpdateChatHasScheduledMessages extends Update {
     bool? hasScheduledMessages,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatHasScheduledMessages(
-        chatId: chatId ?? this.chatId,
-        hasScheduledMessages: hasScheduledMessages ?? this.hasScheduledMessages,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatHasScheduledMessages(
+    chatId: chatId ?? this.chatId,
+    hasScheduledMessages: hasScheduledMessages ?? this.hasScheduledMessages,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatHasScheduledMessages';
@@ -3310,8 +3274,10 @@ final class UpdateChatFolders extends Update {
   /// Parses a [UpdateChatFolders] from TDLib JSON.
   factory UpdateChatFolders.fromJson(Map<String, dynamic> json) =>
       UpdateChatFolders(
-        chatFolders: _readList<ChatFolderInfo>(json['chat_folders'],
-            (e) => _readObject(e, ChatFolderInfo.fromJson)),
+        chatFolders: _readList<ChatFolderInfo>(
+          json['chat_folders'],
+          (e) => _readObject(e, ChatFolderInfo.fromJson),
+        ),
         mainChatListPosition: _readInt(json['main_chat_list_position']),
         areTagsEnabled: _readBool(json['are_tags_enabled']),
         extra: json['@extra'],
@@ -3320,11 +3286,11 @@ final class UpdateChatFolders extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_folders': [for (final e in chatFolders) e.toJson()],
-        'main_chat_list_position': mainChatListPosition,
-        'are_tags_enabled': areTagsEnabled,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_folders': [for (final e in chatFolders) e.toJson()],
+    'main_chat_list_position': mainChatListPosition,
+    'are_tags_enabled': areTagsEnabled,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3335,14 +3301,13 @@ final class UpdateChatFolders extends Update {
     bool? areTagsEnabled,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatFolders(
-        chatFolders: chatFolders ?? this.chatFolders,
-        mainChatListPosition: mainChatListPosition ?? this.mainChatListPosition,
-        areTagsEnabled: areTagsEnabled ?? this.areTagsEnabled,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatFolders(
+    chatFolders: chatFolders ?? this.chatFolders,
+    mainChatListPosition: mainChatListPosition ?? this.mainChatListPosition,
+    areTagsEnabled: areTagsEnabled ?? this.areTagsEnabled,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatFolders';
@@ -3386,10 +3351,10 @@ final class UpdateChatOnlineMemberCount extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'online_member_count': onlineMemberCount,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'online_member_count': onlineMemberCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3399,13 +3364,12 @@ final class UpdateChatOnlineMemberCount extends Update {
     int? onlineMemberCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatOnlineMemberCount(
-        chatId: chatId ?? this.chatId,
-        onlineMemberCount: onlineMemberCount ?? this.onlineMemberCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatOnlineMemberCount(
+    chatId: chatId ?? this.chatId,
+    onlineMemberCount: onlineMemberCount ?? this.onlineMemberCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatOnlineMemberCount';
@@ -3444,9 +3408,9 @@ final class UpdateSavedMessagesTopic extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'topic': topic.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'topic': topic.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3455,12 +3419,11 @@ final class UpdateSavedMessagesTopic extends Update {
     SavedMessagesTopic? topic,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateSavedMessagesTopic(
-        topic: topic ?? this.topic,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateSavedMessagesTopic(
+    topic: topic ?? this.topic,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateSavedMessagesTopic';
@@ -3499,9 +3462,9 @@ final class UpdateSavedMessagesTopicCount extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'topic_count': topicCount,
-      };
+    '@type': CONSTRUCTOR,
+    'topic_count': topicCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3510,12 +3473,11 @@ final class UpdateSavedMessagesTopicCount extends Update {
     int? topicCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateSavedMessagesTopicCount(
-        topicCount: topicCount ?? this.topicCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateSavedMessagesTopicCount(
+    topicCount: topicCount ?? this.topicCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateSavedMessagesTopicCount';
@@ -3554,9 +3516,9 @@ final class UpdateDirectMessagesChatTopic extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'topic': topic.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'topic': topic.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3565,12 +3527,11 @@ final class UpdateDirectMessagesChatTopic extends Update {
     DirectMessagesChatTopic? topic,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateDirectMessagesChatTopic(
-        topic: topic ?? this.topic,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateDirectMessagesChatTopic(
+    topic: topic ?? this.topic,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateDirectMessagesChatTopic';
@@ -3619,11 +3580,11 @@ final class UpdateTopicMessageCount extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'topic_id': topicId.toJson(),
-        'message_count': messageCount,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'topic_id': topicId.toJson(),
+    'message_count': messageCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3634,14 +3595,13 @@ final class UpdateTopicMessageCount extends Update {
     int? messageCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateTopicMessageCount(
-        chatId: chatId ?? this.chatId,
-        topicId: topicId ?? this.topicId,
-        messageCount: messageCount ?? this.messageCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateTopicMessageCount(
+    chatId: chatId ?? this.chatId,
+    topicId: topicId ?? this.topicId,
+    messageCount: messageCount ?? this.messageCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateTopicMessageCount';
@@ -3680,9 +3640,9 @@ final class UpdateQuickReplyShortcut extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'shortcut': shortcut.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'shortcut': shortcut.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3691,12 +3651,11 @@ final class UpdateQuickReplyShortcut extends Update {
     QuickReplyShortcut? shortcut,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateQuickReplyShortcut(
-        shortcut: shortcut ?? this.shortcut,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateQuickReplyShortcut(
+    shortcut: shortcut ?? this.shortcut,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateQuickReplyShortcut';
@@ -3735,9 +3694,9 @@ final class UpdateQuickReplyShortcutDeleted extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'shortcut_id': shortcutId,
-      };
+    '@type': CONSTRUCTOR,
+    'shortcut_id': shortcutId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3746,12 +3705,11 @@ final class UpdateQuickReplyShortcutDeleted extends Update {
     int? shortcutId,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateQuickReplyShortcutDeleted(
-        shortcutId: shortcutId ?? this.shortcutId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateQuickReplyShortcutDeleted(
+    shortcutId: shortcutId ?? this.shortcutId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateQuickReplyShortcutDeleted';
@@ -3790,9 +3748,9 @@ final class UpdateQuickReplyShortcuts extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'shortcut_ids': shortcutIds,
-      };
+    '@type': CONSTRUCTOR,
+    'shortcut_ids': shortcutIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3801,12 +3759,11 @@ final class UpdateQuickReplyShortcuts extends Update {
     List<int>? shortcutIds,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateQuickReplyShortcuts(
-        shortcutIds: shortcutIds ?? this.shortcutIds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateQuickReplyShortcuts(
+    shortcutIds: shortcutIds ?? this.shortcutIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateQuickReplyShortcuts';
@@ -3841,21 +3798,23 @@ final class UpdateQuickReplyShortcutMessages extends Update {
 
   /// Parses a [UpdateQuickReplyShortcutMessages] from TDLib JSON.
   factory UpdateQuickReplyShortcutMessages.fromJson(
-          Map<String, dynamic> json) =>
-      UpdateQuickReplyShortcutMessages(
-        shortcutId: _readInt(json['shortcut_id']),
-        messages: _readList<QuickReplyMessage>(json['messages'],
-            (e) => _readObject(e, QuickReplyMessage.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => UpdateQuickReplyShortcutMessages(
+    shortcutId: _readInt(json['shortcut_id']),
+    messages: _readList<QuickReplyMessage>(
+      json['messages'],
+      (e) => _readObject(e, QuickReplyMessage.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'shortcut_id': shortcutId,
-        'messages': [for (final e in messages) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'shortcut_id': shortcutId,
+    'messages': [for (final e in messages) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3865,13 +3824,12 @@ final class UpdateQuickReplyShortcutMessages extends Update {
     List<QuickReplyMessage>? messages,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateQuickReplyShortcutMessages(
-        shortcutId: shortcutId ?? this.shortcutId,
-        messages: messages ?? this.messages,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateQuickReplyShortcutMessages(
+    shortcutId: shortcutId ?? this.shortcutId,
+    messages: messages ?? this.messages,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateQuickReplyShortcutMessages';
@@ -3883,11 +3841,7 @@ final class UpdateQuickReplyShortcutMessages extends Update {
 /// Basic information about a topic in a forum chat was changed
 final class UpdateForumTopicInfo extends Update {
   /// Basic information about a topic in a forum chat was changed
-  const UpdateForumTopicInfo({
-    required this.info,
-    this.extra,
-    this.clientId,
-  });
+  const UpdateForumTopicInfo({required this.info, this.extra, this.clientId});
 
   /// New information about the topic
   final ForumTopicInfo info;
@@ -3910,9 +3864,9 @@ final class UpdateForumTopicInfo extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'info': info.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'info': info.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3921,12 +3875,11 @@ final class UpdateForumTopicInfo extends Update {
     ForumTopicInfo? info,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateForumTopicInfo(
-        info: info ?? this.info,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateForumTopicInfo(
+    info: info ?? this.info,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateForumTopicInfo';
@@ -3994,23 +3947,25 @@ final class UpdateForumTopic extends Update {
         unreadMentionCount: _readInt(json['unread_mention_count']),
         unreadReactionCount: _readInt(json['unread_reaction_count']),
         notificationSettings: _readObject(
-            json['notification_settings'], ChatNotificationSettings.fromJson),
+          json['notification_settings'],
+          ChatNotificationSettings.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'forum_topic_id': forumTopicId,
-        'is_pinned': isPinned,
-        'last_read_inbox_message_id': lastReadInboxMessageId,
-        'last_read_outbox_message_id': lastReadOutboxMessageId,
-        'unread_mention_count': unreadMentionCount,
-        'unread_reaction_count': unreadReactionCount,
-        'notification_settings': notificationSettings.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'forum_topic_id': forumTopicId,
+    'is_pinned': isPinned,
+    'last_read_inbox_message_id': lastReadInboxMessageId,
+    'last_read_outbox_message_id': lastReadOutboxMessageId,
+    'unread_mention_count': unreadMentionCount,
+    'unread_reaction_count': unreadReactionCount,
+    'notification_settings': notificationSettings.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4026,21 +3981,20 @@ final class UpdateForumTopic extends Update {
     ChatNotificationSettings? notificationSettings,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateForumTopic(
-        chatId: chatId ?? this.chatId,
-        forumTopicId: forumTopicId ?? this.forumTopicId,
-        isPinned: isPinned ?? this.isPinned,
-        lastReadInboxMessageId:
-            lastReadInboxMessageId ?? this.lastReadInboxMessageId,
-        lastReadOutboxMessageId:
-            lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
-        unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
-        unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
-        notificationSettings: notificationSettings ?? this.notificationSettings,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateForumTopic(
+    chatId: chatId ?? this.chatId,
+    forumTopicId: forumTopicId ?? this.forumTopicId,
+    isPinned: isPinned ?? this.isPinned,
+    lastReadInboxMessageId:
+        lastReadInboxMessageId ?? this.lastReadInboxMessageId,
+    lastReadOutboxMessageId:
+        lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
+    unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
+    unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
+    notificationSettings: notificationSettings ?? this.notificationSettings,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateForumTopic';
@@ -4078,17 +4032,19 @@ final class UpdateScopeNotificationSettings extends Update {
       UpdateScopeNotificationSettings(
         scope: _readObject(json['scope'], NotificationSettingsScope.fromJson),
         notificationSettings: _readObject(
-            json['notification_settings'], ScopeNotificationSettings.fromJson),
+          json['notification_settings'],
+          ScopeNotificationSettings.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'scope': scope.toJson(),
-        'notification_settings': notificationSettings.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'scope': scope.toJson(),
+    'notification_settings': notificationSettings.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4098,13 +4054,12 @@ final class UpdateScopeNotificationSettings extends Update {
     ScopeNotificationSettings? notificationSettings,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateScopeNotificationSettings(
-        scope: scope ?? this.scope,
-        notificationSettings: notificationSettings ?? this.notificationSettings,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateScopeNotificationSettings(
+    scope: scope ?? this.scope,
+    notificationSettings: notificationSettings ?? this.notificationSettings,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateScopeNotificationSettings';
@@ -4135,19 +4090,21 @@ final class UpdateReactionNotificationSettings extends Update {
 
   /// Parses a [UpdateReactionNotificationSettings] from TDLib JSON.
   factory UpdateReactionNotificationSettings.fromJson(
-          Map<String, dynamic> json) =>
-      UpdateReactionNotificationSettings(
-        notificationSettings: _readObject(json['notification_settings'],
-            ReactionNotificationSettings.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => UpdateReactionNotificationSettings(
+    notificationSettings: _readObject(
+      json['notification_settings'],
+      ReactionNotificationSettings.fromJson,
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'notification_settings': notificationSettings.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'notification_settings': notificationSettings.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4156,12 +4113,11 @@ final class UpdateReactionNotificationSettings extends Update {
     ReactionNotificationSettings? notificationSettings,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateReactionNotificationSettings(
-        notificationSettings: notificationSettings ?? this.notificationSettings,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateReactionNotificationSettings(
+    notificationSettings: notificationSettings ?? this.notificationSettings,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateReactionNotificationSettings';
@@ -4205,10 +4161,10 @@ final class UpdateNotification extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'notification_group_id': notificationGroupId,
-        'notification': notification.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'notification_group_id': notificationGroupId,
+    'notification': notification.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4218,13 +4174,12 @@ final class UpdateNotification extends Update {
     Notification? notification,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateNotification(
-        notificationGroupId: notificationGroupId ?? this.notificationGroupId,
-        notification: notification ?? this.notification,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateNotification(
+    notificationGroupId: notificationGroupId ?? this.notificationGroupId,
+    notification: notification ?? this.notification,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateNotification';
@@ -4287,30 +4242,35 @@ final class UpdateNotificationGroup extends Update {
         notificationGroupId: _readInt(json['notification_group_id']),
         type: _readObject(json['type'], NotificationGroupType.fromJson),
         chatId: _readInt(json['chat_id']),
-        notificationSettingsChatId:
-            _readInt(json['notification_settings_chat_id']),
+        notificationSettingsChatId: _readInt(
+          json['notification_settings_chat_id'],
+        ),
         notificationSoundId: _readInt(json['notification_sound_id']),
         totalCount: _readInt(json['total_count']),
-        addedNotifications: _readList<Notification>(json['added_notifications'],
-            (e) => _readObject(e, Notification.fromJson)),
-        removedNotificationIds:
-            _readList<int>(json['removed_notification_ids'], _readInt),
+        addedNotifications: _readList<Notification>(
+          json['added_notifications'],
+          (e) => _readObject(e, Notification.fromJson),
+        ),
+        removedNotificationIds: _readList<int>(
+          json['removed_notification_ids'],
+          _readInt,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'notification_group_id': notificationGroupId,
-        'type': type.toJson(),
-        'chat_id': chatId,
-        'notification_settings_chat_id': notificationSettingsChatId,
-        'notification_sound_id': notificationSoundId.toString(),
-        'total_count': totalCount,
-        'added_notifications': [for (final e in addedNotifications) e.toJson()],
-        'removed_notification_ids': removedNotificationIds,
-      };
+    '@type': CONSTRUCTOR,
+    'notification_group_id': notificationGroupId,
+    'type': type.toJson(),
+    'chat_id': chatId,
+    'notification_settings_chat_id': notificationSettingsChatId,
+    'notification_sound_id': notificationSoundId.toString(),
+    'total_count': totalCount,
+    'added_notifications': [for (final e in addedNotifications) e.toJson()],
+    'removed_notification_ids': removedNotificationIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4326,21 +4286,20 @@ final class UpdateNotificationGroup extends Update {
     List<int>? removedNotificationIds,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateNotificationGroup(
-        notificationGroupId: notificationGroupId ?? this.notificationGroupId,
-        type: type ?? this.type,
-        chatId: chatId ?? this.chatId,
-        notificationSettingsChatId:
-            notificationSettingsChatId ?? this.notificationSettingsChatId,
-        notificationSoundId: notificationSoundId ?? this.notificationSoundId,
-        totalCount: totalCount ?? this.totalCount,
-        addedNotifications: addedNotifications ?? this.addedNotifications,
-        removedNotificationIds:
-            removedNotificationIds ?? this.removedNotificationIds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateNotificationGroup(
+    notificationGroupId: notificationGroupId ?? this.notificationGroupId,
+    type: type ?? this.type,
+    chatId: chatId ?? this.chatId,
+    notificationSettingsChatId:
+        notificationSettingsChatId ?? this.notificationSettingsChatId,
+    notificationSoundId: notificationSoundId ?? this.notificationSoundId,
+    totalCount: totalCount ?? this.totalCount,
+    addedNotifications: addedNotifications ?? this.addedNotifications,
+    removedNotificationIds:
+        removedNotificationIds ?? this.removedNotificationIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateNotificationGroup';
@@ -4373,16 +4332,18 @@ final class UpdateActiveNotifications extends Update {
   factory UpdateActiveNotifications.fromJson(Map<String, dynamic> json) =>
       UpdateActiveNotifications(
         groups: _readList<NotificationGroup>(
-            json['groups'], (e) => _readObject(e, NotificationGroup.fromJson)),
+          json['groups'],
+          (e) => _readObject(e, NotificationGroup.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'groups': [for (final e in groups) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'groups': [for (final e in groups) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4391,12 +4352,11 @@ final class UpdateActiveNotifications extends Update {
     List<NotificationGroup>? groups,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateActiveNotifications(
-        groups: groups ?? this.groups,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateActiveNotifications(
+    groups: groups ?? this.groups,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateActiveNotifications';
@@ -4433,18 +4393,19 @@ final class UpdateHavePendingNotifications extends Update {
   factory UpdateHavePendingNotifications.fromJson(Map<String, dynamic> json) =>
       UpdateHavePendingNotifications(
         haveDelayedNotifications: _readBool(json['have_delayed_notifications']),
-        haveUnreceivedNotifications:
-            _readBool(json['have_unreceived_notifications']),
+        haveUnreceivedNotifications: _readBool(
+          json['have_unreceived_notifications'],
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'have_delayed_notifications': haveDelayedNotifications,
-        'have_unreceived_notifications': haveUnreceivedNotifications,
-      };
+    '@type': CONSTRUCTOR,
+    'have_delayed_notifications': haveDelayedNotifications,
+    'have_unreceived_notifications': haveUnreceivedNotifications,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4454,15 +4415,14 @@ final class UpdateHavePendingNotifications extends Update {
     bool? haveUnreceivedNotifications,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateHavePendingNotifications(
-        haveDelayedNotifications:
-            haveDelayedNotifications ?? this.haveDelayedNotifications,
-        haveUnreceivedNotifications:
-            haveUnreceivedNotifications ?? this.haveUnreceivedNotifications,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateHavePendingNotifications(
+    haveDelayedNotifications:
+        haveDelayedNotifications ?? this.haveDelayedNotifications,
+    haveUnreceivedNotifications:
+        haveUnreceivedNotifications ?? this.haveUnreceivedNotifications,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateHavePendingNotifications';
@@ -4516,12 +4476,12 @@ final class UpdateDeleteMessages extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_ids': messageIds,
-        'is_permanent': isPermanent,
-        'from_cache': fromCache,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_ids': messageIds,
+    'is_permanent': isPermanent,
+    'from_cache': fromCache,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4533,15 +4493,14 @@ final class UpdateDeleteMessages extends Update {
     bool? fromCache,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateDeleteMessages(
-        chatId: chatId ?? this.chatId,
-        messageIds: messageIds ?? this.messageIds,
-        isPermanent: isPermanent ?? this.isPermanent,
-        fromCache: fromCache ?? this.fromCache,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateDeleteMessages(
+    chatId: chatId ?? this.chatId,
+    messageIds: messageIds ?? this.messageIds,
+    isPermanent: isPermanent ?? this.isPermanent,
+    fromCache: fromCache ?? this.fromCache,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateDeleteMessages';
@@ -4595,12 +4554,12 @@ final class UpdateChatAction extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'topic_id': topicId?.toJson(),
-        'sender_id': senderId.toJson(),
-        'action': action.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'topic_id': topicId?.toJson(),
+    'sender_id': senderId.toJson(),
+    'action': action.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4612,15 +4571,14 @@ final class UpdateChatAction extends Update {
     ChatAction? action,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatAction(
-        chatId: chatId ?? this.chatId,
-        topicId: topicId != null ? topicId() : this.topicId,
-        senderId: senderId ?? this.senderId,
-        action: action ?? this.action,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatAction(
+    chatId: chatId ?? this.chatId,
+    topicId: topicId != null ? topicId() : this.topicId,
+    senderId: senderId ?? this.senderId,
+    action: action ?? this.action,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatAction';
@@ -4674,12 +4632,12 @@ final class UpdatePendingTextMessage extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'forum_topic_id': forumTopicId,
-        'draft_id': draftId.toString(),
-        'text': text.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'forum_topic_id': forumTopicId,
+    'draft_id': draftId.toString(),
+    'text': text.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4691,15 +4649,14 @@ final class UpdatePendingTextMessage extends Update {
     FormattedText? text,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdatePendingTextMessage(
-        chatId: chatId ?? this.chatId,
-        forumTopicId: forumTopicId ?? this.forumTopicId,
-        draftId: draftId ?? this.draftId,
-        text: text ?? this.text,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdatePendingTextMessage(
+    chatId: chatId ?? this.chatId,
+    forumTopicId: forumTopicId ?? this.forumTopicId,
+    draftId: draftId ?? this.draftId,
+    text: text ?? this.text,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updatePendingTextMessage';
@@ -4743,10 +4700,10 @@ final class UpdateUserStatus extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'status': status.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'status': status.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4756,13 +4713,12 @@ final class UpdateUserStatus extends Update {
     UserStatus? status,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateUserStatus(
-        userId: userId ?? this.userId,
-        status: status ?? this.status,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateUserStatus(
+    userId: userId ?? this.userId,
+    status: status ?? this.status,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateUserStatus';
@@ -4774,11 +4730,7 @@ final class UpdateUserStatus extends Update {
 /// Some data of a user has changed. This update is guaranteed to come before the user identifier is returned to the application
 final class UpdateUser extends Update {
   /// Some data of a user has changed. This update is guaranteed to come before the user identifier is returned to the application
-  const UpdateUser({
-    required this.user,
-    this.extra,
-    this.clientId,
-  });
+  const UpdateUser({required this.user, this.extra, this.clientId});
 
   /// New data about the user
   final User user;
@@ -4793,30 +4745,25 @@ final class UpdateUser extends Update {
 
   /// Parses a [UpdateUser] from TDLib JSON.
   factory UpdateUser.fromJson(Map<String, dynamic> json) => UpdateUser(
-        user: _readObject(json['user'], User.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    user: _readObject(json['user'], User.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user': user.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user': user.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UpdateUser copyWith({
-    User? user,
-    dynamic extra,
-    int? clientId,
-  }) =>
-      UpdateUser(
-        user: user ?? this.user,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  UpdateUser copyWith({User? user, dynamic extra, int? clientId}) => UpdateUser(
+    user: user ?? this.user,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateUser';
@@ -4828,11 +4775,7 @@ final class UpdateUser extends Update {
 /// Some data of a basic group has changed. This update is guaranteed to come before the basic group identifier is returned to the application
 final class UpdateBasicGroup extends Update {
   /// Some data of a basic group has changed. This update is guaranteed to come before the basic group identifier is returned to the application
-  const UpdateBasicGroup({
-    required this.basicGroup,
-    this.extra,
-    this.clientId,
-  });
+  const UpdateBasicGroup({required this.basicGroup, this.extra, this.clientId});
 
   /// New data about the group
   final BasicGroup basicGroup;
@@ -4855,9 +4798,9 @@ final class UpdateBasicGroup extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'basic_group': basicGroup.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'basic_group': basicGroup.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4866,12 +4809,11 @@ final class UpdateBasicGroup extends Update {
     BasicGroup? basicGroup,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateBasicGroup(
-        basicGroup: basicGroup ?? this.basicGroup,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateBasicGroup(
+    basicGroup: basicGroup ?? this.basicGroup,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateBasicGroup';
@@ -4883,11 +4825,7 @@ final class UpdateBasicGroup extends Update {
 /// Some data of a supergroup or a channel has changed. This update is guaranteed to come before the supergroup identifier is returned to the application
 final class UpdateSupergroup extends Update {
   /// Some data of a supergroup or a channel has changed. This update is guaranteed to come before the supergroup identifier is returned to the application
-  const UpdateSupergroup({
-    required this.supergroup,
-    this.extra,
-    this.clientId,
-  });
+  const UpdateSupergroup({required this.supergroup, this.extra, this.clientId});
 
   /// New data about the supergroup
   final Supergroup supergroup;
@@ -4910,9 +4848,9 @@ final class UpdateSupergroup extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'supergroup': supergroup.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup': supergroup.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4921,12 +4859,11 @@ final class UpdateSupergroup extends Update {
     Supergroup? supergroup,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateSupergroup(
-        supergroup: supergroup ?? this.supergroup,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateSupergroup(
+    supergroup: supergroup ?? this.supergroup,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateSupergroup';
@@ -4938,11 +4875,7 @@ final class UpdateSupergroup extends Update {
 /// Some data of a secret chat has changed. This update is guaranteed to come before the secret chat identifier is returned to the application
 final class UpdateSecretChat extends Update {
   /// Some data of a secret chat has changed. This update is guaranteed to come before the secret chat identifier is returned to the application
-  const UpdateSecretChat({
-    required this.secretChat,
-    this.extra,
-    this.clientId,
-  });
+  const UpdateSecretChat({required this.secretChat, this.extra, this.clientId});
 
   /// New data about the secret chat
   final SecretChat secretChat;
@@ -4965,9 +4898,9 @@ final class UpdateSecretChat extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'secret_chat': secretChat.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'secret_chat': secretChat.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4976,12 +4909,11 @@ final class UpdateSecretChat extends Update {
     SecretChat? secretChat,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateSecretChat(
-        secretChat: secretChat ?? this.secretChat,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateSecretChat(
+    secretChat: secretChat ?? this.secretChat,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateSecretChat';
@@ -5018,18 +4950,20 @@ final class UpdateUserFullInfo extends Update {
   factory UpdateUserFullInfo.fromJson(Map<String, dynamic> json) =>
       UpdateUserFullInfo(
         userId: _readInt(json['user_id']),
-        userFullInfo:
-            _readObject(json['user_full_info'], UserFullInfo.fromJson),
+        userFullInfo: _readObject(
+          json['user_full_info'],
+          UserFullInfo.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'user_full_info': userFullInfo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'user_full_info': userFullInfo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -5039,13 +4973,12 @@ final class UpdateUserFullInfo extends Update {
     UserFullInfo? userFullInfo,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateUserFullInfo(
-        userId: userId ?? this.userId,
-        userFullInfo: userFullInfo ?? this.userFullInfo,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateUserFullInfo(
+    userId: userId ?? this.userId,
+    userFullInfo: userFullInfo ?? this.userFullInfo,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateUserFullInfo';
@@ -5083,17 +5016,19 @@ final class UpdateBasicGroupFullInfo extends Update {
       UpdateBasicGroupFullInfo(
         basicGroupId: _readInt(json['basic_group_id']),
         basicGroupFullInfo: _readObject(
-            json['basic_group_full_info'], BasicGroupFullInfo.fromJson),
+          json['basic_group_full_info'],
+          BasicGroupFullInfo.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'basic_group_id': basicGroupId,
-        'basic_group_full_info': basicGroupFullInfo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'basic_group_id': basicGroupId,
+    'basic_group_full_info': basicGroupFullInfo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -5103,13 +5038,12 @@ final class UpdateBasicGroupFullInfo extends Update {
     BasicGroupFullInfo? basicGroupFullInfo,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateBasicGroupFullInfo(
-        basicGroupId: basicGroupId ?? this.basicGroupId,
-        basicGroupFullInfo: basicGroupFullInfo ?? this.basicGroupFullInfo,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateBasicGroupFullInfo(
+    basicGroupId: basicGroupId ?? this.basicGroupId,
+    basicGroupFullInfo: basicGroupFullInfo ?? this.basicGroupFullInfo,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateBasicGroupFullInfo';
@@ -5147,17 +5081,19 @@ final class UpdateSupergroupFullInfo extends Update {
       UpdateSupergroupFullInfo(
         supergroupId: _readInt(json['supergroup_id']),
         supergroupFullInfo: _readObject(
-            json['supergroup_full_info'], SupergroupFullInfo.fromJson),
+          json['supergroup_full_info'],
+          SupergroupFullInfo.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'supergroup_full_info': supergroupFullInfo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'supergroup_full_info': supergroupFullInfo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -5167,13 +5103,12 @@ final class UpdateSupergroupFullInfo extends Update {
     SupergroupFullInfo? supergroupFullInfo,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateSupergroupFullInfo(
-        supergroupId: supergroupId ?? this.supergroupId,
-        supergroupFullInfo: supergroupFullInfo ?? this.supergroupFullInfo,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateSupergroupFullInfo(
+    supergroupId: supergroupId ?? this.supergroupId,
+    supergroupFullInfo: supergroupFullInfo ?? this.supergroupFullInfo,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateSupergroupFullInfo';
@@ -5217,10 +5152,10 @@ final class UpdateServiceNotification extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'type': type,
-        'content': content.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'type': type,
+    'content': content.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -5230,13 +5165,12 @@ final class UpdateServiceNotification extends Update {
     MessageContent? content,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateServiceNotification(
-        type: type ?? this.type,
-        content: content ?? this.content,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateServiceNotification(
+    type: type ?? this.type,
+    content: content ?? this.content,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateServiceNotification';
@@ -5248,11 +5182,7 @@ final class UpdateServiceNotification extends Update {
 /// Information about a file was updated
 final class UpdateFile extends Update {
   /// Information about a file was updated
-  const UpdateFile({
-    required this.file,
-    this.extra,
-    this.clientId,
-  });
+  const UpdateFile({required this.file, this.extra, this.clientId});
 
   /// New data about the file
   final File file;
@@ -5267,30 +5197,25 @@ final class UpdateFile extends Update {
 
   /// Parses a [UpdateFile] from TDLib JSON.
   factory UpdateFile.fromJson(Map<String, dynamic> json) => UpdateFile(
-        file: _readObject(json['file'], File.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    file: _readObject(json['file'], File.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file': file.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'file': file.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UpdateFile copyWith({
-    File? file,
-    dynamic extra,
-    int? clientId,
-  }) =>
-      UpdateFile(
-        file: file ?? this.file,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  UpdateFile copyWith({File? file, dynamic extra, int? clientId}) => UpdateFile(
+    file: file ?? this.file,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateFile';
@@ -5344,12 +5269,12 @@ final class UpdateFileGenerationStart extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'generation_id': generationId.toString(),
-        'original_path': originalPath,
-        'destination_path': destinationPath,
-        'conversion': conversion,
-      };
+    '@type': CONSTRUCTOR,
+    'generation_id': generationId.toString(),
+    'original_path': originalPath,
+    'destination_path': destinationPath,
+    'conversion': conversion,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -5361,15 +5286,14 @@ final class UpdateFileGenerationStart extends Update {
     String? conversion,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateFileGenerationStart(
-        generationId: generationId ?? this.generationId,
-        originalPath: originalPath ?? this.originalPath,
-        destinationPath: destinationPath ?? this.destinationPath,
-        conversion: conversion ?? this.conversion,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateFileGenerationStart(
+    generationId: generationId ?? this.generationId,
+    originalPath: originalPath ?? this.originalPath,
+    destinationPath: destinationPath ?? this.destinationPath,
+    conversion: conversion ?? this.conversion,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateFileGenerationStart';
@@ -5408,9 +5332,9 @@ final class UpdateFileGenerationStop extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'generation_id': generationId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'generation_id': generationId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -5419,12 +5343,11 @@ final class UpdateFileGenerationStop extends Update {
     int? generationId,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateFileGenerationStop(
-        generationId: generationId ?? this.generationId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateFileGenerationStop(
+    generationId: generationId ?? this.generationId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateFileGenerationStop';
@@ -5473,11 +5396,11 @@ final class UpdateFileDownloads extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_size': totalSize,
-        'total_count': totalCount,
-        'downloaded_size': downloadedSize,
-      };
+    '@type': CONSTRUCTOR,
+    'total_size': totalSize,
+    'total_count': totalCount,
+    'downloaded_size': downloadedSize,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -5488,14 +5411,13 @@ final class UpdateFileDownloads extends Update {
     int? downloadedSize,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateFileDownloads(
-        totalSize: totalSize ?? this.totalSize,
-        totalCount: totalCount ?? this.totalCount,
-        downloadedSize: downloadedSize ?? this.downloadedSize,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateFileDownloads(
+    totalSize: totalSize ?? this.totalSize,
+    totalCount: totalCount ?? this.totalCount,
+    downloadedSize: downloadedSize ?? this.downloadedSize,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateFileDownloads';
@@ -5539,10 +5461,10 @@ final class UpdateFileAddedToDownloads extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file_download': fileDownload.toJson(),
-        'counts': counts.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'file_download': fileDownload.toJson(),
+    'counts': counts.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -5552,13 +5474,12 @@ final class UpdateFileAddedToDownloads extends Update {
     DownloadedFileCounts? counts,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateFileAddedToDownloads(
-        fileDownload: fileDownload ?? this.fileDownload,
-        counts: counts ?? this.counts,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateFileAddedToDownloads(
+    fileDownload: fileDownload ?? this.fileDownload,
+    counts: counts ?? this.counts,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateFileAddedToDownloads';
@@ -5612,12 +5533,12 @@ final class UpdateFileDownload extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file_id': fileId,
-        'complete_date': completeDate,
-        'is_paused': isPaused,
-        'counts': counts.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'file_id': fileId,
+    'complete_date': completeDate,
+    'is_paused': isPaused,
+    'counts': counts.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -5629,15 +5550,14 @@ final class UpdateFileDownload extends Update {
     DownloadedFileCounts? counts,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateFileDownload(
-        fileId: fileId ?? this.fileId,
-        completeDate: completeDate ?? this.completeDate,
-        isPaused: isPaused ?? this.isPaused,
-        counts: counts ?? this.counts,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateFileDownload(
+    fileId: fileId ?? this.fileId,
+    completeDate: completeDate ?? this.completeDate,
+    isPaused: isPaused ?? this.isPaused,
+    counts: counts ?? this.counts,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateFileDownload';
@@ -5681,10 +5601,10 @@ final class UpdateFileRemovedFromDownloads extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file_id': fileId,
-        'counts': counts.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'file_id': fileId,
+    'counts': counts.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -5694,13 +5614,12 @@ final class UpdateFileRemovedFromDownloads extends Update {
     DownloadedFileCounts? counts,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateFileRemovedFromDownloads(
-        fileId: fileId ?? this.fileId,
-        counts: counts ?? this.counts,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateFileRemovedFromDownloads(
+    fileId: fileId ?? this.fileId,
+    counts: counts ?? this.counts,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateFileRemovedFromDownloads';
@@ -5739,22 +5658,22 @@ final class UpdateApplicationVerificationRequired extends Update {
 
   /// Parses a [UpdateApplicationVerificationRequired] from TDLib JSON.
   factory UpdateApplicationVerificationRequired.fromJson(
-          Map<String, dynamic> json) =>
-      UpdateApplicationVerificationRequired(
-        verificationId: _readInt(json['verification_id']),
-        nonce: _readString(json['nonce']),
-        cloudProjectNumber: _readInt(json['cloud_project_number']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => UpdateApplicationVerificationRequired(
+    verificationId: _readInt(json['verification_id']),
+    nonce: _readString(json['nonce']),
+    cloudProjectNumber: _readInt(json['cloud_project_number']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'verification_id': verificationId,
-        'nonce': nonce,
-        'cloud_project_number': cloudProjectNumber.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'verification_id': verificationId,
+    'nonce': nonce,
+    'cloud_project_number': cloudProjectNumber.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -5765,14 +5684,13 @@ final class UpdateApplicationVerificationRequired extends Update {
     int? cloudProjectNumber,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateApplicationVerificationRequired(
-        verificationId: verificationId ?? this.verificationId,
-        nonce: nonce ?? this.nonce,
-        cloudProjectNumber: cloudProjectNumber ?? this.cloudProjectNumber,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateApplicationVerificationRequired(
+    verificationId: verificationId ?? this.verificationId,
+    nonce: nonce ?? this.nonce,
+    cloudProjectNumber: cloudProjectNumber ?? this.cloudProjectNumber,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateApplicationVerificationRequired';
@@ -5811,22 +5729,22 @@ final class UpdateApplicationRecaptchaVerificationRequired extends Update {
 
   /// Parses a [UpdateApplicationRecaptchaVerificationRequired] from TDLib JSON.
   factory UpdateApplicationRecaptchaVerificationRequired.fromJson(
-          Map<String, dynamic> json) =>
-      UpdateApplicationRecaptchaVerificationRequired(
-        verificationId: _readInt(json['verification_id']),
-        action: _readString(json['action']),
-        recaptchaKeyId: _readString(json['recaptcha_key_id']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => UpdateApplicationRecaptchaVerificationRequired(
+    verificationId: _readInt(json['verification_id']),
+    action: _readString(json['action']),
+    recaptchaKeyId: _readString(json['recaptcha_key_id']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'verification_id': verificationId,
-        'action': action,
-        'recaptcha_key_id': recaptchaKeyId,
-      };
+    '@type': CONSTRUCTOR,
+    'verification_id': verificationId,
+    'action': action,
+    'recaptcha_key_id': recaptchaKeyId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -5837,14 +5755,13 @@ final class UpdateApplicationRecaptchaVerificationRequired extends Update {
     String? recaptchaKeyId,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateApplicationRecaptchaVerificationRequired(
-        verificationId: verificationId ?? this.verificationId,
-        action: action ?? this.action,
-        recaptchaKeyId: recaptchaKeyId ?? this.recaptchaKeyId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateApplicationRecaptchaVerificationRequired(
+    verificationId: verificationId ?? this.verificationId,
+    action: action ?? this.action,
+    recaptchaKeyId: recaptchaKeyId ?? this.recaptchaKeyId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -5857,11 +5774,7 @@ final class UpdateApplicationRecaptchaVerificationRequired extends Update {
 /// New call was created or information about a call was updated
 final class UpdateCall extends Update {
   /// New call was created or information about a call was updated
-  const UpdateCall({
-    required this.call,
-    this.extra,
-    this.clientId,
-  });
+  const UpdateCall({required this.call, this.extra, this.clientId});
 
   /// New data about a call
   final Call call;
@@ -5876,30 +5789,25 @@ final class UpdateCall extends Update {
 
   /// Parses a [UpdateCall] from TDLib JSON.
   factory UpdateCall.fromJson(Map<String, dynamic> json) => UpdateCall(
-        call: _readObject(json['call'], Call.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    call: _readObject(json['call'], Call.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'call': call.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'call': call.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UpdateCall copyWith({
-    Call? call,
-    dynamic extra,
-    int? clientId,
-  }) =>
-      UpdateCall(
-        call: call ?? this.call,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  UpdateCall copyWith({Call? call, dynamic extra, int? clientId}) => UpdateCall(
+    call: call ?? this.call,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateCall';
@@ -5911,11 +5819,7 @@ final class UpdateCall extends Update {
 /// Information about a group call was updated
 final class UpdateGroupCall extends Update {
   /// Information about a group call was updated
-  const UpdateGroupCall({
-    required this.groupCall,
-    this.extra,
-    this.clientId,
-  });
+  const UpdateGroupCall({required this.groupCall, this.extra, this.clientId});
 
   /// New data about the group call
   final GroupCall groupCall;
@@ -5938,9 +5842,9 @@ final class UpdateGroupCall extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'group_call': groupCall.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'group_call': groupCall.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -5949,12 +5853,11 @@ final class UpdateGroupCall extends Update {
     GroupCall? groupCall,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateGroupCall(
-        groupCall: groupCall ?? this.groupCall,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateGroupCall(
+    groupCall: groupCall ?? this.groupCall,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateGroupCall';
@@ -5991,18 +5894,20 @@ final class UpdateGroupCallParticipant extends Update {
   factory UpdateGroupCallParticipant.fromJson(Map<String, dynamic> json) =>
       UpdateGroupCallParticipant(
         groupCallId: _readInt(json['group_call_id']),
-        participant:
-            _readObject(json['participant'], GroupCallParticipant.fromJson),
+        participant: _readObject(
+          json['participant'],
+          GroupCallParticipant.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'participant': participant.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'participant': participant.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -6012,13 +5917,12 @@ final class UpdateGroupCallParticipant extends Update {
     GroupCallParticipant? participant,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateGroupCallParticipant(
-        groupCallId: groupCallId ?? this.groupCallId,
-        participant: participant ?? this.participant,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateGroupCallParticipant(
+    groupCallId: groupCallId ?? this.groupCallId,
+    participant: participant ?? this.participant,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateGroupCallParticipant';
@@ -6055,20 +5959,20 @@ final class UpdateGroupCallParticipants extends Update {
   factory UpdateGroupCallParticipants.fromJson(Map<String, dynamic> json) =>
       UpdateGroupCallParticipants(
         groupCallId: _readInt(json['group_call_id']),
-        participantUserIds:
-            _readList<int>(json['participant_user_ids'], _readInt),
+        participantUserIds: _readList<int>(
+          json['participant_user_ids'],
+          _readInt,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'participant_user_ids': [
-          for (final e in participantUserIds) e.toString()
-        ],
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'participant_user_ids': [for (final e in participantUserIds) e.toString()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -6078,13 +5982,12 @@ final class UpdateGroupCallParticipants extends Update {
     List<int>? participantUserIds,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateGroupCallParticipants(
-        groupCallId: groupCallId ?? this.groupCallId,
-        participantUserIds: participantUserIds ?? this.participantUserIds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateGroupCallParticipants(
+    groupCallId: groupCallId ?? this.groupCallId,
+    participantUserIds: participantUserIds ?? this.participantUserIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateGroupCallParticipants';
@@ -6123,22 +6026,22 @@ final class UpdateGroupCallVerificationState extends Update {
 
   /// Parses a [UpdateGroupCallVerificationState] from TDLib JSON.
   factory UpdateGroupCallVerificationState.fromJson(
-          Map<String, dynamic> json) =>
-      UpdateGroupCallVerificationState(
-        groupCallId: _readInt(json['group_call_id']),
-        generation: _readInt(json['generation']),
-        emojis: _readList<String>(json['emojis'], _readString),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => UpdateGroupCallVerificationState(
+    groupCallId: _readInt(json['group_call_id']),
+    generation: _readInt(json['generation']),
+    emojis: _readList<String>(json['emojis'], _readString),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'generation': generation,
-        'emojis': emojis,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'generation': generation,
+    'emojis': emojis,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -6149,14 +6052,13 @@ final class UpdateGroupCallVerificationState extends Update {
     List<String>? emojis,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateGroupCallVerificationState(
-        groupCallId: groupCallId ?? this.groupCallId,
-        generation: generation ?? this.generation,
-        emojis: emojis ?? this.emojis,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateGroupCallVerificationState(
+    groupCallId: groupCallId ?? this.groupCallId,
+    generation: generation ?? this.generation,
+    emojis: emojis ?? this.emojis,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateGroupCallVerificationState';
@@ -6205,11 +6107,11 @@ final class UpdateGroupCallNewMessage extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'sender_id': senderId.toJson(),
-        'text': text.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'sender_id': senderId.toJson(),
+    'text': text.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -6220,14 +6122,13 @@ final class UpdateGroupCallNewMessage extends Update {
     FormattedText? text,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateGroupCallNewMessage(
-        groupCallId: groupCallId ?? this.groupCallId,
-        senderId: senderId ?? this.senderId,
-        text: text ?? this.text,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateGroupCallNewMessage(
+    groupCallId: groupCallId ?? this.groupCallId,
+    senderId: senderId ?? this.senderId,
+    text: text ?? this.text,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateGroupCallNewMessage';
@@ -6271,10 +6172,10 @@ final class UpdateNewCallSignalingData extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'call_id': callId,
-        'data': data,
-      };
+    '@type': CONSTRUCTOR,
+    'call_id': callId,
+    'data': data,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -6284,13 +6185,12 @@ final class UpdateNewCallSignalingData extends Update {
     String? data,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateNewCallSignalingData(
-        callId: callId ?? this.callId,
-        data: data ?? this.data,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateNewCallSignalingData(
+    callId: callId ?? this.callId,
+    data: data ?? this.data,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateNewCallSignalingData';
@@ -6334,10 +6234,10 @@ final class UpdateUserPrivacySettingRules extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'setting': setting.toJson(),
-        'rules': rules.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'setting': setting.toJson(),
+    'rules': rules.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -6347,13 +6247,12 @@ final class UpdateUserPrivacySettingRules extends Update {
     UserPrivacySettingRules? rules,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateUserPrivacySettingRules(
-        setting: setting ?? this.setting,
-        rules: rules ?? this.rules,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateUserPrivacySettingRules(
+    setting: setting ?? this.setting,
+    rules: rules ?? this.rules,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateUserPrivacySettingRules';
@@ -6402,11 +6301,11 @@ final class UpdateUnreadMessageCount extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_list': chatList.toJson(),
-        'unread_count': unreadCount,
-        'unread_unmuted_count': unreadUnmutedCount,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_list': chatList.toJson(),
+    'unread_count': unreadCount,
+    'unread_unmuted_count': unreadUnmutedCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -6417,14 +6316,13 @@ final class UpdateUnreadMessageCount extends Update {
     int? unreadUnmutedCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateUnreadMessageCount(
-        chatList: chatList ?? this.chatList,
-        unreadCount: unreadCount ?? this.unreadCount,
-        unreadUnmutedCount: unreadUnmutedCount ?? this.unreadUnmutedCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateUnreadMessageCount(
+    chatList: chatList ?? this.chatList,
+    unreadCount: unreadCount ?? this.unreadCount,
+    unreadUnmutedCount: unreadUnmutedCount ?? this.unreadUnmutedCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateUnreadMessageCount';
@@ -6481,22 +6379,23 @@ final class UpdateUnreadChatCount extends Update {
         unreadCount: _readInt(json['unread_count']),
         unreadUnmutedCount: _readInt(json['unread_unmuted_count']),
         markedAsUnreadCount: _readInt(json['marked_as_unread_count']),
-        markedAsUnreadUnmutedCount:
-            _readInt(json['marked_as_unread_unmuted_count']),
+        markedAsUnreadUnmutedCount: _readInt(
+          json['marked_as_unread_unmuted_count'],
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_list': chatList.toJson(),
-        'total_count': totalCount,
-        'unread_count': unreadCount,
-        'unread_unmuted_count': unreadUnmutedCount,
-        'marked_as_unread_count': markedAsUnreadCount,
-        'marked_as_unread_unmuted_count': markedAsUnreadUnmutedCount,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_list': chatList.toJson(),
+    'total_count': totalCount,
+    'unread_count': unreadCount,
+    'unread_unmuted_count': unreadUnmutedCount,
+    'marked_as_unread_count': markedAsUnreadCount,
+    'marked_as_unread_unmuted_count': markedAsUnreadUnmutedCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -6510,18 +6409,17 @@ final class UpdateUnreadChatCount extends Update {
     int? markedAsUnreadUnmutedCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateUnreadChatCount(
-        chatList: chatList ?? this.chatList,
-        totalCount: totalCount ?? this.totalCount,
-        unreadCount: unreadCount ?? this.unreadCount,
-        unreadUnmutedCount: unreadUnmutedCount ?? this.unreadUnmutedCount,
-        markedAsUnreadCount: markedAsUnreadCount ?? this.markedAsUnreadCount,
-        markedAsUnreadUnmutedCount:
-            markedAsUnreadUnmutedCount ?? this.markedAsUnreadUnmutedCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateUnreadChatCount(
+    chatList: chatList ?? this.chatList,
+    totalCount: totalCount ?? this.totalCount,
+    unreadCount: unreadCount ?? this.unreadCount,
+    unreadUnmutedCount: unreadUnmutedCount ?? this.unreadUnmutedCount,
+    markedAsUnreadCount: markedAsUnreadCount ?? this.markedAsUnreadCount,
+    markedAsUnreadUnmutedCount:
+        markedAsUnreadUnmutedCount ?? this.markedAsUnreadUnmutedCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateUnreadChatCount';
@@ -6533,11 +6431,7 @@ final class UpdateUnreadChatCount extends Update {
 /// A story was changed
 final class UpdateStory extends Update {
   /// A story was changed
-  const UpdateStory({
-    required this.story,
-    this.extra,
-    this.clientId,
-  });
+  const UpdateStory({required this.story, this.extra, this.clientId});
 
   /// The new information about the story
   final Story story;
@@ -6552,25 +6446,21 @@ final class UpdateStory extends Update {
 
   /// Parses a [UpdateStory] from TDLib JSON.
   factory UpdateStory.fromJson(Map<String, dynamic> json) => UpdateStory(
-        story: _readObject(json['story'], Story.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    story: _readObject(json['story'], Story.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'story': story.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'story': story.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UpdateStory copyWith({
-    Story? story,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  UpdateStory copyWith({Story? story, dynamic extra, int? clientId}) =>
       UpdateStory(
         story: story ?? this.story,
         extra: extra ?? this.extra,
@@ -6619,10 +6509,10 @@ final class UpdateStoryDeleted extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'story_id': storyId,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -6632,13 +6522,12 @@ final class UpdateStoryDeleted extends Update {
     int? storyId,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateStoryDeleted(
-        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-        storyId: storyId ?? this.storyId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateStoryDeleted(
+    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+    storyId: storyId ?? this.storyId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateStoryDeleted';
@@ -6682,10 +6571,10 @@ final class UpdateStoryPostSucceeded extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'story': story.toJson(),
-        'old_story_id': oldStoryId,
-      };
+    '@type': CONSTRUCTOR,
+    'story': story.toJson(),
+    'old_story_id': oldStoryId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -6695,13 +6584,12 @@ final class UpdateStoryPostSucceeded extends Update {
     int? oldStoryId,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateStoryPostSucceeded(
-        story: story ?? this.story,
-        oldStoryId: oldStoryId ?? this.oldStoryId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateStoryPostSucceeded(
+    story: story ?? this.story,
+    oldStoryId: oldStoryId ?? this.oldStoryId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateStoryPostSucceeded';
@@ -6743,19 +6631,21 @@ final class UpdateStoryPostFailed extends Update {
       UpdateStoryPostFailed(
         story: _readObject(json['story'], Story.fromJson),
         error: _readObject(json['error'], TdError.fromJson),
-        errorType:
-            _readOptional(json['error_type'], CanPostStoryResult.fromJson),
+        errorType: _readOptional(
+          json['error_type'],
+          CanPostStoryResult.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'story': story.toJson(),
-        'error': error.toJson(),
-        'error_type': errorType?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'story': story.toJson(),
+    'error': error.toJson(),
+    'error_type': errorType?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -6766,14 +6656,13 @@ final class UpdateStoryPostFailed extends Update {
     CanPostStoryResult? Function()? errorType,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateStoryPostFailed(
-        story: story ?? this.story,
-        error: error ?? this.error,
-        errorType: errorType != null ? errorType() : this.errorType,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateStoryPostFailed(
+    story: story ?? this.story,
+    error: error ?? this.error,
+    errorType: errorType != null ? errorType() : this.errorType,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateStoryPostFailed';
@@ -6805,17 +6694,19 @@ final class UpdateChatActiveStories extends Update {
   /// Parses a [UpdateChatActiveStories] from TDLib JSON.
   factory UpdateChatActiveStories.fromJson(Map<String, dynamic> json) =>
       UpdateChatActiveStories(
-        activeStories:
-            _readObject(json['active_stories'], ChatActiveStories.fromJson),
+        activeStories: _readObject(
+          json['active_stories'],
+          ChatActiveStories.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'active_stories': activeStories.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'active_stories': activeStories.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -6824,12 +6715,11 @@ final class UpdateChatActiveStories extends Update {
     ChatActiveStories? activeStories,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatActiveStories(
-        activeStories: activeStories ?? this.activeStories,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatActiveStories(
+    activeStories: activeStories ?? this.activeStories,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatActiveStories';
@@ -6873,10 +6763,10 @@ final class UpdateStoryListChatCount extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'story_list': storyList.toJson(),
-        'chat_count': chatCount,
-      };
+    '@type': CONSTRUCTOR,
+    'story_list': storyList.toJson(),
+    'chat_count': chatCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -6886,13 +6776,12 @@ final class UpdateStoryListChatCount extends Update {
     int? chatCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateStoryListChatCount(
-        storyList: storyList ?? this.storyList,
-        chatCount: chatCount ?? this.chatCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateStoryListChatCount(
+    storyList: storyList ?? this.storyList,
+    chatCount: chatCount ?? this.chatCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateStoryListChatCount';
@@ -6936,10 +6825,10 @@ final class UpdateStoryStealthMode extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'active_until_date': activeUntilDate,
-        'cooldown_until_date': cooldownUntilDate,
-      };
+    '@type': CONSTRUCTOR,
+    'active_until_date': activeUntilDate,
+    'cooldown_until_date': cooldownUntilDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -6949,13 +6838,12 @@ final class UpdateStoryStealthMode extends Update {
     int? cooldownUntilDate,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateStoryStealthMode(
-        activeUntilDate: activeUntilDate ?? this.activeUntilDate,
-        cooldownUntilDate: cooldownUntilDate ?? this.cooldownUntilDate,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateStoryStealthMode(
+    activeUntilDate: activeUntilDate ?? this.activeUntilDate,
+    cooldownUntilDate: cooldownUntilDate ?? this.cooldownUntilDate,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateStoryStealthMode';
@@ -6990,18 +6878,18 @@ final class UpdateOption extends Update {
 
   /// Parses a [UpdateOption] from TDLib JSON.
   factory UpdateOption.fromJson(Map<String, dynamic> json) => UpdateOption(
-        name: _readString(json['name']),
-        value: _readObject(json['value'], OptionValue.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    name: _readString(json['name']),
+    value: _readObject(json['value'], OptionValue.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        'value': value.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    'value': value.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -7011,13 +6899,12 @@ final class UpdateOption extends Update {
     OptionValue? value,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateOption(
-        name: name ?? this.name,
-        value: value ?? this.value,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateOption(
+    name: name ?? this.name,
+    value: value ?? this.value,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateOption';
@@ -7029,11 +6916,7 @@ final class UpdateOption extends Update {
 /// A sticker set has changed
 final class UpdateStickerSet extends Update {
   /// A sticker set has changed
-  const UpdateStickerSet({
-    required this.stickerSet,
-    this.extra,
-    this.clientId,
-  });
+  const UpdateStickerSet({required this.stickerSet, this.extra, this.clientId});
 
   /// The sticker set
   final StickerSet stickerSet;
@@ -7056,9 +6939,9 @@ final class UpdateStickerSet extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker_set': stickerSet.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_set': stickerSet.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -7067,12 +6950,11 @@ final class UpdateStickerSet extends Update {
     StickerSet? stickerSet,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateStickerSet(
-        stickerSet: stickerSet ?? this.stickerSet,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateStickerSet(
+    stickerSet: stickerSet ?? this.stickerSet,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateStickerSet';
@@ -7116,10 +6998,10 @@ final class UpdateInstalledStickerSets extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker_type': stickerType.toJson(),
-        'sticker_set_ids': [for (final e in stickerSetIds) e.toString()],
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_type': stickerType.toJson(),
+    'sticker_set_ids': [for (final e in stickerSetIds) e.toString()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -7129,13 +7011,12 @@ final class UpdateInstalledStickerSets extends Update {
     List<int>? stickerSetIds,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateInstalledStickerSets(
-        stickerType: stickerType ?? this.stickerType,
-        stickerSetIds: stickerSetIds ?? this.stickerSetIds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateInstalledStickerSets(
+    stickerType: stickerType ?? this.stickerType,
+    stickerSetIds: stickerSetIds ?? this.stickerSetIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateInstalledStickerSets';
@@ -7172,18 +7053,20 @@ final class UpdateTrendingStickerSets extends Update {
   factory UpdateTrendingStickerSets.fromJson(Map<String, dynamic> json) =>
       UpdateTrendingStickerSets(
         stickerType: _readObject(json['sticker_type'], StickerType.fromJson),
-        stickerSets:
-            _readObject(json['sticker_sets'], TrendingStickerSets.fromJson),
+        stickerSets: _readObject(
+          json['sticker_sets'],
+          TrendingStickerSets.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker_type': stickerType.toJson(),
-        'sticker_sets': stickerSets.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_type': stickerType.toJson(),
+    'sticker_sets': stickerSets.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -7193,13 +7076,12 @@ final class UpdateTrendingStickerSets extends Update {
     TrendingStickerSets? stickerSets,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateTrendingStickerSets(
-        stickerType: stickerType ?? this.stickerType,
-        stickerSets: stickerSets ?? this.stickerSets,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateTrendingStickerSets(
+    stickerType: stickerType ?? this.stickerType,
+    stickerSets: stickerSets ?? this.stickerSets,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateTrendingStickerSets';
@@ -7243,10 +7125,10 @@ final class UpdateRecentStickers extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_attached': isAttached,
-        'sticker_ids': stickerIds,
-      };
+    '@type': CONSTRUCTOR,
+    'is_attached': isAttached,
+    'sticker_ids': stickerIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -7256,13 +7138,12 @@ final class UpdateRecentStickers extends Update {
     List<int>? stickerIds,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateRecentStickers(
-        isAttached: isAttached ?? this.isAttached,
-        stickerIds: stickerIds ?? this.stickerIds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateRecentStickers(
+    isAttached: isAttached ?? this.isAttached,
+    stickerIds: stickerIds ?? this.stickerIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateRecentStickers';
@@ -7301,9 +7182,9 @@ final class UpdateFavoriteStickers extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker_ids': stickerIds,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_ids': stickerIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -7312,12 +7193,11 @@ final class UpdateFavoriteStickers extends Update {
     List<int>? stickerIds,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateFavoriteStickers(
-        stickerIds: stickerIds ?? this.stickerIds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateFavoriteStickers(
+    stickerIds: stickerIds ?? this.stickerIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateFavoriteStickers';
@@ -7356,9 +7236,9 @@ final class UpdateSavedAnimations extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'animation_ids': animationIds,
-      };
+    '@type': CONSTRUCTOR,
+    'animation_ids': animationIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -7367,12 +7247,11 @@ final class UpdateSavedAnimations extends Update {
     List<int>? animationIds,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateSavedAnimations(
-        animationIds: animationIds ?? this.animationIds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateSavedAnimations(
+    animationIds: animationIds ?? this.animationIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateSavedAnimations';
@@ -7404,19 +7283,21 @@ final class UpdateSavedNotificationSounds extends Update {
   /// Parses a [UpdateSavedNotificationSounds] from TDLib JSON.
   factory UpdateSavedNotificationSounds.fromJson(Map<String, dynamic> json) =>
       UpdateSavedNotificationSounds(
-        notificationSoundIds:
-            _readList<int>(json['notification_sound_ids'], _readInt),
+        notificationSoundIds: _readList<int>(
+          json['notification_sound_ids'],
+          _readInt,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'notification_sound_ids': [
-          for (final e in notificationSoundIds) e.toString()
-        ],
-      };
+    '@type': CONSTRUCTOR,
+    'notification_sound_ids': [
+      for (final e in notificationSoundIds) e.toString(),
+    ],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -7425,12 +7306,11 @@ final class UpdateSavedNotificationSounds extends Update {
     List<int>? notificationSoundIds,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateSavedNotificationSounds(
-        notificationSoundIds: notificationSoundIds ?? this.notificationSoundIds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateSavedNotificationSounds(
+    notificationSoundIds: notificationSoundIds ?? this.notificationSoundIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateSavedNotificationSounds';
@@ -7474,10 +7354,10 @@ final class UpdateDefaultBackground extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'for_dark_theme': forDarkTheme,
-        'background': background?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'for_dark_theme': forDarkTheme,
+    'background': background?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -7487,13 +7367,12 @@ final class UpdateDefaultBackground extends Update {
     Background? Function()? background,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateDefaultBackground(
-        forDarkTheme: forDarkTheme ?? this.forDarkTheme,
-        background: background != null ? background() : this.background,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateDefaultBackground(
+    forDarkTheme: forDarkTheme ?? this.forDarkTheme,
+    background: background != null ? background() : this.background,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateDefaultBackground';
@@ -7525,17 +7404,19 @@ final class UpdateEmojiChatThemes extends Update {
   /// Parses a [UpdateEmojiChatThemes] from TDLib JSON.
   factory UpdateEmojiChatThemes.fromJson(Map<String, dynamic> json) =>
       UpdateEmojiChatThemes(
-        chatThemes: _readList<EmojiChatTheme>(json['chat_themes'],
-            (e) => _readObject(e, EmojiChatTheme.fromJson)),
+        chatThemes: _readList<EmojiChatTheme>(
+          json['chat_themes'],
+          (e) => _readObject(e, EmojiChatTheme.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_themes': [for (final e in chatThemes) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'chat_themes': [for (final e in chatThemes) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -7544,12 +7425,11 @@ final class UpdateEmojiChatThemes extends Update {
     List<EmojiChatTheme>? chatThemes,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateEmojiChatThemes(
-        chatThemes: chatThemes ?? this.chatThemes,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateEmojiChatThemes(
+    chatThemes: chatThemes ?? this.chatThemes,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateEmojiChatThemes';
@@ -7586,19 +7466,23 @@ final class UpdateAccentColors extends Update {
   factory UpdateAccentColors.fromJson(Map<String, dynamic> json) =>
       UpdateAccentColors(
         colors: _readList<AccentColor>(
-            json['colors'], (e) => _readObject(e, AccentColor.fromJson)),
-        availableAccentColorIds:
-            _readList<int>(json['available_accent_color_ids'], _readInt),
+          json['colors'],
+          (e) => _readObject(e, AccentColor.fromJson),
+        ),
+        availableAccentColorIds: _readList<int>(
+          json['available_accent_color_ids'],
+          _readInt,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'colors': [for (final e in colors) e.toJson()],
-        'available_accent_color_ids': availableAccentColorIds,
-      };
+    '@type': CONSTRUCTOR,
+    'colors': [for (final e in colors) e.toJson()],
+    'available_accent_color_ids': availableAccentColorIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -7608,14 +7492,13 @@ final class UpdateAccentColors extends Update {
     List<int>? availableAccentColorIds,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateAccentColors(
-        colors: colors ?? this.colors,
-        availableAccentColorIds:
-            availableAccentColorIds ?? this.availableAccentColorIds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateAccentColors(
+    colors: colors ?? this.colors,
+    availableAccentColorIds:
+        availableAccentColorIds ?? this.availableAccentColorIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateAccentColors';
@@ -7652,19 +7535,23 @@ final class UpdateProfileAccentColors extends Update {
   factory UpdateProfileAccentColors.fromJson(Map<String, dynamic> json) =>
       UpdateProfileAccentColors(
         colors: _readList<ProfileAccentColor>(
-            json['colors'], (e) => _readObject(e, ProfileAccentColor.fromJson)),
-        availableAccentColorIds:
-            _readList<int>(json['available_accent_color_ids'], _readInt),
+          json['colors'],
+          (e) => _readObject(e, ProfileAccentColor.fromJson),
+        ),
+        availableAccentColorIds: _readList<int>(
+          json['available_accent_color_ids'],
+          _readInt,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'colors': [for (final e in colors) e.toJson()],
-        'available_accent_color_ids': availableAccentColorIds,
-      };
+    '@type': CONSTRUCTOR,
+    'colors': [for (final e in colors) e.toJson()],
+    'available_accent_color_ids': availableAccentColorIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -7674,14 +7561,13 @@ final class UpdateProfileAccentColors extends Update {
     List<int>? availableAccentColorIds,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateProfileAccentColors(
-        colors: colors ?? this.colors,
-        availableAccentColorIds:
-            availableAccentColorIds ?? this.availableAccentColorIds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateProfileAccentColors(
+    colors: colors ?? this.colors,
+    availableAccentColorIds:
+        availableAccentColorIds ?? this.availableAccentColorIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateProfileAccentColors';
@@ -7723,19 +7609,21 @@ final class UpdateLanguagePackStrings extends Update {
       UpdateLanguagePackStrings(
         localizationTarget: _readString(json['localization_target']),
         languagePackId: _readString(json['language_pack_id']),
-        strings: _readList<LanguagePackString>(json['strings'],
-            (e) => _readObject(e, LanguagePackString.fromJson)),
+        strings: _readList<LanguagePackString>(
+          json['strings'],
+          (e) => _readObject(e, LanguagePackString.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'localization_target': localizationTarget,
-        'language_pack_id': languagePackId,
-        'strings': [for (final e in strings) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'localization_target': localizationTarget,
+    'language_pack_id': languagePackId,
+    'strings': [for (final e in strings) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -7746,14 +7634,13 @@ final class UpdateLanguagePackStrings extends Update {
     List<LanguagePackString>? strings,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateLanguagePackStrings(
-        localizationTarget: localizationTarget ?? this.localizationTarget,
-        languagePackId: languagePackId ?? this.languagePackId,
-        strings: strings ?? this.strings,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateLanguagePackStrings(
+    localizationTarget: localizationTarget ?? this.localizationTarget,
+    languagePackId: languagePackId ?? this.languagePackId,
+    strings: strings ?? this.strings,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateLanguagePackStrings';
@@ -7765,11 +7652,7 @@ final class UpdateLanguagePackStrings extends Update {
 /// The connection state has changed. This update must be used only to show a human-readable description of the connection state
 final class UpdateConnectionState extends Update {
   /// The connection state has changed. This update must be used only to show a human-readable description of the connection state
-  const UpdateConnectionState({
-    required this.state,
-    this.extra,
-    this.clientId,
-  });
+  const UpdateConnectionState({required this.state, this.extra, this.clientId});
 
   /// The new connection state
   final ConnectionState state;
@@ -7792,9 +7675,9 @@ final class UpdateConnectionState extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'state': state.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'state': state.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -7803,12 +7686,11 @@ final class UpdateConnectionState extends Update {
     ConnectionState? state,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateConnectionState(
-        state: state ?? this.state,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateConnectionState(
+    state: state ?? this.state,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateConnectionState';
@@ -7862,12 +7744,12 @@ final class UpdateFreezeState extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_frozen': isFrozen,
-        'freezing_date': freezingDate,
-        'deletion_date': deletionDate,
-        'appeal_link': appealLink,
-      };
+    '@type': CONSTRUCTOR,
+    'is_frozen': isFrozen,
+    'freezing_date': freezingDate,
+    'deletion_date': deletionDate,
+    'appeal_link': appealLink,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -7879,15 +7761,14 @@ final class UpdateFreezeState extends Update {
     String? appealLink,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateFreezeState(
-        isFrozen: isFrozen ?? this.isFrozen,
-        freezingDate: freezingDate ?? this.freezingDate,
-        deletionDate: deletionDate ?? this.deletionDate,
-        appealLink: appealLink ?? this.appealLink,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateFreezeState(
+    isFrozen: isFrozen ?? this.isFrozen,
+    freezingDate: freezingDate ?? this.freezingDate,
+    deletionDate: deletionDate ?? this.deletionDate,
+    appealLink: appealLink ?? this.appealLink,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateFreezeState';
@@ -7920,16 +7801,18 @@ final class UpdateAgeVerificationParameters extends Update {
   factory UpdateAgeVerificationParameters.fromJson(Map<String, dynamic> json) =>
       UpdateAgeVerificationParameters(
         parameters: _readOptional(
-            json['parameters'], AgeVerificationParameters.fromJson),
+          json['parameters'],
+          AgeVerificationParameters.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'parameters': parameters?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'parameters': parameters?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -7938,12 +7821,11 @@ final class UpdateAgeVerificationParameters extends Update {
     AgeVerificationParameters? Function()? parameters,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateAgeVerificationParameters(
-        parameters: parameters != null ? parameters() : this.parameters,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateAgeVerificationParameters(
+    parameters: parameters != null ? parameters() : this.parameters,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateAgeVerificationParameters';
@@ -7980,18 +7862,20 @@ final class UpdateTermsOfService extends Update {
   factory UpdateTermsOfService.fromJson(Map<String, dynamic> json) =>
       UpdateTermsOfService(
         termsOfServiceId: _readString(json['terms_of_service_id']),
-        termsOfService:
-            _readObject(json['terms_of_service'], TermsOfService.fromJson),
+        termsOfService: _readObject(
+          json['terms_of_service'],
+          TermsOfService.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'terms_of_service_id': termsOfServiceId,
-        'terms_of_service': termsOfService.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'terms_of_service_id': termsOfServiceId,
+    'terms_of_service': termsOfService.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -8001,13 +7885,12 @@ final class UpdateTermsOfService extends Update {
     TermsOfService? termsOfService,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateTermsOfService(
-        termsOfServiceId: termsOfServiceId ?? this.termsOfServiceId,
-        termsOfService: termsOfService ?? this.termsOfService,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateTermsOfService(
+    termsOfServiceId: termsOfServiceId ?? this.termsOfServiceId,
+    termsOfService: termsOfService ?? this.termsOfService,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateTermsOfService';
@@ -8019,11 +7902,7 @@ final class UpdateTermsOfService extends Update {
 /// The first unconfirmed session has changed
 final class UpdateUnconfirmedSession extends Update {
   /// The first unconfirmed session has changed
-  const UpdateUnconfirmedSession({
-    this.session,
-    this.extra,
-    this.clientId,
-  });
+  const UpdateUnconfirmedSession({this.session, this.extra, this.clientId});
 
   /// The unconfirmed session; may be null if none
   final UnconfirmedSession? session;
@@ -8046,9 +7925,9 @@ final class UpdateUnconfirmedSession extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'session': session?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'session': session?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -8057,12 +7936,11 @@ final class UpdateUnconfirmedSession extends Update {
     UnconfirmedSession? Function()? session,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateUnconfirmedSession(
-        session: session != null ? session() : this.session,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateUnconfirmedSession(
+    session: session != null ? session() : this.session,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateUnconfirmedSession';
@@ -8095,16 +7973,18 @@ final class UpdateAttachmentMenuBots extends Update {
   factory UpdateAttachmentMenuBots.fromJson(Map<String, dynamic> json) =>
       UpdateAttachmentMenuBots(
         bots: _readList<AttachmentMenuBot>(
-            json['bots'], (e) => _readObject(e, AttachmentMenuBot.fromJson)),
+          json['bots'],
+          (e) => _readObject(e, AttachmentMenuBot.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'bots': [for (final e in bots) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'bots': [for (final e in bots) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -8113,12 +7993,11 @@ final class UpdateAttachmentMenuBots extends Update {
     List<AttachmentMenuBot>? bots,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateAttachmentMenuBots(
-        bots: bots ?? this.bots,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateAttachmentMenuBots(
+    bots: bots ?? this.bots,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateAttachmentMenuBots';
@@ -8157,9 +8036,9 @@ final class UpdateWebAppMessageSent extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'web_app_launch_id': webAppLaunchId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'web_app_launch_id': webAppLaunchId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -8168,12 +8047,11 @@ final class UpdateWebAppMessageSent extends Update {
     int? webAppLaunchId,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateWebAppMessageSent(
-        webAppLaunchId: webAppLaunchId ?? this.webAppLaunchId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateWebAppMessageSent(
+    webAppLaunchId: webAppLaunchId ?? this.webAppLaunchId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateWebAppMessageSent';
@@ -8211,10 +8089,7 @@ final class UpdateActiveEmojiReactions extends Update {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'emojis': emojis,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'emojis': emojis};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -8223,12 +8098,11 @@ final class UpdateActiveEmojiReactions extends Update {
     List<String>? emojis,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateActiveEmojiReactions(
-        emojis: emojis ?? this.emojis,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateActiveEmojiReactions(
+    emojis: emojis ?? this.emojis,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateActiveEmojiReactions';
@@ -8264,8 +8138,10 @@ final class UpdateAvailableMessageEffects extends Update {
   /// Parses a [UpdateAvailableMessageEffects] from TDLib JSON.
   factory UpdateAvailableMessageEffects.fromJson(Map<String, dynamic> json) =>
       UpdateAvailableMessageEffects(
-        reactionEffectIds:
-            _readList<int>(json['reaction_effect_ids'], _readInt),
+        reactionEffectIds: _readList<int>(
+          json['reaction_effect_ids'],
+          _readInt,
+        ),
         stickerEffectIds: _readList<int>(json['sticker_effect_ids'], _readInt),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -8273,12 +8149,10 @@ final class UpdateAvailableMessageEffects extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'reaction_effect_ids': [
-          for (final e in reactionEffectIds) e.toString()
-        ],
-        'sticker_effect_ids': [for (final e in stickerEffectIds) e.toString()],
-      };
+    '@type': CONSTRUCTOR,
+    'reaction_effect_ids': [for (final e in reactionEffectIds) e.toString()],
+    'sticker_effect_ids': [for (final e in stickerEffectIds) e.toString()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -8288,13 +8162,12 @@ final class UpdateAvailableMessageEffects extends Update {
     List<int>? stickerEffectIds,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateAvailableMessageEffects(
-        reactionEffectIds: reactionEffectIds ?? this.reactionEffectIds,
-        stickerEffectIds: stickerEffectIds ?? this.stickerEffectIds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateAvailableMessageEffects(
+    reactionEffectIds: reactionEffectIds ?? this.reactionEffectIds,
+    stickerEffectIds: stickerEffectIds ?? this.stickerEffectIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateAvailableMessageEffects';
@@ -8333,9 +8206,9 @@ final class UpdateDefaultReactionType extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'reaction_type': reactionType.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'reaction_type': reactionType.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -8344,12 +8217,11 @@ final class UpdateDefaultReactionType extends Update {
     ReactionType? reactionType,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateDefaultReactionType(
-        reactionType: reactionType ?? this.reactionType,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateDefaultReactionType(
+    reactionType: reactionType ?? this.reactionType,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateDefaultReactionType';
@@ -8388,9 +8260,9 @@ final class UpdateDefaultPaidReactionType extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -8399,12 +8271,11 @@ final class UpdateDefaultPaidReactionType extends Update {
     PaidReactionType? type,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateDefaultPaidReactionType(
-        type: type ?? this.type,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateDefaultPaidReactionType(
+    type: type ?? this.type,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateDefaultPaidReactionType';
@@ -8448,10 +8319,10 @@ final class UpdateSavedMessagesTags extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'saved_messages_topic_id': savedMessagesTopicId,
-        'tags': tags.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'saved_messages_topic_id': savedMessagesTopicId,
+    'tags': tags.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -8461,13 +8332,12 @@ final class UpdateSavedMessagesTags extends Update {
     SavedMessagesTags? tags,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateSavedMessagesTags(
-        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-        tags: tags ?? this.tags,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateSavedMessagesTags(
+    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+    tags: tags ?? this.tags,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateSavedMessagesTags';
@@ -8498,19 +8368,21 @@ final class UpdateActiveLiveLocationMessages extends Update {
 
   /// Parses a [UpdateActiveLiveLocationMessages] from TDLib JSON.
   factory UpdateActiveLiveLocationMessages.fromJson(
-          Map<String, dynamic> json) =>
-      UpdateActiveLiveLocationMessages(
-        messages: _readList<Message>(
-            json['messages'], (e) => _readObject(e, Message.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => UpdateActiveLiveLocationMessages(
+    messages: _readList<Message>(
+      json['messages'],
+      (e) => _readObject(e, Message.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'messages': [for (final e in messages) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'messages': [for (final e in messages) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -8519,12 +8391,11 @@ final class UpdateActiveLiveLocationMessages extends Update {
     List<Message>? messages,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateActiveLiveLocationMessages(
-        messages: messages ?? this.messages,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateActiveLiveLocationMessages(
+    messages: messages ?? this.messages,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateActiveLiveLocationMessages';
@@ -8563,9 +8434,9 @@ final class UpdateOwnedStarCount extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_amount': starAmount.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'star_amount': starAmount.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -8574,12 +8445,11 @@ final class UpdateOwnedStarCount extends Update {
     StarAmount? starAmount,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateOwnedStarCount(
-        starAmount: starAmount ?? this.starAmount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateOwnedStarCount(
+    starAmount: starAmount ?? this.starAmount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateOwnedStarCount';
@@ -8618,9 +8488,9 @@ final class UpdateOwnedTonCount extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'ton_amount': tonAmount,
-      };
+    '@type': CONSTRUCTOR,
+    'ton_amount': tonAmount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -8629,12 +8499,11 @@ final class UpdateOwnedTonCount extends Update {
     int? tonAmount,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateOwnedTonCount(
-        tonAmount: tonAmount ?? this.tonAmount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateOwnedTonCount(
+    tonAmount: tonAmount ?? this.tonAmount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateOwnedTonCount';
@@ -8671,18 +8540,20 @@ final class UpdateChatRevenueAmount extends Update {
   factory UpdateChatRevenueAmount.fromJson(Map<String, dynamic> json) =>
       UpdateChatRevenueAmount(
         chatId: _readInt(json['chat_id']),
-        revenueAmount:
-            _readObject(json['revenue_amount'], ChatRevenueAmount.fromJson),
+        revenueAmount: _readObject(
+          json['revenue_amount'],
+          ChatRevenueAmount.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'revenue_amount': revenueAmount.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'revenue_amount': revenueAmount.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -8692,13 +8563,12 @@ final class UpdateChatRevenueAmount extends Update {
     ChatRevenueAmount? revenueAmount,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatRevenueAmount(
-        chatId: chatId ?? this.chatId,
-        revenueAmount: revenueAmount ?? this.revenueAmount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatRevenueAmount(
+    chatId: chatId ?? this.chatId,
+    revenueAmount: revenueAmount ?? this.revenueAmount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatRevenueAmount';
@@ -8742,10 +8612,10 @@ final class UpdateStarRevenueStatus extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'owner_id': ownerId.toJson(),
-        'status': status.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'owner_id': ownerId.toJson(),
+    'status': status.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -8755,13 +8625,12 @@ final class UpdateStarRevenueStatus extends Update {
     StarRevenueStatus? status,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateStarRevenueStatus(
-        ownerId: ownerId ?? this.ownerId,
-        status: status ?? this.status,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateStarRevenueStatus(
+    ownerId: ownerId ?? this.ownerId,
+    status: status ?? this.status,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateStarRevenueStatus';
@@ -8800,9 +8669,9 @@ final class UpdateTonRevenueStatus extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'status': status.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'status': status.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -8811,12 +8680,11 @@ final class UpdateTonRevenueStatus extends Update {
     TonRevenueStatus? status,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateTonRevenueStatus(
-        status: status ?? this.status,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateTonRevenueStatus(
+    status: status ?? this.status,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateTonRevenueStatus';
@@ -8870,12 +8738,12 @@ final class UpdateSpeechRecognitionTrial extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'max_media_duration': maxMediaDuration,
-        'weekly_count': weeklyCount,
-        'left_count': leftCount,
-        'next_reset_date': nextResetDate,
-      };
+    '@type': CONSTRUCTOR,
+    'max_media_duration': maxMediaDuration,
+    'weekly_count': weeklyCount,
+    'left_count': leftCount,
+    'next_reset_date': nextResetDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -8887,15 +8755,14 @@ final class UpdateSpeechRecognitionTrial extends Update {
     int? nextResetDate,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateSpeechRecognitionTrial(
-        maxMediaDuration: maxMediaDuration ?? this.maxMediaDuration,
-        weeklyCount: weeklyCount ?? this.weeklyCount,
-        leftCount: leftCount ?? this.leftCount,
-        nextResetDate: nextResetDate ?? this.nextResetDate,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateSpeechRecognitionTrial(
+    maxMediaDuration: maxMediaDuration ?? this.maxMediaDuration,
+    weeklyCount: weeklyCount ?? this.weeklyCount,
+    leftCount: leftCount ?? this.leftCount,
+    nextResetDate: nextResetDate ?? this.nextResetDate,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateSpeechRecognitionTrial';
@@ -8907,11 +8774,7 @@ final class UpdateSpeechRecognitionTrial extends Update {
 /// The list of supported dice emojis has changed
 final class UpdateDiceEmojis extends Update {
   /// The list of supported dice emojis has changed
-  const UpdateDiceEmojis({
-    required this.emojis,
-    this.extra,
-    this.clientId,
-  });
+  const UpdateDiceEmojis({required this.emojis, this.extra, this.clientId});
 
   /// The new list of supported dice emojis
   final List<String> emojis;
@@ -8933,10 +8796,7 @@ final class UpdateDiceEmojis extends Update {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'emojis': emojis,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'emojis': emojis};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -8945,12 +8805,11 @@ final class UpdateDiceEmojis extends Update {
     List<String>? emojis,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateDiceEmojis(
-        emojis: emojis ?? this.emojis,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateDiceEmojis(
+    emojis: emojis ?? this.emojis,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateDiceEmojis';
@@ -8989,22 +8848,22 @@ final class UpdateAnimatedEmojiMessageClicked extends Update {
 
   /// Parses a [UpdateAnimatedEmojiMessageClicked] from TDLib JSON.
   factory UpdateAnimatedEmojiMessageClicked.fromJson(
-          Map<String, dynamic> json) =>
-      UpdateAnimatedEmojiMessageClicked(
-        chatId: _readInt(json['chat_id']),
-        messageId: _readInt(json['message_id']),
-        sticker: _readObject(json['sticker'], Sticker.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => UpdateAnimatedEmojiMessageClicked(
+    chatId: _readInt(json['chat_id']),
+    messageId: _readInt(json['message_id']),
+    sticker: _readObject(json['sticker'], Sticker.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'sticker': sticker.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'sticker': sticker.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -9015,14 +8874,13 @@ final class UpdateAnimatedEmojiMessageClicked extends Update {
     Sticker? sticker,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateAnimatedEmojiMessageClicked(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        sticker: sticker ?? this.sticker,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateAnimatedEmojiMessageClicked(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    sticker: sticker ?? this.sticker,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateAnimatedEmojiMessageClicked';
@@ -9066,10 +8924,10 @@ final class UpdateAnimationSearchParameters extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'provider': provider,
-        'emojis': emojis,
-      };
+    '@type': CONSTRUCTOR,
+    'provider': provider,
+    'emojis': emojis,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -9079,13 +8937,12 @@ final class UpdateAnimationSearchParameters extends Update {
     List<String>? emojis,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateAnimationSearchParameters(
-        provider: provider ?? this.provider,
-        emojis: emojis ?? this.emojis,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateAnimationSearchParameters(
+    provider: provider ?? this.provider,
+    emojis: emojis ?? this.emojis,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateAnimationSearchParameters';
@@ -9121,20 +8978,24 @@ final class UpdateSuggestedActions extends Update {
   /// Parses a [UpdateSuggestedActions] from TDLib JSON.
   factory UpdateSuggestedActions.fromJson(Map<String, dynamic> json) =>
       UpdateSuggestedActions(
-        addedActions: _readList<SuggestedAction>(json['added_actions'],
-            (e) => _readObject(e, SuggestedAction.fromJson)),
-        removedActions: _readList<SuggestedAction>(json['removed_actions'],
-            (e) => _readObject(e, SuggestedAction.fromJson)),
+        addedActions: _readList<SuggestedAction>(
+          json['added_actions'],
+          (e) => _readObject(e, SuggestedAction.fromJson),
+        ),
+        removedActions: _readList<SuggestedAction>(
+          json['removed_actions'],
+          (e) => _readObject(e, SuggestedAction.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'added_actions': [for (final e in addedActions) e.toJson()],
-        'removed_actions': [for (final e in removedActions) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'added_actions': [for (final e in addedActions) e.toJson()],
+    'removed_actions': [for (final e in removedActions) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -9144,13 +9005,12 @@ final class UpdateSuggestedActions extends Update {
     List<SuggestedAction>? removedActions,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateSuggestedActions(
-        addedActions: addedActions ?? this.addedActions,
-        removedActions: removedActions ?? this.removedActions,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateSuggestedActions(
+    addedActions: addedActions ?? this.addedActions,
+    removedActions: removedActions ?? this.removedActions,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateSuggestedActions';
@@ -9189,9 +9049,9 @@ final class UpdateSpeedLimitNotification extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_upload': isUpload,
-      };
+    '@type': CONSTRUCTOR,
+    'is_upload': isUpload,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -9200,12 +9060,11 @@ final class UpdateSpeedLimitNotification extends Update {
     bool? isUpload,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateSpeedLimitNotification(
-        isUpload: isUpload ?? this.isUpload,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateSpeedLimitNotification(
+    isUpload: isUpload ?? this.isUpload,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateSpeedLimitNotification';
@@ -9238,19 +9097,18 @@ final class UpdateContactCloseBirthdays extends Update {
   factory UpdateContactCloseBirthdays.fromJson(Map<String, dynamic> json) =>
       UpdateContactCloseBirthdays(
         closeBirthdayUsers: _readList<CloseBirthdayUser>(
-            json['close_birthday_users'],
-            (e) => _readObject(e, CloseBirthdayUser.fromJson)),
+          json['close_birthday_users'],
+          (e) => _readObject(e, CloseBirthdayUser.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'close_birthday_users': [
-          for (final e in closeBirthdayUsers) e.toJson()
-        ],
-      };
+    '@type': CONSTRUCTOR,
+    'close_birthday_users': [for (final e in closeBirthdayUsers) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -9259,12 +9117,11 @@ final class UpdateContactCloseBirthdays extends Update {
     List<CloseBirthdayUser>? closeBirthdayUsers,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateContactCloseBirthdays(
-        closeBirthdayUsers: closeBirthdayUsers ?? this.closeBirthdayUsers,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateContactCloseBirthdays(
+    closeBirthdayUsers: closeBirthdayUsers ?? this.closeBirthdayUsers,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateContactCloseBirthdays';
@@ -9301,18 +9158,20 @@ final class UpdateAutosaveSettings extends Update {
   factory UpdateAutosaveSettings.fromJson(Map<String, dynamic> json) =>
       UpdateAutosaveSettings(
         scope: _readObject(json['scope'], AutosaveSettingsScope.fromJson),
-        settings:
-            _readOptional(json['settings'], ScopeAutosaveSettings.fromJson),
+        settings: _readOptional(
+          json['settings'],
+          ScopeAutosaveSettings.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'scope': scope.toJson(),
-        'settings': settings?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'scope': scope.toJson(),
+    'settings': settings?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -9322,13 +9181,12 @@ final class UpdateAutosaveSettings extends Update {
     ScopeAutosaveSettings? Function()? settings,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateAutosaveSettings(
-        scope: scope ?? this.scope,
-        settings: settings != null ? settings() : this.settings,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateAutosaveSettings(
+    scope: scope ?? this.scope,
+    settings: settings != null ? settings() : this.settings,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateAutosaveSettings';
@@ -9360,17 +9218,19 @@ final class UpdateBusinessConnection extends Update {
   /// Parses a [UpdateBusinessConnection] from TDLib JSON.
   factory UpdateBusinessConnection.fromJson(Map<String, dynamic> json) =>
       UpdateBusinessConnection(
-        connection:
-            _readObject(json['connection'], BusinessConnection.fromJson),
+        connection: _readObject(
+          json['connection'],
+          BusinessConnection.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'connection': connection.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'connection': connection.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -9379,12 +9239,11 @@ final class UpdateBusinessConnection extends Update {
     BusinessConnection? connection,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateBusinessConnection(
-        connection: connection ?? this.connection,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateBusinessConnection(
+    connection: connection ?? this.connection,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateBusinessConnection';
@@ -9428,10 +9287,10 @@ final class UpdateNewBusinessMessage extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'connection_id': connectionId,
-        'message': message.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'connection_id': connectionId,
+    'message': message.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -9441,13 +9300,12 @@ final class UpdateNewBusinessMessage extends Update {
     BusinessMessage? message,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateNewBusinessMessage(
-        connectionId: connectionId ?? this.connectionId,
-        message: message ?? this.message,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateNewBusinessMessage(
+    connectionId: connectionId ?? this.connectionId,
+    message: message ?? this.message,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateNewBusinessMessage';
@@ -9491,10 +9349,10 @@ final class UpdateBusinessMessageEdited extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'connection_id': connectionId,
-        'message': message.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'connection_id': connectionId,
+    'message': message.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -9504,13 +9362,12 @@ final class UpdateBusinessMessageEdited extends Update {
     BusinessMessage? message,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateBusinessMessageEdited(
-        connectionId: connectionId ?? this.connectionId,
-        message: message ?? this.message,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateBusinessMessageEdited(
+    connectionId: connectionId ?? this.connectionId,
+    message: message ?? this.message,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateBusinessMessageEdited';
@@ -9559,11 +9416,11 @@ final class UpdateBusinessMessagesDeleted extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'connection_id': connectionId,
-        'chat_id': chatId,
-        'message_ids': messageIds,
-      };
+    '@type': CONSTRUCTOR,
+    'connection_id': connectionId,
+    'chat_id': chatId,
+    'message_ids': messageIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -9574,14 +9431,13 @@ final class UpdateBusinessMessagesDeleted extends Update {
     List<int>? messageIds,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateBusinessMessagesDeleted(
-        connectionId: connectionId ?? this.connectionId,
-        chatId: chatId ?? this.chatId,
-        messageIds: messageIds ?? this.messageIds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateBusinessMessagesDeleted(
+    connectionId: connectionId ?? this.connectionId,
+    chatId: chatId ?? this.chatId,
+    messageIds: messageIds ?? this.messageIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateBusinessMessagesDeleted';
@@ -9645,14 +9501,14 @@ final class UpdateNewInlineQuery extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'sender_user_id': senderUserId,
-        'user_location': userLocation?.toJson(),
-        'chat_type': chatType?.toJson(),
-        'query': query,
-        'offset': offset,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'sender_user_id': senderUserId,
+    'user_location': userLocation?.toJson(),
+    'chat_type': chatType?.toJson(),
+    'query': query,
+    'offset': offset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -9666,17 +9522,16 @@ final class UpdateNewInlineQuery extends Update {
     String? offset,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateNewInlineQuery(
-        id: id ?? this.id,
-        senderUserId: senderUserId ?? this.senderUserId,
-        userLocation: userLocation != null ? userLocation() : this.userLocation,
-        chatType: chatType != null ? chatType() : this.chatType,
-        query: query ?? this.query,
-        offset: offset ?? this.offset,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateNewInlineQuery(
+    id: id ?? this.id,
+    senderUserId: senderUserId ?? this.senderUserId,
+    userLocation: userLocation != null ? userLocation() : this.userLocation,
+    chatType: chatType != null ? chatType() : this.chatType,
+    query: query ?? this.query,
+    offset: offset ?? this.offset,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateNewInlineQuery';
@@ -9735,13 +9590,13 @@ final class UpdateNewChosenInlineResult extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sender_user_id': senderUserId,
-        'user_location': userLocation?.toJson(),
-        'query': query,
-        'result_id': resultId,
-        'inline_message_id': inlineMessageId,
-      };
+    '@type': CONSTRUCTOR,
+    'sender_user_id': senderUserId,
+    'user_location': userLocation?.toJson(),
+    'query': query,
+    'result_id': resultId,
+    'inline_message_id': inlineMessageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -9754,16 +9609,15 @@ final class UpdateNewChosenInlineResult extends Update {
     String? inlineMessageId,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateNewChosenInlineResult(
-        senderUserId: senderUserId ?? this.senderUserId,
-        userLocation: userLocation != null ? userLocation() : this.userLocation,
-        query: query ?? this.query,
-        resultId: resultId ?? this.resultId,
-        inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateNewChosenInlineResult(
+    senderUserId: senderUserId ?? this.senderUserId,
+    userLocation: userLocation != null ? userLocation() : this.userLocation,
+    query: query ?? this.query,
+    resultId: resultId ?? this.resultId,
+    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateNewChosenInlineResult';
@@ -9827,14 +9681,14 @@ final class UpdateNewCallbackQuery extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'sender_user_id': senderUserId,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'chat_instance': chatInstance.toString(),
-        'payload': payload.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'sender_user_id': senderUserId,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'chat_instance': chatInstance.toString(),
+    'payload': payload.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -9848,17 +9702,16 @@ final class UpdateNewCallbackQuery extends Update {
     CallbackQueryPayload? payload,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateNewCallbackQuery(
-        id: id ?? this.id,
-        senderUserId: senderUserId ?? this.senderUserId,
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        chatInstance: chatInstance ?? this.chatInstance,
-        payload: payload ?? this.payload,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateNewCallbackQuery(
+    id: id ?? this.id,
+    senderUserId: senderUserId ?? this.senderUserId,
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    chatInstance: chatInstance ?? this.chatInstance,
+    payload: payload ?? this.payload,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateNewCallbackQuery';
@@ -9917,13 +9770,13 @@ final class UpdateNewInlineCallbackQuery extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'sender_user_id': senderUserId,
-        'inline_message_id': inlineMessageId,
-        'chat_instance': chatInstance.toString(),
-        'payload': payload.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'sender_user_id': senderUserId,
+    'inline_message_id': inlineMessageId,
+    'chat_instance': chatInstance.toString(),
+    'payload': payload.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -9936,16 +9789,15 @@ final class UpdateNewInlineCallbackQuery extends Update {
     CallbackQueryPayload? payload,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateNewInlineCallbackQuery(
-        id: id ?? this.id,
-        senderUserId: senderUserId ?? this.senderUserId,
-        inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-        chatInstance: chatInstance ?? this.chatInstance,
-        payload: payload ?? this.payload,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateNewInlineCallbackQuery(
+    id: id ?? this.id,
+    senderUserId: senderUserId ?? this.senderUserId,
+    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+    chatInstance: chatInstance ?? this.chatInstance,
+    payload: payload ?? this.payload,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateNewInlineCallbackQuery';
@@ -10009,14 +9861,14 @@ final class UpdateNewBusinessCallbackQuery extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'sender_user_id': senderUserId,
-        'connection_id': connectionId,
-        'message': message.toJson(),
-        'chat_instance': chatInstance.toString(),
-        'payload': payload.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'sender_user_id': senderUserId,
+    'connection_id': connectionId,
+    'message': message.toJson(),
+    'chat_instance': chatInstance.toString(),
+    'payload': payload.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -10030,17 +9882,16 @@ final class UpdateNewBusinessCallbackQuery extends Update {
     CallbackQueryPayload? payload,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateNewBusinessCallbackQuery(
-        id: id ?? this.id,
-        senderUserId: senderUserId ?? this.senderUserId,
-        connectionId: connectionId ?? this.connectionId,
-        message: message ?? this.message,
-        chatInstance: chatInstance ?? this.chatInstance,
-        payload: payload ?? this.payload,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateNewBusinessCallbackQuery(
+    id: id ?? this.id,
+    senderUserId: senderUserId ?? this.senderUserId,
+    connectionId: connectionId ?? this.connectionId,
+    message: message ?? this.message,
+    chatInstance: chatInstance ?? this.chatInstance,
+    payload: payload ?? this.payload,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateNewBusinessCallbackQuery';
@@ -10087,20 +9938,22 @@ final class UpdateNewShippingQuery extends Update {
         id: _readInt(json['id']),
         senderUserId: _readInt(json['sender_user_id']),
         invoicePayload: _readString(json['invoice_payload']),
-        shippingAddress:
-            _readObject(json['shipping_address'], Address.fromJson),
+        shippingAddress: _readObject(
+          json['shipping_address'],
+          Address.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'sender_user_id': senderUserId,
-        'invoice_payload': invoicePayload,
-        'shipping_address': shippingAddress.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'sender_user_id': senderUserId,
+    'invoice_payload': invoicePayload,
+    'shipping_address': shippingAddress.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -10112,15 +9965,14 @@ final class UpdateNewShippingQuery extends Update {
     Address? shippingAddress,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateNewShippingQuery(
-        id: id ?? this.id,
-        senderUserId: senderUserId ?? this.senderUserId,
-        invoicePayload: invoicePayload ?? this.invoicePayload,
-        shippingAddress: shippingAddress ?? this.shippingAddress,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateNewShippingQuery(
+    id: id ?? this.id,
+    senderUserId: senderUserId ?? this.senderUserId,
+    invoicePayload: invoicePayload ?? this.invoicePayload,
+    shippingAddress: shippingAddress ?? this.shippingAddress,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateNewShippingQuery';
@@ -10189,15 +10041,15 @@ final class UpdateNewPreCheckoutQuery extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'sender_user_id': senderUserId,
-        'currency': currency,
-        'total_amount': totalAmount,
-        'invoice_payload': invoicePayload,
-        'shipping_option_id': shippingOptionId,
-        'order_info': orderInfo?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'sender_user_id': senderUserId,
+    'currency': currency,
+    'total_amount': totalAmount,
+    'invoice_payload': invoicePayload,
+    'shipping_option_id': shippingOptionId,
+    'order_info': orderInfo?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -10212,18 +10064,17 @@ final class UpdateNewPreCheckoutQuery extends Update {
     OrderInfo? Function()? orderInfo,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateNewPreCheckoutQuery(
-        id: id ?? this.id,
-        senderUserId: senderUserId ?? this.senderUserId,
-        currency: currency ?? this.currency,
-        totalAmount: totalAmount ?? this.totalAmount,
-        invoicePayload: invoicePayload ?? this.invoicePayload,
-        shippingOptionId: shippingOptionId ?? this.shippingOptionId,
-        orderInfo: orderInfo != null ? orderInfo() : this.orderInfo,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateNewPreCheckoutQuery(
+    id: id ?? this.id,
+    senderUserId: senderUserId ?? this.senderUserId,
+    currency: currency ?? this.currency,
+    totalAmount: totalAmount ?? this.totalAmount,
+    invoicePayload: invoicePayload ?? this.invoicePayload,
+    shippingOptionId: shippingOptionId ?? this.shippingOptionId,
+    orderInfo: orderInfo != null ? orderInfo() : this.orderInfo,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateNewPreCheckoutQuery';
@@ -10235,11 +10086,7 @@ final class UpdateNewPreCheckoutQuery extends Update {
 /// A new incoming event; for bots only
 final class UpdateNewCustomEvent extends Update {
   /// A new incoming event; for bots only
-  const UpdateNewCustomEvent({
-    required this.event,
-    this.extra,
-    this.clientId,
-  });
+  const UpdateNewCustomEvent({required this.event, this.extra, this.clientId});
 
   /// A JSON-serialized event
   final String event;
@@ -10261,10 +10108,7 @@ final class UpdateNewCustomEvent extends Update {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'event': event,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'event': event};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -10273,12 +10117,11 @@ final class UpdateNewCustomEvent extends Update {
     String? event,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateNewCustomEvent(
-        event: event ?? this.event,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateNewCustomEvent(
+    event: event ?? this.event,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateNewCustomEvent';
@@ -10327,11 +10170,11 @@ final class UpdateNewCustomQuery extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'data': data,
-        'timeout': timeout,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'data': data,
+    'timeout': timeout,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -10342,14 +10185,13 @@ final class UpdateNewCustomQuery extends Update {
     int? timeout,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateNewCustomQuery(
-        id: id ?? this.id,
-        data: data ?? this.data,
-        timeout: timeout ?? this.timeout,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateNewCustomQuery(
+    id: id ?? this.id,
+    data: data ?? this.data,
+    timeout: timeout ?? this.timeout,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateNewCustomQuery';
@@ -10361,11 +10203,7 @@ final class UpdateNewCustomQuery extends Update {
 /// A poll was updated; for bots only
 final class UpdatePoll extends Update {
   /// A poll was updated; for bots only
-  const UpdatePoll({
-    required this.poll,
-    this.extra,
-    this.clientId,
-  });
+  const UpdatePoll({required this.poll, this.extra, this.clientId});
 
   /// New data about the poll
   final Poll poll;
@@ -10380,30 +10218,25 @@ final class UpdatePoll extends Update {
 
   /// Parses a [UpdatePoll] from TDLib JSON.
   factory UpdatePoll.fromJson(Map<String, dynamic> json) => UpdatePoll(
-        poll: _readObject(json['poll'], Poll.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    poll: _readObject(json['poll'], Poll.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'poll': poll.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'poll': poll.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UpdatePoll copyWith({
-    Poll? poll,
-    dynamic extra,
-    int? clientId,
-  }) =>
-      UpdatePoll(
-        poll: poll ?? this.poll,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  UpdatePoll copyWith({Poll? poll, dynamic extra, int? clientId}) => UpdatePoll(
+    poll: poll ?? this.poll,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updatePoll';
@@ -10452,11 +10285,11 @@ final class UpdatePollAnswer extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'poll_id': pollId.toString(),
-        'voter_id': voterId.toJson(),
-        'option_ids': optionIds,
-      };
+    '@type': CONSTRUCTOR,
+    'poll_id': pollId.toString(),
+    'voter_id': voterId.toJson(),
+    'option_ids': optionIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -10467,14 +10300,13 @@ final class UpdatePollAnswer extends Update {
     List<int>? optionIds,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdatePollAnswer(
-        pollId: pollId ?? this.pollId,
-        voterId: voterId ?? this.voterId,
-        optionIds: optionIds ?? this.optionIds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdatePollAnswer(
+    pollId: pollId ?? this.pollId,
+    voterId: voterId ?? this.voterId,
+    optionIds: optionIds ?? this.optionIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updatePollAnswer';
@@ -10532,34 +10364,33 @@ final class UpdateChatMember extends Update {
   final int? clientId;
 
   /// Parses a [UpdateChatMember] from TDLib JSON.
-  factory UpdateChatMember.fromJson(Map<String, dynamic> json) =>
-      UpdateChatMember(
-        chatId: _readInt(json['chat_id']),
-        actorUserId: _readInt(json['actor_user_id']),
-        date: _readInt(json['date']),
-        inviteLink: _readOptional(json['invite_link'], ChatInviteLink.fromJson),
-        viaJoinRequest: _readBool(json['via_join_request']),
-        viaChatFolderInviteLink: _readBool(json['via_chat_folder_invite_link']),
-        oldChatMember:
-            _readObject(json['old_chat_member'], ChatMember.fromJson),
-        newChatMember:
-            _readObject(json['new_chat_member'], ChatMember.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+  factory UpdateChatMember.fromJson(
+    Map<String, dynamic> json,
+  ) => UpdateChatMember(
+    chatId: _readInt(json['chat_id']),
+    actorUserId: _readInt(json['actor_user_id']),
+    date: _readInt(json['date']),
+    inviteLink: _readOptional(json['invite_link'], ChatInviteLink.fromJson),
+    viaJoinRequest: _readBool(json['via_join_request']),
+    viaChatFolderInviteLink: _readBool(json['via_chat_folder_invite_link']),
+    oldChatMember: _readObject(json['old_chat_member'], ChatMember.fromJson),
+    newChatMember: _readObject(json['new_chat_member'], ChatMember.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'actor_user_id': actorUserId,
-        'date': date,
-        'invite_link': inviteLink?.toJson(),
-        'via_join_request': viaJoinRequest,
-        'via_chat_folder_invite_link': viaChatFolderInviteLink,
-        'old_chat_member': oldChatMember.toJson(),
-        'new_chat_member': newChatMember.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'actor_user_id': actorUserId,
+    'date': date,
+    'invite_link': inviteLink?.toJson(),
+    'via_join_request': viaJoinRequest,
+    'via_chat_folder_invite_link': viaChatFolderInviteLink,
+    'old_chat_member': oldChatMember.toJson(),
+    'new_chat_member': newChatMember.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -10575,20 +10406,19 @@ final class UpdateChatMember extends Update {
     ChatMember? newChatMember,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatMember(
-        chatId: chatId ?? this.chatId,
-        actorUserId: actorUserId ?? this.actorUserId,
-        date: date ?? this.date,
-        inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
-        viaJoinRequest: viaJoinRequest ?? this.viaJoinRequest,
-        viaChatFolderInviteLink:
-            viaChatFolderInviteLink ?? this.viaChatFolderInviteLink,
-        oldChatMember: oldChatMember ?? this.oldChatMember,
-        newChatMember: newChatMember ?? this.newChatMember,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatMember(
+    chatId: chatId ?? this.chatId,
+    actorUserId: actorUserId ?? this.actorUserId,
+    date: date ?? this.date,
+    inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
+    viaJoinRequest: viaJoinRequest ?? this.viaJoinRequest,
+    viaChatFolderInviteLink:
+        viaChatFolderInviteLink ?? this.viaChatFolderInviteLink,
+    oldChatMember: oldChatMember ?? this.oldChatMember,
+    newChatMember: newChatMember ?? this.newChatMember,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatMember';
@@ -10642,12 +10472,12 @@ final class UpdateNewChatJoinRequest extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'request': request.toJson(),
-        'user_chat_id': userChatId,
-        'invite_link': inviteLink?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'request': request.toJson(),
+    'user_chat_id': userChatId,
+    'invite_link': inviteLink?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -10659,15 +10489,14 @@ final class UpdateNewChatJoinRequest extends Update {
     ChatInviteLink? Function()? inviteLink,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateNewChatJoinRequest(
-        chatId: chatId ?? this.chatId,
-        request: request ?? this.request,
-        userChatId: userChatId ?? this.userChatId,
-        inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateNewChatJoinRequest(
+    chatId: chatId ?? this.chatId,
+    request: request ?? this.request,
+    userChatId: userChatId ?? this.userChatId,
+    inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateNewChatJoinRequest';
@@ -10711,10 +10540,10 @@ final class UpdateChatBoost extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'boost': boost.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'boost': boost.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -10724,13 +10553,12 @@ final class UpdateChatBoost extends Update {
     ChatBoost? boost,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateChatBoost(
-        chatId: chatId ?? this.chatId,
-        boost: boost ?? this.boost,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateChatBoost(
+    chatId: chatId ?? this.chatId,
+    boost: boost ?? this.boost,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatBoost';
@@ -10786,24 +10614,28 @@ final class UpdateMessageReaction extends Update {
         messageId: _readInt(json['message_id']),
         actorId: _readObject(json['actor_id'], MessageSender.fromJson),
         date: _readInt(json['date']),
-        oldReactionTypes: _readList<ReactionType>(json['old_reaction_types'],
-            (e) => _readObject(e, ReactionType.fromJson)),
-        newReactionTypes: _readList<ReactionType>(json['new_reaction_types'],
-            (e) => _readObject(e, ReactionType.fromJson)),
+        oldReactionTypes: _readList<ReactionType>(
+          json['old_reaction_types'],
+          (e) => _readObject(e, ReactionType.fromJson),
+        ),
+        newReactionTypes: _readList<ReactionType>(
+          json['new_reaction_types'],
+          (e) => _readObject(e, ReactionType.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'actor_id': actorId.toJson(),
-        'date': date,
-        'old_reaction_types': [for (final e in oldReactionTypes) e.toJson()],
-        'new_reaction_types': [for (final e in newReactionTypes) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'actor_id': actorId.toJson(),
+    'date': date,
+    'old_reaction_types': [for (final e in oldReactionTypes) e.toJson()],
+    'new_reaction_types': [for (final e in newReactionTypes) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -10817,17 +10649,16 @@ final class UpdateMessageReaction extends Update {
     List<ReactionType>? newReactionTypes,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateMessageReaction(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        actorId: actorId ?? this.actorId,
-        date: date ?? this.date,
-        oldReactionTypes: oldReactionTypes ?? this.oldReactionTypes,
-        newReactionTypes: newReactionTypes ?? this.newReactionTypes,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateMessageReaction(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    actorId: actorId ?? this.actorId,
+    date: date ?? this.date,
+    oldReactionTypes: oldReactionTypes ?? this.oldReactionTypes,
+    newReactionTypes: newReactionTypes ?? this.newReactionTypes,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateMessageReaction';
@@ -10875,19 +10706,21 @@ final class UpdateMessageReactions extends Update {
         messageId: _readInt(json['message_id']),
         date: _readInt(json['date']),
         reactions: _readList<MessageReaction>(
-            json['reactions'], (e) => _readObject(e, MessageReaction.fromJson)),
+          json['reactions'],
+          (e) => _readObject(e, MessageReaction.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'date': date,
-        'reactions': [for (final e in reactions) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'date': date,
+    'reactions': [for (final e in reactions) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -10899,15 +10732,14 @@ final class UpdateMessageReactions extends Update {
     List<MessageReaction>? reactions,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdateMessageReactions(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        date: date ?? this.date,
-        reactions: reactions ?? this.reactions,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdateMessageReactions(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    date: date ?? this.date,
+    reactions: reactions ?? this.reactions,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateMessageReactions';
@@ -10951,10 +10783,10 @@ final class UpdatePaidMediaPurchased extends Update {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'payload': payload,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'payload': payload,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -10964,13 +10796,12 @@ final class UpdatePaidMediaPurchased extends Update {
     String? payload,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpdatePaidMediaPurchased(
-        userId: userId ?? this.userId,
-        payload: payload ?? this.payload,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpdatePaidMediaPurchased(
+    userId: userId ?? this.userId,
+    payload: payload ?? this.payload,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updatePaidMediaPurchased';

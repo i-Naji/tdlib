@@ -39,8 +39,10 @@ final class StarSubscriptions extends TdObject {
   factory StarSubscriptions.fromJson(Map<String, dynamic> json) =>
       StarSubscriptions(
         starAmount: _readObject(json['star_amount'], StarAmount.fromJson),
-        subscriptions: _readList<StarSubscription>(json['subscriptions'],
-            (e) => _readObject(e, StarSubscription.fromJson)),
+        subscriptions: _readList<StarSubscription>(
+          json['subscriptions'],
+          (e) => _readObject(e, StarSubscription.fromJson),
+        ),
         requiredStarCount: _readInt(json['required_star_count']),
         nextOffset: _readString(json['next_offset']),
         extra: json['@extra'],
@@ -49,12 +51,12 @@ final class StarSubscriptions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_amount': starAmount.toJson(),
-        'subscriptions': [for (final e in subscriptions) e.toJson()],
-        'required_star_count': requiredStarCount,
-        'next_offset': nextOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'star_amount': starAmount.toJson(),
+    'subscriptions': [for (final e in subscriptions) e.toJson()],
+    'required_star_count': requiredStarCount,
+    'next_offset': nextOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -65,15 +67,14 @@ final class StarSubscriptions extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) =>
-      StarSubscriptions(
-        starAmount: starAmount ?? this.starAmount,
-        subscriptions: subscriptions ?? this.subscriptions,
-        requiredStarCount: requiredStarCount ?? this.requiredStarCount,
-        nextOffset: nextOffset ?? this.nextOffset,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => StarSubscriptions(
+    starAmount: starAmount ?? this.starAmount,
+    subscriptions: subscriptions ?? this.subscriptions,
+    requiredStarCount: requiredStarCount ?? this.requiredStarCount,
+    nextOffset: nextOffset ?? this.nextOffset,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starSubscriptions';

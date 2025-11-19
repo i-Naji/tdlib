@@ -60,18 +60,18 @@ final class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
 
   /// Parses a [StorePaymentPurposePremiumSubscription] from TDLib JSON.
   factory StorePaymentPurposePremiumSubscription.fromJson(
-          Map<String, dynamic> json) =>
-      StorePaymentPurposePremiumSubscription(
-        isRestore: _readBool(json['is_restore']),
-        isUpgrade: _readBool(json['is_upgrade']),
-      );
+    Map<String, dynamic> json,
+  ) => StorePaymentPurposePremiumSubscription(
+    isRestore: _readBool(json['is_restore']),
+    isUpgrade: _readBool(json['is_upgrade']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_restore': isRestore,
-        'is_upgrade': isUpgrade,
-      };
+    '@type': CONSTRUCTOR,
+    'is_restore': isRestore,
+    'is_upgrade': isUpgrade,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -79,11 +79,10 @@ final class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
   StorePaymentPurposePremiumSubscription copyWith({
     bool? isRestore,
     bool? isUpgrade,
-  }) =>
-      StorePaymentPurposePremiumSubscription(
-        isRestore: isRestore ?? this.isRestore,
-        isUpgrade: isUpgrade ?? this.isUpgrade,
-      );
+  }) => StorePaymentPurposePremiumSubscription(
+    isRestore: isRestore ?? this.isRestore,
+    isUpgrade: isUpgrade ?? this.isUpgrade,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storePaymentPurposePremiumSubscription';
@@ -125,12 +124,12 @@ final class StorePaymentPurposePremiumGift extends StorePaymentPurpose {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'currency': currency,
-        'amount': amount,
-        'user_id': userId,
-        'text': text.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'currency': currency,
+    'amount': amount,
+    'user_id': userId,
+    'text': text.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -140,13 +139,12 @@ final class StorePaymentPurposePremiumGift extends StorePaymentPurpose {
     int? amount,
     int? userId,
     FormattedText? text,
-  }) =>
-      StorePaymentPurposePremiumGift(
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        userId: userId ?? this.userId,
-        text: text ?? this.text,
-      );
+  }) => StorePaymentPurposePremiumGift(
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    userId: userId ?? this.userId,
+    text: text ?? this.text,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storePaymentPurposePremiumGift';
@@ -183,24 +181,24 @@ final class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
 
   /// Parses a [StorePaymentPurposePremiumGiftCodes] from TDLib JSON.
   factory StorePaymentPurposePremiumGiftCodes.fromJson(
-          Map<String, dynamic> json) =>
-      StorePaymentPurposePremiumGiftCodes(
-        boostedChatId: _readInt(json['boosted_chat_id']),
-        currency: _readString(json['currency']),
-        amount: _readInt(json['amount']),
-        userIds: _readList<int>(json['user_ids'], _readInt),
-        text: _readObject(json['text'], FormattedText.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => StorePaymentPurposePremiumGiftCodes(
+    boostedChatId: _readInt(json['boosted_chat_id']),
+    currency: _readString(json['currency']),
+    amount: _readInt(json['amount']),
+    userIds: _readList<int>(json['user_ids'], _readInt),
+    text: _readObject(json['text'], FormattedText.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'boosted_chat_id': boostedChatId,
-        'currency': currency,
-        'amount': amount,
-        'user_ids': userIds,
-        'text': text.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'boosted_chat_id': boostedChatId,
+    'currency': currency,
+    'amount': amount,
+    'user_ids': userIds,
+    'text': text.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -211,14 +209,13 @@ final class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
     int? amount,
     List<int>? userIds,
     FormattedText? text,
-  }) =>
-      StorePaymentPurposePremiumGiftCodes(
-        boostedChatId: boostedChatId ?? this.boostedChatId,
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        userIds: userIds ?? this.userIds,
-        text: text ?? this.text,
-      );
+  }) => StorePaymentPurposePremiumGiftCodes(
+    boostedChatId: boostedChatId ?? this.boostedChatId,
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    userIds: userIds ?? this.userIds,
+    text: text ?? this.text,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storePaymentPurposePremiumGiftCodes';
@@ -247,21 +244,20 @@ final class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
 
   /// Parses a [StorePaymentPurposePremiumGiveaway] from TDLib JSON.
   factory StorePaymentPurposePremiumGiveaway.fromJson(
-          Map<String, dynamic> json) =>
-      StorePaymentPurposePremiumGiveaway(
-        parameters:
-            _readObject(json['parameters'], GiveawayParameters.fromJson),
-        currency: _readString(json['currency']),
-        amount: _readInt(json['amount']),
-      );
+    Map<String, dynamic> json,
+  ) => StorePaymentPurposePremiumGiveaway(
+    parameters: _readObject(json['parameters'], GiveawayParameters.fromJson),
+    currency: _readString(json['currency']),
+    amount: _readInt(json['amount']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'parameters': parameters.toJson(),
-        'currency': currency,
-        'amount': amount,
-      };
+    '@type': CONSTRUCTOR,
+    'parameters': parameters.toJson(),
+    'currency': currency,
+    'amount': amount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -270,12 +266,11 @@ final class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
     GiveawayParameters? parameters,
     String? currency,
     int? amount,
-  }) =>
-      StorePaymentPurposePremiumGiveaway(
-        parameters: parameters ?? this.parameters,
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-      );
+  }) => StorePaymentPurposePremiumGiveaway(
+    parameters: parameters ?? this.parameters,
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storePaymentPurposePremiumGiveaway';
@@ -313,8 +308,10 @@ final class StorePaymentPurposeStarGiveaway extends StorePaymentPurpose {
   /// Parses a [StorePaymentPurposeStarGiveaway] from TDLib JSON.
   factory StorePaymentPurposeStarGiveaway.fromJson(Map<String, dynamic> json) =>
       StorePaymentPurposeStarGiveaway(
-        parameters:
-            _readObject(json['parameters'], GiveawayParameters.fromJson),
+        parameters: _readObject(
+          json['parameters'],
+          GiveawayParameters.fromJson,
+        ),
         currency: _readString(json['currency']),
         amount: _readInt(json['amount']),
         winnerCount: _readInt(json['winner_count']),
@@ -323,13 +320,13 @@ final class StorePaymentPurposeStarGiveaway extends StorePaymentPurpose {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'parameters': parameters.toJson(),
-        'currency': currency,
-        'amount': amount,
-        'winner_count': winnerCount,
-        'star_count': starCount,
-      };
+    '@type': CONSTRUCTOR,
+    'parameters': parameters.toJson(),
+    'currency': currency,
+    'amount': amount,
+    'winner_count': winnerCount,
+    'star_count': starCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -340,14 +337,13 @@ final class StorePaymentPurposeStarGiveaway extends StorePaymentPurpose {
     int? amount,
     int? winnerCount,
     int? starCount,
-  }) =>
-      StorePaymentPurposeStarGiveaway(
-        parameters: parameters ?? this.parameters,
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        winnerCount: winnerCount ?? this.winnerCount,
-        starCount: starCount ?? this.starCount,
-      );
+  }) => StorePaymentPurposeStarGiveaway(
+    parameters: parameters ?? this.parameters,
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    winnerCount: winnerCount ?? this.winnerCount,
+    starCount: starCount ?? this.starCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storePaymentPurposeStarGiveaway';
@@ -389,12 +385,12 @@ final class StorePaymentPurposeStars extends StorePaymentPurpose {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'currency': currency,
-        'amount': amount,
-        'star_count': starCount,
-        'chat_id': chatId,
-      };
+    '@type': CONSTRUCTOR,
+    'currency': currency,
+    'amount': amount,
+    'star_count': starCount,
+    'chat_id': chatId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -404,13 +400,12 @@ final class StorePaymentPurposeStars extends StorePaymentPurpose {
     int? amount,
     int? starCount,
     int? chatId,
-  }) =>
-      StorePaymentPurposeStars(
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        starCount: starCount ?? this.starCount,
-        chatId: chatId ?? this.chatId,
-      );
+  }) => StorePaymentPurposeStars(
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    starCount: starCount ?? this.starCount,
+    chatId: chatId ?? this.chatId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storePaymentPurposeStars';
@@ -452,12 +447,12 @@ final class StorePaymentPurposeGiftedStars extends StorePaymentPurpose {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'currency': currency,
-        'amount': amount,
-        'star_count': starCount,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'currency': currency,
+    'amount': amount,
+    'star_count': starCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -467,13 +462,12 @@ final class StorePaymentPurposeGiftedStars extends StorePaymentPurpose {
     String? currency,
     int? amount,
     int? starCount,
-  }) =>
-      StorePaymentPurposeGiftedStars(
-        userId: userId ?? this.userId,
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        starCount: starCount ?? this.starCount,
-      );
+  }) => StorePaymentPurposeGiftedStars(
+    userId: userId ?? this.userId,
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    starCount: starCount ?? this.starCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storePaymentPurposeGiftedStars';

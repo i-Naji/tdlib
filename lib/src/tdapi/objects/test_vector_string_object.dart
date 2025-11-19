@@ -27,16 +27,18 @@ final class TestVectorStringObject extends TdObject {
   factory TestVectorStringObject.fromJson(Map<String, dynamic> json) =>
       TestVectorStringObject(
         value: _readList<TestString>(
-            json['value'], (e) => _readObject(e, TestString.fromJson)),
+          json['value'],
+          (e) => _readObject(e, TestString.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'value': [for (final e in value) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'value': [for (final e in value) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +46,11 @@ final class TestVectorStringObject extends TdObject {
     List<TestString>? value,
     dynamic extra,
     int? clientId,
-  }) =>
-      TestVectorStringObject(
-        value: value ?? this.value,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => TestVectorStringObject(
+    value: value ?? this.value,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'testVectorStringObject';

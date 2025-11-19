@@ -45,10 +45,7 @@ final class UndecodedCallState extends CallState {
 /// The call is pending, waiting to be accepted by a user
 final class CallStatePending extends CallState {
   /// The call is pending, waiting to be accepted by a user
-  const CallStatePending({
-    required this.isCreated,
-    required this.isReceived,
-  });
+  const CallStatePending({required this.isCreated, required this.isReceived});
 
   /// True, if the call has already been created by the server
   final bool isCreated;
@@ -65,18 +62,15 @@ final class CallStatePending extends CallState {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_created': isCreated,
-        'is_received': isReceived,
-      };
+    '@type': CONSTRUCTOR,
+    'is_created': isCreated,
+    'is_received': isReceived,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  CallStatePending copyWith({
-    bool? isCreated,
-    bool? isReceived,
-  }) =>
+  CallStatePending copyWith({bool? isCreated, bool? isReceived}) =>
       CallStatePending(
         isCreated: isCreated ?? this.isCreated,
         isReceived: isReceived ?? this.isReceived,
@@ -99,9 +93,7 @@ final class CallStateExchangingKeys extends CallState {
       const CallStateExchangingKeys();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -155,29 +147,31 @@ final class CallStateReady extends CallState {
 
   /// Parses a [CallStateReady] from TDLib JSON.
   factory CallStateReady.fromJson(Map<String, dynamic> json) => CallStateReady(
-        protocol: _readObject(json['protocol'], CallProtocol.fromJson),
-        servers: _readList<CallServer>(
-            json['servers'], (e) => _readObject(e, CallServer.fromJson)),
-        config: _readString(json['config']),
-        encryptionKey: _readString(json['encryption_key']),
-        emojis: _readList<String>(json['emojis'], _readString),
-        allowP2p: _readBool(json['allow_p2p']),
-        isGroupCallSupported: _readBool(json['is_group_call_supported']),
-        customParameters: _readString(json['custom_parameters']),
-      );
+    protocol: _readObject(json['protocol'], CallProtocol.fromJson),
+    servers: _readList<CallServer>(
+      json['servers'],
+      (e) => _readObject(e, CallServer.fromJson),
+    ),
+    config: _readString(json['config']),
+    encryptionKey: _readString(json['encryption_key']),
+    emojis: _readList<String>(json['emojis'], _readString),
+    allowP2p: _readBool(json['allow_p2p']),
+    isGroupCallSupported: _readBool(json['is_group_call_supported']),
+    customParameters: _readString(json['custom_parameters']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'protocol': protocol.toJson(),
-        'servers': [for (final e in servers) e.toJson()],
-        'config': config,
-        'encryption_key': encryptionKey,
-        'emojis': emojis,
-        'allow_p2p': allowP2p,
-        'is_group_call_supported': isGroupCallSupported,
-        'custom_parameters': customParameters,
-      };
+    '@type': CONSTRUCTOR,
+    'protocol': protocol.toJson(),
+    'servers': [for (final e in servers) e.toJson()],
+    'config': config,
+    'encryption_key': encryptionKey,
+    'emojis': emojis,
+    'allow_p2p': allowP2p,
+    'is_group_call_supported': isGroupCallSupported,
+    'custom_parameters': customParameters,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -191,17 +185,16 @@ final class CallStateReady extends CallState {
     bool? allowP2p,
     bool? isGroupCallSupported,
     String? customParameters,
-  }) =>
-      CallStateReady(
-        protocol: protocol ?? this.protocol,
-        servers: servers ?? this.servers,
-        config: config ?? this.config,
-        encryptionKey: encryptionKey ?? this.encryptionKey,
-        emojis: emojis ?? this.emojis,
-        allowP2p: allowP2p ?? this.allowP2p,
-        isGroupCallSupported: isGroupCallSupported ?? this.isGroupCallSupported,
-        customParameters: customParameters ?? this.customParameters,
-      );
+  }) => CallStateReady(
+    protocol: protocol ?? this.protocol,
+    servers: servers ?? this.servers,
+    config: config ?? this.config,
+    encryptionKey: encryptionKey ?? this.encryptionKey,
+    emojis: emojis ?? this.emojis,
+    allowP2p: allowP2p ?? this.allowP2p,
+    isGroupCallSupported: isGroupCallSupported ?? this.isGroupCallSupported,
+    customParameters: customParameters ?? this.customParameters,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'callStateReady';
@@ -220,9 +213,7 @@ final class CallStateHangingUp extends CallState {
       const CallStateHangingUp();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -269,12 +260,12 @@ final class CallStateDiscarded extends CallState {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'reason': reason.toJson(),
-        'need_rating': needRating,
-        'need_debug_information': needDebugInformation,
-        'need_log': needLog,
-      };
+    '@type': CONSTRUCTOR,
+    'reason': reason.toJson(),
+    'need_rating': needRating,
+    'need_debug_information': needDebugInformation,
+    'need_log': needLog,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -284,13 +275,12 @@ final class CallStateDiscarded extends CallState {
     bool? needRating,
     bool? needDebugInformation,
     bool? needLog,
-  }) =>
-      CallStateDiscarded(
-        reason: reason ?? this.reason,
-        needRating: needRating ?? this.needRating,
-        needDebugInformation: needDebugInformation ?? this.needDebugInformation,
-        needLog: needLog ?? this.needLog,
-      );
+  }) => CallStateDiscarded(
+    reason: reason ?? this.reason,
+    needRating: needRating ?? this.needRating,
+    needDebugInformation: needDebugInformation ?? this.needDebugInformation,
+    needLog: needLog ?? this.needLog,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'callStateDiscarded';
@@ -302,33 +292,26 @@ final class CallStateDiscarded extends CallState {
 /// The call has ended with an error
 final class CallStateError extends CallState {
   /// The call has ended with an error
-  const CallStateError({
-    required this.error,
-  });
+  const CallStateError({required this.error});
 
   /// Error. An error with the code 4005000 will be returned if an outgoing call is missed because of an expired timeout
   final TdError error;
 
   /// Parses a [CallStateError] from TDLib JSON.
-  factory CallStateError.fromJson(Map<String, dynamic> json) => CallStateError(
-        error: _readObject(json['error'], TdError.fromJson),
-      );
+  factory CallStateError.fromJson(Map<String, dynamic> json) =>
+      CallStateError(error: _readObject(json['error'], TdError.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'error': error.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'error': error.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  CallStateError copyWith({
-    TdError? error,
-  }) =>
-      CallStateError(
-        error: error ?? this.error,
-      );
+  CallStateError copyWith({TdError? error}) =>
+      CallStateError(error: error ?? this.error);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'callStateError';

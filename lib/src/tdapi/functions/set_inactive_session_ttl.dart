@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetInactiveSessionTtl extends TdFunction<Ok> {
   /// Changes the period of inactivity after which sessions will automatically be terminated
-  const SetInactiveSessionTtl({
-    required this.inactiveSessionTtlDays,
-  });
+  const SetInactiveSessionTtl({required this.inactiveSessionTtlDays});
 
   /// New number of days of inactivity before sessions will be automatically terminated; 1-366 days
   final int inactiveSessionTtlDays;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'inactive_session_ttl_days': inactiveSessionTtlDays,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'inactive_session_ttl_days': inactiveSessionTtlDays,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetInactiveSessionTtl copyWith({
-    int? inactiveSessionTtlDays,
-  }) =>
+  SetInactiveSessionTtl copyWith({int? inactiveSessionTtlDays}) =>
       SetInactiveSessionTtl(
         inactiveSessionTtlDays:
             inactiveSessionTtlDays ?? this.inactiveSessionTtlDays,

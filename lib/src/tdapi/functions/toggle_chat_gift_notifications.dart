@@ -21,18 +21,15 @@ final class ToggleChatGiftNotifications extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'are_enabled': areEnabled,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'are_enabled': areEnabled,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ToggleChatGiftNotifications copyWith({
-    int? chatId,
-    bool? areEnabled,
-  }) =>
+  ToggleChatGiftNotifications copyWith({int? chatId, bool? areEnabled}) =>
       ToggleChatGiftNotifications(
         chatId: chatId ?? this.chatId,
         areEnabled: areEnabled ?? this.areEnabled,

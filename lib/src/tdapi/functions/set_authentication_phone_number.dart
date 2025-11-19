@@ -21,22 +21,21 @@ final class SetAuthenticationPhoneNumber extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'phone_number': phoneNumber,
-        'settings': settings?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'phone_number': phoneNumber,
+    'settings': settings?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetAuthenticationPhoneNumber copyWith({
     String? phoneNumber,
     PhoneNumberAuthenticationSettings? Function()? settings,
-  }) =>
-      SetAuthenticationPhoneNumber(
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        settings: settings != null ? settings() : this.settings,
-      );
+  }) => SetAuthenticationPhoneNumber(
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+    settings: settings != null ? settings() : this.settings,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setAuthenticationPhoneNumber';

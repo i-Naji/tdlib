@@ -21,18 +21,15 @@ final class GetStarSubscriptions extends TdFunction<StarSubscriptions> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'only_expiring': onlyExpiring,
-        'offset': offset,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'only_expiring': onlyExpiring,
+    'offset': offset,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetStarSubscriptions copyWith({
-    bool? onlyExpiring,
-    String? offset,
-  }) =>
+  GetStarSubscriptions copyWith({bool? onlyExpiring, String? offset}) =>
       GetStarSubscriptions(
         onlyExpiring: onlyExpiring ?? this.onlyExpiring,
         offset: offset ?? this.offset,

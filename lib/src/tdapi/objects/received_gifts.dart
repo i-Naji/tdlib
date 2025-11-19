@@ -37,23 +37,25 @@ final class ReceivedGifts extends TdObject {
 
   /// Parses a [ReceivedGifts] from TDLib JSON.
   factory ReceivedGifts.fromJson(Map<String, dynamic> json) => ReceivedGifts(
-        totalCount: _readInt(json['total_count']),
-        gifts: _readList<ReceivedGift>(
-            json['gifts'], (e) => _readObject(e, ReceivedGift.fromJson)),
-        areNotificationsEnabled: _readBool(json['are_notifications_enabled']),
-        nextOffset: _readString(json['next_offset']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    totalCount: _readInt(json['total_count']),
+    gifts: _readList<ReceivedGift>(
+      json['gifts'],
+      (e) => _readObject(e, ReceivedGift.fromJson),
+    ),
+    areNotificationsEnabled: _readBool(json['are_notifications_enabled']),
+    nextOffset: _readString(json['next_offset']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'gifts': [for (final e in gifts) e.toJson()],
-        'are_notifications_enabled': areNotificationsEnabled,
-        'next_offset': nextOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'gifts': [for (final e in gifts) e.toJson()],
+    'are_notifications_enabled': areNotificationsEnabled,
+    'next_offset': nextOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -64,16 +66,15 @@ final class ReceivedGifts extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) =>
-      ReceivedGifts(
-        totalCount: totalCount ?? this.totalCount,
-        gifts: gifts ?? this.gifts,
-        areNotificationsEnabled:
-            areNotificationsEnabled ?? this.areNotificationsEnabled,
-        nextOffset: nextOffset ?? this.nextOffset,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ReceivedGifts(
+    totalCount: totalCount ?? this.totalCount,
+    gifts: gifts ?? this.gifts,
+    areNotificationsEnabled:
+        areNotificationsEnabled ?? this.areNotificationsEnabled,
+    nextOffset: nextOffset ?? this.nextOffset,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'receivedGifts';

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [AttachmentMenuBot].
 final class GetAttachmentMenuBot extends TdFunction<AttachmentMenuBot> {
   /// Returns information about a bot that can be added to attachment or side menu
-  const GetAttachmentMenuBot({
-    required this.botUserId,
-  });
+  const GetAttachmentMenuBot({required this.botUserId});
 
   /// Bot's user identifier
   final int botUserId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetAttachmentMenuBot copyWith({
-    int? botUserId,
-  }) =>
-      GetAttachmentMenuBot(
-        botUserId: botUserId ?? this.botUserId,
-      );
+  GetAttachmentMenuBot copyWith({int? botUserId}) =>
+      GetAttachmentMenuBot(botUserId: botUserId ?? this.botUserId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getAttachmentMenuBot';

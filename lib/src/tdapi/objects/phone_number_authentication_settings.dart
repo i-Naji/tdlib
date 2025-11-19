@@ -39,32 +39,35 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
 
   /// Parses a [PhoneNumberAuthenticationSettings] from TDLib JSON.
   factory PhoneNumberAuthenticationSettings.fromJson(
-          Map<String, dynamic> json) =>
-      PhoneNumberAuthenticationSettings(
-        allowFlashCall: _readBool(json['allow_flash_call']),
-        allowMissedCall: _readBool(json['allow_missed_call']),
-        isCurrentPhoneNumber: _readBool(json['is_current_phone_number']),
-        hasUnknownPhoneNumber: _readBool(json['has_unknown_phone_number']),
-        allowSmsRetrieverApi: _readBool(json['allow_sms_retriever_api']),
-        firebaseAuthenticationSettings: _readOptional(
-            json['firebase_authentication_settings'],
-            FirebaseAuthenticationSettings.fromJson),
-        authenticationTokens:
-            _readList<String>(json['authentication_tokens'], _readString),
-      );
+    Map<String, dynamic> json,
+  ) => PhoneNumberAuthenticationSettings(
+    allowFlashCall: _readBool(json['allow_flash_call']),
+    allowMissedCall: _readBool(json['allow_missed_call']),
+    isCurrentPhoneNumber: _readBool(json['is_current_phone_number']),
+    hasUnknownPhoneNumber: _readBool(json['has_unknown_phone_number']),
+    allowSmsRetrieverApi: _readBool(json['allow_sms_retriever_api']),
+    firebaseAuthenticationSettings: _readOptional(
+      json['firebase_authentication_settings'],
+      FirebaseAuthenticationSettings.fromJson,
+    ),
+    authenticationTokens: _readList<String>(
+      json['authentication_tokens'],
+      _readString,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'allow_flash_call': allowFlashCall,
-        'allow_missed_call': allowMissedCall,
-        'is_current_phone_number': isCurrentPhoneNumber,
-        'has_unknown_phone_number': hasUnknownPhoneNumber,
-        'allow_sms_retriever_api': allowSmsRetrieverApi,
-        'firebase_authentication_settings':
-            firebaseAuthenticationSettings?.toJson(),
-        'authentication_tokens': authenticationTokens,
-      };
+    '@type': CONSTRUCTOR,
+    'allow_flash_call': allowFlashCall,
+    'allow_missed_call': allowMissedCall,
+    'is_current_phone_number': isCurrentPhoneNumber,
+    'has_unknown_phone_number': hasUnknownPhoneNumber,
+    'allow_sms_retriever_api': allowSmsRetrieverApi,
+    'firebase_authentication_settings': firebaseAuthenticationSettings
+        ?.toJson(),
+    'authentication_tokens': authenticationTokens,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -76,19 +79,17 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
     bool? allowSmsRetrieverApi,
     FirebaseAuthenticationSettings? Function()? firebaseAuthenticationSettings,
     List<String>? authenticationTokens,
-  }) =>
-      PhoneNumberAuthenticationSettings(
-        allowFlashCall: allowFlashCall ?? this.allowFlashCall,
-        allowMissedCall: allowMissedCall ?? this.allowMissedCall,
-        isCurrentPhoneNumber: isCurrentPhoneNumber ?? this.isCurrentPhoneNumber,
-        hasUnknownPhoneNumber:
-            hasUnknownPhoneNumber ?? this.hasUnknownPhoneNumber,
-        allowSmsRetrieverApi: allowSmsRetrieverApi ?? this.allowSmsRetrieverApi,
-        firebaseAuthenticationSettings: firebaseAuthenticationSettings != null
-            ? firebaseAuthenticationSettings()
-            : this.firebaseAuthenticationSettings,
-        authenticationTokens: authenticationTokens ?? this.authenticationTokens,
-      );
+  }) => PhoneNumberAuthenticationSettings(
+    allowFlashCall: allowFlashCall ?? this.allowFlashCall,
+    allowMissedCall: allowMissedCall ?? this.allowMissedCall,
+    isCurrentPhoneNumber: isCurrentPhoneNumber ?? this.isCurrentPhoneNumber,
+    hasUnknownPhoneNumber: hasUnknownPhoneNumber ?? this.hasUnknownPhoneNumber,
+    allowSmsRetrieverApi: allowSmsRetrieverApi ?? this.allowSmsRetrieverApi,
+    firebaseAuthenticationSettings: firebaseAuthenticationSettings != null
+        ? firebaseAuthenticationSettings()
+        : this.firebaseAuthenticationSettings,
+    authenticationTokens: authenticationTokens ?? this.authenticationTokens,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'phoneNumberAuthenticationSettings';

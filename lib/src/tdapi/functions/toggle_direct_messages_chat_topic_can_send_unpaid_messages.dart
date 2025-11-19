@@ -30,13 +30,13 @@ final class ToggleDirectMessagesChatTopicCanSendUnpaidMessages
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'topic_id': topicId,
-        'can_send_unpaid_messages': canSendUnpaidMessages,
-        'refund_payments': refundPayments,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'topic_id': topicId,
+    'can_send_unpaid_messages': canSendUnpaidMessages,
+    'refund_payments': refundPayments,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -45,14 +45,12 @@ final class ToggleDirectMessagesChatTopicCanSendUnpaidMessages
     int? topicId,
     bool? canSendUnpaidMessages,
     bool? refundPayments,
-  }) =>
-      ToggleDirectMessagesChatTopicCanSendUnpaidMessages(
-        chatId: chatId ?? this.chatId,
-        topicId: topicId ?? this.topicId,
-        canSendUnpaidMessages:
-            canSendUnpaidMessages ?? this.canSendUnpaidMessages,
-        refundPayments: refundPayments ?? this.refundPayments,
-      );
+  }) => ToggleDirectMessagesChatTopicCanSendUnpaidMessages(
+    chatId: chatId ?? this.chatId,
+    topicId: topicId ?? this.topicId,
+    canSendUnpaidMessages: canSendUnpaidMessages ?? this.canSendUnpaidMessages,
+    refundPayments: refundPayments ?? this.refundPayments,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =

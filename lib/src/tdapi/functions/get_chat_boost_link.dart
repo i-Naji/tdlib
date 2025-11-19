@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [ChatBoostLink].
 final class GetChatBoostLink extends TdFunction<ChatBoostLink> {
   /// Returns an HTTPS link to boost the specified supergroup or channel chat
-  const GetChatBoostLink({
-    required this.chatId,
-  });
+  const GetChatBoostLink({required this.chatId});
 
   /// Identifier of the chat
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatBoostLink copyWith({
-    int? chatId,
-  }) =>
-      GetChatBoostLink(
-        chatId: chatId ?? this.chatId,
-      );
+  GetChatBoostLink copyWith({int? chatId}) =>
+      GetChatBoostLink(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatBoostLink';

@@ -54,9 +54,7 @@ final class InputPaidMediaTypePhoto extends InputPaidMediaType {
       const InputPaidMediaTypePhoto();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -103,12 +101,12 @@ final class InputPaidMediaTypeVideo extends InputPaidMediaType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'cover': cover?.toJson(),
-        'start_timestamp': startTimestamp,
-        'duration': duration,
-        'supports_streaming': supportsStreaming,
-      };
+    '@type': CONSTRUCTOR,
+    'cover': cover?.toJson(),
+    'start_timestamp': startTimestamp,
+    'duration': duration,
+    'supports_streaming': supportsStreaming,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -118,13 +116,12 @@ final class InputPaidMediaTypeVideo extends InputPaidMediaType {
     int? startTimestamp,
     int? duration,
     bool? supportsStreaming,
-  }) =>
-      InputPaidMediaTypeVideo(
-        cover: cover != null ? cover() : this.cover,
-        startTimestamp: startTimestamp ?? this.startTimestamp,
-        duration: duration ?? this.duration,
-        supportsStreaming: supportsStreaming ?? this.supportsStreaming,
-      );
+  }) => InputPaidMediaTypeVideo(
+    cover: cover != null ? cover() : this.cover,
+    startTimestamp: startTimestamp ?? this.startTimestamp,
+    duration: duration ?? this.duration,
+    supportsStreaming: supportsStreaming ?? this.supportsStreaming,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPaidMediaTypeVideo';

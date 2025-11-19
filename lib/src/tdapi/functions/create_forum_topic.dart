@@ -29,13 +29,13 @@ final class CreateForumTopic extends TdFunction<ForumTopicInfo> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'name': name,
-        'is_name_implicit': isNameImplicit,
-        'icon': icon.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'name': name,
+    'is_name_implicit': isNameImplicit,
+    'icon': icon.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class CreateForumTopic extends TdFunction<ForumTopicInfo> {
     String? name,
     bool? isNameImplicit,
     ForumTopicIcon? icon,
-  }) =>
-      CreateForumTopic(
-        chatId: chatId ?? this.chatId,
-        name: name ?? this.name,
-        isNameImplicit: isNameImplicit ?? this.isNameImplicit,
-        icon: icon ?? this.icon,
-      );
+  }) => CreateForumTopic(
+    chatId: chatId ?? this.chatId,
+    name: name ?? this.name,
+    isNameImplicit: isNameImplicit ?? this.isNameImplicit,
+    icon: icon ?? this.icon,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'createForumTopic';

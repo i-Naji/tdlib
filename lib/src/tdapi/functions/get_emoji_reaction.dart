@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [EmojiReaction].
 final class GetEmojiReaction extends TdFunction<EmojiReaction> {
   /// Returns information about an emoji reaction. Returns a 404 error if the reaction is not found
-  const GetEmojiReaction({
-    required this.emoji,
-  });
+  const GetEmojiReaction({required this.emoji});
 
   /// Text representation of the reaction
   final String emoji;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'emoji': emoji,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'emoji': emoji,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetEmojiReaction copyWith({
-    String? emoji,
-  }) =>
-      GetEmojiReaction(
-        emoji: emoji ?? this.emoji,
-      );
+  GetEmojiReaction copyWith({String? emoji}) =>
+      GetEmojiReaction(emoji: emoji ?? this.emoji);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getEmojiReaction';

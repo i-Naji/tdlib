@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of options for buying Telegram Stars
 final class StarPaymentOptions extends TdObject {
   /// Contains a list of options for buying Telegram Stars
-  const StarPaymentOptions({
-    required this.options,
-    this.extra,
-    this.clientId,
-  });
+  const StarPaymentOptions({required this.options, this.extra, this.clientId});
 
   /// The list of options
   final List<StarPaymentOption> options;
@@ -27,16 +23,18 @@ final class StarPaymentOptions extends TdObject {
   factory StarPaymentOptions.fromJson(Map<String, dynamic> json) =>
       StarPaymentOptions(
         options: _readList<StarPaymentOption>(
-            json['options'], (e) => _readObject(e, StarPaymentOption.fromJson)),
+          json['options'],
+          (e) => _readObject(e, StarPaymentOption.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'options': [for (final e in options) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'options': [for (final e in options) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +42,11 @@ final class StarPaymentOptions extends TdObject {
     List<StarPaymentOption>? options,
     dynamic extra,
     int? clientId,
-  }) =>
-      StarPaymentOptions(
-        options: options ?? this.options,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => StarPaymentOptions(
+    options: options ?? this.options,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starPaymentOptions';

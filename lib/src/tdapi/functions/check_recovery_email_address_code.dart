@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [PasswordState].
 final class CheckRecoveryEmailAddressCode extends TdFunction<PasswordState> {
   /// Checks the 2-step verification recovery email address verification code
-  const CheckRecoveryEmailAddressCode({
-    required this.code,
-  });
+  const CheckRecoveryEmailAddressCode({required this.code});
 
   /// Verification code to check
   final String code;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'code': code,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'code': code,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CheckRecoveryEmailAddressCode copyWith({
-    String? code,
-  }) =>
-      CheckRecoveryEmailAddressCode(
-        code: code ?? this.code,
-      );
+  CheckRecoveryEmailAddressCode copyWith({String? code}) =>
+      CheckRecoveryEmailAddressCode(code: code ?? this.code);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkRecoveryEmailAddressCode';

@@ -9,10 +9,7 @@ part of '../tdapi.dart';
 final class CanSendMessageToUser
     extends TdFunction<CanSendMessageToUserResult> {
   /// Check whether the current user can message another user or try to create a chat with them
-  const CanSendMessageToUser({
-    required this.userId,
-    required this.onlyLocal,
-  });
+  const CanSendMessageToUser({required this.userId, required this.onlyLocal});
 
   /// Identifier of the other user
   final int userId;
@@ -22,18 +19,15 @@ final class CanSendMessageToUser
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'only_local': onlyLocal,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'only_local': onlyLocal,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CanSendMessageToUser copyWith({
-    int? userId,
-    bool? onlyLocal,
-  }) =>
+  CanSendMessageToUser copyWith({int? userId, bool? onlyLocal}) =>
       CanSendMessageToUser(
         userId: userId ?? this.userId,
         onlyLocal: onlyLocal ?? this.onlyLocal,

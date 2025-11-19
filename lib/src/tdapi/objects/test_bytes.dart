@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// A simple object containing a sequence of bytes; for testing only
 final class TestBytes extends TdObject {
   /// A simple object containing a sequence of bytes; for testing only
-  const TestBytes({
-    required this.value,
-    this.extra,
-    this.clientId,
-  });
+  const TestBytes({required this.value, this.extra, this.clientId});
 
   /// Bytes
   final String value;
@@ -25,24 +21,17 @@ final class TestBytes extends TdObject {
 
   /// Parses a [TestBytes] from TDLib JSON.
   factory TestBytes.fromJson(Map<String, dynamic> json) => TestBytes(
-        value: _readString(json['value']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    value: _readString(json['value']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'value': value,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'value': value};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TestBytes copyWith({
-    String? value,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  TestBytes copyWith({String? value, dynamic extra, int? clientId}) =>
       TestBytes(
         value: value ?? this.value,
         extra: extra ?? this.extra,

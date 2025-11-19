@@ -47,35 +47,27 @@ final class UndecodedMessageSchedulingState extends MessageSchedulingState {
 /// The message will be sent at the specified date
 final class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
   /// The message will be sent at the specified date
-  const MessageSchedulingStateSendAtDate({
-    required this.sendDate,
-  });
+  const MessageSchedulingStateSendAtDate({required this.sendDate});
 
   /// Point in time (Unix timestamp) when the message will be sent. The date must be within 367 days in the future
   final int sendDate;
 
   /// Parses a [MessageSchedulingStateSendAtDate] from TDLib JSON.
   factory MessageSchedulingStateSendAtDate.fromJson(
-          Map<String, dynamic> json) =>
-      MessageSchedulingStateSendAtDate(
-        sendDate: _readInt(json['send_date']),
-      );
+    Map<String, dynamic> json,
+  ) => MessageSchedulingStateSendAtDate(sendDate: _readInt(json['send_date']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'send_date': sendDate,
-      };
+    '@type': CONSTRUCTOR,
+    'send_date': sendDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageSchedulingStateSendAtDate copyWith({
-    int? sendDate,
-  }) =>
-      MessageSchedulingStateSendAtDate(
-        sendDate: sendDate ?? this.sendDate,
-      );
+  MessageSchedulingStateSendAtDate copyWith({int? sendDate}) =>
+      MessageSchedulingStateSendAtDate(sendDate: sendDate ?? this.sendDate);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageSchedulingStateSendAtDate';
@@ -92,13 +84,11 @@ final class MessageSchedulingStateSendWhenOnline
 
   /// Parses a [MessageSchedulingStateSendWhenOnline] from TDLib JSON.
   factory MessageSchedulingStateSendWhenOnline.fromJson(
-          Map<String, dynamic> json) =>
-      const MessageSchedulingStateSendWhenOnline();
+    Map<String, dynamic> json,
+  ) => const MessageSchedulingStateSendWhenOnline();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -117,32 +107,28 @@ final class MessageSchedulingStateSendWhenOnline
 final class MessageSchedulingStateSendWhenVideoProcessed
     extends MessageSchedulingState {
   /// The message will be sent when the video in the message is converted and optimized; can be used only by the server
-  const MessageSchedulingStateSendWhenVideoProcessed({
-    required this.sendDate,
-  });
+  const MessageSchedulingStateSendWhenVideoProcessed({required this.sendDate});
 
   /// Approximate point in time (Unix timestamp) when the message is expected to be sent
   final int sendDate;
 
   /// Parses a [MessageSchedulingStateSendWhenVideoProcessed] from TDLib JSON.
   factory MessageSchedulingStateSendWhenVideoProcessed.fromJson(
-          Map<String, dynamic> json) =>
-      MessageSchedulingStateSendWhenVideoProcessed(
-        sendDate: _readInt(json['send_date']),
-      );
+    Map<String, dynamic> json,
+  ) => MessageSchedulingStateSendWhenVideoProcessed(
+    sendDate: _readInt(json['send_date']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'send_date': sendDate,
-      };
+    '@type': CONSTRUCTOR,
+    'send_date': sendDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageSchedulingStateSendWhenVideoProcessed copyWith({
-    int? sendDate,
-  }) =>
+  MessageSchedulingStateSendWhenVideoProcessed copyWith({int? sendDate}) =>
       MessageSchedulingStateSendWhenVideoProcessed(
         sendDate: sendDate ?? this.sendDate,
       );

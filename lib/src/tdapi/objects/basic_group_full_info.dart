@@ -58,29 +58,34 @@ final class BasicGroupFullInfo extends TdObject {
         description: _readString(json['description']),
         creatorUserId: _readInt(json['creator_user_id']),
         members: _readList<ChatMember>(
-            json['members'], (e) => _readObject(e, ChatMember.fromJson)),
+          json['members'],
+          (e) => _readObject(e, ChatMember.fromJson),
+        ),
         canHideMembers: _readBool(json['can_hide_members']),
-        canToggleAggressiveAntiSpam:
-            _readBool(json['can_toggle_aggressive_anti_spam']),
+        canToggleAggressiveAntiSpam: _readBool(
+          json['can_toggle_aggressive_anti_spam'],
+        ),
         inviteLink: _readOptional(json['invite_link'], ChatInviteLink.fromJson),
         botCommands: _readList<BotCommands>(
-            json['bot_commands'], (e) => _readObject(e, BotCommands.fromJson)),
+          json['bot_commands'],
+          (e) => _readObject(e, BotCommands.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo?.toJson(),
-        'description': description,
-        'creator_user_id': creatorUserId,
-        'members': [for (final e in members) e.toJson()],
-        'can_hide_members': canHideMembers,
-        'can_toggle_aggressive_anti_spam': canToggleAggressiveAntiSpam,
-        'invite_link': inviteLink?.toJson(),
-        'bot_commands': [for (final e in botCommands) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo?.toJson(),
+    'description': description,
+    'creator_user_id': creatorUserId,
+    'members': [for (final e in members) e.toJson()],
+    'can_hide_members': canHideMembers,
+    'can_toggle_aggressive_anti_spam': canToggleAggressiveAntiSpam,
+    'invite_link': inviteLink?.toJson(),
+    'bot_commands': [for (final e in botCommands) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -95,20 +100,19 @@ final class BasicGroupFullInfo extends TdObject {
     List<BotCommands>? botCommands,
     dynamic extra,
     int? clientId,
-  }) =>
-      BasicGroupFullInfo(
-        photo: photo != null ? photo() : this.photo,
-        description: description ?? this.description,
-        creatorUserId: creatorUserId ?? this.creatorUserId,
-        members: members ?? this.members,
-        canHideMembers: canHideMembers ?? this.canHideMembers,
-        canToggleAggressiveAntiSpam:
-            canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
-        inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
-        botCommands: botCommands ?? this.botCommands,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => BasicGroupFullInfo(
+    photo: photo != null ? photo() : this.photo,
+    description: description ?? this.description,
+    creatorUserId: creatorUserId ?? this.creatorUserId,
+    members: members ?? this.members,
+    canHideMembers: canHideMembers ?? this.canHideMembers,
+    canToggleAggressiveAntiSpam:
+        canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
+    inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
+    botCommands: botCommands ?? this.botCommands,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'basicGroupFullInfo';

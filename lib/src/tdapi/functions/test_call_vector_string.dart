@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [TestVectorString].
 final class TestCallVectorString extends TdFunction<TestVectorString> {
   /// Returns the received vector of strings; for testing only. This is an offline method. Can be called before authorization
-  const TestCallVectorString({
-    required this.x,
-  });
+  const TestCallVectorString({required this.x});
 
   /// Vector of strings to return
   final List<String> x;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'x': x,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'x': x,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TestCallVectorString copyWith({
-    List<String>? x,
-  }) =>
-      TestCallVectorString(
-        x: x ?? this.x,
-      );
+  TestCallVectorString copyWith({List<String>? x}) =>
+      TestCallVectorString(x: x ?? this.x);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'testCallVectorString';

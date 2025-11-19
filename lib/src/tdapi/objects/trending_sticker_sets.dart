@@ -36,7 +36,9 @@ final class TrendingStickerSets extends TdObject {
       TrendingStickerSets(
         totalCount: _readInt(json['total_count']),
         sets: _readList<StickerSetInfo>(
-            json['sets'], (e) => _readObject(e, StickerSetInfo.fromJson)),
+          json['sets'],
+          (e) => _readObject(e, StickerSetInfo.fromJson),
+        ),
         isPremium: _readBool(json['is_premium']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -44,11 +46,11 @@ final class TrendingStickerSets extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'sets': [for (final e in sets) e.toJson()],
-        'is_premium': isPremium,
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'sets': [for (final e in sets) e.toJson()],
+    'is_premium': isPremium,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -58,14 +60,13 @@ final class TrendingStickerSets extends TdObject {
     bool? isPremium,
     dynamic extra,
     int? clientId,
-  }) =>
-      TrendingStickerSets(
-        totalCount: totalCount ?? this.totalCount,
-        sets: sets ?? this.sets,
-        isPremium: isPremium ?? this.isPremium,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => TrendingStickerSets(
+    totalCount: totalCount ?? this.totalCount,
+    sets: sets ?? this.sets,
+    isPremium: isPremium ?? this.isPremium,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'trendingStickerSets';

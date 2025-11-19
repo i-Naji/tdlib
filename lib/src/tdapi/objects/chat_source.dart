@@ -52,9 +52,7 @@ final class ChatSourceMtprotoProxy extends ChatSource {
       const ChatSourceMtprotoProxy();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -84,26 +82,23 @@ final class ChatSourcePublicServiceAnnouncement extends ChatSource {
 
   /// Parses a [ChatSourcePublicServiceAnnouncement] from TDLib JSON.
   factory ChatSourcePublicServiceAnnouncement.fromJson(
-          Map<String, dynamic> json) =>
-      ChatSourcePublicServiceAnnouncement(
-        type: _readString(json['type']),
-        text: _readString(json['text']),
-      );
+    Map<String, dynamic> json,
+  ) => ChatSourcePublicServiceAnnouncement(
+    type: _readString(json['type']),
+    text: _readString(json['text']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'type': type,
-        'text': text,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type,
+    'text': text,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatSourcePublicServiceAnnouncement copyWith({
-    String? type,
-    String? text,
-  }) =>
+  ChatSourcePublicServiceAnnouncement copyWith({String? type, String? text}) =>
       ChatSourcePublicServiceAnnouncement(
         type: type ?? this.type,
         text: text ?? this.text,

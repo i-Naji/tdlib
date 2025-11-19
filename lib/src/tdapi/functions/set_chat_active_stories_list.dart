@@ -21,18 +21,15 @@ final class SetChatActiveStoriesList extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'story_list': storyList.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'story_list': storyList.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetChatActiveStoriesList copyWith({
-    int? chatId,
-    StoryList? storyList,
-  }) =>
+  SetChatActiveStoriesList copyWith({int? chatId, StoryList? storyList}) =>
       SetChatActiveStoriesList(
         chatId: chatId ?? this.chatId,
         storyList: storyList ?? this.storyList,

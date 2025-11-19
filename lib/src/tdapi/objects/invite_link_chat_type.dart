@@ -54,9 +54,7 @@ final class InviteLinkChatTypeBasicGroup extends InviteLinkChatType {
       const InviteLinkChatTypeBasicGroup();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -81,9 +79,7 @@ final class InviteLinkChatTypeSupergroup extends InviteLinkChatType {
       const InviteLinkChatTypeSupergroup();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -108,9 +104,7 @@ final class InviteLinkChatTypeChannel extends InviteLinkChatType {
       const InviteLinkChatTypeChannel();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

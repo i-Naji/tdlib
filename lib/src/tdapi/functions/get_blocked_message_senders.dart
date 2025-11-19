@@ -25,12 +25,12 @@ final class GetBlockedMessageSenders extends TdFunction<MessageSenders> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'block_list': blockList.toJson(),
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'block_list': blockList.toJson(),
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class GetBlockedMessageSenders extends TdFunction<MessageSenders> {
     BlockList? blockList,
     int? offset,
     int? limit,
-  }) =>
-      GetBlockedMessageSenders(
-        blockList: blockList ?? this.blockList,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => GetBlockedMessageSenders(
+    blockList: blockList ?? this.blockList,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getBlockedMessageSenders';

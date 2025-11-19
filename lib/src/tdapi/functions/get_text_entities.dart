@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [TextEntities].
 final class GetTextEntities extends TdFunction<TextEntities> {
   /// Returns all entities (mentions, hashtags, cashtags, bot commands, bank card numbers, URLs, and email addresses) found in the text. Can be called synchronously
-  const GetTextEntities({
-    required this.text,
-  });
+  const GetTextEntities({required this.text});
 
   /// The text in which to look for entities
   final String text;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'text': text,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetTextEntities copyWith({
-    String? text,
-  }) =>
-      GetTextEntities(
-        text: text ?? this.text,
-      );
+  GetTextEntities copyWith({String? text}) =>
+      GetTextEntities(text: text ?? this.text);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getTextEntities';

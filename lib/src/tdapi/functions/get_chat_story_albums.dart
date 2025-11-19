@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [StoryAlbums].
 final class GetChatStoryAlbums extends TdFunction<StoryAlbums> {
   /// Returns the list of story albums owned by the given chat
-  const GetChatStoryAlbums({
-    required this.chatId,
-  });
+  const GetChatStoryAlbums({required this.chatId});
 
   /// Chat identifier
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatStoryAlbums copyWith({
-    int? chatId,
-  }) =>
-      GetChatStoryAlbums(
-        chatId: chatId ?? this.chatId,
-      );
+  GetChatStoryAlbums copyWith({int? chatId}) =>
+      GetChatStoryAlbums(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatStoryAlbums';

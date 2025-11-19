@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SendAuthenticationFirebaseSms extends TdFunction<Ok> {
   /// Sends Firebase Authentication SMS to the phone number of the user. Works only when the current authorization state is authorizationStateWaitCode and the server returned code of the type authenticationCodeTypeFirebaseAndroid or authenticationCodeTypeFirebaseIos
-  const SendAuthenticationFirebaseSms({
-    required this.token,
-  });
+  const SendAuthenticationFirebaseSms({required this.token});
 
   /// Play Integrity API or SafetyNet Attestation API token for the Android application, or secret from push notification for the iOS application
   final String token;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'token': token,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'token': token,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SendAuthenticationFirebaseSms copyWith({
-    String? token,
-  }) =>
-      SendAuthenticationFirebaseSms(
-        token: token ?? this.token,
-      );
+  SendAuthenticationFirebaseSms copyWith({String? token}) =>
+      SendAuthenticationFirebaseSms(token: token ?? this.token);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sendAuthenticationFirebaseSms';

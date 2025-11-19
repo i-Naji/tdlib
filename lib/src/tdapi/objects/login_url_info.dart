@@ -77,10 +77,10 @@ final class LoginUrlInfoOpen extends LoginUrlInfo {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'skip_confirmation': skipConfirmation,
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'skip_confirmation': skipConfirmation,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -90,13 +90,12 @@ final class LoginUrlInfoOpen extends LoginUrlInfo {
     bool? skipConfirmation,
     dynamic extra,
     int? clientId,
-  }) =>
-      LoginUrlInfoOpen(
-        url: url ?? this.url,
-        skipConfirmation: skipConfirmation ?? this.skipConfirmation,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => LoginUrlInfoOpen(
+    url: url ?? this.url,
+    skipConfirmation: skipConfirmation ?? this.skipConfirmation,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'loginUrlInfoOpen';
@@ -150,12 +149,12 @@ final class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'domain': domain,
-        'bot_user_id': botUserId,
-        'request_write_access': requestWriteAccess,
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'domain': domain,
+    'bot_user_id': botUserId,
+    'request_write_access': requestWriteAccess,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -167,15 +166,14 @@ final class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
     bool? requestWriteAccess,
     dynamic extra,
     int? clientId,
-  }) =>
-      LoginUrlInfoRequestConfirmation(
-        url: url ?? this.url,
-        domain: domain ?? this.domain,
-        botUserId: botUserId ?? this.botUserId,
-        requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => LoginUrlInfoRequestConfirmation(
+    url: url ?? this.url,
+    domain: domain ?? this.domain,
+    botUserId: botUserId ?? this.botUserId,
+    requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'loginUrlInfoRequestConfirmation';

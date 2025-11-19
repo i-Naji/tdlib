@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [ChatInviteLinkCounts].
 final class GetChatInviteLinkCounts extends TdFunction<ChatInviteLinkCounts> {
   /// Returns the list of chat administrators with number of their invite links. Requires owner privileges in the chat
-  const GetChatInviteLinkCounts({
-    required this.chatId,
-  });
+  const GetChatInviteLinkCounts({required this.chatId});
 
   /// Chat identifier
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatInviteLinkCounts copyWith({
-    int? chatId,
-  }) =>
-      GetChatInviteLinkCounts(
-        chatId: chatId ?? this.chatId,
-      );
+  GetChatInviteLinkCounts copyWith({int? chatId}) =>
+      GetChatInviteLinkCounts(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatInviteLinkCounts';

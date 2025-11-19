@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class UnpinChatMessage extends TdFunction<Ok> {
   /// Removes a pinned message from a chat; requires can_pin_messages member right if the chat is a basic group or supergroup, or can_edit_messages administrator right if the chat is a channel
-  const UnpinChatMessage({
-    required this.chatId,
-    required this.messageId,
-  });
+  const UnpinChatMessage({required this.chatId, required this.messageId});
 
   /// Identifier of the chat
   final int chatId;
@@ -21,22 +18,18 @@ final class UnpinChatMessage extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  UnpinChatMessage copyWith({
-    int? chatId,
-    int? messageId,
-  }) =>
-      UnpinChatMessage(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-      );
+  UnpinChatMessage copyWith({int? chatId, int? messageId}) => UnpinChatMessage(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'unpinChatMessage';

@@ -31,19 +31,15 @@ final class MessagePosition extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'position': position,
-        'message_id': messageId,
-        'date': date,
-      };
+    '@type': CONSTRUCTOR,
+    'position': position,
+    'message_id': messageId,
+    'date': date,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  MessagePosition copyWith({
-    int? position,
-    int? messageId,
-    int? date,
-  }) =>
+  MessagePosition copyWith({int? position, int? messageId, int? date}) =>
       MessagePosition(
         position: position ?? this.position,
         messageId: messageId ?? this.messageId,

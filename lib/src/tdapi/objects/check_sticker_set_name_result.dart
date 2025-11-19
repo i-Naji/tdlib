@@ -48,10 +48,7 @@ final class UndecodedCheckStickerSetNameResult
 /// The name can be set
 final class CheckStickerSetNameResultOk extends CheckStickerSetNameResult {
   /// The name can be set
-  const CheckStickerSetNameResultOk({
-    this.extra,
-    this.clientId,
-  });
+  const CheckStickerSetNameResultOk({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -69,17 +66,12 @@ final class CheckStickerSetNameResultOk extends CheckStickerSetNameResult {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  CheckStickerSetNameResultOk copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  CheckStickerSetNameResultOk copyWith({dynamic extra, int? clientId}) =>
       CheckStickerSetNameResultOk(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -96,10 +88,7 @@ final class CheckStickerSetNameResultOk extends CheckStickerSetNameResult {
 final class CheckStickerSetNameResultNameInvalid
     extends CheckStickerSetNameResult {
   /// The name is invalid
-  const CheckStickerSetNameResultNameInvalid({
-    this.extra,
-    this.clientId,
-  });
+  const CheckStickerSetNameResultNameInvalid({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -111,16 +100,14 @@ final class CheckStickerSetNameResultNameInvalid
 
   /// Parses a [CheckStickerSetNameResultNameInvalid] from TDLib JSON.
   factory CheckStickerSetNameResultNameInvalid.fromJson(
-          Map<String, dynamic> json) =>
-      CheckStickerSetNameResultNameInvalid(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => CheckStickerSetNameResultNameInvalid(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -128,11 +115,10 @@ final class CheckStickerSetNameResultNameInvalid
   CheckStickerSetNameResultNameInvalid copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      CheckStickerSetNameResultNameInvalid(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CheckStickerSetNameResultNameInvalid(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkStickerSetNameResultNameInvalid';
@@ -145,10 +131,7 @@ final class CheckStickerSetNameResultNameInvalid
 final class CheckStickerSetNameResultNameOccupied
     extends CheckStickerSetNameResult {
   /// The name is occupied
-  const CheckStickerSetNameResultNameOccupied({
-    this.extra,
-    this.clientId,
-  });
+  const CheckStickerSetNameResultNameOccupied({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -160,16 +143,14 @@ final class CheckStickerSetNameResultNameOccupied
 
   /// Parses a [CheckStickerSetNameResultNameOccupied] from TDLib JSON.
   factory CheckStickerSetNameResultNameOccupied.fromJson(
-          Map<String, dynamic> json) =>
-      CheckStickerSetNameResultNameOccupied(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => CheckStickerSetNameResultNameOccupied(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -177,11 +158,10 @@ final class CheckStickerSetNameResultNameOccupied
   CheckStickerSetNameResultNameOccupied copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      CheckStickerSetNameResultNameOccupied(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CheckStickerSetNameResultNameOccupied(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkStickerSetNameResultNameOccupied';

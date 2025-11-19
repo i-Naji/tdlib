@@ -49,32 +49,28 @@ final class UndecodedInlineQueryResultsButtonType
 final class InlineQueryResultsButtonTypeStartBot
     extends InlineQueryResultsButtonType {
   /// Describes the button that opens a private chat with the bot and sends a start message to the bot with the given parameter
-  const InlineQueryResultsButtonTypeStartBot({
-    required this.parameter,
-  });
+  const InlineQueryResultsButtonTypeStartBot({required this.parameter});
 
   /// The parameter for the bot start message
   final String parameter;
 
   /// Parses a [InlineQueryResultsButtonTypeStartBot] from TDLib JSON.
   factory InlineQueryResultsButtonTypeStartBot.fromJson(
-          Map<String, dynamic> json) =>
-      InlineQueryResultsButtonTypeStartBot(
-        parameter: _readString(json['parameter']),
-      );
+    Map<String, dynamic> json,
+  ) => InlineQueryResultsButtonTypeStartBot(
+    parameter: _readString(json['parameter']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'parameter': parameter,
-      };
+    '@type': CONSTRUCTOR,
+    'parameter': parameter,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InlineQueryResultsButtonTypeStartBot copyWith({
-    String? parameter,
-  }) =>
+  InlineQueryResultsButtonTypeStartBot copyWith({String? parameter}) =>
       InlineQueryResultsButtonTypeStartBot(
         parameter: parameter ?? this.parameter,
       );
@@ -90,35 +86,24 @@ final class InlineQueryResultsButtonTypeStartBot
 final class InlineQueryResultsButtonTypeWebApp
     extends InlineQueryResultsButtonType {
   /// Describes the button that opens a Web App by calling getWebAppUrl
-  const InlineQueryResultsButtonTypeWebApp({
-    required this.url,
-  });
+  const InlineQueryResultsButtonTypeWebApp({required this.url});
 
   /// An HTTP URL to pass to getWebAppUrl
   final String url;
 
   /// Parses a [InlineQueryResultsButtonTypeWebApp] from TDLib JSON.
   factory InlineQueryResultsButtonTypeWebApp.fromJson(
-          Map<String, dynamic> json) =>
-      InlineQueryResultsButtonTypeWebApp(
-        url: _readString(json['url']),
-      );
+    Map<String, dynamic> json,
+  ) => InlineQueryResultsButtonTypeWebApp(url: _readString(json['url']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'url': url};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InlineQueryResultsButtonTypeWebApp copyWith({
-    String? url,
-  }) =>
-      InlineQueryResultsButtonTypeWebApp(
-        url: url ?? this.url,
-      );
+  InlineQueryResultsButtonTypeWebApp copyWith({String? url}) =>
+      InlineQueryResultsButtonTypeWebApp(url: url ?? this.url);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineQueryResultsButtonTypeWebApp';

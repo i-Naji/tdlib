@@ -21,22 +21,21 @@ final class CheckAuthenticationPremiumPurchase extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'currency': currency,
-        'amount': amount,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'currency': currency,
+    'amount': amount,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   CheckAuthenticationPremiumPurchase copyWith({
     String? currency,
     int? amount,
-  }) =>
-      CheckAuthenticationPremiumPurchase(
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-      );
+  }) => CheckAuthenticationPremiumPurchase(
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkAuthenticationPremiumPurchase';

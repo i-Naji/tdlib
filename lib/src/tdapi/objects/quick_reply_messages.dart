@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of quick reply messages
 final class QuickReplyMessages extends TdObject {
   /// Contains a list of quick reply messages
-  const QuickReplyMessages({
-    required this.messages,
-    this.extra,
-    this.clientId,
-  });
+  const QuickReplyMessages({required this.messages, this.extra, this.clientId});
 
   /// List of quick reply messages; messages may be null
   final List<QuickReplyMessage> messages;
@@ -26,17 +22,19 @@ final class QuickReplyMessages extends TdObject {
   /// Parses a [QuickReplyMessages] from TDLib JSON.
   factory QuickReplyMessages.fromJson(Map<String, dynamic> json) =>
       QuickReplyMessages(
-        messages: _readList<QuickReplyMessage>(json['messages'],
-            (e) => _readObject(e, QuickReplyMessage.fromJson)),
+        messages: _readList<QuickReplyMessage>(
+          json['messages'],
+          (e) => _readObject(e, QuickReplyMessage.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'messages': [for (final e in messages) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'messages': [for (final e in messages) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +42,11 @@ final class QuickReplyMessages extends TdObject {
     List<QuickReplyMessage>? messages,
     dynamic extra,
     int? clientId,
-  }) =>
-      QuickReplyMessages(
-        messages: messages ?? this.messages,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => QuickReplyMessages(
+    messages: messages ?? this.messages,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'quickReplyMessages';

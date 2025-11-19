@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [FormattedText].
 final class ParseMarkdown extends TdFunction<FormattedText> {
   /// Parses Markdown entities in a human-friendly format, ignoring markup errors. Can be called synchronously
-  const ParseMarkdown({
-    required this.text,
-  });
+  const ParseMarkdown({required this.text});
 
   /// The text to parse. For example, "__italic__ ~~strikethrough~~ ||spoiler|| **bold** `code` ```pre``` __[italic__ text_url](telegram.org) __italic**bold italic__bold**"
   final FormattedText text;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ParseMarkdown copyWith({
-    FormattedText? text,
-  }) =>
-      ParseMarkdown(
-        text: text ?? this.text,
-      );
+  ParseMarkdown copyWith({FormattedText? text}) =>
+      ParseMarkdown(text: text ?? this.text);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'parseMarkdown';

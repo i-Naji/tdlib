@@ -54,9 +54,7 @@ final class GroupCallDataChannelMain extends GroupCallDataChannel {
       const GroupCallDataChannelMain();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -77,13 +75,11 @@ final class GroupCallDataChannelScreenSharing extends GroupCallDataChannel {
 
   /// Parses a [GroupCallDataChannelScreenSharing] from TDLib JSON.
   factory GroupCallDataChannelScreenSharing.fromJson(
-          Map<String, dynamic> json) =>
-      const GroupCallDataChannelScreenSharing();
+    Map<String, dynamic> json,
+  ) => const GroupCallDataChannelScreenSharing();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

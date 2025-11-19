@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class DeleteStoryAlbum extends TdFunction<Ok> {
   /// Deletes a story album. If the album is owned by a supergroup or a channel chat, then requires can_edit_stories administrator right in the chat
-  const DeleteStoryAlbum({
-    required this.chatId,
-    required this.storyAlbumId,
-  });
+  const DeleteStoryAlbum({required this.chatId, required this.storyAlbumId});
 
   /// Identifier of the chat that owns the stories
   final int chatId;
@@ -21,18 +18,15 @@ final class DeleteStoryAlbum extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'story_album_id': storyAlbumId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'story_album_id': storyAlbumId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteStoryAlbum copyWith({
-    int? chatId,
-    int? storyAlbumId,
-  }) =>
+  DeleteStoryAlbum copyWith({int? chatId, int? storyAlbumId}) =>
       DeleteStoryAlbum(
         chatId: chatId ?? this.chatId,
         storyAlbumId: storyAlbumId ?? this.storyAlbumId,

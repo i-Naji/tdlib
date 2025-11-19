@@ -41,18 +41,18 @@ final class SendBusinessMessageAlbum extends TdFunction<BusinessMessages> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'business_connection_id': businessConnectionId,
-        'chat_id': chatId,
-        'reply_to': replyTo?.toJson(),
-        'disable_notification': disableNotification,
-        'protect_content': protectContent,
-        'effect_id': effectId.toString(),
-        'input_message_contents': [
-          for (final e in inputMessageContents) e.toJson()
-        ],
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'business_connection_id': businessConnectionId,
+    'chat_id': chatId,
+    'reply_to': replyTo?.toJson(),
+    'disable_notification': disableNotification,
+    'protect_content': protectContent,
+    'effect_id': effectId.toString(),
+    'input_message_contents': [
+      for (final e in inputMessageContents) e.toJson(),
+    ],
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -64,16 +64,15 @@ final class SendBusinessMessageAlbum extends TdFunction<BusinessMessages> {
     bool? protectContent,
     int? effectId,
     List<InputMessageContent>? inputMessageContents,
-  }) =>
-      SendBusinessMessageAlbum(
-        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-        chatId: chatId ?? this.chatId,
-        replyTo: replyTo != null ? replyTo() : this.replyTo,
-        disableNotification: disableNotification ?? this.disableNotification,
-        protectContent: protectContent ?? this.protectContent,
-        effectId: effectId ?? this.effectId,
-        inputMessageContents: inputMessageContents ?? this.inputMessageContents,
-      );
+  }) => SendBusinessMessageAlbum(
+    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+    chatId: chatId ?? this.chatId,
+    replyTo: replyTo != null ? replyTo() : this.replyTo,
+    disableNotification: disableNotification ?? this.disableNotification,
+    protectContent: protectContent ?? this.protectContent,
+    effectId: effectId ?? this.effectId,
+    inputMessageContents: inputMessageContents ?? this.inputMessageContents,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sendBusinessMessageAlbum';

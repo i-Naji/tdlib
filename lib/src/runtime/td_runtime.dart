@@ -24,7 +24,7 @@ import 'td_receive_worker.dart';
 /// final me = await client.invoke(const GetMe());
 /// ```
 final class TdRuntime {
-  TdRuntime._(this.defaultTimeout, this._libraryPath);
+  TdRuntime._(this.defaultTimeout);
 
   static TdRuntime? _instance;
   static Future<TdRuntime>? _starting;
@@ -35,8 +35,6 @@ final class TdRuntime {
   /// Default timeout for [TdClient.invoke]. A timeout only stops waiting; the
   /// TDLib request itself keeps running.
   final Duration defaultTimeout;
-
-  final String? _libraryPath;
 
   final Map<int, TdClient> _clients = {};
   final Map<int, _Pending> _pending = {};
@@ -74,9 +72,6 @@ final class TdRuntime {
 
   /// Starts the runtime, or returns the one already running.
   ///
-  /// * [libraryPath]: where libtdjson is; by default `libtdjson.so` on
-  ///   Android and Linux, `tdjson.dll` on Windows and the app itself on iOS
-  ///   and macOS (link the library into the app there).
   /// * [logVerbosityLevel]: TDLib's internal log level (0 = fatal only,
   ///   1 = errors). Higher levels cost CPU and disk.
   /// * [checkVersion]: verify the bundled TDLib matches this package's
@@ -85,7 +80,6 @@ final class TdRuntime {
   /// * [staleClientIds]: client identifiers from an earlier run of this
   ///   process to close before starting (see [liveClientIds]).
   static Future<TdRuntime> start({
-    String? libraryPath,
     int logVerbosityLevel = 1,
     bool checkVersion = true,
     Duration defaultTimeout = const Duration(seconds: 30),
@@ -94,7 +88,6 @@ final class TdRuntime {
     final running = _instance;
     if (running != null && !running._closed) return Future.value(running);
     return _starting ??= _start(
-      libraryPath: libraryPath,
       logVerbosityLevel: logVerbosityLevel,
       checkVersion: checkVersion,
       defaultTimeout: defaultTimeout,
@@ -103,17 +96,15 @@ final class TdRuntime {
   }
 
   static Future<TdRuntime> _start({
-    required String? libraryPath,
     required int logVerbosityLevel,
     required bool checkVersion,
     required Duration defaultTimeout,
     required Iterable<int> staleClientIds,
   }) async {
-    tdjson.loadTdJson(libraryPath);
     execute(SetLogVerbosityLevel(newVerbosityLevel: logVerbosityLevel));
     if (checkVersion) verifyNativeVersion();
 
-    final runtime = TdRuntime._(defaultTimeout, libraryPath);
+    final runtime = TdRuntime._(defaultTimeout);
     await runtime._spawnWorker();
     for (final id in staleClientIds) {
       // Responses to these go nowhere; TDLib closes the client either way.
@@ -125,9 +116,7 @@ final class TdRuntime {
 
   /// Executes a request synchronously through `td_execute`, without a
   /// client. Only requests with [TdFunction.canBeCalledSynchronously] work.
-  /// Loads libtdjson from its default place if [start] hasn't run yet.
   static R execute<R extends TdObject>(TdFunction<R> request) {
-    tdjson.loadTdJson();
     final raw = tdjson.tdExecuteJson(jsonEncode(request.toJson()));
     if (raw == null) {
       throw TdException(
@@ -151,8 +140,11 @@ final class TdRuntime {
 
     final version = option('version');
     final commit = option('commit_hash');
+    // Builds made outside a git checkout report e.g. "GITDIR-NOTFOUND";
+    // only the version can be checked then.
+    final knownCommit = RegExp(r'^[0-9a-f]{40}$').hasMatch(commit);
     if (version != tdlibVersion ||
-        (commit.isNotEmpty && !tdlibCompatibleCommits.contains(commit))) {
+        (knownCommit && !tdlibCompatibleCommits.contains(commit))) {
       throw TdVersionMismatchException(
         nativeVersion: version,
         nativeCommit: commit,
@@ -250,10 +242,7 @@ final class TdRuntime {
     });
     _worker = await Isolate.spawn(
       tdReceiveWorkerMain,
-      TdReceiveWorkerConfig(
-        events: events.sendPort,
-        libraryPath: _libraryPath,
-      ),
+      TdReceiveWorkerConfig(events: events.sendPort),
       debugName: 'TDLib receive',
       errorsAreFatal: true,
       onExit: exits.sendPort,
@@ -340,8 +329,9 @@ final class TdClient {
   /// TDLib client identifier.
   final int id;
 
-  final StreamController<TdObject> _updates =
-      StreamController.broadcast(sync: true);
+  final StreamController<TdObject> _updates = StreamController.broadcast(
+    sync: true,
+  );
   final Completer<void> _closed = Completer();
   AuthorizationState? _authorizationState;
 
@@ -398,7 +388,8 @@ final class TdClient {
     if (isClosed) return Future.error(TdClientClosedException(id));
     if (!runtime._receiving) {
       return Future.error(
-          const TdReceiverException('receive isolate is not running'));
+        const TdReceiverException('receive isolate is not running'),
+      );
     }
     final extra = runtime._nextExtra++;
     final pending = _Pending(id);
@@ -406,8 +397,12 @@ final class TdClient {
     final limit = timeout ?? runtime.defaultTimeout;
     pending.timer = Timer(limit, () {
       if (runtime._pending.remove(extra) != null) {
-        pending.fail(TimeoutException(
-            'TDLib ${request.getConstructor()} timed out', limit));
+        pending.fail(
+          TimeoutException(
+            'TDLib ${request.getConstructor()} timed out',
+            limit,
+          ),
+        );
       }
     });
     try {
@@ -432,10 +427,12 @@ final class TdClient {
 
   /// Sets TDLib's `online` option. Set it true while the app is visible and
   /// false in the background; TDLib does less work for offline clients.
-  Future<void> setOnline(bool online) => invoke(SetOption(
-        name: 'online',
-        value: OptionValueBoolean(value: online),
-      ));
+  Future<void> setOnline(bool online) => invoke(
+    SetOption(
+      name: 'online',
+      value: OptionValueBoolean(value: online),
+    ),
+  );
 
   /// Tells TDLib the current network type, prompting it to reconnect.
   Future<void> setNetworkType(NetworkType type) =>

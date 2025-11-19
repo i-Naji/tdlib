@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [MessageEffect].
 final class GetMessageEffect extends TdFunction<MessageEffect> {
   /// Returns information about a message effect. Returns a 404 error if the effect is not found
-  const GetMessageEffect({
-    required this.effectId,
-  });
+  const GetMessageEffect({required this.effectId});
 
   /// Unique identifier of the effect
   final int effectId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'effect_id': effectId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'effect_id': effectId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetMessageEffect copyWith({
-    int? effectId,
-  }) =>
-      GetMessageEffect(
-        effectId: effectId ?? this.effectId,
-      );
+  GetMessageEffect copyWith({int? effectId}) =>
+      GetMessageEffect(effectId: effectId ?? this.effectId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getMessageEffect';

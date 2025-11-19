@@ -33,14 +33,14 @@ final class GetInlineQueryResults extends TdFunction<InlineQueryResults> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'chat_id': chatId,
-        'user_location': userLocation?.toJson(),
-        'query': query,
-        'offset': offset,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'chat_id': chatId,
+    'user_location': userLocation?.toJson(),
+    'query': query,
+    'offset': offset,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class GetInlineQueryResults extends TdFunction<InlineQueryResults> {
     Location? Function()? userLocation,
     String? query,
     String? offset,
-  }) =>
-      GetInlineQueryResults(
-        botUserId: botUserId ?? this.botUserId,
-        chatId: chatId ?? this.chatId,
-        userLocation: userLocation != null ? userLocation() : this.userLocation,
-        query: query ?? this.query,
-        offset: offset ?? this.offset,
-      );
+  }) => GetInlineQueryResults(
+    botUserId: botUserId ?? this.botUserId,
+    chatId: chatId ?? this.chatId,
+    userLocation: userLocation != null ? userLocation() : this.userLocation,
+    query: query ?? this.query,
+    offset: offset ?? this.offset,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getInlineQueryResults';

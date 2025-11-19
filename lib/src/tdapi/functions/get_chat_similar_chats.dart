@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Chats].
 final class GetChatSimilarChats extends TdFunction<Chats> {
   /// Returns a list of chats similar to the given chat
-  const GetChatSimilarChats({
-    required this.chatId,
-  });
+  const GetChatSimilarChats({required this.chatId});
 
   /// Identifier of the target chat; must be an identifier of a channel chat
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatSimilarChats copyWith({
-    int? chatId,
-  }) =>
-      GetChatSimilarChats(
-        chatId: chatId ?? this.chatId,
-      );
+  GetChatSimilarChats copyWith({int? chatId}) =>
+      GetChatSimilarChats(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatSimilarChats';

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ClearSearchedForTags extends TdFunction<Ok> {
   /// Clears the list of recently searched for hashtags or cashtags
-  const ClearSearchedForTags({
-    required this.clearCashtags,
-  });
+  const ClearSearchedForTags({required this.clearCashtags});
 
   /// Pass true to clear the list of recently searched for cashtags; otherwise, the list of recently searched for hashtags will be cleared
   final bool clearCashtags;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'clear_cashtags': clearCashtags,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'clear_cashtags': clearCashtags,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ClearSearchedForTags copyWith({
-    bool? clearCashtags,
-  }) =>
-      ClearSearchedForTags(
-        clearCashtags: clearCashtags ?? this.clearCashtags,
-      );
+  ClearSearchedForTags copyWith({bool? clearCashtags}) =>
+      ClearSearchedForTags(clearCashtags: clearCashtags ?? this.clearCashtags);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'clearSearchedForTags';

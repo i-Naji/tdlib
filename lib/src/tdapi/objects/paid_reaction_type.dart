@@ -54,9 +54,7 @@ final class PaidReactionTypeRegular extends PaidReactionType {
       const PaidReactionTypeRegular();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -80,9 +78,7 @@ final class PaidReactionTypeAnonymous extends PaidReactionType {
       const PaidReactionTypeAnonymous();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -99,34 +95,23 @@ final class PaidReactionTypeAnonymous extends PaidReactionType {
 /// A paid reaction on behalf of an owned chat
 final class PaidReactionTypeChat extends PaidReactionType {
   /// A paid reaction on behalf of an owned chat
-  const PaidReactionTypeChat({
-    required this.chatId,
-  });
+  const PaidReactionTypeChat({required this.chatId});
 
   /// Identifier of the chat
   final int chatId;
 
   /// Parses a [PaidReactionTypeChat] from TDLib JSON.
   factory PaidReactionTypeChat.fromJson(Map<String, dynamic> json) =>
-      PaidReactionTypeChat(
-        chatId: _readInt(json['chat_id']),
-      );
+      PaidReactionTypeChat(chatId: _readInt(json['chat_id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'chat_id': chatId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PaidReactionTypeChat copyWith({
-    int? chatId,
-  }) =>
-      PaidReactionTypeChat(
-        chatId: chatId ?? this.chatId,
-      );
+  PaidReactionTypeChat copyWith({int? chatId}) =>
+      PaidReactionTypeChat(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'paidReactionTypeChat';

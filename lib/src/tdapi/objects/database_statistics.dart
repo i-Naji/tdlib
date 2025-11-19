@@ -33,9 +33,9 @@ final class DatabaseStatistics extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'statistics': statistics,
-      };
+    '@type': CONSTRUCTOR,
+    'statistics': statistics,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class DatabaseStatistics extends TdObject {
     String? statistics,
     dynamic extra,
     int? clientId,
-  }) =>
-      DatabaseStatistics(
-        statistics: statistics ?? this.statistics,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => DatabaseStatistics(
+    statistics: statistics ?? this.statistics,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'databaseStatistics';

@@ -29,13 +29,13 @@ final class SearchPublicPosts extends TdFunction<FoundPublicPosts> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'query': query,
-        'offset': offset,
-        'limit': limit,
-        'star_count': starCount,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'query': query,
+    'offset': offset,
+    'limit': limit,
+    'star_count': starCount,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class SearchPublicPosts extends TdFunction<FoundPublicPosts> {
     String? offset,
     int? limit,
     int? starCount,
-  }) =>
-      SearchPublicPosts(
-        query: query ?? this.query,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-        starCount: starCount ?? this.starCount,
-      );
+  }) => SearchPublicPosts(
+    query: query ?? this.query,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+    starCount: starCount ?? this.starCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchPublicPosts';

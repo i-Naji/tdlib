@@ -62,19 +62,21 @@ final class MessageText extends MessageContent {
 
   /// Parses a [MessageText] from TDLib JSON.
   factory MessageText.fromJson(Map<String, dynamic> json) => MessageText(
-        text: _readObject(json['text'], FormattedText.fromJson),
-        linkPreview: _readOptional(json['link_preview'], LinkPreview.fromJson),
-        linkPreviewOptions: _readOptional(
-            json['link_preview_options'], LinkPreviewOptions.fromJson),
-      );
+    text: _readObject(json['text'], FormattedText.fromJson),
+    linkPreview: _readOptional(json['link_preview'], LinkPreview.fromJson),
+    linkPreviewOptions: _readOptional(
+      json['link_preview_options'],
+      LinkPreviewOptions.fromJson,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'link_preview': linkPreview?.toJson(),
-        'link_preview_options': linkPreviewOptions?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'link_preview': linkPreview?.toJson(),
+    'link_preview_options': linkPreviewOptions?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -83,14 +85,13 @@ final class MessageText extends MessageContent {
     FormattedText? text,
     LinkPreview? Function()? linkPreview,
     LinkPreviewOptions? Function()? linkPreviewOptions,
-  }) =>
-      MessageText(
-        text: text ?? this.text,
-        linkPreview: linkPreview != null ? linkPreview() : this.linkPreview,
-        linkPreviewOptions: linkPreviewOptions != null
-            ? linkPreviewOptions()
-            : this.linkPreviewOptions,
-      );
+  }) => MessageText(
+    text: text ?? this.text,
+    linkPreview: linkPreview != null ? linkPreview() : this.linkPreview,
+    linkPreviewOptions: linkPreviewOptions != null
+        ? linkPreviewOptions()
+        : this.linkPreviewOptions,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageText';
@@ -137,13 +138,13 @@ final class MessageAnimation extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'animation': animation.toJson(),
-        'caption': caption.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        'has_spoiler': hasSpoiler,
-        'is_secret': isSecret,
-      };
+    '@type': CONSTRUCTOR,
+    'animation': animation.toJson(),
+    'caption': caption.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    'has_spoiler': hasSpoiler,
+    'is_secret': isSecret,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -154,15 +155,13 @@ final class MessageAnimation extends MessageContent {
     bool? showCaptionAboveMedia,
     bool? hasSpoiler,
     bool? isSecret,
-  }) =>
-      MessageAnimation(
-        animation: animation ?? this.animation,
-        caption: caption ?? this.caption,
-        showCaptionAboveMedia:
-            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
-        hasSpoiler: hasSpoiler ?? this.hasSpoiler,
-        isSecret: isSecret ?? this.isSecret,
-      );
+  }) => MessageAnimation(
+    animation: animation ?? this.animation,
+    caption: caption ?? this.caption,
+    showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+    hasSpoiler: hasSpoiler ?? this.hasSpoiler,
+    isSecret: isSecret ?? this.isSecret,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageAnimation';
@@ -174,10 +173,7 @@ final class MessageAnimation extends MessageContent {
 /// An audio message
 final class MessageAudio extends MessageContent {
   /// An audio message
-  const MessageAudio({
-    required this.audio,
-    required this.caption,
-  });
+  const MessageAudio({required this.audio, required this.caption});
 
   /// The audio description
   final Audio audio;
@@ -187,28 +183,24 @@ final class MessageAudio extends MessageContent {
 
   /// Parses a [MessageAudio] from TDLib JSON.
   factory MessageAudio.fromJson(Map<String, dynamic> json) => MessageAudio(
-        audio: _readObject(json['audio'], Audio.fromJson),
-        caption: _readObject(json['caption'], FormattedText.fromJson),
-      );
+    audio: _readObject(json['audio'], Audio.fromJson),
+    caption: _readObject(json['caption'], FormattedText.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'audio': audio.toJson(),
-        'caption': caption.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'audio': audio.toJson(),
+    'caption': caption.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageAudio copyWith({
-    Audio? audio,
-    FormattedText? caption,
-  }) =>
-      MessageAudio(
-        audio: audio ?? this.audio,
-        caption: caption ?? this.caption,
-      );
+  MessageAudio copyWith({Audio? audio, FormattedText? caption}) => MessageAudio(
+    audio: audio ?? this.audio,
+    caption: caption ?? this.caption,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageAudio';
@@ -220,10 +212,7 @@ final class MessageAudio extends MessageContent {
 /// A document message (general file)
 final class MessageDocument extends MessageContent {
   /// A document message (general file)
-  const MessageDocument({
-    required this.document,
-    required this.caption,
-  });
+  const MessageDocument({required this.document, required this.caption});
 
   /// The document description
   final Document document;
@@ -240,18 +229,15 @@ final class MessageDocument extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'document': document.toJson(),
-        'caption': caption.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'document': document.toJson(),
+    'caption': caption.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageDocument copyWith({
-    Document? document,
-    FormattedText? caption,
-  }) =>
+  MessageDocument copyWith({Document? document, FormattedText? caption}) =>
       MessageDocument(
         document: document ?? this.document,
         caption: caption ?? this.caption,
@@ -291,19 +277,21 @@ final class MessagePaidMedia extends MessageContent {
       MessagePaidMedia(
         starCount: _readInt(json['star_count']),
         media: _readList<PaidMedia>(
-            json['media'], (e) => _readObject(e, PaidMedia.fromJson)),
+          json['media'],
+          (e) => _readObject(e, PaidMedia.fromJson),
+        ),
         caption: _readObject(json['caption'], FormattedText.fromJson),
         showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_count': starCount,
-        'media': [for (final e in media) e.toJson()],
-        'caption': caption.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-      };
+    '@type': CONSTRUCTOR,
+    'star_count': starCount,
+    'media': [for (final e in media) e.toJson()],
+    'caption': caption.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -313,14 +301,12 @@ final class MessagePaidMedia extends MessageContent {
     List<PaidMedia>? media,
     FormattedText? caption,
     bool? showCaptionAboveMedia,
-  }) =>
-      MessagePaidMedia(
-        starCount: starCount ?? this.starCount,
-        media: media ?? this.media,
-        caption: caption ?? this.caption,
-        showCaptionAboveMedia:
-            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
-      );
+  }) => MessagePaidMedia(
+    starCount: starCount ?? this.starCount,
+    media: media ?? this.media,
+    caption: caption ?? this.caption,
+    showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messagePaidMedia';
@@ -357,22 +343,22 @@ final class MessagePhoto extends MessageContent {
 
   /// Parses a [MessagePhoto] from TDLib JSON.
   factory MessagePhoto.fromJson(Map<String, dynamic> json) => MessagePhoto(
-        photo: _readObject(json['photo'], Photo.fromJson),
-        caption: _readObject(json['caption'], FormattedText.fromJson),
-        showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
-        hasSpoiler: _readBool(json['has_spoiler']),
-        isSecret: _readBool(json['is_secret']),
-      );
+    photo: _readObject(json['photo'], Photo.fromJson),
+    caption: _readObject(json['caption'], FormattedText.fromJson),
+    showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
+    hasSpoiler: _readBool(json['has_spoiler']),
+    isSecret: _readBool(json['is_secret']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo.toJson(),
-        'caption': caption.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        'has_spoiler': hasSpoiler,
-        'is_secret': isSecret,
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo.toJson(),
+    'caption': caption.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    'has_spoiler': hasSpoiler,
+    'is_secret': isSecret,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -383,15 +369,13 @@ final class MessagePhoto extends MessageContent {
     bool? showCaptionAboveMedia,
     bool? hasSpoiler,
     bool? isSecret,
-  }) =>
-      MessagePhoto(
-        photo: photo ?? this.photo,
-        caption: caption ?? this.caption,
-        showCaptionAboveMedia:
-            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
-        hasSpoiler: hasSpoiler ?? this.hasSpoiler,
-        isSecret: isSecret ?? this.isSecret,
-      );
+  }) => MessagePhoto(
+    photo: photo ?? this.photo,
+    caption: caption ?? this.caption,
+    showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+    hasSpoiler: hasSpoiler ?? this.hasSpoiler,
+    isSecret: isSecret ?? this.isSecret,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messagePhoto';
@@ -403,10 +387,7 @@ final class MessagePhoto extends MessageContent {
 /// A sticker message
 final class MessageSticker extends MessageContent {
   /// A sticker message
-  const MessageSticker({
-    required this.sticker,
-    required this.isPremium,
-  });
+  const MessageSticker({required this.sticker, required this.isPremium});
 
   /// The sticker description
   final Sticker sticker;
@@ -416,24 +397,21 @@ final class MessageSticker extends MessageContent {
 
   /// Parses a [MessageSticker] from TDLib JSON.
   factory MessageSticker.fromJson(Map<String, dynamic> json) => MessageSticker(
-        sticker: _readObject(json['sticker'], Sticker.fromJson),
-        isPremium: _readBool(json['is_premium']),
-      );
+    sticker: _readObject(json['sticker'], Sticker.fromJson),
+    isPremium: _readBool(json['is_premium']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker': sticker.toJson(),
-        'is_premium': isPremium,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker': sticker.toJson(),
+    'is_premium': isPremium,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageSticker copyWith({
-    Sticker? sticker,
-    bool? isPremium,
-  }) =>
+  MessageSticker copyWith({Sticker? sticker, bool? isPremium}) =>
       MessageSticker(
         sticker: sticker ?? this.sticker,
         isPremium: isPremium ?? this.isPremium,
@@ -490,33 +468,36 @@ final class MessageVideo extends MessageContent {
 
   /// Parses a [MessageVideo] from TDLib JSON.
   factory MessageVideo.fromJson(Map<String, dynamic> json) => MessageVideo(
-        video: _readObject(json['video'], Video.fromJson),
-        alternativeVideos: _readList<AlternativeVideo>(
-            json['alternative_videos'],
-            (e) => _readObject(e, AlternativeVideo.fromJson)),
-        storyboards: _readList<VideoStoryboard>(json['storyboards'],
-            (e) => _readObject(e, VideoStoryboard.fromJson)),
-        cover: _readOptional(json['cover'], Photo.fromJson),
-        startTimestamp: _readInt(json['start_timestamp']),
-        caption: _readObject(json['caption'], FormattedText.fromJson),
-        showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
-        hasSpoiler: _readBool(json['has_spoiler']),
-        isSecret: _readBool(json['is_secret']),
-      );
+    video: _readObject(json['video'], Video.fromJson),
+    alternativeVideos: _readList<AlternativeVideo>(
+      json['alternative_videos'],
+      (e) => _readObject(e, AlternativeVideo.fromJson),
+    ),
+    storyboards: _readList<VideoStoryboard>(
+      json['storyboards'],
+      (e) => _readObject(e, VideoStoryboard.fromJson),
+    ),
+    cover: _readOptional(json['cover'], Photo.fromJson),
+    startTimestamp: _readInt(json['start_timestamp']),
+    caption: _readObject(json['caption'], FormattedText.fromJson),
+    showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
+    hasSpoiler: _readBool(json['has_spoiler']),
+    isSecret: _readBool(json['is_secret']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'video': video.toJson(),
-        'alternative_videos': [for (final e in alternativeVideos) e.toJson()],
-        'storyboards': [for (final e in storyboards) e.toJson()],
-        'cover': cover?.toJson(),
-        'start_timestamp': startTimestamp,
-        'caption': caption.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        'has_spoiler': hasSpoiler,
-        'is_secret': isSecret,
-      };
+    '@type': CONSTRUCTOR,
+    'video': video.toJson(),
+    'alternative_videos': [for (final e in alternativeVideos) e.toJson()],
+    'storyboards': [for (final e in storyboards) e.toJson()],
+    'cover': cover?.toJson(),
+    'start_timestamp': startTimestamp,
+    'caption': caption.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    'has_spoiler': hasSpoiler,
+    'is_secret': isSecret,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -531,19 +512,17 @@ final class MessageVideo extends MessageContent {
     bool? showCaptionAboveMedia,
     bool? hasSpoiler,
     bool? isSecret,
-  }) =>
-      MessageVideo(
-        video: video ?? this.video,
-        alternativeVideos: alternativeVideos ?? this.alternativeVideos,
-        storyboards: storyboards ?? this.storyboards,
-        cover: cover != null ? cover() : this.cover,
-        startTimestamp: startTimestamp ?? this.startTimestamp,
-        caption: caption ?? this.caption,
-        showCaptionAboveMedia:
-            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
-        hasSpoiler: hasSpoiler ?? this.hasSpoiler,
-        isSecret: isSecret ?? this.isSecret,
-      );
+  }) => MessageVideo(
+    video: video ?? this.video,
+    alternativeVideos: alternativeVideos ?? this.alternativeVideos,
+    storyboards: storyboards ?? this.storyboards,
+    cover: cover != null ? cover() : this.cover,
+    startTimestamp: startTimestamp ?? this.startTimestamp,
+    caption: caption ?? this.caption,
+    showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+    hasSpoiler: hasSpoiler ?? this.hasSpoiler,
+    isSecret: isSecret ?? this.isSecret,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageVideo';
@@ -580,11 +559,11 @@ final class MessageVideoNote extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'video_note': videoNote.toJson(),
-        'is_viewed': isViewed,
-        'is_secret': isSecret,
-      };
+    '@type': CONSTRUCTOR,
+    'video_note': videoNote.toJson(),
+    'is_viewed': isViewed,
+    'is_secret': isSecret,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -593,12 +572,11 @@ final class MessageVideoNote extends MessageContent {
     VideoNote? videoNote,
     bool? isViewed,
     bool? isSecret,
-  }) =>
-      MessageVideoNote(
-        videoNote: videoNote ?? this.videoNote,
-        isViewed: isViewed ?? this.isViewed,
-        isSecret: isSecret ?? this.isSecret,
-      );
+  }) => MessageVideoNote(
+    videoNote: videoNote ?? this.videoNote,
+    isViewed: isViewed ?? this.isViewed,
+    isSecret: isSecret ?? this.isSecret,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageVideoNote';
@@ -635,11 +613,11 @@ final class MessageVoiceNote extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'voice_note': voiceNote.toJson(),
-        'caption': caption.toJson(),
-        'is_listened': isListened,
-      };
+    '@type': CONSTRUCTOR,
+    'voice_note': voiceNote.toJson(),
+    'caption': caption.toJson(),
+    'is_listened': isListened,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -648,12 +626,11 @@ final class MessageVoiceNote extends MessageContent {
     VoiceNote? voiceNote,
     FormattedText? caption,
     bool? isListened,
-  }) =>
-      MessageVoiceNote(
-        voiceNote: voiceNote ?? this.voiceNote,
-        caption: caption ?? this.caption,
-        isListened: isListened ?? this.isListened,
-      );
+  }) => MessageVoiceNote(
+    voiceNote: voiceNote ?? this.voiceNote,
+    caption: caption ?? this.caption,
+    isListened: isListened ?? this.isListened,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageVoiceNote';
@@ -672,9 +649,7 @@ final class MessageExpiredPhoto extends MessageContent {
       const MessageExpiredPhoto();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -698,9 +673,7 @@ final class MessageExpiredVideo extends MessageContent {
       const MessageExpiredVideo();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -724,9 +697,7 @@ final class MessageExpiredVideoNote extends MessageContent {
       const MessageExpiredVideoNote();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -750,9 +721,7 @@ final class MessageExpiredVoiceNote extends MessageContent {
       const MessageExpiredVoiceNote();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -804,13 +773,13 @@ final class MessageLocation extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'location': location.toJson(),
-        'live_period': livePeriod,
-        'expires_in': expiresIn,
-        'heading': heading,
-        'proximity_alert_radius': proximityAlertRadius,
-      };
+    '@type': CONSTRUCTOR,
+    'location': location.toJson(),
+    'live_period': livePeriod,
+    'expires_in': expiresIn,
+    'heading': heading,
+    'proximity_alert_radius': proximityAlertRadius,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -821,14 +790,13 @@ final class MessageLocation extends MessageContent {
     int? expiresIn,
     int? heading,
     int? proximityAlertRadius,
-  }) =>
-      MessageLocation(
-        location: location ?? this.location,
-        livePeriod: livePeriod ?? this.livePeriod,
-        expiresIn: expiresIn ?? this.expiresIn,
-        heading: heading ?? this.heading,
-        proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
-      );
+  }) => MessageLocation(
+    location: location ?? this.location,
+    livePeriod: livePeriod ?? this.livePeriod,
+    expiresIn: expiresIn ?? this.expiresIn,
+    heading: heading ?? this.heading,
+    proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageLocation';
@@ -840,33 +808,26 @@ final class MessageLocation extends MessageContent {
 /// A message with information about a venue
 final class MessageVenue extends MessageContent {
   /// A message with information about a venue
-  const MessageVenue({
-    required this.venue,
-  });
+  const MessageVenue({required this.venue});
 
   /// The venue description
   final Venue venue;
 
   /// Parses a [MessageVenue] from TDLib JSON.
-  factory MessageVenue.fromJson(Map<String, dynamic> json) => MessageVenue(
-        venue: _readObject(json['venue'], Venue.fromJson),
-      );
+  factory MessageVenue.fromJson(Map<String, dynamic> json) =>
+      MessageVenue(venue: _readObject(json['venue'], Venue.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'venue': venue.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'venue': venue.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageVenue copyWith({
-    Venue? venue,
-  }) =>
-      MessageVenue(
-        venue: venue ?? this.venue,
-      );
+  MessageVenue copyWith({Venue? venue}) =>
+      MessageVenue(venue: venue ?? this.venue);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageVenue';
@@ -878,33 +839,26 @@ final class MessageVenue extends MessageContent {
 /// A message with a user contact
 final class MessageContact extends MessageContent {
   /// A message with a user contact
-  const MessageContact({
-    required this.contact,
-  });
+  const MessageContact({required this.contact});
 
   /// The contact description
   final Contact contact;
 
   /// Parses a [MessageContact] from TDLib JSON.
-  factory MessageContact.fromJson(Map<String, dynamic> json) => MessageContact(
-        contact: _readObject(json['contact'], Contact.fromJson),
-      );
+  factory MessageContact.fromJson(Map<String, dynamic> json) =>
+      MessageContact(contact: _readObject(json['contact'], Contact.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'contact': contact.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'contact': contact.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageContact copyWith({
-    Contact? contact,
-  }) =>
-      MessageContact(
-        contact: contact ?? this.contact,
-      );
+  MessageContact copyWith({Contact? contact}) =>
+      MessageContact(contact: contact ?? this.contact);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageContact';
@@ -930,17 +884,19 @@ final class MessageAnimatedEmoji extends MessageContent {
   /// Parses a [MessageAnimatedEmoji] from TDLib JSON.
   factory MessageAnimatedEmoji.fromJson(Map<String, dynamic> json) =>
       MessageAnimatedEmoji(
-        animatedEmoji:
-            _readObject(json['animated_emoji'], AnimatedEmoji.fromJson),
+        animatedEmoji: _readObject(
+          json['animated_emoji'],
+          AnimatedEmoji.fromJson,
+        ),
         emoji: _readString(json['emoji']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'animated_emoji': animatedEmoji.toJson(),
-        'emoji': emoji,
-      };
+    '@type': CONSTRUCTOR,
+    'animated_emoji': animatedEmoji.toJson(),
+    'emoji': emoji,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -948,11 +904,10 @@ final class MessageAnimatedEmoji extends MessageContent {
   MessageAnimatedEmoji copyWith({
     AnimatedEmoji? animatedEmoji,
     String? emoji,
-  }) =>
-      MessageAnimatedEmoji(
-        animatedEmoji: animatedEmoji ?? this.animatedEmoji,
-        emoji: emoji ?? this.emoji,
-      );
+  }) => MessageAnimatedEmoji(
+    animatedEmoji: animatedEmoji ?? this.animatedEmoji,
+    emoji: emoji ?? this.emoji,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageAnimatedEmoji';
@@ -989,24 +944,24 @@ final class MessageDice extends MessageContent {
 
   /// Parses a [MessageDice] from TDLib JSON.
   factory MessageDice.fromJson(Map<String, dynamic> json) => MessageDice(
-        initialState:
-            _readOptional(json['initial_state'], DiceStickers.fromJson),
-        finalState: _readOptional(json['final_state'], DiceStickers.fromJson),
-        emoji: _readString(json['emoji']),
-        value: _readInt(json['value']),
-        successAnimationFrameNumber:
-            _readInt(json['success_animation_frame_number']),
-      );
+    initialState: _readOptional(json['initial_state'], DiceStickers.fromJson),
+    finalState: _readOptional(json['final_state'], DiceStickers.fromJson),
+    emoji: _readString(json['emoji']),
+    value: _readInt(json['value']),
+    successAnimationFrameNumber: _readInt(
+      json['success_animation_frame_number'],
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'initial_state': initialState?.toJson(),
-        'final_state': finalState?.toJson(),
-        'emoji': emoji,
-        'value': value,
-        'success_animation_frame_number': successAnimationFrameNumber,
-      };
+    '@type': CONSTRUCTOR,
+    'initial_state': initialState?.toJson(),
+    'final_state': finalState?.toJson(),
+    'emoji': emoji,
+    'value': value,
+    'success_animation_frame_number': successAnimationFrameNumber,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1017,15 +972,14 @@ final class MessageDice extends MessageContent {
     String? emoji,
     int? value,
     int? successAnimationFrameNumber,
-  }) =>
-      MessageDice(
-        initialState: initialState != null ? initialState() : this.initialState,
-        finalState: finalState != null ? finalState() : this.finalState,
-        emoji: emoji ?? this.emoji,
-        value: value ?? this.value,
-        successAnimationFrameNumber:
-            successAnimationFrameNumber ?? this.successAnimationFrameNumber,
-      );
+  }) => MessageDice(
+    initialState: initialState != null ? initialState() : this.initialState,
+    finalState: finalState != null ? finalState() : this.finalState,
+    emoji: emoji ?? this.emoji,
+    value: value ?? this.value,
+    successAnimationFrameNumber:
+        successAnimationFrameNumber ?? this.successAnimationFrameNumber,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageDice';
@@ -1037,33 +991,25 @@ final class MessageDice extends MessageContent {
 /// A message with a game
 final class MessageGame extends MessageContent {
   /// A message with a game
-  const MessageGame({
-    required this.game,
-  });
+  const MessageGame({required this.game});
 
   /// The game description
   final Game game;
 
   /// Parses a [MessageGame] from TDLib JSON.
-  factory MessageGame.fromJson(Map<String, dynamic> json) => MessageGame(
-        game: _readObject(json['game'], Game.fromJson),
-      );
+  factory MessageGame.fromJson(Map<String, dynamic> json) =>
+      MessageGame(game: _readObject(json['game'], Game.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'game': game.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'game': game.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageGame copyWith({
-    Game? game,
-  }) =>
-      MessageGame(
-        game: game ?? this.game,
-      );
+  MessageGame copyWith({Game? game}) => MessageGame(game: game ?? this.game);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageGame';
@@ -1075,33 +1021,25 @@ final class MessageGame extends MessageContent {
 /// A message with a poll
 final class MessagePoll extends MessageContent {
   /// A message with a poll
-  const MessagePoll({
-    required this.poll,
-  });
+  const MessagePoll({required this.poll});
 
   /// The poll description
   final Poll poll;
 
   /// Parses a [MessagePoll] from TDLib JSON.
-  factory MessagePoll.fromJson(Map<String, dynamic> json) => MessagePoll(
-        poll: _readObject(json['poll'], Poll.fromJson),
-      );
+  factory MessagePoll.fromJson(Map<String, dynamic> json) =>
+      MessagePoll(poll: _readObject(json['poll'], Poll.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'poll': poll.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'poll': poll.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessagePoll copyWith({
-    Poll? poll,
-  }) =>
-      MessagePoll(
-        poll: poll ?? this.poll,
-      );
+  MessagePoll copyWith({Poll? poll}) => MessagePoll(poll: poll ?? this.poll);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messagePoll';
@@ -1130,18 +1068,18 @@ final class MessageStory extends MessageContent {
 
   /// Parses a [MessageStory] from TDLib JSON.
   factory MessageStory.fromJson(Map<String, dynamic> json) => MessageStory(
-        storyPosterChatId: _readInt(json['story_poster_chat_id']),
-        storyId: _readInt(json['story_id']),
-        viaMention: _readBool(json['via_mention']),
-      );
+    storyPosterChatId: _readInt(json['story_poster_chat_id']),
+    storyId: _readInt(json['story_id']),
+    viaMention: _readBool(json['via_mention']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'story_id': storyId,
-        'via_mention': viaMention,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+    'via_mention': viaMention,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1150,12 +1088,11 @@ final class MessageStory extends MessageContent {
     int? storyPosterChatId,
     int? storyId,
     bool? viaMention,
-  }) =>
-      MessageStory(
-        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-        storyId: storyId ?? this.storyId,
-        viaMention: viaMention ?? this.viaMention,
-      );
+  }) => MessageStory(
+    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+    storyId: storyId ?? this.storyId,
+    viaMention: viaMention ?? this.viaMention,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageStory';
@@ -1167,34 +1104,26 @@ final class MessageStory extends MessageContent {
 /// A message with a checklist
 final class MessageChecklist extends MessageContent {
   /// A message with a checklist
-  const MessageChecklist({
-    required this.list,
-  });
+  const MessageChecklist({required this.list});
 
   /// The checklist description
   final Checklist list;
 
   /// Parses a [MessageChecklist] from TDLib JSON.
   factory MessageChecklist.fromJson(Map<String, dynamic> json) =>
-      MessageChecklist(
-        list: _readObject(json['list'], Checklist.fromJson),
-      );
+      MessageChecklist(list: _readObject(json['list'], Checklist.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'list': list.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'list': list.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageChecklist copyWith({
-    Checklist? list,
-  }) =>
-      MessageChecklist(
-        list: list ?? this.list,
-      );
+  MessageChecklist copyWith({Checklist? list}) =>
+      MessageChecklist(list: list ?? this.list);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageChecklist';
@@ -1247,31 +1176,33 @@ final class MessageInvoice extends MessageContent {
 
   /// Parses a [MessageInvoice] from TDLib JSON.
   factory MessageInvoice.fromJson(Map<String, dynamic> json) => MessageInvoice(
-        productInfo: _readObject(json['product_info'], ProductInfo.fromJson),
-        currency: _readString(json['currency']),
-        totalAmount: _readInt(json['total_amount']),
-        startParameter: _readString(json['start_parameter']),
-        isTest: _readBool(json['is_test']),
-        needShippingAddress: _readBool(json['need_shipping_address']),
-        receiptMessageId: _readInt(json['receipt_message_id']),
-        paidMedia: _readOptional(json['paid_media'], PaidMedia.fromJson),
-        paidMediaCaption:
-            _readOptional(json['paid_media_caption'], FormattedText.fromJson),
-      );
+    productInfo: _readObject(json['product_info'], ProductInfo.fromJson),
+    currency: _readString(json['currency']),
+    totalAmount: _readInt(json['total_amount']),
+    startParameter: _readString(json['start_parameter']),
+    isTest: _readBool(json['is_test']),
+    needShippingAddress: _readBool(json['need_shipping_address']),
+    receiptMessageId: _readInt(json['receipt_message_id']),
+    paidMedia: _readOptional(json['paid_media'], PaidMedia.fromJson),
+    paidMediaCaption: _readOptional(
+      json['paid_media_caption'],
+      FormattedText.fromJson,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'product_info': productInfo.toJson(),
-        'currency': currency,
-        'total_amount': totalAmount,
-        'start_parameter': startParameter,
-        'is_test': isTest,
-        'need_shipping_address': needShippingAddress,
-        'receipt_message_id': receiptMessageId,
-        'paid_media': paidMedia?.toJson(),
-        'paid_media_caption': paidMediaCaption?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'product_info': productInfo.toJson(),
+    'currency': currency,
+    'total_amount': totalAmount,
+    'start_parameter': startParameter,
+    'is_test': isTest,
+    'need_shipping_address': needShippingAddress,
+    'receipt_message_id': receiptMessageId,
+    'paid_media': paidMedia?.toJson(),
+    'paid_media_caption': paidMediaCaption?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1286,20 +1217,19 @@ final class MessageInvoice extends MessageContent {
     int? receiptMessageId,
     PaidMedia? Function()? paidMedia,
     FormattedText? Function()? paidMediaCaption,
-  }) =>
-      MessageInvoice(
-        productInfo: productInfo ?? this.productInfo,
-        currency: currency ?? this.currency,
-        totalAmount: totalAmount ?? this.totalAmount,
-        startParameter: startParameter ?? this.startParameter,
-        isTest: isTest ?? this.isTest,
-        needShippingAddress: needShippingAddress ?? this.needShippingAddress,
-        receiptMessageId: receiptMessageId ?? this.receiptMessageId,
-        paidMedia: paidMedia != null ? paidMedia() : this.paidMedia,
-        paidMediaCaption: paidMediaCaption != null
-            ? paidMediaCaption()
-            : this.paidMediaCaption,
-      );
+  }) => MessageInvoice(
+    productInfo: productInfo ?? this.productInfo,
+    currency: currency ?? this.currency,
+    totalAmount: totalAmount ?? this.totalAmount,
+    startParameter: startParameter ?? this.startParameter,
+    isTest: isTest ?? this.isTest,
+    needShippingAddress: needShippingAddress ?? this.needShippingAddress,
+    receiptMessageId: receiptMessageId ?? this.receiptMessageId,
+    paidMedia: paidMedia != null ? paidMedia() : this.paidMedia,
+    paidMediaCaption: paidMediaCaption != null
+        ? paidMediaCaption()
+        : this.paidMediaCaption,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageInvoice';
@@ -1328,19 +1258,21 @@ final class MessageCall extends MessageContent {
 
   /// Parses a [MessageCall] from TDLib JSON.
   factory MessageCall.fromJson(Map<String, dynamic> json) => MessageCall(
-        isVideo: _readBool(json['is_video']),
-        discardReason:
-            _readObject(json['discard_reason'], CallDiscardReason.fromJson),
-        duration: _readInt(json['duration']),
-      );
+    isVideo: _readBool(json['is_video']),
+    discardReason: _readObject(
+      json['discard_reason'],
+      CallDiscardReason.fromJson,
+    ),
+    duration: _readInt(json['duration']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_video': isVideo,
-        'discard_reason': discardReason.toJson(),
-        'duration': duration,
-      };
+    '@type': CONSTRUCTOR,
+    'is_video': isVideo,
+    'discard_reason': discardReason.toJson(),
+    'duration': duration,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1349,12 +1281,11 @@ final class MessageCall extends MessageContent {
     bool? isVideo,
     CallDiscardReason? discardReason,
     int? duration,
-  }) =>
-      MessageCall(
-        isVideo: isVideo ?? this.isVideo,
-        discardReason: discardReason ?? this.discardReason,
-        duration: duration ?? this.duration,
-      );
+  }) => MessageCall(
+    isVideo: isVideo ?? this.isVideo,
+    discardReason: discardReason ?? this.discardReason,
+    duration: duration ?? this.duration,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageCall';
@@ -1397,21 +1328,20 @@ final class MessageGroupCall extends MessageContent {
         isVideo: _readBool(json['is_video']),
         duration: _readInt(json['duration']),
         otherParticipantIds: _readList<MessageSender>(
-            json['other_participant_ids'],
-            (e) => _readObject(e, MessageSender.fromJson)),
+          json['other_participant_ids'],
+          (e) => _readObject(e, MessageSender.fromJson),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_active': isActive,
-        'was_missed': wasMissed,
-        'is_video': isVideo,
-        'duration': duration,
-        'other_participant_ids': [
-          for (final e in otherParticipantIds) e.toJson()
-        ],
-      };
+    '@type': CONSTRUCTOR,
+    'is_active': isActive,
+    'was_missed': wasMissed,
+    'is_video': isVideo,
+    'duration': duration,
+    'other_participant_ids': [for (final e in otherParticipantIds) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1422,14 +1352,13 @@ final class MessageGroupCall extends MessageContent {
     bool? isVideo,
     int? duration,
     List<MessageSender>? otherParticipantIds,
-  }) =>
-      MessageGroupCall(
-        isActive: isActive ?? this.isActive,
-        wasMissed: wasMissed ?? this.wasMissed,
-        isVideo: isVideo ?? this.isVideo,
-        duration: duration ?? this.duration,
-        otherParticipantIds: otherParticipantIds ?? this.otherParticipantIds,
-      );
+  }) => MessageGroupCall(
+    isActive: isActive ?? this.isActive,
+    wasMissed: wasMissed ?? this.wasMissed,
+    isVideo: isVideo ?? this.isVideo,
+    duration: duration ?? this.duration,
+    otherParticipantIds: otherParticipantIds ?? this.otherParticipantIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageGroupCall';
@@ -1461,18 +1390,15 @@ final class MessageVideoChatScheduled extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'start_date': startDate,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'start_date': startDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageVideoChatScheduled copyWith({
-    int? groupCallId,
-    int? startDate,
-  }) =>
+  MessageVideoChatScheduled copyWith({int? groupCallId, int? startDate}) =>
       MessageVideoChatScheduled(
         groupCallId: groupCallId ?? this.groupCallId,
         startDate: startDate ?? this.startDate,
@@ -1488,34 +1414,26 @@ final class MessageVideoChatScheduled extends MessageContent {
 /// A newly created video chat
 final class MessageVideoChatStarted extends MessageContent {
   /// A newly created video chat
-  const MessageVideoChatStarted({
-    required this.groupCallId,
-  });
+  const MessageVideoChatStarted({required this.groupCallId});
 
   /// Identifier of the video chat. The video chat can be received through the method getGroupCall
   final int groupCallId;
 
   /// Parses a [MessageVideoChatStarted] from TDLib JSON.
   factory MessageVideoChatStarted.fromJson(Map<String, dynamic> json) =>
-      MessageVideoChatStarted(
-        groupCallId: _readInt(json['group_call_id']),
-      );
+      MessageVideoChatStarted(groupCallId: _readInt(json['group_call_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageVideoChatStarted copyWith({
-    int? groupCallId,
-  }) =>
-      MessageVideoChatStarted(
-        groupCallId: groupCallId ?? this.groupCallId,
-      );
+  MessageVideoChatStarted copyWith({int? groupCallId}) =>
+      MessageVideoChatStarted(groupCallId: groupCallId ?? this.groupCallId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageVideoChatStarted';
@@ -1527,34 +1445,23 @@ final class MessageVideoChatStarted extends MessageContent {
 /// A message with information about an ended video chat
 final class MessageVideoChatEnded extends MessageContent {
   /// A message with information about an ended video chat
-  const MessageVideoChatEnded({
-    required this.duration,
-  });
+  const MessageVideoChatEnded({required this.duration});
 
   /// Call duration, in seconds
   final int duration;
 
   /// Parses a [MessageVideoChatEnded] from TDLib JSON.
   factory MessageVideoChatEnded.fromJson(Map<String, dynamic> json) =>
-      MessageVideoChatEnded(
-        duration: _readInt(json['duration']),
-      );
+      MessageVideoChatEnded(duration: _readInt(json['duration']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'duration': duration,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'duration': duration};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageVideoChatEnded copyWith({
-    int? duration,
-  }) =>
-      MessageVideoChatEnded(
-        duration: duration ?? this.duration,
-      );
+  MessageVideoChatEnded copyWith({int? duration}) =>
+      MessageVideoChatEnded(duration: duration ?? this.duration);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageVideoChatEnded';
@@ -1579,18 +1486,18 @@ final class MessageInviteVideoChatParticipants extends MessageContent {
 
   /// Parses a [MessageInviteVideoChatParticipants] from TDLib JSON.
   factory MessageInviteVideoChatParticipants.fromJson(
-          Map<String, dynamic> json) =>
-      MessageInviteVideoChatParticipants(
-        groupCallId: _readInt(json['group_call_id']),
-        userIds: _readList<int>(json['user_ids'], _readInt),
-      );
+    Map<String, dynamic> json,
+  ) => MessageInviteVideoChatParticipants(
+    groupCallId: _readInt(json['group_call_id']),
+    userIds: _readList<int>(json['user_ids'], _readInt),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'user_ids': userIds,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'user_ids': userIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1598,11 +1505,10 @@ final class MessageInviteVideoChatParticipants extends MessageContent {
   MessageInviteVideoChatParticipants copyWith({
     int? groupCallId,
     List<int>? userIds,
-  }) =>
-      MessageInviteVideoChatParticipants(
-        groupCallId: groupCallId ?? this.groupCallId,
-        userIds: userIds ?? this.userIds,
-      );
+  }) => MessageInviteVideoChatParticipants(
+    groupCallId: groupCallId ?? this.groupCallId,
+    userIds: userIds ?? this.userIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageInviteVideoChatParticipants';
@@ -1634,10 +1540,10 @@ final class MessageBasicGroupChatCreate extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-        'member_user_ids': memberUserIds,
-      };
+    '@type': CONSTRUCTOR,
+    'title': title,
+    'member_user_ids': memberUserIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1645,11 +1551,10 @@ final class MessageBasicGroupChatCreate extends MessageContent {
   MessageBasicGroupChatCreate copyWith({
     String? title,
     List<int>? memberUserIds,
-  }) =>
-      MessageBasicGroupChatCreate(
-        title: title ?? this.title,
-        memberUserIds: memberUserIds ?? this.memberUserIds,
-      );
+  }) => MessageBasicGroupChatCreate(
+    title: title ?? this.title,
+    memberUserIds: memberUserIds ?? this.memberUserIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageBasicGroupChatCreate';
@@ -1661,34 +1566,23 @@ final class MessageBasicGroupChatCreate extends MessageContent {
 /// A newly created supergroup or channel
 final class MessageSupergroupChatCreate extends MessageContent {
   /// A newly created supergroup or channel
-  const MessageSupergroupChatCreate({
-    required this.title,
-  });
+  const MessageSupergroupChatCreate({required this.title});
 
   /// Title of the supergroup or channel
   final String title;
 
   /// Parses a [MessageSupergroupChatCreate] from TDLib JSON.
   factory MessageSupergroupChatCreate.fromJson(Map<String, dynamic> json) =>
-      MessageSupergroupChatCreate(
-        title: _readString(json['title']),
-      );
+      MessageSupergroupChatCreate(title: _readString(json['title']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'title': title};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageSupergroupChatCreate copyWith({
-    String? title,
-  }) =>
-      MessageSupergroupChatCreate(
-        title: title ?? this.title,
-      );
+  MessageSupergroupChatCreate copyWith({String? title}) =>
+      MessageSupergroupChatCreate(title: title ?? this.title);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageSupergroupChatCreate';
@@ -1700,34 +1594,23 @@ final class MessageSupergroupChatCreate extends MessageContent {
 /// An updated chat title
 final class MessageChatChangeTitle extends MessageContent {
   /// An updated chat title
-  const MessageChatChangeTitle({
-    required this.title,
-  });
+  const MessageChatChangeTitle({required this.title});
 
   /// New chat title
   final String title;
 
   /// Parses a [MessageChatChangeTitle] from TDLib JSON.
   factory MessageChatChangeTitle.fromJson(Map<String, dynamic> json) =>
-      MessageChatChangeTitle(
-        title: _readString(json['title']),
-      );
+      MessageChatChangeTitle(title: _readString(json['title']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'title': title};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageChatChangeTitle copyWith({
-    String? title,
-  }) =>
-      MessageChatChangeTitle(
-        title: title ?? this.title,
-      );
+  MessageChatChangeTitle copyWith({String? title}) =>
+      MessageChatChangeTitle(title: title ?? this.title);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageChatChangeTitle';
@@ -1739,9 +1622,7 @@ final class MessageChatChangeTitle extends MessageContent {
 /// An updated chat photo
 final class MessageChatChangePhoto extends MessageContent {
   /// An updated chat photo
-  const MessageChatChangePhoto({
-    required this.photo,
-  });
+  const MessageChatChangePhoto({required this.photo});
 
   /// New chat photo
   final ChatPhoto photo;
@@ -1754,19 +1635,15 @@ final class MessageChatChangePhoto extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageChatChangePhoto copyWith({
-    ChatPhoto? photo,
-  }) =>
-      MessageChatChangePhoto(
-        photo: photo ?? this.photo,
-      );
+  MessageChatChangePhoto copyWith({ChatPhoto? photo}) =>
+      MessageChatChangePhoto(photo: photo ?? this.photo);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageChatChangePhoto';
@@ -1785,9 +1662,7 @@ final class MessageChatDeletePhoto extends MessageContent {
       const MessageChatDeletePhoto();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1804,9 +1679,7 @@ final class MessageChatDeletePhoto extends MessageContent {
 /// New chat members were added
 final class MessageChatAddMembers extends MessageContent {
   /// New chat members were added
-  const MessageChatAddMembers({
-    required this.memberUserIds,
-  });
+  const MessageChatAddMembers({required this.memberUserIds});
 
   /// User identifiers of the new members
   final List<int> memberUserIds;
@@ -1819,19 +1692,15 @@ final class MessageChatAddMembers extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'member_user_ids': memberUserIds,
-      };
+    '@type': CONSTRUCTOR,
+    'member_user_ids': memberUserIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageChatAddMembers copyWith({
-    List<int>? memberUserIds,
-  }) =>
-      MessageChatAddMembers(
-        memberUserIds: memberUserIds ?? this.memberUserIds,
-      );
+  MessageChatAddMembers copyWith({List<int>? memberUserIds}) =>
+      MessageChatAddMembers(memberUserIds: memberUserIds ?? this.memberUserIds);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageChatAddMembers';
@@ -1850,9 +1719,7 @@ final class MessageChatJoinByLink extends MessageContent {
       const MessageChatJoinByLink();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1876,9 +1743,7 @@ final class MessageChatJoinByRequest extends MessageContent {
       const MessageChatJoinByRequest();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1895,34 +1760,23 @@ final class MessageChatJoinByRequest extends MessageContent {
 /// A chat member was deleted
 final class MessageChatDeleteMember extends MessageContent {
   /// A chat member was deleted
-  const MessageChatDeleteMember({
-    required this.userId,
-  });
+  const MessageChatDeleteMember({required this.userId});
 
   /// User identifier of the deleted chat member
   final int userId;
 
   /// Parses a [MessageChatDeleteMember] from TDLib JSON.
   factory MessageChatDeleteMember.fromJson(Map<String, dynamic> json) =>
-      MessageChatDeleteMember(
-        userId: _readInt(json['user_id']),
-      );
+      MessageChatDeleteMember(userId: _readInt(json['user_id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'user_id': userId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageChatDeleteMember copyWith({
-    int? userId,
-  }) =>
-      MessageChatDeleteMember(
-        userId: userId ?? this.userId,
-      );
+  MessageChatDeleteMember copyWith({int? userId}) =>
+      MessageChatDeleteMember(userId: userId ?? this.userId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageChatDeleteMember';
@@ -1934,34 +1788,26 @@ final class MessageChatDeleteMember extends MessageContent {
 /// A basic group was upgraded to a supergroup and was deactivated as the result
 final class MessageChatUpgradeTo extends MessageContent {
   /// A basic group was upgraded to a supergroup and was deactivated as the result
-  const MessageChatUpgradeTo({
-    required this.supergroupId,
-  });
+  const MessageChatUpgradeTo({required this.supergroupId});
 
   /// Identifier of the supergroup to which the basic group was upgraded
   final int supergroupId;
 
   /// Parses a [MessageChatUpgradeTo] from TDLib JSON.
   factory MessageChatUpgradeTo.fromJson(Map<String, dynamic> json) =>
-      MessageChatUpgradeTo(
-        supergroupId: _readInt(json['supergroup_id']),
-      );
+      MessageChatUpgradeTo(supergroupId: _readInt(json['supergroup_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageChatUpgradeTo copyWith({
-    int? supergroupId,
-  }) =>
-      MessageChatUpgradeTo(
-        supergroupId: supergroupId ?? this.supergroupId,
-      );
+  MessageChatUpgradeTo copyWith({int? supergroupId}) =>
+      MessageChatUpgradeTo(supergroupId: supergroupId ?? this.supergroupId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageChatUpgradeTo';
@@ -1993,18 +1839,15 @@ final class MessageChatUpgradeFrom extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-        'basic_group_id': basicGroupId,
-      };
+    '@type': CONSTRUCTOR,
+    'title': title,
+    'basic_group_id': basicGroupId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageChatUpgradeFrom copyWith({
-    String? title,
-    int? basicGroupId,
-  }) =>
+  MessageChatUpgradeFrom copyWith({String? title, int? basicGroupId}) =>
       MessageChatUpgradeFrom(
         title: title ?? this.title,
         basicGroupId: basicGroupId ?? this.basicGroupId,
@@ -2020,34 +1863,26 @@ final class MessageChatUpgradeFrom extends MessageContent {
 /// A message has been pinned
 final class MessagePinMessage extends MessageContent {
   /// A message has been pinned
-  const MessagePinMessage({
-    required this.messageId,
-  });
+  const MessagePinMessage({required this.messageId});
 
   /// Identifier of the pinned message, can be an identifier of a deleted message or 0
   final int messageId;
 
   /// Parses a [MessagePinMessage] from TDLib JSON.
   factory MessagePinMessage.fromJson(Map<String, dynamic> json) =>
-      MessagePinMessage(
-        messageId: _readInt(json['message_id']),
-      );
+      MessagePinMessage(messageId: _readInt(json['message_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message_id': messageId,
-      };
+    '@type': CONSTRUCTOR,
+    'message_id': messageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessagePinMessage copyWith({
-    int? messageId,
-  }) =>
-      MessagePinMessage(
-        messageId: messageId ?? this.messageId,
-      );
+  MessagePinMessage copyWith({int? messageId}) =>
+      MessagePinMessage(messageId: messageId ?? this.messageId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messagePinMessage';
@@ -2066,9 +1901,7 @@ final class MessageScreenshotTaken extends MessageContent {
       const MessageScreenshotTaken();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2110,11 +1943,11 @@ final class MessageChatSetBackground extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'old_background_message_id': oldBackgroundMessageId,
-        'background': background.toJson(),
-        'only_for_self': onlyForSelf,
-      };
+    '@type': CONSTRUCTOR,
+    'old_background_message_id': oldBackgroundMessageId,
+    'background': background.toJson(),
+    'only_for_self': onlyForSelf,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2123,13 +1956,12 @@ final class MessageChatSetBackground extends MessageContent {
     int? oldBackgroundMessageId,
     ChatBackground? background,
     bool? onlyForSelf,
-  }) =>
-      MessageChatSetBackground(
-        oldBackgroundMessageId:
-            oldBackgroundMessageId ?? this.oldBackgroundMessageId,
-        background: background ?? this.background,
-        onlyForSelf: onlyForSelf ?? this.onlyForSelf,
-      );
+  }) => MessageChatSetBackground(
+    oldBackgroundMessageId:
+        oldBackgroundMessageId ?? this.oldBackgroundMessageId,
+    background: background ?? this.background,
+    onlyForSelf: onlyForSelf ?? this.onlyForSelf,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageChatSetBackground';
@@ -2141,9 +1973,7 @@ final class MessageChatSetBackground extends MessageContent {
 /// A theme in the chat has been changed
 final class MessageChatSetTheme extends MessageContent {
   /// A theme in the chat has been changed
-  const MessageChatSetTheme({
-    this.theme,
-  });
+  const MessageChatSetTheme({this.theme});
 
   /// New theme for the chat; may be null if chat theme was reset to the default one
   final ChatTheme? theme;
@@ -2156,19 +1986,15 @@ final class MessageChatSetTheme extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'theme': theme?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'theme': theme?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageChatSetTheme copyWith({
-    ChatTheme? Function()? theme,
-  }) =>
-      MessageChatSetTheme(
-        theme: theme != null ? theme() : this.theme,
-      );
+  MessageChatSetTheme copyWith({ChatTheme? Function()? theme}) =>
+      MessageChatSetTheme(theme: theme != null ? theme() : this.theme);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageChatSetTheme';
@@ -2193,18 +2019,18 @@ final class MessageChatSetMessageAutoDeleteTime extends MessageContent {
 
   /// Parses a [MessageChatSetMessageAutoDeleteTime] from TDLib JSON.
   factory MessageChatSetMessageAutoDeleteTime.fromJson(
-          Map<String, dynamic> json) =>
-      MessageChatSetMessageAutoDeleteTime(
-        messageAutoDeleteTime: _readInt(json['message_auto_delete_time']),
-        fromUserId: _readInt(json['from_user_id']),
-      );
+    Map<String, dynamic> json,
+  ) => MessageChatSetMessageAutoDeleteTime(
+    messageAutoDeleteTime: _readInt(json['message_auto_delete_time']),
+    fromUserId: _readInt(json['from_user_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message_auto_delete_time': messageAutoDeleteTime,
-        'from_user_id': fromUserId,
-      };
+    '@type': CONSTRUCTOR,
+    'message_auto_delete_time': messageAutoDeleteTime,
+    'from_user_id': fromUserId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2212,12 +2038,10 @@ final class MessageChatSetMessageAutoDeleteTime extends MessageContent {
   MessageChatSetMessageAutoDeleteTime copyWith({
     int? messageAutoDeleteTime,
     int? fromUserId,
-  }) =>
-      MessageChatSetMessageAutoDeleteTime(
-        messageAutoDeleteTime:
-            messageAutoDeleteTime ?? this.messageAutoDeleteTime,
-        fromUserId: fromUserId ?? this.fromUserId,
-      );
+  }) => MessageChatSetMessageAutoDeleteTime(
+    messageAutoDeleteTime: messageAutoDeleteTime ?? this.messageAutoDeleteTime,
+    fromUserId: fromUserId ?? this.fromUserId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageChatSetMessageAutoDeleteTime';
@@ -2229,34 +2053,26 @@ final class MessageChatSetMessageAutoDeleteTime extends MessageContent {
 /// The chat was boosted by the sender of the message
 final class MessageChatBoost extends MessageContent {
   /// The chat was boosted by the sender of the message
-  const MessageChatBoost({
-    required this.boostCount,
-  });
+  const MessageChatBoost({required this.boostCount});
 
   /// Number of times the chat was boosted
   final int boostCount;
 
   /// Parses a [MessageChatBoost] from TDLib JSON.
   factory MessageChatBoost.fromJson(Map<String, dynamic> json) =>
-      MessageChatBoost(
-        boostCount: _readInt(json['boost_count']),
-      );
+      MessageChatBoost(boostCount: _readInt(json['boost_count']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'boost_count': boostCount,
-      };
+    '@type': CONSTRUCTOR,
+    'boost_count': boostCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageChatBoost copyWith({
-    int? boostCount,
-  }) =>
-      MessageChatBoost(
-        boostCount: boostCount ?? this.boostCount,
-      );
+  MessageChatBoost copyWith({int? boostCount}) =>
+      MessageChatBoost(boostCount: boostCount ?? this.boostCount);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageChatBoost';
@@ -2293,11 +2109,11 @@ final class MessageForumTopicCreated extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        'is_name_implicit': isNameImplicit,
-        'icon': icon.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    'is_name_implicit': isNameImplicit,
+    'icon': icon.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2306,12 +2122,11 @@ final class MessageForumTopicCreated extends MessageContent {
     String? name,
     bool? isNameImplicit,
     ForumTopicIcon? icon,
-  }) =>
-      MessageForumTopicCreated(
-        name: name ?? this.name,
-        isNameImplicit: isNameImplicit ?? this.isNameImplicit,
-        icon: icon ?? this.icon,
-      );
+  }) => MessageForumTopicCreated(
+    name: name ?? this.name,
+    isNameImplicit: isNameImplicit ?? this.isNameImplicit,
+    icon: icon ?? this.icon,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageForumTopicCreated';
@@ -2348,11 +2163,11 @@ final class MessageForumTopicEdited extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        'edit_icon_custom_emoji_id': editIconCustomEmojiId,
-        'icon_custom_emoji_id': iconCustomEmojiId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    'edit_icon_custom_emoji_id': editIconCustomEmojiId,
+    'icon_custom_emoji_id': iconCustomEmojiId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2361,13 +2176,11 @@ final class MessageForumTopicEdited extends MessageContent {
     String? name,
     bool? editIconCustomEmojiId,
     int? iconCustomEmojiId,
-  }) =>
-      MessageForumTopicEdited(
-        name: name ?? this.name,
-        editIconCustomEmojiId:
-            editIconCustomEmojiId ?? this.editIconCustomEmojiId,
-        iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
-      );
+  }) => MessageForumTopicEdited(
+    name: name ?? this.name,
+    editIconCustomEmojiId: editIconCustomEmojiId ?? this.editIconCustomEmojiId,
+    iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageForumTopicEdited';
@@ -2379,35 +2192,27 @@ final class MessageForumTopicEdited extends MessageContent {
 /// A forum topic has been closed or opened
 final class MessageForumTopicIsClosedToggled extends MessageContent {
   /// A forum topic has been closed or opened
-  const MessageForumTopicIsClosedToggled({
-    required this.isClosed,
-  });
+  const MessageForumTopicIsClosedToggled({required this.isClosed});
 
   /// True, if the topic was closed; otherwise, the topic was reopened
   final bool isClosed;
 
   /// Parses a [MessageForumTopicIsClosedToggled] from TDLib JSON.
   factory MessageForumTopicIsClosedToggled.fromJson(
-          Map<String, dynamic> json) =>
-      MessageForumTopicIsClosedToggled(
-        isClosed: _readBool(json['is_closed']),
-      );
+    Map<String, dynamic> json,
+  ) => MessageForumTopicIsClosedToggled(isClosed: _readBool(json['is_closed']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_closed': isClosed,
-      };
+    '@type': CONSTRUCTOR,
+    'is_closed': isClosed,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageForumTopicIsClosedToggled copyWith({
-    bool? isClosed,
-  }) =>
-      MessageForumTopicIsClosedToggled(
-        isClosed: isClosed ?? this.isClosed,
-      );
+  MessageForumTopicIsClosedToggled copyWith({bool? isClosed}) =>
+      MessageForumTopicIsClosedToggled(isClosed: isClosed ?? this.isClosed);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageForumTopicIsClosedToggled';
@@ -2419,35 +2224,27 @@ final class MessageForumTopicIsClosedToggled extends MessageContent {
 /// A General forum topic has been hidden or unhidden
 final class MessageForumTopicIsHiddenToggled extends MessageContent {
   /// A General forum topic has been hidden or unhidden
-  const MessageForumTopicIsHiddenToggled({
-    required this.isHidden,
-  });
+  const MessageForumTopicIsHiddenToggled({required this.isHidden});
 
   /// True, if the topic was hidden; otherwise, the topic was unhidden
   final bool isHidden;
 
   /// Parses a [MessageForumTopicIsHiddenToggled] from TDLib JSON.
   factory MessageForumTopicIsHiddenToggled.fromJson(
-          Map<String, dynamic> json) =>
-      MessageForumTopicIsHiddenToggled(
-        isHidden: _readBool(json['is_hidden']),
-      );
+    Map<String, dynamic> json,
+  ) => MessageForumTopicIsHiddenToggled(isHidden: _readBool(json['is_hidden']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_hidden': isHidden,
-      };
+    '@type': CONSTRUCTOR,
+    'is_hidden': isHidden,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageForumTopicIsHiddenToggled copyWith({
-    bool? isHidden,
-  }) =>
-      MessageForumTopicIsHiddenToggled(
-        isHidden: isHidden ?? this.isHidden,
-      );
+  MessageForumTopicIsHiddenToggled copyWith({bool? isHidden}) =>
+      MessageForumTopicIsHiddenToggled(isHidden: isHidden ?? this.isHidden);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageForumTopicIsHiddenToggled';
@@ -2459,9 +2256,7 @@ final class MessageForumTopicIsHiddenToggled extends MessageContent {
 /// A profile photo was suggested to a user in a private chat
 final class MessageSuggestProfilePhoto extends MessageContent {
   /// A profile photo was suggested to a user in a private chat
-  const MessageSuggestProfilePhoto({
-    required this.photo,
-  });
+  const MessageSuggestProfilePhoto({required this.photo});
 
   /// The suggested chat photo. Use the method setProfilePhoto with inputChatPhotoPrevious to apply the photo
   final ChatPhoto photo;
@@ -2474,19 +2269,15 @@ final class MessageSuggestProfilePhoto extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageSuggestProfilePhoto copyWith({
-    ChatPhoto? photo,
-  }) =>
-      MessageSuggestProfilePhoto(
-        photo: photo ?? this.photo,
-      );
+  MessageSuggestProfilePhoto copyWith({ChatPhoto? photo}) =>
+      MessageSuggestProfilePhoto(photo: photo ?? this.photo);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageSuggestProfilePhoto';
@@ -2498,9 +2289,7 @@ final class MessageSuggestProfilePhoto extends MessageContent {
 /// A birthdate was suggested to be set
 final class MessageSuggestBirthdate extends MessageContent {
   /// A birthdate was suggested to be set
-  const MessageSuggestBirthdate({
-    required this.birthdate,
-  });
+  const MessageSuggestBirthdate({required this.birthdate});
 
   /// The suggested birthdate. Use the method setBirthdate to apply the birthdate
   final Birthdate birthdate;
@@ -2513,19 +2302,15 @@ final class MessageSuggestBirthdate extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'birthdate': birthdate.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'birthdate': birthdate.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageSuggestBirthdate copyWith({
-    Birthdate? birthdate,
-  }) =>
-      MessageSuggestBirthdate(
-        birthdate: birthdate ?? this.birthdate,
-      );
+  MessageSuggestBirthdate copyWith({Birthdate? birthdate}) =>
+      MessageSuggestBirthdate(birthdate: birthdate ?? this.birthdate);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageSuggestBirthdate';
@@ -2537,34 +2322,23 @@ final class MessageSuggestBirthdate extends MessageContent {
 /// A non-standard action has happened in the chat
 final class MessageCustomServiceAction extends MessageContent {
   /// A non-standard action has happened in the chat
-  const MessageCustomServiceAction({
-    required this.text,
-  });
+  const MessageCustomServiceAction({required this.text});
 
   /// Message text to be shown in the chat
   final String text;
 
   /// Parses a [MessageCustomServiceAction] from TDLib JSON.
   factory MessageCustomServiceAction.fromJson(Map<String, dynamic> json) =>
-      MessageCustomServiceAction(
-        text: _readString(json['text']),
-      );
+      MessageCustomServiceAction(text: _readString(json['text']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'text': text};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageCustomServiceAction copyWith({
-    String? text,
-  }) =>
-      MessageCustomServiceAction(
-        text: text ?? this.text,
-      );
+  MessageCustomServiceAction copyWith({String? text}) =>
+      MessageCustomServiceAction(text: text ?? this.text);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageCustomServiceAction';
@@ -2601,20 +2375,16 @@ final class MessageGameScore extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'game_message_id': gameMessageId,
-        'game_id': gameId.toString(),
-        'score': score,
-      };
+    '@type': CONSTRUCTOR,
+    'game_message_id': gameMessageId,
+    'game_id': gameId.toString(),
+    'score': score,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageGameScore copyWith({
-    int? gameMessageId,
-    int? gameId,
-    int? score,
-  }) =>
+  MessageGameScore copyWith({int? gameMessageId, int? gameId, int? score}) =>
       MessageGameScore(
         gameMessageId: gameMessageId ?? this.gameMessageId,
         gameId: gameId ?? this.gameId,
@@ -2681,16 +2451,16 @@ final class MessagePaymentSuccessful extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'invoice_chat_id': invoiceChatId,
-        'invoice_message_id': invoiceMessageId,
-        'currency': currency,
-        'total_amount': totalAmount,
-        'subscription_until_date': subscriptionUntilDate,
-        'is_recurring': isRecurring,
-        'is_first_recurring': isFirstRecurring,
-        'invoice_name': invoiceName,
-      };
+    '@type': CONSTRUCTOR,
+    'invoice_chat_id': invoiceChatId,
+    'invoice_message_id': invoiceMessageId,
+    'currency': currency,
+    'total_amount': totalAmount,
+    'subscription_until_date': subscriptionUntilDate,
+    'is_recurring': isRecurring,
+    'is_first_recurring': isFirstRecurring,
+    'invoice_name': invoiceName,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2704,18 +2474,16 @@ final class MessagePaymentSuccessful extends MessageContent {
     bool? isRecurring,
     bool? isFirstRecurring,
     String? invoiceName,
-  }) =>
-      MessagePaymentSuccessful(
-        invoiceChatId: invoiceChatId ?? this.invoiceChatId,
-        invoiceMessageId: invoiceMessageId ?? this.invoiceMessageId,
-        currency: currency ?? this.currency,
-        totalAmount: totalAmount ?? this.totalAmount,
-        subscriptionUntilDate:
-            subscriptionUntilDate ?? this.subscriptionUntilDate,
-        isRecurring: isRecurring ?? this.isRecurring,
-        isFirstRecurring: isFirstRecurring ?? this.isFirstRecurring,
-        invoiceName: invoiceName ?? this.invoiceName,
-      );
+  }) => MessagePaymentSuccessful(
+    invoiceChatId: invoiceChatId ?? this.invoiceChatId,
+    invoiceMessageId: invoiceMessageId ?? this.invoiceMessageId,
+    currency: currency ?? this.currency,
+    totalAmount: totalAmount ?? this.totalAmount,
+    subscriptionUntilDate: subscriptionUntilDate ?? this.subscriptionUntilDate,
+    isRecurring: isRecurring ?? this.isRecurring,
+    isFirstRecurring: isFirstRecurring ?? this.isFirstRecurring,
+    invoiceName: invoiceName ?? this.invoiceName,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messagePaymentSuccessful';
@@ -2771,36 +2539,35 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
   final String providerPaymentChargeId;
 
   /// Parses a [MessagePaymentSuccessfulBot] from TDLib JSON.
-  factory MessagePaymentSuccessfulBot.fromJson(Map<String, dynamic> json) =>
-      MessagePaymentSuccessfulBot(
-        currency: _readString(json['currency']),
-        totalAmount: _readInt(json['total_amount']),
-        subscriptionUntilDate: _readInt(json['subscription_until_date']),
-        isRecurring: _readBool(json['is_recurring']),
-        isFirstRecurring: _readBool(json['is_first_recurring']),
-        invoicePayload: _readString(json['invoice_payload']),
-        shippingOptionId: _readString(json['shipping_option_id']),
-        orderInfo: _readOptional(json['order_info'], OrderInfo.fromJson),
-        telegramPaymentChargeId:
-            _readString(json['telegram_payment_charge_id']),
-        providerPaymentChargeId:
-            _readString(json['provider_payment_charge_id']),
-      );
+  factory MessagePaymentSuccessfulBot.fromJson(
+    Map<String, dynamic> json,
+  ) => MessagePaymentSuccessfulBot(
+    currency: _readString(json['currency']),
+    totalAmount: _readInt(json['total_amount']),
+    subscriptionUntilDate: _readInt(json['subscription_until_date']),
+    isRecurring: _readBool(json['is_recurring']),
+    isFirstRecurring: _readBool(json['is_first_recurring']),
+    invoicePayload: _readString(json['invoice_payload']),
+    shippingOptionId: _readString(json['shipping_option_id']),
+    orderInfo: _readOptional(json['order_info'], OrderInfo.fromJson),
+    telegramPaymentChargeId: _readString(json['telegram_payment_charge_id']),
+    providerPaymentChargeId: _readString(json['provider_payment_charge_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'currency': currency,
-        'total_amount': totalAmount,
-        'subscription_until_date': subscriptionUntilDate,
-        'is_recurring': isRecurring,
-        'is_first_recurring': isFirstRecurring,
-        'invoice_payload': invoicePayload,
-        'shipping_option_id': shippingOptionId,
-        'order_info': orderInfo?.toJson(),
-        'telegram_payment_charge_id': telegramPaymentChargeId,
-        'provider_payment_charge_id': providerPaymentChargeId,
-      };
+    '@type': CONSTRUCTOR,
+    'currency': currency,
+    'total_amount': totalAmount,
+    'subscription_until_date': subscriptionUntilDate,
+    'is_recurring': isRecurring,
+    'is_first_recurring': isFirstRecurring,
+    'invoice_payload': invoicePayload,
+    'shipping_option_id': shippingOptionId,
+    'order_info': orderInfo?.toJson(),
+    'telegram_payment_charge_id': telegramPaymentChargeId,
+    'provider_payment_charge_id': providerPaymentChargeId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2816,22 +2583,20 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
     OrderInfo? Function()? orderInfo,
     String? telegramPaymentChargeId,
     String? providerPaymentChargeId,
-  }) =>
-      MessagePaymentSuccessfulBot(
-        currency: currency ?? this.currency,
-        totalAmount: totalAmount ?? this.totalAmount,
-        subscriptionUntilDate:
-            subscriptionUntilDate ?? this.subscriptionUntilDate,
-        isRecurring: isRecurring ?? this.isRecurring,
-        isFirstRecurring: isFirstRecurring ?? this.isFirstRecurring,
-        invoicePayload: invoicePayload ?? this.invoicePayload,
-        shippingOptionId: shippingOptionId ?? this.shippingOptionId,
-        orderInfo: orderInfo != null ? orderInfo() : this.orderInfo,
-        telegramPaymentChargeId:
-            telegramPaymentChargeId ?? this.telegramPaymentChargeId,
-        providerPaymentChargeId:
-            providerPaymentChargeId ?? this.providerPaymentChargeId,
-      );
+  }) => MessagePaymentSuccessfulBot(
+    currency: currency ?? this.currency,
+    totalAmount: totalAmount ?? this.totalAmount,
+    subscriptionUntilDate: subscriptionUntilDate ?? this.subscriptionUntilDate,
+    isRecurring: isRecurring ?? this.isRecurring,
+    isFirstRecurring: isFirstRecurring ?? this.isFirstRecurring,
+    invoicePayload: invoicePayload ?? this.invoicePayload,
+    shippingOptionId: shippingOptionId ?? this.shippingOptionId,
+    orderInfo: orderInfo != null ? orderInfo() : this.orderInfo,
+    telegramPaymentChargeId:
+        telegramPaymentChargeId ?? this.telegramPaymentChargeId,
+    providerPaymentChargeId:
+        providerPaymentChargeId ?? this.providerPaymentChargeId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messagePaymentSuccessfulBot';
@@ -2871,28 +2636,27 @@ final class MessagePaymentRefunded extends MessageContent {
   final String providerPaymentChargeId;
 
   /// Parses a [MessagePaymentRefunded] from TDLib JSON.
-  factory MessagePaymentRefunded.fromJson(Map<String, dynamic> json) =>
-      MessagePaymentRefunded(
-        ownerId: _readObject(json['owner_id'], MessageSender.fromJson),
-        currency: _readString(json['currency']),
-        totalAmount: _readInt(json['total_amount']),
-        invoicePayload: _readString(json['invoice_payload']),
-        telegramPaymentChargeId:
-            _readString(json['telegram_payment_charge_id']),
-        providerPaymentChargeId:
-            _readString(json['provider_payment_charge_id']),
-      );
+  factory MessagePaymentRefunded.fromJson(
+    Map<String, dynamic> json,
+  ) => MessagePaymentRefunded(
+    ownerId: _readObject(json['owner_id'], MessageSender.fromJson),
+    currency: _readString(json['currency']),
+    totalAmount: _readInt(json['total_amount']),
+    invoicePayload: _readString(json['invoice_payload']),
+    telegramPaymentChargeId: _readString(json['telegram_payment_charge_id']),
+    providerPaymentChargeId: _readString(json['provider_payment_charge_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'owner_id': ownerId.toJson(),
-        'currency': currency,
-        'total_amount': totalAmount,
-        'invoice_payload': invoicePayload,
-        'telegram_payment_charge_id': telegramPaymentChargeId,
-        'provider_payment_charge_id': providerPaymentChargeId,
-      };
+    '@type': CONSTRUCTOR,
+    'owner_id': ownerId.toJson(),
+    'currency': currency,
+    'total_amount': totalAmount,
+    'invoice_payload': invoicePayload,
+    'telegram_payment_charge_id': telegramPaymentChargeId,
+    'provider_payment_charge_id': providerPaymentChargeId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -2904,17 +2668,16 @@ final class MessagePaymentRefunded extends MessageContent {
     String? invoicePayload,
     String? telegramPaymentChargeId,
     String? providerPaymentChargeId,
-  }) =>
-      MessagePaymentRefunded(
-        ownerId: ownerId ?? this.ownerId,
-        currency: currency ?? this.currency,
-        totalAmount: totalAmount ?? this.totalAmount,
-        invoicePayload: invoicePayload ?? this.invoicePayload,
-        telegramPaymentChargeId:
-            telegramPaymentChargeId ?? this.telegramPaymentChargeId,
-        providerPaymentChargeId:
-            providerPaymentChargeId ?? this.providerPaymentChargeId,
-      );
+  }) => MessagePaymentRefunded(
+    ownerId: ownerId ?? this.ownerId,
+    currency: currency ?? this.currency,
+    totalAmount: totalAmount ?? this.totalAmount,
+    invoicePayload: invoicePayload ?? this.invoicePayload,
+    telegramPaymentChargeId:
+        telegramPaymentChargeId ?? this.telegramPaymentChargeId,
+    providerPaymentChargeId:
+        providerPaymentChargeId ?? this.providerPaymentChargeId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messagePaymentRefunded';
@@ -2981,17 +2744,17 @@ final class MessageGiftedPremium extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'gifter_user_id': gifterUserId,
-        'receiver_user_id': receiverUserId,
-        'text': text.toJson(),
-        'currency': currency,
-        'amount': amount,
-        'cryptocurrency': cryptocurrency,
-        'cryptocurrency_amount': cryptocurrencyAmount.toString(),
-        'month_count': monthCount,
-        'sticker': sticker?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'gifter_user_id': gifterUserId,
+    'receiver_user_id': receiverUserId,
+    'text': text.toJson(),
+    'currency': currency,
+    'amount': amount,
+    'cryptocurrency': cryptocurrency,
+    'cryptocurrency_amount': cryptocurrencyAmount.toString(),
+    'month_count': monthCount,
+    'sticker': sticker?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3006,18 +2769,17 @@ final class MessageGiftedPremium extends MessageContent {
     int? cryptocurrencyAmount,
     int? monthCount,
     Sticker? Function()? sticker,
-  }) =>
-      MessageGiftedPremium(
-        gifterUserId: gifterUserId ?? this.gifterUserId,
-        receiverUserId: receiverUserId ?? this.receiverUserId,
-        text: text ?? this.text,
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        cryptocurrency: cryptocurrency ?? this.cryptocurrency,
-        cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
-        monthCount: monthCount ?? this.monthCount,
-        sticker: sticker != null ? sticker() : this.sticker,
-      );
+  }) => MessageGiftedPremium(
+    gifterUserId: gifterUserId ?? this.gifterUserId,
+    receiverUserId: receiverUserId ?? this.receiverUserId,
+    text: text ?? this.text,
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    cryptocurrency: cryptocurrency ?? this.cryptocurrency,
+    cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
+    monthCount: monthCount ?? this.monthCount,
+    sticker: sticker != null ? sticker() : this.sticker,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageGiftedPremium';
@@ -3094,19 +2856,19 @@ final class MessagePremiumGiftCode extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'creator_id': creatorId?.toJson(),
-        'text': text.toJson(),
-        'is_from_giveaway': isFromGiveaway,
-        'is_unclaimed': isUnclaimed,
-        'currency': currency,
-        'amount': amount,
-        'cryptocurrency': cryptocurrency,
-        'cryptocurrency_amount': cryptocurrencyAmount.toString(),
-        'month_count': monthCount,
-        'sticker': sticker?.toJson(),
-        'code': code,
-      };
+    '@type': CONSTRUCTOR,
+    'creator_id': creatorId?.toJson(),
+    'text': text.toJson(),
+    'is_from_giveaway': isFromGiveaway,
+    'is_unclaimed': isUnclaimed,
+    'currency': currency,
+    'amount': amount,
+    'cryptocurrency': cryptocurrency,
+    'cryptocurrency_amount': cryptocurrencyAmount.toString(),
+    'month_count': monthCount,
+    'sticker': sticker?.toJson(),
+    'code': code,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3123,20 +2885,19 @@ final class MessagePremiumGiftCode extends MessageContent {
     int? monthCount,
     Sticker? Function()? sticker,
     String? code,
-  }) =>
-      MessagePremiumGiftCode(
-        creatorId: creatorId != null ? creatorId() : this.creatorId,
-        text: text ?? this.text,
-        isFromGiveaway: isFromGiveaway ?? this.isFromGiveaway,
-        isUnclaimed: isUnclaimed ?? this.isUnclaimed,
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        cryptocurrency: cryptocurrency ?? this.cryptocurrency,
-        cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
-        monthCount: monthCount ?? this.monthCount,
-        sticker: sticker != null ? sticker() : this.sticker,
-        code: code ?? this.code,
-      );
+  }) => MessagePremiumGiftCode(
+    creatorId: creatorId != null ? creatorId() : this.creatorId,
+    text: text ?? this.text,
+    isFromGiveaway: isFromGiveaway ?? this.isFromGiveaway,
+    isUnclaimed: isUnclaimed ?? this.isUnclaimed,
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    cryptocurrency: cryptocurrency ?? this.cryptocurrency,
+    cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
+    monthCount: monthCount ?? this.monthCount,
+    sticker: sticker != null ? sticker() : this.sticker,
+    code: code ?? this.code,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messagePremiumGiftCode';
@@ -3148,34 +2909,26 @@ final class MessagePremiumGiftCode extends MessageContent {
 /// A giveaway was created for the chat. Use telegramPaymentPurposePremiumGiveaway, storePaymentPurposePremiumGiveaway, telegramPaymentPurposeStarGiveaway, or storePaymentPurposeStarGiveaway to create a giveaway
 final class MessageGiveawayCreated extends MessageContent {
   /// A giveaway was created for the chat. Use telegramPaymentPurposePremiumGiveaway, storePaymentPurposePremiumGiveaway, telegramPaymentPurposeStarGiveaway, or storePaymentPurposeStarGiveaway to create a giveaway
-  const MessageGiveawayCreated({
-    required this.starCount,
-  });
+  const MessageGiveawayCreated({required this.starCount});
 
   /// Number of Telegram Stars that will be shared by winners of the giveaway; 0 for Telegram Premium giveaways
   final int starCount;
 
   /// Parses a [MessageGiveawayCreated] from TDLib JSON.
   factory MessageGiveawayCreated.fromJson(Map<String, dynamic> json) =>
-      MessageGiveawayCreated(
-        starCount: _readInt(json['star_count']),
-      );
+      MessageGiveawayCreated(starCount: _readInt(json['star_count']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_count': starCount,
-      };
+    '@type': CONSTRUCTOR,
+    'star_count': starCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageGiveawayCreated copyWith({
-    int? starCount,
-  }) =>
-      MessageGiveawayCreated(
-        starCount: starCount ?? this.starCount,
-      );
+  MessageGiveawayCreated copyWith({int? starCount}) =>
+      MessageGiveawayCreated(starCount: starCount ?? this.starCount);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageGiveawayCreated';
@@ -3209,8 +2962,10 @@ final class MessageGiveaway extends MessageContent {
   /// Parses a [MessageGiveaway] from TDLib JSON.
   factory MessageGiveaway.fromJson(Map<String, dynamic> json) =>
       MessageGiveaway(
-        parameters:
-            _readObject(json['parameters'], GiveawayParameters.fromJson),
+        parameters: _readObject(
+          json['parameters'],
+          GiveawayParameters.fromJson,
+        ),
         winnerCount: _readInt(json['winner_count']),
         prize: _readObject(json['prize'], GiveawayPrize.fromJson),
         sticker: _readOptional(json['sticker'], Sticker.fromJson),
@@ -3218,12 +2973,12 @@ final class MessageGiveaway extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'parameters': parameters.toJson(),
-        'winner_count': winnerCount,
-        'prize': prize.toJson(),
-        'sticker': sticker?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'parameters': parameters.toJson(),
+    'winner_count': winnerCount,
+    'prize': prize.toJson(),
+    'sticker': sticker?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3233,13 +2988,12 @@ final class MessageGiveaway extends MessageContent {
     int? winnerCount,
     GiveawayPrize? prize,
     Sticker? Function()? sticker,
-  }) =>
-      MessageGiveaway(
-        parameters: parameters ?? this.parameters,
-        winnerCount: winnerCount ?? this.winnerCount,
-        prize: prize ?? this.prize,
-        sticker: sticker != null ? sticker() : this.sticker,
-      );
+  }) => MessageGiveaway(
+    parameters: parameters ?? this.parameters,
+    winnerCount: winnerCount ?? this.winnerCount,
+    prize: prize ?? this.prize,
+    sticker: sticker != null ? sticker() : this.sticker,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageGiveaway';
@@ -3281,12 +3035,12 @@ final class MessageGiveawayCompleted extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'giveaway_message_id': giveawayMessageId,
-        'winner_count': winnerCount,
-        'is_star_giveaway': isStarGiveaway,
-        'unclaimed_prize_count': unclaimedPrizeCount,
-      };
+    '@type': CONSTRUCTOR,
+    'giveaway_message_id': giveawayMessageId,
+    'winner_count': winnerCount,
+    'is_star_giveaway': isStarGiveaway,
+    'unclaimed_prize_count': unclaimedPrizeCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3296,13 +3050,12 @@ final class MessageGiveawayCompleted extends MessageContent {
     int? winnerCount,
     bool? isStarGiveaway,
     int? unclaimedPrizeCount,
-  }) =>
-      MessageGiveawayCompleted(
-        giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
-        winnerCount: winnerCount ?? this.winnerCount,
-        isStarGiveaway: isStarGiveaway ?? this.isStarGiveaway,
-        unclaimedPrizeCount: unclaimedPrizeCount ?? this.unclaimedPrizeCount,
-      );
+  }) => MessageGiveawayCompleted(
+    giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
+    winnerCount: winnerCount ?? this.winnerCount,
+    isStarGiveaway: isStarGiveaway ?? this.isStarGiveaway,
+    unclaimedPrizeCount: unclaimedPrizeCount ?? this.unclaimedPrizeCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageGiveawayCompleted';
@@ -3367,8 +3120,9 @@ final class MessageGiveawayWinners extends MessageContent {
         boostedChatId: _readInt(json['boosted_chat_id']),
         giveawayMessageId: _readInt(json['giveaway_message_id']),
         additionalChatCount: _readInt(json['additional_chat_count']),
-        actualWinnersSelectionDate:
-            _readInt(json['actual_winners_selection_date']),
+        actualWinnersSelectionDate: _readInt(
+          json['actual_winners_selection_date'],
+        ),
         onlyNewMembers: _readBool(json['only_new_members']),
         wasRefunded: _readBool(json['was_refunded']),
         prize: _readObject(json['prize'], GiveawayPrize.fromJson),
@@ -3380,19 +3134,19 @@ final class MessageGiveawayWinners extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'boosted_chat_id': boostedChatId,
-        'giveaway_message_id': giveawayMessageId,
-        'additional_chat_count': additionalChatCount,
-        'actual_winners_selection_date': actualWinnersSelectionDate,
-        'only_new_members': onlyNewMembers,
-        'was_refunded': wasRefunded,
-        'prize': prize.toJson(),
-        'prize_description': prizeDescription,
-        'winner_count': winnerCount,
-        'winner_user_ids': winnerUserIds,
-        'unclaimed_prize_count': unclaimedPrizeCount,
-      };
+    '@type': CONSTRUCTOR,
+    'boosted_chat_id': boostedChatId,
+    'giveaway_message_id': giveawayMessageId,
+    'additional_chat_count': additionalChatCount,
+    'actual_winners_selection_date': actualWinnersSelectionDate,
+    'only_new_members': onlyNewMembers,
+    'was_refunded': wasRefunded,
+    'prize': prize.toJson(),
+    'prize_description': prizeDescription,
+    'winner_count': winnerCount,
+    'winner_user_ids': winnerUserIds,
+    'unclaimed_prize_count': unclaimedPrizeCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3409,21 +3163,20 @@ final class MessageGiveawayWinners extends MessageContent {
     int? winnerCount,
     List<int>? winnerUserIds,
     int? unclaimedPrizeCount,
-  }) =>
-      MessageGiveawayWinners(
-        boostedChatId: boostedChatId ?? this.boostedChatId,
-        giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
-        additionalChatCount: additionalChatCount ?? this.additionalChatCount,
-        actualWinnersSelectionDate:
-            actualWinnersSelectionDate ?? this.actualWinnersSelectionDate,
-        onlyNewMembers: onlyNewMembers ?? this.onlyNewMembers,
-        wasRefunded: wasRefunded ?? this.wasRefunded,
-        prize: prize ?? this.prize,
-        prizeDescription: prizeDescription ?? this.prizeDescription,
-        winnerCount: winnerCount ?? this.winnerCount,
-        winnerUserIds: winnerUserIds ?? this.winnerUserIds,
-        unclaimedPrizeCount: unclaimedPrizeCount ?? this.unclaimedPrizeCount,
-      );
+  }) => MessageGiveawayWinners(
+    boostedChatId: boostedChatId ?? this.boostedChatId,
+    giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
+    additionalChatCount: additionalChatCount ?? this.additionalChatCount,
+    actualWinnersSelectionDate:
+        actualWinnersSelectionDate ?? this.actualWinnersSelectionDate,
+    onlyNewMembers: onlyNewMembers ?? this.onlyNewMembers,
+    wasRefunded: wasRefunded ?? this.wasRefunded,
+    prize: prize ?? this.prize,
+    prizeDescription: prizeDescription ?? this.prizeDescription,
+    winnerCount: winnerCount ?? this.winnerCount,
+    winnerUserIds: winnerUserIds ?? this.winnerUserIds,
+    unclaimedPrizeCount: unclaimedPrizeCount ?? this.unclaimedPrizeCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageGiveawayWinners';
@@ -3490,17 +3243,17 @@ final class MessageGiftedStars extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'gifter_user_id': gifterUserId,
-        'receiver_user_id': receiverUserId,
-        'currency': currency,
-        'amount': amount,
-        'cryptocurrency': cryptocurrency,
-        'cryptocurrency_amount': cryptocurrencyAmount.toString(),
-        'star_count': starCount,
-        'transaction_id': transactionId,
-        'sticker': sticker?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'gifter_user_id': gifterUserId,
+    'receiver_user_id': receiverUserId,
+    'currency': currency,
+    'amount': amount,
+    'cryptocurrency': cryptocurrency,
+    'cryptocurrency_amount': cryptocurrencyAmount.toString(),
+    'star_count': starCount,
+    'transaction_id': transactionId,
+    'sticker': sticker?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3515,18 +3268,17 @@ final class MessageGiftedStars extends MessageContent {
     int? starCount,
     String? transactionId,
     Sticker? Function()? sticker,
-  }) =>
-      MessageGiftedStars(
-        gifterUserId: gifterUserId ?? this.gifterUserId,
-        receiverUserId: receiverUserId ?? this.receiverUserId,
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        cryptocurrency: cryptocurrency ?? this.cryptocurrency,
-        cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
-        starCount: starCount ?? this.starCount,
-        transactionId: transactionId ?? this.transactionId,
-        sticker: sticker != null ? sticker() : this.sticker,
-      );
+  }) => MessageGiftedStars(
+    gifterUserId: gifterUserId ?? this.gifterUserId,
+    receiverUserId: receiverUserId ?? this.receiverUserId,
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    cryptocurrency: cryptocurrency ?? this.cryptocurrency,
+    cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
+    starCount: starCount ?? this.starCount,
+    transactionId: transactionId ?? this.transactionId,
+    sticker: sticker != null ? sticker() : this.sticker,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageGiftedStars';
@@ -3573,13 +3325,13 @@ final class MessageGiftedTon extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'gifter_user_id': gifterUserId,
-        'receiver_user_id': receiverUserId,
-        'ton_amount': tonAmount,
-        'transaction_id': transactionId,
-        'sticker': sticker?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'gifter_user_id': gifterUserId,
+    'receiver_user_id': receiverUserId,
+    'ton_amount': tonAmount,
+    'transaction_id': transactionId,
+    'sticker': sticker?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3590,14 +3342,13 @@ final class MessageGiftedTon extends MessageContent {
     int? tonAmount,
     String? transactionId,
     Sticker? Function()? sticker,
-  }) =>
-      MessageGiftedTon(
-        gifterUserId: gifterUserId ?? this.gifterUserId,
-        receiverUserId: receiverUserId ?? this.receiverUserId,
-        tonAmount: tonAmount ?? this.tonAmount,
-        transactionId: transactionId ?? this.transactionId,
-        sticker: sticker != null ? sticker() : this.sticker,
-      );
+  }) => MessageGiftedTon(
+    gifterUserId: gifterUserId ?? this.gifterUserId,
+    receiverUserId: receiverUserId ?? this.receiverUserId,
+    tonAmount: tonAmount ?? this.tonAmount,
+    transactionId: transactionId ?? this.transactionId,
+    sticker: sticker != null ? sticker() : this.sticker,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageGiftedTon';
@@ -3649,14 +3400,14 @@ final class MessageGiveawayPrizeStars extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_count': starCount,
-        'transaction_id': transactionId,
-        'boosted_chat_id': boostedChatId,
-        'giveaway_message_id': giveawayMessageId,
-        'is_unclaimed': isUnclaimed,
-        'sticker': sticker?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'star_count': starCount,
+    'transaction_id': transactionId,
+    'boosted_chat_id': boostedChatId,
+    'giveaway_message_id': giveawayMessageId,
+    'is_unclaimed': isUnclaimed,
+    'sticker': sticker?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3668,15 +3419,14 @@ final class MessageGiveawayPrizeStars extends MessageContent {
     int? giveawayMessageId,
     bool? isUnclaimed,
     Sticker? Function()? sticker,
-  }) =>
-      MessageGiveawayPrizeStars(
-        starCount: starCount ?? this.starCount,
-        transactionId: transactionId ?? this.transactionId,
-        boostedChatId: boostedChatId ?? this.boostedChatId,
-        giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
-        isUnclaimed: isUnclaimed ?? this.isUnclaimed,
-        sticker: sticker != null ? sticker() : this.sticker,
-      );
+  }) => MessageGiveawayPrizeStars(
+    starCount: starCount ?? this.starCount,
+    transactionId: transactionId ?? this.transactionId,
+    boostedChatId: boostedChatId ?? this.boostedChatId,
+    giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
+    isUnclaimed: isUnclaimed ?? this.isUnclaimed,
+    sticker: sticker != null ? sticker() : this.sticker,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageGiveawayPrizeStars';
@@ -3761,46 +3511,46 @@ final class MessageGift extends MessageContent {
 
   /// Parses a [MessageGift] from TDLib JSON.
   factory MessageGift.fromJson(Map<String, dynamic> json) => MessageGift(
-        gift: _readObject(json['gift'], Gift.fromJson),
-        senderId: _readOptional(json['sender_id'], MessageSender.fromJson),
-        receiverId: _readObject(json['receiver_id'], MessageSender.fromJson),
-        receivedGiftId: _readString(json['received_gift_id']),
-        text: _readObject(json['text'], FormattedText.fromJson),
-        sellStarCount: _readInt(json['sell_star_count']),
-        prepaidUpgradeStarCount: _readInt(json['prepaid_upgrade_star_count']),
-        isUpgradeSeparate: _readBool(json['is_upgrade_separate']),
-        isPrivate: _readBool(json['is_private']),
-        isSaved: _readBool(json['is_saved']),
-        isPrepaidUpgrade: _readBool(json['is_prepaid_upgrade']),
-        canBeUpgraded: _readBool(json['can_be_upgraded']),
-        wasConverted: _readBool(json['was_converted']),
-        wasUpgraded: _readBool(json['was_upgraded']),
-        wasRefunded: _readBool(json['was_refunded']),
-        upgradedReceivedGiftId: _readString(json['upgraded_received_gift_id']),
-        prepaidUpgradeHash: _readString(json['prepaid_upgrade_hash']),
-      );
+    gift: _readObject(json['gift'], Gift.fromJson),
+    senderId: _readOptional(json['sender_id'], MessageSender.fromJson),
+    receiverId: _readObject(json['receiver_id'], MessageSender.fromJson),
+    receivedGiftId: _readString(json['received_gift_id']),
+    text: _readObject(json['text'], FormattedText.fromJson),
+    sellStarCount: _readInt(json['sell_star_count']),
+    prepaidUpgradeStarCount: _readInt(json['prepaid_upgrade_star_count']),
+    isUpgradeSeparate: _readBool(json['is_upgrade_separate']),
+    isPrivate: _readBool(json['is_private']),
+    isSaved: _readBool(json['is_saved']),
+    isPrepaidUpgrade: _readBool(json['is_prepaid_upgrade']),
+    canBeUpgraded: _readBool(json['can_be_upgraded']),
+    wasConverted: _readBool(json['was_converted']),
+    wasUpgraded: _readBool(json['was_upgraded']),
+    wasRefunded: _readBool(json['was_refunded']),
+    upgradedReceivedGiftId: _readString(json['upgraded_received_gift_id']),
+    prepaidUpgradeHash: _readString(json['prepaid_upgrade_hash']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'gift': gift.toJson(),
-        'sender_id': senderId?.toJson(),
-        'receiver_id': receiverId.toJson(),
-        'received_gift_id': receivedGiftId,
-        'text': text.toJson(),
-        'sell_star_count': sellStarCount,
-        'prepaid_upgrade_star_count': prepaidUpgradeStarCount,
-        'is_upgrade_separate': isUpgradeSeparate,
-        'is_private': isPrivate,
-        'is_saved': isSaved,
-        'is_prepaid_upgrade': isPrepaidUpgrade,
-        'can_be_upgraded': canBeUpgraded,
-        'was_converted': wasConverted,
-        'was_upgraded': wasUpgraded,
-        'was_refunded': wasRefunded,
-        'upgraded_received_gift_id': upgradedReceivedGiftId,
-        'prepaid_upgrade_hash': prepaidUpgradeHash,
-      };
+    '@type': CONSTRUCTOR,
+    'gift': gift.toJson(),
+    'sender_id': senderId?.toJson(),
+    'receiver_id': receiverId.toJson(),
+    'received_gift_id': receivedGiftId,
+    'text': text.toJson(),
+    'sell_star_count': sellStarCount,
+    'prepaid_upgrade_star_count': prepaidUpgradeStarCount,
+    'is_upgrade_separate': isUpgradeSeparate,
+    'is_private': isPrivate,
+    'is_saved': isSaved,
+    'is_prepaid_upgrade': isPrepaidUpgrade,
+    'can_be_upgraded': canBeUpgraded,
+    'was_converted': wasConverted,
+    'was_upgraded': wasUpgraded,
+    'was_refunded': wasRefunded,
+    'upgraded_received_gift_id': upgradedReceivedGiftId,
+    'prepaid_upgrade_hash': prepaidUpgradeHash,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3823,28 +3573,27 @@ final class MessageGift extends MessageContent {
     bool? wasRefunded,
     String? upgradedReceivedGiftId,
     String? prepaidUpgradeHash,
-  }) =>
-      MessageGift(
-        gift: gift ?? this.gift,
-        senderId: senderId != null ? senderId() : this.senderId,
-        receiverId: receiverId ?? this.receiverId,
-        receivedGiftId: receivedGiftId ?? this.receivedGiftId,
-        text: text ?? this.text,
-        sellStarCount: sellStarCount ?? this.sellStarCount,
-        prepaidUpgradeStarCount:
-            prepaidUpgradeStarCount ?? this.prepaidUpgradeStarCount,
-        isUpgradeSeparate: isUpgradeSeparate ?? this.isUpgradeSeparate,
-        isPrivate: isPrivate ?? this.isPrivate,
-        isSaved: isSaved ?? this.isSaved,
-        isPrepaidUpgrade: isPrepaidUpgrade ?? this.isPrepaidUpgrade,
-        canBeUpgraded: canBeUpgraded ?? this.canBeUpgraded,
-        wasConverted: wasConverted ?? this.wasConverted,
-        wasUpgraded: wasUpgraded ?? this.wasUpgraded,
-        wasRefunded: wasRefunded ?? this.wasRefunded,
-        upgradedReceivedGiftId:
-            upgradedReceivedGiftId ?? this.upgradedReceivedGiftId,
-        prepaidUpgradeHash: prepaidUpgradeHash ?? this.prepaidUpgradeHash,
-      );
+  }) => MessageGift(
+    gift: gift ?? this.gift,
+    senderId: senderId != null ? senderId() : this.senderId,
+    receiverId: receiverId ?? this.receiverId,
+    receivedGiftId: receivedGiftId ?? this.receivedGiftId,
+    text: text ?? this.text,
+    sellStarCount: sellStarCount ?? this.sellStarCount,
+    prepaidUpgradeStarCount:
+        prepaidUpgradeStarCount ?? this.prepaidUpgradeStarCount,
+    isUpgradeSeparate: isUpgradeSeparate ?? this.isUpgradeSeparate,
+    isPrivate: isPrivate ?? this.isPrivate,
+    isSaved: isSaved ?? this.isSaved,
+    isPrepaidUpgrade: isPrepaidUpgrade ?? this.isPrepaidUpgrade,
+    canBeUpgraded: canBeUpgraded ?? this.canBeUpgraded,
+    wasConverted: wasConverted ?? this.wasConverted,
+    wasUpgraded: wasUpgraded ?? this.wasUpgraded,
+    wasRefunded: wasRefunded ?? this.wasRefunded,
+    upgradedReceivedGiftId:
+        upgradedReceivedGiftId ?? this.upgradedReceivedGiftId,
+    prepaidUpgradeHash: prepaidUpgradeHash ?? this.prepaidUpgradeHash,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageGift';
@@ -3923,8 +3672,9 @@ final class MessageUpgradedGift extends MessageContent {
         canBeTransferred: _readBool(json['can_be_transferred']),
         wasTransferred: _readBool(json['was_transferred']),
         transferStarCount: _readInt(json['transfer_star_count']),
-        dropOriginalDetailsStarCount:
-            _readInt(json['drop_original_details_star_count']),
+        dropOriginalDetailsStarCount: _readInt(
+          json['drop_original_details_star_count'],
+        ),
         nextTransferDate: _readInt(json['next_transfer_date']),
         nextResaleDate: _readInt(json['next_resale_date']),
         exportDate: _readInt(json['export_date']),
@@ -3932,21 +3682,21 @@ final class MessageUpgradedGift extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'gift': gift.toJson(),
-        'sender_id': senderId?.toJson(),
-        'receiver_id': receiverId.toJson(),
-        'origin': origin.toJson(),
-        'received_gift_id': receivedGiftId,
-        'is_saved': isSaved,
-        'can_be_transferred': canBeTransferred,
-        'was_transferred': wasTransferred,
-        'transfer_star_count': transferStarCount,
-        'drop_original_details_star_count': dropOriginalDetailsStarCount,
-        'next_transfer_date': nextTransferDate,
-        'next_resale_date': nextResaleDate,
-        'export_date': exportDate,
-      };
+    '@type': CONSTRUCTOR,
+    'gift': gift.toJson(),
+    'sender_id': senderId?.toJson(),
+    'receiver_id': receiverId.toJson(),
+    'origin': origin.toJson(),
+    'received_gift_id': receivedGiftId,
+    'is_saved': isSaved,
+    'can_be_transferred': canBeTransferred,
+    'was_transferred': wasTransferred,
+    'transfer_star_count': transferStarCount,
+    'drop_original_details_star_count': dropOriginalDetailsStarCount,
+    'next_transfer_date': nextTransferDate,
+    'next_resale_date': nextResaleDate,
+    'export_date': exportDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -3965,23 +3715,22 @@ final class MessageUpgradedGift extends MessageContent {
     int? nextTransferDate,
     int? nextResaleDate,
     int? exportDate,
-  }) =>
-      MessageUpgradedGift(
-        gift: gift ?? this.gift,
-        senderId: senderId != null ? senderId() : this.senderId,
-        receiverId: receiverId ?? this.receiverId,
-        origin: origin ?? this.origin,
-        receivedGiftId: receivedGiftId ?? this.receivedGiftId,
-        isSaved: isSaved ?? this.isSaved,
-        canBeTransferred: canBeTransferred ?? this.canBeTransferred,
-        wasTransferred: wasTransferred ?? this.wasTransferred,
-        transferStarCount: transferStarCount ?? this.transferStarCount,
-        dropOriginalDetailsStarCount:
-            dropOriginalDetailsStarCount ?? this.dropOriginalDetailsStarCount,
-        nextTransferDate: nextTransferDate ?? this.nextTransferDate,
-        nextResaleDate: nextResaleDate ?? this.nextResaleDate,
-        exportDate: exportDate ?? this.exportDate,
-      );
+  }) => MessageUpgradedGift(
+    gift: gift ?? this.gift,
+    senderId: senderId != null ? senderId() : this.senderId,
+    receiverId: receiverId ?? this.receiverId,
+    origin: origin ?? this.origin,
+    receivedGiftId: receivedGiftId ?? this.receivedGiftId,
+    isSaved: isSaved ?? this.isSaved,
+    canBeTransferred: canBeTransferred ?? this.canBeTransferred,
+    wasTransferred: wasTransferred ?? this.wasTransferred,
+    transferStarCount: transferStarCount ?? this.transferStarCount,
+    dropOriginalDetailsStarCount:
+        dropOriginalDetailsStarCount ?? this.dropOriginalDetailsStarCount,
+    nextTransferDate: nextTransferDate ?? this.nextTransferDate,
+    nextResaleDate: nextResaleDate ?? this.nextResaleDate,
+    exportDate: exportDate ?? this.exportDate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageUpgradedGift';
@@ -4023,12 +3772,12 @@ final class MessageRefundedUpgradedGift extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'gift': gift.toJson(),
-        'sender_id': senderId.toJson(),
-        'receiver_id': receiverId.toJson(),
-        'origin': origin.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'gift': gift.toJson(),
+    'sender_id': senderId.toJson(),
+    'receiver_id': receiverId.toJson(),
+    'origin': origin.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4038,13 +3787,12 @@ final class MessageRefundedUpgradedGift extends MessageContent {
     MessageSender? senderId,
     MessageSender? receiverId,
     UpgradedGiftOrigin? origin,
-  }) =>
-      MessageRefundedUpgradedGift(
-        gift: gift ?? this.gift,
-        senderId: senderId ?? this.senderId,
-        receiverId: receiverId ?? this.receiverId,
-        origin: origin ?? this.origin,
-      );
+  }) => MessageRefundedUpgradedGift(
+    gift: gift ?? this.gift,
+    senderId: senderId ?? this.senderId,
+    receiverId: receiverId ?? this.receiverId,
+    origin: origin ?? this.origin,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageRefundedUpgradedGift';
@@ -4076,18 +3824,15 @@ final class MessagePaidMessagesRefunded extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message_count': messageCount,
-        'star_count': starCount,
-      };
+    '@type': CONSTRUCTOR,
+    'message_count': messageCount,
+    'star_count': starCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessagePaidMessagesRefunded copyWith({
-    int? messageCount,
-    int? starCount,
-  }) =>
+  MessagePaidMessagesRefunded copyWith({int? messageCount, int? starCount}) =>
       MessagePaidMessagesRefunded(
         messageCount: messageCount ?? this.messageCount,
         starCount: starCount ?? this.starCount,
@@ -4103,9 +3848,7 @@ final class MessagePaidMessagesRefunded extends MessageContent {
 /// A price for paid messages was changed in the supergroup chat
 final class MessagePaidMessagePriceChanged extends MessageContent {
   /// A price for paid messages was changed in the supergroup chat
-  const MessagePaidMessagePriceChanged({
-    required this.paidMessageStarCount,
-  });
+  const MessagePaidMessagePriceChanged({required this.paidMessageStarCount});
 
   /// The new number of Telegram Stars that must be paid by non-administrator users of the supergroup chat for each sent message
   final int paidMessageStarCount;
@@ -4118,16 +3861,14 @@ final class MessagePaidMessagePriceChanged extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'paid_message_star_count': paidMessageStarCount,
-      };
+    '@type': CONSTRUCTOR,
+    'paid_message_star_count': paidMessageStarCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessagePaidMessagePriceChanged copyWith({
-    int? paidMessageStarCount,
-  }) =>
+  MessagePaidMessagePriceChanged copyWith({int? paidMessageStarCount}) =>
       MessagePaidMessagePriceChanged(
         paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
       );
@@ -4155,18 +3896,18 @@ final class MessageDirectMessagePriceChanged extends MessageContent {
 
   /// Parses a [MessageDirectMessagePriceChanged] from TDLib JSON.
   factory MessageDirectMessagePriceChanged.fromJson(
-          Map<String, dynamic> json) =>
-      MessageDirectMessagePriceChanged(
-        isEnabled: _readBool(json['is_enabled']),
-        paidMessageStarCount: _readInt(json['paid_message_star_count']),
-      );
+    Map<String, dynamic> json,
+  ) => MessageDirectMessagePriceChanged(
+    isEnabled: _readBool(json['is_enabled']),
+    paidMessageStarCount: _readInt(json['paid_message_star_count']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_enabled': isEnabled,
-        'paid_message_star_count': paidMessageStarCount,
-      };
+    '@type': CONSTRUCTOR,
+    'is_enabled': isEnabled,
+    'paid_message_star_count': paidMessageStarCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4174,11 +3915,10 @@ final class MessageDirectMessagePriceChanged extends MessageContent {
   MessageDirectMessagePriceChanged copyWith({
     bool? isEnabled,
     int? paidMessageStarCount,
-  }) =>
-      MessageDirectMessagePriceChanged(
-        isEnabled: isEnabled ?? this.isEnabled,
-        paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
-      );
+  }) => MessageDirectMessagePriceChanged(
+    isEnabled: isEnabled ?? this.isEnabled,
+    paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageDirectMessagePriceChanged';
@@ -4209,19 +3949,23 @@ final class MessageChecklistTasksDone extends MessageContent {
   factory MessageChecklistTasksDone.fromJson(Map<String, dynamic> json) =>
       MessageChecklistTasksDone(
         checklistMessageId: _readInt(json['checklist_message_id']),
-        markedAsDoneTaskIds:
-            _readList<int>(json['marked_as_done_task_ids'], _readInt),
-        markedAsNotDoneTaskIds:
-            _readList<int>(json['marked_as_not_done_task_ids'], _readInt),
+        markedAsDoneTaskIds: _readList<int>(
+          json['marked_as_done_task_ids'],
+          _readInt,
+        ),
+        markedAsNotDoneTaskIds: _readList<int>(
+          json['marked_as_not_done_task_ids'],
+          _readInt,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'checklist_message_id': checklistMessageId,
-        'marked_as_done_task_ids': markedAsDoneTaskIds,
-        'marked_as_not_done_task_ids': markedAsNotDoneTaskIds,
-      };
+    '@type': CONSTRUCTOR,
+    'checklist_message_id': checklistMessageId,
+    'marked_as_done_task_ids': markedAsDoneTaskIds,
+    'marked_as_not_done_task_ids': markedAsNotDoneTaskIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4230,13 +3974,12 @@ final class MessageChecklistTasksDone extends MessageContent {
     int? checklistMessageId,
     List<int>? markedAsDoneTaskIds,
     List<int>? markedAsNotDoneTaskIds,
-  }) =>
-      MessageChecklistTasksDone(
-        checklistMessageId: checklistMessageId ?? this.checklistMessageId,
-        markedAsDoneTaskIds: markedAsDoneTaskIds ?? this.markedAsDoneTaskIds,
-        markedAsNotDoneTaskIds:
-            markedAsNotDoneTaskIds ?? this.markedAsNotDoneTaskIds,
-      );
+  }) => MessageChecklistTasksDone(
+    checklistMessageId: checklistMessageId ?? this.checklistMessageId,
+    markedAsDoneTaskIds: markedAsDoneTaskIds ?? this.markedAsDoneTaskIds,
+    markedAsNotDoneTaskIds:
+        markedAsNotDoneTaskIds ?? this.markedAsNotDoneTaskIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageChecklistTasksDone';
@@ -4264,15 +4007,17 @@ final class MessageChecklistTasksAdded extends MessageContent {
       MessageChecklistTasksAdded(
         checklistMessageId: _readInt(json['checklist_message_id']),
         tasks: _readList<ChecklistTask>(
-            json['tasks'], (e) => _readObject(e, ChecklistTask.fromJson)),
+          json['tasks'],
+          (e) => _readObject(e, ChecklistTask.fromJson),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'checklist_message_id': checklistMessageId,
-        'tasks': [for (final e in tasks) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'checklist_message_id': checklistMessageId,
+    'tasks': [for (final e in tasks) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4280,11 +4025,10 @@ final class MessageChecklistTasksAdded extends MessageContent {
   MessageChecklistTasksAdded copyWith({
     int? checklistMessageId,
     List<ChecklistTask>? tasks,
-  }) =>
-      MessageChecklistTasksAdded(
-        checklistMessageId: checklistMessageId ?? this.checklistMessageId,
-        tasks: tasks ?? this.tasks,
-      );
+  }) => MessageChecklistTasksAdded(
+    checklistMessageId: checklistMessageId ?? this.checklistMessageId,
+    tasks: tasks ?? this.tasks,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageChecklistTasksAdded';
@@ -4309,18 +4053,18 @@ final class MessageSuggestedPostApprovalFailed extends MessageContent {
 
   /// Parses a [MessageSuggestedPostApprovalFailed] from TDLib JSON.
   factory MessageSuggestedPostApprovalFailed.fromJson(
-          Map<String, dynamic> json) =>
-      MessageSuggestedPostApprovalFailed(
-        suggestedPostMessageId: _readInt(json['suggested_post_message_id']),
-        price: _readObject(json['price'], SuggestedPostPrice.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => MessageSuggestedPostApprovalFailed(
+    suggestedPostMessageId: _readInt(json['suggested_post_message_id']),
+    price: _readObject(json['price'], SuggestedPostPrice.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'suggested_post_message_id': suggestedPostMessageId,
-        'price': price.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'suggested_post_message_id': suggestedPostMessageId,
+    'price': price.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4328,12 +4072,11 @@ final class MessageSuggestedPostApprovalFailed extends MessageContent {
   MessageSuggestedPostApprovalFailed copyWith({
     int? suggestedPostMessageId,
     SuggestedPostPrice? price,
-  }) =>
-      MessageSuggestedPostApprovalFailed(
-        suggestedPostMessageId:
-            suggestedPostMessageId ?? this.suggestedPostMessageId,
-        price: price ?? this.price,
-      );
+  }) => MessageSuggestedPostApprovalFailed(
+    suggestedPostMessageId:
+        suggestedPostMessageId ?? this.suggestedPostMessageId,
+    price: price ?? this.price,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageSuggestedPostApprovalFailed';
@@ -4370,11 +4113,11 @@ final class MessageSuggestedPostApproved extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'suggested_post_message_id': suggestedPostMessageId,
-        'price': price?.toJson(),
-        'send_date': sendDate,
-      };
+    '@type': CONSTRUCTOR,
+    'suggested_post_message_id': suggestedPostMessageId,
+    'price': price?.toJson(),
+    'send_date': sendDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4383,13 +4126,12 @@ final class MessageSuggestedPostApproved extends MessageContent {
     int? suggestedPostMessageId,
     SuggestedPostPrice? Function()? price,
     int? sendDate,
-  }) =>
-      MessageSuggestedPostApproved(
-        suggestedPostMessageId:
-            suggestedPostMessageId ?? this.suggestedPostMessageId,
-        price: price != null ? price() : this.price,
-        sendDate: sendDate ?? this.sendDate,
-      );
+  }) => MessageSuggestedPostApproved(
+    suggestedPostMessageId:
+        suggestedPostMessageId ?? this.suggestedPostMessageId,
+    price: price != null ? price() : this.price,
+    sendDate: sendDate ?? this.sendDate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageSuggestedPostApproved';
@@ -4421,10 +4163,10 @@ final class MessageSuggestedPostDeclined extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'suggested_post_message_id': suggestedPostMessageId,
-        'comment': comment,
-      };
+    '@type': CONSTRUCTOR,
+    'suggested_post_message_id': suggestedPostMessageId,
+    'comment': comment,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4432,12 +4174,11 @@ final class MessageSuggestedPostDeclined extends MessageContent {
   MessageSuggestedPostDeclined copyWith({
     int? suggestedPostMessageId,
     String? comment,
-  }) =>
-      MessageSuggestedPostDeclined(
-        suggestedPostMessageId:
-            suggestedPostMessageId ?? this.suggestedPostMessageId,
-        comment: comment ?? this.comment,
-      );
+  }) => MessageSuggestedPostDeclined(
+    suggestedPostMessageId:
+        suggestedPostMessageId ?? this.suggestedPostMessageId,
+    comment: comment ?? this.comment,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageSuggestedPostDeclined';
@@ -4474,11 +4215,11 @@ final class MessageSuggestedPostPaid extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'suggested_post_message_id': suggestedPostMessageId,
-        'star_amount': starAmount.toJson(),
-        'ton_amount': tonAmount,
-      };
+    '@type': CONSTRUCTOR,
+    'suggested_post_message_id': suggestedPostMessageId,
+    'star_amount': starAmount.toJson(),
+    'ton_amount': tonAmount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4487,13 +4228,12 @@ final class MessageSuggestedPostPaid extends MessageContent {
     int? suggestedPostMessageId,
     StarAmount? starAmount,
     int? tonAmount,
-  }) =>
-      MessageSuggestedPostPaid(
-        suggestedPostMessageId:
-            suggestedPostMessageId ?? this.suggestedPostMessageId,
-        starAmount: starAmount ?? this.starAmount,
-        tonAmount: tonAmount ?? this.tonAmount,
-      );
+  }) => MessageSuggestedPostPaid(
+    suggestedPostMessageId:
+        suggestedPostMessageId ?? this.suggestedPostMessageId,
+    starAmount: starAmount ?? this.starAmount,
+    tonAmount: tonAmount ?? this.tonAmount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageSuggestedPostPaid';
@@ -4525,10 +4265,10 @@ final class MessageSuggestedPostRefunded extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'suggested_post_message_id': suggestedPostMessageId,
-        'reason': reason.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'suggested_post_message_id': suggestedPostMessageId,
+    'reason': reason.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4536,12 +4276,11 @@ final class MessageSuggestedPostRefunded extends MessageContent {
   MessageSuggestedPostRefunded copyWith({
     int? suggestedPostMessageId,
     SuggestedPostRefundReason? reason,
-  }) =>
-      MessageSuggestedPostRefunded(
-        suggestedPostMessageId:
-            suggestedPostMessageId ?? this.suggestedPostMessageId,
-        reason: reason ?? this.reason,
-      );
+  }) => MessageSuggestedPostRefunded(
+    suggestedPostMessageId:
+        suggestedPostMessageId ?? this.suggestedPostMessageId,
+    reason: reason ?? this.reason,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageSuggestedPostRefunded';
@@ -4560,9 +4299,7 @@ final class MessageContactRegistered extends MessageContent {
       const MessageContactRegistered();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4579,10 +4316,7 @@ final class MessageContactRegistered extends MessageContent {
 /// The current user shared users, which were requested by the bot
 final class MessageUsersShared extends MessageContent {
   /// The current user shared users, which were requested by the bot
-  const MessageUsersShared({
-    required this.users,
-    required this.buttonId,
-  });
+  const MessageUsersShared({required this.users, required this.buttonId});
 
   /// The shared users
   final List<SharedUser> users;
@@ -4594,24 +4328,23 @@ final class MessageUsersShared extends MessageContent {
   factory MessageUsersShared.fromJson(Map<String, dynamic> json) =>
       MessageUsersShared(
         users: _readList<SharedUser>(
-            json['users'], (e) => _readObject(e, SharedUser.fromJson)),
+          json['users'],
+          (e) => _readObject(e, SharedUser.fromJson),
+        ),
         buttonId: _readInt(json['button_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'users': [for (final e in users) e.toJson()],
-        'button_id': buttonId,
-      };
+    '@type': CONSTRUCTOR,
+    'users': [for (final e in users) e.toJson()],
+    'button_id': buttonId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageUsersShared copyWith({
-    List<SharedUser>? users,
-    int? buttonId,
-  }) =>
+  MessageUsersShared copyWith({List<SharedUser>? users, int? buttonId}) =>
       MessageUsersShared(
         users: users ?? this.users,
         buttonId: buttonId ?? this.buttonId,
@@ -4627,10 +4360,7 @@ final class MessageUsersShared extends MessageContent {
 /// The current user shared a chat, which was requested by the bot
 final class MessageChatShared extends MessageContent {
   /// The current user shared a chat, which was requested by the bot
-  const MessageChatShared({
-    required this.chat,
-    required this.buttonId,
-  });
+  const MessageChatShared({required this.chat, required this.buttonId});
 
   /// The shared chat
   final SharedChat chat;
@@ -4647,18 +4377,15 @@ final class MessageChatShared extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat': chat.toJson(),
-        'button_id': buttonId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat': chat.toJson(),
+    'button_id': buttonId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageChatShared copyWith({
-    SharedChat? chat,
-    int? buttonId,
-  }) =>
+  MessageChatShared copyWith({SharedChat? chat, int? buttonId}) =>
       MessageChatShared(
         chat: chat ?? this.chat,
         buttonId: buttonId ?? this.buttonId,
@@ -4674,9 +4401,7 @@ final class MessageChatShared extends MessageContent {
 /// The user allowed the bot to send messages
 final class MessageBotWriteAccessAllowed extends MessageContent {
   /// The user allowed the bot to send messages
-  const MessageBotWriteAccessAllowed({
-    required this.reason,
-  });
+  const MessageBotWriteAccessAllowed({required this.reason});
 
   /// The reason why the bot was allowed to write messages
   final BotWriteAccessAllowReason reason;
@@ -4689,19 +4414,15 @@ final class MessageBotWriteAccessAllowed extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'reason': reason.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'reason': reason.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageBotWriteAccessAllowed copyWith({
-    BotWriteAccessAllowReason? reason,
-  }) =>
-      MessageBotWriteAccessAllowed(
-        reason: reason ?? this.reason,
-      );
+  MessageBotWriteAccessAllowed copyWith({BotWriteAccessAllowReason? reason}) =>
+      MessageBotWriteAccessAllowed(reason: reason ?? this.reason);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageBotWriteAccessAllowed';
@@ -4713,34 +4434,26 @@ final class MessageBotWriteAccessAllowed extends MessageContent {
 /// Data from a Web App has been sent to a bot
 final class MessageWebAppDataSent extends MessageContent {
   /// Data from a Web App has been sent to a bot
-  const MessageWebAppDataSent({
-    required this.buttonText,
-  });
+  const MessageWebAppDataSent({required this.buttonText});
 
   /// Text of the keyboardButtonTypeWebApp button, which opened the Web App
   final String buttonText;
 
   /// Parses a [MessageWebAppDataSent] from TDLib JSON.
   factory MessageWebAppDataSent.fromJson(Map<String, dynamic> json) =>
-      MessageWebAppDataSent(
-        buttonText: _readString(json['button_text']),
-      );
+      MessageWebAppDataSent(buttonText: _readString(json['button_text']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'button_text': buttonText,
-      };
+    '@type': CONSTRUCTOR,
+    'button_text': buttonText,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageWebAppDataSent copyWith({
-    String? buttonText,
-  }) =>
-      MessageWebAppDataSent(
-        buttonText: buttonText ?? this.buttonText,
-      );
+  MessageWebAppDataSent copyWith({String? buttonText}) =>
+      MessageWebAppDataSent(buttonText: buttonText ?? this.buttonText);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageWebAppDataSent';
@@ -4772,18 +4485,15 @@ final class MessageWebAppDataReceived extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'button_text': buttonText,
-        'data': data,
-      };
+    '@type': CONSTRUCTOR,
+    'button_text': buttonText,
+    'data': data,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageWebAppDataReceived copyWith({
-    String? buttonText,
-    String? data,
-  }) =>
+  MessageWebAppDataReceived copyWith({String? buttonText, String? data}) =>
       MessageWebAppDataReceived(
         buttonText: buttonText ?? this.buttonText,
         data: data ?? this.data,
@@ -4799,9 +4509,7 @@ final class MessageWebAppDataReceived extends MessageContent {
 /// Telegram Passport data has been sent to a bot
 final class MessagePassportDataSent extends MessageContent {
   /// Telegram Passport data has been sent to a bot
-  const MessagePassportDataSent({
-    required this.types,
-  });
+  const MessagePassportDataSent({required this.types});
 
   /// List of Telegram Passport element types sent
   final List<PassportElementType> types;
@@ -4810,24 +4518,22 @@ final class MessagePassportDataSent extends MessageContent {
   factory MessagePassportDataSent.fromJson(Map<String, dynamic> json) =>
       MessagePassportDataSent(
         types: _readList<PassportElementType>(
-            json['types'], (e) => _readObject(e, PassportElementType.fromJson)),
+          json['types'],
+          (e) => _readObject(e, PassportElementType.fromJson),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'types': [for (final e in types) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'types': [for (final e in types) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessagePassportDataSent copyWith({
-    List<PassportElementType>? types,
-  }) =>
-      MessagePassportDataSent(
-        types: types ?? this.types,
-      );
+  MessagePassportDataSent copyWith({List<PassportElementType>? types}) =>
+      MessagePassportDataSent(types: types ?? this.types);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messagePassportDataSent';
@@ -4853,18 +4559,22 @@ final class MessagePassportDataReceived extends MessageContent {
   /// Parses a [MessagePassportDataReceived] from TDLib JSON.
   factory MessagePassportDataReceived.fromJson(Map<String, dynamic> json) =>
       MessagePassportDataReceived(
-        elements: _readList<EncryptedPassportElement>(json['elements'],
-            (e) => _readObject(e, EncryptedPassportElement.fromJson)),
-        credentials:
-            _readObject(json['credentials'], EncryptedCredentials.fromJson),
+        elements: _readList<EncryptedPassportElement>(
+          json['elements'],
+          (e) => _readObject(e, EncryptedPassportElement.fromJson),
+        ),
+        credentials: _readObject(
+          json['credentials'],
+          EncryptedCredentials.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'elements': [for (final e in elements) e.toJson()],
-        'credentials': credentials.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'elements': [for (final e in elements) e.toJson()],
+    'credentials': credentials.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4872,11 +4582,10 @@ final class MessagePassportDataReceived extends MessageContent {
   MessagePassportDataReceived copyWith({
     List<EncryptedPassportElement>? elements,
     EncryptedCredentials? credentials,
-  }) =>
-      MessagePassportDataReceived(
-        elements: elements ?? this.elements,
-        credentials: credentials ?? this.credentials,
-      );
+  }) => MessagePassportDataReceived(
+    elements: elements ?? this.elements,
+    credentials: credentials ?? this.credentials,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messagePassportDataReceived';
@@ -4913,11 +4622,11 @@ final class MessageProximityAlertTriggered extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'traveler_id': travelerId.toJson(),
-        'watcher_id': watcherId.toJson(),
-        'distance': distance,
-      };
+    '@type': CONSTRUCTOR,
+    'traveler_id': travelerId.toJson(),
+    'watcher_id': watcherId.toJson(),
+    'distance': distance,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -4926,12 +4635,11 @@ final class MessageProximityAlertTriggered extends MessageContent {
     MessageSender? travelerId,
     MessageSender? watcherId,
     int? distance,
-  }) =>
-      MessageProximityAlertTriggered(
-        travelerId: travelerId ?? this.travelerId,
-        watcherId: watcherId ?? this.watcherId,
-        distance: distance ?? this.distance,
-      );
+  }) => MessageProximityAlertTriggered(
+    travelerId: travelerId ?? this.travelerId,
+    watcherId: watcherId ?? this.watcherId,
+    distance: distance ?? this.distance,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageProximityAlertTriggered';
@@ -4950,9 +4658,7 @@ final class MessageUnsupported extends MessageContent {
       const MessageUnsupported();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

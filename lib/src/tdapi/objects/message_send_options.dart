@@ -57,16 +57,21 @@ final class MessageSendOptions extends TdObject {
   factory MessageSendOptions.fromJson(Map<String, dynamic> json) =>
       MessageSendOptions(
         suggestedPostInfo: _readOptional(
-            json['suggested_post_info'], InputSuggestedPostInfo.fromJson),
+          json['suggested_post_info'],
+          InputSuggestedPostInfo.fromJson,
+        ),
         disableNotification: _readBool(json['disable_notification']),
         fromBackground: _readBool(json['from_background']),
         protectContent: _readBool(json['protect_content']),
         allowPaidBroadcast: _readBool(json['allow_paid_broadcast']),
         paidMessageStarCount: _readInt(json['paid_message_star_count']),
-        updateOrderOfInstalledStickerSets:
-            _readBool(json['update_order_of_installed_sticker_sets']),
+        updateOrderOfInstalledStickerSets: _readBool(
+          json['update_order_of_installed_sticker_sets'],
+        ),
         schedulingState: _readOptional(
-            json['scheduling_state'], MessageSchedulingState.fromJson),
+          json['scheduling_state'],
+          MessageSchedulingState.fromJson,
+        ),
         effectId: _readInt(json['effect_id']),
         sendingId: _readInt(json['sending_id']),
         onlyPreview: _readBool(json['only_preview']),
@@ -74,20 +79,19 @@ final class MessageSendOptions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'suggested_post_info': suggestedPostInfo?.toJson(),
-        'disable_notification': disableNotification,
-        'from_background': fromBackground,
-        'protect_content': protectContent,
-        'allow_paid_broadcast': allowPaidBroadcast,
-        'paid_message_star_count': paidMessageStarCount,
-        'update_order_of_installed_sticker_sets':
-            updateOrderOfInstalledStickerSets,
-        'scheduling_state': schedulingState?.toJson(),
-        'effect_id': effectId.toString(),
-        'sending_id': sendingId,
-        'only_preview': onlyPreview,
-      };
+    '@type': CONSTRUCTOR,
+    'suggested_post_info': suggestedPostInfo?.toJson(),
+    'disable_notification': disableNotification,
+    'from_background': fromBackground,
+    'protect_content': protectContent,
+    'allow_paid_broadcast': allowPaidBroadcast,
+    'paid_message_star_count': paidMessageStarCount,
+    'update_order_of_installed_sticker_sets': updateOrderOfInstalledStickerSets,
+    'scheduling_state': schedulingState?.toJson(),
+    'effect_id': effectId.toString(),
+    'sending_id': sendingId,
+    'only_preview': onlyPreview,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -103,24 +107,25 @@ final class MessageSendOptions extends TdObject {
     int? effectId,
     int? sendingId,
     bool? onlyPreview,
-  }) =>
-      MessageSendOptions(
-        suggestedPostInfo: suggestedPostInfo != null
-            ? suggestedPostInfo()
-            : this.suggestedPostInfo,
-        disableNotification: disableNotification ?? this.disableNotification,
-        fromBackground: fromBackground ?? this.fromBackground,
-        protectContent: protectContent ?? this.protectContent,
-        allowPaidBroadcast: allowPaidBroadcast ?? this.allowPaidBroadcast,
-        paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
-        updateOrderOfInstalledStickerSets: updateOrderOfInstalledStickerSets ??
-            this.updateOrderOfInstalledStickerSets,
-        schedulingState:
-            schedulingState != null ? schedulingState() : this.schedulingState,
-        effectId: effectId ?? this.effectId,
-        sendingId: sendingId ?? this.sendingId,
-        onlyPreview: onlyPreview ?? this.onlyPreview,
-      );
+  }) => MessageSendOptions(
+    suggestedPostInfo: suggestedPostInfo != null
+        ? suggestedPostInfo()
+        : this.suggestedPostInfo,
+    disableNotification: disableNotification ?? this.disableNotification,
+    fromBackground: fromBackground ?? this.fromBackground,
+    protectContent: protectContent ?? this.protectContent,
+    allowPaidBroadcast: allowPaidBroadcast ?? this.allowPaidBroadcast,
+    paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
+    updateOrderOfInstalledStickerSets:
+        updateOrderOfInstalledStickerSets ??
+        this.updateOrderOfInstalledStickerSets,
+    schedulingState: schedulingState != null
+        ? schedulingState()
+        : this.schedulingState,
+    effectId: effectId ?? this.effectId,
+    sendingId: sendingId ?? this.sendingId,
+    onlyPreview: onlyPreview ?? this.onlyPreview,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageSendOptions';

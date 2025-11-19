@@ -33,14 +33,14 @@ final class SetInlineGameScore extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'inline_message_id': inlineMessageId,
-        'edit_message': editMessage,
-        'user_id': userId,
-        'score': score,
-        'force': force,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'inline_message_id': inlineMessageId,
+    'edit_message': editMessage,
+    'user_id': userId,
+    'score': score,
+    'force': force,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class SetInlineGameScore extends TdFunction<Ok> {
     int? userId,
     int? score,
     bool? force,
-  }) =>
-      SetInlineGameScore(
-        inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-        editMessage: editMessage ?? this.editMessage,
-        userId: userId ?? this.userId,
-        score: score ?? this.score,
-        force: force ?? this.force,
-      );
+  }) => SetInlineGameScore(
+    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+    editMessage: editMessage ?? this.editMessage,
+    userId: userId ?? this.userId,
+    score: score ?? this.score,
+    force: force ?? this.force,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setInlineGameScore';

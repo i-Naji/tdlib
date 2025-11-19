@@ -29,13 +29,13 @@ final class EditInlineMessageCaption extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'inline_message_id': inlineMessageId,
-        'reply_markup': replyMarkup?.toJson(),
-        'caption': caption?.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'inline_message_id': inlineMessageId,
+    'reply_markup': replyMarkup?.toJson(),
+    'caption': caption?.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,14 +44,12 @@ final class EditInlineMessageCaption extends TdFunction<Ok> {
     ReplyMarkup? Function()? replyMarkup,
     FormattedText? Function()? caption,
     bool? showCaptionAboveMedia,
-  }) =>
-      EditInlineMessageCaption(
-        inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        caption: caption != null ? caption() : this.caption,
-        showCaptionAboveMedia:
-            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
-      );
+  }) => EditInlineMessageCaption(
+    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    caption: caption != null ? caption() : this.caption,
+    showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'editInlineMessageCaption';

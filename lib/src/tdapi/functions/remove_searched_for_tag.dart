@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class RemoveSearchedForTag extends TdFunction<Ok> {
   /// Removes a hashtag or a cashtag from the list of recently searched for hashtags or cashtags
-  const RemoveSearchedForTag({
-    required this.tag,
-  });
+  const RemoveSearchedForTag({required this.tag});
 
   /// Hashtag or cashtag to delete
   final String tag;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'tag': tag,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'tag': tag,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RemoveSearchedForTag copyWith({
-    String? tag,
-  }) =>
-      RemoveSearchedForTag(
-        tag: tag ?? this.tag,
-      );
+  RemoveSearchedForTag copyWith({String? tag}) =>
+      RemoveSearchedForTag(tag: tag ?? this.tag);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'removeSearchedForTag';

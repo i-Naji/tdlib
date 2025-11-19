@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Chat].
 final class SearchPublicChat extends TdFunction<Chat> {
   /// Searches a public chat by its username. Currently, only private chats, supergroups and channels can be public. Returns the chat if found; otherwise, an error is returned
-  const SearchPublicChat({
-    required this.username,
-  });
+  const SearchPublicChat({required this.username});
 
   /// Username to be resolved
   final String username;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'username': username,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'username': username,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchPublicChat copyWith({
-    String? username,
-  }) =>
-      SearchPublicChat(
-        username: username ?? this.username,
-      );
+  SearchPublicChat copyWith({String? username}) =>
+      SearchPublicChat(username: username ?? this.username);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchPublicChat';

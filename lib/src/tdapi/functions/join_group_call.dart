@@ -21,22 +21,21 @@ final class JoinGroupCall extends TdFunction<GroupCallInfo> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'input_group_call': inputGroupCall.toJson(),
-        'join_parameters': joinParameters.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'input_group_call': inputGroupCall.toJson(),
+    'join_parameters': joinParameters.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   JoinGroupCall copyWith({
     InputGroupCall? inputGroupCall,
     GroupCallJoinParameters? joinParameters,
-  }) =>
-      JoinGroupCall(
-        inputGroupCall: inputGroupCall ?? this.inputGroupCall,
-        joinParameters: joinParameters ?? this.joinParameters,
-      );
+  }) => JoinGroupCall(
+    inputGroupCall: inputGroupCall ?? this.inputGroupCall,
+    joinParameters: joinParameters ?? this.joinParameters,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'joinGroupCall';

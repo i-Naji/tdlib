@@ -45,34 +45,23 @@ final class UndecodedInputGroupCall extends InputGroupCall {
 /// The group call is accessible through a link
 final class InputGroupCallLink extends InputGroupCall {
   /// The group call is accessible through a link
-  const InputGroupCallLink({
-    required this.link,
-  });
+  const InputGroupCallLink({required this.link});
 
   /// The link for the group call
   final String link;
 
   /// Parses a [InputGroupCallLink] from TDLib JSON.
   factory InputGroupCallLink.fromJson(Map<String, dynamic> json) =>
-      InputGroupCallLink(
-        link: _readString(json['link']),
-      );
+      InputGroupCallLink(link: _readString(json['link']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'link': link,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'link': link};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputGroupCallLink copyWith({
-    String? link,
-  }) =>
-      InputGroupCallLink(
-        link: link ?? this.link,
-      );
+  InputGroupCallLink copyWith({String? link}) =>
+      InputGroupCallLink(link: link ?? this.link);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputGroupCallLink';
@@ -84,10 +73,7 @@ final class InputGroupCallLink extends InputGroupCall {
 /// The group call is accessible through a message of the type messageGroupCall
 final class InputGroupCallMessage extends InputGroupCall {
   /// The group call is accessible through a message of the type messageGroupCall
-  const InputGroupCallMessage({
-    required this.chatId,
-    required this.messageId,
-  });
+  const InputGroupCallMessage({required this.chatId, required this.messageId});
 
   /// Identifier of the chat with the message
   final int chatId;
@@ -104,18 +90,15 @@ final class InputGroupCallMessage extends InputGroupCall {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputGroupCallMessage copyWith({
-    int? chatId,
-    int? messageId,
-  }) =>
+  InputGroupCallMessage copyWith({int? chatId, int? messageId}) =>
       InputGroupCallMessage(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,

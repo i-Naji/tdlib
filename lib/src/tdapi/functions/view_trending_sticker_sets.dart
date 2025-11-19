@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ViewTrendingStickerSets extends TdFunction<Ok> {
   /// Informs the server that some trending sticker sets have been viewed by the user
-  const ViewTrendingStickerSets({
-    required this.stickerSetIds,
-  });
+  const ViewTrendingStickerSets({required this.stickerSetIds});
 
   /// Identifiers of viewed trending sticker sets
   final List<int> stickerSetIds;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker_set_ids': [for (final e in stickerSetIds) e.toString()],
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_set_ids': [for (final e in stickerSetIds) e.toString()],
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ViewTrendingStickerSets copyWith({
-    List<int>? stickerSetIds,
-  }) =>
+  ViewTrendingStickerSets copyWith({List<int>? stickerSetIds}) =>
       ViewTrendingStickerSets(
         stickerSetIds: stickerSetIds ?? this.stickerSetIds,
       );

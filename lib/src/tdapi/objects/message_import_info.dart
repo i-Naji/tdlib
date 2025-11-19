@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Contains information about a message created with importMessages
 final class MessageImportInfo extends TdObject {
   /// Contains information about a message created with importMessages
-  const MessageImportInfo({
-    required this.senderName,
-    required this.date,
-  });
+  const MessageImportInfo({required this.senderName, required this.date});
 
   /// Name of the original sender
   final String senderName;
@@ -26,17 +23,14 @@ final class MessageImportInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sender_name': senderName,
-        'date': date,
-      };
+    '@type': CONSTRUCTOR,
+    'sender_name': senderName,
+    'date': date,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  MessageImportInfo copyWith({
-    String? senderName,
-    int? date,
-  }) =>
+  MessageImportInfo copyWith({String? senderName, int? date}) =>
       MessageImportInfo(
         senderName: senderName ?? this.senderName,
         date: date ?? this.date,

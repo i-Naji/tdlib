@@ -53,13 +53,11 @@ final class SuggestedPostRefundReasonPostDeleted
 
   /// Parses a [SuggestedPostRefundReasonPostDeleted] from TDLib JSON.
   factory SuggestedPostRefundReasonPostDeleted.fromJson(
-          Map<String, dynamic> json) =>
-      const SuggestedPostRefundReasonPostDeleted();
+    Map<String, dynamic> json,
+  ) => const SuggestedPostRefundReasonPostDeleted();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -82,13 +80,11 @@ final class SuggestedPostRefundReasonPaymentRefunded
 
   /// Parses a [SuggestedPostRefundReasonPaymentRefunded] from TDLib JSON.
   factory SuggestedPostRefundReasonPaymentRefunded.fromJson(
-          Map<String, dynamic> json) =>
-      const SuggestedPostRefundReasonPaymentRefunded();
+    Map<String, dynamic> json,
+  ) => const SuggestedPostRefundReasonPaymentRefunded();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

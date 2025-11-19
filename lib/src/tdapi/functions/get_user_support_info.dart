@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [UserSupportInfo].
 final class GetUserSupportInfo extends TdFunction<UserSupportInfo> {
   /// Returns support information for the given user; for Telegram support only
-  const GetUserSupportInfo({
-    required this.userId,
-  });
+  const GetUserSupportInfo({required this.userId});
 
   /// User identifier
   final int userId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetUserSupportInfo copyWith({
-    int? userId,
-  }) =>
-      GetUserSupportInfo(
-        userId: userId ?? this.userId,
-      );
+  GetUserSupportInfo copyWith({int? userId}) =>
+      GetUserSupportInfo(userId: userId ?? this.userId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getUserSupportInfo';

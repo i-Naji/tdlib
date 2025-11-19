@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class RemoveInstalledBackground extends TdFunction<Ok> {
   /// Removes background from the list of installed backgrounds
-  const RemoveInstalledBackground({
-    required this.backgroundId,
-  });
+  const RemoveInstalledBackground({required this.backgroundId});
 
   /// The background identifier
   final int backgroundId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'background_id': backgroundId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'background_id': backgroundId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RemoveInstalledBackground copyWith({
-    int? backgroundId,
-  }) =>
+  RemoveInstalledBackground copyWith({int? backgroundId}) =>
       RemoveInstalledBackground(
         backgroundId: backgroundId ?? this.backgroundId,
       );

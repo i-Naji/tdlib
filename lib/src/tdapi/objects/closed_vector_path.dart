@@ -6,9 +6,7 @@ part of '../tdapi.dart';
 /// Represents a closed vector path. The path begins at the end point of the last command. The coordinate system origin is in the upper-left corner
 final class ClosedVectorPath extends TdObject {
   /// Represents a closed vector path. The path begins at the end point of the last command. The coordinate system origin is in the upper-left corner
-  const ClosedVectorPath({
-    required this.commands,
-  });
+  const ClosedVectorPath({required this.commands});
 
   /// List of vector path commands
   final List<VectorPathCommand> commands;
@@ -16,24 +14,22 @@ final class ClosedVectorPath extends TdObject {
   /// Parses a [ClosedVectorPath] from TDLib JSON.
   factory ClosedVectorPath.fromJson(Map<String, dynamic> json) =>
       ClosedVectorPath(
-        commands: _readList<VectorPathCommand>(json['commands'],
-            (e) => _readObject(e, VectorPathCommand.fromJson)),
+        commands: _readList<VectorPathCommand>(
+          json['commands'],
+          (e) => _readObject(e, VectorPathCommand.fromJson),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'commands': [for (final e in commands) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'commands': [for (final e in commands) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ClosedVectorPath copyWith({
-    List<VectorPathCommand>? commands,
-  }) =>
-      ClosedVectorPath(
-        commands: commands ?? this.commands,
-      );
+  ClosedVectorPath copyWith({List<VectorPathCommand>? commands}) =>
+      ClosedVectorPath(commands: commands ?? this.commands);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'closedVectorPath';

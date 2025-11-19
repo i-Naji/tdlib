@@ -25,12 +25,12 @@ final class SetChatAccentColor extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'accent_color_id': accentColorId,
-        'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'accent_color_id': accentColorId,
+    'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,13 +38,12 @@ final class SetChatAccentColor extends TdFunction<Ok> {
     int? chatId,
     int? accentColorId,
     int? backgroundCustomEmojiId,
-  }) =>
-      SetChatAccentColor(
-        chatId: chatId ?? this.chatId,
-        accentColorId: accentColorId ?? this.accentColorId,
-        backgroundCustomEmojiId:
-            backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
-      );
+  }) => SetChatAccentColor(
+    chatId: chatId ?? this.chatId,
+    accentColorId: accentColorId ?? this.accentColorId,
+    backgroundCustomEmojiId:
+        backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setChatAccentColor';

@@ -45,34 +45,23 @@ final class UndecodedInputChatTheme extends InputChatTheme {
 /// A theme based on an emoji
 final class InputChatThemeEmoji extends InputChatTheme {
   /// A theme based on an emoji
-  const InputChatThemeEmoji({
-    required this.name,
-  });
+  const InputChatThemeEmoji({required this.name});
 
   /// Name of the theme
   final String name;
 
   /// Parses a [InputChatThemeEmoji] from TDLib JSON.
   factory InputChatThemeEmoji.fromJson(Map<String, dynamic> json) =>
-      InputChatThemeEmoji(
-        name: _readString(json['name']),
-      );
+      InputChatThemeEmoji(name: _readString(json['name']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'name': name};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputChatThemeEmoji copyWith({
-    String? name,
-  }) =>
-      InputChatThemeEmoji(
-        name: name ?? this.name,
-      );
+  InputChatThemeEmoji copyWith({String? name}) =>
+      InputChatThemeEmoji(name: name ?? this.name);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputChatThemeEmoji';
@@ -84,34 +73,23 @@ final class InputChatThemeEmoji extends InputChatTheme {
 /// A theme based on an upgraded gift
 final class InputChatThemeGift extends InputChatTheme {
   /// A theme based on an upgraded gift
-  const InputChatThemeGift({
-    required this.name,
-  });
+  const InputChatThemeGift({required this.name});
 
   /// Name of the upgraded gift. A gift can be used only in one chat in a time. When the same gift is used in another chat, theme in the previous chat is reset to default
   final String name;
 
   /// Parses a [InputChatThemeGift] from TDLib JSON.
   factory InputChatThemeGift.fromJson(Map<String, dynamic> json) =>
-      InputChatThemeGift(
-        name: _readString(json['name']),
-      );
+      InputChatThemeGift(name: _readString(json['name']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'name': name};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputChatThemeGift copyWith({
-    String? name,
-  }) =>
-      InputChatThemeGift(
-        name: name ?? this.name,
-      );
+  InputChatThemeGift copyWith({String? name}) =>
+      InputChatThemeGift(name: name ?? this.name);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputChatThemeGift';

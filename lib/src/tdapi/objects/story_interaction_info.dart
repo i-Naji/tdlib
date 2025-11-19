@@ -31,18 +31,20 @@ final class StoryInteractionInfo extends TdObject {
         viewCount: _readInt(json['view_count']),
         forwardCount: _readInt(json['forward_count']),
         reactionCount: _readInt(json['reaction_count']),
-        recentViewerUserIds:
-            _readList<int>(json['recent_viewer_user_ids'], _readInt),
+        recentViewerUserIds: _readList<int>(
+          json['recent_viewer_user_ids'],
+          _readInt,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'view_count': viewCount,
-        'forward_count': forwardCount,
-        'reaction_count': reactionCount,
-        'recent_viewer_user_ids': recentViewerUserIds,
-      };
+    '@type': CONSTRUCTOR,
+    'view_count': viewCount,
+    'forward_count': forwardCount,
+    'reaction_count': reactionCount,
+    'recent_viewer_user_ids': recentViewerUserIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,13 +53,12 @@ final class StoryInteractionInfo extends TdObject {
     int? forwardCount,
     int? reactionCount,
     List<int>? recentViewerUserIds,
-  }) =>
-      StoryInteractionInfo(
-        viewCount: viewCount ?? this.viewCount,
-        forwardCount: forwardCount ?? this.forwardCount,
-        reactionCount: reactionCount ?? this.reactionCount,
-        recentViewerUserIds: recentViewerUserIds ?? this.recentViewerUserIds,
-      );
+  }) => StoryInteractionInfo(
+    viewCount: viewCount ?? this.viewCount,
+    forwardCount: forwardCount ?? this.forwardCount,
+    reactionCount: reactionCount ?? this.reactionCount,
+    recentViewerUserIds: recentViewerUserIds ?? this.recentViewerUserIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyInteractionInfo';

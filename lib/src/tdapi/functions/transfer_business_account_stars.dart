@@ -21,22 +21,21 @@ final class TransferBusinessAccountStars extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'business_connection_id': businessConnectionId,
-        'star_count': starCount,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'business_connection_id': businessConnectionId,
+    'star_count': starCount,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   TransferBusinessAccountStars copyWith({
     String? businessConnectionId,
     int? starCount,
-  }) =>
-      TransferBusinessAccountStars(
-        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-        starCount: starCount ?? this.starCount,
-      );
+  }) => TransferBusinessAccountStars(
+    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+    starCount: starCount ?? this.starCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'transferBusinessAccountStars';

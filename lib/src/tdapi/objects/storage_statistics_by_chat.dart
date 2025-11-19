@@ -31,18 +31,20 @@ final class StorageStatisticsByChat extends TdObject {
         chatId: _readInt(json['chat_id']),
         size: _readInt(json['size']),
         count: _readInt(json['count']),
-        byFileType: _readList<StorageStatisticsByFileType>(json['by_file_type'],
-            (e) => _readObject(e, StorageStatisticsByFileType.fromJson)),
+        byFileType: _readList<StorageStatisticsByFileType>(
+          json['by_file_type'],
+          (e) => _readObject(e, StorageStatisticsByFileType.fromJson),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'size': size,
-        'count': count,
-        'by_file_type': [for (final e in byFileType) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'size': size,
+    'count': count,
+    'by_file_type': [for (final e in byFileType) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,13 +53,12 @@ final class StorageStatisticsByChat extends TdObject {
     int? size,
     int? count,
     List<StorageStatisticsByFileType>? byFileType,
-  }) =>
-      StorageStatisticsByChat(
-        chatId: chatId ?? this.chatId,
-        size: size ?? this.size,
-        count: count ?? this.count,
-        byFileType: byFileType ?? this.byFileType,
-      );
+  }) => StorageStatisticsByChat(
+    chatId: chatId ?? this.chatId,
+    size: size ?? this.size,
+    count: count ?? this.count,
+    byFileType: byFileType ?? this.byFileType,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storageStatisticsByChat';

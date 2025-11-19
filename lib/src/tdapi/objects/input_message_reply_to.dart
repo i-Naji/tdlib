@@ -72,11 +72,11 @@ final class InputMessageReplyToMessage extends InputMessageReplyTo {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message_id': messageId,
-        'quote': quote?.toJson(),
-        'checklist_task_id': checklistTaskId,
-      };
+    '@type': CONSTRUCTOR,
+    'message_id': messageId,
+    'quote': quote?.toJson(),
+    'checklist_task_id': checklistTaskId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -85,12 +85,11 @@ final class InputMessageReplyToMessage extends InputMessageReplyTo {
     int? messageId,
     InputTextQuote? Function()? quote,
     int? checklistTaskId,
-  }) =>
-      InputMessageReplyToMessage(
-        messageId: messageId ?? this.messageId,
-        quote: quote != null ? quote() : this.quote,
-        checklistTaskId: checklistTaskId ?? this.checklistTaskId,
-      );
+  }) => InputMessageReplyToMessage(
+    messageId: messageId ?? this.messageId,
+    quote: quote != null ? quote() : this.quote,
+    checklistTaskId: checklistTaskId ?? this.checklistTaskId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageReplyToMessage';
@@ -123,22 +122,22 @@ final class InputMessageReplyToExternalMessage extends InputMessageReplyTo {
 
   /// Parses a [InputMessageReplyToExternalMessage] from TDLib JSON.
   factory InputMessageReplyToExternalMessage.fromJson(
-          Map<String, dynamic> json) =>
-      InputMessageReplyToExternalMessage(
-        chatId: _readInt(json['chat_id']),
-        messageId: _readInt(json['message_id']),
-        quote: _readOptional(json['quote'], InputTextQuote.fromJson),
-        checklistTaskId: _readInt(json['checklist_task_id']),
-      );
+    Map<String, dynamic> json,
+  ) => InputMessageReplyToExternalMessage(
+    chatId: _readInt(json['chat_id']),
+    messageId: _readInt(json['message_id']),
+    quote: _readOptional(json['quote'], InputTextQuote.fromJson),
+    checklistTaskId: _readInt(json['checklist_task_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'quote': quote?.toJson(),
-        'checklist_task_id': checklistTaskId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'quote': quote?.toJson(),
+    'checklist_task_id': checklistTaskId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -148,13 +147,12 @@ final class InputMessageReplyToExternalMessage extends InputMessageReplyTo {
     int? messageId,
     InputTextQuote? Function()? quote,
     int? checklistTaskId,
-  }) =>
-      InputMessageReplyToExternalMessage(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        quote: quote != null ? quote() : this.quote,
-        checklistTaskId: checklistTaskId ?? this.checklistTaskId,
-      );
+  }) => InputMessageReplyToExternalMessage(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    quote: quote != null ? quote() : this.quote,
+    checklistTaskId: checklistTaskId ?? this.checklistTaskId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageReplyToExternalMessage';
@@ -186,18 +184,15 @@ final class InputMessageReplyToStory extends InputMessageReplyTo {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'story_id': storyId,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputMessageReplyToStory copyWith({
-    int? storyPosterChatId,
-    int? storyId,
-  }) =>
+  InputMessageReplyToStory copyWith({int? storyPosterChatId, int? storyId}) =>
       InputMessageReplyToStory(
         storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
         storyId: storyId ?? this.storyId,

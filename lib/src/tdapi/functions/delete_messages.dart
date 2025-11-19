@@ -25,20 +25,16 @@ final class DeleteMessages extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_ids': messageIds,
-        'revoke': revoke,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_ids': messageIds,
+    'revoke': revoke,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteMessages copyWith({
-    int? chatId,
-    List<int>? messageIds,
-    bool? revoke,
-  }) =>
+  DeleteMessages copyWith({int? chatId, List<int>? messageIds, bool? revoke}) =>
       DeleteMessages(
         chatId: chatId ?? this.chatId,
         messageIds: messageIds ?? this.messageIds,

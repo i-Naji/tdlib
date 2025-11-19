@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Describes a user that had or will have a birthday soon
 final class CloseBirthdayUser extends TdObject {
   /// Describes a user that had or will have a birthday soon
-  const CloseBirthdayUser({
-    required this.userId,
-    required this.birthdate,
-  });
+  const CloseBirthdayUser({required this.userId, required this.birthdate});
 
   /// User identifier
   final int userId;
@@ -26,17 +23,14 @@ final class CloseBirthdayUser extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'birthdate': birthdate.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'birthdate': birthdate.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CloseBirthdayUser copyWith({
-    int? userId,
-    Birthdate? birthdate,
-  }) =>
+  CloseBirthdayUser copyWith({int? userId, Birthdate? birthdate}) =>
       CloseBirthdayUser(
         userId: userId ?? this.userId,
         birthdate: birthdate ?? this.birthdate,

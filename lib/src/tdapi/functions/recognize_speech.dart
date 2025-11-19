@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class RecognizeSpeech extends TdFunction<Ok> {
   /// Recognizes speech in a video note or a voice note message
-  const RecognizeSpeech({
-    required this.chatId,
-    required this.messageId,
-  });
+  const RecognizeSpeech({required this.chatId, required this.messageId});
 
   /// Identifier of the chat to which the message belongs
   final int chatId;
@@ -21,22 +18,18 @@ final class RecognizeSpeech extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RecognizeSpeech copyWith({
-    int? chatId,
-    int? messageId,
-  }) =>
-      RecognizeSpeech(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-      );
+  RecognizeSpeech copyWith({int? chatId, int? messageId}) => RecognizeSpeech(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'recognizeSpeech';

@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// A simple object containing a number; for testing only
 final class TestInt extends TdObject {
   /// A simple object containing a number; for testing only
-  const TestInt({
-    required this.value,
-    this.extra,
-    this.clientId,
-  });
+  const TestInt({required this.value, this.extra, this.clientId});
 
   /// Number
   final int value;
@@ -25,29 +21,21 @@ final class TestInt extends TdObject {
 
   /// Parses a [TestInt] from TDLib JSON.
   factory TestInt.fromJson(Map<String, dynamic> json) => TestInt(
-        value: _readInt(json['value']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    value: _readInt(json['value']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'value': value,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'value': value};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TestInt copyWith({
-    int? value,
-    dynamic extra,
-    int? clientId,
-  }) =>
-      TestInt(
-        value: value ?? this.value,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  TestInt copyWith({int? value, dynamic extra, int? clientId}) => TestInt(
+    value: value ?? this.value,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'testInt';

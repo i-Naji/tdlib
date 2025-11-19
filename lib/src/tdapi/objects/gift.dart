@@ -67,42 +67,43 @@ final class Gift extends TdObject {
 
   /// Parses a [Gift] from TDLib JSON.
   factory Gift.fromJson(Map<String, dynamic> json) => Gift(
-        id: _readInt(json['id']),
-        publisherChatId: _readInt(json['publisher_chat_id']),
-        sticker: _readObject(json['sticker'], Sticker.fromJson),
-        starCount: _readInt(json['star_count']),
-        defaultSellStarCount: _readInt(json['default_sell_star_count']),
-        upgradeStarCount: _readInt(json['upgrade_star_count']),
-        hasColors: _readBool(json['has_colors']),
-        isForBirthday: _readBool(json['is_for_birthday']),
-        isPremium: _readBool(json['is_premium']),
-        nextSendDate: _readInt(json['next_send_date']),
-        userLimits:
-            _readOptional(json['user_limits'], GiftPurchaseLimits.fromJson),
-        overallLimits:
-            _readOptional(json['overall_limits'], GiftPurchaseLimits.fromJson),
-        firstSendDate: _readInt(json['first_send_date']),
-        lastSendDate: _readInt(json['last_send_date']),
-      );
+    id: _readInt(json['id']),
+    publisherChatId: _readInt(json['publisher_chat_id']),
+    sticker: _readObject(json['sticker'], Sticker.fromJson),
+    starCount: _readInt(json['star_count']),
+    defaultSellStarCount: _readInt(json['default_sell_star_count']),
+    upgradeStarCount: _readInt(json['upgrade_star_count']),
+    hasColors: _readBool(json['has_colors']),
+    isForBirthday: _readBool(json['is_for_birthday']),
+    isPremium: _readBool(json['is_premium']),
+    nextSendDate: _readInt(json['next_send_date']),
+    userLimits: _readOptional(json['user_limits'], GiftPurchaseLimits.fromJson),
+    overallLimits: _readOptional(
+      json['overall_limits'],
+      GiftPurchaseLimits.fromJson,
+    ),
+    firstSendDate: _readInt(json['first_send_date']),
+    lastSendDate: _readInt(json['last_send_date']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'publisher_chat_id': publisherChatId,
-        'sticker': sticker.toJson(),
-        'star_count': starCount,
-        'default_sell_star_count': defaultSellStarCount,
-        'upgrade_star_count': upgradeStarCount,
-        'has_colors': hasColors,
-        'is_for_birthday': isForBirthday,
-        'is_premium': isPremium,
-        'next_send_date': nextSendDate,
-        'user_limits': userLimits?.toJson(),
-        'overall_limits': overallLimits?.toJson(),
-        'first_send_date': firstSendDate,
-        'last_send_date': lastSendDate,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'publisher_chat_id': publisherChatId,
+    'sticker': sticker.toJson(),
+    'star_count': starCount,
+    'default_sell_star_count': defaultSellStarCount,
+    'upgrade_star_count': upgradeStarCount,
+    'has_colors': hasColors,
+    'is_for_birthday': isForBirthday,
+    'is_premium': isPremium,
+    'next_send_date': nextSendDate,
+    'user_limits': userLimits?.toJson(),
+    'overall_limits': overallLimits?.toJson(),
+    'first_send_date': firstSendDate,
+    'last_send_date': lastSendDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -121,24 +122,22 @@ final class Gift extends TdObject {
     GiftPurchaseLimits? Function()? overallLimits,
     int? firstSendDate,
     int? lastSendDate,
-  }) =>
-      Gift(
-        id: id ?? this.id,
-        publisherChatId: publisherChatId ?? this.publisherChatId,
-        sticker: sticker ?? this.sticker,
-        starCount: starCount ?? this.starCount,
-        defaultSellStarCount: defaultSellStarCount ?? this.defaultSellStarCount,
-        upgradeStarCount: upgradeStarCount ?? this.upgradeStarCount,
-        hasColors: hasColors ?? this.hasColors,
-        isForBirthday: isForBirthday ?? this.isForBirthday,
-        isPremium: isPremium ?? this.isPremium,
-        nextSendDate: nextSendDate ?? this.nextSendDate,
-        userLimits: userLimits != null ? userLimits() : this.userLimits,
-        overallLimits:
-            overallLimits != null ? overallLimits() : this.overallLimits,
-        firstSendDate: firstSendDate ?? this.firstSendDate,
-        lastSendDate: lastSendDate ?? this.lastSendDate,
-      );
+  }) => Gift(
+    id: id ?? this.id,
+    publisherChatId: publisherChatId ?? this.publisherChatId,
+    sticker: sticker ?? this.sticker,
+    starCount: starCount ?? this.starCount,
+    defaultSellStarCount: defaultSellStarCount ?? this.defaultSellStarCount,
+    upgradeStarCount: upgradeStarCount ?? this.upgradeStarCount,
+    hasColors: hasColors ?? this.hasColors,
+    isForBirthday: isForBirthday ?? this.isForBirthday,
+    isPremium: isPremium ?? this.isPremium,
+    nextSendDate: nextSendDate ?? this.nextSendDate,
+    userLimits: userLimits != null ? userLimits() : this.userLimits,
+    overallLimits: overallLimits != null ? overallLimits() : this.overallLimits,
+    firstSendDate: firstSendDate ?? this.firstSendDate,
+    lastSendDate: lastSendDate ?? this.lastSendDate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'gift';

@@ -46,14 +46,14 @@ final class AlternativeVideo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'width': width,
-        'height': height,
-        'codec': codec,
-        'hls_file': hlsFile.toJson(),
-        'video': video.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'width': width,
+    'height': height,
+    'codec': codec,
+    'hls_file': hlsFile.toJson(),
+    'video': video.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -64,15 +64,14 @@ final class AlternativeVideo extends TdObject {
     String? codec,
     File? hlsFile,
     File? video,
-  }) =>
-      AlternativeVideo(
-        id: id ?? this.id,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        codec: codec ?? this.codec,
-        hlsFile: hlsFile ?? this.hlsFile,
-        video: video ?? this.video,
-      );
+  }) => AlternativeVideo(
+    id: id ?? this.id,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    codec: codec ?? this.codec,
+    hlsFile: hlsFile ?? this.hlsFile,
+    video: video ?? this.video,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'alternativeVideo';

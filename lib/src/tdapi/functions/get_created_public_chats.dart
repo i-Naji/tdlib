@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Chats].
 final class GetCreatedPublicChats extends TdFunction<Chats> {
   /// Returns a list of public chats of the specified type, owned by the user
-  const GetCreatedPublicChats({
-    required this.type,
-  });
+  const GetCreatedPublicChats({required this.type});
 
   /// Type of the public chats to return
   final PublicChatType type;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetCreatedPublicChats copyWith({
-    PublicChatType? type,
-  }) =>
-      GetCreatedPublicChats(
-        type: type ?? this.type,
-      );
+  GetCreatedPublicChats copyWith({PublicChatType? type}) =>
+      GetCreatedPublicChats(type: type ?? this.type);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getCreatedPublicChats';

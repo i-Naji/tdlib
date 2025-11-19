@@ -112,70 +112,78 @@ final class AttachmentMenuBot extends TdObject {
   final int? clientId;
 
   /// Parses a [AttachmentMenuBot] from TDLib JSON.
-  factory AttachmentMenuBot.fromJson(Map<String, dynamic> json) =>
-      AttachmentMenuBot(
-        botUserId: _readInt(json['bot_user_id']),
-        supportsSelfChat: _readBool(json['supports_self_chat']),
-        supportsUserChats: _readBool(json['supports_user_chats']),
-        supportsBotChats: _readBool(json['supports_bot_chats']),
-        supportsGroupChats: _readBool(json['supports_group_chats']),
-        supportsChannelChats: _readBool(json['supports_channel_chats']),
-        requestWriteAccess: _readBool(json['request_write_access']),
-        isAdded: _readBool(json['is_added']),
-        showInAttachmentMenu: _readBool(json['show_in_attachment_menu']),
-        showInSideMenu: _readBool(json['show_in_side_menu']),
-        showDisclaimerInSideMenu:
-            _readBool(json['show_disclaimer_in_side_menu']),
-        name: _readString(json['name']),
-        nameColor:
-            _readOptional(json['name_color'], AttachmentMenuBotColor.fromJson),
-        defaultIcon: _readOptional(json['default_icon'], File.fromJson),
-        iosStaticIcon: _readOptional(json['ios_static_icon'], File.fromJson),
-        iosAnimatedIcon:
-            _readOptional(json['ios_animated_icon'], File.fromJson),
-        iosSideMenuIcon:
-            _readOptional(json['ios_side_menu_icon'], File.fromJson),
-        androidIcon: _readOptional(json['android_icon'], File.fromJson),
-        androidSideMenuIcon:
-            _readOptional(json['android_side_menu_icon'], File.fromJson),
-        macosIcon: _readOptional(json['macos_icon'], File.fromJson),
-        macosSideMenuIcon:
-            _readOptional(json['macos_side_menu_icon'], File.fromJson),
-        iconColor:
-            _readOptional(json['icon_color'], AttachmentMenuBotColor.fromJson),
-        webAppPlaceholder:
-            _readOptional(json['web_app_placeholder'], File.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+  factory AttachmentMenuBot.fromJson(
+    Map<String, dynamic> json,
+  ) => AttachmentMenuBot(
+    botUserId: _readInt(json['bot_user_id']),
+    supportsSelfChat: _readBool(json['supports_self_chat']),
+    supportsUserChats: _readBool(json['supports_user_chats']),
+    supportsBotChats: _readBool(json['supports_bot_chats']),
+    supportsGroupChats: _readBool(json['supports_group_chats']),
+    supportsChannelChats: _readBool(json['supports_channel_chats']),
+    requestWriteAccess: _readBool(json['request_write_access']),
+    isAdded: _readBool(json['is_added']),
+    showInAttachmentMenu: _readBool(json['show_in_attachment_menu']),
+    showInSideMenu: _readBool(json['show_in_side_menu']),
+    showDisclaimerInSideMenu: _readBool(json['show_disclaimer_in_side_menu']),
+    name: _readString(json['name']),
+    nameColor: _readOptional(
+      json['name_color'],
+      AttachmentMenuBotColor.fromJson,
+    ),
+    defaultIcon: _readOptional(json['default_icon'], File.fromJson),
+    iosStaticIcon: _readOptional(json['ios_static_icon'], File.fromJson),
+    iosAnimatedIcon: _readOptional(json['ios_animated_icon'], File.fromJson),
+    iosSideMenuIcon: _readOptional(json['ios_side_menu_icon'], File.fromJson),
+    androidIcon: _readOptional(json['android_icon'], File.fromJson),
+    androidSideMenuIcon: _readOptional(
+      json['android_side_menu_icon'],
+      File.fromJson,
+    ),
+    macosIcon: _readOptional(json['macos_icon'], File.fromJson),
+    macosSideMenuIcon: _readOptional(
+      json['macos_side_menu_icon'],
+      File.fromJson,
+    ),
+    iconColor: _readOptional(
+      json['icon_color'],
+      AttachmentMenuBotColor.fromJson,
+    ),
+    webAppPlaceholder: _readOptional(
+      json['web_app_placeholder'],
+      File.fromJson,
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'supports_self_chat': supportsSelfChat,
-        'supports_user_chats': supportsUserChats,
-        'supports_bot_chats': supportsBotChats,
-        'supports_group_chats': supportsGroupChats,
-        'supports_channel_chats': supportsChannelChats,
-        'request_write_access': requestWriteAccess,
-        'is_added': isAdded,
-        'show_in_attachment_menu': showInAttachmentMenu,
-        'show_in_side_menu': showInSideMenu,
-        'show_disclaimer_in_side_menu': showDisclaimerInSideMenu,
-        'name': name,
-        'name_color': nameColor?.toJson(),
-        'default_icon': defaultIcon?.toJson(),
-        'ios_static_icon': iosStaticIcon?.toJson(),
-        'ios_animated_icon': iosAnimatedIcon?.toJson(),
-        'ios_side_menu_icon': iosSideMenuIcon?.toJson(),
-        'android_icon': androidIcon?.toJson(),
-        'android_side_menu_icon': androidSideMenuIcon?.toJson(),
-        'macos_icon': macosIcon?.toJson(),
-        'macos_side_menu_icon': macosSideMenuIcon?.toJson(),
-        'icon_color': iconColor?.toJson(),
-        'web_app_placeholder': webAppPlaceholder?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'supports_self_chat': supportsSelfChat,
+    'supports_user_chats': supportsUserChats,
+    'supports_bot_chats': supportsBotChats,
+    'supports_group_chats': supportsGroupChats,
+    'supports_channel_chats': supportsChannelChats,
+    'request_write_access': requestWriteAccess,
+    'is_added': isAdded,
+    'show_in_attachment_menu': showInAttachmentMenu,
+    'show_in_side_menu': showInSideMenu,
+    'show_disclaimer_in_side_menu': showDisclaimerInSideMenu,
+    'name': name,
+    'name_color': nameColor?.toJson(),
+    'default_icon': defaultIcon?.toJson(),
+    'ios_static_icon': iosStaticIcon?.toJson(),
+    'ios_animated_icon': iosAnimatedIcon?.toJson(),
+    'ios_side_menu_icon': iosSideMenuIcon?.toJson(),
+    'android_icon': androidIcon?.toJson(),
+    'android_side_menu_icon': androidSideMenuIcon?.toJson(),
+    'macos_icon': macosIcon?.toJson(),
+    'macos_side_menu_icon': macosSideMenuIcon?.toJson(),
+    'icon_color': iconColor?.toJson(),
+    'web_app_placeholder': webAppPlaceholder?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -205,44 +213,44 @@ final class AttachmentMenuBot extends TdObject {
     File? Function()? webAppPlaceholder,
     dynamic extra,
     int? clientId,
-  }) =>
-      AttachmentMenuBot(
-        botUserId: botUserId ?? this.botUserId,
-        supportsSelfChat: supportsSelfChat ?? this.supportsSelfChat,
-        supportsUserChats: supportsUserChats ?? this.supportsUserChats,
-        supportsBotChats: supportsBotChats ?? this.supportsBotChats,
-        supportsGroupChats: supportsGroupChats ?? this.supportsGroupChats,
-        supportsChannelChats: supportsChannelChats ?? this.supportsChannelChats,
-        requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
-        isAdded: isAdded ?? this.isAdded,
-        showInAttachmentMenu: showInAttachmentMenu ?? this.showInAttachmentMenu,
-        showInSideMenu: showInSideMenu ?? this.showInSideMenu,
-        showDisclaimerInSideMenu:
-            showDisclaimerInSideMenu ?? this.showDisclaimerInSideMenu,
-        name: name ?? this.name,
-        nameColor: nameColor != null ? nameColor() : this.nameColor,
-        defaultIcon: defaultIcon != null ? defaultIcon() : this.defaultIcon,
-        iosStaticIcon:
-            iosStaticIcon != null ? iosStaticIcon() : this.iosStaticIcon,
-        iosAnimatedIcon:
-            iosAnimatedIcon != null ? iosAnimatedIcon() : this.iosAnimatedIcon,
-        iosSideMenuIcon:
-            iosSideMenuIcon != null ? iosSideMenuIcon() : this.iosSideMenuIcon,
-        androidIcon: androidIcon != null ? androidIcon() : this.androidIcon,
-        androidSideMenuIcon: androidSideMenuIcon != null
-            ? androidSideMenuIcon()
-            : this.androidSideMenuIcon,
-        macosIcon: macosIcon != null ? macosIcon() : this.macosIcon,
-        macosSideMenuIcon: macosSideMenuIcon != null
-            ? macosSideMenuIcon()
-            : this.macosSideMenuIcon,
-        iconColor: iconColor != null ? iconColor() : this.iconColor,
-        webAppPlaceholder: webAppPlaceholder != null
-            ? webAppPlaceholder()
-            : this.webAppPlaceholder,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => AttachmentMenuBot(
+    botUserId: botUserId ?? this.botUserId,
+    supportsSelfChat: supportsSelfChat ?? this.supportsSelfChat,
+    supportsUserChats: supportsUserChats ?? this.supportsUserChats,
+    supportsBotChats: supportsBotChats ?? this.supportsBotChats,
+    supportsGroupChats: supportsGroupChats ?? this.supportsGroupChats,
+    supportsChannelChats: supportsChannelChats ?? this.supportsChannelChats,
+    requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
+    isAdded: isAdded ?? this.isAdded,
+    showInAttachmentMenu: showInAttachmentMenu ?? this.showInAttachmentMenu,
+    showInSideMenu: showInSideMenu ?? this.showInSideMenu,
+    showDisclaimerInSideMenu:
+        showDisclaimerInSideMenu ?? this.showDisclaimerInSideMenu,
+    name: name ?? this.name,
+    nameColor: nameColor != null ? nameColor() : this.nameColor,
+    defaultIcon: defaultIcon != null ? defaultIcon() : this.defaultIcon,
+    iosStaticIcon: iosStaticIcon != null ? iosStaticIcon() : this.iosStaticIcon,
+    iosAnimatedIcon: iosAnimatedIcon != null
+        ? iosAnimatedIcon()
+        : this.iosAnimatedIcon,
+    iosSideMenuIcon: iosSideMenuIcon != null
+        ? iosSideMenuIcon()
+        : this.iosSideMenuIcon,
+    androidIcon: androidIcon != null ? androidIcon() : this.androidIcon,
+    androidSideMenuIcon: androidSideMenuIcon != null
+        ? androidSideMenuIcon()
+        : this.androidSideMenuIcon,
+    macosIcon: macosIcon != null ? macosIcon() : this.macosIcon,
+    macosSideMenuIcon: macosSideMenuIcon != null
+        ? macosSideMenuIcon()
+        : this.macosSideMenuIcon,
+    iconColor: iconColor != null ? iconColor() : this.iconColor,
+    webAppPlaceholder: webAppPlaceholder != null
+        ? webAppPlaceholder()
+        : this.webAppPlaceholder,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'attachmentMenuBot';

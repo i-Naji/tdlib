@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [ForumTopic].
 final class GetForumTopic extends TdFunction<ForumTopic> {
   /// Returns information about a topic in a forum supergroup chat or a chat with a bot with topics
-  const GetForumTopic({
-    required this.chatId,
-    required this.forumTopicId,
-  });
+  const GetForumTopic({required this.chatId, required this.forumTopicId});
 
   /// Identifier of the chat
   final int chatId;
@@ -21,22 +18,18 @@ final class GetForumTopic extends TdFunction<ForumTopic> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'forum_topic_id': forumTopicId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'forum_topic_id': forumTopicId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetForumTopic copyWith({
-    int? chatId,
-    int? forumTopicId,
-  }) =>
-      GetForumTopic(
-        chatId: chatId ?? this.chatId,
-        forumTopicId: forumTopicId ?? this.forumTopicId,
-      );
+  GetForumTopic copyWith({int? chatId, int? forumTopicId}) => GetForumTopic(
+    chatId: chatId ?? this.chatId,
+    forumTopicId: forumTopicId ?? this.forumTopicId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getForumTopic';

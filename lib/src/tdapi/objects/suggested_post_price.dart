@@ -47,34 +47,26 @@ final class UndecodedSuggestedPostPrice extends SuggestedPostPrice {
 /// Describes price of a suggested post in Telegram Stars
 final class SuggestedPostPriceStar extends SuggestedPostPrice {
   /// Describes price of a suggested post in Telegram Stars
-  const SuggestedPostPriceStar({
-    required this.starCount,
-  });
+  const SuggestedPostPriceStar({required this.starCount});
 
   /// The amount of Telegram Stars expected to be paid for the post; getOption("suggested_post_star_count_min")-getOption("suggested_post_star_count_max")
   final int starCount;
 
   /// Parses a [SuggestedPostPriceStar] from TDLib JSON.
   factory SuggestedPostPriceStar.fromJson(Map<String, dynamic> json) =>
-      SuggestedPostPriceStar(
-        starCount: _readInt(json['star_count']),
-      );
+      SuggestedPostPriceStar(starCount: _readInt(json['star_count']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'star_count': starCount,
-      };
+    '@type': CONSTRUCTOR,
+    'star_count': starCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  SuggestedPostPriceStar copyWith({
-    int? starCount,
-  }) =>
-      SuggestedPostPriceStar(
-        starCount: starCount ?? this.starCount,
-      );
+  SuggestedPostPriceStar copyWith({int? starCount}) =>
+      SuggestedPostPriceStar(starCount: starCount ?? this.starCount);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'suggestedPostPriceStar';
@@ -86,9 +78,7 @@ final class SuggestedPostPriceStar extends SuggestedPostPrice {
 /// Describes price of a suggested post in Toncoins
 final class SuggestedPostPriceTon extends SuggestedPostPrice {
   /// Describes price of a suggested post in Toncoins
-  const SuggestedPostPriceTon({
-    required this.toncoinCentCount,
-  });
+  const SuggestedPostPriceTon({required this.toncoinCentCount});
 
   /// The amount of 1/100 of Toncoin expected to be paid for the post; getOption("suggested_post_toncoin_cent_count_min")-getOption("suggested_post_toncoin_cent_count_max")
   final int toncoinCentCount;
@@ -101,16 +91,14 @@ final class SuggestedPostPriceTon extends SuggestedPostPrice {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'toncoin_cent_count': toncoinCentCount,
-      };
+    '@type': CONSTRUCTOR,
+    'toncoin_cent_count': toncoinCentCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  SuggestedPostPriceTon copyWith({
-    int? toncoinCentCount,
-  }) =>
+  SuggestedPostPriceTon copyWith({int? toncoinCentCount}) =>
       SuggestedPostPriceTon(
         toncoinCentCount: toncoinCentCount ?? this.toncoinCentCount,
       );

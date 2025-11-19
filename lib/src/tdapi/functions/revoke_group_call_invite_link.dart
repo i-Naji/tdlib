@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class RevokeGroupCallInviteLink extends TdFunction<Ok> {
   /// Revokes invite link for a group call. Requires groupCall.can_be_managed right for video chats or groupCall.is_owned otherwise
-  const RevokeGroupCallInviteLink({
-    required this.groupCallId,
-  });
+  const RevokeGroupCallInviteLink({required this.groupCallId});
 
   /// Group call identifier
   final int groupCallId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RevokeGroupCallInviteLink copyWith({
-    int? groupCallId,
-  }) =>
-      RevokeGroupCallInviteLink(
-        groupCallId: groupCallId ?? this.groupCallId,
-      );
+  RevokeGroupCallInviteLink copyWith({int? groupCallId}) =>
+      RevokeGroupCallInviteLink(groupCallId: groupCallId ?? this.groupCallId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'revokeGroupCallInviteLink';

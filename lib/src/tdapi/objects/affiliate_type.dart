@@ -52,9 +52,7 @@ final class AffiliateTypeCurrentUser extends AffiliateType {
       const AffiliateTypeCurrentUser();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -71,34 +69,23 @@ final class AffiliateTypeCurrentUser extends AffiliateType {
 /// The affiliate is a bot owned by the current user
 final class AffiliateTypeBot extends AffiliateType {
   /// The affiliate is a bot owned by the current user
-  const AffiliateTypeBot({
-    required this.userId,
-  });
+  const AffiliateTypeBot({required this.userId});
 
   /// User identifier of the bot
   final int userId;
 
   /// Parses a [AffiliateTypeBot] from TDLib JSON.
   factory AffiliateTypeBot.fromJson(Map<String, dynamic> json) =>
-      AffiliateTypeBot(
-        userId: _readInt(json['user_id']),
-      );
+      AffiliateTypeBot(userId: _readInt(json['user_id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'user_id': userId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  AffiliateTypeBot copyWith({
-    int? userId,
-  }) =>
-      AffiliateTypeBot(
-        userId: userId ?? this.userId,
-      );
+  AffiliateTypeBot copyWith({int? userId}) =>
+      AffiliateTypeBot(userId: userId ?? this.userId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'affiliateTypeBot';
@@ -110,34 +97,23 @@ final class AffiliateTypeBot extends AffiliateType {
 /// The affiliate is a channel chat where the current user has can_post_messages administrator right
 final class AffiliateTypeChannel extends AffiliateType {
   /// The affiliate is a channel chat where the current user has can_post_messages administrator right
-  const AffiliateTypeChannel({
-    required this.chatId,
-  });
+  const AffiliateTypeChannel({required this.chatId});
 
   /// Identifier of the channel chat
   final int chatId;
 
   /// Parses a [AffiliateTypeChannel] from TDLib JSON.
   factory AffiliateTypeChannel.fromJson(Map<String, dynamic> json) =>
-      AffiliateTypeChannel(
-        chatId: _readInt(json['chat_id']),
-      );
+      AffiliateTypeChannel(chatId: _readInt(json['chat_id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'chat_id': chatId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  AffiliateTypeChannel copyWith({
-    int? chatId,
-  }) =>
-      AffiliateTypeChannel(
-        chatId: chatId ?? this.chatId,
-      );
+  AffiliateTypeChannel copyWith({int? chatId}) =>
+      AffiliateTypeChannel(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'affiliateTypeChannel';

@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Represents a location to which a chat is connected
 final class ChatLocation extends TdObject {
   /// Represents a location to which a chat is connected
-  const ChatLocation({
-    required this.location,
-    required this.address,
-  });
+  const ChatLocation({required this.location, required this.address});
 
   /// The location
   final Location location;
@@ -19,27 +16,23 @@ final class ChatLocation extends TdObject {
 
   /// Parses a [ChatLocation] from TDLib JSON.
   factory ChatLocation.fromJson(Map<String, dynamic> json) => ChatLocation(
-        location: _readObject(json['location'], Location.fromJson),
-        address: _readString(json['address']),
-      );
+    location: _readObject(json['location'], Location.fromJson),
+    address: _readString(json['address']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'location': location.toJson(),
-        'address': address,
-      };
+    '@type': CONSTRUCTOR,
+    'location': location.toJson(),
+    'address': address,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ChatLocation copyWith({
-    Location? location,
-    String? address,
-  }) =>
-      ChatLocation(
-        location: location ?? this.location,
-        address: address ?? this.address,
-      );
+  ChatLocation copyWith({Location? location, String? address}) => ChatLocation(
+    location: location ?? this.location,
+    address: address ?? this.address,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatLocation';

@@ -29,13 +29,13 @@ final class CreateVideoChat extends TdFunction<GroupCallId> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'title': title,
-        'start_date': startDate,
-        'is_rtmp_stream': isRtmpStream,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'title': title,
+    'start_date': startDate,
+    'is_rtmp_stream': isRtmpStream,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class CreateVideoChat extends TdFunction<GroupCallId> {
     String? title,
     int? startDate,
     bool? isRtmpStream,
-  }) =>
-      CreateVideoChat(
-        chatId: chatId ?? this.chatId,
-        title: title ?? this.title,
-        startDate: startDate ?? this.startDate,
-        isRtmpStream: isRtmpStream ?? this.isRtmpStream,
-      );
+  }) => CreateVideoChat(
+    chatId: chatId ?? this.chatId,
+    title: title ?? this.title,
+    startDate: startDate ?? this.startDate,
+    isRtmpStream: isRtmpStream ?? this.isRtmpStream,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'createVideoChat';

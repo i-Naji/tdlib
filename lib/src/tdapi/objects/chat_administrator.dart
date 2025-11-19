@@ -31,11 +31,11 @@ final class ChatAdministrator extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'custom_title': customTitle,
-        'is_owner': isOwner,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'custom_title': customTitle,
+    'is_owner': isOwner,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class ChatAdministrator extends TdObject {
     int? userId,
     String? customTitle,
     bool? isOwner,
-  }) =>
-      ChatAdministrator(
-        userId: userId ?? this.userId,
-        customTitle: customTitle ?? this.customTitle,
-        isOwner: isOwner ?? this.isOwner,
-      );
+  }) => ChatAdministrator(
+    userId: userId ?? this.userId,
+    customTitle: customTitle ?? this.customTitle,
+    isOwner: isOwner ?? this.isOwner,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatAdministrator';

@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ReportAuthenticationCodeMissing extends TdFunction<Ok> {
   /// Reports that authentication code wasn't delivered via SMS; for official mobile applications only. Works only when the current authorization state is authorizationStateWaitCode
-  const ReportAuthenticationCodeMissing({
-    required this.mobileNetworkCode,
-  });
+  const ReportAuthenticationCodeMissing({required this.mobileNetworkCode});
 
   /// Current mobile network code
   final String mobileNetworkCode;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'mobile_network_code': mobileNetworkCode,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'mobile_network_code': mobileNetworkCode,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ReportAuthenticationCodeMissing copyWith({
-    String? mobileNetworkCode,
-  }) =>
+  ReportAuthenticationCodeMissing copyWith({String? mobileNetworkCode}) =>
       ReportAuthenticationCodeMissing(
         mobileNetworkCode: mobileNetworkCode ?? this.mobileNetworkCode,
       );

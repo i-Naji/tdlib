@@ -21,22 +21,21 @@ final class GetPreparedInlineMessage extends TdFunction<PreparedInlineMessage> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'prepared_message_id': preparedMessageId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'prepared_message_id': preparedMessageId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetPreparedInlineMessage copyWith({
     int? botUserId,
     String? preparedMessageId,
-  }) =>
-      GetPreparedInlineMessage(
-        botUserId: botUserId ?? this.botUserId,
-        preparedMessageId: preparedMessageId ?? this.preparedMessageId,
-      );
+  }) => GetPreparedInlineMessage(
+    botUserId: botUserId ?? this.botUserId,
+    preparedMessageId: preparedMessageId ?? this.preparedMessageId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getPreparedInlineMessage';

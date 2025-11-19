@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Represents a list of story albums
 final class StoryAlbums extends TdObject {
   /// Represents a list of story albums
-  const StoryAlbums({
-    required this.albums,
-    this.extra,
-    this.clientId,
-  });
+  const StoryAlbums({required this.albums, this.extra, this.clientId});
 
   /// List of story albums
   final List<StoryAlbum> albums;
@@ -25,17 +21,19 @@ final class StoryAlbums extends TdObject {
 
   /// Parses a [StoryAlbums] from TDLib JSON.
   factory StoryAlbums.fromJson(Map<String, dynamic> json) => StoryAlbums(
-        albums: _readList<StoryAlbum>(
-            json['albums'], (e) => _readObject(e, StoryAlbum.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    albums: _readList<StoryAlbum>(
+      json['albums'],
+      (e) => _readObject(e, StoryAlbum.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'albums': [for (final e in albums) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'albums': [for (final e in albums) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +41,11 @@ final class StoryAlbums extends TdObject {
     List<StoryAlbum>? albums,
     dynamic extra,
     int? clientId,
-  }) =>
-      StoryAlbums(
-        albums: albums ?? this.albums,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => StoryAlbums(
+    albums: albums ?? this.albums,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyAlbums';

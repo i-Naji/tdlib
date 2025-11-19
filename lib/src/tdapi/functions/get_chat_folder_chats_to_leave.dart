@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Chats].
 final class GetChatFolderChatsToLeave extends TdFunction<Chats> {
   /// Returns identifiers of pinned or always included chats from a chat folder, which are suggested to be left when the chat folder is deleted
-  const GetChatFolderChatsToLeave({
-    required this.chatFolderId,
-  });
+  const GetChatFolderChatsToLeave({required this.chatFolderId});
 
   /// Chat folder identifier
   final int chatFolderId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_folder_id': chatFolderId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_folder_id': chatFolderId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatFolderChatsToLeave copyWith({
-    int? chatFolderId,
-  }) =>
+  GetChatFolderChatsToLeave copyWith({int? chatFolderId}) =>
       GetChatFolderChatsToLeave(
         chatFolderId: chatFolderId ?? this.chatFolderId,
       );

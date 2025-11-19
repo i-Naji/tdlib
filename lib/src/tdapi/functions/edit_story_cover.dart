@@ -25,12 +25,12 @@ final class EditStoryCover extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'story_id': storyId,
-        'cover_frame_timestamp': coverFrameTimestamp,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+    'cover_frame_timestamp': coverFrameTimestamp,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class EditStoryCover extends TdFunction<Ok> {
     int? storyPosterChatId,
     int? storyId,
     double? coverFrameTimestamp,
-  }) =>
-      EditStoryCover(
-        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-        storyId: storyId ?? this.storyId,
-        coverFrameTimestamp: coverFrameTimestamp ?? this.coverFrameTimestamp,
-      );
+  }) => EditStoryCover(
+    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+    storyId: storyId ?? this.storyId,
+    coverFrameTimestamp: coverFrameTimestamp ?? this.coverFrameTimestamp,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'editStoryCover';

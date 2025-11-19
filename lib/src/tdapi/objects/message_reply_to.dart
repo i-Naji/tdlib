@@ -90,15 +90,15 @@ final class MessageReplyToMessage extends MessageReplyTo {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'quote': quote?.toJson(),
-        'checklist_task_id': checklistTaskId,
-        'origin': origin?.toJson(),
-        'origin_send_date': originSendDate,
-        'content': content?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'quote': quote?.toJson(),
+    'checklist_task_id': checklistTaskId,
+    'origin': origin?.toJson(),
+    'origin_send_date': originSendDate,
+    'content': content?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -111,16 +111,15 @@ final class MessageReplyToMessage extends MessageReplyTo {
     MessageOrigin? Function()? origin,
     int? originSendDate,
     MessageContent? Function()? content,
-  }) =>
-      MessageReplyToMessage(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        quote: quote != null ? quote() : this.quote,
-        checklistTaskId: checklistTaskId ?? this.checklistTaskId,
-        origin: origin != null ? origin() : this.origin,
-        originSendDate: originSendDate ?? this.originSendDate,
-        content: content != null ? content() : this.content,
-      );
+  }) => MessageReplyToMessage(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    quote: quote != null ? quote() : this.quote,
+    checklistTaskId: checklistTaskId ?? this.checklistTaskId,
+    origin: origin != null ? origin() : this.origin,
+    originSendDate: originSendDate ?? this.originSendDate,
+    content: content != null ? content() : this.content,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageReplyToMessage';
@@ -152,18 +151,15 @@ final class MessageReplyToStory extends MessageReplyTo {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'story_id': storyId,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageReplyToStory copyWith({
-    int? storyPosterChatId,
-    int? storyId,
-  }) =>
+  MessageReplyToStory copyWith({int? storyPosterChatId, int? storyId}) =>
       MessageReplyToStory(
         storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
         storyId: storyId ?? this.storyId,

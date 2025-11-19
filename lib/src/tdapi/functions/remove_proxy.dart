@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class RemoveProxy extends TdFunction<Ok> {
   /// Removes a proxy server. Can be called before authorization
-  const RemoveProxy({
-    required this.proxyId,
-  });
+  const RemoveProxy({required this.proxyId});
 
   /// Proxy identifier
   final int proxyId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'proxy_id': proxyId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'proxy_id': proxyId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RemoveProxy copyWith({
-    int? proxyId,
-  }) =>
-      RemoveProxy(
-        proxyId: proxyId ?? this.proxyId,
-      );
+  RemoveProxy copyWith({int? proxyId}) =>
+      RemoveProxy(proxyId: proxyId ?? this.proxyId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'removeProxy';

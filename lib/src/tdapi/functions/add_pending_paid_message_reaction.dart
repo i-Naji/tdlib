@@ -29,13 +29,13 @@ final class AddPendingPaidMessageReaction extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'star_count': starCount,
-        'type': type?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'star_count': starCount,
+    'type': type?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class AddPendingPaidMessageReaction extends TdFunction<Ok> {
     int? messageId,
     int? starCount,
     PaidReactionType? Function()? type,
-  }) =>
-      AddPendingPaidMessageReaction(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        starCount: starCount ?? this.starCount,
-        type: type != null ? type() : this.type,
-      );
+  }) => AddPendingPaidMessageReaction(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    starCount: starCount ?? this.starCount,
+    type: type != null ? type() : this.type,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addPendingPaidMessageReaction';

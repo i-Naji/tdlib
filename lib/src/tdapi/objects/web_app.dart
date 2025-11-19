@@ -31,22 +31,22 @@ final class WebApp extends TdObject {
 
   /// Parses a [WebApp] from TDLib JSON.
   factory WebApp.fromJson(Map<String, dynamic> json) => WebApp(
-        shortName: _readString(json['short_name']),
-        title: _readString(json['title']),
-        description: _readString(json['description']),
-        photo: _readObject(json['photo'], Photo.fromJson),
-        animation: _readOptional(json['animation'], Animation.fromJson),
-      );
+    shortName: _readString(json['short_name']),
+    title: _readString(json['title']),
+    description: _readString(json['description']),
+    photo: _readObject(json['photo'], Photo.fromJson),
+    animation: _readOptional(json['animation'], Animation.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'short_name': shortName,
-        'title': title,
-        'description': description,
-        'photo': photo.toJson(),
-        'animation': animation?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'short_name': shortName,
+    'title': title,
+    'description': description,
+    'photo': photo.toJson(),
+    'animation': animation?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,14 +56,13 @@ final class WebApp extends TdObject {
     String? description,
     Photo? photo,
     Animation? Function()? animation,
-  }) =>
-      WebApp(
-        shortName: shortName ?? this.shortName,
-        title: title ?? this.title,
-        description: description ?? this.description,
-        photo: photo ?? this.photo,
-        animation: animation != null ? animation() : this.animation,
-      );
+  }) => WebApp(
+    shortName: shortName ?? this.shortName,
+    title: title ?? this.title,
+    description: description ?? this.description,
+    photo: photo ?? this.photo,
+    animation: animation != null ? animation() : this.animation,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'webApp';

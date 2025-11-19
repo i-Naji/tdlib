@@ -65,18 +65,15 @@ final class CallServerTypeTelegramReflector extends CallServerType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'peer_tag': peerTag,
-        'is_tcp': isTcp,
-      };
+    '@type': CONSTRUCTOR,
+    'peer_tag': peerTag,
+    'is_tcp': isTcp,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  CallServerTypeTelegramReflector copyWith({
-    String? peerTag,
-    bool? isTcp,
-  }) =>
+  CallServerTypeTelegramReflector copyWith({String? peerTag, bool? isTcp}) =>
       CallServerTypeTelegramReflector(
         peerTag: peerTag ?? this.peerTag,
         isTcp: isTcp ?? this.isTcp,
@@ -122,12 +119,12 @@ final class CallServerTypeWebrtc extends CallServerType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'username': username,
-        'password': password,
-        'supports_turn': supportsTurn,
-        'supports_stun': supportsStun,
-      };
+    '@type': CONSTRUCTOR,
+    'username': username,
+    'password': password,
+    'supports_turn': supportsTurn,
+    'supports_stun': supportsStun,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -137,13 +134,12 @@ final class CallServerTypeWebrtc extends CallServerType {
     String? password,
     bool? supportsTurn,
     bool? supportsStun,
-  }) =>
-      CallServerTypeWebrtc(
-        username: username ?? this.username,
-        password: password ?? this.password,
-        supportsTurn: supportsTurn ?? this.supportsTurn,
-        supportsStun: supportsStun ?? this.supportsStun,
-      );
+  }) => CallServerTypeWebrtc(
+    username: username ?? this.username,
+    password: password ?? this.password,
+    supportsTurn: supportsTurn ?? this.supportsTurn,
+    supportsStun: supportsStun ?? this.supportsStun,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'callServerTypeWebrtc';

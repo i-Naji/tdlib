@@ -34,10 +34,14 @@ final class FoundFileDownloads extends TdObject {
   /// Parses a [FoundFileDownloads] from TDLib JSON.
   factory FoundFileDownloads.fromJson(Map<String, dynamic> json) =>
       FoundFileDownloads(
-        totalCounts:
-            _readObject(json['total_counts'], DownloadedFileCounts.fromJson),
+        totalCounts: _readObject(
+          json['total_counts'],
+          DownloadedFileCounts.fromJson,
+        ),
         files: _readList<FileDownload>(
-            json['files'], (e) => _readObject(e, FileDownload.fromJson)),
+          json['files'],
+          (e) => _readObject(e, FileDownload.fromJson),
+        ),
         nextOffset: _readString(json['next_offset']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -45,11 +49,11 @@ final class FoundFileDownloads extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_counts': totalCounts.toJson(),
-        'files': [for (final e in files) e.toJson()],
-        'next_offset': nextOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'total_counts': totalCounts.toJson(),
+    'files': [for (final e in files) e.toJson()],
+    'next_offset': nextOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -59,14 +63,13 @@ final class FoundFileDownloads extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) =>
-      FoundFileDownloads(
-        totalCounts: totalCounts ?? this.totalCounts,
-        files: files ?? this.files,
-        nextOffset: nextOffset ?? this.nextOffset,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => FoundFileDownloads(
+    totalCounts: totalCounts ?? this.totalCounts,
+    files: files ?? this.files,
+    nextOffset: nextOffset ?? this.nextOffset,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'foundFileDownloads';

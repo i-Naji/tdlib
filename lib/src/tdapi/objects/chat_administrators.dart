@@ -26,17 +26,19 @@ final class ChatAdministrators extends TdObject {
   /// Parses a [ChatAdministrators] from TDLib JSON.
   factory ChatAdministrators.fromJson(Map<String, dynamic> json) =>
       ChatAdministrators(
-        administrators: _readList<ChatAdministrator>(json['administrators'],
-            (e) => _readObject(e, ChatAdministrator.fromJson)),
+        administrators: _readList<ChatAdministrator>(
+          json['administrators'],
+          (e) => _readObject(e, ChatAdministrator.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'administrators': [for (final e in administrators) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'administrators': [for (final e in administrators) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +46,11 @@ final class ChatAdministrators extends TdObject {
     List<ChatAdministrator>? administrators,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatAdministrators(
-        administrators: administrators ?? this.administrators,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatAdministrators(
+    administrators: administrators ?? this.administrators,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatAdministrators';

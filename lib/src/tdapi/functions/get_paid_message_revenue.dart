@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [StarCount].
 final class GetPaidMessageRevenue extends TdFunction<StarCount> {
   /// Returns the total number of Telegram Stars received by the current user for paid messages from the given user
-  const GetPaidMessageRevenue({
-    required this.userId,
-  });
+  const GetPaidMessageRevenue({required this.userId});
 
   /// Identifier of the user
   final int userId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetPaidMessageRevenue copyWith({
-    int? userId,
-  }) =>
-      GetPaidMessageRevenue(
-        userId: userId ?? this.userId,
-      );
+  GetPaidMessageRevenue copyWith({int? userId}) =>
+      GetPaidMessageRevenue(userId: userId ?? this.userId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getPaidMessageRevenue';

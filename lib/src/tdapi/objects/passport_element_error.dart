@@ -26,17 +26,19 @@ final class PassportElementError extends TdObject {
       PassportElementError(
         type: _readObject(json['type'], PassportElementType.fromJson),
         message: _readString(json['message']),
-        source:
-            _readObject(json['source'], PassportElementErrorSource.fromJson),
+        source: _readObject(
+          json['source'],
+          PassportElementErrorSource.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-        'message': message,
-        'source': source.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+    'message': message,
+    'source': source.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +46,11 @@ final class PassportElementError extends TdObject {
     PassportElementType? type,
     String? message,
     PassportElementErrorSource? source,
-  }) =>
-      PassportElementError(
-        type: type ?? this.type,
-        message: message ?? this.message,
-        source: source ?? this.source,
-      );
+  }) => PassportElementError(
+    type: type ?? this.type,
+    message: message ?? this.message,
+    source: source ?? this.source,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passportElementError';

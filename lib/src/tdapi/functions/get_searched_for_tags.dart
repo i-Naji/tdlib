@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Hashtags].
 final class GetSearchedForTags extends TdFunction<Hashtags> {
   /// Returns recently searched for hashtags or cashtags by their prefix
-  const GetSearchedForTags({
-    required this.tagPrefix,
-    required this.limit,
-  });
+  const GetSearchedForTags({required this.tagPrefix, required this.limit});
 
   /// Prefix of hashtags or cashtags to return
   final String tagPrefix;
@@ -21,18 +18,15 @@ final class GetSearchedForTags extends TdFunction<Hashtags> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'tag_prefix': tagPrefix,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'tag_prefix': tagPrefix,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetSearchedForTags copyWith({
-    String? tagPrefix,
-    int? limit,
-  }) =>
+  GetSearchedForTags copyWith({String? tagPrefix, int? limit}) =>
       GetSearchedForTags(
         tagPrefix: tagPrefix ?? this.tagPrefix,
         limit: limit ?? this.limit,

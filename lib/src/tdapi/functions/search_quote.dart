@@ -25,12 +25,12 @@ final class SearchQuote extends TdFunction<FoundPosition> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'quote': quote.toJson(),
-        'quote_position': quotePosition,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'quote': quote.toJson(),
+    'quote_position': quotePosition,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SearchQuote extends TdFunction<FoundPosition> {
     FormattedText? text,
     FormattedText? quote,
     int? quotePosition,
-  }) =>
-      SearchQuote(
-        text: text ?? this.text,
-        quote: quote ?? this.quote,
-        quotePosition: quotePosition ?? this.quotePosition,
-      );
+  }) => SearchQuote(
+    text: text ?? this.text,
+    quote: quote ?? this.quote,
+    quotePosition: quotePosition ?? this.quotePosition,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchQuote';

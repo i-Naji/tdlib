@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [GiveawayInfo].
 final class GetGiveawayInfo extends TdFunction<GiveawayInfo> {
   /// Returns information about a giveaway
-  const GetGiveawayInfo({
-    required this.chatId,
-    required this.messageId,
-  });
+  const GetGiveawayInfo({required this.chatId, required this.messageId});
 
   /// Identifier of the channel chat which started the giveaway
   final int chatId;
@@ -21,22 +18,18 @@ final class GetGiveawayInfo extends TdFunction<GiveawayInfo> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetGiveawayInfo copyWith({
-    int? chatId,
-    int? messageId,
-  }) =>
-      GetGiveawayInfo(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-      );
+  GetGiveawayInfo copyWith({int? chatId, int? messageId}) => GetGiveawayInfo(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getGiveawayInfo';

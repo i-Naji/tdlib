@@ -29,13 +29,13 @@ final class GiftPremiumWithStars extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'star_count': starCount,
-        'month_count': monthCount,
-        'text': text.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'star_count': starCount,
+    'month_count': monthCount,
+    'text': text.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class GiftPremiumWithStars extends TdFunction<Ok> {
     int? starCount,
     int? monthCount,
     FormattedText? text,
-  }) =>
-      GiftPremiumWithStars(
-        userId: userId ?? this.userId,
-        starCount: starCount ?? this.starCount,
-        monthCount: monthCount ?? this.monthCount,
-        text: text ?? this.text,
-      );
+  }) => GiftPremiumWithStars(
+    userId: userId ?? this.userId,
+    starCount: starCount ?? this.starCount,
+    monthCount: monthCount ?? this.monthCount,
+    text: text ?? this.text,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giftPremiumWithStars';

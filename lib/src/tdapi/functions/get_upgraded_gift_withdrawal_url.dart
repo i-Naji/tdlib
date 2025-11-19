@@ -21,22 +21,21 @@ final class GetUpgradedGiftWithdrawalUrl extends TdFunction<HttpUrl> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'received_gift_id': receivedGiftId,
-        'password': password,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'received_gift_id': receivedGiftId,
+    'password': password,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetUpgradedGiftWithdrawalUrl copyWith({
     String? receivedGiftId,
     String? password,
-  }) =>
-      GetUpgradedGiftWithdrawalUrl(
-        receivedGiftId: receivedGiftId ?? this.receivedGiftId,
-        password: password ?? this.password,
-      );
+  }) => GetUpgradedGiftWithdrawalUrl(
+    receivedGiftId: receivedGiftId ?? this.receivedGiftId,
+    password: password ?? this.password,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getUpgradedGiftWithdrawalUrl';

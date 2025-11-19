@@ -33,14 +33,14 @@ final class DownloadFile extends TdFunction<File> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'file_id': fileId,
-        'priority': priority,
-        'offset': offset,
-        'limit': limit,
-        'synchronous': synchronous,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'file_id': fileId,
+    'priority': priority,
+    'offset': offset,
+    'limit': limit,
+    'synchronous': synchronous,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class DownloadFile extends TdFunction<File> {
     int? offset,
     int? limit,
     bool? synchronous,
-  }) =>
-      DownloadFile(
-        fileId: fileId ?? this.fileId,
-        priority: priority ?? this.priority,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-        synchronous: synchronous ?? this.synchronous,
-      );
+  }) => DownloadFile(
+    fileId: fileId ?? this.fileId,
+    priority: priority ?? this.priority,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+    synchronous: synchronous ?? this.synchronous,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'downloadFile';

@@ -26,17 +26,19 @@ final class RecommendedChatFolders extends TdObject {
   /// Parses a [RecommendedChatFolders] from TDLib JSON.
   factory RecommendedChatFolders.fromJson(Map<String, dynamic> json) =>
       RecommendedChatFolders(
-        chatFolders: _readList<RecommendedChatFolder>(json['chat_folders'],
-            (e) => _readObject(e, RecommendedChatFolder.fromJson)),
+        chatFolders: _readList<RecommendedChatFolder>(
+          json['chat_folders'],
+          (e) => _readObject(e, RecommendedChatFolder.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_folders': [for (final e in chatFolders) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'chat_folders': [for (final e in chatFolders) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +46,11 @@ final class RecommendedChatFolders extends TdObject {
     List<RecommendedChatFolder>? chatFolders,
     dynamic extra,
     int? clientId,
-  }) =>
-      RecommendedChatFolders(
-        chatFolders: chatFolders ?? this.chatFolders,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => RecommendedChatFolders(
+    chatFolders: chatFolders ?? this.chatFolders,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'recommendedChatFolders';

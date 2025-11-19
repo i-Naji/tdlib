@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Portion of the price of a product (e.g., "delivery cost", "tax amount")
 final class LabeledPricePart extends TdObject {
   /// Portion of the price of a product (e.g., "delivery cost", "tax amount")
-  const LabeledPricePart({
-    required this.label,
-    required this.amount,
-  });
+  const LabeledPricePart({required this.label, required this.amount});
 
   /// Label for this portion of the product price
   final String label;
@@ -26,21 +23,17 @@ final class LabeledPricePart extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'label': label,
-        'amount': amount,
-      };
+    '@type': CONSTRUCTOR,
+    'label': label,
+    'amount': amount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  LabeledPricePart copyWith({
-    String? label,
-    int? amount,
-  }) =>
-      LabeledPricePart(
-        label: label ?? this.label,
-        amount: amount ?? this.amount,
-      );
+  LabeledPricePart copyWith({String? label, int? amount}) => LabeledPricePart(
+    label: label ?? this.label,
+    amount: amount ?? this.amount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'labeledPricePart';

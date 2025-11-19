@@ -47,34 +47,26 @@ final class UndecodedChatStatisticsObjectType extends ChatStatisticsObjectType {
 /// Describes a message sent in the chat
 final class ChatStatisticsObjectTypeMessage extends ChatStatisticsObjectType {
   /// Describes a message sent in the chat
-  const ChatStatisticsObjectTypeMessage({
-    required this.messageId,
-  });
+  const ChatStatisticsObjectTypeMessage({required this.messageId});
 
   /// Message identifier
   final int messageId;
 
   /// Parses a [ChatStatisticsObjectTypeMessage] from TDLib JSON.
   factory ChatStatisticsObjectTypeMessage.fromJson(Map<String, dynamic> json) =>
-      ChatStatisticsObjectTypeMessage(
-        messageId: _readInt(json['message_id']),
-      );
+      ChatStatisticsObjectTypeMessage(messageId: _readInt(json['message_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message_id': messageId,
-      };
+    '@type': CONSTRUCTOR,
+    'message_id': messageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatStatisticsObjectTypeMessage copyWith({
-    int? messageId,
-  }) =>
-      ChatStatisticsObjectTypeMessage(
-        messageId: messageId ?? this.messageId,
-      );
+  ChatStatisticsObjectTypeMessage copyWith({int? messageId}) =>
+      ChatStatisticsObjectTypeMessage(messageId: messageId ?? this.messageId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatStatisticsObjectTypeMessage';
@@ -86,34 +78,23 @@ final class ChatStatisticsObjectTypeMessage extends ChatStatisticsObjectType {
 /// Describes a story posted on behalf of the chat
 final class ChatStatisticsObjectTypeStory extends ChatStatisticsObjectType {
   /// Describes a story posted on behalf of the chat
-  const ChatStatisticsObjectTypeStory({
-    required this.storyId,
-  });
+  const ChatStatisticsObjectTypeStory({required this.storyId});
 
   /// Story identifier
   final int storyId;
 
   /// Parses a [ChatStatisticsObjectTypeStory] from TDLib JSON.
   factory ChatStatisticsObjectTypeStory.fromJson(Map<String, dynamic> json) =>
-      ChatStatisticsObjectTypeStory(
-        storyId: _readInt(json['story_id']),
-      );
+      ChatStatisticsObjectTypeStory(storyId: _readInt(json['story_id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'story_id': storyId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'story_id': storyId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatStatisticsObjectTypeStory copyWith({
-    int? storyId,
-  }) =>
-      ChatStatisticsObjectTypeStory(
-        storyId: storyId ?? this.storyId,
-      );
+  ChatStatisticsObjectTypeStory copyWith({int? storyId}) =>
+      ChatStatisticsObjectTypeStory(storyId: storyId ?? this.storyId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatStatisticsObjectTypeStory';

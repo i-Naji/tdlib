@@ -25,20 +25,16 @@ final class ApproveSuggestedPost extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'send_date': sendDate,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'send_date': sendDate,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ApproveSuggestedPost copyWith({
-    int? chatId,
-    int? messageId,
-    int? sendDate,
-  }) =>
+  ApproveSuggestedPost copyWith({int? chatId, int? messageId, int? sendDate}) =>
       ApproveSuggestedPost(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,

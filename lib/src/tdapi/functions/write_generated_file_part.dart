@@ -25,12 +25,12 @@ final class WriteGeneratedFilePart extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'generation_id': generationId.toString(),
-        'offset': offset,
-        'data': data,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'generation_id': generationId.toString(),
+    'offset': offset,
+    'data': data,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class WriteGeneratedFilePart extends TdFunction<Ok> {
     int? generationId,
     int? offset,
     String? data,
-  }) =>
-      WriteGeneratedFilePart(
-        generationId: generationId ?? this.generationId,
-        offset: offset ?? this.offset,
-        data: data ?? this.data,
-      );
+  }) => WriteGeneratedFilePart(
+    generationId: generationId ?? this.generationId,
+    offset: offset ?? this.offset,
+    data: data ?? this.data,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'writeGeneratedFilePart';

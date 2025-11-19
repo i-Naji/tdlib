@@ -54,9 +54,7 @@ final class KeyboardButtonTypeText extends KeyboardButtonType {
       const KeyboardButtonTypeText();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -77,13 +75,11 @@ final class KeyboardButtonTypeRequestPhoneNumber extends KeyboardButtonType {
 
   /// Parses a [KeyboardButtonTypeRequestPhoneNumber] from TDLib JSON.
   factory KeyboardButtonTypeRequestPhoneNumber.fromJson(
-          Map<String, dynamic> json) =>
-      const KeyboardButtonTypeRequestPhoneNumber();
+    Map<String, dynamic> json,
+  ) => const KeyboardButtonTypeRequestPhoneNumber();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -105,13 +101,11 @@ final class KeyboardButtonTypeRequestLocation extends KeyboardButtonType {
 
   /// Parses a [KeyboardButtonTypeRequestLocation] from TDLib JSON.
   factory KeyboardButtonTypeRequestLocation.fromJson(
-          Map<String, dynamic> json) =>
-      const KeyboardButtonTypeRequestLocation();
+    Map<String, dynamic> json,
+  ) => const KeyboardButtonTypeRequestLocation();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -149,10 +143,10 @@ final class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'force_regular': forceRegular,
-        'force_quiz': forceQuiz,
-      };
+    '@type': CONSTRUCTOR,
+    'force_regular': forceRegular,
+    'force_quiz': forceQuiz,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -160,11 +154,10 @@ final class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
   KeyboardButtonTypeRequestPoll copyWith({
     bool? forceRegular,
     bool? forceQuiz,
-  }) =>
-      KeyboardButtonTypeRequestPoll(
-        forceRegular: forceRegular ?? this.forceRegular,
-        forceQuiz: forceQuiz ?? this.forceQuiz,
-      );
+  }) => KeyboardButtonTypeRequestPoll(
+    forceRegular: forceRegular ?? this.forceRegular,
+    forceQuiz: forceQuiz ?? this.forceQuiz,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'keyboardButtonTypeRequestPoll';
@@ -231,17 +224,17 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'restrict_user_is_bot': restrictUserIsBot,
-        'user_is_bot': userIsBot,
-        'restrict_user_is_premium': restrictUserIsPremium,
-        'user_is_premium': userIsPremium,
-        'max_quantity': maxQuantity,
-        'request_name': requestName,
-        'request_username': requestUsername,
-        'request_photo': requestPhoto,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'restrict_user_is_bot': restrictUserIsBot,
+    'user_is_bot': userIsBot,
+    'restrict_user_is_premium': restrictUserIsPremium,
+    'user_is_premium': userIsPremium,
+    'max_quantity': maxQuantity,
+    'request_name': requestName,
+    'request_username': requestUsername,
+    'request_photo': requestPhoto,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -256,19 +249,17 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
     bool? requestName,
     bool? requestUsername,
     bool? requestPhoto,
-  }) =>
-      KeyboardButtonTypeRequestUsers(
-        id: id ?? this.id,
-        restrictUserIsBot: restrictUserIsBot ?? this.restrictUserIsBot,
-        userIsBot: userIsBot ?? this.userIsBot,
-        restrictUserIsPremium:
-            restrictUserIsPremium ?? this.restrictUserIsPremium,
-        userIsPremium: userIsPremium ?? this.userIsPremium,
-        maxQuantity: maxQuantity ?? this.maxQuantity,
-        requestName: requestName ?? this.requestName,
-        requestUsername: requestUsername ?? this.requestUsername,
-        requestPhoto: requestPhoto ?? this.requestPhoto,
-      );
+  }) => KeyboardButtonTypeRequestUsers(
+    id: id ?? this.id,
+    restrictUserIsBot: restrictUserIsBot ?? this.restrictUserIsBot,
+    userIsBot: userIsBot ?? this.userIsBot,
+    restrictUserIsPremium: restrictUserIsPremium ?? this.restrictUserIsPremium,
+    userIsPremium: userIsPremium ?? this.userIsPremium,
+    maxQuantity: maxQuantity ?? this.maxQuantity,
+    requestName: requestName ?? this.requestName,
+    requestUsername: requestUsername ?? this.requestUsername,
+    requestPhoto: requestPhoto ?? this.requestPhoto,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'keyboardButtonTypeRequestUsers';
@@ -346,10 +337,13 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
         chatHasUsername: _readBool(json['chat_has_username']),
         chatIsCreated: _readBool(json['chat_is_created']),
         userAdministratorRights: _readOptional(
-            json['user_administrator_rights'],
-            ChatAdministratorRights.fromJson),
+          json['user_administrator_rights'],
+          ChatAdministratorRights.fromJson,
+        ),
         botAdministratorRights: _readOptional(
-            json['bot_administrator_rights'], ChatAdministratorRights.fromJson),
+          json['bot_administrator_rights'],
+          ChatAdministratorRights.fromJson,
+        ),
         botIsMember: _readBool(json['bot_is_member']),
         requestTitle: _readBool(json['request_title']),
         requestUsername: _readBool(json['request_username']),
@@ -358,21 +352,21 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'chat_is_channel': chatIsChannel,
-        'restrict_chat_is_forum': restrictChatIsForum,
-        'chat_is_forum': chatIsForum,
-        'restrict_chat_has_username': restrictChatHasUsername,
-        'chat_has_username': chatHasUsername,
-        'chat_is_created': chatIsCreated,
-        'user_administrator_rights': userAdministratorRights?.toJson(),
-        'bot_administrator_rights': botAdministratorRights?.toJson(),
-        'bot_is_member': botIsMember,
-        'request_title': requestTitle,
-        'request_username': requestUsername,
-        'request_photo': requestPhoto,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'chat_is_channel': chatIsChannel,
+    'restrict_chat_is_forum': restrictChatIsForum,
+    'chat_is_forum': chatIsForum,
+    'restrict_chat_has_username': restrictChatHasUsername,
+    'chat_has_username': chatHasUsername,
+    'chat_is_created': chatIsCreated,
+    'user_administrator_rights': userAdministratorRights?.toJson(),
+    'bot_administrator_rights': botAdministratorRights?.toJson(),
+    'bot_is_member': botIsMember,
+    'request_title': requestTitle,
+    'request_username': requestUsername,
+    'request_photo': requestPhoto,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -391,27 +385,26 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
     bool? requestTitle,
     bool? requestUsername,
     bool? requestPhoto,
-  }) =>
-      KeyboardButtonTypeRequestChat(
-        id: id ?? this.id,
-        chatIsChannel: chatIsChannel ?? this.chatIsChannel,
-        restrictChatIsForum: restrictChatIsForum ?? this.restrictChatIsForum,
-        chatIsForum: chatIsForum ?? this.chatIsForum,
-        restrictChatHasUsername:
-            restrictChatHasUsername ?? this.restrictChatHasUsername,
-        chatHasUsername: chatHasUsername ?? this.chatHasUsername,
-        chatIsCreated: chatIsCreated ?? this.chatIsCreated,
-        userAdministratorRights: userAdministratorRights != null
-            ? userAdministratorRights()
-            : this.userAdministratorRights,
-        botAdministratorRights: botAdministratorRights != null
-            ? botAdministratorRights()
-            : this.botAdministratorRights,
-        botIsMember: botIsMember ?? this.botIsMember,
-        requestTitle: requestTitle ?? this.requestTitle,
-        requestUsername: requestUsername ?? this.requestUsername,
-        requestPhoto: requestPhoto ?? this.requestPhoto,
-      );
+  }) => KeyboardButtonTypeRequestChat(
+    id: id ?? this.id,
+    chatIsChannel: chatIsChannel ?? this.chatIsChannel,
+    restrictChatIsForum: restrictChatIsForum ?? this.restrictChatIsForum,
+    chatIsForum: chatIsForum ?? this.chatIsForum,
+    restrictChatHasUsername:
+        restrictChatHasUsername ?? this.restrictChatHasUsername,
+    chatHasUsername: chatHasUsername ?? this.chatHasUsername,
+    chatIsCreated: chatIsCreated ?? this.chatIsCreated,
+    userAdministratorRights: userAdministratorRights != null
+        ? userAdministratorRights()
+        : this.userAdministratorRights,
+    botAdministratorRights: botAdministratorRights != null
+        ? botAdministratorRights()
+        : this.botAdministratorRights,
+    botIsMember: botIsMember ?? this.botIsMember,
+    requestTitle: requestTitle ?? this.requestTitle,
+    requestUsername: requestUsername ?? this.requestUsername,
+    requestPhoto: requestPhoto ?? this.requestPhoto,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'keyboardButtonTypeRequestChat';
@@ -423,34 +416,23 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
 /// A button that opens a Web App by calling getWebAppUrl
 final class KeyboardButtonTypeWebApp extends KeyboardButtonType {
   /// A button that opens a Web App by calling getWebAppUrl
-  const KeyboardButtonTypeWebApp({
-    required this.url,
-  });
+  const KeyboardButtonTypeWebApp({required this.url});
 
   /// An HTTP URL to pass to getWebAppUrl
   final String url;
 
   /// Parses a [KeyboardButtonTypeWebApp] from TDLib JSON.
   factory KeyboardButtonTypeWebApp.fromJson(Map<String, dynamic> json) =>
-      KeyboardButtonTypeWebApp(
-        url: _readString(json['url']),
-      );
+      KeyboardButtonTypeWebApp(url: _readString(json['url']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'url': url};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  KeyboardButtonTypeWebApp copyWith({
-    String? url,
-  }) =>
-      KeyboardButtonTypeWebApp(
-        url: url ?? this.url,
-      );
+  KeyboardButtonTypeWebApp copyWith({String? url}) =>
+      KeyboardButtonTypeWebApp(url: url ?? this.url);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'keyboardButtonTypeWebApp';

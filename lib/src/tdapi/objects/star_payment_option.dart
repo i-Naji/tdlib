@@ -41,13 +41,13 @@ final class StarPaymentOption extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'currency': currency,
-        'amount': amount,
-        'star_count': starCount,
-        'store_product_id': storeProductId,
-        'is_additional': isAdditional,
-      };
+    '@type': CONSTRUCTOR,
+    'currency': currency,
+    'amount': amount,
+    'star_count': starCount,
+    'store_product_id': storeProductId,
+    'is_additional': isAdditional,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,14 +57,13 @@ final class StarPaymentOption extends TdObject {
     int? starCount,
     String? storeProductId,
     bool? isAdditional,
-  }) =>
-      StarPaymentOption(
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        starCount: starCount ?? this.starCount,
-        storeProductId: storeProductId ?? this.storeProductId,
-        isAdditional: isAdditional ?? this.isAdditional,
-      );
+  }) => StarPaymentOption(
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    starCount: starCount ?? this.starCount,
+    storeProductId: storeProductId ?? this.storeProductId,
+    isAdditional: isAdditional ?? this.isAdditional,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starPaymentOption';

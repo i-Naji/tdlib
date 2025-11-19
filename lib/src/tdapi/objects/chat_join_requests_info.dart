@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Contains information about pending join requests for a chat
 final class ChatJoinRequestsInfo extends TdObject {
   /// Contains information about pending join requests for a chat
-  const ChatJoinRequestsInfo({
-    required this.totalCount,
-    required this.userIds,
-  });
+  const ChatJoinRequestsInfo({required this.totalCount, required this.userIds});
 
   /// Total number of pending join requests
   final int totalCount;
@@ -26,17 +23,14 @@ final class ChatJoinRequestsInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'user_ids': userIds,
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'user_ids': userIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ChatJoinRequestsInfo copyWith({
-    int? totalCount,
-    List<int>? userIds,
-  }) =>
+  ChatJoinRequestsInfo copyWith({int? totalCount, List<int>? userIds}) =>
       ChatJoinRequestsInfo(
         totalCount: totalCount ?? this.totalCount,
         userIds: userIds ?? this.userIds,

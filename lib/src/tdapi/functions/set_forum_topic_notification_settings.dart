@@ -25,12 +25,12 @@ final class SetForumTopicNotificationSettings extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'forum_topic_id': forumTopicId,
-        'notification_settings': notificationSettings.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'forum_topic_id': forumTopicId,
+    'notification_settings': notificationSettings.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SetForumTopicNotificationSettings extends TdFunction<Ok> {
     int? chatId,
     int? forumTopicId,
     ChatNotificationSettings? notificationSettings,
-  }) =>
-      SetForumTopicNotificationSettings(
-        chatId: chatId ?? this.chatId,
-        forumTopicId: forumTopicId ?? this.forumTopicId,
-        notificationSettings: notificationSettings ?? this.notificationSettings,
-      );
+  }) => SetForumTopicNotificationSettings(
+    chatId: chatId ?? this.chatId,
+    forumTopicId: forumTopicId ?? this.forumTopicId,
+    notificationSettings: notificationSettings ?? this.notificationSettings,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setForumTopicNotificationSettings';

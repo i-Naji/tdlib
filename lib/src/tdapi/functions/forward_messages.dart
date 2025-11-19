@@ -41,16 +41,16 @@ final class ForwardMessages extends TdFunction<Messages> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'topic_id': topicId?.toJson(),
-        'from_chat_id': fromChatId,
-        'message_ids': messageIds,
-        'options': options?.toJson(),
-        'send_copy': sendCopy,
-        'remove_caption': removeCaption,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'topic_id': topicId?.toJson(),
+    'from_chat_id': fromChatId,
+    'message_ids': messageIds,
+    'options': options?.toJson(),
+    'send_copy': sendCopy,
+    'remove_caption': removeCaption,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -62,16 +62,15 @@ final class ForwardMessages extends TdFunction<Messages> {
     MessageSendOptions? Function()? options,
     bool? sendCopy,
     bool? removeCaption,
-  }) =>
-      ForwardMessages(
-        chatId: chatId ?? this.chatId,
-        topicId: topicId != null ? topicId() : this.topicId,
-        fromChatId: fromChatId ?? this.fromChatId,
-        messageIds: messageIds ?? this.messageIds,
-        options: options != null ? options() : this.options,
-        sendCopy: sendCopy ?? this.sendCopy,
-        removeCaption: removeCaption ?? this.removeCaption,
-      );
+  }) => ForwardMessages(
+    chatId: chatId ?? this.chatId,
+    topicId: topicId != null ? topicId() : this.topicId,
+    fromChatId: fromChatId ?? this.fromChatId,
+    messageIds: messageIds ?? this.messageIds,
+    options: options != null ? options() : this.options,
+    sendCopy: sendCopy ?? this.sendCopy,
+    removeCaption: removeCaption ?? this.removeCaption,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'forwardMessages';

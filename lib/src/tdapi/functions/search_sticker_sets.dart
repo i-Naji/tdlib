@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [StickerSets].
 final class SearchStickerSets extends TdFunction<StickerSets> {
   /// Searches for sticker sets by looking for specified query in their title and name. Excludes installed sticker sets from the results
-  const SearchStickerSets({
-    required this.stickerType,
-    required this.query,
-  });
+  const SearchStickerSets({required this.stickerType, required this.query});
 
   /// Type of the sticker sets to return
   final StickerType stickerType;
@@ -21,18 +18,15 @@ final class SearchStickerSets extends TdFunction<StickerSets> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker_type': stickerType.toJson(),
-        'query': query,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_type': stickerType.toJson(),
+    'query': query,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchStickerSets copyWith({
-    StickerType? stickerType,
-    String? query,
-  }) =>
+  SearchStickerSets copyWith({StickerType? stickerType, String? query}) =>
       SearchStickerSets(
         stickerType: stickerType ?? this.stickerType,
         query: query ?? this.query,

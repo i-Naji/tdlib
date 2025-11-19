@@ -54,9 +54,7 @@ final class PhoneNumberCodeTypeChange extends PhoneNumberCodeType {
       const PhoneNumberCodeTypeChange();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -80,9 +78,7 @@ final class PhoneNumberCodeTypeVerify extends PhoneNumberCodeType {
       const PhoneNumberCodeTypeVerify();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -99,35 +95,24 @@ final class PhoneNumberCodeTypeVerify extends PhoneNumberCodeType {
 /// Confirms ownership of a phone number to prevent account deletion while handling links of the type internalLinkTypePhoneNumberConfirmation
 final class PhoneNumberCodeTypeConfirmOwnership extends PhoneNumberCodeType {
   /// Confirms ownership of a phone number to prevent account deletion while handling links of the type internalLinkTypePhoneNumberConfirmation
-  const PhoneNumberCodeTypeConfirmOwnership({
-    required this.hash,
-  });
+  const PhoneNumberCodeTypeConfirmOwnership({required this.hash});
 
   /// Hash value from the link
   final String hash;
 
   /// Parses a [PhoneNumberCodeTypeConfirmOwnership] from TDLib JSON.
   factory PhoneNumberCodeTypeConfirmOwnership.fromJson(
-          Map<String, dynamic> json) =>
-      PhoneNumberCodeTypeConfirmOwnership(
-        hash: _readString(json['hash']),
-      );
+    Map<String, dynamic> json,
+  ) => PhoneNumberCodeTypeConfirmOwnership(hash: _readString(json['hash']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'hash': hash,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'hash': hash};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PhoneNumberCodeTypeConfirmOwnership copyWith({
-    String? hash,
-  }) =>
-      PhoneNumberCodeTypeConfirmOwnership(
-        hash: hash ?? this.hash,
-      );
+  PhoneNumberCodeTypeConfirmOwnership copyWith({String? hash}) =>
+      PhoneNumberCodeTypeConfirmOwnership(hash: hash ?? this.hash);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'phoneNumberCodeTypeConfirmOwnership';

@@ -28,8 +28,10 @@ final class ChatStatisticsInteractionInfo extends TdObject {
   /// Parses a [ChatStatisticsInteractionInfo] from TDLib JSON.
   factory ChatStatisticsInteractionInfo.fromJson(Map<String, dynamic> json) =>
       ChatStatisticsInteractionInfo(
-        objectType:
-            _readObject(json['object_type'], ChatStatisticsObjectType.fromJson),
+        objectType: _readObject(
+          json['object_type'],
+          ChatStatisticsObjectType.fromJson,
+        ),
         viewCount: _readInt(json['view_count']),
         forwardCount: _readInt(json['forward_count']),
         reactionCount: _readInt(json['reaction_count']),
@@ -37,12 +39,12 @@ final class ChatStatisticsInteractionInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'object_type': objectType.toJson(),
-        'view_count': viewCount,
-        'forward_count': forwardCount,
-        'reaction_count': reactionCount,
-      };
+    '@type': CONSTRUCTOR,
+    'object_type': objectType.toJson(),
+    'view_count': viewCount,
+    'forward_count': forwardCount,
+    'reaction_count': reactionCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,13 +53,12 @@ final class ChatStatisticsInteractionInfo extends TdObject {
     int? viewCount,
     int? forwardCount,
     int? reactionCount,
-  }) =>
-      ChatStatisticsInteractionInfo(
-        objectType: objectType ?? this.objectType,
-        viewCount: viewCount ?? this.viewCount,
-        forwardCount: forwardCount ?? this.forwardCount,
-        reactionCount: reactionCount ?? this.reactionCount,
-      );
+  }) => ChatStatisticsInteractionInfo(
+    objectType: objectType ?? this.objectType,
+    viewCount: viewCount ?? this.viewCount,
+    forwardCount: forwardCount ?? this.forwardCount,
+    reactionCount: reactionCount ?? this.reactionCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatStatisticsInteractionInfo';

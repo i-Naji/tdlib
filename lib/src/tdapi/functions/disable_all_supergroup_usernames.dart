@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class DisableAllSupergroupUsernames extends TdFunction<Ok> {
   /// Disables all active non-editable usernames of a supergroup or channel, requires owner privileges in the supergroup or channel
-  const DisableAllSupergroupUsernames({
-    required this.supergroupId,
-  });
+  const DisableAllSupergroupUsernames({required this.supergroupId});
 
   /// Identifier of the supergroup or channel
   final int supergroupId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DisableAllSupergroupUsernames copyWith({
-    int? supergroupId,
-  }) =>
+  DisableAllSupergroupUsernames copyWith({int? supergroupId}) =>
       DisableAllSupergroupUsernames(
         supergroupId: supergroupId ?? this.supergroupId,
       );

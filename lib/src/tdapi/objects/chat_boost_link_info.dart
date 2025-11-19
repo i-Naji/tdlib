@@ -38,10 +38,10 @@ final class ChatBoostLinkInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_public': isPublic,
-        'chat_id': chatId,
-      };
+    '@type': CONSTRUCTOR,
+    'is_public': isPublic,
+    'chat_id': chatId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class ChatBoostLinkInfo extends TdObject {
     int? chatId,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatBoostLinkInfo(
-        isPublic: isPublic ?? this.isPublic,
-        chatId: chatId ?? this.chatId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatBoostLinkInfo(
+    isPublic: isPublic ?? this.isPublic,
+    chatId: chatId ?? this.chatId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatBoostLinkInfo';

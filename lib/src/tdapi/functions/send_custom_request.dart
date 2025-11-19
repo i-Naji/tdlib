@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [CustomRequestResult].
 final class SendCustomRequest extends TdFunction<CustomRequestResult> {
   /// Sends a custom request; for bots only
-  const SendCustomRequest({
-    required this.method,
-    required this.parameters,
-  });
+  const SendCustomRequest({required this.method, required this.parameters});
 
   /// The method name
   final String method;
@@ -21,18 +18,15 @@ final class SendCustomRequest extends TdFunction<CustomRequestResult> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'method': method,
-        'parameters': parameters,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'method': method,
+    'parameters': parameters,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SendCustomRequest copyWith({
-    String? method,
-    String? parameters,
-  }) =>
+  SendCustomRequest copyWith({String? method, String? parameters}) =>
       SendCustomRequest(
         method: method ?? this.method,
         parameters: parameters ?? this.parameters,

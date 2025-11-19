@@ -25,12 +25,12 @@ final class EditQuickReplyMessage extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'shortcut_id': shortcutId,
-        'message_id': messageId,
-        'input_message_content': inputMessageContent.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'shortcut_id': shortcutId,
+    'message_id': messageId,
+    'input_message_content': inputMessageContent.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class EditQuickReplyMessage extends TdFunction<Ok> {
     int? shortcutId,
     int? messageId,
     InputMessageContent? inputMessageContent,
-  }) =>
-      EditQuickReplyMessage(
-        shortcutId: shortcutId ?? this.shortcutId,
-        messageId: messageId ?? this.messageId,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => EditQuickReplyMessage(
+    shortcutId: shortcutId ?? this.shortcutId,
+    messageId: messageId ?? this.messageId,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'editQuickReplyMessage';

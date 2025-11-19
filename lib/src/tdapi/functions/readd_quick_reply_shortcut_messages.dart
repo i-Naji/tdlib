@@ -22,22 +22,21 @@ final class ReaddQuickReplyShortcutMessages
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'shortcut_name': shortcutName,
-        'message_ids': messageIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'shortcut_name': shortcutName,
+    'message_ids': messageIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ReaddQuickReplyShortcutMessages copyWith({
     String? shortcutName,
     List<int>? messageIds,
-  }) =>
-      ReaddQuickReplyShortcutMessages(
-        shortcutName: shortcutName ?? this.shortcutName,
-        messageIds: messageIds ?? this.messageIds,
-      );
+  }) => ReaddQuickReplyShortcutMessages(
+    shortcutName: shortcutName ?? this.shortcutName,
+    messageIds: messageIds ?? this.messageIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'readdQuickReplyShortcutMessages';

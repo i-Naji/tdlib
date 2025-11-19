@@ -21,22 +21,21 @@ final class SetChatAvailableReactions extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'available_reactions': availableReactions.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'available_reactions': availableReactions.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetChatAvailableReactions copyWith({
     int? chatId,
     ChatAvailableReactions? availableReactions,
-  }) =>
-      SetChatAvailableReactions(
-        chatId: chatId ?? this.chatId,
-        availableReactions: availableReactions ?? this.availableReactions,
-      );
+  }) => SetChatAvailableReactions(
+    chatId: chatId ?? this.chatId,
+    availableReactions: availableReactions ?? this.availableReactions,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setChatAvailableReactions';

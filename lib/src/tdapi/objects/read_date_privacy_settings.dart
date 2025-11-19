@@ -33,9 +33,9 @@ final class ReadDatePrivacySettings extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'show_read_date': showReadDate,
-      };
+    '@type': CONSTRUCTOR,
+    'show_read_date': showReadDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class ReadDatePrivacySettings extends TdObject {
     bool? showReadDate,
     dynamic extra,
     int? clientId,
-  }) =>
-      ReadDatePrivacySettings(
-        showReadDate: showReadDate ?? this.showReadDate,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ReadDatePrivacySettings(
+    showReadDate: showReadDate ?? this.showReadDate,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'readDatePrivacySettings';

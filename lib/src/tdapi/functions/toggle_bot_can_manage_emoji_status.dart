@@ -21,22 +21,21 @@ final class ToggleBotCanManageEmojiStatus extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'can_manage_emoji_status': canManageEmojiStatus,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'can_manage_emoji_status': canManageEmojiStatus,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleBotCanManageEmojiStatus copyWith({
     int? botUserId,
     bool? canManageEmojiStatus,
-  }) =>
-      ToggleBotCanManageEmojiStatus(
-        botUserId: botUserId ?? this.botUserId,
-        canManageEmojiStatus: canManageEmojiStatus ?? this.canManageEmojiStatus,
-      );
+  }) => ToggleBotCanManageEmojiStatus(
+    botUserId: botUserId ?? this.botUserId,
+    canManageEmojiStatus: canManageEmojiStatus ?? this.canManageEmojiStatus,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleBotCanManageEmojiStatus';

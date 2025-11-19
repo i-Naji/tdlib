@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [LoginUrlInfo].
 final class GetExternalLinkInfo extends TdFunction<LoginUrlInfo> {
   /// Returns information about an action to be done when the current user clicks an external link. Don't use this method for links from secret chats if link preview is disabled in secret chats
-  const GetExternalLinkInfo({
-    required this.link,
-  });
+  const GetExternalLinkInfo({required this.link});
 
   /// The link
   final String link;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'link': link,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'link': link,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetExternalLinkInfo copyWith({
-    String? link,
-  }) =>
-      GetExternalLinkInfo(
-        link: link ?? this.link,
-      );
+  GetExternalLinkInfo copyWith({String? link}) =>
+      GetExternalLinkInfo(link: link ?? this.link);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getExternalLinkInfo';

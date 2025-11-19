@@ -27,22 +27,23 @@ final class InputChecklist extends TdObject {
 
   /// Parses a [InputChecklist] from TDLib JSON.
   factory InputChecklist.fromJson(Map<String, dynamic> json) => InputChecklist(
-        title: _readObject(json['title'], FormattedText.fromJson),
-        tasks: _readList<InputChecklistTask>(
-            json['tasks'], (e) => _readObject(e, InputChecklistTask.fromJson)),
-        othersCanAddTasks: _readBool(json['others_can_add_tasks']),
-        othersCanMarkTasksAsDone:
-            _readBool(json['others_can_mark_tasks_as_done']),
-      );
+    title: _readObject(json['title'], FormattedText.fromJson),
+    tasks: _readList<InputChecklistTask>(
+      json['tasks'],
+      (e) => _readObject(e, InputChecklistTask.fromJson),
+    ),
+    othersCanAddTasks: _readBool(json['others_can_add_tasks']),
+    othersCanMarkTasksAsDone: _readBool(json['others_can_mark_tasks_as_done']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title.toJson(),
-        'tasks': [for (final e in tasks) e.toJson()],
-        'others_can_add_tasks': othersCanAddTasks,
-        'others_can_mark_tasks_as_done': othersCanMarkTasksAsDone,
-      };
+    '@type': CONSTRUCTOR,
+    'title': title.toJson(),
+    'tasks': [for (final e in tasks) e.toJson()],
+    'others_can_add_tasks': othersCanAddTasks,
+    'others_can_mark_tasks_as_done': othersCanMarkTasksAsDone,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,14 +52,13 @@ final class InputChecklist extends TdObject {
     List<InputChecklistTask>? tasks,
     bool? othersCanAddTasks,
     bool? othersCanMarkTasksAsDone,
-  }) =>
-      InputChecklist(
-        title: title ?? this.title,
-        tasks: tasks ?? this.tasks,
-        othersCanAddTasks: othersCanAddTasks ?? this.othersCanAddTasks,
-        othersCanMarkTasksAsDone:
-            othersCanMarkTasksAsDone ?? this.othersCanMarkTasksAsDone,
-      );
+  }) => InputChecklist(
+    title: title ?? this.title,
+    tasks: tasks ?? this.tasks,
+    othersCanAddTasks: othersCanAddTasks ?? this.othersCanAddTasks,
+    othersCanMarkTasksAsDone:
+        othersCanMarkTasksAsDone ?? this.othersCanMarkTasksAsDone,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputChecklist';

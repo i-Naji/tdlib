@@ -35,27 +35,29 @@ final class ThemeSettings extends TdObject {
 
   /// Parses a [ThemeSettings] from TDLib JSON.
   factory ThemeSettings.fromJson(Map<String, dynamic> json) => ThemeSettings(
-        baseTheme: _readObject(json['base_theme'], BuiltInTheme.fromJson),
-        accentColor: _readInt(json['accent_color']),
-        background: _readOptional(json['background'], Background.fromJson),
-        outgoingMessageFill: _readOptional(
-            json['outgoing_message_fill'], BackgroundFill.fromJson),
-        animateOutgoingMessageFill:
-            _readBool(json['animate_outgoing_message_fill']),
-        outgoingMessageAccentColor:
-            _readInt(json['outgoing_message_accent_color']),
-      );
+    baseTheme: _readObject(json['base_theme'], BuiltInTheme.fromJson),
+    accentColor: _readInt(json['accent_color']),
+    background: _readOptional(json['background'], Background.fromJson),
+    outgoingMessageFill: _readOptional(
+      json['outgoing_message_fill'],
+      BackgroundFill.fromJson,
+    ),
+    animateOutgoingMessageFill: _readBool(
+      json['animate_outgoing_message_fill'],
+    ),
+    outgoingMessageAccentColor: _readInt(json['outgoing_message_accent_color']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'base_theme': baseTheme.toJson(),
-        'accent_color': accentColor,
-        'background': background?.toJson(),
-        'outgoing_message_fill': outgoingMessageFill?.toJson(),
-        'animate_outgoing_message_fill': animateOutgoingMessageFill,
-        'outgoing_message_accent_color': outgoingMessageAccentColor,
-      };
+    '@type': CONSTRUCTOR,
+    'base_theme': baseTheme.toJson(),
+    'accent_color': accentColor,
+    'background': background?.toJson(),
+    'outgoing_message_fill': outgoingMessageFill?.toJson(),
+    'animate_outgoing_message_fill': animateOutgoingMessageFill,
+    'outgoing_message_accent_color': outgoingMessageAccentColor,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -66,19 +68,18 @@ final class ThemeSettings extends TdObject {
     BackgroundFill? Function()? outgoingMessageFill,
     bool? animateOutgoingMessageFill,
     int? outgoingMessageAccentColor,
-  }) =>
-      ThemeSettings(
-        baseTheme: baseTheme ?? this.baseTheme,
-        accentColor: accentColor ?? this.accentColor,
-        background: background != null ? background() : this.background,
-        outgoingMessageFill: outgoingMessageFill != null
-            ? outgoingMessageFill()
-            : this.outgoingMessageFill,
-        animateOutgoingMessageFill:
-            animateOutgoingMessageFill ?? this.animateOutgoingMessageFill,
-        outgoingMessageAccentColor:
-            outgoingMessageAccentColor ?? this.outgoingMessageAccentColor,
-      );
+  }) => ThemeSettings(
+    baseTheme: baseTheme ?? this.baseTheme,
+    accentColor: accentColor ?? this.accentColor,
+    background: background != null ? background() : this.background,
+    outgoingMessageFill: outgoingMessageFill != null
+        ? outgoingMessageFill()
+        : this.outgoingMessageFill,
+    animateOutgoingMessageFill:
+        animateOutgoingMessageFill ?? this.animateOutgoingMessageFill,
+    outgoingMessageAccentColor:
+        outgoingMessageAccentColor ?? this.outgoingMessageAccentColor,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'themeSettings';

@@ -9,28 +9,22 @@ part of '../tdapi.dart';
 final class GetUserPrivacySettingRules
     extends TdFunction<UserPrivacySettingRules> {
   /// Returns the current privacy settings
-  const GetUserPrivacySettingRules({
-    required this.setting,
-  });
+  const GetUserPrivacySettingRules({required this.setting});
 
   /// The privacy setting
   final UserPrivacySetting setting;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'setting': setting.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'setting': setting.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetUserPrivacySettingRules copyWith({
-    UserPrivacySetting? setting,
-  }) =>
-      GetUserPrivacySettingRules(
-        setting: setting ?? this.setting,
-      );
+  GetUserPrivacySettingRules copyWith({UserPrivacySetting? setting}) =>
+      GetUserPrivacySettingRules(setting: setting ?? this.setting);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getUserPrivacySettingRules';

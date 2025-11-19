@@ -41,16 +41,16 @@ final class GetStoryInteractions extends TdFunction<StoryInteractions> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'story_id': storyId,
-        'query': query,
-        'only_contacts': onlyContacts,
-        'prefer_forwards': preferForwards,
-        'prefer_with_reaction': preferWithReaction,
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'story_id': storyId,
+    'query': query,
+    'only_contacts': onlyContacts,
+    'prefer_forwards': preferForwards,
+    'prefer_with_reaction': preferWithReaction,
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -62,16 +62,15 @@ final class GetStoryInteractions extends TdFunction<StoryInteractions> {
     bool? preferWithReaction,
     String? offset,
     int? limit,
-  }) =>
-      GetStoryInteractions(
-        storyId: storyId ?? this.storyId,
-        query: query ?? this.query,
-        onlyContacts: onlyContacts ?? this.onlyContacts,
-        preferForwards: preferForwards ?? this.preferForwards,
-        preferWithReaction: preferWithReaction ?? this.preferWithReaction,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => GetStoryInteractions(
+    storyId: storyId ?? this.storyId,
+    query: query ?? this.query,
+    onlyContacts: onlyContacts ?? this.onlyContacts,
+    preferForwards: preferForwards ?? this.preferForwards,
+    preferWithReaction: preferWithReaction ?? this.preferWithReaction,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getStoryInteractions';

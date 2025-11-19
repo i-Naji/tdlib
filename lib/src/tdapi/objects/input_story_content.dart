@@ -62,16 +62,18 @@ final class InputStoryContentPhoto extends InputStoryContent {
   factory InputStoryContentPhoto.fromJson(Map<String, dynamic> json) =>
       InputStoryContentPhoto(
         photo: _readObject(json['photo'], InputFile.fromJson),
-        addedStickerFileIds:
-            _readList<int>(json['added_sticker_file_ids'], _readInt),
+        addedStickerFileIds: _readList<int>(
+          json['added_sticker_file_ids'],
+          _readInt,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo.toJson(),
-        'added_sticker_file_ids': addedStickerFileIds,
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo.toJson(),
+    'added_sticker_file_ids': addedStickerFileIds,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -79,11 +81,10 @@ final class InputStoryContentPhoto extends InputStoryContent {
   InputStoryContentPhoto copyWith({
     InputFile? photo,
     List<int>? addedStickerFileIds,
-  }) =>
-      InputStoryContentPhoto(
-        photo: photo ?? this.photo,
-        addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
-      );
+  }) => InputStoryContentPhoto(
+    photo: photo ?? this.photo,
+    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputStoryContentPhoto';
@@ -122,8 +123,10 @@ final class InputStoryContentVideo extends InputStoryContent {
   factory InputStoryContentVideo.fromJson(Map<String, dynamic> json) =>
       InputStoryContentVideo(
         video: _readObject(json['video'], InputFile.fromJson),
-        addedStickerFileIds:
-            _readList<int>(json['added_sticker_file_ids'], _readInt),
+        addedStickerFileIds: _readList<int>(
+          json['added_sticker_file_ids'],
+          _readInt,
+        ),
         duration: _readDouble(json['duration']),
         coverFrameTimestamp: _readDouble(json['cover_frame_timestamp']),
         isAnimation: _readBool(json['is_animation']),
@@ -131,13 +134,13 @@ final class InputStoryContentVideo extends InputStoryContent {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'video': video.toJson(),
-        'added_sticker_file_ids': addedStickerFileIds,
-        'duration': duration,
-        'cover_frame_timestamp': coverFrameTimestamp,
-        'is_animation': isAnimation,
-      };
+    '@type': CONSTRUCTOR,
+    'video': video.toJson(),
+    'added_sticker_file_ids': addedStickerFileIds,
+    'duration': duration,
+    'cover_frame_timestamp': coverFrameTimestamp,
+    'is_animation': isAnimation,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -148,14 +151,13 @@ final class InputStoryContentVideo extends InputStoryContent {
     double? duration,
     double? coverFrameTimestamp,
     bool? isAnimation,
-  }) =>
-      InputStoryContentVideo(
-        video: video ?? this.video,
-        addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
-        duration: duration ?? this.duration,
-        coverFrameTimestamp: coverFrameTimestamp ?? this.coverFrameTimestamp,
-        isAnimation: isAnimation ?? this.isAnimation,
-      );
+  }) => InputStoryContentVideo(
+    video: video ?? this.video,
+    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
+    duration: duration ?? this.duration,
+    coverFrameTimestamp: coverFrameTimestamp ?? this.coverFrameTimestamp,
+    isAnimation: isAnimation ?? this.isAnimation,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputStoryContentVideo';

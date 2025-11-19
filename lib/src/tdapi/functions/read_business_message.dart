@@ -25,12 +25,12 @@ final class ReadBusinessMessage extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'business_connection_id': businessConnectionId,
-        'chat_id': chatId,
-        'message_id': messageId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'business_connection_id': businessConnectionId,
+    'chat_id': chatId,
+    'message_id': messageId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class ReadBusinessMessage extends TdFunction<Ok> {
     String? businessConnectionId,
     int? chatId,
     int? messageId,
-  }) =>
-      ReadBusinessMessage(
-        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-      );
+  }) => ReadBusinessMessage(
+    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'readBusinessMessage';

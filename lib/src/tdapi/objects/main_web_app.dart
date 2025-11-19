@@ -29,18 +29,18 @@ final class MainWebApp extends TdObject {
 
   /// Parses a [MainWebApp] from TDLib JSON.
   factory MainWebApp.fromJson(Map<String, dynamic> json) => MainWebApp(
-        url: _readString(json['url']),
-        mode: _readObject(json['mode'], WebAppOpenMode.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    url: _readString(json['url']),
+    mode: _readObject(json['mode'], WebAppOpenMode.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'mode': mode.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'mode': mode.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class MainWebApp extends TdObject {
     WebAppOpenMode? mode,
     dynamic extra,
     int? clientId,
-  }) =>
-      MainWebApp(
-        url: url ?? this.url,
-        mode: mode ?? this.mode,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => MainWebApp(
+    url: url ?? this.url,
+    mode: mode ?? this.mode,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'mainWebApp';

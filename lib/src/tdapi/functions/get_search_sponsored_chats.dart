@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [SponsoredChats].
 final class GetSearchSponsoredChats extends TdFunction<SponsoredChats> {
   /// Returns sponsored chats to be shown in the search results
-  const GetSearchSponsoredChats({
-    required this.query,
-  });
+  const GetSearchSponsoredChats({required this.query});
 
   /// Query the user searches for
   final String query;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'query': query,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'query': query,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetSearchSponsoredChats copyWith({
-    String? query,
-  }) =>
-      GetSearchSponsoredChats(
-        query: query ?? this.query,
-      );
+  GetSearchSponsoredChats copyWith({String? query}) =>
+      GetSearchSponsoredChats(query: query ?? this.query);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getSearchSponsoredChats';

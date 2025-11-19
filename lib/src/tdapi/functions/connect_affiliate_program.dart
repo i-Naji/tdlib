@@ -22,22 +22,21 @@ final class ConnectAffiliateProgram
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'affiliate': affiliate.toJson(),
-        'bot_user_id': botUserId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'affiliate': affiliate.toJson(),
+    'bot_user_id': botUserId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ConnectAffiliateProgram copyWith({
     AffiliateType? affiliate,
     int? botUserId,
-  }) =>
-      ConnectAffiliateProgram(
-        affiliate: affiliate ?? this.affiliate,
-        botUserId: botUserId ?? this.botUserId,
-      );
+  }) => ConnectAffiliateProgram(
+    affiliate: affiliate ?? this.affiliate,
+    botUserId: botUserId ?? this.botUserId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'connectAffiliateProgram';

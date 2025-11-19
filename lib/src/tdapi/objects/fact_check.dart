@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Describes a fact-check added to the message by an independent checker
 final class FactCheck extends TdObject {
   /// Describes a fact-check added to the message by an independent checker
-  const FactCheck({
-    required this.text,
-    required this.countryCode,
-  });
+  const FactCheck({required this.text, required this.countryCode});
 
   /// Text of the fact-check
   final FormattedText text;
@@ -19,27 +16,23 @@ final class FactCheck extends TdObject {
 
   /// Parses a [FactCheck] from TDLib JSON.
   factory FactCheck.fromJson(Map<String, dynamic> json) => FactCheck(
-        text: _readObject(json['text'], FormattedText.fromJson),
-        countryCode: _readString(json['country_code']),
-      );
+    text: _readObject(json['text'], FormattedText.fromJson),
+    countryCode: _readString(json['country_code']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'country_code': countryCode,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'country_code': countryCode,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  FactCheck copyWith({
-    FormattedText? text,
-    String? countryCode,
-  }) =>
-      FactCheck(
-        text: text ?? this.text,
-        countryCode: countryCode ?? this.countryCode,
-      );
+  FactCheck copyWith({FormattedText? text, String? countryCode}) => FactCheck(
+    text: text ?? this.text,
+    countryCode: countryCode ?? this.countryCode,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'factCheck';

@@ -21,18 +21,15 @@ final class SetSupergroupUsername extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'username': username,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'username': username,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetSupergroupUsername copyWith({
-    int? supergroupId,
-    String? username,
-  }) =>
+  SetSupergroupUsername copyWith({int? supergroupId, String? username}) =>
       SetSupergroupUsername(
         supergroupId: supergroupId ?? this.supergroupId,
         username: username ?? this.username,

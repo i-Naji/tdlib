@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Users].
 final class SearchContacts extends TdFunction<Users> {
   /// Searches for the specified query in the first names, last names and usernames of the known user contacts
-  const SearchContacts({
-    required this.query,
-    required this.limit,
-  });
+  const SearchContacts({required this.query, required this.limit});
 
   /// Query to search for; may be empty to return all contacts
   final String query;
@@ -21,22 +18,16 @@ final class SearchContacts extends TdFunction<Users> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'query': query,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'query': query,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchContacts copyWith({
-    String? query,
-    int? limit,
-  }) =>
-      SearchContacts(
-        query: query ?? this.query,
-        limit: limit ?? this.limit,
-      );
+  SearchContacts copyWith({String? query, int? limit}) =>
+      SearchContacts(query: query ?? this.query, limit: limit ?? this.limit);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchContacts';

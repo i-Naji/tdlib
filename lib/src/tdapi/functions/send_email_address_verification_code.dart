@@ -9,25 +9,21 @@ part of '../tdapi.dart';
 final class SendEmailAddressVerificationCode
     extends TdFunction<EmailAddressAuthenticationCodeInfo> {
   /// Sends a code to verify an email address to be added to a user's Telegram Passport
-  const SendEmailAddressVerificationCode({
-    required this.emailAddress,
-  });
+  const SendEmailAddressVerificationCode({required this.emailAddress});
 
   /// Email address
   final String emailAddress;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'email_address': emailAddress,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'email_address': emailAddress,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SendEmailAddressVerificationCode copyWith({
-    String? emailAddress,
-  }) =>
+  SendEmailAddressVerificationCode copyWith({String? emailAddress}) =>
       SendEmailAddressVerificationCode(
         emailAddress: emailAddress ?? this.emailAddress,
       );

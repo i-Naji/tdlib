@@ -21,18 +21,15 @@ final class LoadGroupCallParticipants extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  LoadGroupCallParticipants copyWith({
-    int? groupCallId,
-    int? limit,
-  }) =>
+  LoadGroupCallParticipants copyWith({int? groupCallId, int? limit}) =>
       LoadGroupCallParticipants(
         groupCallId: groupCallId ?? this.groupCallId,
         limit: limit ?? this.limit,

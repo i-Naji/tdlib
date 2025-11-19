@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Represents a date according to the Gregorian calendar
 final class Date extends TdObject {
   /// Represents a date according to the Gregorian calendar
-  const Date({
-    required this.day,
-    required this.month,
-    required this.year,
-  });
+  const Date({required this.day, required this.month, required this.year});
 
   /// Day of the month; 1-31
   final int day;
@@ -23,31 +19,26 @@ final class Date extends TdObject {
 
   /// Parses a [Date] from TDLib JSON.
   factory Date.fromJson(Map<String, dynamic> json) => Date(
-        day: _readInt(json['day']),
-        month: _readInt(json['month']),
-        year: _readInt(json['year']),
-      );
+    day: _readInt(json['day']),
+    month: _readInt(json['month']),
+    year: _readInt(json['year']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'day': day,
-        'month': month,
-        'year': year,
-      };
+    '@type': CONSTRUCTOR,
+    'day': day,
+    'month': month,
+    'year': year,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  Date copyWith({
-    int? day,
-    int? month,
-    int? year,
-  }) =>
-      Date(
-        day: day ?? this.day,
-        month: month ?? this.month,
-        year: year ?? this.year,
-      );
+  Date copyWith({int? day, int? month, int? year}) => Date(
+    day: day ?? this.day,
+    month: month ?? this.month,
+    year: year ?? this.year,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'date';

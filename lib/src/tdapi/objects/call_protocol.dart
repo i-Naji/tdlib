@@ -31,23 +31,22 @@ final class CallProtocol extends TdObject {
 
   /// Parses a [CallProtocol] from TDLib JSON.
   factory CallProtocol.fromJson(Map<String, dynamic> json) => CallProtocol(
-        udpP2p: _readBool(json['udp_p2p']),
-        udpReflector: _readBool(json['udp_reflector']),
-        minLayer: _readInt(json['min_layer']),
-        maxLayer: _readInt(json['max_layer']),
-        libraryVersions:
-            _readList<String>(json['library_versions'], _readString),
-      );
+    udpP2p: _readBool(json['udp_p2p']),
+    udpReflector: _readBool(json['udp_reflector']),
+    minLayer: _readInt(json['min_layer']),
+    maxLayer: _readInt(json['max_layer']),
+    libraryVersions: _readList<String>(json['library_versions'], _readString),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'udp_p2p': udpP2p,
-        'udp_reflector': udpReflector,
-        'min_layer': minLayer,
-        'max_layer': maxLayer,
-        'library_versions': libraryVersions,
-      };
+    '@type': CONSTRUCTOR,
+    'udp_p2p': udpP2p,
+    'udp_reflector': udpReflector,
+    'min_layer': minLayer,
+    'max_layer': maxLayer,
+    'library_versions': libraryVersions,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,14 +56,13 @@ final class CallProtocol extends TdObject {
     int? minLayer,
     int? maxLayer,
     List<String>? libraryVersions,
-  }) =>
-      CallProtocol(
-        udpP2p: udpP2p ?? this.udpP2p,
-        udpReflector: udpReflector ?? this.udpReflector,
-        minLayer: minLayer ?? this.minLayer,
-        maxLayer: maxLayer ?? this.maxLayer,
-        libraryVersions: libraryVersions ?? this.libraryVersions,
-      );
+  }) => CallProtocol(
+    udpP2p: udpP2p ?? this.udpP2p,
+    udpReflector: udpReflector ?? this.udpReflector,
+    minLayer: minLayer ?? this.minLayer,
+    maxLayer: maxLayer ?? this.maxLayer,
+    libraryVersions: libraryVersions ?? this.libraryVersions,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'callProtocol';

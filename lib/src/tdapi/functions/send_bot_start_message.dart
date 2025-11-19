@@ -25,12 +25,12 @@ final class SendBotStartMessage extends TdFunction<Message> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'chat_id': chatId,
-        'parameter': parameter,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'chat_id': chatId,
+    'parameter': parameter,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SendBotStartMessage extends TdFunction<Message> {
     int? botUserId,
     int? chatId,
     String? parameter,
-  }) =>
-      SendBotStartMessage(
-        botUserId: botUserId ?? this.botUserId,
-        chatId: chatId ?? this.chatId,
-        parameter: parameter ?? this.parameter,
-      );
+  }) => SendBotStartMessage(
+    botUserId: botUserId ?? this.botUserId,
+    chatId: chatId ?? this.chatId,
+    parameter: parameter ?? this.parameter,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sendBotStartMessage';

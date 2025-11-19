@@ -79,30 +79,31 @@ final class BusinessBotRights extends TdObject {
         canViewGiftsAndStars: _readBool(json['can_view_gifts_and_stars']),
         canSellGifts: _readBool(json['can_sell_gifts']),
         canChangeGiftSettings: _readBool(json['can_change_gift_settings']),
-        canTransferAndUpgradeGifts:
-            _readBool(json['can_transfer_and_upgrade_gifts']),
+        canTransferAndUpgradeGifts: _readBool(
+          json['can_transfer_and_upgrade_gifts'],
+        ),
         canTransferStars: _readBool(json['can_transfer_stars']),
         canManageStories: _readBool(json['can_manage_stories']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'can_reply': canReply,
-        'can_read_messages': canReadMessages,
-        'can_delete_sent_messages': canDeleteSentMessages,
-        'can_delete_all_messages': canDeleteAllMessages,
-        'can_edit_name': canEditName,
-        'can_edit_bio': canEditBio,
-        'can_edit_profile_photo': canEditProfilePhoto,
-        'can_edit_username': canEditUsername,
-        'can_view_gifts_and_stars': canViewGiftsAndStars,
-        'can_sell_gifts': canSellGifts,
-        'can_change_gift_settings': canChangeGiftSettings,
-        'can_transfer_and_upgrade_gifts': canTransferAndUpgradeGifts,
-        'can_transfer_stars': canTransferStars,
-        'can_manage_stories': canManageStories,
-      };
+    '@type': CONSTRUCTOR,
+    'can_reply': canReply,
+    'can_read_messages': canReadMessages,
+    'can_delete_sent_messages': canDeleteSentMessages,
+    'can_delete_all_messages': canDeleteAllMessages,
+    'can_edit_name': canEditName,
+    'can_edit_bio': canEditBio,
+    'can_edit_profile_photo': canEditProfilePhoto,
+    'can_edit_username': canEditUsername,
+    'can_view_gifts_and_stars': canViewGiftsAndStars,
+    'can_sell_gifts': canSellGifts,
+    'can_change_gift_settings': canChangeGiftSettings,
+    'can_transfer_and_upgrade_gifts': canTransferAndUpgradeGifts,
+    'can_transfer_stars': canTransferStars,
+    'can_manage_stories': canManageStories,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -121,26 +122,23 @@ final class BusinessBotRights extends TdObject {
     bool? canTransferAndUpgradeGifts,
     bool? canTransferStars,
     bool? canManageStories,
-  }) =>
-      BusinessBotRights(
-        canReply: canReply ?? this.canReply,
-        canReadMessages: canReadMessages ?? this.canReadMessages,
-        canDeleteSentMessages:
-            canDeleteSentMessages ?? this.canDeleteSentMessages,
-        canDeleteAllMessages: canDeleteAllMessages ?? this.canDeleteAllMessages,
-        canEditName: canEditName ?? this.canEditName,
-        canEditBio: canEditBio ?? this.canEditBio,
-        canEditProfilePhoto: canEditProfilePhoto ?? this.canEditProfilePhoto,
-        canEditUsername: canEditUsername ?? this.canEditUsername,
-        canViewGiftsAndStars: canViewGiftsAndStars ?? this.canViewGiftsAndStars,
-        canSellGifts: canSellGifts ?? this.canSellGifts,
-        canChangeGiftSettings:
-            canChangeGiftSettings ?? this.canChangeGiftSettings,
-        canTransferAndUpgradeGifts:
-            canTransferAndUpgradeGifts ?? this.canTransferAndUpgradeGifts,
-        canTransferStars: canTransferStars ?? this.canTransferStars,
-        canManageStories: canManageStories ?? this.canManageStories,
-      );
+  }) => BusinessBotRights(
+    canReply: canReply ?? this.canReply,
+    canReadMessages: canReadMessages ?? this.canReadMessages,
+    canDeleteSentMessages: canDeleteSentMessages ?? this.canDeleteSentMessages,
+    canDeleteAllMessages: canDeleteAllMessages ?? this.canDeleteAllMessages,
+    canEditName: canEditName ?? this.canEditName,
+    canEditBio: canEditBio ?? this.canEditBio,
+    canEditProfilePhoto: canEditProfilePhoto ?? this.canEditProfilePhoto,
+    canEditUsername: canEditUsername ?? this.canEditUsername,
+    canViewGiftsAndStars: canViewGiftsAndStars ?? this.canViewGiftsAndStars,
+    canSellGifts: canSellGifts ?? this.canSellGifts,
+    canChangeGiftSettings: canChangeGiftSettings ?? this.canChangeGiftSettings,
+    canTransferAndUpgradeGifts:
+        canTransferAndUpgradeGifts ?? this.canTransferAndUpgradeGifts,
+    canTransferStars: canTransferStars ?? this.canTransferStars,
+    canManageStories: canManageStories ?? this.canManageStories,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'businessBotRights';

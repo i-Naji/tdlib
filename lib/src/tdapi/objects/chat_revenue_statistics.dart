@@ -39,11 +39,17 @@ final class ChatRevenueStatistics extends TdObject {
   factory ChatRevenueStatistics.fromJson(Map<String, dynamic> json) =>
       ChatRevenueStatistics(
         revenueByHourGraph: _readObject(
-            json['revenue_by_hour_graph'], StatisticalGraph.fromJson),
-        revenueGraph:
-            _readObject(json['revenue_graph'], StatisticalGraph.fromJson),
-        revenueAmount:
-            _readObject(json['revenue_amount'], ChatRevenueAmount.fromJson),
+          json['revenue_by_hour_graph'],
+          StatisticalGraph.fromJson,
+        ),
+        revenueGraph: _readObject(
+          json['revenue_graph'],
+          StatisticalGraph.fromJson,
+        ),
+        revenueAmount: _readObject(
+          json['revenue_amount'],
+          ChatRevenueAmount.fromJson,
+        ),
         usdRate: _readDouble(json['usd_rate']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -51,12 +57,12 @@ final class ChatRevenueStatistics extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'revenue_by_hour_graph': revenueByHourGraph.toJson(),
-        'revenue_graph': revenueGraph.toJson(),
-        'revenue_amount': revenueAmount.toJson(),
-        'usd_rate': usdRate,
-      };
+    '@type': CONSTRUCTOR,
+    'revenue_by_hour_graph': revenueByHourGraph.toJson(),
+    'revenue_graph': revenueGraph.toJson(),
+    'revenue_amount': revenueAmount.toJson(),
+    'usd_rate': usdRate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -67,15 +73,14 @@ final class ChatRevenueStatistics extends TdObject {
     double? usdRate,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatRevenueStatistics(
-        revenueByHourGraph: revenueByHourGraph ?? this.revenueByHourGraph,
-        revenueGraph: revenueGraph ?? this.revenueGraph,
-        revenueAmount: revenueAmount ?? this.revenueAmount,
-        usdRate: usdRate ?? this.usdRate,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatRevenueStatistics(
+    revenueByHourGraph: revenueByHourGraph ?? this.revenueByHourGraph,
+    revenueGraph: revenueGraph ?? this.revenueGraph,
+    revenueAmount: revenueAmount ?? this.revenueAmount,
+    usdRate: usdRate ?? this.usdRate,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatRevenueStatistics';

@@ -8,28 +8,21 @@ part of '../tdapi.dart';
 /// Returns [File].
 final class GetFile extends TdFunction<File> {
   /// Returns information about a file. This is an offline method
-  const GetFile({
-    required this.fileId,
-  });
+  const GetFile({required this.fileId});
 
   /// Identifier of the file to get
   final int fileId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'file_id': fileId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'file_id': fileId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetFile copyWith({
-    int? fileId,
-  }) =>
-      GetFile(
-        fileId: fileId ?? this.fileId,
-      );
+  GetFile copyWith({int? fileId}) => GetFile(fileId: fileId ?? this.fileId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getFile';

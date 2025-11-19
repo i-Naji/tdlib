@@ -47,34 +47,23 @@ final class UndecodedInlineKeyboardButtonType extends InlineKeyboardButtonType {
 /// A button that opens a specified URL
 final class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
   /// A button that opens a specified URL
-  const InlineKeyboardButtonTypeUrl({
-    required this.url,
-  });
+  const InlineKeyboardButtonTypeUrl({required this.url});
 
   /// HTTP or tg:// URL to open. If the link is of the type internalLinkTypeWebApp, then the button must be marked as a Web App button
   final String url;
 
   /// Parses a [InlineKeyboardButtonTypeUrl] from TDLib JSON.
   factory InlineKeyboardButtonTypeUrl.fromJson(Map<String, dynamic> json) =>
-      InlineKeyboardButtonTypeUrl(
-        url: _readString(json['url']),
-      );
+      InlineKeyboardButtonTypeUrl(url: _readString(json['url']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'url': url};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InlineKeyboardButtonTypeUrl copyWith({
-    String? url,
-  }) =>
-      InlineKeyboardButtonTypeUrl(
-        url: url ?? this.url,
-      );
+  InlineKeyboardButtonTypeUrl copyWith({String? url}) =>
+      InlineKeyboardButtonTypeUrl(url: url ?? this.url);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeUrl';
@@ -103,20 +92,20 @@ final class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
 
   /// Parses a [InlineKeyboardButtonTypeLoginUrl] from TDLib JSON.
   factory InlineKeyboardButtonTypeLoginUrl.fromJson(
-          Map<String, dynamic> json) =>
-      InlineKeyboardButtonTypeLoginUrl(
-        url: _readString(json['url']),
-        id: _readInt(json['id']),
-        forwardText: _readString(json['forward_text']),
-      );
+    Map<String, dynamic> json,
+  ) => InlineKeyboardButtonTypeLoginUrl(
+    url: _readString(json['url']),
+    id: _readInt(json['id']),
+    forwardText: _readString(json['forward_text']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'id': id,
-        'forward_text': forwardText,
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'id': id,
+    'forward_text': forwardText,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -125,12 +114,11 @@ final class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
     String? url,
     int? id,
     String? forwardText,
-  }) =>
-      InlineKeyboardButtonTypeLoginUrl(
-        url: url ?? this.url,
-        id: id ?? this.id,
-        forwardText: forwardText ?? this.forwardText,
-      );
+  }) => InlineKeyboardButtonTypeLoginUrl(
+    url: url ?? this.url,
+    id: id ?? this.id,
+    forwardText: forwardText ?? this.forwardText,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeLoginUrl';
@@ -142,34 +130,23 @@ final class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
 /// A button that opens a Web App by calling openWebApp
 final class InlineKeyboardButtonTypeWebApp extends InlineKeyboardButtonType {
   /// A button that opens a Web App by calling openWebApp
-  const InlineKeyboardButtonTypeWebApp({
-    required this.url,
-  });
+  const InlineKeyboardButtonTypeWebApp({required this.url});
 
   /// An HTTP URL to pass to openWebApp
   final String url;
 
   /// Parses a [InlineKeyboardButtonTypeWebApp] from TDLib JSON.
   factory InlineKeyboardButtonTypeWebApp.fromJson(Map<String, dynamic> json) =>
-      InlineKeyboardButtonTypeWebApp(
-        url: _readString(json['url']),
-      );
+      InlineKeyboardButtonTypeWebApp(url: _readString(json['url']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'url': url};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InlineKeyboardButtonTypeWebApp copyWith({
-    String? url,
-  }) =>
-      InlineKeyboardButtonTypeWebApp(
-        url: url ?? this.url,
-      );
+  InlineKeyboardButtonTypeWebApp copyWith({String? url}) =>
+      InlineKeyboardButtonTypeWebApp(url: url ?? this.url);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeWebApp';
@@ -181,35 +158,24 @@ final class InlineKeyboardButtonTypeWebApp extends InlineKeyboardButtonType {
 /// A button that sends a callback query to a bot
 final class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
   /// A button that sends a callback query to a bot
-  const InlineKeyboardButtonTypeCallback({
-    required this.data,
-  });
+  const InlineKeyboardButtonTypeCallback({required this.data});
 
   /// Data to be sent to the bot via a callback query
   final String data;
 
   /// Parses a [InlineKeyboardButtonTypeCallback] from TDLib JSON.
   factory InlineKeyboardButtonTypeCallback.fromJson(
-          Map<String, dynamic> json) =>
-      InlineKeyboardButtonTypeCallback(
-        data: _readString(json['data']),
-      );
+    Map<String, dynamic> json,
+  ) => InlineKeyboardButtonTypeCallback(data: _readString(json['data']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'data': data,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'data': data};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InlineKeyboardButtonTypeCallback copyWith({
-    String? data,
-  }) =>
-      InlineKeyboardButtonTypeCallback(
-        data: data ?? this.data,
-      );
+  InlineKeyboardButtonTypeCallback copyWith({String? data}) =>
+      InlineKeyboardButtonTypeCallback(data: data ?? this.data);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeCallback';
@@ -222,35 +188,26 @@ final class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
 final class InlineKeyboardButtonTypeCallbackWithPassword
     extends InlineKeyboardButtonType {
   /// A button that asks for the 2-step verification password of the current user and then sends a callback query to a bot
-  const InlineKeyboardButtonTypeCallbackWithPassword({
-    required this.data,
-  });
+  const InlineKeyboardButtonTypeCallbackWithPassword({required this.data});
 
   /// Data to be sent to the bot via a callback query
   final String data;
 
   /// Parses a [InlineKeyboardButtonTypeCallbackWithPassword] from TDLib JSON.
   factory InlineKeyboardButtonTypeCallbackWithPassword.fromJson(
-          Map<String, dynamic> json) =>
-      InlineKeyboardButtonTypeCallbackWithPassword(
-        data: _readString(json['data']),
-      );
+    Map<String, dynamic> json,
+  ) => InlineKeyboardButtonTypeCallbackWithPassword(
+    data: _readString(json['data']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'data': data,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'data': data};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InlineKeyboardButtonTypeCallbackWithPassword copyWith({
-    String? data,
-  }) =>
-      InlineKeyboardButtonTypeCallbackWithPassword(
-        data: data ?? this.data,
-      );
+  InlineKeyboardButtonTypeCallbackWithPassword copyWith({String? data}) =>
+      InlineKeyboardButtonTypeCallbackWithPassword(data: data ?? this.data);
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -268,13 +225,11 @@ final class InlineKeyboardButtonTypeCallbackGame
 
   /// Parses a [InlineKeyboardButtonTypeCallbackGame] from TDLib JSON.
   factory InlineKeyboardButtonTypeCallbackGame.fromJson(
-          Map<String, dynamic> json) =>
-      const InlineKeyboardButtonTypeCallbackGame();
+    Map<String, dynamic> json,
+  ) => const InlineKeyboardButtonTypeCallbackGame();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -306,18 +261,18 @@ final class InlineKeyboardButtonTypeSwitchInline
 
   /// Parses a [InlineKeyboardButtonTypeSwitchInline] from TDLib JSON.
   factory InlineKeyboardButtonTypeSwitchInline.fromJson(
-          Map<String, dynamic> json) =>
-      InlineKeyboardButtonTypeSwitchInline(
-        query: _readString(json['query']),
-        targetChat: _readObject(json['target_chat'], TargetChat.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => InlineKeyboardButtonTypeSwitchInline(
+    query: _readString(json['query']),
+    targetChat: _readObject(json['target_chat'], TargetChat.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'query': query,
-        'target_chat': targetChat.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'query': query,
+    'target_chat': targetChat.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -325,11 +280,10 @@ final class InlineKeyboardButtonTypeSwitchInline
   InlineKeyboardButtonTypeSwitchInline copyWith({
     String? query,
     TargetChat? targetChat,
-  }) =>
-      InlineKeyboardButtonTypeSwitchInline(
-        query: query ?? this.query,
-        targetChat: targetChat ?? this.targetChat,
-      );
+  }) => InlineKeyboardButtonTypeSwitchInline(
+    query: query ?? this.query,
+    targetChat: targetChat ?? this.targetChat,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeSwitchInline';
@@ -348,9 +302,7 @@ final class InlineKeyboardButtonTypeBuy extends InlineKeyboardButtonType {
       const InlineKeyboardButtonTypeBuy();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -367,34 +319,23 @@ final class InlineKeyboardButtonTypeBuy extends InlineKeyboardButtonType {
 /// A button with a user reference to be handled in the same way as textEntityTypeMentionName entities
 final class InlineKeyboardButtonTypeUser extends InlineKeyboardButtonType {
   /// A button with a user reference to be handled in the same way as textEntityTypeMentionName entities
-  const InlineKeyboardButtonTypeUser({
-    required this.userId,
-  });
+  const InlineKeyboardButtonTypeUser({required this.userId});
 
   /// User identifier
   final int userId;
 
   /// Parses a [InlineKeyboardButtonTypeUser] from TDLib JSON.
   factory InlineKeyboardButtonTypeUser.fromJson(Map<String, dynamic> json) =>
-      InlineKeyboardButtonTypeUser(
-        userId: _readInt(json['user_id']),
-      );
+      InlineKeyboardButtonTypeUser(userId: _readInt(json['user_id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'user_id': userId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InlineKeyboardButtonTypeUser copyWith({
-    int? userId,
-  }) =>
-      InlineKeyboardButtonTypeUser(
-        userId: userId ?? this.userId,
-      );
+  InlineKeyboardButtonTypeUser copyWith({int? userId}) =>
+      InlineKeyboardButtonTypeUser(userId: userId ?? this.userId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeUser';
@@ -406,35 +347,24 @@ final class InlineKeyboardButtonTypeUser extends InlineKeyboardButtonType {
 /// A button that copies specified text to clipboard
 final class InlineKeyboardButtonTypeCopyText extends InlineKeyboardButtonType {
   /// A button that copies specified text to clipboard
-  const InlineKeyboardButtonTypeCopyText({
-    required this.text,
-  });
+  const InlineKeyboardButtonTypeCopyText({required this.text});
 
   /// The text to copy to clipboard
   final String text;
 
   /// Parses a [InlineKeyboardButtonTypeCopyText] from TDLib JSON.
   factory InlineKeyboardButtonTypeCopyText.fromJson(
-          Map<String, dynamic> json) =>
-      InlineKeyboardButtonTypeCopyText(
-        text: _readString(json['text']),
-      );
+    Map<String, dynamic> json,
+  ) => InlineKeyboardButtonTypeCopyText(text: _readString(json['text']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'text': text};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InlineKeyboardButtonTypeCopyText copyWith({
-    String? text,
-  }) =>
-      InlineKeyboardButtonTypeCopyText(
-        text: text ?? this.text,
-      );
+  InlineKeyboardButtonTypeCopyText copyWith({String? text}) =>
+      InlineKeyboardButtonTypeCopyText(text: text ?? this.text);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeCopyText';

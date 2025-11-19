@@ -33,14 +33,14 @@ final class AddLocalMessage extends TdFunction<Message> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'sender_id': senderId.toJson(),
-        'reply_to': replyTo?.toJson(),
-        'disable_notification': disableNotification,
-        'input_message_content': inputMessageContent.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'sender_id': senderId.toJson(),
+    'reply_to': replyTo?.toJson(),
+    'disable_notification': disableNotification,
+    'input_message_content': inputMessageContent.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class AddLocalMessage extends TdFunction<Message> {
     InputMessageReplyTo? Function()? replyTo,
     bool? disableNotification,
     InputMessageContent? inputMessageContent,
-  }) =>
-      AddLocalMessage(
-        chatId: chatId ?? this.chatId,
-        senderId: senderId ?? this.senderId,
-        replyTo: replyTo != null ? replyTo() : this.replyTo,
-        disableNotification: disableNotification ?? this.disableNotification,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => AddLocalMessage(
+    chatId: chatId ?? this.chatId,
+    senderId: senderId ?? this.senderId,
+    replyTo: replyTo != null ? replyTo() : this.replyTo,
+    disableNotification: disableNotification ?? this.disableNotification,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addLocalMessage';

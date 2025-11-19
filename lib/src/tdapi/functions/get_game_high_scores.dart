@@ -25,20 +25,16 @@ final class GetGameHighScores extends TdFunction<GameHighScores> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'user_id': userId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'user_id': userId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetGameHighScores copyWith({
-    int? chatId,
-    int? messageId,
-    int? userId,
-  }) =>
+  GetGameHighScores copyWith({int? chatId, int? messageId, int? userId}) =>
       GetGameHighScores(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,

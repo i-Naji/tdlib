@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetStickerMaskPosition extends TdFunction<Ok> {
   /// Changes the mask position of a mask sticker. The sticker must belong to a mask sticker set that is owned by the current user
-  const SetStickerMaskPosition({
-    required this.sticker,
-    this.maskPosition,
-  });
+  const SetStickerMaskPosition({required this.sticker, this.maskPosition});
 
   /// Sticker
   final InputFile sticker;
@@ -21,22 +18,21 @@ final class SetStickerMaskPosition extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker': sticker.toJson(),
-        'mask_position': maskPosition?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker': sticker.toJson(),
+    'mask_position': maskPosition?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetStickerMaskPosition copyWith({
     InputFile? sticker,
     MaskPosition? Function()? maskPosition,
-  }) =>
-      SetStickerMaskPosition(
-        sticker: sticker ?? this.sticker,
-        maskPosition: maskPosition != null ? maskPosition() : this.maskPosition,
-      );
+  }) => SetStickerMaskPosition(
+    sticker: sticker ?? this.sticker,
+    maskPosition: maskPosition != null ? maskPosition() : this.maskPosition,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setStickerMaskPosition';

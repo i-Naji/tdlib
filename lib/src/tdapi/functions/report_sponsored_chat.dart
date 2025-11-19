@@ -21,23 +21,21 @@ final class ReportSponsoredChat extends TdFunction<ReportSponsoredResult> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sponsored_chat_unique_id': sponsoredChatUniqueId,
-        'option_id': optionId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sponsored_chat_unique_id': sponsoredChatUniqueId,
+    'option_id': optionId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ReportSponsoredChat copyWith({
     int? sponsoredChatUniqueId,
     String? optionId,
-  }) =>
-      ReportSponsoredChat(
-        sponsoredChatUniqueId:
-            sponsoredChatUniqueId ?? this.sponsoredChatUniqueId,
-        optionId: optionId ?? this.optionId,
-      );
+  }) => ReportSponsoredChat(
+    sponsoredChatUniqueId: sponsoredChatUniqueId ?? this.sponsoredChatUniqueId,
+    optionId: optionId ?? this.optionId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reportSponsoredChat';

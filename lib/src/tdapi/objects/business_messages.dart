@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of messages from a business account as received by a bot
 final class BusinessMessages extends TdObject {
   /// Contains a list of messages from a business account as received by a bot
-  const BusinessMessages({
-    required this.messages,
-    this.extra,
-    this.clientId,
-  });
+  const BusinessMessages({required this.messages, this.extra, this.clientId});
 
   /// List of business messages
   final List<BusinessMessage> messages;
@@ -27,16 +23,18 @@ final class BusinessMessages extends TdObject {
   factory BusinessMessages.fromJson(Map<String, dynamic> json) =>
       BusinessMessages(
         messages: _readList<BusinessMessage>(
-            json['messages'], (e) => _readObject(e, BusinessMessage.fromJson)),
+          json['messages'],
+          (e) => _readObject(e, BusinessMessage.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'messages': [for (final e in messages) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'messages': [for (final e in messages) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +42,11 @@ final class BusinessMessages extends TdObject {
     List<BusinessMessage>? messages,
     dynamic extra,
     int? clientId,
-  }) =>
-      BusinessMessages(
-        messages: messages ?? this.messages,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => BusinessMessages(
+    messages: messages ?? this.messages,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'businessMessages';

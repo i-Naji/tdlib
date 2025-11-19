@@ -31,22 +31,22 @@ final class AccountInfo extends TdObject {
 
   /// Parses a [AccountInfo] from TDLib JSON.
   factory AccountInfo.fromJson(Map<String, dynamic> json) => AccountInfo(
-        registrationMonth: _readInt(json['registration_month']),
-        registrationYear: _readInt(json['registration_year']),
-        phoneNumberCountryCode: _readString(json['phone_number_country_code']),
-        lastNameChangeDate: _readInt(json['last_name_change_date']),
-        lastPhotoChangeDate: _readInt(json['last_photo_change_date']),
-      );
+    registrationMonth: _readInt(json['registration_month']),
+    registrationYear: _readInt(json['registration_year']),
+    phoneNumberCountryCode: _readString(json['phone_number_country_code']),
+    lastNameChangeDate: _readInt(json['last_name_change_date']),
+    lastPhotoChangeDate: _readInt(json['last_photo_change_date']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'registration_month': registrationMonth,
-        'registration_year': registrationYear,
-        'phone_number_country_code': phoneNumberCountryCode,
-        'last_name_change_date': lastNameChangeDate,
-        'last_photo_change_date': lastPhotoChangeDate,
-      };
+    '@type': CONSTRUCTOR,
+    'registration_month': registrationMonth,
+    'registration_year': registrationYear,
+    'phone_number_country_code': phoneNumberCountryCode,
+    'last_name_change_date': lastNameChangeDate,
+    'last_photo_change_date': lastPhotoChangeDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class AccountInfo extends TdObject {
     String? phoneNumberCountryCode,
     int? lastNameChangeDate,
     int? lastPhotoChangeDate,
-  }) =>
-      AccountInfo(
-        registrationMonth: registrationMonth ?? this.registrationMonth,
-        registrationYear: registrationYear ?? this.registrationYear,
-        phoneNumberCountryCode:
-            phoneNumberCountryCode ?? this.phoneNumberCountryCode,
-        lastNameChangeDate: lastNameChangeDate ?? this.lastNameChangeDate,
-        lastPhotoChangeDate: lastPhotoChangeDate ?? this.lastPhotoChangeDate,
-      );
+  }) => AccountInfo(
+    registrationMonth: registrationMonth ?? this.registrationMonth,
+    registrationYear: registrationYear ?? this.registrationYear,
+    phoneNumberCountryCode:
+        phoneNumberCountryCode ?? this.phoneNumberCountryCode,
+    lastNameChangeDate: lastNameChangeDate ?? this.lastNameChangeDate,
+    lastPhotoChangeDate: lastPhotoChangeDate ?? this.lastPhotoChangeDate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'accountInfo';

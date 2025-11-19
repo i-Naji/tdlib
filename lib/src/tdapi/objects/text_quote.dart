@@ -23,26 +23,22 @@ final class TextQuote extends TdObject {
 
   /// Parses a [TextQuote] from TDLib JSON.
   factory TextQuote.fromJson(Map<String, dynamic> json) => TextQuote(
-        text: _readObject(json['text'], FormattedText.fromJson),
-        position: _readInt(json['position']),
-        isManual: _readBool(json['is_manual']),
-      );
+    text: _readObject(json['text'], FormattedText.fromJson),
+    position: _readInt(json['position']),
+    isManual: _readBool(json['is_manual']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'text': text.toJson(),
-        'position': position,
-        'is_manual': isManual,
-      };
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'position': position,
+    'is_manual': isManual,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TextQuote copyWith({
-    FormattedText? text,
-    int? position,
-    bool? isManual,
-  }) =>
+  TextQuote copyWith({FormattedText? text, int? position, bool? isManual}) =>
       TextQuote(
         text: text ?? this.text,
         position: position ?? this.position,

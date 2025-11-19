@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class RemoveRecentSticker extends TdFunction<Ok> {
   /// Removes a sticker from the list of recently used stickers
-  const RemoveRecentSticker({
-    required this.isAttached,
-    required this.sticker,
-  });
+  const RemoveRecentSticker({required this.isAttached, required this.sticker});
 
   /// Pass true to remove the sticker from the list of stickers recently attached to photo or video files; pass false to remove the sticker from the list of recently sent stickers
   final bool isAttached;
@@ -21,18 +18,15 @@ final class RemoveRecentSticker extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'is_attached': isAttached,
-        'sticker': sticker.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'is_attached': isAttached,
+    'sticker': sticker.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RemoveRecentSticker copyWith({
-    bool? isAttached,
-    InputFile? sticker,
-  }) =>
+  RemoveRecentSticker copyWith({bool? isAttached, InputFile? sticker}) =>
       RemoveRecentSticker(
         isAttached: isAttached ?? this.isAttached,
         sticker: sticker ?? this.sticker,

@@ -55,8 +55,10 @@ final class QuickReplyMessage extends TdObject {
   factory QuickReplyMessage.fromJson(Map<String, dynamic> json) =>
       QuickReplyMessage(
         id: _readInt(json['id']),
-        sendingState:
-            _readOptional(json['sending_state'], MessageSendingState.fromJson),
+        sendingState: _readOptional(
+          json['sending_state'],
+          MessageSendingState.fromJson,
+        ),
         canBeEdited: _readBool(json['can_be_edited']),
         replyToMessageId: _readInt(json['reply_to_message_id']),
         viaBotUserId: _readInt(json['via_bot_user_id']),
@@ -69,16 +71,16 @@ final class QuickReplyMessage extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'sending_state': sendingState?.toJson(),
-        'can_be_edited': canBeEdited,
-        'reply_to_message_id': replyToMessageId,
-        'via_bot_user_id': viaBotUserId,
-        'media_album_id': mediaAlbumId.toString(),
-        'content': content.toJson(),
-        'reply_markup': replyMarkup?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'sending_state': sendingState?.toJson(),
+    'can_be_edited': canBeEdited,
+    'reply_to_message_id': replyToMessageId,
+    'via_bot_user_id': viaBotUserId,
+    'media_album_id': mediaAlbumId.toString(),
+    'content': content.toJson(),
+    'reply_markup': replyMarkup?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -93,19 +95,18 @@ final class QuickReplyMessage extends TdObject {
     ReplyMarkup? Function()? replyMarkup,
     dynamic extra,
     int? clientId,
-  }) =>
-      QuickReplyMessage(
-        id: id ?? this.id,
-        sendingState: sendingState != null ? sendingState() : this.sendingState,
-        canBeEdited: canBeEdited ?? this.canBeEdited,
-        replyToMessageId: replyToMessageId ?? this.replyToMessageId,
-        viaBotUserId: viaBotUserId ?? this.viaBotUserId,
-        mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,
-        content: content ?? this.content,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => QuickReplyMessage(
+    id: id ?? this.id,
+    sendingState: sendingState != null ? sendingState() : this.sendingState,
+    canBeEdited: canBeEdited ?? this.canBeEdited,
+    replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+    viaBotUserId: viaBotUserId ?? this.viaBotUserId,
+    mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,
+    content: content ?? this.content,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'quickReplyMessage';

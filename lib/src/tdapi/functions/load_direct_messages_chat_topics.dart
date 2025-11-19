@@ -21,18 +21,15 @@ final class LoadDirectMessagesChatTopics extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  LoadDirectMessagesChatTopics copyWith({
-    int? chatId,
-    int? limit,
-  }) =>
+  LoadDirectMessagesChatTopics copyWith({int? chatId, int? limit}) =>
       LoadDirectMessagesChatTopics(
         chatId: chatId ?? this.chatId,
         limit: limit ?? this.limit,

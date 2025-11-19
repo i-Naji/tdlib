@@ -20,28 +20,29 @@ final class GroupCallRecentSpeaker extends TdObject {
   /// Parses a [GroupCallRecentSpeaker] from TDLib JSON.
   factory GroupCallRecentSpeaker.fromJson(Map<String, dynamic> json) =>
       GroupCallRecentSpeaker(
-        participantId:
-            _readObject(json['participant_id'], MessageSender.fromJson),
+        participantId: _readObject(
+          json['participant_id'],
+          MessageSender.fromJson,
+        ),
         isSpeaking: _readBool(json['is_speaking']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'participant_id': participantId.toJson(),
-        'is_speaking': isSpeaking,
-      };
+    '@type': CONSTRUCTOR,
+    'participant_id': participantId.toJson(),
+    'is_speaking': isSpeaking,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GroupCallRecentSpeaker copyWith({
     MessageSender? participantId,
     bool? isSpeaking,
-  }) =>
-      GroupCallRecentSpeaker(
-        participantId: participantId ?? this.participantId,
-        isSpeaking: isSpeaking ?? this.isSpeaking,
-      );
+  }) => GroupCallRecentSpeaker(
+    participantId: participantId ?? this.participantId,
+    isSpeaking: isSpeaking ?? this.isSpeaking,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'groupCallRecentSpeaker';

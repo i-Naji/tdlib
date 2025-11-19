@@ -45,17 +45,17 @@ final class SearchChatMessages extends TdFunction<FoundChatMessages> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'topic_id': topicId?.toJson(),
-        'query': query,
-        'sender_id': senderId?.toJson(),
-        'from_message_id': fromMessageId,
-        'offset': offset,
-        'limit': limit,
-        'filter': filter?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'topic_id': topicId?.toJson(),
+    'query': query,
+    'sender_id': senderId?.toJson(),
+    'from_message_id': fromMessageId,
+    'offset': offset,
+    'limit': limit,
+    'filter': filter?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -68,17 +68,16 @@ final class SearchChatMessages extends TdFunction<FoundChatMessages> {
     int? offset,
     int? limit,
     SearchMessagesFilter? Function()? filter,
-  }) =>
-      SearchChatMessages(
-        chatId: chatId ?? this.chatId,
-        topicId: topicId != null ? topicId() : this.topicId,
-        query: query ?? this.query,
-        senderId: senderId != null ? senderId() : this.senderId,
-        fromMessageId: fromMessageId ?? this.fromMessageId,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-        filter: filter != null ? filter() : this.filter,
-      );
+  }) => SearchChatMessages(
+    chatId: chatId ?? this.chatId,
+    topicId: topicId != null ? topicId() : this.topicId,
+    query: query ?? this.query,
+    senderId: senderId != null ? senderId() : this.senderId,
+    fromMessageId: fromMessageId ?? this.fromMessageId,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+    filter: filter != null ? filter() : this.filter,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchChatMessages';

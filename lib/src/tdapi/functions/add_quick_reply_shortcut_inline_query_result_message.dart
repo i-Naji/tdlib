@@ -34,14 +34,14 @@ final class AddQuickReplyShortcutInlineQueryResultMessage
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'shortcut_name': shortcutName,
-        'reply_to_message_id': replyToMessageId,
-        'query_id': queryId.toString(),
-        'result_id': resultId,
-        'hide_via_bot': hideViaBot,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'shortcut_name': shortcutName,
+    'reply_to_message_id': replyToMessageId,
+    'query_id': queryId.toString(),
+    'result_id': resultId,
+    'hide_via_bot': hideViaBot,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,14 +51,13 @@ final class AddQuickReplyShortcutInlineQueryResultMessage
     int? queryId,
     String? resultId,
     bool? hideViaBot,
-  }) =>
-      AddQuickReplyShortcutInlineQueryResultMessage(
-        shortcutName: shortcutName ?? this.shortcutName,
-        replyToMessageId: replyToMessageId ?? this.replyToMessageId,
-        queryId: queryId ?? this.queryId,
-        resultId: resultId ?? this.resultId,
-        hideViaBot: hideViaBot ?? this.hideViaBot,
-      );
+  }) => AddQuickReplyShortcutInlineQueryResultMessage(
+    shortcutName: shortcutName ?? this.shortcutName,
+    replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+    queryId: queryId ?? this.queryId,
+    resultId: resultId ?? this.resultId,
+    hideViaBot: hideViaBot ?? this.hideViaBot,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =

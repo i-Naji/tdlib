@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [SentWebAppMessage].
 final class AnswerWebAppQuery extends TdFunction<SentWebAppMessage> {
   /// Sets the result of interaction with a Web App and sends corresponding message on behalf of the user to the chat from which the query originated; for bots only
-  const AnswerWebAppQuery({
-    required this.webAppQueryId,
-    required this.result,
-  });
+  const AnswerWebAppQuery({required this.webAppQueryId, required this.result});
 
   /// Identifier of the Web App query
   final String webAppQueryId;
@@ -21,22 +18,21 @@ final class AnswerWebAppQuery extends TdFunction<SentWebAppMessage> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'web_app_query_id': webAppQueryId,
-        'result': result.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'web_app_query_id': webAppQueryId,
+    'result': result.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   AnswerWebAppQuery copyWith({
     String? webAppQueryId,
     InputInlineQueryResult? result,
-  }) =>
-      AnswerWebAppQuery(
-        webAppQueryId: webAppQueryId ?? this.webAppQueryId,
-        result: result ?? this.result,
-      );
+  }) => AnswerWebAppQuery(
+    webAppQueryId: webAppQueryId ?? this.webAppQueryId,
+    result: result ?? this.result,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'answerWebAppQuery';

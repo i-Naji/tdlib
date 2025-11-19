@@ -81,48 +81,55 @@ final class StickerSet extends TdObject {
 
   /// Parses a [StickerSet] from TDLib JSON.
   factory StickerSet.fromJson(Map<String, dynamic> json) => StickerSet(
-        id: _readInt(json['id']),
-        title: _readString(json['title']),
-        name: _readString(json['name']),
-        thumbnail: _readOptional(json['thumbnail'], Thumbnail.fromJson),
-        thumbnailOutline:
-            _readOptional(json['thumbnail_outline'], Outline.fromJson),
-        isOwned: _readBool(json['is_owned']),
-        isInstalled: _readBool(json['is_installed']),
-        isArchived: _readBool(json['is_archived']),
-        isOfficial: _readBool(json['is_official']),
-        stickerType: _readObject(json['sticker_type'], StickerType.fromJson),
-        needsRepainting: _readBool(json['needs_repainting']),
-        isAllowedAsChatEmojiStatus:
-            _readBool(json['is_allowed_as_chat_emoji_status']),
-        isViewed: _readBool(json['is_viewed']),
-        stickers: _readList<Sticker>(
-            json['stickers'], (e) => _readObject(e, Sticker.fromJson)),
-        emojis: _readList<Emojis>(
-            json['emojis'], (e) => _readObject(e, Emojis.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    id: _readInt(json['id']),
+    title: _readString(json['title']),
+    name: _readString(json['name']),
+    thumbnail: _readOptional(json['thumbnail'], Thumbnail.fromJson),
+    thumbnailOutline: _readOptional(
+      json['thumbnail_outline'],
+      Outline.fromJson,
+    ),
+    isOwned: _readBool(json['is_owned']),
+    isInstalled: _readBool(json['is_installed']),
+    isArchived: _readBool(json['is_archived']),
+    isOfficial: _readBool(json['is_official']),
+    stickerType: _readObject(json['sticker_type'], StickerType.fromJson),
+    needsRepainting: _readBool(json['needs_repainting']),
+    isAllowedAsChatEmojiStatus: _readBool(
+      json['is_allowed_as_chat_emoji_status'],
+    ),
+    isViewed: _readBool(json['is_viewed']),
+    stickers: _readList<Sticker>(
+      json['stickers'],
+      (e) => _readObject(e, Sticker.fromJson),
+    ),
+    emojis: _readList<Emojis>(
+      json['emojis'],
+      (e) => _readObject(e, Emojis.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'title': title,
-        'name': name,
-        'thumbnail': thumbnail?.toJson(),
-        'thumbnail_outline': thumbnailOutline?.toJson(),
-        'is_owned': isOwned,
-        'is_installed': isInstalled,
-        'is_archived': isArchived,
-        'is_official': isOfficial,
-        'sticker_type': stickerType.toJson(),
-        'needs_repainting': needsRepainting,
-        'is_allowed_as_chat_emoji_status': isAllowedAsChatEmojiStatus,
-        'is_viewed': isViewed,
-        'stickers': [for (final e in stickers) e.toJson()],
-        'emojis': [for (final e in emojis) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'title': title,
+    'name': name,
+    'thumbnail': thumbnail?.toJson(),
+    'thumbnail_outline': thumbnailOutline?.toJson(),
+    'is_owned': isOwned,
+    'is_installed': isInstalled,
+    'is_archived': isArchived,
+    'is_official': isOfficial,
+    'sticker_type': stickerType.toJson(),
+    'needs_repainting': needsRepainting,
+    'is_allowed_as_chat_emoji_status': isAllowedAsChatEmojiStatus,
+    'is_viewed': isViewed,
+    'stickers': [for (final e in stickers) e.toJson()],
+    'emojis': [for (final e in emojis) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -144,29 +151,28 @@ final class StickerSet extends TdObject {
     List<Emojis>? emojis,
     dynamic extra,
     int? clientId,
-  }) =>
-      StickerSet(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        name: name ?? this.name,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        thumbnailOutline: thumbnailOutline != null
-            ? thumbnailOutline()
-            : this.thumbnailOutline,
-        isOwned: isOwned ?? this.isOwned,
-        isInstalled: isInstalled ?? this.isInstalled,
-        isArchived: isArchived ?? this.isArchived,
-        isOfficial: isOfficial ?? this.isOfficial,
-        stickerType: stickerType ?? this.stickerType,
-        needsRepainting: needsRepainting ?? this.needsRepainting,
-        isAllowedAsChatEmojiStatus:
-            isAllowedAsChatEmojiStatus ?? this.isAllowedAsChatEmojiStatus,
-        isViewed: isViewed ?? this.isViewed,
-        stickers: stickers ?? this.stickers,
-        emojis: emojis ?? this.emojis,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => StickerSet(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    name: name ?? this.name,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    thumbnailOutline: thumbnailOutline != null
+        ? thumbnailOutline()
+        : this.thumbnailOutline,
+    isOwned: isOwned ?? this.isOwned,
+    isInstalled: isInstalled ?? this.isInstalled,
+    isArchived: isArchived ?? this.isArchived,
+    isOfficial: isOfficial ?? this.isOfficial,
+    stickerType: stickerType ?? this.stickerType,
+    needsRepainting: needsRepainting ?? this.needsRepainting,
+    isAllowedAsChatEmojiStatus:
+        isAllowedAsChatEmojiStatus ?? this.isAllowedAsChatEmojiStatus,
+    isViewed: isViewed ?? this.isViewed,
+    stickers: stickers ?? this.stickers,
+    emojis: emojis ?? this.emojis,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'stickerSet';

@@ -25,12 +25,12 @@ final class ToggleSupergroupIsForum extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'is_forum': isForum,
-        'has_forum_tabs': hasForumTabs,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'is_forum': isForum,
+    'has_forum_tabs': hasForumTabs,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class ToggleSupergroupIsForum extends TdFunction<Ok> {
     int? supergroupId,
     bool? isForum,
     bool? hasForumTabs,
-  }) =>
-      ToggleSupergroupIsForum(
-        supergroupId: supergroupId ?? this.supergroupId,
-        isForum: isForum ?? this.isForum,
-        hasForumTabs: hasForumTabs ?? this.hasForumTabs,
-      );
+  }) => ToggleSupergroupIsForum(
+    supergroupId: supergroupId ?? this.supergroupId,
+    isForum: isForum ?? this.isForum,
+    hasForumTabs: hasForumTabs ?? this.hasForumTabs,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleSupergroupIsForum';

@@ -23,18 +23,18 @@ final class AffiliateInfo extends TdObject {
 
   /// Parses a [AffiliateInfo] from TDLib JSON.
   factory AffiliateInfo.fromJson(Map<String, dynamic> json) => AffiliateInfo(
-        commissionPerMille: _readInt(json['commission_per_mille']),
-        affiliateChatId: _readInt(json['affiliate_chat_id']),
-        starAmount: _readObject(json['star_amount'], StarAmount.fromJson),
-      );
+    commissionPerMille: _readInt(json['commission_per_mille']),
+    affiliateChatId: _readInt(json['affiliate_chat_id']),
+    starAmount: _readObject(json['star_amount'], StarAmount.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'commission_per_mille': commissionPerMille,
-        'affiliate_chat_id': affiliateChatId,
-        'star_amount': starAmount.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'commission_per_mille': commissionPerMille,
+    'affiliate_chat_id': affiliateChatId,
+    'star_amount': starAmount.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -42,12 +42,11 @@ final class AffiliateInfo extends TdObject {
     int? commissionPerMille,
     int? affiliateChatId,
     StarAmount? starAmount,
-  }) =>
-      AffiliateInfo(
-        commissionPerMille: commissionPerMille ?? this.commissionPerMille,
-        affiliateChatId: affiliateChatId ?? this.affiliateChatId,
-        starAmount: starAmount ?? this.starAmount,
-      );
+  }) => AffiliateInfo(
+    commissionPerMille: commissionPerMille ?? this.commissionPerMille,
+    affiliateChatId: affiliateChatId ?? this.affiliateChatId,
+    starAmount: starAmount ?? this.starAmount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'affiliateInfo';

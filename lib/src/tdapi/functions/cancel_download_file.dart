@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class CancelDownloadFile extends TdFunction<Ok> {
   /// Stops the downloading of a file. If a file has already been downloaded, does nothing
-  const CancelDownloadFile({
-    required this.fileId,
-    required this.onlyIfPending,
-  });
+  const CancelDownloadFile({required this.fileId, required this.onlyIfPending});
 
   /// Identifier of a file to stop downloading
   final int fileId;
@@ -21,18 +18,15 @@ final class CancelDownloadFile extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'file_id': fileId,
-        'only_if_pending': onlyIfPending,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'file_id': fileId,
+    'only_if_pending': onlyIfPending,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CancelDownloadFile copyWith({
-    int? fileId,
-    bool? onlyIfPending,
-  }) =>
+  CancelDownloadFile copyWith({int? fileId, bool? onlyIfPending}) =>
       CancelDownloadFile(
         fileId: fileId ?? this.fileId,
         onlyIfPending: onlyIfPending ?? this.onlyIfPending,

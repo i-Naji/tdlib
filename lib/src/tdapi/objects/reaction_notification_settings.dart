@@ -28,22 +28,26 @@ final class ReactionNotificationSettings extends TdObject {
   /// Parses a [ReactionNotificationSettings] from TDLib JSON.
   factory ReactionNotificationSettings.fromJson(Map<String, dynamic> json) =>
       ReactionNotificationSettings(
-        messageReactionSource: _readObject(json['message_reaction_source'],
-            ReactionNotificationSource.fromJson),
+        messageReactionSource: _readObject(
+          json['message_reaction_source'],
+          ReactionNotificationSource.fromJson,
+        ),
         storyReactionSource: _readObject(
-            json['story_reaction_source'], ReactionNotificationSource.fromJson),
+          json['story_reaction_source'],
+          ReactionNotificationSource.fromJson,
+        ),
         soundId: _readInt(json['sound_id']),
         showPreview: _readBool(json['show_preview']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message_reaction_source': messageReactionSource.toJson(),
-        'story_reaction_source': storyReactionSource.toJson(),
-        'sound_id': soundId.toString(),
-        'show_preview': showPreview,
-      };
+    '@type': CONSTRUCTOR,
+    'message_reaction_source': messageReactionSource.toJson(),
+    'story_reaction_source': storyReactionSource.toJson(),
+    'sound_id': soundId.toString(),
+    'show_preview': showPreview,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -52,14 +56,12 @@ final class ReactionNotificationSettings extends TdObject {
     ReactionNotificationSource? storyReactionSource,
     int? soundId,
     bool? showPreview,
-  }) =>
-      ReactionNotificationSettings(
-        messageReactionSource:
-            messageReactionSource ?? this.messageReactionSource,
-        storyReactionSource: storyReactionSource ?? this.storyReactionSource,
-        soundId: soundId ?? this.soundId,
-        showPreview: showPreview ?? this.showPreview,
-      );
+  }) => ReactionNotificationSettings(
+    messageReactionSource: messageReactionSource ?? this.messageReactionSource,
+    storyReactionSource: storyReactionSource ?? this.storyReactionSource,
+    soundId: soundId ?? this.soundId,
+    showPreview: showPreview ?? this.showPreview,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reactionNotificationSettings';

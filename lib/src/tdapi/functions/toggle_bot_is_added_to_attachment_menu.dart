@@ -25,12 +25,12 @@ final class ToggleBotIsAddedToAttachmentMenu extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'is_added': isAdded,
-        'allow_write_access': allowWriteAccess,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'is_added': isAdded,
+    'allow_write_access': allowWriteAccess,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class ToggleBotIsAddedToAttachmentMenu extends TdFunction<Ok> {
     int? botUserId,
     bool? isAdded,
     bool? allowWriteAccess,
-  }) =>
-      ToggleBotIsAddedToAttachmentMenu(
-        botUserId: botUserId ?? this.botUserId,
-        isAdded: isAdded ?? this.isAdded,
-        allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
-      );
+  }) => ToggleBotIsAddedToAttachmentMenu(
+    botUserId: botUserId ?? this.botUserId,
+    isAdded: isAdded ?? this.isAdded,
+    allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleBotIsAddedToAttachmentMenu';

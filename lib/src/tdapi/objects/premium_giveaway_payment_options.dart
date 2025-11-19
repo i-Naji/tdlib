@@ -26,17 +26,19 @@ final class PremiumGiveawayPaymentOptions extends TdObject {
   /// Parses a [PremiumGiveawayPaymentOptions] from TDLib JSON.
   factory PremiumGiveawayPaymentOptions.fromJson(Map<String, dynamic> json) =>
       PremiumGiveawayPaymentOptions(
-        options: _readList<PremiumGiveawayPaymentOption>(json['options'],
-            (e) => _readObject(e, PremiumGiveawayPaymentOption.fromJson)),
+        options: _readList<PremiumGiveawayPaymentOption>(
+          json['options'],
+          (e) => _readObject(e, PremiumGiveawayPaymentOption.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'options': [for (final e in options) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'options': [for (final e in options) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +46,11 @@ final class PremiumGiveawayPaymentOptions extends TdObject {
     List<PremiumGiveawayPaymentOption>? options,
     dynamic extra,
     int? clientId,
-  }) =>
-      PremiumGiveawayPaymentOptions(
-        options: options ?? this.options,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PremiumGiveawayPaymentOptions(
+    options: options ?? this.options,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumGiveawayPaymentOptions';

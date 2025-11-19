@@ -31,22 +31,22 @@ final class ChatBoost extends TdObject {
 
   /// Parses a [ChatBoost] from TDLib JSON.
   factory ChatBoost.fromJson(Map<String, dynamic> json) => ChatBoost(
-        id: _readString(json['id']),
-        count: _readInt(json['count']),
-        source: _readObject(json['source'], ChatBoostSource.fromJson),
-        startDate: _readInt(json['start_date']),
-        expirationDate: _readInt(json['expiration_date']),
-      );
+    id: _readString(json['id']),
+    count: _readInt(json['count']),
+    source: _readObject(json['source'], ChatBoostSource.fromJson),
+    startDate: _readInt(json['start_date']),
+    expirationDate: _readInt(json['expiration_date']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'count': count,
-        'source': source.toJson(),
-        'start_date': startDate,
-        'expiration_date': expirationDate,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'count': count,
+    'source': source.toJson(),
+    'start_date': startDate,
+    'expiration_date': expirationDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,14 +56,13 @@ final class ChatBoost extends TdObject {
     ChatBoostSource? source,
     int? startDate,
     int? expirationDate,
-  }) =>
-      ChatBoost(
-        id: id ?? this.id,
-        count: count ?? this.count,
-        source: source ?? this.source,
-        startDate: startDate ?? this.startDate,
-        expirationDate: expirationDate ?? this.expirationDate,
-      );
+  }) => ChatBoost(
+    id: id ?? this.id,
+    count: count ?? this.count,
+    source: source ?? this.source,
+    startDate: startDate ?? this.startDate,
+    expirationDate: expirationDate ?? this.expirationDate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatBoost';

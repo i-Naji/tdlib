@@ -51,33 +51,32 @@ final class Video extends TdObject {
 
   /// Parses a [Video] from TDLib JSON.
   factory Video.fromJson(Map<String, dynamic> json) => Video(
-        duration: _readInt(json['duration']),
-        width: _readInt(json['width']),
-        height: _readInt(json['height']),
-        fileName: _readString(json['file_name']),
-        mimeType: _readString(json['mime_type']),
-        hasStickers: _readBool(json['has_stickers']),
-        supportsStreaming: _readBool(json['supports_streaming']),
-        minithumbnail:
-            _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
-        thumbnail: _readOptional(json['thumbnail'], Thumbnail.fromJson),
-        video: _readObject(json['video'], File.fromJson),
-      );
+    duration: _readInt(json['duration']),
+    width: _readInt(json['width']),
+    height: _readInt(json['height']),
+    fileName: _readString(json['file_name']),
+    mimeType: _readString(json['mime_type']),
+    hasStickers: _readBool(json['has_stickers']),
+    supportsStreaming: _readBool(json['supports_streaming']),
+    minithumbnail: _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
+    thumbnail: _readOptional(json['thumbnail'], Thumbnail.fromJson),
+    video: _readObject(json['video'], File.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'duration': duration,
-        'width': width,
-        'height': height,
-        'file_name': fileName,
-        'mime_type': mimeType,
-        'has_stickers': hasStickers,
-        'supports_streaming': supportsStreaming,
-        'minithumbnail': minithumbnail?.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'video': video.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'duration': duration,
+    'width': width,
+    'height': height,
+    'file_name': fileName,
+    'mime_type': mimeType,
+    'has_stickers': hasStickers,
+    'supports_streaming': supportsStreaming,
+    'minithumbnail': minithumbnail?.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'video': video.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -92,20 +91,18 @@ final class Video extends TdObject {
     Minithumbnail? Function()? minithumbnail,
     Thumbnail? Function()? thumbnail,
     File? video,
-  }) =>
-      Video(
-        duration: duration ?? this.duration,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        fileName: fileName ?? this.fileName,
-        mimeType: mimeType ?? this.mimeType,
-        hasStickers: hasStickers ?? this.hasStickers,
-        supportsStreaming: supportsStreaming ?? this.supportsStreaming,
-        minithumbnail:
-            minithumbnail != null ? minithumbnail() : this.minithumbnail,
-        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        video: video ?? this.video,
-      );
+  }) => Video(
+    duration: duration ?? this.duration,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    fileName: fileName ?? this.fileName,
+    mimeType: mimeType ?? this.mimeType,
+    hasStickers: hasStickers ?? this.hasStickers,
+    supportsStreaming: supportsStreaming ?? this.supportsStreaming,
+    minithumbnail: minithumbnail != null ? minithumbnail() : this.minithumbnail,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    video: video ?? this.video,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'video';

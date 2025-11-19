@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Chats].
 final class SearchChatsOnServer extends TdFunction<Chats> {
   /// Searches for the specified query in the title and username of already known chats via request to the server. Returns chats in the order seen in the main chat list
-  const SearchChatsOnServer({
-    required this.query,
-    required this.limit,
-  });
+  const SearchChatsOnServer({required this.query, required this.limit});
 
   /// Query to search for
   final String query;
@@ -21,18 +18,15 @@ final class SearchChatsOnServer extends TdFunction<Chats> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'query': query,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'query': query,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchChatsOnServer copyWith({
-    String? query,
-    int? limit,
-  }) =>
+  SearchChatsOnServer copyWith({String? query, int? limit}) =>
       SearchChatsOnServer(
         query: query ?? this.query,
         limit: limit ?? this.limit,

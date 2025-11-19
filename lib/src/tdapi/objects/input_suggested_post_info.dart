@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Contains information about a post to suggest
 final class InputSuggestedPostInfo extends TdObject {
   /// Contains information about a post to suggest
-  const InputSuggestedPostInfo({
-    this.price,
-    required this.sendDate,
-  });
+  const InputSuggestedPostInfo({this.price, required this.sendDate});
 
   /// Price of the suggested post; pass null to suggest a post without payment. If the current user isn't an administrator of the channel direct messages chat and has no enough funds to pay for the post, then the error "BALANCE_TOO_LOW" will be returned immediately
   final SuggestedPostPrice? price;
@@ -26,21 +23,20 @@ final class InputSuggestedPostInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'price': price?.toJson(),
-        'send_date': sendDate,
-      };
+    '@type': CONSTRUCTOR,
+    'price': price?.toJson(),
+    'send_date': sendDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   InputSuggestedPostInfo copyWith({
     SuggestedPostPrice? Function()? price,
     int? sendDate,
-  }) =>
-      InputSuggestedPostInfo(
-        price: price != null ? price() : this.price,
-        sendDate: sendDate ?? this.sendDate,
-      );
+  }) => InputSuggestedPostInfo(
+    price: price != null ? price() : this.price,
+    sendDate: sendDate ?? this.sendDate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputSuggestedPostInfo';

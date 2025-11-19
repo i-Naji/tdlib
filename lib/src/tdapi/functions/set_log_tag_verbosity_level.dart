@@ -21,18 +21,15 @@ final class SetLogTagVerbosityLevel extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'tag': tag,
-        'new_verbosity_level': newVerbosityLevel,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'tag': tag,
+    'new_verbosity_level': newVerbosityLevel,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetLogTagVerbosityLevel copyWith({
-    String? tag,
-    int? newVerbosityLevel,
-  }) =>
+  SetLogTagVerbosityLevel copyWith({String? tag, int? newVerbosityLevel}) =>
       SetLogTagVerbosityLevel(
         tag: tag ?? this.tag,
         newVerbosityLevel: newVerbosityLevel ?? this.newVerbosityLevel,

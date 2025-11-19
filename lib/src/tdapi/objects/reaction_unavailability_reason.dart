@@ -53,13 +53,11 @@ final class ReactionUnavailabilityReasonAnonymousAdministrator
 
   /// Parses a [ReactionUnavailabilityReasonAnonymousAdministrator] from TDLib JSON.
   factory ReactionUnavailabilityReasonAnonymousAdministrator.fromJson(
-          Map<String, dynamic> json) =>
-      const ReactionUnavailabilityReasonAnonymousAdministrator();
+    Map<String, dynamic> json,
+  ) => const ReactionUnavailabilityReasonAnonymousAdministrator();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -83,13 +81,11 @@ final class ReactionUnavailabilityReasonGuest
 
   /// Parses a [ReactionUnavailabilityReasonGuest] from TDLib JSON.
   factory ReactionUnavailabilityReasonGuest.fromJson(
-          Map<String, dynamic> json) =>
-      const ReactionUnavailabilityReasonGuest();
+    Map<String, dynamic> json,
+  ) => const ReactionUnavailabilityReasonGuest();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

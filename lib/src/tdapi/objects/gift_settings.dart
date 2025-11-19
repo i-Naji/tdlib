@@ -19,28 +19,29 @@ final class GiftSettings extends TdObject {
 
   /// Parses a [GiftSettings] from TDLib JSON.
   factory GiftSettings.fromJson(Map<String, dynamic> json) => GiftSettings(
-        showGiftButton: _readBool(json['show_gift_button']),
-        acceptedGiftTypes: _readObject(
-            json['accepted_gift_types'], AcceptedGiftTypes.fromJson),
-      );
+    showGiftButton: _readBool(json['show_gift_button']),
+    acceptedGiftTypes: _readObject(
+      json['accepted_gift_types'],
+      AcceptedGiftTypes.fromJson,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'show_gift_button': showGiftButton,
-        'accepted_gift_types': acceptedGiftTypes.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'show_gift_button': showGiftButton,
+    'accepted_gift_types': acceptedGiftTypes.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GiftSettings copyWith({
     bool? showGiftButton,
     AcceptedGiftTypes? acceptedGiftTypes,
-  }) =>
-      GiftSettings(
-        showGiftButton: showGiftButton ?? this.showGiftButton,
-        acceptedGiftTypes: acceptedGiftTypes ?? this.acceptedGiftTypes,
-      );
+  }) => GiftSettings(
+    showGiftButton: showGiftButton ?? this.showGiftButton,
+    acceptedGiftTypes: acceptedGiftTypes ?? this.acceptedGiftTypes,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giftSettings';

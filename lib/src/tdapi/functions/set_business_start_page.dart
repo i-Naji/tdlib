@@ -8,28 +8,25 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetBusinessStartPage extends TdFunction<Ok> {
   /// Changes the business start page of the current user. Requires Telegram Business subscription
-  const SetBusinessStartPage({
-    this.startPage,
-  });
+  const SetBusinessStartPage({this.startPage});
 
   /// The new start page of the business; pass null to remove custom start page
   final InputBusinessStartPage? startPage;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'start_page': startPage?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'start_page': startPage?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetBusinessStartPage copyWith({
     InputBusinessStartPage? Function()? startPage,
-  }) =>
-      SetBusinessStartPage(
-        startPage: startPage != null ? startPage() : this.startPage,
-      );
+  }) => SetBusinessStartPage(
+    startPage: startPage != null ? startPage() : this.startPage,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setBusinessStartPage';

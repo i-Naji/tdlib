@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetMainProfileTab extends TdFunction<Ok> {
   /// Changes the main profile tab of the current user
-  const SetMainProfileTab({
-    required this.mainProfileTab,
-  });
+  const SetMainProfileTab({required this.mainProfileTab});
 
   /// The new value of the main profile tab
   final ProfileTab mainProfileTab;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'main_profile_tab': mainProfileTab.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'main_profile_tab': mainProfileTab.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetMainProfileTab copyWith({
-    ProfileTab? mainProfileTab,
-  }) =>
-      SetMainProfileTab(
-        mainProfileTab: mainProfileTab ?? this.mainProfileTab,
-      );
+  SetMainProfileTab copyWith({ProfileTab? mainProfileTab}) =>
+      SetMainProfileTab(mainProfileTab: mainProfileTab ?? this.mainProfileTab);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setMainProfileTab';

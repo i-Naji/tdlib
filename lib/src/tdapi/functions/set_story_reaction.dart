@@ -29,13 +29,13 @@ final class SetStoryReaction extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'story_id': storyId,
-        'reaction_type': reactionType?.toJson(),
-        'update_recent_reactions': updateRecentReactions,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+    'reaction_type': reactionType?.toJson(),
+    'update_recent_reactions': updateRecentReactions,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,14 +44,12 @@ final class SetStoryReaction extends TdFunction<Ok> {
     int? storyId,
     ReactionType? Function()? reactionType,
     bool? updateRecentReactions,
-  }) =>
-      SetStoryReaction(
-        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-        storyId: storyId ?? this.storyId,
-        reactionType: reactionType != null ? reactionType() : this.reactionType,
-        updateRecentReactions:
-            updateRecentReactions ?? this.updateRecentReactions,
-      );
+  }) => SetStoryReaction(
+    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+    storyId: storyId ?? this.storyId,
+    reactionType: reactionType != null ? reactionType() : this.reactionType,
+    updateRecentReactions: updateRecentReactions ?? this.updateRecentReactions,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setStoryReaction';

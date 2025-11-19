@@ -25,12 +25,12 @@ final class ReorderBotMediaPreviews extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'language_code': languageCode,
-        'file_ids': fileIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'language_code': languageCode,
+    'file_ids': fileIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class ReorderBotMediaPreviews extends TdFunction<Ok> {
     int? botUserId,
     String? languageCode,
     List<int>? fileIds,
-  }) =>
-      ReorderBotMediaPreviews(
-        botUserId: botUserId ?? this.botUserId,
-        languageCode: languageCode ?? this.languageCode,
-        fileIds: fileIds ?? this.fileIds,
-      );
+  }) => ReorderBotMediaPreviews(
+    botUserId: botUserId ?? this.botUserId,
+    languageCode: languageCode ?? this.languageCode,
+    fileIds: fileIds ?? this.fileIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reorderBotMediaPreviews';

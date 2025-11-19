@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Represents a birthdate of a user
 final class Birthdate extends TdObject {
   /// Represents a birthdate of a user
-  const Birthdate({
-    required this.day,
-    required this.month,
-    required this.year,
-  });
+  const Birthdate({required this.day, required this.month, required this.year});
 
   /// Day of the month; 1-31
   final int day;
@@ -23,31 +19,26 @@ final class Birthdate extends TdObject {
 
   /// Parses a [Birthdate] from TDLib JSON.
   factory Birthdate.fromJson(Map<String, dynamic> json) => Birthdate(
-        day: _readInt(json['day']),
-        month: _readInt(json['month']),
-        year: _readInt(json['year']),
-      );
+    day: _readInt(json['day']),
+    month: _readInt(json['month']),
+    year: _readInt(json['year']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'day': day,
-        'month': month,
-        'year': year,
-      };
+    '@type': CONSTRUCTOR,
+    'day': day,
+    'month': month,
+    'year': year,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  Birthdate copyWith({
-    int? day,
-    int? month,
-    int? year,
-  }) =>
-      Birthdate(
-        day: day ?? this.day,
-        month: month ?? this.month,
-        year: year ?? this.year,
-      );
+  Birthdate copyWith({int? day, int? month, int? year}) => Birthdate(
+    day: day ?? this.day,
+    month: month ?? this.month,
+    year: year ?? this.year,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'birthdate';

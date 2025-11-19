@@ -29,13 +29,13 @@ final class SearchStringsByPrefix extends TdFunction<FoundPositions> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'strings': strings,
-        'query': query,
-        'limit': limit,
-        'return_none_for_empty_query': returnNoneForEmptyQuery,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'strings': strings,
+    'query': query,
+    'limit': limit,
+    'return_none_for_empty_query': returnNoneForEmptyQuery,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,14 +44,13 @@ final class SearchStringsByPrefix extends TdFunction<FoundPositions> {
     String? query,
     int? limit,
     bool? returnNoneForEmptyQuery,
-  }) =>
-      SearchStringsByPrefix(
-        strings: strings ?? this.strings,
-        query: query ?? this.query,
-        limit: limit ?? this.limit,
-        returnNoneForEmptyQuery:
-            returnNoneForEmptyQuery ?? this.returnNoneForEmptyQuery,
-      );
+  }) => SearchStringsByPrefix(
+    strings: strings ?? this.strings,
+    query: query ?? this.query,
+    limit: limit ?? this.limit,
+    returnNoneForEmptyQuery:
+        returnNoneForEmptyQuery ?? this.returnNoneForEmptyQuery,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchStringsByPrefix';

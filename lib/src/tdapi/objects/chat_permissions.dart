@@ -86,22 +86,22 @@ final class ChatPermissions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'can_send_basic_messages': canSendBasicMessages,
-        'can_send_audios': canSendAudios,
-        'can_send_documents': canSendDocuments,
-        'can_send_photos': canSendPhotos,
-        'can_send_videos': canSendVideos,
-        'can_send_video_notes': canSendVideoNotes,
-        'can_send_voice_notes': canSendVoiceNotes,
-        'can_send_polls': canSendPolls,
-        'can_send_other_messages': canSendOtherMessages,
-        'can_add_link_previews': canAddLinkPreviews,
-        'can_change_info': canChangeInfo,
-        'can_invite_users': canInviteUsers,
-        'can_pin_messages': canPinMessages,
-        'can_create_topics': canCreateTopics,
-      };
+    '@type': CONSTRUCTOR,
+    'can_send_basic_messages': canSendBasicMessages,
+    'can_send_audios': canSendAudios,
+    'can_send_documents': canSendDocuments,
+    'can_send_photos': canSendPhotos,
+    'can_send_videos': canSendVideos,
+    'can_send_video_notes': canSendVideoNotes,
+    'can_send_voice_notes': canSendVoiceNotes,
+    'can_send_polls': canSendPolls,
+    'can_send_other_messages': canSendOtherMessages,
+    'can_add_link_previews': canAddLinkPreviews,
+    'can_change_info': canChangeInfo,
+    'can_invite_users': canInviteUsers,
+    'can_pin_messages': canPinMessages,
+    'can_create_topics': canCreateTopics,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -120,23 +120,22 @@ final class ChatPermissions extends TdObject {
     bool? canInviteUsers,
     bool? canPinMessages,
     bool? canCreateTopics,
-  }) =>
-      ChatPermissions(
-        canSendBasicMessages: canSendBasicMessages ?? this.canSendBasicMessages,
-        canSendAudios: canSendAudios ?? this.canSendAudios,
-        canSendDocuments: canSendDocuments ?? this.canSendDocuments,
-        canSendPhotos: canSendPhotos ?? this.canSendPhotos,
-        canSendVideos: canSendVideos ?? this.canSendVideos,
-        canSendVideoNotes: canSendVideoNotes ?? this.canSendVideoNotes,
-        canSendVoiceNotes: canSendVoiceNotes ?? this.canSendVoiceNotes,
-        canSendPolls: canSendPolls ?? this.canSendPolls,
-        canSendOtherMessages: canSendOtherMessages ?? this.canSendOtherMessages,
-        canAddLinkPreviews: canAddLinkPreviews ?? this.canAddLinkPreviews,
-        canChangeInfo: canChangeInfo ?? this.canChangeInfo,
-        canInviteUsers: canInviteUsers ?? this.canInviteUsers,
-        canPinMessages: canPinMessages ?? this.canPinMessages,
-        canCreateTopics: canCreateTopics ?? this.canCreateTopics,
-      );
+  }) => ChatPermissions(
+    canSendBasicMessages: canSendBasicMessages ?? this.canSendBasicMessages,
+    canSendAudios: canSendAudios ?? this.canSendAudios,
+    canSendDocuments: canSendDocuments ?? this.canSendDocuments,
+    canSendPhotos: canSendPhotos ?? this.canSendPhotos,
+    canSendVideos: canSendVideos ?? this.canSendVideos,
+    canSendVideoNotes: canSendVideoNotes ?? this.canSendVideoNotes,
+    canSendVoiceNotes: canSendVoiceNotes ?? this.canSendVoiceNotes,
+    canSendPolls: canSendPolls ?? this.canSendPolls,
+    canSendOtherMessages: canSendOtherMessages ?? this.canSendOtherMessages,
+    canAddLinkPreviews: canAddLinkPreviews ?? this.canAddLinkPreviews,
+    canChangeInfo: canChangeInfo ?? this.canChangeInfo,
+    canInviteUsers: canInviteUsers ?? this.canInviteUsers,
+    canPinMessages: canPinMessages ?? this.canPinMessages,
+    canCreateTopics: canCreateTopics ?? this.canCreateTopics,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatPermissions';

@@ -25,12 +25,12 @@ final class ToggleSupergroupSignMessages extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'sign_messages': signMessages,
-        'show_message_sender': showMessageSender,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'sign_messages': signMessages,
+    'show_message_sender': showMessageSender,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class ToggleSupergroupSignMessages extends TdFunction<Ok> {
     int? supergroupId,
     bool? signMessages,
     bool? showMessageSender,
-  }) =>
-      ToggleSupergroupSignMessages(
-        supergroupId: supergroupId ?? this.supergroupId,
-        signMessages: signMessages ?? this.signMessages,
-        showMessageSender: showMessageSender ?? this.showMessageSender,
-      );
+  }) => ToggleSupergroupSignMessages(
+    supergroupId: supergroupId ?? this.supergroupId,
+    signMessages: signMessages ?? this.signMessages,
+    showMessageSender: showMessageSender ?? this.showMessageSender,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleSupergroupSignMessages';

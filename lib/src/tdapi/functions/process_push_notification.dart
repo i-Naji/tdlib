@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ProcessPushNotification extends TdFunction<Ok> {
   /// Handles a push notification. Returns error with code 406 if the push notification is not supported and connection to the server is required to fetch new data. Can be called before authorization
-  const ProcessPushNotification({
-    required this.payload,
-  });
+  const ProcessPushNotification({required this.payload});
 
   /// JSON-encoded push notification payload with all fields sent by the server, and "google.sent_time" and "google.notification.sound" fields added
   final String payload;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'payload': payload,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'payload': payload,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ProcessPushNotification copyWith({
-    String? payload,
-  }) =>
-      ProcessPushNotification(
-        payload: payload ?? this.payload,
-      );
+  ProcessPushNotification copyWith({String? payload}) =>
+      ProcessPushNotification(payload: payload ?? this.payload);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'processPushNotification';

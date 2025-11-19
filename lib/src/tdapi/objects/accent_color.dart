@@ -31,23 +31,22 @@ final class AccentColor extends TdObject {
 
   /// Parses a [AccentColor] from TDLib JSON.
   factory AccentColor.fromJson(Map<String, dynamic> json) => AccentColor(
-        id: _readInt(json['id']),
-        builtInAccentColorId: _readInt(json['built_in_accent_color_id']),
-        lightThemeColors: _readList<int>(json['light_theme_colors'], _readInt),
-        darkThemeColors: _readList<int>(json['dark_theme_colors'], _readInt),
-        minChannelChatBoostLevel:
-            _readInt(json['min_channel_chat_boost_level']),
-      );
+    id: _readInt(json['id']),
+    builtInAccentColorId: _readInt(json['built_in_accent_color_id']),
+    lightThemeColors: _readList<int>(json['light_theme_colors'], _readInt),
+    darkThemeColors: _readList<int>(json['dark_theme_colors'], _readInt),
+    minChannelChatBoostLevel: _readInt(json['min_channel_chat_boost_level']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'built_in_accent_color_id': builtInAccentColorId,
-        'light_theme_colors': lightThemeColors,
-        'dark_theme_colors': darkThemeColors,
-        'min_channel_chat_boost_level': minChannelChatBoostLevel,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'built_in_accent_color_id': builtInAccentColorId,
+    'light_theme_colors': lightThemeColors,
+    'dark_theme_colors': darkThemeColors,
+    'min_channel_chat_boost_level': minChannelChatBoostLevel,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,15 +56,14 @@ final class AccentColor extends TdObject {
     List<int>? lightThemeColors,
     List<int>? darkThemeColors,
     int? minChannelChatBoostLevel,
-  }) =>
-      AccentColor(
-        id: id ?? this.id,
-        builtInAccentColorId: builtInAccentColorId ?? this.builtInAccentColorId,
-        lightThemeColors: lightThemeColors ?? this.lightThemeColors,
-        darkThemeColors: darkThemeColors ?? this.darkThemeColors,
-        minChannelChatBoostLevel:
-            minChannelChatBoostLevel ?? this.minChannelChatBoostLevel,
-      );
+  }) => AccentColor(
+    id: id ?? this.id,
+    builtInAccentColorId: builtInAccentColorId ?? this.builtInAccentColorId,
+    lightThemeColors: lightThemeColors ?? this.lightThemeColors,
+    darkThemeColors: darkThemeColors ?? this.darkThemeColors,
+    minChannelChatBoostLevel:
+        minChannelChatBoostLevel ?? this.minChannelChatBoostLevel,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'accentColor';

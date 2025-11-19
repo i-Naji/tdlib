@@ -51,13 +51,11 @@ final class AutosaveSettingsScopePrivateChats extends AutosaveSettingsScope {
 
   /// Parses a [AutosaveSettingsScopePrivateChats] from TDLib JSON.
   factory AutosaveSettingsScopePrivateChats.fromJson(
-          Map<String, dynamic> json) =>
-      const AutosaveSettingsScopePrivateChats();
+    Map<String, dynamic> json,
+  ) => const AutosaveSettingsScopePrivateChats();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -82,9 +80,7 @@ final class AutosaveSettingsScopeGroupChats extends AutosaveSettingsScope {
       const AutosaveSettingsScopeGroupChats();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -106,13 +102,11 @@ final class AutosaveSettingsScopeChannelChats extends AutosaveSettingsScope {
 
   /// Parses a [AutosaveSettingsScopeChannelChats] from TDLib JSON.
   factory AutosaveSettingsScopeChannelChats.fromJson(
-          Map<String, dynamic> json) =>
-      const AutosaveSettingsScopeChannelChats();
+    Map<String, dynamic> json,
+  ) => const AutosaveSettingsScopeChannelChats();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -130,34 +124,23 @@ final class AutosaveSettingsScopeChannelChats extends AutosaveSettingsScope {
 /// Autosave settings applied to a chat
 final class AutosaveSettingsScopeChat extends AutosaveSettingsScope {
   /// Autosave settings applied to a chat
-  const AutosaveSettingsScopeChat({
-    required this.chatId,
-  });
+  const AutosaveSettingsScopeChat({required this.chatId});
 
   /// Chat identifier
   final int chatId;
 
   /// Parses a [AutosaveSettingsScopeChat] from TDLib JSON.
   factory AutosaveSettingsScopeChat.fromJson(Map<String, dynamic> json) =>
-      AutosaveSettingsScopeChat(
-        chatId: _readInt(json['chat_id']),
-      );
+      AutosaveSettingsScopeChat(chatId: _readInt(json['chat_id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'chat_id': chatId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  AutosaveSettingsScopeChat copyWith({
-    int? chatId,
-  }) =>
-      AutosaveSettingsScopeChat(
-        chatId: chatId ?? this.chatId,
-      );
+  AutosaveSettingsScopeChat copyWith({int? chatId}) =>
+      AutosaveSettingsScopeChat(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'autosaveSettingsScopeChat';

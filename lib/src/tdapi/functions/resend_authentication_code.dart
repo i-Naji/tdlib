@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ResendAuthenticationCode extends TdFunction<Ok> {
   /// Resends an authentication code to the user. Works only when the current authorization state is authorizationStateWaitCode, the next_code_type of the result is not null and the server-specified timeout has passed, or when the current authorization state is authorizationStateWaitEmailCode
-  const ResendAuthenticationCode({
-    this.reason,
-  });
+  const ResendAuthenticationCode({this.reason});
 
   /// Reason of code resending; pass null if unknown
   final ResendCodeReason? reason;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'reason': reason?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'reason': reason?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ResendAuthenticationCode copyWith({
-    ResendCodeReason? Function()? reason,
-  }) =>
-      ResendAuthenticationCode(
-        reason: reason != null ? reason() : this.reason,
-      );
+  ResendAuthenticationCode copyWith({ResendCodeReason? Function()? reason}) =>
+      ResendAuthenticationCode(reason: reason != null ? reason() : this.reason);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'resendAuthenticationCode';

@@ -25,12 +25,12 @@ final class BuyGiftUpgrade extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'owner_id': ownerId.toJson(),
-        'prepaid_upgrade_hash': prepaidUpgradeHash,
-        'star_count': starCount,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'owner_id': ownerId.toJson(),
+    'prepaid_upgrade_hash': prepaidUpgradeHash,
+    'star_count': starCount,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class BuyGiftUpgrade extends TdFunction<Ok> {
     MessageSender? ownerId,
     String? prepaidUpgradeHash,
     int? starCount,
-  }) =>
-      BuyGiftUpgrade(
-        ownerId: ownerId ?? this.ownerId,
-        prepaidUpgradeHash: prepaidUpgradeHash ?? this.prepaidUpgradeHash,
-        starCount: starCount ?? this.starCount,
-      );
+  }) => BuyGiftUpgrade(
+    ownerId: ownerId ?? this.ownerId,
+    prepaidUpgradeHash: prepaidUpgradeHash ?? this.prepaidUpgradeHash,
+    starCount: starCount ?? this.starCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'buyGiftUpgrade';

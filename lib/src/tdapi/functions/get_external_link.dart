@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [HttpUrl].
 final class GetExternalLink extends TdFunction<HttpUrl> {
   /// Returns an HTTP URL which can be used to automatically authorize the current user on a website after clicking an HTTP link. Use the method getExternalLinkInfo to find whether a prior user confirmation is needed
-  const GetExternalLink({
-    required this.link,
-    required this.allowWriteAccess,
-  });
+  const GetExternalLink({required this.link, required this.allowWriteAccess});
 
   /// The HTTP link
   final String link;
@@ -21,18 +18,15 @@ final class GetExternalLink extends TdFunction<HttpUrl> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'link': link,
-        'allow_write_access': allowWriteAccess,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'link': link,
+    'allow_write_access': allowWriteAccess,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetExternalLink copyWith({
-    String? link,
-    bool? allowWriteAccess,
-  }) =>
+  GetExternalLink copyWith({String? link, bool? allowWriteAccess}) =>
       GetExternalLink(
         link: link ?? this.link,
         allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,

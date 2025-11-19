@@ -73,10 +73,7 @@ final class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'value': value,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'value': value};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -85,12 +82,11 @@ final class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
     String? value,
     dynamic extra,
     int? clientId,
-  }) =>
-      LanguagePackStringValueOrdinary(
-        value: value ?? this.value,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => LanguagePackStringValueOrdinary(
+    value: value ?? this.value,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'languagePackStringValueOrdinary';
@@ -141,28 +137,28 @@ final class LanguagePackStringValuePluralized extends LanguagePackStringValue {
 
   /// Parses a [LanguagePackStringValuePluralized] from TDLib JSON.
   factory LanguagePackStringValuePluralized.fromJson(
-          Map<String, dynamic> json) =>
-      LanguagePackStringValuePluralized(
-        zeroValue: _readString(json['zero_value']),
-        oneValue: _readString(json['one_value']),
-        twoValue: _readString(json['two_value']),
-        fewValue: _readString(json['few_value']),
-        manyValue: _readString(json['many_value']),
-        otherValue: _readString(json['other_value']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => LanguagePackStringValuePluralized(
+    zeroValue: _readString(json['zero_value']),
+    oneValue: _readString(json['one_value']),
+    twoValue: _readString(json['two_value']),
+    fewValue: _readString(json['few_value']),
+    manyValue: _readString(json['many_value']),
+    otherValue: _readString(json['other_value']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'zero_value': zeroValue,
-        'one_value': oneValue,
-        'two_value': twoValue,
-        'few_value': fewValue,
-        'many_value': manyValue,
-        'other_value': otherValue,
-      };
+    '@type': CONSTRUCTOR,
+    'zero_value': zeroValue,
+    'one_value': oneValue,
+    'two_value': twoValue,
+    'few_value': fewValue,
+    'many_value': manyValue,
+    'other_value': otherValue,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -176,17 +172,16 @@ final class LanguagePackStringValuePluralized extends LanguagePackStringValue {
     String? otherValue,
     dynamic extra,
     int? clientId,
-  }) =>
-      LanguagePackStringValuePluralized(
-        zeroValue: zeroValue ?? this.zeroValue,
-        oneValue: oneValue ?? this.oneValue,
-        twoValue: twoValue ?? this.twoValue,
-        fewValue: fewValue ?? this.fewValue,
-        manyValue: manyValue ?? this.manyValue,
-        otherValue: otherValue ?? this.otherValue,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => LanguagePackStringValuePluralized(
+    zeroValue: zeroValue ?? this.zeroValue,
+    oneValue: oneValue ?? this.oneValue,
+    twoValue: twoValue ?? this.twoValue,
+    fewValue: fewValue ?? this.fewValue,
+    manyValue: manyValue ?? this.manyValue,
+    otherValue: otherValue ?? this.otherValue,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'languagePackStringValuePluralized';
@@ -198,10 +193,7 @@ final class LanguagePackStringValuePluralized extends LanguagePackStringValue {
 /// A deleted language pack string, the value must be taken from the built-in English language pack
 final class LanguagePackStringValueDeleted extends LanguagePackStringValue {
   /// A deleted language pack string, the value must be taken from the built-in English language pack
-  const LanguagePackStringValueDeleted({
-    this.extra,
-    this.clientId,
-  });
+  const LanguagePackStringValueDeleted({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -219,17 +211,12 @@ final class LanguagePackStringValueDeleted extends LanguagePackStringValue {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  LanguagePackStringValueDeleted copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  LanguagePackStringValueDeleted copyWith({dynamic extra, int? clientId}) =>
       LanguagePackStringValueDeleted(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

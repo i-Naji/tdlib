@@ -43,28 +43,28 @@ final class LocalFile extends TdObject {
 
   /// Parses a [LocalFile] from TDLib JSON.
   factory LocalFile.fromJson(Map<String, dynamic> json) => LocalFile(
-        path: _readString(json['path']),
-        canBeDownloaded: _readBool(json['can_be_downloaded']),
-        canBeDeleted: _readBool(json['can_be_deleted']),
-        isDownloadingActive: _readBool(json['is_downloading_active']),
-        isDownloadingCompleted: _readBool(json['is_downloading_completed']),
-        downloadOffset: _readInt(json['download_offset']),
-        downloadedPrefixSize: _readInt(json['downloaded_prefix_size']),
-        downloadedSize: _readInt(json['downloaded_size']),
-      );
+    path: _readString(json['path']),
+    canBeDownloaded: _readBool(json['can_be_downloaded']),
+    canBeDeleted: _readBool(json['can_be_deleted']),
+    isDownloadingActive: _readBool(json['is_downloading_active']),
+    isDownloadingCompleted: _readBool(json['is_downloading_completed']),
+    downloadOffset: _readInt(json['download_offset']),
+    downloadedPrefixSize: _readInt(json['downloaded_prefix_size']),
+    downloadedSize: _readInt(json['downloaded_size']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'path': path,
-        'can_be_downloaded': canBeDownloaded,
-        'can_be_deleted': canBeDeleted,
-        'is_downloading_active': isDownloadingActive,
-        'is_downloading_completed': isDownloadingCompleted,
-        'download_offset': downloadOffset,
-        'downloaded_prefix_size': downloadedPrefixSize,
-        'downloaded_size': downloadedSize,
-      };
+    '@type': CONSTRUCTOR,
+    'path': path,
+    'can_be_downloaded': canBeDownloaded,
+    'can_be_deleted': canBeDeleted,
+    'is_downloading_active': isDownloadingActive,
+    'is_downloading_completed': isDownloadingCompleted,
+    'download_offset': downloadOffset,
+    'downloaded_prefix_size': downloadedPrefixSize,
+    'downloaded_size': downloadedSize,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -77,18 +77,17 @@ final class LocalFile extends TdObject {
     int? downloadOffset,
     int? downloadedPrefixSize,
     int? downloadedSize,
-  }) =>
-      LocalFile(
-        path: path ?? this.path,
-        canBeDownloaded: canBeDownloaded ?? this.canBeDownloaded,
-        canBeDeleted: canBeDeleted ?? this.canBeDeleted,
-        isDownloadingActive: isDownloadingActive ?? this.isDownloadingActive,
-        isDownloadingCompleted:
-            isDownloadingCompleted ?? this.isDownloadingCompleted,
-        downloadOffset: downloadOffset ?? this.downloadOffset,
-        downloadedPrefixSize: downloadedPrefixSize ?? this.downloadedPrefixSize,
-        downloadedSize: downloadedSize ?? this.downloadedSize,
-      );
+  }) => LocalFile(
+    path: path ?? this.path,
+    canBeDownloaded: canBeDownloaded ?? this.canBeDownloaded,
+    canBeDeleted: canBeDeleted ?? this.canBeDeleted,
+    isDownloadingActive: isDownloadingActive ?? this.isDownloadingActive,
+    isDownloadingCompleted:
+        isDownloadingCompleted ?? this.isDownloadingCompleted,
+    downloadOffset: downloadOffset ?? this.downloadOffset,
+    downloadedPrefixSize: downloadedPrefixSize ?? this.downloadedPrefixSize,
+    downloadedSize: downloadedSize ?? this.downloadedSize,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'localFile';

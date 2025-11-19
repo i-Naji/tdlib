@@ -47,10 +47,7 @@ final class UndecodedInputStoryAreaType extends InputStoryAreaType {
 /// An area pointing to a location
 final class InputStoryAreaTypeLocation extends InputStoryAreaType {
   /// An area pointing to a location
-  const InputStoryAreaTypeLocation({
-    required this.location,
-    this.address,
-  });
+  const InputStoryAreaTypeLocation({required this.location, this.address});
 
   /// The location
   final Location location;
@@ -67,10 +64,10 @@ final class InputStoryAreaTypeLocation extends InputStoryAreaType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'location': location.toJson(),
-        'address': address?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'location': location.toJson(),
+    'address': address?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -78,11 +75,10 @@ final class InputStoryAreaTypeLocation extends InputStoryAreaType {
   InputStoryAreaTypeLocation copyWith({
     Location? location,
     LocationAddress? Function()? address,
-  }) =>
-      InputStoryAreaTypeLocation(
-        location: location ?? this.location,
-        address: address != null ? address() : this.address,
-      );
+  }) => InputStoryAreaTypeLocation(
+    location: location ?? this.location,
+    address: address != null ? address() : this.address,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputStoryAreaTypeLocation';
@@ -114,18 +110,15 @@ final class InputStoryAreaTypeFoundVenue extends InputStoryAreaType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'query_id': queryId.toString(),
-        'result_id': resultId,
-      };
+    '@type': CONSTRUCTOR,
+    'query_id': queryId.toString(),
+    'result_id': resultId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputStoryAreaTypeFoundVenue copyWith({
-    int? queryId,
-    String? resultId,
-  }) =>
+  InputStoryAreaTypeFoundVenue copyWith({int? queryId, String? resultId}) =>
       InputStoryAreaTypeFoundVenue(
         queryId: queryId ?? this.queryId,
         resultId: resultId ?? this.resultId,
@@ -161,10 +154,10 @@ final class InputStoryAreaTypePreviousVenue extends InputStoryAreaType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'venue_provider': venueProvider,
-        'venue_id': venueId,
-      };
+    '@type': CONSTRUCTOR,
+    'venue_provider': venueProvider,
+    'venue_id': venueId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -172,11 +165,10 @@ final class InputStoryAreaTypePreviousVenue extends InputStoryAreaType {
   InputStoryAreaTypePreviousVenue copyWith({
     String? venueProvider,
     String? venueId,
-  }) =>
-      InputStoryAreaTypePreviousVenue(
-        venueProvider: venueProvider ?? this.venueProvider,
-        venueId: venueId ?? this.venueId,
-      );
+  }) => InputStoryAreaTypePreviousVenue(
+    venueProvider: venueProvider ?? this.venueProvider,
+    venueId: venueId ?? this.venueId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputStoryAreaTypePreviousVenue';
@@ -205,20 +197,20 @@ final class InputStoryAreaTypeSuggestedReaction extends InputStoryAreaType {
 
   /// Parses a [InputStoryAreaTypeSuggestedReaction] from TDLib JSON.
   factory InputStoryAreaTypeSuggestedReaction.fromJson(
-          Map<String, dynamic> json) =>
-      InputStoryAreaTypeSuggestedReaction(
-        reactionType: _readObject(json['reaction_type'], ReactionType.fromJson),
-        isDark: _readBool(json['is_dark']),
-        isFlipped: _readBool(json['is_flipped']),
-      );
+    Map<String, dynamic> json,
+  ) => InputStoryAreaTypeSuggestedReaction(
+    reactionType: _readObject(json['reaction_type'], ReactionType.fromJson),
+    isDark: _readBool(json['is_dark']),
+    isFlipped: _readBool(json['is_flipped']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'reaction_type': reactionType.toJson(),
-        'is_dark': isDark,
-        'is_flipped': isFlipped,
-      };
+    '@type': CONSTRUCTOR,
+    'reaction_type': reactionType.toJson(),
+    'is_dark': isDark,
+    'is_flipped': isFlipped,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -227,12 +219,11 @@ final class InputStoryAreaTypeSuggestedReaction extends InputStoryAreaType {
     ReactionType? reactionType,
     bool? isDark,
     bool? isFlipped,
-  }) =>
-      InputStoryAreaTypeSuggestedReaction(
-        reactionType: reactionType ?? this.reactionType,
-        isDark: isDark ?? this.isDark,
-        isFlipped: isFlipped ?? this.isFlipped,
-      );
+  }) => InputStoryAreaTypeSuggestedReaction(
+    reactionType: reactionType ?? this.reactionType,
+    isDark: isDark ?? this.isDark,
+    isFlipped: isFlipped ?? this.isFlipped,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputStoryAreaTypeSuggestedReaction';
@@ -264,18 +255,15 @@ final class InputStoryAreaTypeMessage extends InputStoryAreaType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputStoryAreaTypeMessage copyWith({
-    int? chatId,
-    int? messageId,
-  }) =>
+  InputStoryAreaTypeMessage copyWith({int? chatId, int? messageId}) =>
       InputStoryAreaTypeMessage(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
@@ -291,34 +279,23 @@ final class InputStoryAreaTypeMessage extends InputStoryAreaType {
 /// An area pointing to a HTTP or tg:// link
 final class InputStoryAreaTypeLink extends InputStoryAreaType {
   /// An area pointing to a HTTP or tg:// link
-  const InputStoryAreaTypeLink({
-    required this.url,
-  });
+  const InputStoryAreaTypeLink({required this.url});
 
   /// HTTP or tg:// URL to be opened when the area is clicked
   final String url;
 
   /// Parses a [InputStoryAreaTypeLink] from TDLib JSON.
   factory InputStoryAreaTypeLink.fromJson(Map<String, dynamic> json) =>
-      InputStoryAreaTypeLink(
-        url: _readString(json['url']),
-      );
+      InputStoryAreaTypeLink(url: _readString(json['url']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'url': url};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputStoryAreaTypeLink copyWith({
-    String? url,
-  }) =>
-      InputStoryAreaTypeLink(
-        url: url ?? this.url,
-      );
+  InputStoryAreaTypeLink copyWith({String? url}) =>
+      InputStoryAreaTypeLink(url: url ?? this.url);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputStoryAreaTypeLink';
@@ -355,11 +332,11 @@ final class InputStoryAreaTypeWeather extends InputStoryAreaType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'temperature': temperature,
-        'emoji': emoji,
-        'background_color': backgroundColor,
-      };
+    '@type': CONSTRUCTOR,
+    'temperature': temperature,
+    'emoji': emoji,
+    'background_color': backgroundColor,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -368,12 +345,11 @@ final class InputStoryAreaTypeWeather extends InputStoryAreaType {
     double? temperature,
     String? emoji,
     int? backgroundColor,
-  }) =>
-      InputStoryAreaTypeWeather(
-        temperature: temperature ?? this.temperature,
-        emoji: emoji ?? this.emoji,
-        backgroundColor: backgroundColor ?? this.backgroundColor,
-      );
+  }) => InputStoryAreaTypeWeather(
+    temperature: temperature ?? this.temperature,
+    emoji: emoji ?? this.emoji,
+    backgroundColor: backgroundColor ?? this.backgroundColor,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputStoryAreaTypeWeather';
@@ -385,34 +361,26 @@ final class InputStoryAreaTypeWeather extends InputStoryAreaType {
 /// An area with an upgraded gift
 final class InputStoryAreaTypeUpgradedGift extends InputStoryAreaType {
   /// An area with an upgraded gift
-  const InputStoryAreaTypeUpgradedGift({
-    required this.giftName,
-  });
+  const InputStoryAreaTypeUpgradedGift({required this.giftName});
 
   /// Unique name of the upgraded gift
   final String giftName;
 
   /// Parses a [InputStoryAreaTypeUpgradedGift] from TDLib JSON.
   factory InputStoryAreaTypeUpgradedGift.fromJson(Map<String, dynamic> json) =>
-      InputStoryAreaTypeUpgradedGift(
-        giftName: _readString(json['gift_name']),
-      );
+      InputStoryAreaTypeUpgradedGift(giftName: _readString(json['gift_name']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'gift_name': giftName,
-      };
+    '@type': CONSTRUCTOR,
+    'gift_name': giftName,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputStoryAreaTypeUpgradedGift copyWith({
-    String? giftName,
-  }) =>
-      InputStoryAreaTypeUpgradedGift(
-        giftName: giftName ?? this.giftName,
-      );
+  InputStoryAreaTypeUpgradedGift copyWith({String? giftName}) =>
+      InputStoryAreaTypeUpgradedGift(giftName: giftName ?? this.giftName);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputStoryAreaTypeUpgradedGift';

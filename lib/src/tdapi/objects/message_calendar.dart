@@ -32,17 +32,19 @@ final class MessageCalendar extends TdObject {
       MessageCalendar(
         totalCount: _readInt(json['total_count']),
         days: _readList<MessageCalendarDay>(
-            json['days'], (e) => _readObject(e, MessageCalendarDay.fromJson)),
+          json['days'],
+          (e) => _readObject(e, MessageCalendarDay.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'days': [for (final e in days) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'days': [for (final e in days) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,13 +53,12 @@ final class MessageCalendar extends TdObject {
     List<MessageCalendarDay>? days,
     dynamic extra,
     int? clientId,
-  }) =>
-      MessageCalendar(
-        totalCount: totalCount ?? this.totalCount,
-        days: days ?? this.days,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => MessageCalendar(
+    totalCount: totalCount ?? this.totalCount,
+    days: days ?? this.days,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageCalendar';

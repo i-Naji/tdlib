@@ -59,20 +59,19 @@ final class MessageEffectTypeEmojiReaction extends MessageEffectType {
   final Sticker effectAnimation;
 
   /// Parses a [MessageEffectTypeEmojiReaction] from TDLib JSON.
-  factory MessageEffectTypeEmojiReaction.fromJson(Map<String, dynamic> json) =>
-      MessageEffectTypeEmojiReaction(
-        selectAnimation:
-            _readObject(json['select_animation'], Sticker.fromJson),
-        effectAnimation:
-            _readObject(json['effect_animation'], Sticker.fromJson),
-      );
+  factory MessageEffectTypeEmojiReaction.fromJson(
+    Map<String, dynamic> json,
+  ) => MessageEffectTypeEmojiReaction(
+    selectAnimation: _readObject(json['select_animation'], Sticker.fromJson),
+    effectAnimation: _readObject(json['effect_animation'], Sticker.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'select_animation': selectAnimation.toJson(),
-        'effect_animation': effectAnimation.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'select_animation': selectAnimation.toJson(),
+    'effect_animation': effectAnimation.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -80,11 +79,10 @@ final class MessageEffectTypeEmojiReaction extends MessageEffectType {
   MessageEffectTypeEmojiReaction copyWith({
     Sticker? selectAnimation,
     Sticker? effectAnimation,
-  }) =>
-      MessageEffectTypeEmojiReaction(
-        selectAnimation: selectAnimation ?? this.selectAnimation,
-        effectAnimation: effectAnimation ?? this.effectAnimation,
-      );
+  }) => MessageEffectTypeEmojiReaction(
+    selectAnimation: selectAnimation ?? this.selectAnimation,
+    effectAnimation: effectAnimation ?? this.effectAnimation,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageEffectTypeEmojiReaction';
@@ -96,9 +94,7 @@ final class MessageEffectTypeEmojiReaction extends MessageEffectType {
 /// An effect from a premium sticker
 final class MessageEffectTypePremiumSticker extends MessageEffectType {
   /// An effect from a premium sticker
-  const MessageEffectTypePremiumSticker({
-    required this.sticker,
-  });
+  const MessageEffectTypePremiumSticker({required this.sticker});
 
   /// The premium sticker. The effect can be found at sticker.full_type.premium_animation
   final Sticker sticker;
@@ -111,19 +107,15 @@ final class MessageEffectTypePremiumSticker extends MessageEffectType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker': sticker.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'sticker': sticker.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageEffectTypePremiumSticker copyWith({
-    Sticker? sticker,
-  }) =>
-      MessageEffectTypePremiumSticker(
-        sticker: sticker ?? this.sticker,
-      );
+  MessageEffectTypePremiumSticker copyWith({Sticker? sticker}) =>
+      MessageEffectTypePremiumSticker(sticker: sticker ?? this.sticker);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageEffectTypePremiumSticker';

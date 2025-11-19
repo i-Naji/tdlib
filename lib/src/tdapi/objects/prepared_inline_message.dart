@@ -43,11 +43,11 @@ final class PreparedInlineMessage extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'inline_query_id': inlineQueryId.toString(),
-        'result': result.toJson(),
-        'chat_types': chatTypes.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'inline_query_id': inlineQueryId.toString(),
+    'result': result.toJson(),
+    'chat_types': chatTypes.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,14 +57,13 @@ final class PreparedInlineMessage extends TdObject {
     TargetChatTypes? chatTypes,
     dynamic extra,
     int? clientId,
-  }) =>
-      PreparedInlineMessage(
-        inlineQueryId: inlineQueryId ?? this.inlineQueryId,
-        result: result ?? this.result,
-        chatTypes: chatTypes ?? this.chatTypes,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PreparedInlineMessage(
+    inlineQueryId: inlineQueryId ?? this.inlineQueryId,
+    result: result ?? this.result,
+    chatTypes: chatTypes ?? this.chatTypes,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'preparedInlineMessage';

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [BankCardInfo].
 final class GetBankCardInfo extends TdFunction<BankCardInfo> {
   /// Returns information about a bank card
-  const GetBankCardInfo({
-    required this.bankCardNumber,
-  });
+  const GetBankCardInfo({required this.bankCardNumber});
 
   /// The bank card number
   final String bankCardNumber;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bank_card_number': bankCardNumber,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bank_card_number': bankCardNumber,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetBankCardInfo copyWith({
-    String? bankCardNumber,
-  }) =>
-      GetBankCardInfo(
-        bankCardNumber: bankCardNumber ?? this.bankCardNumber,
-      );
+  GetBankCardInfo copyWith({String? bankCardNumber}) =>
+      GetBankCardInfo(bankCardNumber: bankCardNumber ?? this.bankCardNumber);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getBankCardInfo';

@@ -25,20 +25,16 @@ final class SetBotName extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'language_code': languageCode,
-        'name': name,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'language_code': languageCode,
+    'name': name,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetBotName copyWith({
-    int? botUserId,
-    String? languageCode,
-    String? name,
-  }) =>
+  SetBotName copyWith({int? botUserId, String? languageCode, String? name}) =>
       SetBotName(
         botUserId: botUserId ?? this.botUserId,
         languageCode: languageCode ?? this.languageCode,

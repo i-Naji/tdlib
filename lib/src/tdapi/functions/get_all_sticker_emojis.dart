@@ -29,13 +29,13 @@ final class GetAllStickerEmojis extends TdFunction<Emojis> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker_type': stickerType.toJson(),
-        'query': query,
-        'chat_id': chatId,
-        'return_only_main_emoji': returnOnlyMainEmoji,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_type': stickerType.toJson(),
+    'query': query,
+    'chat_id': chatId,
+    'return_only_main_emoji': returnOnlyMainEmoji,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class GetAllStickerEmojis extends TdFunction<Emojis> {
     String? query,
     int? chatId,
     bool? returnOnlyMainEmoji,
-  }) =>
-      GetAllStickerEmojis(
-        stickerType: stickerType ?? this.stickerType,
-        query: query ?? this.query,
-        chatId: chatId ?? this.chatId,
-        returnOnlyMainEmoji: returnOnlyMainEmoji ?? this.returnOnlyMainEmoji,
-      );
+  }) => GetAllStickerEmojis(
+    stickerType: stickerType ?? this.stickerType,
+    query: query ?? this.query,
+    chatId: chatId ?? this.chatId,
+    returnOnlyMainEmoji: returnOnlyMainEmoji ?? this.returnOnlyMainEmoji,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getAllStickerEmojis';

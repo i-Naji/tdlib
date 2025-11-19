@@ -45,9 +45,7 @@ final class UndecodedPublicForward extends PublicForward {
 /// Contains a public forward as a message
 final class PublicForwardMessage extends PublicForward {
   /// Contains a public forward as a message
-  const PublicForwardMessage({
-    required this.message,
-  });
+  const PublicForwardMessage({required this.message});
 
   /// Information about the message
   final Message message;
@@ -60,19 +58,15 @@ final class PublicForwardMessage extends PublicForward {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message': message.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'message': message.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PublicForwardMessage copyWith({
-    Message? message,
-  }) =>
-      PublicForwardMessage(
-        message: message ?? this.message,
-      );
+  PublicForwardMessage copyWith({Message? message}) =>
+      PublicForwardMessage(message: message ?? this.message);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'publicForwardMessage';
@@ -84,34 +78,26 @@ final class PublicForwardMessage extends PublicForward {
 /// Contains a public repost to a story
 final class PublicForwardStory extends PublicForward {
   /// Contains a public repost to a story
-  const PublicForwardStory({
-    required this.story,
-  });
+  const PublicForwardStory({required this.story});
 
   /// Information about the story
   final Story story;
 
   /// Parses a [PublicForwardStory] from TDLib JSON.
   factory PublicForwardStory.fromJson(Map<String, dynamic> json) =>
-      PublicForwardStory(
-        story: _readObject(json['story'], Story.fromJson),
-      );
+      PublicForwardStory(story: _readObject(json['story'], Story.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'story': story.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'story': story.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PublicForwardStory copyWith({
-    Story? story,
-  }) =>
-      PublicForwardStory(
-        story: story ?? this.story,
-      );
+  PublicForwardStory copyWith({Story? story}) =>
+      PublicForwardStory(story: story ?? this.story);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'publicForwardStory';

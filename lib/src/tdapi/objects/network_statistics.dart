@@ -31,18 +31,20 @@ final class NetworkStatistics extends TdObject {
   factory NetworkStatistics.fromJson(Map<String, dynamic> json) =>
       NetworkStatistics(
         sinceDate: _readInt(json['since_date']),
-        entries: _readList<NetworkStatisticsEntry>(json['entries'],
-            (e) => _readObject(e, NetworkStatisticsEntry.fromJson)),
+        entries: _readList<NetworkStatisticsEntry>(
+          json['entries'],
+          (e) => _readObject(e, NetworkStatisticsEntry.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'since_date': sinceDate,
-        'entries': [for (final e in entries) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'since_date': sinceDate,
+    'entries': [for (final e in entries) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,13 +53,12 @@ final class NetworkStatistics extends TdObject {
     List<NetworkStatisticsEntry>? entries,
     dynamic extra,
     int? clientId,
-  }) =>
-      NetworkStatistics(
-        sinceDate: sinceDate ?? this.sinceDate,
-        entries: entries ?? this.entries,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => NetworkStatistics(
+    sinceDate: sinceDate ?? this.sinceDate,
+    entries: entries ?? this.entries,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'networkStatistics';

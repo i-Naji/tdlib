@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Stickers].
 final class GetRecentStickers extends TdFunction<Stickers> {
   /// Returns a list of recently used stickers
-  const GetRecentStickers({
-    required this.isAttached,
-  });
+  const GetRecentStickers({required this.isAttached});
 
   /// Pass true to return stickers and masks that were recently attached to photos or video files; pass false to return recently sent stickers
   final bool isAttached;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'is_attached': isAttached,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'is_attached': isAttached,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetRecentStickers copyWith({
-    bool? isAttached,
-  }) =>
-      GetRecentStickers(
-        isAttached: isAttached ?? this.isAttached,
-      );
+  GetRecentStickers copyWith({bool? isAttached}) =>
+      GetRecentStickers(isAttached: isAttached ?? this.isAttached);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getRecentStickers';

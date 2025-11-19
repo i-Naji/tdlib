@@ -1,56 +1,46 @@
 import 'dart:convert' show json;
+
 import 'package:tdlib/src/tdapi/tdapi.dart'
     show TdObject, TdFunction, convertToObject;
+
 import 'platform_interfaces/td_plugin.dart';
+
 export 'platform_interfaces/td_plugin.dart';
 export 'platform_interfaces/td_native_plugin.dart';
 
 part 'td_json_client.dart';
 
-/// TdLib Client class for interaction with TDLib.
-/// The main TDLib interface is asynchronous. To match requests with a corresponding response, the field "[TdFunction.extra]" can
-/// be added to the request object. The corresponding response will have an "[TdObject.extra]" field with exactly the same value.
-/// Each returned object will have an "[TdObject.client_id]" field, containing the identifier of the client for which
-/// a response or an update was received.
-///
-/// A TDLib client instance can be created through [create].
-///
-/// Requests can be sent using [send] and the received client identifier.
-///
-/// New updates and responses to requests can be received through [receive] from any thread after the first request
-/// has been sent to the client instance. This function must not be called simultaneously from two different threads.
-///
-/// Also note that all updates and responses to requests must be applied in the order they were received for consistency.
-///
-/// Some TDLib requests can be executed synchronously from any thread using td_execute.
-///
-/// TDLib client instances are destroyed automatically after they are closed.
-/// All TDLib client instances must be closed before application termination to ensure data consistency.
+// Low-level TDLib JSON interface, kept from 1.x. Works on every platform
+// including the web. On native platforms prefer `package:tdlib/td_runtime.dart`,
+// which runs td_receive in a background isolate and routes responses to typed
+// futures.
+//
+// TDLib rules that apply here: responses carry the "@extra" of their request
+// and the "@client_id" of their client; td_receive must never run on two
+// threads at once; updates and responses must be applied in the order they
+// were received; every client must be closed before the app terminates.
 
-/// Returns client id for the created instance of TDLib.
-/// The TDLib instance will not send updates until the first request is sent to it.
-/// 0 mean No client instance.
+/// Returns the identifier of a new TDLib client (0 means none). The client
+/// sends no updates until the first request is sent to it.
 int tdCreate() => TdPlugin.instance.tdCreate();
 
-/// Receives incoming updates and request responses from the TDLib with [timeout].
+/// Receives the next update or response, waiting up to [timeout] seconds.
+/// Blocks the calling isolate: don't call it on Flutter's UI isolate.
 TdObject? tdReceive([double timeout = 8]) {
   final res = TdPlugin.instance.tdReceive(timeout);
   return convertToObject(res);
 }
 
-/// Sends request to the TDLib client. May be called from any thread.
-/// [clientId] is TDLib client identifier.
-/// [event] is [TdFunction] request to TDLib.
+/// Sends [event] to client [clientId], tagged with [extra] if given.
 void tdSend(int clientId, TdFunction event, [dynamic extra]) {
   final req = json.encode(event.toJson(extra));
   TdPlugin.instance.tdSend(clientId, req);
 }
 
-/// Synchronously executes a TDLib request.
-/// A request can be executed synchronously, only if it is documented with "Can be called synchronously".
-/// [event] is synchronous [TdFunction] request to TDLib.
+/// Executes [event] synchronously; only requests documented as
+/// "Can be called synchronously" ([TdFunction.canBeCalledSynchronously]).
 TdObject? tdExecute(TdFunction event) {
-  final req = json.encode(event);
+  final req = json.encode(event.toJson());
   final res = TdPlugin.instance.tdExecute(req);
   return convertToObject(res);
 }

@@ -37,23 +37,22 @@ final class OrderInfo extends TdObject {
 
   /// Parses a [OrderInfo] from TDLib JSON.
   factory OrderInfo.fromJson(Map<String, dynamic> json) => OrderInfo(
-        name: _readString(json['name']),
-        phoneNumber: _readString(json['phone_number']),
-        emailAddress: _readString(json['email_address']),
-        shippingAddress:
-            _readOptional(json['shipping_address'], Address.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    name: _readString(json['name']),
+    phoneNumber: _readString(json['phone_number']),
+    emailAddress: _readString(json['email_address']),
+    shippingAddress: _readOptional(json['shipping_address'], Address.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        'phone_number': phoneNumber,
-        'email_address': emailAddress,
-        'shipping_address': shippingAddress?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    'phone_number': phoneNumber,
+    'email_address': emailAddress,
+    'shipping_address': shippingAddress?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -64,16 +63,16 @@ final class OrderInfo extends TdObject {
     Address? Function()? shippingAddress,
     dynamic extra,
     int? clientId,
-  }) =>
-      OrderInfo(
-        name: name ?? this.name,
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        emailAddress: emailAddress ?? this.emailAddress,
-        shippingAddress:
-            shippingAddress != null ? shippingAddress() : this.shippingAddress,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => OrderInfo(
+    name: name ?? this.name,
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+    emailAddress: emailAddress ?? this.emailAddress,
+    shippingAddress: shippingAddress != null
+        ? shippingAddress()
+        : this.shippingAddress,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'orderInfo';

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ConfirmSession extends TdFunction<Ok> {
   /// Confirms an unconfirmed session of the current user from another device
-  const ConfirmSession({
-    required this.sessionId,
-  });
+  const ConfirmSession({required this.sessionId});
 
   /// Session identifier
   final int sessionId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'session_id': sessionId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'session_id': sessionId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ConfirmSession copyWith({
-    int? sessionId,
-  }) =>
-      ConfirmSession(
-        sessionId: sessionId ?? this.sessionId,
-      );
+  ConfirmSession copyWith({int? sessionId}) =>
+      ConfirmSession(sessionId: sessionId ?? this.sessionId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'confirmSession';

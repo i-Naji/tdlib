@@ -65,36 +65,36 @@ final class ForumTopicInfo extends TdObject {
 
   /// Parses a [ForumTopicInfo] from TDLib JSON.
   factory ForumTopicInfo.fromJson(Map<String, dynamic> json) => ForumTopicInfo(
-        chatId: _readInt(json['chat_id']),
-        forumTopicId: _readInt(json['forum_topic_id']),
-        name: _readString(json['name']),
-        icon: _readObject(json['icon'], ForumTopicIcon.fromJson),
-        creationDate: _readInt(json['creation_date']),
-        creatorId: _readObject(json['creator_id'], MessageSender.fromJson),
-        isGeneral: _readBool(json['is_general']),
-        isOutgoing: _readBool(json['is_outgoing']),
-        isClosed: _readBool(json['is_closed']),
-        isHidden: _readBool(json['is_hidden']),
-        isNameImplicit: _readBool(json['is_name_implicit']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    chatId: _readInt(json['chat_id']),
+    forumTopicId: _readInt(json['forum_topic_id']),
+    name: _readString(json['name']),
+    icon: _readObject(json['icon'], ForumTopicIcon.fromJson),
+    creationDate: _readInt(json['creation_date']),
+    creatorId: _readObject(json['creator_id'], MessageSender.fromJson),
+    isGeneral: _readBool(json['is_general']),
+    isOutgoing: _readBool(json['is_outgoing']),
+    isClosed: _readBool(json['is_closed']),
+    isHidden: _readBool(json['is_hidden']),
+    isNameImplicit: _readBool(json['is_name_implicit']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'forum_topic_id': forumTopicId,
-        'name': name,
-        'icon': icon.toJson(),
-        'creation_date': creationDate,
-        'creator_id': creatorId.toJson(),
-        'is_general': isGeneral,
-        'is_outgoing': isOutgoing,
-        'is_closed': isClosed,
-        'is_hidden': isHidden,
-        'is_name_implicit': isNameImplicit,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'forum_topic_id': forumTopicId,
+    'name': name,
+    'icon': icon.toJson(),
+    'creation_date': creationDate,
+    'creator_id': creatorId.toJson(),
+    'is_general': isGeneral,
+    'is_outgoing': isOutgoing,
+    'is_closed': isClosed,
+    'is_hidden': isHidden,
+    'is_name_implicit': isNameImplicit,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -112,22 +112,21 @@ final class ForumTopicInfo extends TdObject {
     bool? isNameImplicit,
     dynamic extra,
     int? clientId,
-  }) =>
-      ForumTopicInfo(
-        chatId: chatId ?? this.chatId,
-        forumTopicId: forumTopicId ?? this.forumTopicId,
-        name: name ?? this.name,
-        icon: icon ?? this.icon,
-        creationDate: creationDate ?? this.creationDate,
-        creatorId: creatorId ?? this.creatorId,
-        isGeneral: isGeneral ?? this.isGeneral,
-        isOutgoing: isOutgoing ?? this.isOutgoing,
-        isClosed: isClosed ?? this.isClosed,
-        isHidden: isHidden ?? this.isHidden,
-        isNameImplicit: isNameImplicit ?? this.isNameImplicit,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ForumTopicInfo(
+    chatId: chatId ?? this.chatId,
+    forumTopicId: forumTopicId ?? this.forumTopicId,
+    name: name ?? this.name,
+    icon: icon ?? this.icon,
+    creationDate: creationDate ?? this.creationDate,
+    creatorId: creatorId ?? this.creatorId,
+    isGeneral: isGeneral ?? this.isGeneral,
+    isOutgoing: isOutgoing ?? this.isOutgoing,
+    isClosed: isClosed ?? this.isClosed,
+    isHidden: isHidden ?? this.isHidden,
+    isNameImplicit: isNameImplicit ?? this.isNameImplicit,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'forumTopicInfo';

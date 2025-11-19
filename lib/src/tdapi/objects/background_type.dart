@@ -65,18 +65,15 @@ final class BackgroundTypeWallpaper extends BackgroundType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_blurred': isBlurred,
-        'is_moving': isMoving,
-      };
+    '@type': CONSTRUCTOR,
+    'is_blurred': isBlurred,
+    'is_moving': isMoving,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  BackgroundTypeWallpaper copyWith({
-    bool? isBlurred,
-    bool? isMoving,
-  }) =>
+  BackgroundTypeWallpaper copyWith({bool? isBlurred, bool? isMoving}) =>
       BackgroundTypeWallpaper(
         isBlurred: isBlurred ?? this.isBlurred,
         isMoving: isMoving ?? this.isMoving,
@@ -122,12 +119,12 @@ final class BackgroundTypePattern extends BackgroundType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'fill': fill.toJson(),
-        'intensity': intensity,
-        'is_inverted': isInverted,
-        'is_moving': isMoving,
-      };
+    '@type': CONSTRUCTOR,
+    'fill': fill.toJson(),
+    'intensity': intensity,
+    'is_inverted': isInverted,
+    'is_moving': isMoving,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -137,13 +134,12 @@ final class BackgroundTypePattern extends BackgroundType {
     int? intensity,
     bool? isInverted,
     bool? isMoving,
-  }) =>
-      BackgroundTypePattern(
-        fill: fill ?? this.fill,
-        intensity: intensity ?? this.intensity,
-        isInverted: isInverted ?? this.isInverted,
-        isMoving: isMoving ?? this.isMoving,
-      );
+  }) => BackgroundTypePattern(
+    fill: fill ?? this.fill,
+    intensity: intensity ?? this.intensity,
+    isInverted: isInverted ?? this.isInverted,
+    isMoving: isMoving ?? this.isMoving,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'backgroundTypePattern';
@@ -155,9 +151,7 @@ final class BackgroundTypePattern extends BackgroundType {
 /// A filled background
 final class BackgroundTypeFill extends BackgroundType {
   /// A filled background
-  const BackgroundTypeFill({
-    required this.fill,
-  });
+  const BackgroundTypeFill({required this.fill});
 
   /// The background fill
   final BackgroundFill fill;
@@ -170,19 +164,15 @@ final class BackgroundTypeFill extends BackgroundType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'fill': fill.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'fill': fill.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  BackgroundTypeFill copyWith({
-    BackgroundFill? fill,
-  }) =>
-      BackgroundTypeFill(
-        fill: fill ?? this.fill,
-      );
+  BackgroundTypeFill copyWith({BackgroundFill? fill}) =>
+      BackgroundTypeFill(fill: fill ?? this.fill);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'backgroundTypeFill';
@@ -194,34 +184,26 @@ final class BackgroundTypeFill extends BackgroundType {
 /// A background from a chat theme based on an emoji; can be used only as a chat background in channels
 final class BackgroundTypeChatTheme extends BackgroundType {
   /// A background from a chat theme based on an emoji; can be used only as a chat background in channels
-  const BackgroundTypeChatTheme({
-    required this.themeName,
-  });
+  const BackgroundTypeChatTheme({required this.themeName});
 
   /// Name of the emoji chat theme
   final String themeName;
 
   /// Parses a [BackgroundTypeChatTheme] from TDLib JSON.
   factory BackgroundTypeChatTheme.fromJson(Map<String, dynamic> json) =>
-      BackgroundTypeChatTheme(
-        themeName: _readString(json['theme_name']),
-      );
+      BackgroundTypeChatTheme(themeName: _readString(json['theme_name']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'theme_name': themeName,
-      };
+    '@type': CONSTRUCTOR,
+    'theme_name': themeName,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  BackgroundTypeChatTheme copyWith({
-    String? themeName,
-  }) =>
-      BackgroundTypeChatTheme(
-        themeName: themeName ?? this.themeName,
-      );
+  BackgroundTypeChatTheme copyWith({String? themeName}) =>
+      BackgroundTypeChatTheme(themeName: themeName ?? this.themeName);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'backgroundTypeChatTheme';

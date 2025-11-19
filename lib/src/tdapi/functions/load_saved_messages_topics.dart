@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class LoadSavedMessagesTopics extends TdFunction<Ok> {
   /// Loads more Saved Messages topics. The loaded topics will be sent through updateSavedMessagesTopic. Topics are sorted by their topic.order in descending order. Returns a 404 error if all topics have been loaded
-  const LoadSavedMessagesTopics({
-    required this.limit,
-  });
+  const LoadSavedMessagesTopics({required this.limit});
 
   /// The maximum number of topics to be loaded. For optimal performance, the number of loaded topics is chosen by TDLib and can be smaller than the specified limit, even if the end of the list is not reached
   final int limit;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  LoadSavedMessagesTopics copyWith({
-    int? limit,
-  }) =>
-      LoadSavedMessagesTopics(
-        limit: limit ?? this.limit,
-      );
+  LoadSavedMessagesTopics copyWith({int? limit}) =>
+      LoadSavedMessagesTopics(limit: limit ?? this.limit);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'loadSavedMessagesTopics';

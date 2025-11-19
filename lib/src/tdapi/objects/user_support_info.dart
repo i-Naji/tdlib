@@ -43,11 +43,11 @@ final class UserSupportInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message': message.toJson(),
-        'author': author,
-        'date': date,
-      };
+    '@type': CONSTRUCTOR,
+    'message': message.toJson(),
+    'author': author,
+    'date': date,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,14 +57,13 @@ final class UserSupportInfo extends TdObject {
     int? date,
     dynamic extra,
     int? clientId,
-  }) =>
-      UserSupportInfo(
-        message: message ?? this.message,
-        author: author ?? this.author,
-        date: date ?? this.date,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UserSupportInfo(
+    message: message ?? this.message,
+    author: author ?? this.author,
+    date: date ?? this.date,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userSupportInfo';

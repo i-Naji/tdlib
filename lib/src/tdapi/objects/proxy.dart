@@ -45,26 +45,26 @@ final class Proxy extends TdObject {
 
   /// Parses a [Proxy] from TDLib JSON.
   factory Proxy.fromJson(Map<String, dynamic> json) => Proxy(
-        id: _readInt(json['id']),
-        server: _readString(json['server']),
-        port: _readInt(json['port']),
-        lastUsedDate: _readInt(json['last_used_date']),
-        isEnabled: _readBool(json['is_enabled']),
-        type: _readObject(json['type'], ProxyType.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    id: _readInt(json['id']),
+    server: _readString(json['server']),
+    port: _readInt(json['port']),
+    lastUsedDate: _readInt(json['last_used_date']),
+    isEnabled: _readBool(json['is_enabled']),
+    type: _readObject(json['type'], ProxyType.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'server': server,
-        'port': port,
-        'last_used_date': lastUsedDate,
-        'is_enabled': isEnabled,
-        'type': type.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'server': server,
+    'port': port,
+    'last_used_date': lastUsedDate,
+    'is_enabled': isEnabled,
+    'type': type.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -77,17 +77,16 @@ final class Proxy extends TdObject {
     ProxyType? type,
     dynamic extra,
     int? clientId,
-  }) =>
-      Proxy(
-        id: id ?? this.id,
-        server: server ?? this.server,
-        port: port ?? this.port,
-        lastUsedDate: lastUsedDate ?? this.lastUsedDate,
-        isEnabled: isEnabled ?? this.isEnabled,
-        type: type ?? this.type,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => Proxy(
+    id: id ?? this.id,
+    server: server ?? this.server,
+    port: port ?? this.port,
+    lastUsedDate: lastUsedDate ?? this.lastUsedDate,
+    isEnabled: isEnabled ?? this.isEnabled,
+    type: type ?? this.type,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'proxy';

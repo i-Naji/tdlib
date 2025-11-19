@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [NetworkStatistics].
 final class GetNetworkStatistics extends TdFunction<NetworkStatistics> {
   /// Returns network data usage statistics. Can be called before authorization
-  const GetNetworkStatistics({
-    required this.onlyCurrent,
-  });
+  const GetNetworkStatistics({required this.onlyCurrent});
 
   /// Pass true to get statistics only for the current library launch
   final bool onlyCurrent;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'only_current': onlyCurrent,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'only_current': onlyCurrent,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetNetworkStatistics copyWith({
-    bool? onlyCurrent,
-  }) =>
-      GetNetworkStatistics(
-        onlyCurrent: onlyCurrent ?? this.onlyCurrent,
-      );
+  GetNetworkStatistics copyWith({bool? onlyCurrent}) =>
+      GetNetworkStatistics(onlyCurrent: onlyCurrent ?? this.onlyCurrent);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getNetworkStatistics';

@@ -29,21 +29,25 @@ final class MessageReactions extends TdObject {
   factory MessageReactions.fromJson(Map<String, dynamic> json) =>
       MessageReactions(
         reactions: _readList<MessageReaction>(
-            json['reactions'], (e) => _readObject(e, MessageReaction.fromJson)),
+          json['reactions'],
+          (e) => _readObject(e, MessageReaction.fromJson),
+        ),
         areTags: _readBool(json['are_tags']),
         paidReactors: _readList<PaidReactor>(
-            json['paid_reactors'], (e) => _readObject(e, PaidReactor.fromJson)),
+          json['paid_reactors'],
+          (e) => _readObject(e, PaidReactor.fromJson),
+        ),
         canGetAddedReactions: _readBool(json['can_get_added_reactions']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'reactions': [for (final e in reactions) e.toJson()],
-        'are_tags': areTags,
-        'paid_reactors': [for (final e in paidReactors) e.toJson()],
-        'can_get_added_reactions': canGetAddedReactions,
-      };
+    '@type': CONSTRUCTOR,
+    'reactions': [for (final e in reactions) e.toJson()],
+    'are_tags': areTags,
+    'paid_reactors': [for (final e in paidReactors) e.toJson()],
+    'can_get_added_reactions': canGetAddedReactions,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -52,13 +56,12 @@ final class MessageReactions extends TdObject {
     bool? areTags,
     List<PaidReactor>? paidReactors,
     bool? canGetAddedReactions,
-  }) =>
-      MessageReactions(
-        reactions: reactions ?? this.reactions,
-        areTags: areTags ?? this.areTags,
-        paidReactors: paidReactors ?? this.paidReactors,
-        canGetAddedReactions: canGetAddedReactions ?? this.canGetAddedReactions,
-      );
+  }) => MessageReactions(
+    reactions: reactions ?? this.reactions,
+    areTags: areTags ?? this.areTags,
+    paidReactors: paidReactors ?? this.paidReactors,
+    canGetAddedReactions: canGetAddedReactions ?? this.canGetAddedReactions,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageReactions';

@@ -26,17 +26,14 @@ final class ChatStatisticsInviterInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'added_member_count': addedMemberCount,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'added_member_count': addedMemberCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ChatStatisticsInviterInfo copyWith({
-    int? userId,
-    int? addedMemberCount,
-  }) =>
+  ChatStatisticsInviterInfo copyWith({int? userId, int? addedMemberCount}) =>
       ChatStatisticsInviterInfo(
         userId: userId ?? this.userId,
         addedMemberCount: addedMemberCount ?? this.addedMemberCount,

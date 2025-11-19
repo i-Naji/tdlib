@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains the result of a custom request
 final class CustomRequestResult extends TdObject {
   /// Contains the result of a custom request
-  const CustomRequestResult({
-    required this.result,
-    this.extra,
-    this.clientId,
-  });
+  const CustomRequestResult({required this.result, this.extra, this.clientId});
 
   /// A JSON-serialized result
   final String result;
@@ -32,10 +28,7 @@ final class CustomRequestResult extends TdObject {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'result': result,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'result': result};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +36,11 @@ final class CustomRequestResult extends TdObject {
     String? result,
     dynamic extra,
     int? clientId,
-  }) =>
-      CustomRequestResult(
-        result: result ?? this.result,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CustomRequestResult(
+    result: result ?? this.result,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'customRequestResult';

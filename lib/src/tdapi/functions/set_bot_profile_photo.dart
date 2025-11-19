@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetBotProfilePhoto extends TdFunction<Ok> {
   /// Changes a profile photo for a bot
-  const SetBotProfilePhoto({
-    required this.botUserId,
-    this.photo,
-  });
+  const SetBotProfilePhoto({required this.botUserId, this.photo});
 
   /// Identifier of the target bot
   final int botUserId;
@@ -21,22 +18,21 @@ final class SetBotProfilePhoto extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'photo': photo?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'photo': photo?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetBotProfilePhoto copyWith({
     int? botUserId,
     InputChatPhoto? Function()? photo,
-  }) =>
-      SetBotProfilePhoto(
-        botUserId: botUserId ?? this.botUserId,
-        photo: photo != null ? photo() : this.photo,
-      );
+  }) => SetBotProfilePhoto(
+    botUserId: botUserId ?? this.botUserId,
+    photo: photo != null ? photo() : this.photo,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setBotProfilePhoto';

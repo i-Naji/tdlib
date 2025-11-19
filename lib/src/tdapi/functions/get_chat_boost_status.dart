@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [ChatBoostStatus].
 final class GetChatBoostStatus extends TdFunction<ChatBoostStatus> {
   /// Returns the current boost status for a supergroup or a channel chat
-  const GetChatBoostStatus({
-    required this.chatId,
-  });
+  const GetChatBoostStatus({required this.chatId});
 
   /// Identifier of the chat
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatBoostStatus copyWith({
-    int? chatId,
-  }) =>
-      GetChatBoostStatus(
-        chatId: chatId ?? this.chatId,
-      );
+  GetChatBoostStatus copyWith({int? chatId}) =>
+      GetChatBoostStatus(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatBoostStatus';

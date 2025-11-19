@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Text].
 final class GetSuggestedFileName extends TdFunction<Text> {
   /// Returns suggested name for saving a file in a given directory
-  const GetSuggestedFileName({
-    required this.fileId,
-    required this.directory,
-  });
+  const GetSuggestedFileName({required this.fileId, required this.directory});
 
   /// Identifier of the file
   final int fileId;
@@ -21,18 +18,15 @@ final class GetSuggestedFileName extends TdFunction<Text> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'file_id': fileId,
-        'directory': directory,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'file_id': fileId,
+    'directory': directory,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetSuggestedFileName copyWith({
-    int? fileId,
-    String? directory,
-  }) =>
+  GetSuggestedFileName copyWith({int? fileId, String? directory}) =>
       GetSuggestedFileName(
         fileId: fileId ?? this.fileId,
         directory: directory ?? this.directory,

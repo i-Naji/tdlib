@@ -37,15 +37,15 @@ final class GetChatStoryInteractions extends TdFunction<StoryInteractions> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'story_id': storyId,
-        'reaction_type': reactionType?.toJson(),
-        'prefer_forwards': preferForwards,
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+    'reaction_type': reactionType?.toJson(),
+    'prefer_forwards': preferForwards,
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class GetChatStoryInteractions extends TdFunction<StoryInteractions> {
     bool? preferForwards,
     String? offset,
     int? limit,
-  }) =>
-      GetChatStoryInteractions(
-        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-        storyId: storyId ?? this.storyId,
-        reactionType: reactionType != null ? reactionType() : this.reactionType,
-        preferForwards: preferForwards ?? this.preferForwards,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => GetChatStoryInteractions(
+    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+    storyId: storyId ?? this.storyId,
+    reactionType: reactionType != null ? reactionType() : this.reactionType,
+    preferForwards: preferForwards ?? this.preferForwards,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatStoryInteractions';

@@ -45,34 +45,23 @@ final class UndecodedChatType extends ChatType {
 /// An ordinary chat with a user
 final class ChatTypePrivate extends ChatType {
   /// An ordinary chat with a user
-  const ChatTypePrivate({
-    required this.userId,
-  });
+  const ChatTypePrivate({required this.userId});
 
   /// User identifier
   final int userId;
 
   /// Parses a [ChatTypePrivate] from TDLib JSON.
   factory ChatTypePrivate.fromJson(Map<String, dynamic> json) =>
-      ChatTypePrivate(
-        userId: _readInt(json['user_id']),
-      );
+      ChatTypePrivate(userId: _readInt(json['user_id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'user_id': userId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatTypePrivate copyWith({
-    int? userId,
-  }) =>
-      ChatTypePrivate(
-        userId: userId ?? this.userId,
-      );
+  ChatTypePrivate copyWith({int? userId}) =>
+      ChatTypePrivate(userId: userId ?? this.userId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatTypePrivate';
@@ -84,34 +73,26 @@ final class ChatTypePrivate extends ChatType {
 /// A basic group (a chat with 0-200 other users)
 final class ChatTypeBasicGroup extends ChatType {
   /// A basic group (a chat with 0-200 other users)
-  const ChatTypeBasicGroup({
-    required this.basicGroupId,
-  });
+  const ChatTypeBasicGroup({required this.basicGroupId});
 
   /// Basic group identifier
   final int basicGroupId;
 
   /// Parses a [ChatTypeBasicGroup] from TDLib JSON.
   factory ChatTypeBasicGroup.fromJson(Map<String, dynamic> json) =>
-      ChatTypeBasicGroup(
-        basicGroupId: _readInt(json['basic_group_id']),
-      );
+      ChatTypeBasicGroup(basicGroupId: _readInt(json['basic_group_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'basic_group_id': basicGroupId,
-      };
+    '@type': CONSTRUCTOR,
+    'basic_group_id': basicGroupId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatTypeBasicGroup copyWith({
-    int? basicGroupId,
-  }) =>
-      ChatTypeBasicGroup(
-        basicGroupId: basicGroupId ?? this.basicGroupId,
-      );
+  ChatTypeBasicGroup copyWith({int? basicGroupId}) =>
+      ChatTypeBasicGroup(basicGroupId: basicGroupId ?? this.basicGroupId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatTypeBasicGroup';
@@ -143,18 +124,15 @@ final class ChatTypeSupergroup extends ChatType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'is_channel': isChannel,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'is_channel': isChannel,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatTypeSupergroup copyWith({
-    int? supergroupId,
-    bool? isChannel,
-  }) =>
+  ChatTypeSupergroup copyWith({int? supergroupId, bool? isChannel}) =>
       ChatTypeSupergroup(
         supergroupId: supergroupId ?? this.supergroupId,
         isChannel: isChannel ?? this.isChannel,
@@ -170,10 +148,7 @@ final class ChatTypeSupergroup extends ChatType {
 /// A secret chat with a user
 final class ChatTypeSecret extends ChatType {
   /// A secret chat with a user
-  const ChatTypeSecret({
-    required this.secretChatId,
-    required this.userId,
-  });
+  const ChatTypeSecret({required this.secretChatId, required this.userId});
 
   /// Secret chat identifier
   final int secretChatId;
@@ -183,28 +158,24 @@ final class ChatTypeSecret extends ChatType {
 
   /// Parses a [ChatTypeSecret] from TDLib JSON.
   factory ChatTypeSecret.fromJson(Map<String, dynamic> json) => ChatTypeSecret(
-        secretChatId: _readInt(json['secret_chat_id']),
-        userId: _readInt(json['user_id']),
-      );
+    secretChatId: _readInt(json['secret_chat_id']),
+    userId: _readInt(json['user_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'secret_chat_id': secretChatId,
-        'user_id': userId,
-      };
+    '@type': CONSTRUCTOR,
+    'secret_chat_id': secretChatId,
+    'user_id': userId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatTypeSecret copyWith({
-    int? secretChatId,
-    int? userId,
-  }) =>
-      ChatTypeSecret(
-        secretChatId: secretChatId ?? this.secretChatId,
-        userId: userId ?? this.userId,
-      );
+  ChatTypeSecret copyWith({int? secretChatId, int? userId}) => ChatTypeSecret(
+    secretChatId: secretChatId ?? this.secretChatId,
+    userId: userId ?? this.userId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatTypeSecret';

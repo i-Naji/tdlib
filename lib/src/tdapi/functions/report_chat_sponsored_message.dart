@@ -26,12 +26,12 @@ final class ReportChatSponsoredMessage
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'option_id': optionId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'option_id': optionId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -39,12 +39,11 @@ final class ReportChatSponsoredMessage
     int? chatId,
     int? messageId,
     String? optionId,
-  }) =>
-      ReportChatSponsoredMessage(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        optionId: optionId ?? this.optionId,
-      );
+  }) => ReportChatSponsoredMessage(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    optionId: optionId ?? this.optionId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reportChatSponsoredMessage';

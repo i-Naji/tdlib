@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of gift collections
 final class GiftCollections extends TdObject {
   /// Contains a list of gift collections
-  const GiftCollections({
-    required this.collections,
-    this.extra,
-    this.clientId,
-  });
+  const GiftCollections({required this.collections, this.extra, this.clientId});
 
   /// List of gift collections
   final List<GiftCollection> collections;
@@ -26,17 +22,19 @@ final class GiftCollections extends TdObject {
   /// Parses a [GiftCollections] from TDLib JSON.
   factory GiftCollections.fromJson(Map<String, dynamic> json) =>
       GiftCollections(
-        collections: _readList<GiftCollection>(json['collections'],
-            (e) => _readObject(e, GiftCollection.fromJson)),
+        collections: _readList<GiftCollection>(
+          json['collections'],
+          (e) => _readObject(e, GiftCollection.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'collections': [for (final e in collections) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'collections': [for (final e in collections) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +42,11 @@ final class GiftCollections extends TdObject {
     List<GiftCollection>? collections,
     dynamic extra,
     int? clientId,
-  }) =>
-      GiftCollections(
-        collections: collections ?? this.collections,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => GiftCollections(
+    collections: collections ?? this.collections,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giftCollections';

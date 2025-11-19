@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class CheckCreatedPublicChatsLimit extends TdFunction<Ok> {
   /// Checks whether the maximum number of owned public chats has been reached. Returns corresponding error if the limit was reached. The limit can be increased with Telegram Premium
-  const CheckCreatedPublicChatsLimit({
-    required this.type,
-  });
+  const CheckCreatedPublicChatsLimit({required this.type});
 
   /// Type of the public chats, for which to check the limit
   final PublicChatType type;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CheckCreatedPublicChatsLimit copyWith({
-    PublicChatType? type,
-  }) =>
-      CheckCreatedPublicChatsLimit(
-        type: type ?? this.type,
-      );
+  CheckCreatedPublicChatsLimit copyWith({PublicChatType? type}) =>
+      CheckCreatedPublicChatsLimit(type: type ?? this.type);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkCreatedPublicChatsLimit';

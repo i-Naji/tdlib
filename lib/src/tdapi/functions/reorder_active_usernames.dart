@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class ReorderActiveUsernames extends TdFunction<Ok> {
   /// Changes order of active usernames of the current user
-  const ReorderActiveUsernames({
-    required this.usernames,
-  });
+  const ReorderActiveUsernames({required this.usernames});
 
   /// The new order of active usernames. All currently active usernames must be specified
   final List<String> usernames;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'usernames': usernames,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'usernames': usernames,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ReorderActiveUsernames copyWith({
-    List<String>? usernames,
-  }) =>
-      ReorderActiveUsernames(
-        usernames: usernames ?? this.usernames,
-      );
+  ReorderActiveUsernames copyWith({List<String>? usernames}) =>
+      ReorderActiveUsernames(usernames: usernames ?? this.usernames);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reorderActiveUsernames';

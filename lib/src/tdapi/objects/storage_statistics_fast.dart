@@ -53,13 +53,13 @@ final class StorageStatisticsFast extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'files_size': filesSize,
-        'file_count': fileCount,
-        'database_size': databaseSize,
-        'language_pack_database_size': languagePackDatabaseSize,
-        'log_size': logSize,
-      };
+    '@type': CONSTRUCTOR,
+    'files_size': filesSize,
+    'file_count': fileCount,
+    'database_size': databaseSize,
+    'language_pack_database_size': languagePackDatabaseSize,
+    'log_size': logSize,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -71,17 +71,16 @@ final class StorageStatisticsFast extends TdObject {
     int? logSize,
     dynamic extra,
     int? clientId,
-  }) =>
-      StorageStatisticsFast(
-        filesSize: filesSize ?? this.filesSize,
-        fileCount: fileCount ?? this.fileCount,
-        databaseSize: databaseSize ?? this.databaseSize,
-        languagePackDatabaseSize:
-            languagePackDatabaseSize ?? this.languagePackDatabaseSize,
-        logSize: logSize ?? this.logSize,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => StorageStatisticsFast(
+    filesSize: filesSize ?? this.filesSize,
+    fileCount: fileCount ?? this.fileCount,
+    databaseSize: databaseSize ?? this.databaseSize,
+    languagePackDatabaseSize:
+        languagePackDatabaseSize ?? this.languagePackDatabaseSize,
+    logSize: logSize ?? this.logSize,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storageStatisticsFast';

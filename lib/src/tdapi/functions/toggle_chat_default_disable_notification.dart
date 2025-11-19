@@ -21,23 +21,22 @@ final class ToggleChatDefaultDisableNotification extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'default_disable_notification': defaultDisableNotification,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'default_disable_notification': defaultDisableNotification,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleChatDefaultDisableNotification copyWith({
     int? chatId,
     bool? defaultDisableNotification,
-  }) =>
-      ToggleChatDefaultDisableNotification(
-        chatId: chatId ?? this.chatId,
-        defaultDisableNotification:
-            defaultDisableNotification ?? this.defaultDisableNotification,
-      );
+  }) => ToggleChatDefaultDisableNotification(
+    chatId: chatId ?? this.chatId,
+    defaultDisableNotification:
+        defaultDisableNotification ?? this.defaultDisableNotification,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleChatDefaultDisableNotification';

@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class CloseStory extends TdFunction<Ok> {
   /// Informs TDLib that a story is closed by the user
-  const CloseStory({
-    required this.storyPosterChatId,
-    required this.storyId,
-  });
+  const CloseStory({required this.storyPosterChatId, required this.storyId});
 
   /// The identifier of the poster of the story to close
   final int storyPosterChatId;
@@ -21,22 +18,18 @@ final class CloseStory extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'story_poster_chat_id': storyPosterChatId,
-        'story_id': storyId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CloseStory copyWith({
-    int? storyPosterChatId,
-    int? storyId,
-  }) =>
-      CloseStory(
-        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-        storyId: storyId ?? this.storyId,
-      );
+  CloseStory copyWith({int? storyPosterChatId, int? storyId}) => CloseStory(
+    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+    storyId: storyId ?? this.storyId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'closeStory';

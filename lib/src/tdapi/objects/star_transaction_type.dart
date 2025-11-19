@@ -51,13 +51,11 @@ final class StarTransactionTypePremiumBotDeposit extends StarTransactionType {
 
   /// Parses a [StarTransactionTypePremiumBotDeposit] from TDLib JSON.
   factory StarTransactionTypePremiumBotDeposit.fromJson(
-          Map<String, dynamic> json) =>
-      const StarTransactionTypePremiumBotDeposit();
+    Map<String, dynamic> json,
+  ) => const StarTransactionTypePremiumBotDeposit();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -79,13 +77,11 @@ final class StarTransactionTypeAppStoreDeposit extends StarTransactionType {
 
   /// Parses a [StarTransactionTypeAppStoreDeposit] from TDLib JSON.
   factory StarTransactionTypeAppStoreDeposit.fromJson(
-          Map<String, dynamic> json) =>
-      const StarTransactionTypeAppStoreDeposit();
+    Map<String, dynamic> json,
+  ) => const StarTransactionTypeAppStoreDeposit();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -107,13 +103,11 @@ final class StarTransactionTypeGooglePlayDeposit extends StarTransactionType {
 
   /// Parses a [StarTransactionTypeGooglePlayDeposit] from TDLib JSON.
   factory StarTransactionTypeGooglePlayDeposit.fromJson(
-          Map<String, dynamic> json) =>
-      const StarTransactionTypeGooglePlayDeposit();
+    Map<String, dynamic> json,
+  ) => const StarTransactionTypeGooglePlayDeposit();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -135,13 +129,11 @@ final class StarTransactionTypeFragmentDeposit extends StarTransactionType {
 
   /// Parses a [StarTransactionTypeFragmentDeposit] from TDLib JSON.
   factory StarTransactionTypeFragmentDeposit.fromJson(
-          Map<String, dynamic> json) =>
-      const StarTransactionTypeFragmentDeposit();
+    Map<String, dynamic> json,
+  ) => const StarTransactionTypeFragmentDeposit();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -159,10 +151,7 @@ final class StarTransactionTypeFragmentDeposit extends StarTransactionType {
 /// The transaction is a deposit of Telegram Stars by another user; for regular users only
 final class StarTransactionTypeUserDeposit extends StarTransactionType {
   /// The transaction is a deposit of Telegram Stars by another user; for regular users only
-  const StarTransactionTypeUserDeposit({
-    required this.userId,
-    this.sticker,
-  });
+  const StarTransactionTypeUserDeposit({required this.userId, this.sticker});
 
   /// Identifier of the user that gifted Telegram Stars; 0 if the user was anonymous
   final int userId;
@@ -179,10 +168,10 @@ final class StarTransactionTypeUserDeposit extends StarTransactionType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'sticker': sticker?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'sticker': sticker?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -190,11 +179,10 @@ final class StarTransactionTypeUserDeposit extends StarTransactionType {
   StarTransactionTypeUserDeposit copyWith({
     int? userId,
     Sticker? Function()? sticker,
-  }) =>
-      StarTransactionTypeUserDeposit(
-        userId: userId ?? this.userId,
-        sticker: sticker != null ? sticker() : this.sticker,
-      );
+  }) => StarTransactionTypeUserDeposit(
+    userId: userId ?? this.userId,
+    sticker: sticker != null ? sticker() : this.sticker,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypeUserDeposit';
@@ -219,18 +207,18 @@ final class StarTransactionTypeGiveawayDeposit extends StarTransactionType {
 
   /// Parses a [StarTransactionTypeGiveawayDeposit] from TDLib JSON.
   factory StarTransactionTypeGiveawayDeposit.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeGiveawayDeposit(
-        chatId: _readInt(json['chat_id']),
-        giveawayMessageId: _readInt(json['giveaway_message_id']),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeGiveawayDeposit(
+    chatId: _readInt(json['chat_id']),
+    giveawayMessageId: _readInt(json['giveaway_message_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'giveaway_message_id': giveawayMessageId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'giveaway_message_id': giveawayMessageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -238,11 +226,10 @@ final class StarTransactionTypeGiveawayDeposit extends StarTransactionType {
   StarTransactionTypeGiveawayDeposit copyWith({
     int? chatId,
     int? giveawayMessageId,
-  }) =>
-      StarTransactionTypeGiveawayDeposit(
-        chatId: chatId ?? this.chatId,
-        giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
-      );
+  }) => StarTransactionTypeGiveawayDeposit(
+    chatId: chatId ?? this.chatId,
+    giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypeGiveawayDeposit';
@@ -254,37 +241,37 @@ final class StarTransactionTypeGiveawayDeposit extends StarTransactionType {
 /// The transaction is a withdrawal of earned Telegram Stars to Fragment; for regular users, bots, supergroup and channel chats only
 final class StarTransactionTypeFragmentWithdrawal extends StarTransactionType {
   /// The transaction is a withdrawal of earned Telegram Stars to Fragment; for regular users, bots, supergroup and channel chats only
-  const StarTransactionTypeFragmentWithdrawal({
-    this.withdrawalState,
-  });
+  const StarTransactionTypeFragmentWithdrawal({this.withdrawalState});
 
   /// State of the withdrawal; may be null for refunds from Fragment
   final RevenueWithdrawalState? withdrawalState;
 
   /// Parses a [StarTransactionTypeFragmentWithdrawal] from TDLib JSON.
   factory StarTransactionTypeFragmentWithdrawal.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeFragmentWithdrawal(
-        withdrawalState: _readOptional(
-            json['withdrawal_state'], RevenueWithdrawalState.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeFragmentWithdrawal(
+    withdrawalState: _readOptional(
+      json['withdrawal_state'],
+      RevenueWithdrawalState.fromJson,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'withdrawal_state': withdrawalState?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'withdrawal_state': withdrawalState?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StarTransactionTypeFragmentWithdrawal copyWith({
     RevenueWithdrawalState? Function()? withdrawalState,
-  }) =>
-      StarTransactionTypeFragmentWithdrawal(
-        withdrawalState:
-            withdrawalState != null ? withdrawalState() : this.withdrawalState,
-      );
+  }) => StarTransactionTypeFragmentWithdrawal(
+    withdrawalState: withdrawalState != null
+        ? withdrawalState()
+        : this.withdrawalState,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypeFragmentWithdrawal';
@@ -301,13 +288,11 @@ final class StarTransactionTypeTelegramAdsWithdrawal
 
   /// Parses a [StarTransactionTypeTelegramAdsWithdrawal] from TDLib JSON.
   factory StarTransactionTypeTelegramAdsWithdrawal.fromJson(
-          Map<String, dynamic> json) =>
-      const StarTransactionTypeTelegramAdsWithdrawal();
+    Map<String, dynamic> json,
+  ) => const StarTransactionTypeTelegramAdsWithdrawal();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -325,32 +310,28 @@ final class StarTransactionTypeTelegramAdsWithdrawal
 /// The transaction is a payment for Telegram API usage; for bots only
 final class StarTransactionTypeTelegramApiUsage extends StarTransactionType {
   /// The transaction is a payment for Telegram API usage; for bots only
-  const StarTransactionTypeTelegramApiUsage({
-    required this.requestCount,
-  });
+  const StarTransactionTypeTelegramApiUsage({required this.requestCount});
 
   /// The number of billed requests
   final int requestCount;
 
   /// Parses a [StarTransactionTypeTelegramApiUsage] from TDLib JSON.
   factory StarTransactionTypeTelegramApiUsage.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeTelegramApiUsage(
-        requestCount: _readInt(json['request_count']),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeTelegramApiUsage(
+    requestCount: _readInt(json['request_count']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'request_count': requestCount,
-      };
+    '@type': CONSTRUCTOR,
+    'request_count': requestCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StarTransactionTypeTelegramApiUsage copyWith({
-    int? requestCount,
-  }) =>
+  StarTransactionTypeTelegramApiUsage copyWith({int? requestCount}) =>
       StarTransactionTypeTelegramApiUsage(
         requestCount: requestCount ?? this.requestCount,
       );
@@ -379,19 +360,21 @@ final class StarTransactionTypeBotPaidMediaPurchase
 
   /// Parses a [StarTransactionTypeBotPaidMediaPurchase] from TDLib JSON.
   factory StarTransactionTypeBotPaidMediaPurchase.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeBotPaidMediaPurchase(
-        userId: _readInt(json['user_id']),
-        media: _readList<PaidMedia>(
-            json['media'], (e) => _readObject(e, PaidMedia.fromJson)),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeBotPaidMediaPurchase(
+    userId: _readInt(json['user_id']),
+    media: _readList<PaidMedia>(
+      json['media'],
+      (e) => _readObject(e, PaidMedia.fromJson),
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'media': [for (final e in media) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'media': [for (final e in media) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -399,11 +382,10 @@ final class StarTransactionTypeBotPaidMediaPurchase
   StarTransactionTypeBotPaidMediaPurchase copyWith({
     int? userId,
     List<PaidMedia>? media,
-  }) =>
-      StarTransactionTypeBotPaidMediaPurchase(
-        userId: userId ?? this.userId,
-        media: media ?? this.media,
-      );
+  }) => StarTransactionTypeBotPaidMediaPurchase(
+    userId: userId ?? this.userId,
+    media: media ?? this.media,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypeBotPaidMediaPurchase';
@@ -436,23 +418,25 @@ final class StarTransactionTypeBotPaidMediaSale extends StarTransactionType {
 
   /// Parses a [StarTransactionTypeBotPaidMediaSale] from TDLib JSON.
   factory StarTransactionTypeBotPaidMediaSale.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeBotPaidMediaSale(
-        userId: _readInt(json['user_id']),
-        media: _readList<PaidMedia>(
-            json['media'], (e) => _readObject(e, PaidMedia.fromJson)),
-        payload: _readString(json['payload']),
-        affiliate: _readOptional(json['affiliate'], AffiliateInfo.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeBotPaidMediaSale(
+    userId: _readInt(json['user_id']),
+    media: _readList<PaidMedia>(
+      json['media'],
+      (e) => _readObject(e, PaidMedia.fromJson),
+    ),
+    payload: _readString(json['payload']),
+    affiliate: _readOptional(json['affiliate'], AffiliateInfo.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'media': [for (final e in media) e.toJson()],
-        'payload': payload,
-        'affiliate': affiliate?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'media': [for (final e in media) e.toJson()],
+    'payload': payload,
+    'affiliate': affiliate?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -462,13 +446,12 @@ final class StarTransactionTypeBotPaidMediaSale extends StarTransactionType {
     List<PaidMedia>? media,
     String? payload,
     AffiliateInfo? Function()? affiliate,
-  }) =>
-      StarTransactionTypeBotPaidMediaSale(
-        userId: userId ?? this.userId,
-        media: media ?? this.media,
-        payload: payload ?? this.payload,
-        affiliate: affiliate != null ? affiliate() : this.affiliate,
-      );
+  }) => StarTransactionTypeBotPaidMediaSale(
+    userId: userId ?? this.userId,
+    media: media ?? this.media,
+    payload: payload ?? this.payload,
+    affiliate: affiliate != null ? affiliate() : this.affiliate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypeBotPaidMediaSale';
@@ -498,21 +481,23 @@ final class StarTransactionTypeChannelPaidMediaPurchase
 
   /// Parses a [StarTransactionTypeChannelPaidMediaPurchase] from TDLib JSON.
   factory StarTransactionTypeChannelPaidMediaPurchase.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeChannelPaidMediaPurchase(
-        chatId: _readInt(json['chat_id']),
-        messageId: _readInt(json['message_id']),
-        media: _readList<PaidMedia>(
-            json['media'], (e) => _readObject(e, PaidMedia.fromJson)),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeChannelPaidMediaPurchase(
+    chatId: _readInt(json['chat_id']),
+    messageId: _readInt(json['message_id']),
+    media: _readList<PaidMedia>(
+      json['media'],
+      (e) => _readObject(e, PaidMedia.fromJson),
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'media': [for (final e in media) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'media': [for (final e in media) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -521,12 +506,11 @@ final class StarTransactionTypeChannelPaidMediaPurchase
     int? chatId,
     int? messageId,
     List<PaidMedia>? media,
-  }) =>
-      StarTransactionTypeChannelPaidMediaPurchase(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        media: media ?? this.media,
-      );
+  }) => StarTransactionTypeChannelPaidMediaPurchase(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    media: media ?? this.media,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -557,21 +541,23 @@ final class StarTransactionTypeChannelPaidMediaSale
 
   /// Parses a [StarTransactionTypeChannelPaidMediaSale] from TDLib JSON.
   factory StarTransactionTypeChannelPaidMediaSale.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeChannelPaidMediaSale(
-        userId: _readInt(json['user_id']),
-        messageId: _readInt(json['message_id']),
-        media: _readList<PaidMedia>(
-            json['media'], (e) => _readObject(e, PaidMedia.fromJson)),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeChannelPaidMediaSale(
+    userId: _readInt(json['user_id']),
+    messageId: _readInt(json['message_id']),
+    media: _readList<PaidMedia>(
+      json['media'],
+      (e) => _readObject(e, PaidMedia.fromJson),
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'message_id': messageId,
-        'media': [for (final e in media) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'message_id': messageId,
+    'media': [for (final e in media) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -580,12 +566,11 @@ final class StarTransactionTypeChannelPaidMediaSale
     int? userId,
     int? messageId,
     List<PaidMedia>? media,
-  }) =>
-      StarTransactionTypeChannelPaidMediaSale(
-        userId: userId ?? this.userId,
-        messageId: messageId ?? this.messageId,
-        media: media ?? this.media,
-      );
+  }) => StarTransactionTypeChannelPaidMediaSale(
+    userId: userId ?? this.userId,
+    messageId: messageId ?? this.messageId,
+    media: media ?? this.media,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypeChannelPaidMediaSale';
@@ -610,18 +595,18 @@ final class StarTransactionTypeBotInvoicePurchase extends StarTransactionType {
 
   /// Parses a [StarTransactionTypeBotInvoicePurchase] from TDLib JSON.
   factory StarTransactionTypeBotInvoicePurchase.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeBotInvoicePurchase(
-        userId: _readInt(json['user_id']),
-        productInfo: _readObject(json['product_info'], ProductInfo.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeBotInvoicePurchase(
+    userId: _readInt(json['user_id']),
+    productInfo: _readObject(json['product_info'], ProductInfo.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'product_info': productInfo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'product_info': productInfo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -629,11 +614,10 @@ final class StarTransactionTypeBotInvoicePurchase extends StarTransactionType {
   StarTransactionTypeBotInvoicePurchase copyWith({
     int? userId,
     ProductInfo? productInfo,
-  }) =>
-      StarTransactionTypeBotInvoicePurchase(
-        userId: userId ?? this.userId,
-        productInfo: productInfo ?? this.productInfo,
-      );
+  }) => StarTransactionTypeBotInvoicePurchase(
+    userId: userId ?? this.userId,
+    productInfo: productInfo ?? this.productInfo,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypeBotInvoicePurchase';
@@ -666,22 +650,22 @@ final class StarTransactionTypeBotInvoiceSale extends StarTransactionType {
 
   /// Parses a [StarTransactionTypeBotInvoiceSale] from TDLib JSON.
   factory StarTransactionTypeBotInvoiceSale.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeBotInvoiceSale(
-        userId: _readInt(json['user_id']),
-        productInfo: _readObject(json['product_info'], ProductInfo.fromJson),
-        invoicePayload: _readString(json['invoice_payload']),
-        affiliate: _readOptional(json['affiliate'], AffiliateInfo.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeBotInvoiceSale(
+    userId: _readInt(json['user_id']),
+    productInfo: _readObject(json['product_info'], ProductInfo.fromJson),
+    invoicePayload: _readString(json['invoice_payload']),
+    affiliate: _readOptional(json['affiliate'], AffiliateInfo.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'product_info': productInfo.toJson(),
-        'invoice_payload': invoicePayload,
-        'affiliate': affiliate?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'product_info': productInfo.toJson(),
+    'invoice_payload': invoicePayload,
+    'affiliate': affiliate?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -691,13 +675,12 @@ final class StarTransactionTypeBotInvoiceSale extends StarTransactionType {
     ProductInfo? productInfo,
     String? invoicePayload,
     AffiliateInfo? Function()? affiliate,
-  }) =>
-      StarTransactionTypeBotInvoiceSale(
-        userId: userId ?? this.userId,
-        productInfo: productInfo ?? this.productInfo,
-        invoicePayload: invoicePayload ?? this.invoicePayload,
-        affiliate: affiliate != null ? affiliate() : this.affiliate,
-      );
+  }) => StarTransactionTypeBotInvoiceSale(
+    userId: userId ?? this.userId,
+    productInfo: productInfo ?? this.productInfo,
+    invoicePayload: invoicePayload ?? this.invoicePayload,
+    affiliate: affiliate != null ? affiliate() : this.affiliate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypeBotInvoiceSale';
@@ -727,20 +710,20 @@ final class StarTransactionTypeBotSubscriptionPurchase
 
   /// Parses a [StarTransactionTypeBotSubscriptionPurchase] from TDLib JSON.
   factory StarTransactionTypeBotSubscriptionPurchase.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeBotSubscriptionPurchase(
-        userId: _readInt(json['user_id']),
-        subscriptionPeriod: _readInt(json['subscription_period']),
-        productInfo: _readObject(json['product_info'], ProductInfo.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeBotSubscriptionPurchase(
+    userId: _readInt(json['user_id']),
+    subscriptionPeriod: _readInt(json['subscription_period']),
+    productInfo: _readObject(json['product_info'], ProductInfo.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'subscription_period': subscriptionPeriod,
-        'product_info': productInfo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'subscription_period': subscriptionPeriod,
+    'product_info': productInfo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -749,12 +732,11 @@ final class StarTransactionTypeBotSubscriptionPurchase
     int? userId,
     int? subscriptionPeriod,
     ProductInfo? productInfo,
-  }) =>
-      StarTransactionTypeBotSubscriptionPurchase(
-        userId: userId ?? this.userId,
-        subscriptionPeriod: subscriptionPeriod ?? this.subscriptionPeriod,
-        productInfo: productInfo ?? this.productInfo,
-      );
+  }) => StarTransactionTypeBotSubscriptionPurchase(
+    userId: userId ?? this.userId,
+    subscriptionPeriod: subscriptionPeriod ?? this.subscriptionPeriod,
+    productInfo: productInfo ?? this.productInfo,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -792,24 +774,24 @@ final class StarTransactionTypeBotSubscriptionSale extends StarTransactionType {
 
   /// Parses a [StarTransactionTypeBotSubscriptionSale] from TDLib JSON.
   factory StarTransactionTypeBotSubscriptionSale.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeBotSubscriptionSale(
-        userId: _readInt(json['user_id']),
-        subscriptionPeriod: _readInt(json['subscription_period']),
-        productInfo: _readObject(json['product_info'], ProductInfo.fromJson),
-        invoicePayload: _readString(json['invoice_payload']),
-        affiliate: _readOptional(json['affiliate'], AffiliateInfo.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeBotSubscriptionSale(
+    userId: _readInt(json['user_id']),
+    subscriptionPeriod: _readInt(json['subscription_period']),
+    productInfo: _readObject(json['product_info'], ProductInfo.fromJson),
+    invoicePayload: _readString(json['invoice_payload']),
+    affiliate: _readOptional(json['affiliate'], AffiliateInfo.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'subscription_period': subscriptionPeriod,
-        'product_info': productInfo.toJson(),
-        'invoice_payload': invoicePayload,
-        'affiliate': affiliate?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'subscription_period': subscriptionPeriod,
+    'product_info': productInfo.toJson(),
+    'invoice_payload': invoicePayload,
+    'affiliate': affiliate?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -820,14 +802,13 @@ final class StarTransactionTypeBotSubscriptionSale extends StarTransactionType {
     ProductInfo? productInfo,
     String? invoicePayload,
     AffiliateInfo? Function()? affiliate,
-  }) =>
-      StarTransactionTypeBotSubscriptionSale(
-        userId: userId ?? this.userId,
-        subscriptionPeriod: subscriptionPeriod ?? this.subscriptionPeriod,
-        productInfo: productInfo ?? this.productInfo,
-        invoicePayload: invoicePayload ?? this.invoicePayload,
-        affiliate: affiliate != null ? affiliate() : this.affiliate,
-      );
+  }) => StarTransactionTypeBotSubscriptionSale(
+    userId: userId ?? this.userId,
+    subscriptionPeriod: subscriptionPeriod ?? this.subscriptionPeriod,
+    productInfo: productInfo ?? this.productInfo,
+    invoicePayload: invoicePayload ?? this.invoicePayload,
+    affiliate: affiliate != null ? affiliate() : this.affiliate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypeBotSubscriptionSale';
@@ -853,18 +834,18 @@ final class StarTransactionTypeChannelSubscriptionPurchase
 
   /// Parses a [StarTransactionTypeChannelSubscriptionPurchase] from TDLib JSON.
   factory StarTransactionTypeChannelSubscriptionPurchase.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeChannelSubscriptionPurchase(
-        chatId: _readInt(json['chat_id']),
-        subscriptionPeriod: _readInt(json['subscription_period']),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeChannelSubscriptionPurchase(
+    chatId: _readInt(json['chat_id']),
+    subscriptionPeriod: _readInt(json['subscription_period']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'subscription_period': subscriptionPeriod,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'subscription_period': subscriptionPeriod,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -872,11 +853,10 @@ final class StarTransactionTypeChannelSubscriptionPurchase
   StarTransactionTypeChannelSubscriptionPurchase copyWith({
     int? chatId,
     int? subscriptionPeriod,
-  }) =>
-      StarTransactionTypeChannelSubscriptionPurchase(
-        chatId: chatId ?? this.chatId,
-        subscriptionPeriod: subscriptionPeriod ?? this.subscriptionPeriod,
-      );
+  }) => StarTransactionTypeChannelSubscriptionPurchase(
+    chatId: chatId ?? this.chatId,
+    subscriptionPeriod: subscriptionPeriod ?? this.subscriptionPeriod,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -903,18 +883,18 @@ final class StarTransactionTypeChannelSubscriptionSale
 
   /// Parses a [StarTransactionTypeChannelSubscriptionSale] from TDLib JSON.
   factory StarTransactionTypeChannelSubscriptionSale.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeChannelSubscriptionSale(
-        userId: _readInt(json['user_id']),
-        subscriptionPeriod: _readInt(json['subscription_period']),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeChannelSubscriptionSale(
+    userId: _readInt(json['user_id']),
+    subscriptionPeriod: _readInt(json['subscription_period']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'subscription_period': subscriptionPeriod,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'subscription_period': subscriptionPeriod,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -922,11 +902,10 @@ final class StarTransactionTypeChannelSubscriptionSale
   StarTransactionTypeChannelSubscriptionSale copyWith({
     int? userId,
     int? subscriptionPeriod,
-  }) =>
-      StarTransactionTypeChannelSubscriptionSale(
-        userId: userId ?? this.userId,
-        subscriptionPeriod: subscriptionPeriod ?? this.subscriptionPeriod,
-      );
+  }) => StarTransactionTypeChannelSubscriptionSale(
+    userId: userId ?? this.userId,
+    subscriptionPeriod: subscriptionPeriod ?? this.subscriptionPeriod,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -959,10 +938,10 @@ final class StarTransactionTypeGiftPurchase extends StarTransactionType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'owner_id': ownerId.toJson(),
-        'gift': gift.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'owner_id': ownerId.toJson(),
+    'gift': gift.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -970,11 +949,10 @@ final class StarTransactionTypeGiftPurchase extends StarTransactionType {
   StarTransactionTypeGiftPurchase copyWith({
     MessageSender? ownerId,
     Gift? gift,
-  }) =>
-      StarTransactionTypeGiftPurchase(
-        ownerId: ownerId ?? this.ownerId,
-        gift: gift ?? this.gift,
-      );
+  }) => StarTransactionTypeGiftPurchase(
+    ownerId: ownerId ?? this.ownerId,
+    gift: gift ?? this.gift,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypeGiftPurchase';
@@ -1006,10 +984,10 @@ final class StarTransactionTypeGiftTransfer extends StarTransactionType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'owner_id': ownerId.toJson(),
-        'gift': gift.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'owner_id': ownerId.toJson(),
+    'gift': gift.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1017,11 +995,10 @@ final class StarTransactionTypeGiftTransfer extends StarTransactionType {
   StarTransactionTypeGiftTransfer copyWith({
     MessageSender? ownerId,
     UpgradedGift? gift,
-  }) =>
-      StarTransactionTypeGiftTransfer(
-        ownerId: ownerId ?? this.ownerId,
-        gift: gift ?? this.gift,
-      );
+  }) => StarTransactionTypeGiftTransfer(
+    ownerId: ownerId ?? this.ownerId,
+    gift: gift ?? this.gift,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypeGiftTransfer';
@@ -1047,18 +1024,18 @@ final class StarTransactionTypeGiftOriginalDetailsDrop
 
   /// Parses a [StarTransactionTypeGiftOriginalDetailsDrop] from TDLib JSON.
   factory StarTransactionTypeGiftOriginalDetailsDrop.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeGiftOriginalDetailsDrop(
-        ownerId: _readObject(json['owner_id'], MessageSender.fromJson),
-        gift: _readObject(json['gift'], UpgradedGift.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeGiftOriginalDetailsDrop(
+    ownerId: _readObject(json['owner_id'], MessageSender.fromJson),
+    gift: _readObject(json['gift'], UpgradedGift.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'owner_id': ownerId.toJson(),
-        'gift': gift.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'owner_id': ownerId.toJson(),
+    'gift': gift.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1066,11 +1043,10 @@ final class StarTransactionTypeGiftOriginalDetailsDrop
   StarTransactionTypeGiftOriginalDetailsDrop copyWith({
     MessageSender? ownerId,
     UpgradedGift? gift,
-  }) =>
-      StarTransactionTypeGiftOriginalDetailsDrop(
-        ownerId: ownerId ?? this.ownerId,
-        gift: gift ?? this.gift,
-      );
+  }) => StarTransactionTypeGiftOriginalDetailsDrop(
+    ownerId: ownerId ?? this.ownerId,
+    gift: gift ?? this.gift,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -1083,10 +1059,7 @@ final class StarTransactionTypeGiftOriginalDetailsDrop
 /// The transaction is a sale of a received gift; for regular users and channel chats only
 final class StarTransactionTypeGiftSale extends StarTransactionType {
   /// The transaction is a sale of a received gift; for regular users and channel chats only
-  const StarTransactionTypeGiftSale({
-    required this.userId,
-    required this.gift,
-  });
+  const StarTransactionTypeGiftSale({required this.userId, required this.gift});
 
   /// Identifier of the user that sent the gift
   final int userId;
@@ -1103,18 +1076,15 @@ final class StarTransactionTypeGiftSale extends StarTransactionType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'gift': gift.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'gift': gift.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StarTransactionTypeGiftSale copyWith({
-    int? userId,
-    Gift? gift,
-  }) =>
+  StarTransactionTypeGiftSale copyWith({int? userId, Gift? gift}) =>
       StarTransactionTypeGiftSale(
         userId: userId ?? this.userId,
         gift: gift ?? this.gift,
@@ -1150,18 +1120,15 @@ final class StarTransactionTypeGiftUpgrade extends StarTransactionType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'gift': gift.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'gift': gift.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StarTransactionTypeGiftUpgrade copyWith({
-    int? userId,
-    UpgradedGift? gift,
-  }) =>
+  StarTransactionTypeGiftUpgrade copyWith({int? userId, UpgradedGift? gift}) =>
       StarTransactionTypeGiftUpgrade(
         userId: userId ?? this.userId,
         gift: gift ?? this.gift,
@@ -1190,18 +1157,18 @@ final class StarTransactionTypeGiftUpgradePurchase extends StarTransactionType {
 
   /// Parses a [StarTransactionTypeGiftUpgradePurchase] from TDLib JSON.
   factory StarTransactionTypeGiftUpgradePurchase.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeGiftUpgradePurchase(
-        ownerId: _readObject(json['owner_id'], MessageSender.fromJson),
-        gift: _readObject(json['gift'], Gift.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeGiftUpgradePurchase(
+    ownerId: _readObject(json['owner_id'], MessageSender.fromJson),
+    gift: _readObject(json['gift'], Gift.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'owner_id': ownerId.toJson(),
-        'gift': gift.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'owner_id': ownerId.toJson(),
+    'gift': gift.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1209,11 +1176,10 @@ final class StarTransactionTypeGiftUpgradePurchase extends StarTransactionType {
   StarTransactionTypeGiftUpgradePurchase copyWith({
     MessageSender? ownerId,
     Gift? gift,
-  }) =>
-      StarTransactionTypeGiftUpgradePurchase(
-        ownerId: ownerId ?? this.ownerId,
-        gift: gift ?? this.gift,
-      );
+  }) => StarTransactionTypeGiftUpgradePurchase(
+    ownerId: ownerId ?? this.ownerId,
+    gift: gift ?? this.gift,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypeGiftUpgradePurchase';
@@ -1239,18 +1205,18 @@ final class StarTransactionTypeUpgradedGiftPurchase
 
   /// Parses a [StarTransactionTypeUpgradedGiftPurchase] from TDLib JSON.
   factory StarTransactionTypeUpgradedGiftPurchase.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeUpgradedGiftPurchase(
-        userId: _readInt(json['user_id']),
-        gift: _readObject(json['gift'], UpgradedGift.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeUpgradedGiftPurchase(
+    userId: _readInt(json['user_id']),
+    gift: _readObject(json['gift'], UpgradedGift.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'gift': gift.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'gift': gift.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1258,11 +1224,10 @@ final class StarTransactionTypeUpgradedGiftPurchase
   StarTransactionTypeUpgradedGiftPurchase copyWith({
     int? userId,
     UpgradedGift? gift,
-  }) =>
-      StarTransactionTypeUpgradedGiftPurchase(
-        userId: userId ?? this.userId,
-        gift: gift ?? this.gift,
-      );
+  }) => StarTransactionTypeUpgradedGiftPurchase(
+    userId: userId ?? this.userId,
+    gift: gift ?? this.gift,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypeUpgradedGiftPurchase';
@@ -1295,23 +1260,25 @@ final class StarTransactionTypeUpgradedGiftSale extends StarTransactionType {
 
   /// Parses a [StarTransactionTypeUpgradedGiftSale] from TDLib JSON.
   factory StarTransactionTypeUpgradedGiftSale.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeUpgradedGiftSale(
-        userId: _readInt(json['user_id']),
-        gift: _readObject(json['gift'], UpgradedGift.fromJson),
-        commissionPerMille: _readInt(json['commission_per_mille']),
-        commissionStarAmount:
-            _readObject(json['commission_star_amount'], StarAmount.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeUpgradedGiftSale(
+    userId: _readInt(json['user_id']),
+    gift: _readObject(json['gift'], UpgradedGift.fromJson),
+    commissionPerMille: _readInt(json['commission_per_mille']),
+    commissionStarAmount: _readObject(
+      json['commission_star_amount'],
+      StarAmount.fromJson,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'gift': gift.toJson(),
-        'commission_per_mille': commissionPerMille,
-        'commission_star_amount': commissionStarAmount.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'gift': gift.toJson(),
+    'commission_per_mille': commissionPerMille,
+    'commission_star_amount': commissionStarAmount.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1321,13 +1288,12 @@ final class StarTransactionTypeUpgradedGiftSale extends StarTransactionType {
     UpgradedGift? gift,
     int? commissionPerMille,
     StarAmount? commissionStarAmount,
-  }) =>
-      StarTransactionTypeUpgradedGiftSale(
-        userId: userId ?? this.userId,
-        gift: gift ?? this.gift,
-        commissionPerMille: commissionPerMille ?? this.commissionPerMille,
-        commissionStarAmount: commissionStarAmount ?? this.commissionStarAmount,
-      );
+  }) => StarTransactionTypeUpgradedGiftSale(
+    userId: userId ?? this.userId,
+    gift: gift ?? this.gift,
+    commissionPerMille: commissionPerMille ?? this.commissionPerMille,
+    commissionStarAmount: commissionStarAmount ?? this.commissionStarAmount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypeUpgradedGiftSale';
@@ -1353,18 +1319,18 @@ final class StarTransactionTypeChannelPaidReactionSend
 
   /// Parses a [StarTransactionTypeChannelPaidReactionSend] from TDLib JSON.
   factory StarTransactionTypeChannelPaidReactionSend.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeChannelPaidReactionSend(
-        chatId: _readInt(json['chat_id']),
-        messageId: _readInt(json['message_id']),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeChannelPaidReactionSend(
+    chatId: _readInt(json['chat_id']),
+    messageId: _readInt(json['message_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1372,11 +1338,10 @@ final class StarTransactionTypeChannelPaidReactionSend
   StarTransactionTypeChannelPaidReactionSend copyWith({
     int? chatId,
     int? messageId,
-  }) =>
-      StarTransactionTypeChannelPaidReactionSend(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-      );
+  }) => StarTransactionTypeChannelPaidReactionSend(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -1403,18 +1368,18 @@ final class StarTransactionTypeChannelPaidReactionReceive
 
   /// Parses a [StarTransactionTypeChannelPaidReactionReceive] from TDLib JSON.
   factory StarTransactionTypeChannelPaidReactionReceive.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeChannelPaidReactionReceive(
-        userId: _readInt(json['user_id']),
-        messageId: _readInt(json['message_id']),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeChannelPaidReactionReceive(
+    userId: _readInt(json['user_id']),
+    messageId: _readInt(json['message_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'message_id': messageId,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'message_id': messageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1422,11 +1387,10 @@ final class StarTransactionTypeChannelPaidReactionReceive
   StarTransactionTypeChannelPaidReactionReceive copyWith({
     int? userId,
     int? messageId,
-  }) =>
-      StarTransactionTypeChannelPaidReactionReceive(
-        userId: userId ?? this.userId,
-        messageId: messageId ?? this.messageId,
-      );
+  }) => StarTransactionTypeChannelPaidReactionReceive(
+    userId: userId ?? this.userId,
+    messageId: messageId ?? this.messageId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -1453,18 +1417,18 @@ final class StarTransactionTypeAffiliateProgramCommission
 
   /// Parses a [StarTransactionTypeAffiliateProgramCommission] from TDLib JSON.
   factory StarTransactionTypeAffiliateProgramCommission.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeAffiliateProgramCommission(
-        chatId: _readInt(json['chat_id']),
-        commissionPerMille: _readInt(json['commission_per_mille']),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeAffiliateProgramCommission(
+    chatId: _readInt(json['chat_id']),
+    commissionPerMille: _readInt(json['commission_per_mille']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'commission_per_mille': commissionPerMille,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'commission_per_mille': commissionPerMille,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1472,11 +1436,10 @@ final class StarTransactionTypeAffiliateProgramCommission
   StarTransactionTypeAffiliateProgramCommission copyWith({
     int? chatId,
     int? commissionPerMille,
-  }) =>
-      StarTransactionTypeAffiliateProgramCommission(
-        chatId: chatId ?? this.chatId,
-        commissionPerMille: commissionPerMille ?? this.commissionPerMille,
-      );
+  }) => StarTransactionTypeAffiliateProgramCommission(
+    chatId: chatId ?? this.chatId,
+    commissionPerMille: commissionPerMille ?? this.commissionPerMille,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -1502,18 +1465,18 @@ final class StarTransactionTypePaidMessageSend extends StarTransactionType {
 
   /// Parses a [StarTransactionTypePaidMessageSend] from TDLib JSON.
   factory StarTransactionTypePaidMessageSend.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypePaidMessageSend(
-        chatId: _readInt(json['chat_id']),
-        messageCount: _readInt(json['message_count']),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypePaidMessageSend(
+    chatId: _readInt(json['chat_id']),
+    messageCount: _readInt(json['message_count']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_count': messageCount,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_count': messageCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1521,11 +1484,10 @@ final class StarTransactionTypePaidMessageSend extends StarTransactionType {
   StarTransactionTypePaidMessageSend copyWith({
     int? chatId,
     int? messageCount,
-  }) =>
-      StarTransactionTypePaidMessageSend(
-        chatId: chatId ?? this.chatId,
-        messageCount: messageCount ?? this.messageCount,
-      );
+  }) => StarTransactionTypePaidMessageSend(
+    chatId: chatId ?? this.chatId,
+    messageCount: messageCount ?? this.messageCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypePaidMessageSend';
@@ -1558,23 +1520,25 @@ final class StarTransactionTypePaidMessageReceive extends StarTransactionType {
 
   /// Parses a [StarTransactionTypePaidMessageReceive] from TDLib JSON.
   factory StarTransactionTypePaidMessageReceive.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypePaidMessageReceive(
-        senderId: _readObject(json['sender_id'], MessageSender.fromJson),
-        messageCount: _readInt(json['message_count']),
-        commissionPerMille: _readInt(json['commission_per_mille']),
-        commissionStarAmount:
-            _readObject(json['commission_star_amount'], StarAmount.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypePaidMessageReceive(
+    senderId: _readObject(json['sender_id'], MessageSender.fromJson),
+    messageCount: _readInt(json['message_count']),
+    commissionPerMille: _readInt(json['commission_per_mille']),
+    commissionStarAmount: _readObject(
+      json['commission_star_amount'],
+      StarAmount.fromJson,
+    ),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sender_id': senderId.toJson(),
-        'message_count': messageCount,
-        'commission_per_mille': commissionPerMille,
-        'commission_star_amount': commissionStarAmount.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'sender_id': senderId.toJson(),
+    'message_count': messageCount,
+    'commission_per_mille': commissionPerMille,
+    'commission_star_amount': commissionStarAmount.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1584,13 +1548,12 @@ final class StarTransactionTypePaidMessageReceive extends StarTransactionType {
     int? messageCount,
     int? commissionPerMille,
     StarAmount? commissionStarAmount,
-  }) =>
-      StarTransactionTypePaidMessageReceive(
-        senderId: senderId ?? this.senderId,
-        messageCount: messageCount ?? this.messageCount,
-        commissionPerMille: commissionPerMille ?? this.commissionPerMille,
-        commissionStarAmount: commissionStarAmount ?? this.commissionStarAmount,
-      );
+  }) => StarTransactionTypePaidMessageReceive(
+    senderId: senderId ?? this.senderId,
+    messageCount: messageCount ?? this.messageCount,
+    commissionPerMille: commissionPerMille ?? this.commissionPerMille,
+    commissionStarAmount: commissionStarAmount ?? this.commissionStarAmount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypePaidMessageReceive';
@@ -1603,32 +1566,25 @@ final class StarTransactionTypePaidMessageReceive extends StarTransactionType {
 final class StarTransactionTypeSuggestedPostPaymentSend
     extends StarTransactionType {
   /// The transaction is a payment for a suggested post; for regular users only
-  const StarTransactionTypeSuggestedPostPaymentSend({
-    required this.chatId,
-  });
+  const StarTransactionTypeSuggestedPostPaymentSend({required this.chatId});
 
   /// Identifier of the channel chat that posted the post
   final int chatId;
 
   /// Parses a [StarTransactionTypeSuggestedPostPaymentSend] from TDLib JSON.
   factory StarTransactionTypeSuggestedPostPaymentSend.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeSuggestedPostPaymentSend(
-        chatId: _readInt(json['chat_id']),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeSuggestedPostPaymentSend(
+    chatId: _readInt(json['chat_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'chat_id': chatId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StarTransactionTypeSuggestedPostPaymentSend copyWith({
-    int? chatId,
-  }) =>
+  StarTransactionTypeSuggestedPostPaymentSend copyWith({int? chatId}) =>
       StarTransactionTypeSuggestedPostPaymentSend(
         chatId: chatId ?? this.chatId,
       );
@@ -1645,32 +1601,25 @@ final class StarTransactionTypeSuggestedPostPaymentSend
 final class StarTransactionTypeSuggestedPostPaymentReceive
     extends StarTransactionType {
   /// The transaction is a receiving of a payment for a suggested post by the channel chat; for channel chats only
-  const StarTransactionTypeSuggestedPostPaymentReceive({
-    required this.userId,
-  });
+  const StarTransactionTypeSuggestedPostPaymentReceive({required this.userId});
 
   /// Identifier of the user that paid for the suggested post
   final int userId;
 
   /// Parses a [StarTransactionTypeSuggestedPostPaymentReceive] from TDLib JSON.
   factory StarTransactionTypeSuggestedPostPaymentReceive.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeSuggestedPostPaymentReceive(
-        userId: _readInt(json['user_id']),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeSuggestedPostPaymentReceive(
+    userId: _readInt(json['user_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'user_id': userId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StarTransactionTypeSuggestedPostPaymentReceive copyWith({
-    int? userId,
-  }) =>
+  StarTransactionTypeSuggestedPostPaymentReceive copyWith({int? userId}) =>
       StarTransactionTypeSuggestedPostPaymentReceive(
         userId: userId ?? this.userId,
       );
@@ -1703,20 +1652,20 @@ final class StarTransactionTypePremiumPurchase extends StarTransactionType {
 
   /// Parses a [StarTransactionTypePremiumPurchase] from TDLib JSON.
   factory StarTransactionTypePremiumPurchase.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypePremiumPurchase(
-        userId: _readInt(json['user_id']),
-        monthCount: _readInt(json['month_count']),
-        sticker: _readOptional(json['sticker'], Sticker.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypePremiumPurchase(
+    userId: _readInt(json['user_id']),
+    monthCount: _readInt(json['month_count']),
+    sticker: _readOptional(json['sticker'], Sticker.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'month_count': monthCount,
-        'sticker': sticker?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'month_count': monthCount,
+    'sticker': sticker?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1725,12 +1674,11 @@ final class StarTransactionTypePremiumPurchase extends StarTransactionType {
     int? userId,
     int? monthCount,
     Sticker? Function()? sticker,
-  }) =>
-      StarTransactionTypePremiumPurchase(
-        userId: userId ?? this.userId,
-        monthCount: monthCount ?? this.monthCount,
-        sticker: sticker != null ? sticker() : this.sticker,
-      );
+  }) => StarTransactionTypePremiumPurchase(
+    userId: userId ?? this.userId,
+    monthCount: monthCount ?? this.monthCount,
+    sticker: sticker != null ? sticker() : this.sticker,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypePremiumPurchase';
@@ -1743,35 +1691,26 @@ final class StarTransactionTypePremiumPurchase extends StarTransactionType {
 final class StarTransactionTypeBusinessBotTransferSend
     extends StarTransactionType {
   /// The transaction is a transfer of Telegram Stars to a business bot; for regular users only
-  const StarTransactionTypeBusinessBotTransferSend({
-    required this.userId,
-  });
+  const StarTransactionTypeBusinessBotTransferSend({required this.userId});
 
   /// Identifier of the bot that received Telegram Stars
   final int userId;
 
   /// Parses a [StarTransactionTypeBusinessBotTransferSend] from TDLib JSON.
   factory StarTransactionTypeBusinessBotTransferSend.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeBusinessBotTransferSend(
-        userId: _readInt(json['user_id']),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeBusinessBotTransferSend(
+    userId: _readInt(json['user_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'user_id': userId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StarTransactionTypeBusinessBotTransferSend copyWith({
-    int? userId,
-  }) =>
-      StarTransactionTypeBusinessBotTransferSend(
-        userId: userId ?? this.userId,
-      );
+  StarTransactionTypeBusinessBotTransferSend copyWith({int? userId}) =>
+      StarTransactionTypeBusinessBotTransferSend(userId: userId ?? this.userId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -1785,32 +1724,25 @@ final class StarTransactionTypeBusinessBotTransferSend
 final class StarTransactionTypeBusinessBotTransferReceive
     extends StarTransactionType {
   /// The transaction is a transfer of Telegram Stars from a business account; for bots only
-  const StarTransactionTypeBusinessBotTransferReceive({
-    required this.userId,
-  });
+  const StarTransactionTypeBusinessBotTransferReceive({required this.userId});
 
   /// Identifier of the user that sent Telegram Stars
   final int userId;
 
   /// Parses a [StarTransactionTypeBusinessBotTransferReceive] from TDLib JSON.
   factory StarTransactionTypeBusinessBotTransferReceive.fromJson(
-          Map<String, dynamic> json) =>
-      StarTransactionTypeBusinessBotTransferReceive(
-        userId: _readInt(json['user_id']),
-      );
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeBusinessBotTransferReceive(
+    userId: _readInt(json['user_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'user_id': userId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StarTransactionTypeBusinessBotTransferReceive copyWith({
-    int? userId,
-  }) =>
+  StarTransactionTypeBusinessBotTransferReceive copyWith({int? userId}) =>
       StarTransactionTypeBusinessBotTransferReceive(
         userId: userId ?? this.userId,
       );
@@ -1830,13 +1762,11 @@ final class StarTransactionTypePublicPostSearch extends StarTransactionType {
 
   /// Parses a [StarTransactionTypePublicPostSearch] from TDLib JSON.
   factory StarTransactionTypePublicPostSearch.fromJson(
-          Map<String, dynamic> json) =>
-      const StarTransactionTypePublicPostSearch();
+    Map<String, dynamic> json,
+  ) => const StarTransactionTypePublicPostSearch();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1861,9 +1791,7 @@ final class StarTransactionTypeUnsupported extends StarTransactionType {
       const StarTransactionTypeUnsupported();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

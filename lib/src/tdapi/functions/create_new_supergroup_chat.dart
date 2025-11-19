@@ -41,16 +41,16 @@ final class CreateNewSupergroupChat extends TdFunction<Chat> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-        'is_forum': isForum,
-        'is_channel': isChannel,
-        'description': description,
-        'location': location?.toJson(),
-        'message_auto_delete_time': messageAutoDeleteTime,
-        'for_import': forImport,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'title': title,
+    'is_forum': isForum,
+    'is_channel': isChannel,
+    'description': description,
+    'location': location?.toJson(),
+    'message_auto_delete_time': messageAutoDeleteTime,
+    'for_import': forImport,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -62,17 +62,15 @@ final class CreateNewSupergroupChat extends TdFunction<Chat> {
     ChatLocation? Function()? location,
     int? messageAutoDeleteTime,
     bool? forImport,
-  }) =>
-      CreateNewSupergroupChat(
-        title: title ?? this.title,
-        isForum: isForum ?? this.isForum,
-        isChannel: isChannel ?? this.isChannel,
-        description: description ?? this.description,
-        location: location != null ? location() : this.location,
-        messageAutoDeleteTime:
-            messageAutoDeleteTime ?? this.messageAutoDeleteTime,
-        forImport: forImport ?? this.forImport,
-      );
+  }) => CreateNewSupergroupChat(
+    title: title ?? this.title,
+    isForum: isForum ?? this.isForum,
+    isChannel: isChannel ?? this.isChannel,
+    description: description ?? this.description,
+    location: location != null ? location() : this.location,
+    messageAutoDeleteTime: messageAutoDeleteTime ?? this.messageAutoDeleteTime,
+    forImport: forImport ?? this.forImport,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'createNewSupergroupChat';

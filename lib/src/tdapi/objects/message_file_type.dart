@@ -45,11 +45,7 @@ final class UndecodedMessageFileType extends MessageFileType {
 /// The messages were exported from a private chat
 final class MessageFileTypePrivate extends MessageFileType {
   /// The messages were exported from a private chat
-  const MessageFileTypePrivate({
-    required this.name,
-    this.extra,
-    this.clientId,
-  });
+  const MessageFileTypePrivate({required this.name, this.extra, this.clientId});
 
   /// Name of the other party; may be empty if unrecognized
   final String name;
@@ -71,10 +67,7 @@ final class MessageFileTypePrivate extends MessageFileType {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'name': name};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -83,12 +76,11 @@ final class MessageFileTypePrivate extends MessageFileType {
     String? name,
     dynamic extra,
     int? clientId,
-  }) =>
-      MessageFileTypePrivate(
-        name: name ?? this.name,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => MessageFileTypePrivate(
+    name: name ?? this.name,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageFileTypePrivate';
@@ -100,11 +92,7 @@ final class MessageFileTypePrivate extends MessageFileType {
 /// The messages were exported from a group chat
 final class MessageFileTypeGroup extends MessageFileType {
   /// The messages were exported from a group chat
-  const MessageFileTypeGroup({
-    required this.title,
-    this.extra,
-    this.clientId,
-  });
+  const MessageFileTypeGroup({required this.title, this.extra, this.clientId});
 
   /// Title of the group chat; may be empty if unrecognized
   final String title;
@@ -126,10 +114,7 @@ final class MessageFileTypeGroup extends MessageFileType {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'title': title};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -138,12 +123,11 @@ final class MessageFileTypeGroup extends MessageFileType {
     String? title,
     dynamic extra,
     int? clientId,
-  }) =>
-      MessageFileTypeGroup(
-        title: title ?? this.title,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => MessageFileTypeGroup(
+    title: title ?? this.title,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageFileTypeGroup';
@@ -155,10 +139,7 @@ final class MessageFileTypeGroup extends MessageFileType {
 /// The messages were exported from a chat of unknown type
 final class MessageFileTypeUnknown extends MessageFileType {
   /// The messages were exported from a chat of unknown type
-  const MessageFileTypeUnknown({
-    this.extra,
-    this.clientId,
-  });
+  const MessageFileTypeUnknown({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -176,17 +157,12 @@ final class MessageFileTypeUnknown extends MessageFileType {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageFileTypeUnknown copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  MessageFileTypeUnknown copyWith({dynamic extra, int? clientId}) =>
       MessageFileTypeUnknown(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

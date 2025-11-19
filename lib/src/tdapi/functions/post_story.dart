@@ -53,19 +53,19 @@ final class PostStory extends TdFunction<Story> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'content': content.toJson(),
-        'areas': areas?.toJson(),
-        'caption': caption?.toJson(),
-        'privacy_settings': privacySettings.toJson(),
-        'album_ids': albumIds,
-        'active_period': activePeriod,
-        'from_story_full_id': fromStoryFullId?.toJson(),
-        'is_posted_to_chat_page': isPostedToChatPage,
-        'protect_content': protectContent,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'content': content.toJson(),
+    'areas': areas?.toJson(),
+    'caption': caption?.toJson(),
+    'privacy_settings': privacySettings.toJson(),
+    'album_ids': albumIds,
+    'active_period': activePeriod,
+    'from_story_full_id': fromStoryFullId?.toJson(),
+    'is_posted_to_chat_page': isPostedToChatPage,
+    'protect_content': protectContent,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -80,20 +80,20 @@ final class PostStory extends TdFunction<Story> {
     StoryFullId? Function()? fromStoryFullId,
     bool? isPostedToChatPage,
     bool? protectContent,
-  }) =>
-      PostStory(
-        chatId: chatId ?? this.chatId,
-        content: content ?? this.content,
-        areas: areas != null ? areas() : this.areas,
-        caption: caption != null ? caption() : this.caption,
-        privacySettings: privacySettings ?? this.privacySettings,
-        albumIds: albumIds ?? this.albumIds,
-        activePeriod: activePeriod ?? this.activePeriod,
-        fromStoryFullId:
-            fromStoryFullId != null ? fromStoryFullId() : this.fromStoryFullId,
-        isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
-        protectContent: protectContent ?? this.protectContent,
-      );
+  }) => PostStory(
+    chatId: chatId ?? this.chatId,
+    content: content ?? this.content,
+    areas: areas != null ? areas() : this.areas,
+    caption: caption != null ? caption() : this.caption,
+    privacySettings: privacySettings ?? this.privacySettings,
+    albumIds: albumIds ?? this.albumIds,
+    activePeriod: activePeriod ?? this.activePeriod,
+    fromStoryFullId: fromStoryFullId != null
+        ? fromStoryFullId()
+        : this.fromStoryFullId,
+    isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
+    protectContent: protectContent ?? this.protectContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'postStory';

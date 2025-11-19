@@ -25,12 +25,12 @@ final class AddBotMediaPreview extends TdFunction<BotMediaPreview> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'language_code': languageCode,
-        'content': content.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'language_code': languageCode,
+    'content': content.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class AddBotMediaPreview extends TdFunction<BotMediaPreview> {
     int? botUserId,
     String? languageCode,
     InputStoryContent? content,
-  }) =>
-      AddBotMediaPreview(
-        botUserId: botUserId ?? this.botUserId,
-        languageCode: languageCode ?? this.languageCode,
-        content: content ?? this.content,
-      );
+  }) => AddBotMediaPreview(
+    botUserId: botUserId ?? this.botUserId,
+    languageCode: languageCode ?? this.languageCode,
+    content: content ?? this.content,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addBotMediaPreview';

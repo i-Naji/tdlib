@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [ChatStatistics].
 final class GetChatStatistics extends TdFunction<ChatStatistics> {
   /// Returns detailed statistics about a chat. Currently, this method can be used only for supergroups and channels. Can be used only if supergroupFullInfo.can_get_statistics == true
-  const GetChatStatistics({
-    required this.chatId,
-    required this.isDark,
-  });
+  const GetChatStatistics({required this.chatId, required this.isDark});
 
   /// Chat identifier
   final int chatId;
@@ -21,22 +18,18 @@ final class GetChatStatistics extends TdFunction<ChatStatistics> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'is_dark': isDark,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'is_dark': isDark,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatStatistics copyWith({
-    int? chatId,
-    bool? isDark,
-  }) =>
-      GetChatStatistics(
-        chatId: chatId ?? this.chatId,
-        isDark: isDark ?? this.isDark,
-      );
+  GetChatStatistics copyWith({int? chatId, bool? isDark}) => GetChatStatistics(
+    chatId: chatId ?? this.chatId,
+    isDark: isDark ?? this.isDark,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatStatistics';

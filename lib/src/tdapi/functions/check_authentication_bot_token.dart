@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class CheckAuthenticationBotToken extends TdFunction<Ok> {
   /// Checks the authentication token of a bot; to log in as a bot. Works only when the current authorization state is authorizationStateWaitPhoneNumber. Can be used instead of setAuthenticationPhoneNumber and checkAuthenticationCode to log in
-  const CheckAuthenticationBotToken({
-    required this.token,
-  });
+  const CheckAuthenticationBotToken({required this.token});
 
   /// The bot token
   final String token;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'token': token,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'token': token,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CheckAuthenticationBotToken copyWith({
-    String? token,
-  }) =>
-      CheckAuthenticationBotToken(
-        token: token ?? this.token,
-      );
+  CheckAuthenticationBotToken copyWith({String? token}) =>
+      CheckAuthenticationBotToken(token: token ?? this.token);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkAuthenticationBotToken';

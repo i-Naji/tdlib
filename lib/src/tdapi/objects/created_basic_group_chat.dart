@@ -32,17 +32,19 @@ final class CreatedBasicGroupChat extends TdObject {
       CreatedBasicGroupChat(
         chatId: _readInt(json['chat_id']),
         failedToAddMembers: _readObject(
-            json['failed_to_add_members'], FailedToAddMembers.fromJson),
+          json['failed_to_add_members'],
+          FailedToAddMembers.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'failed_to_add_members': failedToAddMembers.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'failed_to_add_members': failedToAddMembers.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,13 +53,12 @@ final class CreatedBasicGroupChat extends TdObject {
     FailedToAddMembers? failedToAddMembers,
     dynamic extra,
     int? clientId,
-  }) =>
-      CreatedBasicGroupChat(
-        chatId: chatId ?? this.chatId,
-        failedToAddMembers: failedToAddMembers ?? this.failedToAddMembers,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CreatedBasicGroupChat(
+    chatId: chatId ?? this.chatId,
+    failedToAddMembers: failedToAddMembers ?? this.failedToAddMembers,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'createdBasicGroupChat';

@@ -108,24 +108,26 @@ final class InputInlineQueryResultAnimation extends InputInlineQueryResult {
         videoHeight: _readInt(json['video_height']),
         replyMarkup: _readOptional(json['reply_markup'], ReplyMarkup.fromJson),
         inputMessageContent: _readObject(
-            json['input_message_content'], InputMessageContent.fromJson),
+          json['input_message_content'],
+          InputMessageContent.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'title': title,
-        'thumbnail_url': thumbnailUrl,
-        'thumbnail_mime_type': thumbnailMimeType,
-        'video_url': videoUrl,
-        'video_mime_type': videoMimeType,
-        'video_duration': videoDuration,
-        'video_width': videoWidth,
-        'video_height': videoHeight,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'title': title,
+    'thumbnail_url': thumbnailUrl,
+    'thumbnail_mime_type': thumbnailMimeType,
+    'video_url': videoUrl,
+    'video_mime_type': videoMimeType,
+    'video_duration': videoDuration,
+    'video_width': videoWidth,
+    'video_height': videoHeight,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -142,20 +144,19 @@ final class InputInlineQueryResultAnimation extends InputInlineQueryResult {
     int? videoHeight,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultAnimation(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        thumbnailMimeType: thumbnailMimeType ?? this.thumbnailMimeType,
-        videoUrl: videoUrl ?? this.videoUrl,
-        videoMimeType: videoMimeType ?? this.videoMimeType,
-        videoDuration: videoDuration ?? this.videoDuration,
-        videoWidth: videoWidth ?? this.videoWidth,
-        videoHeight: videoHeight ?? this.videoHeight,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultAnimation(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    thumbnailMimeType: thumbnailMimeType ?? this.thumbnailMimeType,
+    videoUrl: videoUrl ?? this.videoUrl,
+    videoMimeType: videoMimeType ?? this.videoMimeType,
+    videoDuration: videoDuration ?? this.videoDuration,
+    videoWidth: videoWidth ?? this.videoWidth,
+    videoHeight: videoHeight ?? this.videoHeight,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputInlineQueryResultAnimation';
@@ -218,22 +219,24 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
         thumbnailHeight: _readInt(json['thumbnail_height']),
         replyMarkup: _readOptional(json['reply_markup'], ReplyMarkup.fromJson),
         inputMessageContent: _readObject(
-            json['input_message_content'], InputMessageContent.fromJson),
+          json['input_message_content'],
+          InputMessageContent.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'url': url,
-        'title': title,
-        'description': description,
-        'thumbnail_url': thumbnailUrl,
-        'thumbnail_width': thumbnailWidth,
-        'thumbnail_height': thumbnailHeight,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'url': url,
+    'title': title,
+    'description': description,
+    'thumbnail_url': thumbnailUrl,
+    'thumbnail_width': thumbnailWidth,
+    'thumbnail_height': thumbnailHeight,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -248,18 +251,17 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
     int? thumbnailHeight,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultArticle(
-        id: id ?? this.id,
-        url: url ?? this.url,
-        title: title ?? this.title,
-        description: description ?? this.description,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
-        thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultArticle(
+    id: id ?? this.id,
+    url: url ?? this.url,
+    title: title ?? this.title,
+    description: description ?? this.description,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
+    thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputInlineQueryResultArticle';
@@ -312,20 +314,22 @@ final class InputInlineQueryResultAudio extends InputInlineQueryResult {
         audioDuration: _readInt(json['audio_duration']),
         replyMarkup: _readOptional(json['reply_markup'], ReplyMarkup.fromJson),
         inputMessageContent: _readObject(
-            json['input_message_content'], InputMessageContent.fromJson),
+          json['input_message_content'],
+          InputMessageContent.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'title': title,
-        'performer': performer,
-        'audio_url': audioUrl,
-        'audio_duration': audioDuration,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'title': title,
+    'performer': performer,
+    'audio_url': audioUrl,
+    'audio_duration': audioDuration,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -338,16 +342,15 @@ final class InputInlineQueryResultAudio extends InputInlineQueryResult {
     int? audioDuration,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultAudio(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        performer: performer ?? this.performer,
-        audioUrl: audioUrl ?? this.audioUrl,
-        audioDuration: audioDuration ?? this.audioDuration,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultAudio(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    performer: performer ?? this.performer,
+    audioUrl: audioUrl ?? this.audioUrl,
+    audioDuration: audioDuration ?? this.audioDuration,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputInlineQueryResultAudio';
@@ -400,20 +403,22 @@ final class InputInlineQueryResultContact extends InputInlineQueryResult {
         thumbnailHeight: _readInt(json['thumbnail_height']),
         replyMarkup: _readOptional(json['reply_markup'], ReplyMarkup.fromJson),
         inputMessageContent: _readObject(
-            json['input_message_content'], InputMessageContent.fromJson),
+          json['input_message_content'],
+          InputMessageContent.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'contact': contact.toJson(),
-        'thumbnail_url': thumbnailUrl,
-        'thumbnail_width': thumbnailWidth,
-        'thumbnail_height': thumbnailHeight,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'contact': contact.toJson(),
+    'thumbnail_url': thumbnailUrl,
+    'thumbnail_width': thumbnailWidth,
+    'thumbnail_height': thumbnailHeight,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -426,16 +431,15 @@ final class InputInlineQueryResultContact extends InputInlineQueryResult {
     int? thumbnailHeight,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultContact(
-        id: id ?? this.id,
-        contact: contact ?? this.contact,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
-        thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultContact(
+    id: id ?? this.id,
+    contact: contact ?? this.contact,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
+    thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputInlineQueryResultContact';
@@ -503,23 +507,25 @@ final class InputInlineQueryResultDocument extends InputInlineQueryResult {
         thumbnailHeight: _readInt(json['thumbnail_height']),
         replyMarkup: _readOptional(json['reply_markup'], ReplyMarkup.fromJson),
         inputMessageContent: _readObject(
-            json['input_message_content'], InputMessageContent.fromJson),
+          json['input_message_content'],
+          InputMessageContent.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'title': title,
-        'description': description,
-        'document_url': documentUrl,
-        'mime_type': mimeType,
-        'thumbnail_url': thumbnailUrl,
-        'thumbnail_width': thumbnailWidth,
-        'thumbnail_height': thumbnailHeight,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'title': title,
+    'description': description,
+    'document_url': documentUrl,
+    'mime_type': mimeType,
+    'thumbnail_url': thumbnailUrl,
+    'thumbnail_width': thumbnailWidth,
+    'thumbnail_height': thumbnailHeight,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -535,19 +541,18 @@ final class InputInlineQueryResultDocument extends InputInlineQueryResult {
     int? thumbnailHeight,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultDocument(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        description: description ?? this.description,
-        documentUrl: documentUrl ?? this.documentUrl,
-        mimeType: mimeType ?? this.mimeType,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
-        thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultDocument(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    description: description ?? this.description,
+    documentUrl: documentUrl ?? this.documentUrl,
+    mimeType: mimeType ?? this.mimeType,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
+    thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputInlineQueryResultDocument';
@@ -584,11 +589,11 @@ final class InputInlineQueryResultGame extends InputInlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'game_short_name': gameShortName,
-        'reply_markup': replyMarkup?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'game_short_name': gameShortName,
+    'reply_markup': replyMarkup?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -597,12 +602,11 @@ final class InputInlineQueryResultGame extends InputInlineQueryResult {
     String? id,
     String? gameShortName,
     ReplyMarkup? Function()? replyMarkup,
-  }) =>
-      InputInlineQueryResultGame(
-        id: id ?? this.id,
-        gameShortName: gameShortName ?? this.gameShortName,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-      );
+  }) => InputInlineQueryResultGame(
+    id: id ?? this.id,
+    gameShortName: gameShortName ?? this.gameShortName,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputInlineQueryResultGame';
@@ -665,22 +669,24 @@ final class InputInlineQueryResultLocation extends InputInlineQueryResult {
         thumbnailHeight: _readInt(json['thumbnail_height']),
         replyMarkup: _readOptional(json['reply_markup'], ReplyMarkup.fromJson),
         inputMessageContent: _readObject(
-            json['input_message_content'], InputMessageContent.fromJson),
+          json['input_message_content'],
+          InputMessageContent.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'location': location.toJson(),
-        'live_period': livePeriod,
-        'title': title,
-        'thumbnail_url': thumbnailUrl,
-        'thumbnail_width': thumbnailWidth,
-        'thumbnail_height': thumbnailHeight,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'location': location.toJson(),
+    'live_period': livePeriod,
+    'title': title,
+    'thumbnail_url': thumbnailUrl,
+    'thumbnail_width': thumbnailWidth,
+    'thumbnail_height': thumbnailHeight,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -695,18 +701,17 @@ final class InputInlineQueryResultLocation extends InputInlineQueryResult {
     int? thumbnailHeight,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultLocation(
-        id: id ?? this.id,
-        location: location ?? this.location,
-        livePeriod: livePeriod ?? this.livePeriod,
-        title: title ?? this.title,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
-        thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultLocation(
+    id: id ?? this.id,
+    location: location ?? this.location,
+    livePeriod: livePeriod ?? this.livePeriod,
+    title: title ?? this.title,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
+    thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputInlineQueryResultLocation';
@@ -769,22 +774,24 @@ final class InputInlineQueryResultPhoto extends InputInlineQueryResult {
         photoHeight: _readInt(json['photo_height']),
         replyMarkup: _readOptional(json['reply_markup'], ReplyMarkup.fromJson),
         inputMessageContent: _readObject(
-            json['input_message_content'], InputMessageContent.fromJson),
+          json['input_message_content'],
+          InputMessageContent.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'title': title,
-        'description': description,
-        'thumbnail_url': thumbnailUrl,
-        'photo_url': photoUrl,
-        'photo_width': photoWidth,
-        'photo_height': photoHeight,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'title': title,
+    'description': description,
+    'thumbnail_url': thumbnailUrl,
+    'photo_url': photoUrl,
+    'photo_width': photoWidth,
+    'photo_height': photoHeight,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -799,18 +806,17 @@ final class InputInlineQueryResultPhoto extends InputInlineQueryResult {
     int? photoHeight,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultPhoto(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        description: description ?? this.description,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        photoUrl: photoUrl ?? this.photoUrl,
-        photoWidth: photoWidth ?? this.photoWidth,
-        photoHeight: photoHeight ?? this.photoHeight,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultPhoto(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    description: description ?? this.description,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    photoUrl: photoUrl ?? this.photoUrl,
+    photoWidth: photoWidth ?? this.photoWidth,
+    photoHeight: photoHeight ?? this.photoHeight,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputInlineQueryResultPhoto';
@@ -863,20 +869,22 @@ final class InputInlineQueryResultSticker extends InputInlineQueryResult {
         stickerHeight: _readInt(json['sticker_height']),
         replyMarkup: _readOptional(json['reply_markup'], ReplyMarkup.fromJson),
         inputMessageContent: _readObject(
-            json['input_message_content'], InputMessageContent.fromJson),
+          json['input_message_content'],
+          InputMessageContent.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'thumbnail_url': thumbnailUrl,
-        'sticker_url': stickerUrl,
-        'sticker_width': stickerWidth,
-        'sticker_height': stickerHeight,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'thumbnail_url': thumbnailUrl,
+    'sticker_url': stickerUrl,
+    'sticker_width': stickerWidth,
+    'sticker_height': stickerHeight,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -889,16 +897,15 @@ final class InputInlineQueryResultSticker extends InputInlineQueryResult {
     int? stickerHeight,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultSticker(
-        id: id ?? this.id,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        stickerUrl: stickerUrl ?? this.stickerUrl,
-        stickerWidth: stickerWidth ?? this.stickerWidth,
-        stickerHeight: stickerHeight ?? this.stickerHeight,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultSticker(
+    id: id ?? this.id,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    stickerUrl: stickerUrl ?? this.stickerUrl,
+    stickerWidth: stickerWidth ?? this.stickerWidth,
+    stickerHeight: stickerHeight ?? this.stickerHeight,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputInlineQueryResultSticker';
@@ -951,20 +958,22 @@ final class InputInlineQueryResultVenue extends InputInlineQueryResult {
         thumbnailHeight: _readInt(json['thumbnail_height']),
         replyMarkup: _readOptional(json['reply_markup'], ReplyMarkup.fromJson),
         inputMessageContent: _readObject(
-            json['input_message_content'], InputMessageContent.fromJson),
+          json['input_message_content'],
+          InputMessageContent.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'venue': venue.toJson(),
-        'thumbnail_url': thumbnailUrl,
-        'thumbnail_width': thumbnailWidth,
-        'thumbnail_height': thumbnailHeight,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'venue': venue.toJson(),
+    'thumbnail_url': thumbnailUrl,
+    'thumbnail_width': thumbnailWidth,
+    'thumbnail_height': thumbnailHeight,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -977,16 +986,15 @@ final class InputInlineQueryResultVenue extends InputInlineQueryResult {
     int? thumbnailHeight,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultVenue(
-        id: id ?? this.id,
-        venue: venue ?? this.venue,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
-        thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultVenue(
+    id: id ?? this.id,
+    venue: venue ?? this.venue,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
+    thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputInlineQueryResultVenue';
@@ -1059,24 +1067,26 @@ final class InputInlineQueryResultVideo extends InputInlineQueryResult {
         videoDuration: _readInt(json['video_duration']),
         replyMarkup: _readOptional(json['reply_markup'], ReplyMarkup.fromJson),
         inputMessageContent: _readObject(
-            json['input_message_content'], InputMessageContent.fromJson),
+          json['input_message_content'],
+          InputMessageContent.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'title': title,
-        'description': description,
-        'thumbnail_url': thumbnailUrl,
-        'video_url': videoUrl,
-        'mime_type': mimeType,
-        'video_width': videoWidth,
-        'video_height': videoHeight,
-        'video_duration': videoDuration,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'title': title,
+    'description': description,
+    'thumbnail_url': thumbnailUrl,
+    'video_url': videoUrl,
+    'mime_type': mimeType,
+    'video_width': videoWidth,
+    'video_height': videoHeight,
+    'video_duration': videoDuration,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1093,20 +1103,19 @@ final class InputInlineQueryResultVideo extends InputInlineQueryResult {
     int? videoDuration,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultVideo(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        description: description ?? this.description,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        videoUrl: videoUrl ?? this.videoUrl,
-        mimeType: mimeType ?? this.mimeType,
-        videoWidth: videoWidth ?? this.videoWidth,
-        videoHeight: videoHeight ?? this.videoHeight,
-        videoDuration: videoDuration ?? this.videoDuration,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultVideo(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    description: description ?? this.description,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    videoUrl: videoUrl ?? this.videoUrl,
+    mimeType: mimeType ?? this.mimeType,
+    videoWidth: videoWidth ?? this.videoWidth,
+    videoHeight: videoHeight ?? this.videoHeight,
+    videoDuration: videoDuration ?? this.videoDuration,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputInlineQueryResultVideo';
@@ -1154,19 +1163,21 @@ final class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
         voiceNoteDuration: _readInt(json['voice_note_duration']),
         replyMarkup: _readOptional(json['reply_markup'], ReplyMarkup.fromJson),
         inputMessageContent: _readObject(
-            json['input_message_content'], InputMessageContent.fromJson),
+          json['input_message_content'],
+          InputMessageContent.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'title': title,
-        'voice_note_url': voiceNoteUrl,
-        'voice_note_duration': voiceNoteDuration,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'title': title,
+    'voice_note_url': voiceNoteUrl,
+    'voice_note_duration': voiceNoteDuration,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -1178,15 +1189,14 @@ final class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
     int? voiceNoteDuration,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultVoiceNote(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        voiceNoteUrl: voiceNoteUrl ?? this.voiceNoteUrl,
-        voiceNoteDuration: voiceNoteDuration ?? this.voiceNoteDuration,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultVoiceNote(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    voiceNoteUrl: voiceNoteUrl ?? this.voiceNoteUrl,
+    voiceNoteDuration: voiceNoteDuration ?? this.voiceNoteDuration,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputInlineQueryResultVoiceNote';

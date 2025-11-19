@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Represents one language pack string
 final class LanguagePackString extends TdObject {
   /// Represents one language pack string
-  const LanguagePackString({
-    required this.key,
-    this.value,
-  });
+  const LanguagePackString({required this.key, this.value});
 
   /// String key
   final String key;
@@ -26,21 +23,20 @@ final class LanguagePackString extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'key': key,
-        'value': value?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'key': key,
+    'value': value?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   LanguagePackString copyWith({
     String? key,
     LanguagePackStringValue? Function()? value,
-  }) =>
-      LanguagePackString(
-        key: key ?? this.key,
-        value: value != null ? value() : this.value,
-      );
+  }) => LanguagePackString(
+    key: key ?? this.key,
+    value: value != null ? value() : this.value,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'languagePackString';

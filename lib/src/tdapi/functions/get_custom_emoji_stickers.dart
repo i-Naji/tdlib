@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Stickers].
 final class GetCustomEmojiStickers extends TdFunction<Stickers> {
   /// Returns the list of custom emoji stickers by their identifiers. Stickers are returned in arbitrary order. Only found stickers are returned
-  const GetCustomEmojiStickers({
-    required this.customEmojiIds,
-  });
+  const GetCustomEmojiStickers({required this.customEmojiIds});
 
   /// Identifiers of custom emoji stickers. At most 200 custom emoji stickers can be received simultaneously
   final List<int> customEmojiIds;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'custom_emoji_ids': [for (final e in customEmojiIds) e.toString()],
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'custom_emoji_ids': [for (final e in customEmojiIds) e.toString()],
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetCustomEmojiStickers copyWith({
-    List<int>? customEmojiIds,
-  }) =>
+  GetCustomEmojiStickers copyWith({List<int>? customEmojiIds}) =>
       GetCustomEmojiStickers(
         customEmojiIds: customEmojiIds ?? this.customEmojiIds,
       );

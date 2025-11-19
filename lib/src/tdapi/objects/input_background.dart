@@ -45,9 +45,7 @@ final class UndecodedInputBackground extends InputBackground {
 /// A background from a local file
 final class InputBackgroundLocal extends InputBackground {
   /// A background from a local file
-  const InputBackgroundLocal({
-    required this.background,
-  });
+  const InputBackgroundLocal({required this.background});
 
   /// Background file to use. Only inputFileLocal and inputFileGenerated are supported. The file must be in JPEG format for wallpapers and in PNG format for patterns
   final InputFile background;
@@ -60,19 +58,15 @@ final class InputBackgroundLocal extends InputBackground {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'background': background.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'background': background.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputBackgroundLocal copyWith({
-    InputFile? background,
-  }) =>
-      InputBackgroundLocal(
-        background: background ?? this.background,
-      );
+  InputBackgroundLocal copyWith({InputFile? background}) =>
+      InputBackgroundLocal(background: background ?? this.background);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputBackgroundLocal';
@@ -84,34 +78,26 @@ final class InputBackgroundLocal extends InputBackground {
 /// A background from the server
 final class InputBackgroundRemote extends InputBackground {
   /// A background from the server
-  const InputBackgroundRemote({
-    required this.backgroundId,
-  });
+  const InputBackgroundRemote({required this.backgroundId});
 
   /// The background identifier
   final int backgroundId;
 
   /// Parses a [InputBackgroundRemote] from TDLib JSON.
   factory InputBackgroundRemote.fromJson(Map<String, dynamic> json) =>
-      InputBackgroundRemote(
-        backgroundId: _readInt(json['background_id']),
-      );
+      InputBackgroundRemote(backgroundId: _readInt(json['background_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'background_id': backgroundId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'background_id': backgroundId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputBackgroundRemote copyWith({
-    int? backgroundId,
-  }) =>
-      InputBackgroundRemote(
-        backgroundId: backgroundId ?? this.backgroundId,
-      );
+  InputBackgroundRemote copyWith({int? backgroundId}) =>
+      InputBackgroundRemote(backgroundId: backgroundId ?? this.backgroundId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputBackgroundRemote';
@@ -123,34 +109,26 @@ final class InputBackgroundRemote extends InputBackground {
 /// A background previously set in the chat; for chat backgrounds only
 final class InputBackgroundPrevious extends InputBackground {
   /// A background previously set in the chat; for chat backgrounds only
-  const InputBackgroundPrevious({
-    required this.messageId,
-  });
+  const InputBackgroundPrevious({required this.messageId});
 
   /// Identifier of the message with the background
   final int messageId;
 
   /// Parses a [InputBackgroundPrevious] from TDLib JSON.
   factory InputBackgroundPrevious.fromJson(Map<String, dynamic> json) =>
-      InputBackgroundPrevious(
-        messageId: _readInt(json['message_id']),
-      );
+      InputBackgroundPrevious(messageId: _readInt(json['message_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'message_id': messageId,
-      };
+    '@type': CONSTRUCTOR,
+    'message_id': messageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputBackgroundPrevious copyWith({
-    int? messageId,
-  }) =>
-      InputBackgroundPrevious(
-        messageId: messageId ?? this.messageId,
-      );
+  InputBackgroundPrevious copyWith({int? messageId}) =>
+      InputBackgroundPrevious(messageId: messageId ?? this.messageId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputBackgroundPrevious';

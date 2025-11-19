@@ -8,28 +8,21 @@ part of '../tdapi.dart';
 /// Returns [TestBytes].
 final class TestCallBytes extends TdFunction<TestBytes> {
   /// Returns the received bytes; for testing only. This is an offline method. Can be called before authorization
-  const TestCallBytes({
-    required this.x,
-  });
+  const TestCallBytes({required this.x});
 
   /// Bytes to return
   final String x;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'x': x,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'x': x,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TestCallBytes copyWith({
-    String? x,
-  }) =>
-      TestCallBytes(
-        x: x ?? this.x,
-      );
+  TestCallBytes copyWith({String? x}) => TestCallBytes(x: x ?? this.x);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'testCallBytes';

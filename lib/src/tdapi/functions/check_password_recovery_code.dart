@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class CheckPasswordRecoveryCode extends TdFunction<Ok> {
   /// Checks whether a 2-step verification password recovery code sent to an email address is valid
-  const CheckPasswordRecoveryCode({
-    required this.recoveryCode,
-  });
+  const CheckPasswordRecoveryCode({required this.recoveryCode});
 
   /// Recovery code to check
   final String recoveryCode;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'recovery_code': recoveryCode,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'recovery_code': recoveryCode,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CheckPasswordRecoveryCode copyWith({
-    String? recoveryCode,
-  }) =>
+  CheckPasswordRecoveryCode copyWith({String? recoveryCode}) =>
       CheckPasswordRecoveryCode(
         recoveryCode: recoveryCode ?? this.recoveryCode,
       );

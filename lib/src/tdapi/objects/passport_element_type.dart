@@ -51,13 +51,11 @@ final class PassportElementTypePersonalDetails extends PassportElementType {
 
   /// Parses a [PassportElementTypePersonalDetails] from TDLib JSON.
   factory PassportElementTypePersonalDetails.fromJson(
-          Map<String, dynamic> json) =>
-      const PassportElementTypePersonalDetails();
+    Map<String, dynamic> json,
+  ) => const PassportElementTypePersonalDetails();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -82,9 +80,7 @@ final class PassportElementTypePassport extends PassportElementType {
       const PassportElementTypePassport();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -105,13 +101,11 @@ final class PassportElementTypeDriverLicense extends PassportElementType {
 
   /// Parses a [PassportElementTypeDriverLicense] from TDLib JSON.
   factory PassportElementTypeDriverLicense.fromJson(
-          Map<String, dynamic> json) =>
-      const PassportElementTypeDriverLicense();
+    Map<String, dynamic> json,
+  ) => const PassportElementTypeDriverLicense();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -136,9 +130,7 @@ final class PassportElementTypeIdentityCard extends PassportElementType {
       const PassportElementTypeIdentityCard();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -160,13 +152,11 @@ final class PassportElementTypeInternalPassport extends PassportElementType {
 
   /// Parses a [PassportElementTypeInternalPassport] from TDLib JSON.
   factory PassportElementTypeInternalPassport.fromJson(
-          Map<String, dynamic> json) =>
-      const PassportElementTypeInternalPassport();
+    Map<String, dynamic> json,
+  ) => const PassportElementTypeInternalPassport();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -191,9 +181,7 @@ final class PassportElementTypeAddress extends PassportElementType {
       const PassportElementTypeAddress();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -217,9 +205,7 @@ final class PassportElementTypeUtilityBill extends PassportElementType {
       const PassportElementTypeUtilityBill();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -241,13 +227,11 @@ final class PassportElementTypeBankStatement extends PassportElementType {
 
   /// Parses a [PassportElementTypeBankStatement] from TDLib JSON.
   factory PassportElementTypeBankStatement.fromJson(
-          Map<String, dynamic> json) =>
-      const PassportElementTypeBankStatement();
+    Map<String, dynamic> json,
+  ) => const PassportElementTypeBankStatement();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -269,13 +253,11 @@ final class PassportElementTypeRentalAgreement extends PassportElementType {
 
   /// Parses a [PassportElementTypeRentalAgreement] from TDLib JSON.
   factory PassportElementTypeRentalAgreement.fromJson(
-          Map<String, dynamic> json) =>
-      const PassportElementTypeRentalAgreement();
+    Map<String, dynamic> json,
+  ) => const PassportElementTypeRentalAgreement();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -298,13 +280,11 @@ final class PassportElementTypePassportRegistration
 
   /// Parses a [PassportElementTypePassportRegistration] from TDLib JSON.
   factory PassportElementTypePassportRegistration.fromJson(
-          Map<String, dynamic> json) =>
-      const PassportElementTypePassportRegistration();
+    Map<String, dynamic> json,
+  ) => const PassportElementTypePassportRegistration();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -327,13 +307,11 @@ final class PassportElementTypeTemporaryRegistration
 
   /// Parses a [PassportElementTypeTemporaryRegistration] from TDLib JSON.
   factory PassportElementTypeTemporaryRegistration.fromJson(
-          Map<String, dynamic> json) =>
-      const PassportElementTypeTemporaryRegistration();
+    Map<String, dynamic> json,
+  ) => const PassportElementTypeTemporaryRegistration();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -358,9 +336,7 @@ final class PassportElementTypePhoneNumber extends PassportElementType {
       const PassportElementTypePhoneNumber();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -385,9 +361,7 @@ final class PassportElementTypeEmailAddress extends PassportElementType {
       const PassportElementTypeEmailAddress();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

@@ -27,17 +27,18 @@ final class NotificationSounds extends TdObject {
   factory NotificationSounds.fromJson(Map<String, dynamic> json) =>
       NotificationSounds(
         notificationSounds: _readList<NotificationSound>(
-            json['notification_sounds'],
-            (e) => _readObject(e, NotificationSound.fromJson)),
+          json['notification_sounds'],
+          (e) => _readObject(e, NotificationSound.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'notification_sounds': [for (final e in notificationSounds) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'notification_sounds': [for (final e in notificationSounds) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -45,12 +46,11 @@ final class NotificationSounds extends TdObject {
     List<NotificationSound>? notificationSounds,
     dynamic extra,
     int? clientId,
-  }) =>
-      NotificationSounds(
-        notificationSounds: notificationSounds ?? this.notificationSounds,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => NotificationSounds(
+    notificationSounds: notificationSounds ?? this.notificationSounds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'notificationSounds';

@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Chats].
 final class SearchRecentlyFoundChats extends TdFunction<Chats> {
   /// Searches for the specified query in the title and username of up to 50 recently found chats. This is an offline method
-  const SearchRecentlyFoundChats({
-    required this.query,
-    required this.limit,
-  });
+  const SearchRecentlyFoundChats({required this.query, required this.limit});
 
   /// Query to search for
   final String query;
@@ -21,18 +18,15 @@ final class SearchRecentlyFoundChats extends TdFunction<Chats> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'query': query,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'query': query,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchRecentlyFoundChats copyWith({
-    String? query,
-    int? limit,
-  }) =>
+  SearchRecentlyFoundChats copyWith({String? query, int? limit}) =>
       SearchRecentlyFoundChats(
         query: query ?? this.query,
         limit: limit ?? this.limit,

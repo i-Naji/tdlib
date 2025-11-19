@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Represents a list of stickers
 final class Stickers extends TdObject {
   /// Represents a list of stickers
-  const Stickers({
-    required this.stickers,
-    this.extra,
-    this.clientId,
-  });
+  const Stickers({required this.stickers, this.extra, this.clientId});
 
   /// List of stickers
   final List<Sticker> stickers;
@@ -25,25 +21,23 @@ final class Stickers extends TdObject {
 
   /// Parses a [Stickers] from TDLib JSON.
   factory Stickers.fromJson(Map<String, dynamic> json) => Stickers(
-        stickers: _readList<Sticker>(
-            json['stickers'], (e) => _readObject(e, Sticker.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    stickers: _readList<Sticker>(
+      json['stickers'],
+      (e) => _readObject(e, Sticker.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'stickers': [for (final e in stickers) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'stickers': [for (final e in stickers) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  Stickers copyWith({
-    List<Sticker>? stickers,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  Stickers copyWith({List<Sticker>? stickers, dynamic extra, int? clientId}) =>
       Stickers(
         stickers: stickers ?? this.stickers,
         extra: extra ?? this.extra,

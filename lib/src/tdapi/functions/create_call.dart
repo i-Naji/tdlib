@@ -25,20 +25,16 @@ final class CreateCall extends TdFunction<CallId> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'protocol': protocol.toJson(),
-        'is_video': isVideo,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'protocol': protocol.toJson(),
+    'is_video': isVideo,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CreateCall copyWith({
-    int? userId,
-    CallProtocol? protocol,
-    bool? isVideo,
-  }) =>
+  CreateCall copyWith({int? userId, CallProtocol? protocol, bool? isVideo}) =>
       CreateCall(
         userId: userId ?? this.userId,
         protocol: protocol ?? this.protocol,

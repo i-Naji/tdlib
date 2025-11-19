@@ -21,22 +21,21 @@ final class ToggleGroupCallCanSendMessages extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'can_send_messages': canSendMessages,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'can_send_messages': canSendMessages,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleGroupCallCanSendMessages copyWith({
     int? groupCallId,
     bool? canSendMessages,
-  }) =>
-      ToggleGroupCallCanSendMessages(
-        groupCallId: groupCallId ?? this.groupCallId,
-        canSendMessages: canSendMessages ?? this.canSendMessages,
-      );
+  }) => ToggleGroupCallCanSendMessages(
+    groupCallId: groupCallId ?? this.groupCallId,
+    canSendMessages: canSendMessages ?? this.canSendMessages,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleGroupCallCanSendMessages';

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class EndGroupCallScreenSharing extends TdFunction<Ok> {
   /// Ends screen sharing in a joined group call
-  const EndGroupCallScreenSharing({
-    required this.groupCallId,
-  });
+  const EndGroupCallScreenSharing({required this.groupCallId});
 
   /// Group call identifier
   final int groupCallId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  EndGroupCallScreenSharing copyWith({
-    int? groupCallId,
-  }) =>
-      EndGroupCallScreenSharing(
-        groupCallId: groupCallId ?? this.groupCallId,
-      );
+  EndGroupCallScreenSharing copyWith({int? groupCallId}) =>
+      EndGroupCallScreenSharing(groupCallId: groupCallId ?? this.groupCallId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'endGroupCallScreenSharing';

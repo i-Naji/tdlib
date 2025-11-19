@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetStickerSetTitle extends TdFunction<Ok> {
   /// Sets a sticker set title
-  const SetStickerSetTitle({
-    required this.name,
-    required this.title,
-  });
+  const SetStickerSetTitle({required this.name, required this.title});
 
   /// Sticker set name. The sticker set must be owned by the current user
   final String name;
@@ -21,22 +18,16 @@ final class SetStickerSetTitle extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        'title': title,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    'title': title,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetStickerSetTitle copyWith({
-    String? name,
-    String? title,
-  }) =>
-      SetStickerSetTitle(
-        name: name ?? this.name,
-        title: title ?? this.title,
-      );
+  SetStickerSetTitle copyWith({String? name, String? title}) =>
+      SetStickerSetTitle(name: name ?? this.name, title: title ?? this.title);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setStickerSetTitle';

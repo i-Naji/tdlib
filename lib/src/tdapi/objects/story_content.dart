@@ -45,34 +45,26 @@ final class UndecodedStoryContent extends StoryContent {
 /// A photo story
 final class StoryContentPhoto extends StoryContent {
   /// A photo story
-  const StoryContentPhoto({
-    required this.photo,
-  });
+  const StoryContentPhoto({required this.photo});
 
   /// The photo
   final Photo photo;
 
   /// Parses a [StoryContentPhoto] from TDLib JSON.
   factory StoryContentPhoto.fromJson(Map<String, dynamic> json) =>
-      StoryContentPhoto(
-        photo: _readObject(json['photo'], Photo.fromJson),
-      );
+      StoryContentPhoto(photo: _readObject(json['photo'], Photo.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StoryContentPhoto copyWith({
-    Photo? photo,
-  }) =>
-      StoryContentPhoto(
-        photo: photo ?? this.photo,
-      );
+  StoryContentPhoto copyWith({Photo? photo}) =>
+      StoryContentPhoto(photo: photo ?? this.photo);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyContentPhoto';
@@ -84,10 +76,7 @@ final class StoryContentPhoto extends StoryContent {
 /// A video story
 final class StoryContentVideo extends StoryContent {
   /// A video story
-  const StoryContentVideo({
-    required this.video,
-    this.alternativeVideo,
-  });
+  const StoryContentVideo({required this.video, this.alternativeVideo});
 
   /// The video in MPEG4 format
   final StoryVideo video;
@@ -99,16 +88,18 @@ final class StoryContentVideo extends StoryContent {
   factory StoryContentVideo.fromJson(Map<String, dynamic> json) =>
       StoryContentVideo(
         video: _readObject(json['video'], StoryVideo.fromJson),
-        alternativeVideo:
-            _readOptional(json['alternative_video'], StoryVideo.fromJson),
+        alternativeVideo: _readOptional(
+          json['alternative_video'],
+          StoryVideo.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'video': video.toJson(),
-        'alternative_video': alternativeVideo?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'video': video.toJson(),
+    'alternative_video': alternativeVideo?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -116,13 +107,12 @@ final class StoryContentVideo extends StoryContent {
   StoryContentVideo copyWith({
     StoryVideo? video,
     StoryVideo? Function()? alternativeVideo,
-  }) =>
-      StoryContentVideo(
-        video: video ?? this.video,
-        alternativeVideo: alternativeVideo != null
-            ? alternativeVideo()
-            : this.alternativeVideo,
-      );
+  }) => StoryContentVideo(
+    video: video ?? this.video,
+    alternativeVideo: alternativeVideo != null
+        ? alternativeVideo()
+        : this.alternativeVideo,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyContentVideo';
@@ -141,9 +131,7 @@ final class StoryContentUnsupported extends StoryContent {
       const StoryContentUnsupported();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

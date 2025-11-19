@@ -53,13 +53,11 @@ final class SearchMessagesChatTypeFilterPrivate
 
   /// Parses a [SearchMessagesChatTypeFilterPrivate] from TDLib JSON.
   factory SearchMessagesChatTypeFilterPrivate.fromJson(
-          Map<String, dynamic> json) =>
-      const SearchMessagesChatTypeFilterPrivate();
+    Map<String, dynamic> json,
+  ) => const SearchMessagesChatTypeFilterPrivate();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -82,13 +80,11 @@ final class SearchMessagesChatTypeFilterGroup
 
   /// Parses a [SearchMessagesChatTypeFilterGroup] from TDLib JSON.
   factory SearchMessagesChatTypeFilterGroup.fromJson(
-          Map<String, dynamic> json) =>
-      const SearchMessagesChatTypeFilterGroup();
+    Map<String, dynamic> json,
+  ) => const SearchMessagesChatTypeFilterGroup();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -111,13 +107,11 @@ final class SearchMessagesChatTypeFilterChannel
 
   /// Parses a [SearchMessagesChatTypeFilterChannel] from TDLib JSON.
   factory SearchMessagesChatTypeFilterChannel.fromJson(
-          Map<String, dynamic> json) =>
-      const SearchMessagesChatTypeFilterChannel();
+    Map<String, dynamic> json,
+  ) => const SearchMessagesChatTypeFilterChannel();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

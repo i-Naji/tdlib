@@ -31,11 +31,11 @@ final class StarGiveawayWinnerOption extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'winner_count': winnerCount,
-        'won_star_count': wonStarCount,
-        'is_default': isDefault,
-      };
+    '@type': CONSTRUCTOR,
+    'winner_count': winnerCount,
+    'won_star_count': wonStarCount,
+    'is_default': isDefault,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class StarGiveawayWinnerOption extends TdObject {
     int? winnerCount,
     int? wonStarCount,
     bool? isDefault,
-  }) =>
-      StarGiveawayWinnerOption(
-        winnerCount: winnerCount ?? this.winnerCount,
-        wonStarCount: wonStarCount ?? this.wonStarCount,
-        isDefault: isDefault ?? this.isDefault,
-      );
+  }) => StarGiveawayWinnerOption(
+    winnerCount: winnerCount ?? this.winnerCount,
+    wonStarCount: wonStarCount ?? this.wonStarCount,
+    isDefault: isDefault ?? this.isDefault,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starGiveawayWinnerOption';

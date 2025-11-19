@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of t.me URLs
 final class TMeUrls extends TdObject {
   /// Contains a list of t.me URLs
-  const TMeUrls({
-    required this.urls,
-    this.extra,
-    this.clientId,
-  });
+  const TMeUrls({required this.urls, this.extra, this.clientId});
 
   /// List of URLs
   final List<TMeUrl> urls;
@@ -25,25 +21,23 @@ final class TMeUrls extends TdObject {
 
   /// Parses a [TMeUrls] from TDLib JSON.
   factory TMeUrls.fromJson(Map<String, dynamic> json) => TMeUrls(
-        urls: _readList<TMeUrl>(
-            json['urls'], (e) => _readObject(e, TMeUrl.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    urls: _readList<TMeUrl>(
+      json['urls'],
+      (e) => _readObject(e, TMeUrl.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'urls': [for (final e in urls) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'urls': [for (final e in urls) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TMeUrls copyWith({
-    List<TMeUrl>? urls,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  TMeUrls copyWith({List<TMeUrl>? urls, dynamic extra, int? clientId}) =>
       TMeUrls(
         urls: urls ?? this.urls,
         extra: extra ?? this.extra,

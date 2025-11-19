@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [BusinessFeatures].
 final class GetBusinessFeatures extends TdFunction<BusinessFeatures> {
   /// Returns information about features, available to Business users
-  const GetBusinessFeatures({
-    this.source,
-  });
+  const GetBusinessFeatures({this.source});
 
   /// Source of the request; pass null if the method is called from settings or some non-standard source
   final BusinessFeature? source;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'source': source?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'source': source?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetBusinessFeatures copyWith({
-    BusinessFeature? Function()? source,
-  }) =>
-      GetBusinessFeatures(
-        source: source != null ? source() : this.source,
-      );
+  GetBusinessFeatures copyWith({BusinessFeature? Function()? source}) =>
+      GetBusinessFeatures(source: source != null ? source() : this.source);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getBusinessFeatures';

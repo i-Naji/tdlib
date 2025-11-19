@@ -31,11 +31,11 @@ final class AnimatedChatPhoto extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'length': length,
-        'file': file.toJson(),
-        'main_frame_timestamp': mainFrameTimestamp,
-      };
+    '@type': CONSTRUCTOR,
+    'length': length,
+    'file': file.toJson(),
+    'main_frame_timestamp': mainFrameTimestamp,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class AnimatedChatPhoto extends TdObject {
     int? length,
     File? file,
     double? mainFrameTimestamp,
-  }) =>
-      AnimatedChatPhoto(
-        length: length ?? this.length,
-        file: file ?? this.file,
-        mainFrameTimestamp: mainFrameTimestamp ?? this.mainFrameTimestamp,
-      );
+  }) => AnimatedChatPhoto(
+    length: length ?? this.length,
+    file: file ?? this.file,
+    mainFrameTimestamp: mainFrameTimestamp ?? this.mainFrameTimestamp,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'animatedChatPhoto';

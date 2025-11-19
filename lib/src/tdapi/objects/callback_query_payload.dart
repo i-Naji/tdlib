@@ -47,34 +47,23 @@ final class UndecodedCallbackQueryPayload extends CallbackQueryPayload {
 /// The payload for a general callback button
 final class CallbackQueryPayloadData extends CallbackQueryPayload {
   /// The payload for a general callback button
-  const CallbackQueryPayloadData({
-    required this.data,
-  });
+  const CallbackQueryPayloadData({required this.data});
 
   /// Data that was attached to the callback button
   final String data;
 
   /// Parses a [CallbackQueryPayloadData] from TDLib JSON.
   factory CallbackQueryPayloadData.fromJson(Map<String, dynamic> json) =>
-      CallbackQueryPayloadData(
-        data: _readString(json['data']),
-      );
+      CallbackQueryPayloadData(data: _readString(json['data']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'data': data,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'data': data};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  CallbackQueryPayloadData copyWith({
-    String? data,
-  }) =>
-      CallbackQueryPayloadData(
-        data: data ?? this.data,
-      );
+  CallbackQueryPayloadData copyWith({String? data}) =>
+      CallbackQueryPayloadData(data: data ?? this.data);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'callbackQueryPayloadData';
@@ -99,18 +88,18 @@ final class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
 
   /// Parses a [CallbackQueryPayloadDataWithPassword] from TDLib JSON.
   factory CallbackQueryPayloadDataWithPassword.fromJson(
-          Map<String, dynamic> json) =>
-      CallbackQueryPayloadDataWithPassword(
-        password: _readString(json['password']),
-        data: _readString(json['data']),
-      );
+    Map<String, dynamic> json,
+  ) => CallbackQueryPayloadDataWithPassword(
+    password: _readString(json['password']),
+    data: _readString(json['data']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'password': password,
-        'data': data,
-      };
+    '@type': CONSTRUCTOR,
+    'password': password,
+    'data': data,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -118,11 +107,10 @@ final class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
   CallbackQueryPayloadDataWithPassword copyWith({
     String? password,
     String? data,
-  }) =>
-      CallbackQueryPayloadDataWithPassword(
-        password: password ?? this.password,
-        data: data ?? this.data,
-      );
+  }) => CallbackQueryPayloadDataWithPassword(
+    password: password ?? this.password,
+    data: data ?? this.data,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'callbackQueryPayloadDataWithPassword';
@@ -134,9 +122,7 @@ final class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
 /// The payload for a game callback button
 final class CallbackQueryPayloadGame extends CallbackQueryPayload {
   /// The payload for a game callback button
-  const CallbackQueryPayloadGame({
-    required this.gameShortName,
-  });
+  const CallbackQueryPayloadGame({required this.gameShortName});
 
   /// A short name of the game that was attached to the callback button
   final String gameShortName;
@@ -149,16 +135,14 @@ final class CallbackQueryPayloadGame extends CallbackQueryPayload {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'game_short_name': gameShortName,
-      };
+    '@type': CONSTRUCTOR,
+    'game_short_name': gameShortName,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  CallbackQueryPayloadGame copyWith({
-    String? gameShortName,
-  }) =>
+  CallbackQueryPayloadGame copyWith({String? gameShortName}) =>
       CallbackQueryPayloadGame(
         gameShortName: gameShortName ?? this.gameShortName,
       );

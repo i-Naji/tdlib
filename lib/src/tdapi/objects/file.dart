@@ -41,24 +41,24 @@ final class File extends TdObject {
 
   /// Parses a [File] from TDLib JSON.
   factory File.fromJson(Map<String, dynamic> json) => File(
-        id: _readInt(json['id']),
-        size: _readInt(json['size']),
-        expectedSize: _readInt(json['expected_size']),
-        local: _readObject(json['local'], LocalFile.fromJson),
-        remote: _readObject(json['remote'], RemoteFile.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    id: _readInt(json['id']),
+    size: _readInt(json['size']),
+    expectedSize: _readInt(json['expected_size']),
+    local: _readObject(json['local'], LocalFile.fromJson),
+    remote: _readObject(json['remote'], RemoteFile.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'size': size,
-        'expected_size': expectedSize,
-        'local': local.toJson(),
-        'remote': remote.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'size': size,
+    'expected_size': expectedSize,
+    'local': local.toJson(),
+    'remote': remote.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -70,16 +70,15 @@ final class File extends TdObject {
     RemoteFile? remote,
     dynamic extra,
     int? clientId,
-  }) =>
-      File(
-        id: id ?? this.id,
-        size: size ?? this.size,
-        expectedSize: expectedSize ?? this.expectedSize,
-        local: local ?? this.local,
-        remote: remote ?? this.remote,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => File(
+    id: id ?? this.id,
+    size: size ?? this.size,
+    expectedSize: expectedSize ?? this.expectedSize,
+    local: local ?? this.local,
+    remote: remote ?? this.remote,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'file';

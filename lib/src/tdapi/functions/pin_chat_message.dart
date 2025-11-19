@@ -29,13 +29,13 @@ final class PinChatMessage extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'disable_notification': disableNotification,
-        'only_for_self': onlyForSelf,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'disable_notification': disableNotification,
+    'only_for_self': onlyForSelf,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class PinChatMessage extends TdFunction<Ok> {
     int? messageId,
     bool? disableNotification,
     bool? onlyForSelf,
-  }) =>
-      PinChatMessage(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        disableNotification: disableNotification ?? this.disableNotification,
-        onlyForSelf: onlyForSelf ?? this.onlyForSelf,
-      );
+  }) => PinChatMessage(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    disableNotification: disableNotification ?? this.disableNotification,
+    onlyForSelf: onlyForSelf ?? this.onlyForSelf,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pinChatMessage';

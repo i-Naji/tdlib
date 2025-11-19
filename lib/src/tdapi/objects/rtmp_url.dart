@@ -29,18 +29,18 @@ final class RtmpUrl extends TdObject {
 
   /// Parses a [RtmpUrl] from TDLib JSON.
   factory RtmpUrl.fromJson(Map<String, dynamic> json) => RtmpUrl(
-        url: _readString(json['url']),
-        streamKey: _readString(json['stream_key']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    url: _readString(json['url']),
+    streamKey: _readString(json['stream_key']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'url': url,
-        'stream_key': streamKey,
-      };
+    '@type': CONSTRUCTOR,
+    'url': url,
+    'stream_key': streamKey,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -49,13 +49,12 @@ final class RtmpUrl extends TdObject {
     String? streamKey,
     dynamic extra,
     int? clientId,
-  }) =>
-      RtmpUrl(
-        url: url ?? this.url,
-        streamKey: streamKey ?? this.streamKey,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => RtmpUrl(
+    url: url ?? this.url,
+    streamKey: streamKey ?? this.streamKey,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'rtmpUrl';

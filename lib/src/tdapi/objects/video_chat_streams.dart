@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Represents a list of video chat streams
 final class VideoChatStreams extends TdObject {
   /// Represents a list of video chat streams
-  const VideoChatStreams({
-    required this.streams,
-    this.extra,
-    this.clientId,
-  });
+  const VideoChatStreams({required this.streams, this.extra, this.clientId});
 
   /// A list of video chat streams
   final List<VideoChatStream> streams;
@@ -27,16 +23,18 @@ final class VideoChatStreams extends TdObject {
   factory VideoChatStreams.fromJson(Map<String, dynamic> json) =>
       VideoChatStreams(
         streams: _readList<VideoChatStream>(
-            json['streams'], (e) => _readObject(e, VideoChatStream.fromJson)),
+          json['streams'],
+          (e) => _readObject(e, VideoChatStream.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'streams': [for (final e in streams) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'streams': [for (final e in streams) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +42,11 @@ final class VideoChatStreams extends TdObject {
     List<VideoChatStream>? streams,
     dynamic extra,
     int? clientId,
-  }) =>
-      VideoChatStreams(
-        streams: streams ?? this.streams,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => VideoChatStreams(
+    streams: streams ?? this.streams,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'videoChatStreams';

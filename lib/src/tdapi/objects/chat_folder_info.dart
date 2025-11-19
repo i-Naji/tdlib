@@ -45,26 +45,26 @@ final class ChatFolderInfo extends TdObject {
 
   /// Parses a [ChatFolderInfo] from TDLib JSON.
   factory ChatFolderInfo.fromJson(Map<String, dynamic> json) => ChatFolderInfo(
-        id: _readInt(json['id']),
-        name: _readObject(json['name'], ChatFolderName.fromJson),
-        icon: _readObject(json['icon'], ChatFolderIcon.fromJson),
-        colorId: _readInt(json['color_id']),
-        isShareable: _readBool(json['is_shareable']),
-        hasMyInviteLinks: _readBool(json['has_my_invite_links']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    id: _readInt(json['id']),
+    name: _readObject(json['name'], ChatFolderName.fromJson),
+    icon: _readObject(json['icon'], ChatFolderIcon.fromJson),
+    colorId: _readInt(json['color_id']),
+    isShareable: _readBool(json['is_shareable']),
+    hasMyInviteLinks: _readBool(json['has_my_invite_links']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'name': name.toJson(),
-        'icon': icon.toJson(),
-        'color_id': colorId,
-        'is_shareable': isShareable,
-        'has_my_invite_links': hasMyInviteLinks,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'name': name.toJson(),
+    'icon': icon.toJson(),
+    'color_id': colorId,
+    'is_shareable': isShareable,
+    'has_my_invite_links': hasMyInviteLinks,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -77,17 +77,16 @@ final class ChatFolderInfo extends TdObject {
     bool? hasMyInviteLinks,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatFolderInfo(
-        id: id ?? this.id,
-        name: name ?? this.name,
-        icon: icon ?? this.icon,
-        colorId: colorId ?? this.colorId,
-        isShareable: isShareable ?? this.isShareable,
-        hasMyInviteLinks: hasMyInviteLinks ?? this.hasMyInviteLinks,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatFolderInfo(
+    id: id ?? this.id,
+    name: name ?? this.name,
+    icon: icon ?? this.icon,
+    colorId: colorId ?? this.colorId,
+    isShareable: isShareable ?? this.isShareable,
+    hasMyInviteLinks: hasMyInviteLinks ?? this.hasMyInviteLinks,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatFolderInfo';

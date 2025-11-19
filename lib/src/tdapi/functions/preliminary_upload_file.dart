@@ -25,12 +25,12 @@ final class PreliminaryUploadFile extends TdFunction<File> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'file': file.toJson(),
-        'file_type': fileType?.toJson(),
-        'priority': priority,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'file': file.toJson(),
+    'file_type': fileType?.toJson(),
+    'priority': priority,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class PreliminaryUploadFile extends TdFunction<File> {
     InputFile? file,
     FileType? Function()? fileType,
     int? priority,
-  }) =>
-      PreliminaryUploadFile(
-        file: file ?? this.file,
-        fileType: fileType != null ? fileType() : this.fileType,
-        priority: priority ?? this.priority,
-      );
+  }) => PreliminaryUploadFile(
+    file: file ?? this.file,
+    fileType: fileType != null ? fileType() : this.fileType,
+    priority: priority ?? this.priority,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'preliminaryUploadFile';

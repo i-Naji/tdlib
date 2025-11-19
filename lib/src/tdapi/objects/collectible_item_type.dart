@@ -47,34 +47,23 @@ final class UndecodedCollectibleItemType extends CollectibleItemType {
 /// A username
 final class CollectibleItemTypeUsername extends CollectibleItemType {
   /// A username
-  const CollectibleItemTypeUsername({
-    required this.username,
-  });
+  const CollectibleItemTypeUsername({required this.username});
 
   /// The username
   final String username;
 
   /// Parses a [CollectibleItemTypeUsername] from TDLib JSON.
   factory CollectibleItemTypeUsername.fromJson(Map<String, dynamic> json) =>
-      CollectibleItemTypeUsername(
-        username: _readString(json['username']),
-      );
+      CollectibleItemTypeUsername(username: _readString(json['username']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'username': username,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'username': username};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  CollectibleItemTypeUsername copyWith({
-    String? username,
-  }) =>
-      CollectibleItemTypeUsername(
-        username: username ?? this.username,
-      );
+  CollectibleItemTypeUsername copyWith({String? username}) =>
+      CollectibleItemTypeUsername(username: username ?? this.username);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'collectibleItemTypeUsername';
@@ -86,9 +75,7 @@ final class CollectibleItemTypeUsername extends CollectibleItemType {
 /// A phone number
 final class CollectibleItemTypePhoneNumber extends CollectibleItemType {
   /// A phone number
-  const CollectibleItemTypePhoneNumber({
-    required this.phoneNumber,
-  });
+  const CollectibleItemTypePhoneNumber({required this.phoneNumber});
 
   /// The phone number
   final String phoneNumber;
@@ -101,16 +88,14 @@ final class CollectibleItemTypePhoneNumber extends CollectibleItemType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'phone_number': phoneNumber,
-      };
+    '@type': CONSTRUCTOR,
+    'phone_number': phoneNumber,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  CollectibleItemTypePhoneNumber copyWith({
-    String? phoneNumber,
-  }) =>
+  CollectibleItemTypePhoneNumber copyWith({String? phoneNumber}) =>
       CollectibleItemTypePhoneNumber(
         phoneNumber: phoneNumber ?? this.phoneNumber,
       );

@@ -45,34 +45,26 @@ final class UndecodedInputChatPhoto extends InputChatPhoto {
 /// A previously used profile photo of the current user
 final class InputChatPhotoPrevious extends InputChatPhoto {
   /// A previously used profile photo of the current user
-  const InputChatPhotoPrevious({
-    required this.chatPhotoId,
-  });
+  const InputChatPhotoPrevious({required this.chatPhotoId});
 
   /// Identifier of the current user's profile photo to reuse
   final int chatPhotoId;
 
   /// Parses a [InputChatPhotoPrevious] from TDLib JSON.
   factory InputChatPhotoPrevious.fromJson(Map<String, dynamic> json) =>
-      InputChatPhotoPrevious(
-        chatPhotoId: _readInt(json['chat_photo_id']),
-      );
+      InputChatPhotoPrevious(chatPhotoId: _readInt(json['chat_photo_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_photo_id': chatPhotoId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_photo_id': chatPhotoId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputChatPhotoPrevious copyWith({
-    int? chatPhotoId,
-  }) =>
-      InputChatPhotoPrevious(
-        chatPhotoId: chatPhotoId ?? this.chatPhotoId,
-      );
+  InputChatPhotoPrevious copyWith({int? chatPhotoId}) =>
+      InputChatPhotoPrevious(chatPhotoId: chatPhotoId ?? this.chatPhotoId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputChatPhotoPrevious';
@@ -84,9 +76,7 @@ final class InputChatPhotoPrevious extends InputChatPhoto {
 /// A static photo in JPEG format
 final class InputChatPhotoStatic extends InputChatPhoto {
   /// A static photo in JPEG format
-  const InputChatPhotoStatic({
-    required this.photo,
-  });
+  const InputChatPhotoStatic({required this.photo});
 
   /// Photo to be set as profile photo. Only inputFileLocal and inputFileGenerated are allowed
   final InputFile photo;
@@ -99,19 +89,15 @@ final class InputChatPhotoStatic extends InputChatPhoto {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputChatPhotoStatic copyWith({
-    InputFile? photo,
-  }) =>
-      InputChatPhotoStatic(
-        photo: photo ?? this.photo,
-      );
+  InputChatPhotoStatic copyWith({InputFile? photo}) =>
+      InputChatPhotoStatic(photo: photo ?? this.photo);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputChatPhotoStatic';
@@ -143,10 +129,10 @@ final class InputChatPhotoAnimation extends InputChatPhoto {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'animation': animation.toJson(),
-        'main_frame_timestamp': mainFrameTimestamp,
-      };
+    '@type': CONSTRUCTOR,
+    'animation': animation.toJson(),
+    'main_frame_timestamp': mainFrameTimestamp,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -154,11 +140,10 @@ final class InputChatPhotoAnimation extends InputChatPhoto {
   InputChatPhotoAnimation copyWith({
     InputFile? animation,
     double? mainFrameTimestamp,
-  }) =>
-      InputChatPhotoAnimation(
-        animation: animation ?? this.animation,
-        mainFrameTimestamp: mainFrameTimestamp ?? this.mainFrameTimestamp,
-      );
+  }) => InputChatPhotoAnimation(
+    animation: animation ?? this.animation,
+    mainFrameTimestamp: mainFrameTimestamp ?? this.mainFrameTimestamp,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputChatPhotoAnimation';
@@ -170,9 +155,7 @@ final class InputChatPhotoAnimation extends InputChatPhoto {
 /// A sticker on a custom background
 final class InputChatPhotoSticker extends InputChatPhoto {
   /// A sticker on a custom background
-  const InputChatPhotoSticker({
-    required this.sticker,
-  });
+  const InputChatPhotoSticker({required this.sticker});
 
   /// Information about the sticker
   final ChatPhotoSticker sticker;
@@ -185,19 +168,15 @@ final class InputChatPhotoSticker extends InputChatPhoto {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sticker': sticker.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'sticker': sticker.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputChatPhotoSticker copyWith({
-    ChatPhotoSticker? sticker,
-  }) =>
-      InputChatPhotoSticker(
-        sticker: sticker ?? this.sticker,
-      );
+  InputChatPhotoSticker copyWith({ChatPhotoSticker? sticker}) =>
+      InputChatPhotoSticker(sticker: sticker ?? this.sticker);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputChatPhotoSticker';

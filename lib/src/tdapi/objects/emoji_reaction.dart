@@ -61,40 +61,37 @@ final class EmojiReaction extends TdObject {
 
   /// Parses a [EmojiReaction] from TDLib JSON.
   factory EmojiReaction.fromJson(Map<String, dynamic> json) => EmojiReaction(
-        emoji: _readString(json['emoji']),
-        title: _readString(json['title']),
-        isActive: _readBool(json['is_active']),
-        staticIcon: _readObject(json['static_icon'], Sticker.fromJson),
-        appearAnimation:
-            _readObject(json['appear_animation'], Sticker.fromJson),
-        selectAnimation:
-            _readObject(json['select_animation'], Sticker.fromJson),
-        activateAnimation:
-            _readObject(json['activate_animation'], Sticker.fromJson),
-        effectAnimation:
-            _readObject(json['effect_animation'], Sticker.fromJson),
-        aroundAnimation:
-            _readOptional(json['around_animation'], Sticker.fromJson),
-        centerAnimation:
-            _readOptional(json['center_animation'], Sticker.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    emoji: _readString(json['emoji']),
+    title: _readString(json['title']),
+    isActive: _readBool(json['is_active']),
+    staticIcon: _readObject(json['static_icon'], Sticker.fromJson),
+    appearAnimation: _readObject(json['appear_animation'], Sticker.fromJson),
+    selectAnimation: _readObject(json['select_animation'], Sticker.fromJson),
+    activateAnimation: _readObject(
+      json['activate_animation'],
+      Sticker.fromJson,
+    ),
+    effectAnimation: _readObject(json['effect_animation'], Sticker.fromJson),
+    aroundAnimation: _readOptional(json['around_animation'], Sticker.fromJson),
+    centerAnimation: _readOptional(json['center_animation'], Sticker.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'emoji': emoji,
-        'title': title,
-        'is_active': isActive,
-        'static_icon': staticIcon.toJson(),
-        'appear_animation': appearAnimation.toJson(),
-        'select_animation': selectAnimation.toJson(),
-        'activate_animation': activateAnimation.toJson(),
-        'effect_animation': effectAnimation.toJson(),
-        'around_animation': aroundAnimation?.toJson(),
-        'center_animation': centerAnimation?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'emoji': emoji,
+    'title': title,
+    'is_active': isActive,
+    'static_icon': staticIcon.toJson(),
+    'appear_animation': appearAnimation.toJson(),
+    'select_animation': selectAnimation.toJson(),
+    'activate_animation': activateAnimation.toJson(),
+    'effect_animation': effectAnimation.toJson(),
+    'around_animation': aroundAnimation?.toJson(),
+    'center_animation': centerAnimation?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -111,23 +108,24 @@ final class EmojiReaction extends TdObject {
     Sticker? Function()? centerAnimation,
     dynamic extra,
     int? clientId,
-  }) =>
-      EmojiReaction(
-        emoji: emoji ?? this.emoji,
-        title: title ?? this.title,
-        isActive: isActive ?? this.isActive,
-        staticIcon: staticIcon ?? this.staticIcon,
-        appearAnimation: appearAnimation ?? this.appearAnimation,
-        selectAnimation: selectAnimation ?? this.selectAnimation,
-        activateAnimation: activateAnimation ?? this.activateAnimation,
-        effectAnimation: effectAnimation ?? this.effectAnimation,
-        aroundAnimation:
-            aroundAnimation != null ? aroundAnimation() : this.aroundAnimation,
-        centerAnimation:
-            centerAnimation != null ? centerAnimation() : this.centerAnimation,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => EmojiReaction(
+    emoji: emoji ?? this.emoji,
+    title: title ?? this.title,
+    isActive: isActive ?? this.isActive,
+    staticIcon: staticIcon ?? this.staticIcon,
+    appearAnimation: appearAnimation ?? this.appearAnimation,
+    selectAnimation: selectAnimation ?? this.selectAnimation,
+    activateAnimation: activateAnimation ?? this.activateAnimation,
+    effectAnimation: effectAnimation ?? this.effectAnimation,
+    aroundAnimation: aroundAnimation != null
+        ? aroundAnimation()
+        : this.aroundAnimation,
+    centerAnimation: centerAnimation != null
+        ? centerAnimation()
+        : this.centerAnimation,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'emojiReaction';

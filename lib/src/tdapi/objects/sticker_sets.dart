@@ -29,19 +29,21 @@ final class StickerSets extends TdObject {
 
   /// Parses a [StickerSets] from TDLib JSON.
   factory StickerSets.fromJson(Map<String, dynamic> json) => StickerSets(
-        totalCount: _readInt(json['total_count']),
-        sets: _readList<StickerSetInfo>(
-            json['sets'], (e) => _readObject(e, StickerSetInfo.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    totalCount: _readInt(json['total_count']),
+    sets: _readList<StickerSetInfo>(
+      json['sets'],
+      (e) => _readObject(e, StickerSetInfo.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'sets': [for (final e in sets) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'sets': [for (final e in sets) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +52,12 @@ final class StickerSets extends TdObject {
     List<StickerSetInfo>? sets,
     dynamic extra,
     int? clientId,
-  }) =>
-      StickerSets(
-        totalCount: totalCount ?? this.totalCount,
-        sets: sets ?? this.sets,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => StickerSets(
+    totalCount: totalCount ?? this.totalCount,
+    sets: sets ?? this.sets,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'stickerSets';

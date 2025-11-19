@@ -21,22 +21,21 @@ final class SetApplicationVerificationToken extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'verification_id': verificationId,
-        'token': token,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'verification_id': verificationId,
+    'token': token,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetApplicationVerificationToken copyWith({
     int? verificationId,
     String? token,
-  }) =>
-      SetApplicationVerificationToken(
-        verificationId: verificationId ?? this.verificationId,
-        token: token ?? this.token,
-      );
+  }) => SetApplicationVerificationToken(
+    verificationId: verificationId ?? this.verificationId,
+    token: token ?? this.token,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setApplicationVerificationToken';

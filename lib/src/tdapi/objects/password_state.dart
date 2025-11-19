@@ -49,32 +49,31 @@ final class PasswordState extends TdObject {
 
   /// Parses a [PasswordState] from TDLib JSON.
   factory PasswordState.fromJson(Map<String, dynamic> json) => PasswordState(
-        hasPassword: _readBool(json['has_password']),
-        passwordHint: _readString(json['password_hint']),
-        hasRecoveryEmailAddress: _readBool(json['has_recovery_email_address']),
-        hasPassportData: _readBool(json['has_passport_data']),
-        recoveryEmailAddressCodeInfo: _readOptional(
-            json['recovery_email_address_code_info'],
-            EmailAddressAuthenticationCodeInfo.fromJson),
-        loginEmailAddressPattern:
-            _readString(json['login_email_address_pattern']),
-        pendingResetDate: _readInt(json['pending_reset_date']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    hasPassword: _readBool(json['has_password']),
+    passwordHint: _readString(json['password_hint']),
+    hasRecoveryEmailAddress: _readBool(json['has_recovery_email_address']),
+    hasPassportData: _readBool(json['has_passport_data']),
+    recoveryEmailAddressCodeInfo: _readOptional(
+      json['recovery_email_address_code_info'],
+      EmailAddressAuthenticationCodeInfo.fromJson,
+    ),
+    loginEmailAddressPattern: _readString(json['login_email_address_pattern']),
+    pendingResetDate: _readInt(json['pending_reset_date']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'has_password': hasPassword,
-        'password_hint': passwordHint,
-        'has_recovery_email_address': hasRecoveryEmailAddress,
-        'has_passport_data': hasPassportData,
-        'recovery_email_address_code_info':
-            recoveryEmailAddressCodeInfo?.toJson(),
-        'login_email_address_pattern': loginEmailAddressPattern,
-        'pending_reset_date': pendingResetDate,
-      };
+    '@type': CONSTRUCTOR,
+    'has_password': hasPassword,
+    'password_hint': passwordHint,
+    'has_recovery_email_address': hasRecoveryEmailAddress,
+    'has_passport_data': hasPassportData,
+    'recovery_email_address_code_info': recoveryEmailAddressCodeInfo?.toJson(),
+    'login_email_address_pattern': loginEmailAddressPattern,
+    'pending_reset_date': pendingResetDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -84,27 +83,26 @@ final class PasswordState extends TdObject {
     bool? hasRecoveryEmailAddress,
     bool? hasPassportData,
     EmailAddressAuthenticationCodeInfo? Function()?
-        recoveryEmailAddressCodeInfo,
+    recoveryEmailAddressCodeInfo,
     String? loginEmailAddressPattern,
     int? pendingResetDate,
     dynamic extra,
     int? clientId,
-  }) =>
-      PasswordState(
-        hasPassword: hasPassword ?? this.hasPassword,
-        passwordHint: passwordHint ?? this.passwordHint,
-        hasRecoveryEmailAddress:
-            hasRecoveryEmailAddress ?? this.hasRecoveryEmailAddress,
-        hasPassportData: hasPassportData ?? this.hasPassportData,
-        recoveryEmailAddressCodeInfo: recoveryEmailAddressCodeInfo != null
-            ? recoveryEmailAddressCodeInfo()
-            : this.recoveryEmailAddressCodeInfo,
-        loginEmailAddressPattern:
-            loginEmailAddressPattern ?? this.loginEmailAddressPattern,
-        pendingResetDate: pendingResetDate ?? this.pendingResetDate,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PasswordState(
+    hasPassword: hasPassword ?? this.hasPassword,
+    passwordHint: passwordHint ?? this.passwordHint,
+    hasRecoveryEmailAddress:
+        hasRecoveryEmailAddress ?? this.hasRecoveryEmailAddress,
+    hasPassportData: hasPassportData ?? this.hasPassportData,
+    recoveryEmailAddressCodeInfo: recoveryEmailAddressCodeInfo != null
+        ? recoveryEmailAddressCodeInfo()
+        : this.recoveryEmailAddressCodeInfo,
+    loginEmailAddressPattern:
+        loginEmailAddressPattern ?? this.loginEmailAddressPattern,
+    pendingResetDate: pendingResetDate ?? this.pendingResetDate,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'passwordState';

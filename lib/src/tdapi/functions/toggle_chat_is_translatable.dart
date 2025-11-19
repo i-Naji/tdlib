@@ -21,18 +21,15 @@ final class ToggleChatIsTranslatable extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'is_translatable': isTranslatable,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'is_translatable': isTranslatable,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ToggleChatIsTranslatable copyWith({
-    int? chatId,
-    bool? isTranslatable,
-  }) =>
+  ToggleChatIsTranslatable copyWith({int? chatId, bool? isTranslatable}) =>
       ToggleChatIsTranslatable(
         chatId: chatId ?? this.chatId,
         isTranslatable: isTranslatable ?? this.isTranslatable,

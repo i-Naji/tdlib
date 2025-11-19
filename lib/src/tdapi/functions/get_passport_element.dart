@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [PassportElement].
 final class GetPassportElement extends TdFunction<PassportElement> {
   /// Returns one of the available Telegram Passport elements
-  const GetPassportElement({
-    required this.type,
-    required this.password,
-  });
+  const GetPassportElement({required this.type, required this.password});
 
   /// Telegram Passport element type
   final PassportElementType type;
@@ -21,18 +18,15 @@ final class GetPassportElement extends TdFunction<PassportElement> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-        'password': password,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+    'password': password,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetPassportElement copyWith({
-    PassportElementType? type,
-    String? password,
-  }) =>
+  GetPassportElement copyWith({PassportElementType? type, String? password}) =>
       GetPassportElement(
         type: type ?? this.type,
         password: password ?? this.password,

@@ -29,13 +29,13 @@ final class GetStoryAlbumStories extends TdFunction<Stories> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'story_album_id': storyAlbumId,
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'story_album_id': storyAlbumId,
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class GetStoryAlbumStories extends TdFunction<Stories> {
     int? storyAlbumId,
     int? offset,
     int? limit,
-  }) =>
-      GetStoryAlbumStories(
-        chatId: chatId ?? this.chatId,
-        storyAlbumId: storyAlbumId ?? this.storyAlbumId,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => GetStoryAlbumStories(
+    chatId: chatId ?? this.chatId,
+    storyAlbumId: storyAlbumId ?? this.storyAlbumId,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getStoryAlbumStories';

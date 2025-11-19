@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class RemoveChatActionBar extends TdFunction<Ok> {
   /// Removes a chat action bar without any other action
-  const RemoveChatActionBar({
-    required this.chatId,
-  });
+  const RemoveChatActionBar({required this.chatId});
 
   /// Chat identifier
   final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RemoveChatActionBar copyWith({
-    int? chatId,
-  }) =>
-      RemoveChatActionBar(
-        chatId: chatId ?? this.chatId,
-      );
+  RemoveChatActionBar copyWith({int? chatId}) =>
+      RemoveChatActionBar(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'removeChatActionBar';

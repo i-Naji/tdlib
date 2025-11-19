@@ -79,10 +79,10 @@ final class StatisticalGraphData extends StatisticalGraph {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'json_data': jsonData,
-        'zoom_token': zoomToken,
-      };
+    '@type': CONSTRUCTOR,
+    'json_data': jsonData,
+    'zoom_token': zoomToken,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -92,13 +92,12 @@ final class StatisticalGraphData extends StatisticalGraph {
     String? zoomToken,
     dynamic extra,
     int? clientId,
-  }) =>
-      StatisticalGraphData(
-        jsonData: jsonData ?? this.jsonData,
-        zoomToken: zoomToken ?? this.zoomToken,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => StatisticalGraphData(
+    jsonData: jsonData ?? this.jsonData,
+    zoomToken: zoomToken ?? this.zoomToken,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'statisticalGraphData';
@@ -110,11 +109,7 @@ final class StatisticalGraphData extends StatisticalGraph {
 /// The graph data to be asynchronously loaded through getStatisticalGraph
 final class StatisticalGraphAsync extends StatisticalGraph {
   /// The graph data to be asynchronously loaded through getStatisticalGraph
-  const StatisticalGraphAsync({
-    required this.token,
-    this.extra,
-    this.clientId,
-  });
+  const StatisticalGraphAsync({required this.token, this.extra, this.clientId});
 
   /// The token to use for data loading
   final String token;
@@ -136,10 +131,7 @@ final class StatisticalGraphAsync extends StatisticalGraph {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'token': token,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'token': token};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -148,12 +140,11 @@ final class StatisticalGraphAsync extends StatisticalGraph {
     String? token,
     dynamic extra,
     int? clientId,
-  }) =>
-      StatisticalGraphAsync(
-        token: token ?? this.token,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => StatisticalGraphAsync(
+    token: token ?? this.token,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'statisticalGraphAsync';
@@ -192,9 +183,9 @@ final class StatisticalGraphError extends StatisticalGraph {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'error_message': errorMessage,
-      };
+    '@type': CONSTRUCTOR,
+    'error_message': errorMessage,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -203,12 +194,11 @@ final class StatisticalGraphError extends StatisticalGraph {
     String? errorMessage,
     dynamic extra,
     int? clientId,
-  }) =>
-      StatisticalGraphError(
-        errorMessage: errorMessage ?? this.errorMessage,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => StatisticalGraphError(
+    errorMessage: errorMessage ?? this.errorMessage,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'statisticalGraphError';

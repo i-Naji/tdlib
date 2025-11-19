@@ -21,22 +21,21 @@ final class GetLanguagePackStrings extends TdFunction<LanguagePackStrings> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'language_pack_id': languagePackId,
-        'keys': keys,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'language_pack_id': languagePackId,
+    'keys': keys,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetLanguagePackStrings copyWith({
     String? languagePackId,
     List<String>? keys,
-  }) =>
-      GetLanguagePackStrings(
-        languagePackId: languagePackId ?? this.languagePackId,
-        keys: keys ?? this.keys,
-      );
+  }) => GetLanguagePackStrings(
+    languagePackId: languagePackId ?? this.languagePackId,
+    keys: keys ?? this.keys,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getLanguagePackStrings';

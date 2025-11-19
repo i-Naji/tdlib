@@ -21,22 +21,21 @@ final class ToggleSupergroupHasHiddenMembers extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'supergroup_id': supergroupId,
-        'has_hidden_members': hasHiddenMembers,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'supergroup_id': supergroupId,
+    'has_hidden_members': hasHiddenMembers,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleSupergroupHasHiddenMembers copyWith({
     int? supergroupId,
     bool? hasHiddenMembers,
-  }) =>
-      ToggleSupergroupHasHiddenMembers(
-        supergroupId: supergroupId ?? this.supergroupId,
-        hasHiddenMembers: hasHiddenMembers ?? this.hasHiddenMembers,
-      );
+  }) => ToggleSupergroupHasHiddenMembers(
+    supergroupId: supergroupId ?? this.supergroupId,
+    hasHiddenMembers: hasHiddenMembers ?? this.hasHiddenMembers,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'toggleSupergroupHasHiddenMembers';

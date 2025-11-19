@@ -1,67 +1,37 @@
 import 'td_plugin.dart';
 
-/// TDLib Native Library Instance.
+/// Placeholder used where `dart:ffi` isn't available (the web).
 class TdNativePlugin extends TdPlugin {
-  /// This class is set to be the default [TdPlugin] initializer.
+  /// Constructor.
+  const TdNativePlugin();
+
+  /// Plugin registration hook; does nothing on the web.
   static void registerWith() {}
 
   @override
-  int tdCreate() {
-    throw UnimplementedError();
-  }
+  int tdCreate() => throw UnsupportedError('TDLib FFI is not available here');
 
   @override
-  String? tdExecute(String event) {
-    throw UnimplementedError();
-  }
+  String? tdReceive([double timeout = 8]) =>
+      throw UnsupportedError('TDLib FFI is not available here');
 
   @override
-  int tdJsonClientCreate() {
-    throw UnimplementedError();
-  }
+  void tdSend(int clientId, String event) =>
+      throw UnsupportedError('TDLib FFI is not available here');
 
   @override
-  void tdJsonClientDestroy(int clientId) {
-    throw UnimplementedError();
-  }
+  String? tdExecute(String event) =>
+      throw UnsupportedError('TDLib FFI is not available here');
 
   @override
-  String? tdJsonClientExecute(String event) {
-    throw UnimplementedError();
-  }
+  void setLogMessageCallback(int maxVerbosityLevel, callback) =>
+      throw UnsupportedError('TDLib FFI is not available here');
 
   @override
-  String? tdJsonClientReceive(int clientId, [double timeout = 8]) {
-    throw UnimplementedError();
-  }
+  void removeLogMessageCallback() =>
+      throw UnsupportedError('TDLib FFI is not available here');
 
   @override
-  void tdJsonClientSend(int clientId, String event) {
-    throw UnimplementedError();
-  }
-
-  @override
-  String? tdReceive([double timeout = 8]) {
-    throw UnimplementedError();
-  }
-
-  @override
-  void tdSend(int clientId, String event) {
-    throw UnimplementedError();
-  }
-
-  @override
-  void removeLogMessageCallback() {
-    throw UnimplementedError();
-  }
-
-  @override
-  void setLogMessageCallback(int maxVerbosityLevel, callback) {
-    throw UnimplementedError();
-  }
-
-  @override
-  num tdGetTimeout() {
-    throw UnimplementedError();
-  }
+  num tdGetTimeout() =>
+      throw UnsupportedError('TDLib FFI is not available here');
 }

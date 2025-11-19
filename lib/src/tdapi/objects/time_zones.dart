@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of time zones
 final class TimeZones extends TdObject {
   /// Contains a list of time zones
-  const TimeZones({
-    required this.timeZones,
-    this.extra,
-    this.clientId,
-  });
+  const TimeZones({required this.timeZones, this.extra, this.clientId});
 
   /// A list of time zones
   final List<TimeZone> timeZones;
@@ -25,17 +21,19 @@ final class TimeZones extends TdObject {
 
   /// Parses a [TimeZones] from TDLib JSON.
   factory TimeZones.fromJson(Map<String, dynamic> json) => TimeZones(
-        timeZones: _readList<TimeZone>(
-            json['time_zones'], (e) => _readObject(e, TimeZone.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    timeZones: _readList<TimeZone>(
+      json['time_zones'],
+      (e) => _readObject(e, TimeZone.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'time_zones': [for (final e in timeZones) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'time_zones': [for (final e in timeZones) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +41,11 @@ final class TimeZones extends TdObject {
     List<TimeZone>? timeZones,
     dynamic extra,
     int? clientId,
-  }) =>
-      TimeZones(
-        timeZones: timeZones ?? this.timeZones,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => TimeZones(
+    timeZones: timeZones ?? this.timeZones,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'timeZones';

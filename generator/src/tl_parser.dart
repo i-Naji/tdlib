@@ -164,11 +164,13 @@ TlSchema parseTlSchema(String source) {
     final parts = _splitDoc(text, const {'class', 'description'});
     final name = parts['class'];
     if (name != null && name.isNotEmpty) {
-      classes.add(TlClass(
-        name.split(' ').first,
-        parts['description'] ?? '',
-        line: classLine,
-      ));
+      classes.add(
+        TlClass(
+          name.split(' ').first,
+          parts['description'] ?? '',
+          line: classLine,
+        ),
+      );
     }
     doc.clear();
   }
@@ -277,8 +279,9 @@ Map<String, String> _splitDoc(String text, Set<String> known) {
     if (key == null) return;
     final value = _normalize(text.substring(start, end));
     final previous = out[key];
-    out[key] =
-        previous == null || previous.isEmpty ? value : '$previous $value';
+    out[key] = previous == null || previous.isEmpty
+        ? value
+        : '$previous $value';
   }
 
   for (final m in _docKey.allMatches(text)) {

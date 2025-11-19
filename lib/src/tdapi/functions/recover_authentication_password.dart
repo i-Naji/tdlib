@@ -25,12 +25,12 @@ final class RecoverAuthenticationPassword extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'recovery_code': recoveryCode,
-        'new_password': newPassword,
-        'new_hint': newHint,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'recovery_code': recoveryCode,
+    'new_password': newPassword,
+    'new_hint': newHint,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class RecoverAuthenticationPassword extends TdFunction<Ok> {
     String? recoveryCode,
     String? newPassword,
     String? newHint,
-  }) =>
-      RecoverAuthenticationPassword(
-        recoveryCode: recoveryCode ?? this.recoveryCode,
-        newPassword: newPassword ?? this.newPassword,
-        newHint: newHint ?? this.newHint,
-      );
+  }) => RecoverAuthenticationPassword(
+    recoveryCode: recoveryCode ?? this.recoveryCode,
+    newPassword: newPassword ?? this.newPassword,
+    newHint: newHint ?? this.newHint,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'recoverAuthenticationPassword';

@@ -123,63 +123,70 @@ final class ChatStatisticsSupergroup extends ChatStatistics {
   final int? clientId;
 
   /// Parses a [ChatStatisticsSupergroup] from TDLib JSON.
-  factory ChatStatisticsSupergroup.fromJson(Map<String, dynamic> json) =>
-      ChatStatisticsSupergroup(
-        period: _readObject(json['period'], DateRange.fromJson),
-        memberCount:
-            _readObject(json['member_count'], StatisticalValue.fromJson),
-        messageCount:
-            _readObject(json['message_count'], StatisticalValue.fromJson),
-        viewerCount:
-            _readObject(json['viewer_count'], StatisticalValue.fromJson),
-        senderCount:
-            _readObject(json['sender_count'], StatisticalValue.fromJson),
-        memberCountGraph:
-            _readObject(json['member_count_graph'], StatisticalGraph.fromJson),
-        joinGraph: _readObject(json['join_graph'], StatisticalGraph.fromJson),
-        joinBySourceGraph: _readObject(
-            json['join_by_source_graph'], StatisticalGraph.fromJson),
-        languageGraph:
-            _readObject(json['language_graph'], StatisticalGraph.fromJson),
-        messageContentGraph: _readObject(
-            json['message_content_graph'], StatisticalGraph.fromJson),
-        actionGraph:
-            _readObject(json['action_graph'], StatisticalGraph.fromJson),
-        dayGraph: _readObject(json['day_graph'], StatisticalGraph.fromJson),
-        weekGraph: _readObject(json['week_graph'], StatisticalGraph.fromJson),
-        topSenders: _readList<ChatStatisticsMessageSenderInfo>(
-            json['top_senders'],
-            (e) => _readObject(e, ChatStatisticsMessageSenderInfo.fromJson)),
-        topAdministrators: _readList<ChatStatisticsAdministratorActionsInfo>(
-            json['top_administrators'],
-            (e) => _readObject(
-                e, ChatStatisticsAdministratorActionsInfo.fromJson)),
-        topInviters: _readList<ChatStatisticsInviterInfo>(json['top_inviters'],
-            (e) => _readObject(e, ChatStatisticsInviterInfo.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+  factory ChatStatisticsSupergroup.fromJson(
+    Map<String, dynamic> json,
+  ) => ChatStatisticsSupergroup(
+    period: _readObject(json['period'], DateRange.fromJson),
+    memberCount: _readObject(json['member_count'], StatisticalValue.fromJson),
+    messageCount: _readObject(json['message_count'], StatisticalValue.fromJson),
+    viewerCount: _readObject(json['viewer_count'], StatisticalValue.fromJson),
+    senderCount: _readObject(json['sender_count'], StatisticalValue.fromJson),
+    memberCountGraph: _readObject(
+      json['member_count_graph'],
+      StatisticalGraph.fromJson,
+    ),
+    joinGraph: _readObject(json['join_graph'], StatisticalGraph.fromJson),
+    joinBySourceGraph: _readObject(
+      json['join_by_source_graph'],
+      StatisticalGraph.fromJson,
+    ),
+    languageGraph: _readObject(
+      json['language_graph'],
+      StatisticalGraph.fromJson,
+    ),
+    messageContentGraph: _readObject(
+      json['message_content_graph'],
+      StatisticalGraph.fromJson,
+    ),
+    actionGraph: _readObject(json['action_graph'], StatisticalGraph.fromJson),
+    dayGraph: _readObject(json['day_graph'], StatisticalGraph.fromJson),
+    weekGraph: _readObject(json['week_graph'], StatisticalGraph.fromJson),
+    topSenders: _readList<ChatStatisticsMessageSenderInfo>(
+      json['top_senders'],
+      (e) => _readObject(e, ChatStatisticsMessageSenderInfo.fromJson),
+    ),
+    topAdministrators: _readList<ChatStatisticsAdministratorActionsInfo>(
+      json['top_administrators'],
+      (e) => _readObject(e, ChatStatisticsAdministratorActionsInfo.fromJson),
+    ),
+    topInviters: _readList<ChatStatisticsInviterInfo>(
+      json['top_inviters'],
+      (e) => _readObject(e, ChatStatisticsInviterInfo.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'period': period.toJson(),
-        'member_count': memberCount.toJson(),
-        'message_count': messageCount.toJson(),
-        'viewer_count': viewerCount.toJson(),
-        'sender_count': senderCount.toJson(),
-        'member_count_graph': memberCountGraph.toJson(),
-        'join_graph': joinGraph.toJson(),
-        'join_by_source_graph': joinBySourceGraph.toJson(),
-        'language_graph': languageGraph.toJson(),
-        'message_content_graph': messageContentGraph.toJson(),
-        'action_graph': actionGraph.toJson(),
-        'day_graph': dayGraph.toJson(),
-        'week_graph': weekGraph.toJson(),
-        'top_senders': [for (final e in topSenders) e.toJson()],
-        'top_administrators': [for (final e in topAdministrators) e.toJson()],
-        'top_inviters': [for (final e in topInviters) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'period': period.toJson(),
+    'member_count': memberCount.toJson(),
+    'message_count': messageCount.toJson(),
+    'viewer_count': viewerCount.toJson(),
+    'sender_count': senderCount.toJson(),
+    'member_count_graph': memberCountGraph.toJson(),
+    'join_graph': joinGraph.toJson(),
+    'join_by_source_graph': joinBySourceGraph.toJson(),
+    'language_graph': languageGraph.toJson(),
+    'message_content_graph': messageContentGraph.toJson(),
+    'action_graph': actionGraph.toJson(),
+    'day_graph': dayGraph.toJson(),
+    'week_graph': weekGraph.toJson(),
+    'top_senders': [for (final e in topSenders) e.toJson()],
+    'top_administrators': [for (final e in topAdministrators) e.toJson()],
+    'top_inviters': [for (final e in topInviters) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -203,27 +210,26 @@ final class ChatStatisticsSupergroup extends ChatStatistics {
     List<ChatStatisticsInviterInfo>? topInviters,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatStatisticsSupergroup(
-        period: period ?? this.period,
-        memberCount: memberCount ?? this.memberCount,
-        messageCount: messageCount ?? this.messageCount,
-        viewerCount: viewerCount ?? this.viewerCount,
-        senderCount: senderCount ?? this.senderCount,
-        memberCountGraph: memberCountGraph ?? this.memberCountGraph,
-        joinGraph: joinGraph ?? this.joinGraph,
-        joinBySourceGraph: joinBySourceGraph ?? this.joinBySourceGraph,
-        languageGraph: languageGraph ?? this.languageGraph,
-        messageContentGraph: messageContentGraph ?? this.messageContentGraph,
-        actionGraph: actionGraph ?? this.actionGraph,
-        dayGraph: dayGraph ?? this.dayGraph,
-        weekGraph: weekGraph ?? this.weekGraph,
-        topSenders: topSenders ?? this.topSenders,
-        topAdministrators: topAdministrators ?? this.topAdministrators,
-        topInviters: topInviters ?? this.topInviters,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatStatisticsSupergroup(
+    period: period ?? this.period,
+    memberCount: memberCount ?? this.memberCount,
+    messageCount: messageCount ?? this.messageCount,
+    viewerCount: viewerCount ?? this.viewerCount,
+    senderCount: senderCount ?? this.senderCount,
+    memberCountGraph: memberCountGraph ?? this.memberCountGraph,
+    joinGraph: joinGraph ?? this.joinGraph,
+    joinBySourceGraph: joinBySourceGraph ?? this.joinBySourceGraph,
+    languageGraph: languageGraph ?? this.languageGraph,
+    messageContentGraph: messageContentGraph ?? this.messageContentGraph,
+    actionGraph: actionGraph ?? this.actionGraph,
+    dayGraph: dayGraph ?? this.dayGraph,
+    weekGraph: weekGraph ?? this.weekGraph,
+    topSenders: topSenders ?? this.topSenders,
+    topAdministrators: topAdministrators ?? this.topAdministrators,
+    topInviters: topInviters ?? this.topInviters,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatStatisticsSupergroup';
@@ -340,77 +346,113 @@ final class ChatStatisticsChannel extends ChatStatistics {
   factory ChatStatisticsChannel.fromJson(Map<String, dynamic> json) =>
       ChatStatisticsChannel(
         period: _readObject(json['period'], DateRange.fromJson),
-        memberCount:
-            _readObject(json['member_count'], StatisticalValue.fromJson),
+        memberCount: _readObject(
+          json['member_count'],
+          StatisticalValue.fromJson,
+        ),
         meanMessageViewCount: _readObject(
-            json['mean_message_view_count'], StatisticalValue.fromJson),
+          json['mean_message_view_count'],
+          StatisticalValue.fromJson,
+        ),
         meanMessageShareCount: _readObject(
-            json['mean_message_share_count'], StatisticalValue.fromJson),
+          json['mean_message_share_count'],
+          StatisticalValue.fromJson,
+        ),
         meanMessageReactionCount: _readObject(
-            json['mean_message_reaction_count'], StatisticalValue.fromJson),
+          json['mean_message_reaction_count'],
+          StatisticalValue.fromJson,
+        ),
         meanStoryViewCount: _readObject(
-            json['mean_story_view_count'], StatisticalValue.fromJson),
+          json['mean_story_view_count'],
+          StatisticalValue.fromJson,
+        ),
         meanStoryShareCount: _readObject(
-            json['mean_story_share_count'], StatisticalValue.fromJson),
+          json['mean_story_share_count'],
+          StatisticalValue.fromJson,
+        ),
         meanStoryReactionCount: _readObject(
-            json['mean_story_reaction_count'], StatisticalValue.fromJson),
-        enabledNotificationsPercentage:
-            _readDouble(json['enabled_notifications_percentage']),
-        memberCountGraph:
-            _readObject(json['member_count_graph'], StatisticalGraph.fromJson),
+          json['mean_story_reaction_count'],
+          StatisticalValue.fromJson,
+        ),
+        enabledNotificationsPercentage: _readDouble(
+          json['enabled_notifications_percentage'],
+        ),
+        memberCountGraph: _readObject(
+          json['member_count_graph'],
+          StatisticalGraph.fromJson,
+        ),
         joinGraph: _readObject(json['join_graph'], StatisticalGraph.fromJson),
         muteGraph: _readObject(json['mute_graph'], StatisticalGraph.fromJson),
         viewCountByHourGraph: _readObject(
-            json['view_count_by_hour_graph'], StatisticalGraph.fromJson),
+          json['view_count_by_hour_graph'],
+          StatisticalGraph.fromJson,
+        ),
         viewCountBySourceGraph: _readObject(
-            json['view_count_by_source_graph'], StatisticalGraph.fromJson),
+          json['view_count_by_source_graph'],
+          StatisticalGraph.fromJson,
+        ),
         joinBySourceGraph: _readObject(
-            json['join_by_source_graph'], StatisticalGraph.fromJson),
-        languageGraph:
-            _readObject(json['language_graph'], StatisticalGraph.fromJson),
+          json['join_by_source_graph'],
+          StatisticalGraph.fromJson,
+        ),
+        languageGraph: _readObject(
+          json['language_graph'],
+          StatisticalGraph.fromJson,
+        ),
         messageInteractionGraph: _readObject(
-            json['message_interaction_graph'], StatisticalGraph.fromJson),
+          json['message_interaction_graph'],
+          StatisticalGraph.fromJson,
+        ),
         messageReactionGraph: _readObject(
-            json['message_reaction_graph'], StatisticalGraph.fromJson),
+          json['message_reaction_graph'],
+          StatisticalGraph.fromJson,
+        ),
         storyInteractionGraph: _readObject(
-            json['story_interaction_graph'], StatisticalGraph.fromJson),
+          json['story_interaction_graph'],
+          StatisticalGraph.fromJson,
+        ),
         storyReactionGraph: _readObject(
-            json['story_reaction_graph'], StatisticalGraph.fromJson),
+          json['story_reaction_graph'],
+          StatisticalGraph.fromJson,
+        ),
         instantViewInteractionGraph: _readObject(
-            json['instant_view_interaction_graph'], StatisticalGraph.fromJson),
+          json['instant_view_interaction_graph'],
+          StatisticalGraph.fromJson,
+        ),
         recentInteractions: _readList<ChatStatisticsInteractionInfo>(
-            json['recent_interactions'],
-            (e) => _readObject(e, ChatStatisticsInteractionInfo.fromJson)),
+          json['recent_interactions'],
+          (e) => _readObject(e, ChatStatisticsInteractionInfo.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'period': period.toJson(),
-        'member_count': memberCount.toJson(),
-        'mean_message_view_count': meanMessageViewCount.toJson(),
-        'mean_message_share_count': meanMessageShareCount.toJson(),
-        'mean_message_reaction_count': meanMessageReactionCount.toJson(),
-        'mean_story_view_count': meanStoryViewCount.toJson(),
-        'mean_story_share_count': meanStoryShareCount.toJson(),
-        'mean_story_reaction_count': meanStoryReactionCount.toJson(),
-        'enabled_notifications_percentage': enabledNotificationsPercentage,
-        'member_count_graph': memberCountGraph.toJson(),
-        'join_graph': joinGraph.toJson(),
-        'mute_graph': muteGraph.toJson(),
-        'view_count_by_hour_graph': viewCountByHourGraph.toJson(),
-        'view_count_by_source_graph': viewCountBySourceGraph.toJson(),
-        'join_by_source_graph': joinBySourceGraph.toJson(),
-        'language_graph': languageGraph.toJson(),
-        'message_interaction_graph': messageInteractionGraph.toJson(),
-        'message_reaction_graph': messageReactionGraph.toJson(),
-        'story_interaction_graph': storyInteractionGraph.toJson(),
-        'story_reaction_graph': storyReactionGraph.toJson(),
-        'instant_view_interaction_graph': instantViewInteractionGraph.toJson(),
-        'recent_interactions': [for (final e in recentInteractions) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'period': period.toJson(),
+    'member_count': memberCount.toJson(),
+    'mean_message_view_count': meanMessageViewCount.toJson(),
+    'mean_message_share_count': meanMessageShareCount.toJson(),
+    'mean_message_reaction_count': meanMessageReactionCount.toJson(),
+    'mean_story_view_count': meanStoryViewCount.toJson(),
+    'mean_story_share_count': meanStoryShareCount.toJson(),
+    'mean_story_reaction_count': meanStoryReactionCount.toJson(),
+    'enabled_notifications_percentage': enabledNotificationsPercentage,
+    'member_count_graph': memberCountGraph.toJson(),
+    'join_graph': joinGraph.toJson(),
+    'mute_graph': muteGraph.toJson(),
+    'view_count_by_hour_graph': viewCountByHourGraph.toJson(),
+    'view_count_by_source_graph': viewCountBySourceGraph.toJson(),
+    'join_by_source_graph': joinBySourceGraph.toJson(),
+    'language_graph': languageGraph.toJson(),
+    'message_interaction_graph': messageInteractionGraph.toJson(),
+    'message_reaction_graph': messageReactionGraph.toJson(),
+    'story_interaction_graph': storyInteractionGraph.toJson(),
+    'story_reaction_graph': storyReactionGraph.toJson(),
+    'instant_view_interaction_graph': instantViewInteractionGraph.toJson(),
+    'recent_interactions': [for (final e in recentInteractions) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -440,41 +482,38 @@ final class ChatStatisticsChannel extends ChatStatistics {
     List<ChatStatisticsInteractionInfo>? recentInteractions,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatStatisticsChannel(
-        period: period ?? this.period,
-        memberCount: memberCount ?? this.memberCount,
-        meanMessageViewCount: meanMessageViewCount ?? this.meanMessageViewCount,
-        meanMessageShareCount:
-            meanMessageShareCount ?? this.meanMessageShareCount,
-        meanMessageReactionCount:
-            meanMessageReactionCount ?? this.meanMessageReactionCount,
-        meanStoryViewCount: meanStoryViewCount ?? this.meanStoryViewCount,
-        meanStoryShareCount: meanStoryShareCount ?? this.meanStoryShareCount,
-        meanStoryReactionCount:
-            meanStoryReactionCount ?? this.meanStoryReactionCount,
-        enabledNotificationsPercentage: enabledNotificationsPercentage ??
-            this.enabledNotificationsPercentage,
-        memberCountGraph: memberCountGraph ?? this.memberCountGraph,
-        joinGraph: joinGraph ?? this.joinGraph,
-        muteGraph: muteGraph ?? this.muteGraph,
-        viewCountByHourGraph: viewCountByHourGraph ?? this.viewCountByHourGraph,
-        viewCountBySourceGraph:
-            viewCountBySourceGraph ?? this.viewCountBySourceGraph,
-        joinBySourceGraph: joinBySourceGraph ?? this.joinBySourceGraph,
-        languageGraph: languageGraph ?? this.languageGraph,
-        messageInteractionGraph:
-            messageInteractionGraph ?? this.messageInteractionGraph,
-        messageReactionGraph: messageReactionGraph ?? this.messageReactionGraph,
-        storyInteractionGraph:
-            storyInteractionGraph ?? this.storyInteractionGraph,
-        storyReactionGraph: storyReactionGraph ?? this.storyReactionGraph,
-        instantViewInteractionGraph:
-            instantViewInteractionGraph ?? this.instantViewInteractionGraph,
-        recentInteractions: recentInteractions ?? this.recentInteractions,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatStatisticsChannel(
+    period: period ?? this.period,
+    memberCount: memberCount ?? this.memberCount,
+    meanMessageViewCount: meanMessageViewCount ?? this.meanMessageViewCount,
+    meanMessageShareCount: meanMessageShareCount ?? this.meanMessageShareCount,
+    meanMessageReactionCount:
+        meanMessageReactionCount ?? this.meanMessageReactionCount,
+    meanStoryViewCount: meanStoryViewCount ?? this.meanStoryViewCount,
+    meanStoryShareCount: meanStoryShareCount ?? this.meanStoryShareCount,
+    meanStoryReactionCount:
+        meanStoryReactionCount ?? this.meanStoryReactionCount,
+    enabledNotificationsPercentage:
+        enabledNotificationsPercentage ?? this.enabledNotificationsPercentage,
+    memberCountGraph: memberCountGraph ?? this.memberCountGraph,
+    joinGraph: joinGraph ?? this.joinGraph,
+    muteGraph: muteGraph ?? this.muteGraph,
+    viewCountByHourGraph: viewCountByHourGraph ?? this.viewCountByHourGraph,
+    viewCountBySourceGraph:
+        viewCountBySourceGraph ?? this.viewCountBySourceGraph,
+    joinBySourceGraph: joinBySourceGraph ?? this.joinBySourceGraph,
+    languageGraph: languageGraph ?? this.languageGraph,
+    messageInteractionGraph:
+        messageInteractionGraph ?? this.messageInteractionGraph,
+    messageReactionGraph: messageReactionGraph ?? this.messageReactionGraph,
+    storyInteractionGraph: storyInteractionGraph ?? this.storyInteractionGraph,
+    storyReactionGraph: storyReactionGraph ?? this.storyReactionGraph,
+    instantViewInteractionGraph:
+        instantViewInteractionGraph ?? this.instantViewInteractionGraph,
+    recentInteractions: recentInteractions ?? this.recentInteractions,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatStatisticsChannel';

@@ -98,22 +98,22 @@ final class UpgradedGiftValueInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'currency': currency,
-        'value': value,
-        'is_value_average': isValueAverage,
-        'initial_sale_date': initialSaleDate,
-        'initial_sale_star_count': initialSaleStarCount,
-        'initial_sale_price': initialSalePrice,
-        'last_sale_date': lastSaleDate,
-        'last_sale_price': lastSalePrice,
-        'is_last_sale_on_fragment': isLastSaleOnFragment,
-        'minimum_price': minimumPrice,
-        'average_sale_price': averageSalePrice,
-        'telegram_listed_gift_count': telegramListedGiftCount,
-        'fragment_listed_gift_count': fragmentListedGiftCount,
-        'fragment_url': fragmentUrl,
-      };
+    '@type': CONSTRUCTOR,
+    'currency': currency,
+    'value': value,
+    'is_value_average': isValueAverage,
+    'initial_sale_date': initialSaleDate,
+    'initial_sale_star_count': initialSaleStarCount,
+    'initial_sale_price': initialSalePrice,
+    'last_sale_date': lastSaleDate,
+    'last_sale_price': lastSalePrice,
+    'is_last_sale_on_fragment': isLastSaleOnFragment,
+    'minimum_price': minimumPrice,
+    'average_sale_price': averageSalePrice,
+    'telegram_listed_gift_count': telegramListedGiftCount,
+    'fragment_listed_gift_count': fragmentListedGiftCount,
+    'fragment_url': fragmentUrl,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -134,27 +134,26 @@ final class UpgradedGiftValueInfo extends TdObject {
     String? fragmentUrl,
     dynamic extra,
     int? clientId,
-  }) =>
-      UpgradedGiftValueInfo(
-        currency: currency ?? this.currency,
-        value: value ?? this.value,
-        isValueAverage: isValueAverage ?? this.isValueAverage,
-        initialSaleDate: initialSaleDate ?? this.initialSaleDate,
-        initialSaleStarCount: initialSaleStarCount ?? this.initialSaleStarCount,
-        initialSalePrice: initialSalePrice ?? this.initialSalePrice,
-        lastSaleDate: lastSaleDate ?? this.lastSaleDate,
-        lastSalePrice: lastSalePrice ?? this.lastSalePrice,
-        isLastSaleOnFragment: isLastSaleOnFragment ?? this.isLastSaleOnFragment,
-        minimumPrice: minimumPrice ?? this.minimumPrice,
-        averageSalePrice: averageSalePrice ?? this.averageSalePrice,
-        telegramListedGiftCount:
-            telegramListedGiftCount ?? this.telegramListedGiftCount,
-        fragmentListedGiftCount:
-            fragmentListedGiftCount ?? this.fragmentListedGiftCount,
-        fragmentUrl: fragmentUrl ?? this.fragmentUrl,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UpgradedGiftValueInfo(
+    currency: currency ?? this.currency,
+    value: value ?? this.value,
+    isValueAverage: isValueAverage ?? this.isValueAverage,
+    initialSaleDate: initialSaleDate ?? this.initialSaleDate,
+    initialSaleStarCount: initialSaleStarCount ?? this.initialSaleStarCount,
+    initialSalePrice: initialSalePrice ?? this.initialSalePrice,
+    lastSaleDate: lastSaleDate ?? this.lastSaleDate,
+    lastSalePrice: lastSalePrice ?? this.lastSalePrice,
+    isLastSaleOnFragment: isLastSaleOnFragment ?? this.isLastSaleOnFragment,
+    minimumPrice: minimumPrice ?? this.minimumPrice,
+    averageSalePrice: averageSalePrice ?? this.averageSalePrice,
+    telegramListedGiftCount:
+        telegramListedGiftCount ?? this.telegramListedGiftCount,
+    fragmentListedGiftCount:
+        fragmentListedGiftCount ?? this.fragmentListedGiftCount,
+    fragmentUrl: fragmentUrl ?? this.fragmentUrl,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradedGiftValueInfo';

@@ -47,10 +47,7 @@ final class UndecodedTonTransactionType extends TonTransactionType {
 /// The transaction is a deposit of Toncoins from Fragment
 final class TonTransactionTypeFragmentDeposit extends TonTransactionType {
   /// The transaction is a deposit of Toncoins from Fragment
-  const TonTransactionTypeFragmentDeposit({
-    required this.isGift,
-    this.sticker,
-  });
+  const TonTransactionTypeFragmentDeposit({required this.isGift, this.sticker});
 
   /// True, if the transaction is a gift from another user
   final bool isGift;
@@ -60,18 +57,18 @@ final class TonTransactionTypeFragmentDeposit extends TonTransactionType {
 
   /// Parses a [TonTransactionTypeFragmentDeposit] from TDLib JSON.
   factory TonTransactionTypeFragmentDeposit.fromJson(
-          Map<String, dynamic> json) =>
-      TonTransactionTypeFragmentDeposit(
-        isGift: _readBool(json['is_gift']),
-        sticker: _readOptional(json['sticker'], Sticker.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => TonTransactionTypeFragmentDeposit(
+    isGift: _readBool(json['is_gift']),
+    sticker: _readOptional(json['sticker'], Sticker.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_gift': isGift,
-        'sticker': sticker?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'is_gift': isGift,
+    'sticker': sticker?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -79,11 +76,10 @@ final class TonTransactionTypeFragmentDeposit extends TonTransactionType {
   TonTransactionTypeFragmentDeposit copyWith({
     bool? isGift,
     Sticker? Function()? sticker,
-  }) =>
-      TonTransactionTypeFragmentDeposit(
-        isGift: isGift ?? this.isGift,
-        sticker: sticker != null ? sticker() : this.sticker,
-      );
+  }) => TonTransactionTypeFragmentDeposit(
+    isGift: isGift ?? this.isGift,
+    sticker: sticker != null ? sticker() : this.sticker,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'tonTransactionTypeFragmentDeposit';
@@ -95,35 +91,25 @@ final class TonTransactionTypeFragmentDeposit extends TonTransactionType {
 /// The transaction is a payment for a suggested post
 final class TonTransactionTypeSuggestedPostPayment extends TonTransactionType {
   /// The transaction is a payment for a suggested post
-  const TonTransactionTypeSuggestedPostPayment({
-    required this.chatId,
-  });
+  const TonTransactionTypeSuggestedPostPayment({required this.chatId});
 
   /// Identifier of the channel chat that posted the post
   final int chatId;
 
   /// Parses a [TonTransactionTypeSuggestedPostPayment] from TDLib JSON.
   factory TonTransactionTypeSuggestedPostPayment.fromJson(
-          Map<String, dynamic> json) =>
-      TonTransactionTypeSuggestedPostPayment(
-        chatId: _readInt(json['chat_id']),
-      );
+    Map<String, dynamic> json,
+  ) =>
+      TonTransactionTypeSuggestedPostPayment(chatId: _readInt(json['chat_id']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'chat_id': chatId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  TonTransactionTypeSuggestedPostPayment copyWith({
-    int? chatId,
-  }) =>
-      TonTransactionTypeSuggestedPostPayment(
-        chatId: chatId ?? this.chatId,
-      );
+  TonTransactionTypeSuggestedPostPayment copyWith({int? chatId}) =>
+      TonTransactionTypeSuggestedPostPayment(chatId: chatId ?? this.chatId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'tonTransactionTypeSuggestedPostPayment';
@@ -148,18 +134,18 @@ final class TonTransactionTypeUpgradedGiftPurchase extends TonTransactionType {
 
   /// Parses a [TonTransactionTypeUpgradedGiftPurchase] from TDLib JSON.
   factory TonTransactionTypeUpgradedGiftPurchase.fromJson(
-          Map<String, dynamic> json) =>
-      TonTransactionTypeUpgradedGiftPurchase(
-        userId: _readInt(json['user_id']),
-        gift: _readObject(json['gift'], UpgradedGift.fromJson),
-      );
+    Map<String, dynamic> json,
+  ) => TonTransactionTypeUpgradedGiftPurchase(
+    userId: _readInt(json['user_id']),
+    gift: _readObject(json['gift'], UpgradedGift.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'gift': gift.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'gift': gift.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -167,11 +153,10 @@ final class TonTransactionTypeUpgradedGiftPurchase extends TonTransactionType {
   TonTransactionTypeUpgradedGiftPurchase copyWith({
     int? userId,
     UpgradedGift? gift,
-  }) =>
-      TonTransactionTypeUpgradedGiftPurchase(
-        userId: userId ?? this.userId,
-        gift: gift ?? this.gift,
-      );
+  }) => TonTransactionTypeUpgradedGiftPurchase(
+    userId: userId ?? this.userId,
+    gift: gift ?? this.gift,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'tonTransactionTypeUpgradedGiftPurchase';
@@ -204,22 +189,22 @@ final class TonTransactionTypeUpgradedGiftSale extends TonTransactionType {
 
   /// Parses a [TonTransactionTypeUpgradedGiftSale] from TDLib JSON.
   factory TonTransactionTypeUpgradedGiftSale.fromJson(
-          Map<String, dynamic> json) =>
-      TonTransactionTypeUpgradedGiftSale(
-        userId: _readInt(json['user_id']),
-        gift: _readObject(json['gift'], UpgradedGift.fromJson),
-        commissionPerMille: _readInt(json['commission_per_mille']),
-        commissionToncoinAmount: _readInt(json['commission_toncoin_amount']),
-      );
+    Map<String, dynamic> json,
+  ) => TonTransactionTypeUpgradedGiftSale(
+    userId: _readInt(json['user_id']),
+    gift: _readObject(json['gift'], UpgradedGift.fromJson),
+    commissionPerMille: _readInt(json['commission_per_mille']),
+    commissionToncoinAmount: _readInt(json['commission_toncoin_amount']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'gift': gift.toJson(),
-        'commission_per_mille': commissionPerMille,
-        'commission_toncoin_amount': commissionToncoinAmount,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'gift': gift.toJson(),
+    'commission_per_mille': commissionPerMille,
+    'commission_toncoin_amount': commissionToncoinAmount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -229,14 +214,13 @@ final class TonTransactionTypeUpgradedGiftSale extends TonTransactionType {
     UpgradedGift? gift,
     int? commissionPerMille,
     int? commissionToncoinAmount,
-  }) =>
-      TonTransactionTypeUpgradedGiftSale(
-        userId: userId ?? this.userId,
-        gift: gift ?? this.gift,
-        commissionPerMille: commissionPerMille ?? this.commissionPerMille,
-        commissionToncoinAmount:
-            commissionToncoinAmount ?? this.commissionToncoinAmount,
-      );
+  }) => TonTransactionTypeUpgradedGiftSale(
+    userId: userId ?? this.userId,
+    gift: gift ?? this.gift,
+    commissionPerMille: commissionPerMille ?? this.commissionPerMille,
+    commissionToncoinAmount:
+        commissionToncoinAmount ?? this.commissionToncoinAmount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'tonTransactionTypeUpgradedGiftSale';
@@ -255,9 +239,7 @@ final class TonTransactionTypeUnsupported extends TonTransactionType {
       const TonTransactionTypeUnsupported();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

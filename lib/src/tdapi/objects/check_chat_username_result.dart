@@ -47,10 +47,7 @@ final class UndecodedCheckChatUsernameResult extends CheckChatUsernameResult {
 /// The username can be set
 final class CheckChatUsernameResultOk extends CheckChatUsernameResult {
   /// The username can be set
-  const CheckChatUsernameResultOk({
-    this.extra,
-    this.clientId,
-  });
+  const CheckChatUsernameResultOk({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -68,17 +65,12 @@ final class CheckChatUsernameResultOk extends CheckChatUsernameResult {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  CheckChatUsernameResultOk copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  CheckChatUsernameResultOk copyWith({dynamic extra, int? clientId}) =>
       CheckChatUsernameResultOk(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -95,10 +87,7 @@ final class CheckChatUsernameResultOk extends CheckChatUsernameResult {
 final class CheckChatUsernameResultUsernameInvalid
     extends CheckChatUsernameResult {
   /// The username is invalid
-  const CheckChatUsernameResultUsernameInvalid({
-    this.extra,
-    this.clientId,
-  });
+  const CheckChatUsernameResultUsernameInvalid({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -110,16 +99,14 @@ final class CheckChatUsernameResultUsernameInvalid
 
   /// Parses a [CheckChatUsernameResultUsernameInvalid] from TDLib JSON.
   factory CheckChatUsernameResultUsernameInvalid.fromJson(
-          Map<String, dynamic> json) =>
-      CheckChatUsernameResultUsernameInvalid(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => CheckChatUsernameResultUsernameInvalid(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -127,11 +114,10 @@ final class CheckChatUsernameResultUsernameInvalid
   CheckChatUsernameResultUsernameInvalid copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      CheckChatUsernameResultUsernameInvalid(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CheckChatUsernameResultUsernameInvalid(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkChatUsernameResultUsernameInvalid';
@@ -144,10 +130,7 @@ final class CheckChatUsernameResultUsernameInvalid
 final class CheckChatUsernameResultUsernameOccupied
     extends CheckChatUsernameResult {
   /// The username is occupied
-  const CheckChatUsernameResultUsernameOccupied({
-    this.extra,
-    this.clientId,
-  });
+  const CheckChatUsernameResultUsernameOccupied({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -159,16 +142,14 @@ final class CheckChatUsernameResultUsernameOccupied
 
   /// Parses a [CheckChatUsernameResultUsernameOccupied] from TDLib JSON.
   factory CheckChatUsernameResultUsernameOccupied.fromJson(
-          Map<String, dynamic> json) =>
-      CheckChatUsernameResultUsernameOccupied(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => CheckChatUsernameResultUsernameOccupied(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -176,11 +157,10 @@ final class CheckChatUsernameResultUsernameOccupied
   CheckChatUsernameResultUsernameOccupied copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      CheckChatUsernameResultUsernameOccupied(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CheckChatUsernameResultUsernameOccupied(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkChatUsernameResultUsernameOccupied';
@@ -193,10 +173,7 @@ final class CheckChatUsernameResultUsernameOccupied
 final class CheckChatUsernameResultUsernamePurchasable
     extends CheckChatUsernameResult {
   /// The username can be purchased at https://fragment.com. Information about the username can be received using getCollectibleItemInfo
-  const CheckChatUsernameResultUsernamePurchasable({
-    this.extra,
-    this.clientId,
-  });
+  const CheckChatUsernameResultUsernamePurchasable({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -208,16 +185,14 @@ final class CheckChatUsernameResultUsernamePurchasable
 
   /// Parses a [CheckChatUsernameResultUsernamePurchasable] from TDLib JSON.
   factory CheckChatUsernameResultUsernamePurchasable.fromJson(
-          Map<String, dynamic> json) =>
-      CheckChatUsernameResultUsernamePurchasable(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => CheckChatUsernameResultUsernamePurchasable(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -225,11 +200,10 @@ final class CheckChatUsernameResultUsernamePurchasable
   CheckChatUsernameResultUsernamePurchasable copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      CheckChatUsernameResultUsernamePurchasable(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CheckChatUsernameResultUsernamePurchasable(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -243,10 +217,7 @@ final class CheckChatUsernameResultUsernamePurchasable
 final class CheckChatUsernameResultPublicChatsTooMany
     extends CheckChatUsernameResult {
   /// The user has too many chats with username, one of them must be made private first
-  const CheckChatUsernameResultPublicChatsTooMany({
-    this.extra,
-    this.clientId,
-  });
+  const CheckChatUsernameResultPublicChatsTooMany({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -258,16 +229,14 @@ final class CheckChatUsernameResultPublicChatsTooMany
 
   /// Parses a [CheckChatUsernameResultPublicChatsTooMany] from TDLib JSON.
   factory CheckChatUsernameResultPublicChatsTooMany.fromJson(
-          Map<String, dynamic> json) =>
-      CheckChatUsernameResultPublicChatsTooMany(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => CheckChatUsernameResultPublicChatsTooMany(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -275,11 +244,10 @@ final class CheckChatUsernameResultPublicChatsTooMany
   CheckChatUsernameResultPublicChatsTooMany copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      CheckChatUsernameResultPublicChatsTooMany(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CheckChatUsernameResultPublicChatsTooMany(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkChatUsernameResultPublicChatsTooMany';
@@ -307,16 +275,14 @@ final class CheckChatUsernameResultPublicGroupsUnavailable
 
   /// Parses a [CheckChatUsernameResultPublicGroupsUnavailable] from TDLib JSON.
   factory CheckChatUsernameResultPublicGroupsUnavailable.fromJson(
-          Map<String, dynamic> json) =>
-      CheckChatUsernameResultPublicGroupsUnavailable(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => CheckChatUsernameResultPublicGroupsUnavailable(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -324,11 +290,10 @@ final class CheckChatUsernameResultPublicGroupsUnavailable
   CheckChatUsernameResultPublicGroupsUnavailable copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      CheckChatUsernameResultPublicGroupsUnavailable(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CheckChatUsernameResultPublicGroupsUnavailable(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =

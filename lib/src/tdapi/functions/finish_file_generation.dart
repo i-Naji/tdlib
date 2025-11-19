@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class FinishFileGeneration extends TdFunction<Ok> {
   /// Finishes the file generation
-  const FinishFileGeneration({
-    required this.generationId,
-    this.error,
-  });
+  const FinishFileGeneration({required this.generationId, this.error});
 
   /// The identifier of the generation process
   final int generationId;
@@ -21,22 +18,21 @@ final class FinishFileGeneration extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'generation_id': generationId.toString(),
-        'error': error?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'generation_id': generationId.toString(),
+    'error': error?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   FinishFileGeneration copyWith({
     int? generationId,
     TdError? Function()? error,
-  }) =>
-      FinishFileGeneration(
-        generationId: generationId ?? this.generationId,
-        error: error != null ? error() : this.error,
-      );
+  }) => FinishFileGeneration(
+    generationId: generationId ?? this.generationId,
+    error: error != null ? error() : this.error,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'finishFileGeneration';

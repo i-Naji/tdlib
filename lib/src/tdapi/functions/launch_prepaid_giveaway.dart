@@ -29,13 +29,13 @@ final class LaunchPrepaidGiveaway extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'giveaway_id': giveawayId.toString(),
-        'parameters': parameters.toJson(),
-        'winner_count': winnerCount,
-        'star_count': starCount,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'giveaway_id': giveawayId.toString(),
+    'parameters': parameters.toJson(),
+    'winner_count': winnerCount,
+    'star_count': starCount,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class LaunchPrepaidGiveaway extends TdFunction<Ok> {
     GiveawayParameters? parameters,
     int? winnerCount,
     int? starCount,
-  }) =>
-      LaunchPrepaidGiveaway(
-        giveawayId: giveawayId ?? this.giveawayId,
-        parameters: parameters ?? this.parameters,
-        winnerCount: winnerCount ?? this.winnerCount,
-        starCount: starCount ?? this.starCount,
-      );
+  }) => LaunchPrepaidGiveaway(
+    giveawayId: giveawayId ?? this.giveawayId,
+    parameters: parameters ?? this.parameters,
+    winnerCount: winnerCount ?? this.winnerCount,
+    starCount: starCount ?? this.starCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'launchPrepaidGiveaway';

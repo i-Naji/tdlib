@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Represents a message sender, which can be used to send messages in a chat
 final class ChatMessageSender extends TdObject {
   /// Represents a message sender, which can be used to send messages in a chat
-  const ChatMessageSender({
-    required this.sender,
-    required this.needsPremium,
-  });
+  const ChatMessageSender({required this.sender, required this.needsPremium});
 
   /// The message sender
   final MessageSender sender;
@@ -26,17 +23,14 @@ final class ChatMessageSender extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sender': sender.toJson(),
-        'needs_premium': needsPremium,
-      };
+    '@type': CONSTRUCTOR,
+    'sender': sender.toJson(),
+    'needs_premium': needsPremium,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ChatMessageSender copyWith({
-    MessageSender? sender,
-    bool? needsPremium,
-  }) =>
+  ChatMessageSender copyWith({MessageSender? sender, bool? needsPremium}) =>
       ChatMessageSender(
         sender: sender ?? this.sender,
         needsPremium: needsPremium ?? this.needsPremium,

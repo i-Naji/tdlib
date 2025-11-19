@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class DeleteStickerSet extends TdFunction<Ok> {
   /// Completely deletes a sticker set
-  const DeleteStickerSet({
-    required this.name,
-  });
+  const DeleteStickerSet({required this.name});
 
   /// Sticker set name. The sticker set must be owned by the current user
   final String name;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DeleteStickerSet copyWith({
-    String? name,
-  }) =>
-      DeleteStickerSet(
-        name: name ?? this.name,
-      );
+  DeleteStickerSet copyWith({String? name}) =>
+      DeleteStickerSet(name: name ?? this.name);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'deleteStickerSet';

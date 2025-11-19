@@ -21,18 +21,15 @@ final class SearchUserByPhoneNumber extends TdFunction<User> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'phone_number': phoneNumber,
-        'only_local': onlyLocal,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'phone_number': phoneNumber,
+    'only_local': onlyLocal,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchUserByPhoneNumber copyWith({
-    String? phoneNumber,
-    bool? onlyLocal,
-  }) =>
+  SearchUserByPhoneNumber copyWith({String? phoneNumber, bool? onlyLocal}) =>
       SearchUserByPhoneNumber(
         phoneNumber: phoneNumber ?? this.phoneNumber,
         onlyLocal: onlyLocal ?? this.onlyLocal,

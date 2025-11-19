@@ -52,9 +52,7 @@ final class ChatListMain extends ChatList {
       const ChatListMain();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -78,9 +76,7 @@ final class ChatListArchive extends ChatList {
       const ChatListArchive();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -97,33 +93,26 @@ final class ChatListArchive extends ChatList {
 /// A list of chats added to a chat folder
 final class ChatListFolder extends ChatList {
   /// A list of chats added to a chat folder
-  const ChatListFolder({
-    required this.chatFolderId,
-  });
+  const ChatListFolder({required this.chatFolderId});
 
   /// Chat folder identifier
   final int chatFolderId;
 
   /// Parses a [ChatListFolder] from TDLib JSON.
-  factory ChatListFolder.fromJson(Map<String, dynamic> json) => ChatListFolder(
-        chatFolderId: _readInt(json['chat_folder_id']),
-      );
+  factory ChatListFolder.fromJson(Map<String, dynamic> json) =>
+      ChatListFolder(chatFolderId: _readInt(json['chat_folder_id']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_folder_id': chatFolderId,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_folder_id': chatFolderId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatListFolder copyWith({
-    int? chatFolderId,
-  }) =>
-      ChatListFolder(
-        chatFolderId: chatFolderId ?? this.chatFolderId,
-      );
+  ChatListFolder copyWith({int? chatFolderId}) =>
+      ChatListFolder(chatFolderId: chatFolderId ?? this.chatFolderId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatListFolder';

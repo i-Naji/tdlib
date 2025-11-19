@@ -51,15 +51,15 @@ final class StarSubscription extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id,
-        'chat_id': chatId,
-        'expiration_date': expirationDate,
-        'is_canceled': isCanceled,
-        'is_expiring': isExpiring,
-        'pricing': pricing.toJson(),
-        'type': type.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'chat_id': chatId,
+    'expiration_date': expirationDate,
+    'is_canceled': isCanceled,
+    'is_expiring': isExpiring,
+    'pricing': pricing.toJson(),
+    'type': type.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -71,16 +71,15 @@ final class StarSubscription extends TdObject {
     bool? isExpiring,
     StarSubscriptionPricing? pricing,
     StarSubscriptionType? type,
-  }) =>
-      StarSubscription(
-        id: id ?? this.id,
-        chatId: chatId ?? this.chatId,
-        expirationDate: expirationDate ?? this.expirationDate,
-        isCanceled: isCanceled ?? this.isCanceled,
-        isExpiring: isExpiring ?? this.isExpiring,
-        pricing: pricing ?? this.pricing,
-        type: type ?? this.type,
-      );
+  }) => StarSubscription(
+    id: id ?? this.id,
+    chatId: chatId ?? this.chatId,
+    expirationDate: expirationDate ?? this.expirationDate,
+    isCanceled: isCanceled ?? this.isCanceled,
+    isExpiring: isExpiring ?? this.isExpiring,
+    pricing: pricing ?? this.pricing,
+    type: type ?? this.type,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starSubscription';

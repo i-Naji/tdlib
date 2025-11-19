@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Represents a list of emoji categories
 final class EmojiCategories extends TdObject {
   /// Represents a list of emoji categories
-  const EmojiCategories({
-    required this.categories,
-    this.extra,
-    this.clientId,
-  });
+  const EmojiCategories({required this.categories, this.extra, this.clientId});
 
   /// List of categories
   final List<EmojiCategory> categories;
@@ -27,16 +23,18 @@ final class EmojiCategories extends TdObject {
   factory EmojiCategories.fromJson(Map<String, dynamic> json) =>
       EmojiCategories(
         categories: _readList<EmojiCategory>(
-            json['categories'], (e) => _readObject(e, EmojiCategory.fromJson)),
+          json['categories'],
+          (e) => _readObject(e, EmojiCategory.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'categories': [for (final e in categories) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'categories': [for (final e in categories) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +42,11 @@ final class EmojiCategories extends TdObject {
     List<EmojiCategory>? categories,
     dynamic extra,
     int? clientId,
-  }) =>
-      EmojiCategories(
-        categories: categories ?? this.categories,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => EmojiCategories(
+    categories: categories ?? this.categories,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'emojiCategories';

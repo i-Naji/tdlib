@@ -72,11 +72,11 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'custom_title': customTitle,
-        'is_anonymous': isAnonymous,
-        'is_member': isMember,
-      };
+    '@type': CONSTRUCTOR,
+    'custom_title': customTitle,
+    'is_anonymous': isAnonymous,
+    'is_member': isMember,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -85,12 +85,11 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
     String? customTitle,
     bool? isAnonymous,
     bool? isMember,
-  }) =>
-      ChatMemberStatusCreator(
-        customTitle: customTitle ?? this.customTitle,
-        isAnonymous: isAnonymous ?? this.isAnonymous,
-        isMember: isMember ?? this.isMember,
-      );
+  }) => ChatMemberStatusCreator(
+    customTitle: customTitle ?? this.customTitle,
+    isAnonymous: isAnonymous ?? this.isAnonymous,
+    isMember: isMember ?? this.isMember,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatMemberStatusCreator';
@@ -127,11 +126,11 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'custom_title': customTitle,
-        'can_be_edited': canBeEdited,
-        'rights': rights.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'custom_title': customTitle,
+    'can_be_edited': canBeEdited,
+    'rights': rights.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -140,12 +139,11 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
     String? customTitle,
     bool? canBeEdited,
     ChatAdministratorRights? rights,
-  }) =>
-      ChatMemberStatusAdministrator(
-        customTitle: customTitle ?? this.customTitle,
-        canBeEdited: canBeEdited ?? this.canBeEdited,
-        rights: rights ?? this.rights,
-      );
+  }) => ChatMemberStatusAdministrator(
+    customTitle: customTitle ?? this.customTitle,
+    canBeEdited: canBeEdited ?? this.canBeEdited,
+    rights: rights ?? this.rights,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatMemberStatusAdministrator';
@@ -157,9 +155,7 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
 /// The user is a member of the chat, without any additional privileges or restrictions
 final class ChatMemberStatusMember extends ChatMemberStatus {
   /// The user is a member of the chat, without any additional privileges or restrictions
-  const ChatMemberStatusMember({
-    required this.memberUntilDate,
-  });
+  const ChatMemberStatusMember({required this.memberUntilDate});
 
   /// Point in time (Unix timestamp) when the user will be removed from the chat because of the expired subscription; 0 if never. Ignored in setChatMemberStatus
   final int memberUntilDate;
@@ -172,16 +168,14 @@ final class ChatMemberStatusMember extends ChatMemberStatus {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'member_until_date': memberUntilDate,
-      };
+    '@type': CONSTRUCTOR,
+    'member_until_date': memberUntilDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatMemberStatusMember copyWith({
-    int? memberUntilDate,
-  }) =>
+  ChatMemberStatusMember copyWith({int? memberUntilDate}) =>
       ChatMemberStatusMember(
         memberUntilDate: memberUntilDate ?? this.memberUntilDate,
       );
@@ -221,11 +215,11 @@ final class ChatMemberStatusRestricted extends ChatMemberStatus {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_member': isMember,
-        'restricted_until_date': restrictedUntilDate,
-        'permissions': permissions.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'is_member': isMember,
+    'restricted_until_date': restrictedUntilDate,
+    'permissions': permissions.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -234,12 +228,11 @@ final class ChatMemberStatusRestricted extends ChatMemberStatus {
     bool? isMember,
     int? restrictedUntilDate,
     ChatPermissions? permissions,
-  }) =>
-      ChatMemberStatusRestricted(
-        isMember: isMember ?? this.isMember,
-        restrictedUntilDate: restrictedUntilDate ?? this.restrictedUntilDate,
-        permissions: permissions ?? this.permissions,
-      );
+  }) => ChatMemberStatusRestricted(
+    isMember: isMember ?? this.isMember,
+    restrictedUntilDate: restrictedUntilDate ?? this.restrictedUntilDate,
+    permissions: permissions ?? this.permissions,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatMemberStatusRestricted';
@@ -258,9 +251,7 @@ final class ChatMemberStatusLeft extends ChatMemberStatus {
       const ChatMemberStatusLeft();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -277,9 +268,7 @@ final class ChatMemberStatusLeft extends ChatMemberStatus {
 /// The user or the chat was banned (and hence is not a member of the chat). Implies the user can't return to the chat, view messages, or be used as a participant identifier to join a video chat of the chat
 final class ChatMemberStatusBanned extends ChatMemberStatus {
   /// The user or the chat was banned (and hence is not a member of the chat). Implies the user can't return to the chat, view messages, or be used as a participant identifier to join a video chat of the chat
-  const ChatMemberStatusBanned({
-    required this.bannedUntilDate,
-  });
+  const ChatMemberStatusBanned({required this.bannedUntilDate});
 
   /// Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever. Always 0 in basic groups
   final int bannedUntilDate;
@@ -292,16 +281,14 @@ final class ChatMemberStatusBanned extends ChatMemberStatus {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'banned_until_date': bannedUntilDate,
-      };
+    '@type': CONSTRUCTOR,
+    'banned_until_date': bannedUntilDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatMemberStatusBanned copyWith({
-    int? bannedUntilDate,
-  }) =>
+  ChatMemberStatusBanned copyWith({int? bannedUntilDate}) =>
       ChatMemberStatusBanned(
         bannedUntilDate: bannedUntilDate ?? this.bannedUntilDate,
       );

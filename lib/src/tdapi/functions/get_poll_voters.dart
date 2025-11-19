@@ -33,14 +33,14 @@ final class GetPollVoters extends TdFunction<MessageSenders> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'option_id': optionId,
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'option_id': optionId,
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class GetPollVoters extends TdFunction<MessageSenders> {
     int? optionId,
     int? offset,
     int? limit,
-  }) =>
-      GetPollVoters(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        optionId: optionId ?? this.optionId,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => GetPollVoters(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    optionId: optionId ?? this.optionId,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getPollVoters';

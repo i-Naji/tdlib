@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Count].
 final class GetChatFolderChatCount extends TdFunction<Count> {
   /// Returns approximate number of chats in a being created chat folder. Main and archive chat lists must be fully preloaded for this function to work correctly
-  const GetChatFolderChatCount({
-    required this.folder,
-  });
+  const GetChatFolderChatCount({required this.folder});
 
   /// The new chat folder
   final ChatFolder folder;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'folder': folder.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'folder': folder.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatFolderChatCount copyWith({
-    ChatFolder? folder,
-  }) =>
-      GetChatFolderChatCount(
-        folder: folder ?? this.folder,
-      );
+  GetChatFolderChatCount copyWith({ChatFolder? folder}) =>
+      GetChatFolderChatCount(folder: folder ?? this.folder);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatFolderChatCount';

@@ -47,9 +47,7 @@ final class UndecodedUpgradedGiftOrigin extends UpgradedGiftOrigin {
 /// The gift was obtained by upgrading of a previously received gift
 final class UpgradedGiftOriginUpgrade extends UpgradedGiftOrigin {
   /// The gift was obtained by upgrading of a previously received gift
-  const UpgradedGiftOriginUpgrade({
-    required this.giftMessageId,
-  });
+  const UpgradedGiftOriginUpgrade({required this.giftMessageId});
 
   /// Identifier of the message with the regular gift that was upgraded; can be 0 or an identifier of a deleted message
   final int giftMessageId;
@@ -62,16 +60,14 @@ final class UpgradedGiftOriginUpgrade extends UpgradedGiftOrigin {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'gift_message_id': giftMessageId,
-      };
+    '@type': CONSTRUCTOR,
+    'gift_message_id': giftMessageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UpgradedGiftOriginUpgrade copyWith({
-    int? giftMessageId,
-  }) =>
+  UpgradedGiftOriginUpgrade copyWith({int? giftMessageId}) =>
       UpgradedGiftOriginUpgrade(
         giftMessageId: giftMessageId ?? this.giftMessageId,
       );
@@ -93,9 +89,7 @@ final class UpgradedGiftOriginTransfer extends UpgradedGiftOrigin {
       const UpgradedGiftOriginTransfer();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -112,9 +106,7 @@ final class UpgradedGiftOriginTransfer extends UpgradedGiftOrigin {
 /// The gift was bought from another user
 final class UpgradedGiftOriginResale extends UpgradedGiftOrigin {
   /// The gift was bought from another user
-  const UpgradedGiftOriginResale({
-    required this.price,
-  });
+  const UpgradedGiftOriginResale({required this.price});
 
   /// Price paid by the sender for the gift
   final GiftResalePrice price;
@@ -127,19 +119,15 @@ final class UpgradedGiftOriginResale extends UpgradedGiftOrigin {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'price': price.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'price': price.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UpgradedGiftOriginResale copyWith({
-    GiftResalePrice? price,
-  }) =>
-      UpgradedGiftOriginResale(
-        price: price ?? this.price,
-      );
+  UpgradedGiftOriginResale copyWith({GiftResalePrice? price}) =>
+      UpgradedGiftOriginResale(price: price ?? this.price);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradedGiftOriginResale';
@@ -158,9 +146,7 @@ final class UpgradedGiftOriginBlockchain extends UpgradedGiftOrigin {
       const UpgradedGiftOriginBlockchain();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -182,13 +168,11 @@ final class UpgradedGiftOriginPrepaidUpgrade extends UpgradedGiftOrigin {
 
   /// Parses a [UpgradedGiftOriginPrepaidUpgrade] from TDLib JSON.
   factory UpgradedGiftOriginPrepaidUpgrade.fromJson(
-          Map<String, dynamic> json) =>
-      const UpgradedGiftOriginPrepaidUpgrade();
+    Map<String, dynamic> json,
+  ) => const UpgradedGiftOriginPrepaidUpgrade();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

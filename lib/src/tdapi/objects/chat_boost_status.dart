@@ -71,26 +71,28 @@ final class ChatBoostStatus extends TdObject {
         nextLevelBoostCount: _readInt(json['next_level_boost_count']),
         premiumMemberCount: _readInt(json['premium_member_count']),
         premiumMemberPercentage: _readDouble(json['premium_member_percentage']),
-        prepaidGiveaways: _readList<PrepaidGiveaway>(json['prepaid_giveaways'],
-            (e) => _readObject(e, PrepaidGiveaway.fromJson)),
+        prepaidGiveaways: _readList<PrepaidGiveaway>(
+          json['prepaid_giveaways'],
+          (e) => _readObject(e, PrepaidGiveaway.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'boost_url': boostUrl,
-        'applied_slot_ids': appliedSlotIds,
-        'level': level,
-        'gift_code_boost_count': giftCodeBoostCount,
-        'boost_count': boostCount,
-        'current_level_boost_count': currentLevelBoostCount,
-        'next_level_boost_count': nextLevelBoostCount,
-        'premium_member_count': premiumMemberCount,
-        'premium_member_percentage': premiumMemberPercentage,
-        'prepaid_giveaways': [for (final e in prepaidGiveaways) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'boost_url': boostUrl,
+    'applied_slot_ids': appliedSlotIds,
+    'level': level,
+    'gift_code_boost_count': giftCodeBoostCount,
+    'boost_count': boostCount,
+    'current_level_boost_count': currentLevelBoostCount,
+    'next_level_boost_count': nextLevelBoostCount,
+    'premium_member_count': premiumMemberCount,
+    'premium_member_percentage': premiumMemberPercentage,
+    'prepaid_giveaways': [for (final e in prepaidGiveaways) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -107,23 +109,22 @@ final class ChatBoostStatus extends TdObject {
     List<PrepaidGiveaway>? prepaidGiveaways,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatBoostStatus(
-        boostUrl: boostUrl ?? this.boostUrl,
-        appliedSlotIds: appliedSlotIds ?? this.appliedSlotIds,
-        level: level ?? this.level,
-        giftCodeBoostCount: giftCodeBoostCount ?? this.giftCodeBoostCount,
-        boostCount: boostCount ?? this.boostCount,
-        currentLevelBoostCount:
-            currentLevelBoostCount ?? this.currentLevelBoostCount,
-        nextLevelBoostCount: nextLevelBoostCount ?? this.nextLevelBoostCount,
-        premiumMemberCount: premiumMemberCount ?? this.premiumMemberCount,
-        premiumMemberPercentage:
-            premiumMemberPercentage ?? this.premiumMemberPercentage,
-        prepaidGiveaways: prepaidGiveaways ?? this.prepaidGiveaways,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatBoostStatus(
+    boostUrl: boostUrl ?? this.boostUrl,
+    appliedSlotIds: appliedSlotIds ?? this.appliedSlotIds,
+    level: level ?? this.level,
+    giftCodeBoostCount: giftCodeBoostCount ?? this.giftCodeBoostCount,
+    boostCount: boostCount ?? this.boostCount,
+    currentLevelBoostCount:
+        currentLevelBoostCount ?? this.currentLevelBoostCount,
+    nextLevelBoostCount: nextLevelBoostCount ?? this.nextLevelBoostCount,
+    premiumMemberCount: premiumMemberCount ?? this.premiumMemberCount,
+    premiumMemberPercentage:
+        premiumMemberPercentage ?? this.premiumMemberPercentage,
+    prepaidGiveaways: prepaidGiveaways ?? this.prepaidGiveaways,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatBoostStatus';

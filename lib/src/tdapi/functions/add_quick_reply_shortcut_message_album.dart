@@ -26,14 +26,14 @@ final class AddQuickReplyShortcutMessageAlbum
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'shortcut_name': shortcutName,
-        'reply_to_message_id': replyToMessageId,
-        'input_message_contents': [
-          for (final e in inputMessageContents) e.toJson()
-        ],
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'shortcut_name': shortcutName,
+    'reply_to_message_id': replyToMessageId,
+    'input_message_contents': [
+      for (final e in inputMessageContents) e.toJson(),
+    ],
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -41,12 +41,11 @@ final class AddQuickReplyShortcutMessageAlbum
     String? shortcutName,
     int? replyToMessageId,
     List<InputMessageContent>? inputMessageContents,
-  }) =>
-      AddQuickReplyShortcutMessageAlbum(
-        shortcutName: shortcutName ?? this.shortcutName,
-        replyToMessageId: replyToMessageId ?? this.replyToMessageId,
-        inputMessageContents: inputMessageContents ?? this.inputMessageContents,
-      );
+  }) => AddQuickReplyShortcutMessageAlbum(
+    shortcutName: shortcutName ?? this.shortcutName,
+    replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+    inputMessageContents: inputMessageContents ?? this.inputMessageContents,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addQuickReplyShortcutMessageAlbum';

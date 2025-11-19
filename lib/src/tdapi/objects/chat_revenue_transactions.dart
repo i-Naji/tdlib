@@ -35,8 +35,10 @@ final class ChatRevenueTransactions extends TdObject {
   factory ChatRevenueTransactions.fromJson(Map<String, dynamic> json) =>
       ChatRevenueTransactions(
         tonAmount: _readInt(json['ton_amount']),
-        transactions: _readList<ChatRevenueTransaction>(json['transactions'],
-            (e) => _readObject(e, ChatRevenueTransaction.fromJson)),
+        transactions: _readList<ChatRevenueTransaction>(
+          json['transactions'],
+          (e) => _readObject(e, ChatRevenueTransaction.fromJson),
+        ),
         nextOffset: _readString(json['next_offset']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -44,11 +46,11 @@ final class ChatRevenueTransactions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'ton_amount': tonAmount,
-        'transactions': [for (final e in transactions) e.toJson()],
-        'next_offset': nextOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'ton_amount': tonAmount,
+    'transactions': [for (final e in transactions) e.toJson()],
+    'next_offset': nextOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -58,14 +60,13 @@ final class ChatRevenueTransactions extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatRevenueTransactions(
-        tonAmount: tonAmount ?? this.tonAmount,
-        transactions: transactions ?? this.transactions,
-        nextOffset: nextOffset ?? this.nextOffset,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatRevenueTransactions(
+    tonAmount: tonAmount ?? this.tonAmount,
+    transactions: transactions ?? this.transactions,
+    nextOffset: nextOffset ?? this.nextOffset,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatRevenueTransactions';

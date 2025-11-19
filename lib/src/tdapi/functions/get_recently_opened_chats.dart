@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Chats].
 final class GetRecentlyOpenedChats extends TdFunction<Chats> {
   /// Returns recently opened chats. This is an offline method. Returns chats in the order of last opening
-  const GetRecentlyOpenedChats({
-    required this.limit,
-  });
+  const GetRecentlyOpenedChats({required this.limit});
 
   /// The maximum number of chats to be returned
   final int limit;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetRecentlyOpenedChats copyWith({
-    int? limit,
-  }) =>
-      GetRecentlyOpenedChats(
-        limit: limit ?? this.limit,
-      );
+  GetRecentlyOpenedChats copyWith({int? limit}) =>
+      GetRecentlyOpenedChats(limit: limit ?? this.limit);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getRecentlyOpenedChats';

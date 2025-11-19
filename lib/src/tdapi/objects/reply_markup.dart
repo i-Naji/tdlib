@@ -45,34 +45,26 @@ final class UndecodedReplyMarkup extends ReplyMarkup {
 /// Instructs application to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, updateChatReplyMarkup with message_id == 0 will be sent
 final class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
   /// Instructs application to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, updateChatReplyMarkup with message_id == 0 will be sent
-  const ReplyMarkupRemoveKeyboard({
-    required this.isPersonal,
-  });
+  const ReplyMarkupRemoveKeyboard({required this.isPersonal});
 
   /// True, if the keyboard is removed only for the mentioned users or the target user of a reply
   final bool isPersonal;
 
   /// Parses a [ReplyMarkupRemoveKeyboard] from TDLib JSON.
   factory ReplyMarkupRemoveKeyboard.fromJson(Map<String, dynamic> json) =>
-      ReplyMarkupRemoveKeyboard(
-        isPersonal: _readBool(json['is_personal']),
-      );
+      ReplyMarkupRemoveKeyboard(isPersonal: _readBool(json['is_personal']));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_personal': isPersonal,
-      };
+    '@type': CONSTRUCTOR,
+    'is_personal': isPersonal,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ReplyMarkupRemoveKeyboard copyWith({
-    bool? isPersonal,
-  }) =>
-      ReplyMarkupRemoveKeyboard(
-        isPersonal: isPersonal ?? this.isPersonal,
-      );
+  ReplyMarkupRemoveKeyboard copyWith({bool? isPersonal}) =>
+      ReplyMarkupRemoveKeyboard(isPersonal: isPersonal ?? this.isPersonal);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'replyMarkupRemoveKeyboard';
@@ -104,10 +96,10 @@ final class ReplyMarkupForceReply extends ReplyMarkup {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'is_personal': isPersonal,
-        'input_field_placeholder': inputFieldPlaceholder,
-      };
+    '@type': CONSTRUCTOR,
+    'is_personal': isPersonal,
+    'input_field_placeholder': inputFieldPlaceholder,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -115,12 +107,10 @@ final class ReplyMarkupForceReply extends ReplyMarkup {
   ReplyMarkupForceReply copyWith({
     bool? isPersonal,
     String? inputFieldPlaceholder,
-  }) =>
-      ReplyMarkupForceReply(
-        isPersonal: isPersonal ?? this.isPersonal,
-        inputFieldPlaceholder:
-            inputFieldPlaceholder ?? this.inputFieldPlaceholder,
-      );
+  }) => ReplyMarkupForceReply(
+    isPersonal: isPersonal ?? this.isPersonal,
+    inputFieldPlaceholder: inputFieldPlaceholder ?? this.inputFieldPlaceholder,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'replyMarkupForceReply';
@@ -163,9 +153,12 @@ final class ReplyMarkupShowKeyboard extends ReplyMarkup {
   factory ReplyMarkupShowKeyboard.fromJson(Map<String, dynamic> json) =>
       ReplyMarkupShowKeyboard(
         rows: _readList<List<KeyboardButton>>(
-            json['rows'],
-            (e) => _readList<KeyboardButton>(
-                e, (e1) => _readObject(e1, KeyboardButton.fromJson))),
+          json['rows'],
+          (e) => _readList<KeyboardButton>(
+            e,
+            (e1) => _readObject(e1, KeyboardButton.fromJson),
+          ),
+        ),
         isPersistent: _readBool(json['is_persistent']),
         resizeKeyboard: _readBool(json['resize_keyboard']),
         oneTime: _readBool(json['one_time']),
@@ -175,16 +168,16 @@ final class ReplyMarkupShowKeyboard extends ReplyMarkup {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'rows': [
-          for (final e in rows) [for (final e1 in e) e1.toJson()]
-        ],
-        'is_persistent': isPersistent,
-        'resize_keyboard': resizeKeyboard,
-        'one_time': oneTime,
-        'is_personal': isPersonal,
-        'input_field_placeholder': inputFieldPlaceholder,
-      };
+    '@type': CONSTRUCTOR,
+    'rows': [
+      for (final e in rows) [for (final e1 in e) e1.toJson()],
+    ],
+    'is_persistent': isPersistent,
+    'resize_keyboard': resizeKeyboard,
+    'one_time': oneTime,
+    'is_personal': isPersonal,
+    'input_field_placeholder': inputFieldPlaceholder,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -196,16 +189,14 @@ final class ReplyMarkupShowKeyboard extends ReplyMarkup {
     bool? oneTime,
     bool? isPersonal,
     String? inputFieldPlaceholder,
-  }) =>
-      ReplyMarkupShowKeyboard(
-        rows: rows ?? this.rows,
-        isPersistent: isPersistent ?? this.isPersistent,
-        resizeKeyboard: resizeKeyboard ?? this.resizeKeyboard,
-        oneTime: oneTime ?? this.oneTime,
-        isPersonal: isPersonal ?? this.isPersonal,
-        inputFieldPlaceholder:
-            inputFieldPlaceholder ?? this.inputFieldPlaceholder,
-      );
+  }) => ReplyMarkupShowKeyboard(
+    rows: rows ?? this.rows,
+    isPersistent: isPersistent ?? this.isPersistent,
+    resizeKeyboard: resizeKeyboard ?? this.resizeKeyboard,
+    oneTime: oneTime ?? this.oneTime,
+    isPersonal: isPersonal ?? this.isPersonal,
+    inputFieldPlaceholder: inputFieldPlaceholder ?? this.inputFieldPlaceholder,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'replyMarkupShowKeyboard';
@@ -217,9 +208,7 @@ final class ReplyMarkupShowKeyboard extends ReplyMarkup {
 /// Contains an inline keyboard layout
 final class ReplyMarkupInlineKeyboard extends ReplyMarkup {
   /// Contains an inline keyboard layout
-  const ReplyMarkupInlineKeyboard({
-    required this.rows,
-  });
+  const ReplyMarkupInlineKeyboard({required this.rows});
 
   /// A list of rows of inline keyboard buttons
   final List<List<InlineKeyboardButton>> rows;
@@ -228,28 +217,28 @@ final class ReplyMarkupInlineKeyboard extends ReplyMarkup {
   factory ReplyMarkupInlineKeyboard.fromJson(Map<String, dynamic> json) =>
       ReplyMarkupInlineKeyboard(
         rows: _readList<List<InlineKeyboardButton>>(
-            json['rows'],
-            (e) => _readList<InlineKeyboardButton>(
-                e, (e1) => _readObject(e1, InlineKeyboardButton.fromJson))),
+          json['rows'],
+          (e) => _readList<InlineKeyboardButton>(
+            e,
+            (e1) => _readObject(e1, InlineKeyboardButton.fromJson),
+          ),
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'rows': [
-          for (final e in rows) [for (final e1 in e) e1.toJson()]
-        ],
-      };
+    '@type': CONSTRUCTOR,
+    'rows': [
+      for (final e in rows) [for (final e1 in e) e1.toJson()],
+    ],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ReplyMarkupInlineKeyboard copyWith({
     List<List<InlineKeyboardButton>>? rows,
-  }) =>
-      ReplyMarkupInlineKeyboard(
-        rows: rows ?? this.rows,
-      );
+  }) => ReplyMarkupInlineKeyboard(rows: rows ?? this.rows);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'replyMarkupInlineKeyboard';

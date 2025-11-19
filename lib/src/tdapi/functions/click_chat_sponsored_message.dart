@@ -29,13 +29,13 @@ final class ClickChatSponsoredMessage extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'is_media_click': isMediaClick,
-        'from_fullscreen': fromFullscreen,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'is_media_click': isMediaClick,
+    'from_fullscreen': fromFullscreen,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class ClickChatSponsoredMessage extends TdFunction<Ok> {
     int? messageId,
     bool? isMediaClick,
     bool? fromFullscreen,
-  }) =>
-      ClickChatSponsoredMessage(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        isMediaClick: isMediaClick ?? this.isMediaClick,
-        fromFullscreen: fromFullscreen ?? this.fromFullscreen,
-      );
+  }) => ClickChatSponsoredMessage(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    isMediaClick: isMediaClick ?? this.isMediaClick,
+    fromFullscreen: fromFullscreen ?? this.fromFullscreen,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'clickChatSponsoredMessage';

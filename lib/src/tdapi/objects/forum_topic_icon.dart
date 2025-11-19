@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Describes a forum topic icon
 final class ForumTopicIcon extends TdObject {
   /// Describes a forum topic icon
-  const ForumTopicIcon({
-    required this.color,
-    required this.customEmojiId,
-  });
+  const ForumTopicIcon({required this.color, required this.customEmojiId});
 
   /// Color of the topic icon in RGB format
   final int color;
@@ -19,27 +16,23 @@ final class ForumTopicIcon extends TdObject {
 
   /// Parses a [ForumTopicIcon] from TDLib JSON.
   factory ForumTopicIcon.fromJson(Map<String, dynamic> json) => ForumTopicIcon(
-        color: _readInt(json['color']),
-        customEmojiId: _readInt(json['custom_emoji_id']),
-      );
+    color: _readInt(json['color']),
+    customEmojiId: _readInt(json['custom_emoji_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'color': color,
-        'custom_emoji_id': customEmojiId.toString(),
-      };
+    '@type': CONSTRUCTOR,
+    'color': color,
+    'custom_emoji_id': customEmojiId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ForumTopicIcon copyWith({
-    int? color,
-    int? customEmojiId,
-  }) =>
-      ForumTopicIcon(
-        color: color ?? this.color,
-        customEmojiId: customEmojiId ?? this.customEmojiId,
-      );
+  ForumTopicIcon copyWith({int? color, int? customEmojiId}) => ForumTopicIcon(
+    color: color ?? this.color,
+    customEmojiId: customEmojiId ?? this.customEmojiId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'forumTopicIcon';

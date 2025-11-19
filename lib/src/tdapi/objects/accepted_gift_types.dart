@@ -36,12 +36,12 @@ final class AcceptedGiftTypes extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'unlimited_gifts': unlimitedGifts,
-        'limited_gifts': limitedGifts,
-        'upgraded_gifts': upgradedGifts,
-        'premium_subscription': premiumSubscription,
-      };
+    '@type': CONSTRUCTOR,
+    'unlimited_gifts': unlimitedGifts,
+    'limited_gifts': limitedGifts,
+    'upgraded_gifts': upgradedGifts,
+    'premium_subscription': premiumSubscription,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class AcceptedGiftTypes extends TdObject {
     bool? limitedGifts,
     bool? upgradedGifts,
     bool? premiumSubscription,
-  }) =>
-      AcceptedGiftTypes(
-        unlimitedGifts: unlimitedGifts ?? this.unlimitedGifts,
-        limitedGifts: limitedGifts ?? this.limitedGifts,
-        upgradedGifts: upgradedGifts ?? this.upgradedGifts,
-        premiumSubscription: premiumSubscription ?? this.premiumSubscription,
-      );
+  }) => AcceptedGiftTypes(
+    unlimitedGifts: unlimitedGifts ?? this.unlimitedGifts,
+    limitedGifts: limitedGifts ?? this.limitedGifts,
+    upgradedGifts: upgradedGifts ?? this.upgradedGifts,
+    premiumSubscription: premiumSubscription ?? this.premiumSubscription,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'acceptedGiftTypes';

@@ -25,12 +25,12 @@ final class CreateGiftCollection extends TdFunction<GiftCollection> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'owner_id': ownerId.toJson(),
-        'name': name,
-        'received_gift_ids': receivedGiftIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'owner_id': ownerId.toJson(),
+    'name': name,
+    'received_gift_ids': receivedGiftIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class CreateGiftCollection extends TdFunction<GiftCollection> {
     MessageSender? ownerId,
     String? name,
     List<String>? receivedGiftIds,
-  }) =>
-      CreateGiftCollection(
-        ownerId: ownerId ?? this.ownerId,
-        name: name ?? this.name,
-        receivedGiftIds: receivedGiftIds ?? this.receivedGiftIds,
-      );
+  }) => CreateGiftCollection(
+    ownerId: ownerId ?? this.ownerId,
+    name: name ?? this.name,
+    receivedGiftIds: receivedGiftIds ?? this.receivedGiftIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'createGiftCollection';

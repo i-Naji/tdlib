@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Represents an icon for a chat folder
 final class ChatFolderIcon extends TdObject {
   /// Represents an icon for a chat folder
-  const ChatFolderIcon({
-    required this.name,
-    this.extra,
-    this.clientId,
-  });
+  const ChatFolderIcon({required this.name, this.extra, this.clientId});
 
   /// The chosen icon name for short folder representation; one of "All", "Unread", "Unmuted", "Bots", "Channels", "Groups", "Private", "Custom", "Setup", "Cat", "Crown", "Favorite", "Flower", "Game", "Home", "Love", "Mask", "Party", "Sport", "Study", "Trade", "Travel", "Work", "Airplane", "Book", "Light", "Like", "Money", "Note", "Palette"
   final String name;
@@ -25,24 +21,17 @@ final class ChatFolderIcon extends TdObject {
 
   /// Parses a [ChatFolderIcon] from TDLib JSON.
   factory ChatFolderIcon.fromJson(Map<String, dynamic> json) => ChatFolderIcon(
-        name: _readString(json['name']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    name: _readString(json['name']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'name': name};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ChatFolderIcon copyWith({
-    String? name,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  ChatFolderIcon copyWith({String? name, dynamic extra, int? clientId}) =>
       ChatFolderIcon(
         name: name ?? this.name,
         extra: extra ?? this.extra,

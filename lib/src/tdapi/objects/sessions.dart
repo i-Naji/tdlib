@@ -29,19 +29,21 @@ final class Sessions extends TdObject {
 
   /// Parses a [Sessions] from TDLib JSON.
   factory Sessions.fromJson(Map<String, dynamic> json) => Sessions(
-        sessions: _readList<Session>(
-            json['sessions'], (e) => _readObject(e, Session.fromJson)),
-        inactiveSessionTtlDays: _readInt(json['inactive_session_ttl_days']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    sessions: _readList<Session>(
+      json['sessions'],
+      (e) => _readObject(e, Session.fromJson),
+    ),
+    inactiveSessionTtlDays: _readInt(json['inactive_session_ttl_days']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sessions': [for (final e in sessions) e.toJson()],
-        'inactive_session_ttl_days': inactiveSessionTtlDays,
-      };
+    '@type': CONSTRUCTOR,
+    'sessions': [for (final e in sessions) e.toJson()],
+    'inactive_session_ttl_days': inactiveSessionTtlDays,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +52,13 @@ final class Sessions extends TdObject {
     int? inactiveSessionTtlDays,
     dynamic extra,
     int? clientId,
-  }) =>
-      Sessions(
-        sessions: sessions ?? this.sessions,
-        inactiveSessionTtlDays:
-            inactiveSessionTtlDays ?? this.inactiveSessionTtlDays,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => Sessions(
+    sessions: sessions ?? this.sessions,
+    inactiveSessionTtlDays:
+        inactiveSessionTtlDays ?? this.inactiveSessionTtlDays,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sessions';

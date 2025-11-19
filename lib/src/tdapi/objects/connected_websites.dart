@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of websites the current user is logged in with Telegram
 final class ConnectedWebsites extends TdObject {
   /// Contains a list of websites the current user is logged in with Telegram
-  const ConnectedWebsites({
-    required this.websites,
-    this.extra,
-    this.clientId,
-  });
+  const ConnectedWebsites({required this.websites, this.extra, this.clientId});
 
   /// List of connected websites
   final List<ConnectedWebsite> websites;
@@ -27,16 +23,18 @@ final class ConnectedWebsites extends TdObject {
   factory ConnectedWebsites.fromJson(Map<String, dynamic> json) =>
       ConnectedWebsites(
         websites: _readList<ConnectedWebsite>(
-            json['websites'], (e) => _readObject(e, ConnectedWebsite.fromJson)),
+          json['websites'],
+          (e) => _readObject(e, ConnectedWebsite.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'websites': [for (final e in websites) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'websites': [for (final e in websites) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +42,11 @@ final class ConnectedWebsites extends TdObject {
     List<ConnectedWebsite>? websites,
     dynamic extra,
     int? clientId,
-  }) =>
-      ConnectedWebsites(
-        websites: websites ?? this.websites,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ConnectedWebsites(
+    websites: websites ?? this.websites,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'connectedWebsites';

@@ -31,11 +31,11 @@ final class DownloadedFileCounts extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'active_count': activeCount,
-        'paused_count': pausedCount,
-        'completed_count': completedCount,
-      };
+    '@type': CONSTRUCTOR,
+    'active_count': activeCount,
+    'paused_count': pausedCount,
+    'completed_count': completedCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class DownloadedFileCounts extends TdObject {
     int? activeCount,
     int? pausedCount,
     int? completedCount,
-  }) =>
-      DownloadedFileCounts(
-        activeCount: activeCount ?? this.activeCount,
-        pausedCount: pausedCount ?? this.pausedCount,
-        completedCount: completedCount ?? this.completedCount,
-      );
+  }) => DownloadedFileCounts(
+    activeCount: activeCount ?? this.activeCount,
+    pausedCount: pausedCount ?? this.pausedCount,
+    completedCount: completedCount ?? this.completedCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'downloadedFileCounts';

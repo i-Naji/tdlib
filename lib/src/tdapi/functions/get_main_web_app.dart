@@ -29,13 +29,13 @@ final class GetMainWebApp extends TdFunction<MainWebApp> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'bot_user_id': botUserId,
-        'start_parameter': startParameter,
-        'parameters': parameters.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'bot_user_id': botUserId,
+    'start_parameter': startParameter,
+    'parameters': parameters.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class GetMainWebApp extends TdFunction<MainWebApp> {
     int? botUserId,
     String? startParameter,
     WebAppOpenParameters? parameters,
-  }) =>
-      GetMainWebApp(
-        chatId: chatId ?? this.chatId,
-        botUserId: botUserId ?? this.botUserId,
-        startParameter: startParameter ?? this.startParameter,
-        parameters: parameters ?? this.parameters,
-      );
+  }) => GetMainWebApp(
+    chatId: chatId ?? this.chatId,
+    botUserId: botUserId ?? this.botUserId,
+    startParameter: startParameter ?? this.startParameter,
+    parameters: parameters ?? this.parameters,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getMainWebApp';

@@ -48,10 +48,7 @@ final class UndecodedCanSendMessageToUserResult
 /// The user can be messaged
 final class CanSendMessageToUserResultOk extends CanSendMessageToUserResult {
   /// The user can be messaged
-  const CanSendMessageToUserResultOk({
-    this.extra,
-    this.clientId,
-  });
+  const CanSendMessageToUserResultOk({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -69,17 +66,12 @@ final class CanSendMessageToUserResultOk extends CanSendMessageToUserResult {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  CanSendMessageToUserResultOk copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  CanSendMessageToUserResultOk copyWith({dynamic extra, int? clientId}) =>
       CanSendMessageToUserResultOk(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -115,19 +107,20 @@ final class CanSendMessageToUserResultUserHasPaidMessages
 
   /// Parses a [CanSendMessageToUserResultUserHasPaidMessages] from TDLib JSON.
   factory CanSendMessageToUserResultUserHasPaidMessages.fromJson(
-          Map<String, dynamic> json) =>
-      CanSendMessageToUserResultUserHasPaidMessages(
-        outgoingPaidMessageStarCount:
-            _readInt(json['outgoing_paid_message_star_count']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => CanSendMessageToUserResultUserHasPaidMessages(
+    outgoingPaidMessageStarCount: _readInt(
+      json['outgoing_paid_message_star_count'],
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'outgoing_paid_message_star_count': outgoingPaidMessageStarCount,
-      };
+    '@type': CONSTRUCTOR,
+    'outgoing_paid_message_star_count': outgoingPaidMessageStarCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -136,13 +129,12 @@ final class CanSendMessageToUserResultUserHasPaidMessages
     int? outgoingPaidMessageStarCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      CanSendMessageToUserResultUserHasPaidMessages(
-        outgoingPaidMessageStarCount:
-            outgoingPaidMessageStarCount ?? this.outgoingPaidMessageStarCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CanSendMessageToUserResultUserHasPaidMessages(
+    outgoingPaidMessageStarCount:
+        outgoingPaidMessageStarCount ?? this.outgoingPaidMessageStarCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -156,10 +148,7 @@ final class CanSendMessageToUserResultUserHasPaidMessages
 final class CanSendMessageToUserResultUserIsDeleted
     extends CanSendMessageToUserResult {
   /// The user can't be messaged, because they are deleted or unknown
-  const CanSendMessageToUserResultUserIsDeleted({
-    this.extra,
-    this.clientId,
-  });
+  const CanSendMessageToUserResultUserIsDeleted({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -171,16 +160,14 @@ final class CanSendMessageToUserResultUserIsDeleted
 
   /// Parses a [CanSendMessageToUserResultUserIsDeleted] from TDLib JSON.
   factory CanSendMessageToUserResultUserIsDeleted.fromJson(
-          Map<String, dynamic> json) =>
-      CanSendMessageToUserResultUserIsDeleted(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => CanSendMessageToUserResultUserIsDeleted(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -188,11 +175,10 @@ final class CanSendMessageToUserResultUserIsDeleted
   CanSendMessageToUserResultUserIsDeleted copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      CanSendMessageToUserResultUserIsDeleted(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CanSendMessageToUserResultUserIsDeleted(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'canSendMessageToUserResultUserIsDeleted';
@@ -220,16 +206,14 @@ final class CanSendMessageToUserResultUserRestrictsNewChats
 
   /// Parses a [CanSendMessageToUserResultUserRestrictsNewChats] from TDLib JSON.
   factory CanSendMessageToUserResultUserRestrictsNewChats.fromJson(
-          Map<String, dynamic> json) =>
-      CanSendMessageToUserResultUserRestrictsNewChats(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => CanSendMessageToUserResultUserRestrictsNewChats(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -237,11 +221,10 @@ final class CanSendMessageToUserResultUserRestrictsNewChats
   CanSendMessageToUserResultUserRestrictsNewChats copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      CanSendMessageToUserResultUserRestrictsNewChats(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CanSendMessageToUserResultUserRestrictsNewChats(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =

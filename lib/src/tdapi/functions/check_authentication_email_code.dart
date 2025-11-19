@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class CheckAuthenticationEmailCode extends TdFunction<Ok> {
   /// Checks the authentication of an email address. Works only when the current authorization state is authorizationStateWaitEmailCode
-  const CheckAuthenticationEmailCode({
-    required this.code,
-  });
+  const CheckAuthenticationEmailCode({required this.code});
 
   /// Email address authentication to check
   final EmailAddressAuthentication code;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'code': code.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'code': code.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CheckAuthenticationEmailCode copyWith({
-    EmailAddressAuthentication? code,
-  }) =>
-      CheckAuthenticationEmailCode(
-        code: code ?? this.code,
-      );
+  CheckAuthenticationEmailCode copyWith({EmailAddressAuthentication? code}) =>
+      CheckAuthenticationEmailCode(code: code ?? this.code);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkAuthenticationEmailCode';

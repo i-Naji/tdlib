@@ -37,15 +37,15 @@ final class SearchStickers extends TdFunction<Stickers> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sticker_type': stickerType.toJson(),
-        'emojis': emojis,
-        'query': query,
-        'input_language_codes': inputLanguageCodes,
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sticker_type': stickerType.toJson(),
+    'emojis': emojis,
+    'query': query,
+    'input_language_codes': inputLanguageCodes,
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class SearchStickers extends TdFunction<Stickers> {
     List<String>? inputLanguageCodes,
     int? offset,
     int? limit,
-  }) =>
-      SearchStickers(
-        stickerType: stickerType ?? this.stickerType,
-        emojis: emojis ?? this.emojis,
-        query: query ?? this.query,
-        inputLanguageCodes: inputLanguageCodes ?? this.inputLanguageCodes,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => SearchStickers(
+    stickerType: stickerType ?? this.stickerType,
+    emojis: emojis ?? this.emojis,
+    query: query ?? this.query,
+    inputLanguageCodes: inputLanguageCodes ?? this.inputLanguageCodes,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchStickers';

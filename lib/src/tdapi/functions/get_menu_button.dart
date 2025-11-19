@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [BotMenuButton].
 final class GetMenuButton extends TdFunction<BotMenuButton> {
   /// Returns menu button set by the bot for the given user; for bots only
-  const GetMenuButton({
-    required this.userId,
-  });
+  const GetMenuButton({required this.userId});
 
   /// Identifier of the user or 0 to get the default menu button
   final int userId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetMenuButton copyWith({
-    int? userId,
-  }) =>
-      GetMenuButton(
-        userId: userId ?? this.userId,
-      );
+  GetMenuButton copyWith({int? userId}) =>
+      GetMenuButton(userId: userId ?? this.userId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getMenuButton';

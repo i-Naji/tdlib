@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class RemoveContacts extends TdFunction<Ok> {
   /// Removes users from the contact list
-  const RemoveContacts({
-    required this.userIds,
-  });
+  const RemoveContacts({required this.userIds});
 
   /// Identifiers of users to be deleted
   final List<int> userIds;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'user_ids': userIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'user_ids': userIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RemoveContacts copyWith({
-    List<int>? userIds,
-  }) =>
-      RemoveContacts(
-        userIds: userIds ?? this.userIds,
-      );
+  RemoveContacts copyWith({List<int>? userIds}) =>
+      RemoveContacts(userIds: userIds ?? this.userIds);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'removeContacts';

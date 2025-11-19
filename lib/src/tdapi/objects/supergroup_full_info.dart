@@ -180,106 +180,114 @@ final class SupergroupFullInfo extends TdObject {
   final int? clientId;
 
   /// Parses a [SupergroupFullInfo] from TDLib JSON.
-  factory SupergroupFullInfo.fromJson(Map<String, dynamic> json) =>
-      SupergroupFullInfo(
-        photo: _readOptional(json['photo'], ChatPhoto.fromJson),
-        description: _readString(json['description']),
-        memberCount: _readInt(json['member_count']),
-        administratorCount: _readInt(json['administrator_count']),
-        restrictedCount: _readInt(json['restricted_count']),
-        bannedCount: _readInt(json['banned_count']),
-        linkedChatId: _readInt(json['linked_chat_id']),
-        directMessagesChatId: _readInt(json['direct_messages_chat_id']),
-        slowModeDelay: _readInt(json['slow_mode_delay']),
-        slowModeDelayExpiresIn: _readDouble(json['slow_mode_delay_expires_in']),
-        canEnablePaidMessages: _readBool(json['can_enable_paid_messages']),
-        canEnablePaidReaction: _readBool(json['can_enable_paid_reaction']),
-        canGetMembers: _readBool(json['can_get_members']),
-        hasHiddenMembers: _readBool(json['has_hidden_members']),
-        canHideMembers: _readBool(json['can_hide_members']),
-        canSetStickerSet: _readBool(json['can_set_sticker_set']),
-        canSetLocation: _readBool(json['can_set_location']),
-        canGetStatistics: _readBool(json['can_get_statistics']),
-        canGetRevenueStatistics: _readBool(json['can_get_revenue_statistics']),
-        canGetStarRevenueStatistics:
-            _readBool(json['can_get_star_revenue_statistics']),
-        canSendGift: _readBool(json['can_send_gift']),
-        canToggleAggressiveAntiSpam:
-            _readBool(json['can_toggle_aggressive_anti_spam']),
-        isAllHistoryAvailable: _readBool(json['is_all_history_available']),
-        canHaveSponsoredMessages:
-            _readBool(json['can_have_sponsored_messages']),
-        hasAggressiveAntiSpamEnabled:
-            _readBool(json['has_aggressive_anti_spam_enabled']),
-        hasPaidMediaAllowed: _readBool(json['has_paid_media_allowed']),
-        hasPinnedStories: _readBool(json['has_pinned_stories']),
-        giftCount: _readInt(json['gift_count']),
-        myBoostCount: _readInt(json['my_boost_count']),
-        unrestrictBoostCount: _readInt(json['unrestrict_boost_count']),
-        outgoingPaidMessageStarCount:
-            _readInt(json['outgoing_paid_message_star_count']),
-        stickerSetId: _readInt(json['sticker_set_id']),
-        customEmojiStickerSetId: _readInt(json['custom_emoji_sticker_set_id']),
-        location: _readOptional(json['location'], ChatLocation.fromJson),
-        inviteLink: _readOptional(json['invite_link'], ChatInviteLink.fromJson),
-        botCommands: _readList<BotCommands>(
-            json['bot_commands'], (e) => _readObject(e, BotCommands.fromJson)),
-        botVerification:
-            _readOptional(json['bot_verification'], BotVerification.fromJson),
-        mainProfileTab:
-            _readOptional(json['main_profile_tab'], ProfileTab.fromJson),
-        upgradedFromBasicGroupId:
-            _readInt(json['upgraded_from_basic_group_id']),
-        upgradedFromMaxMessageId:
-            _readInt(json['upgraded_from_max_message_id']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+  factory SupergroupFullInfo.fromJson(
+    Map<String, dynamic> json,
+  ) => SupergroupFullInfo(
+    photo: _readOptional(json['photo'], ChatPhoto.fromJson),
+    description: _readString(json['description']),
+    memberCount: _readInt(json['member_count']),
+    administratorCount: _readInt(json['administrator_count']),
+    restrictedCount: _readInt(json['restricted_count']),
+    bannedCount: _readInt(json['banned_count']),
+    linkedChatId: _readInt(json['linked_chat_id']),
+    directMessagesChatId: _readInt(json['direct_messages_chat_id']),
+    slowModeDelay: _readInt(json['slow_mode_delay']),
+    slowModeDelayExpiresIn: _readDouble(json['slow_mode_delay_expires_in']),
+    canEnablePaidMessages: _readBool(json['can_enable_paid_messages']),
+    canEnablePaidReaction: _readBool(json['can_enable_paid_reaction']),
+    canGetMembers: _readBool(json['can_get_members']),
+    hasHiddenMembers: _readBool(json['has_hidden_members']),
+    canHideMembers: _readBool(json['can_hide_members']),
+    canSetStickerSet: _readBool(json['can_set_sticker_set']),
+    canSetLocation: _readBool(json['can_set_location']),
+    canGetStatistics: _readBool(json['can_get_statistics']),
+    canGetRevenueStatistics: _readBool(json['can_get_revenue_statistics']),
+    canGetStarRevenueStatistics: _readBool(
+      json['can_get_star_revenue_statistics'],
+    ),
+    canSendGift: _readBool(json['can_send_gift']),
+    canToggleAggressiveAntiSpam: _readBool(
+      json['can_toggle_aggressive_anti_spam'],
+    ),
+    isAllHistoryAvailable: _readBool(json['is_all_history_available']),
+    canHaveSponsoredMessages: _readBool(json['can_have_sponsored_messages']),
+    hasAggressiveAntiSpamEnabled: _readBool(
+      json['has_aggressive_anti_spam_enabled'],
+    ),
+    hasPaidMediaAllowed: _readBool(json['has_paid_media_allowed']),
+    hasPinnedStories: _readBool(json['has_pinned_stories']),
+    giftCount: _readInt(json['gift_count']),
+    myBoostCount: _readInt(json['my_boost_count']),
+    unrestrictBoostCount: _readInt(json['unrestrict_boost_count']),
+    outgoingPaidMessageStarCount: _readInt(
+      json['outgoing_paid_message_star_count'],
+    ),
+    stickerSetId: _readInt(json['sticker_set_id']),
+    customEmojiStickerSetId: _readInt(json['custom_emoji_sticker_set_id']),
+    location: _readOptional(json['location'], ChatLocation.fromJson),
+    inviteLink: _readOptional(json['invite_link'], ChatInviteLink.fromJson),
+    botCommands: _readList<BotCommands>(
+      json['bot_commands'],
+      (e) => _readObject(e, BotCommands.fromJson),
+    ),
+    botVerification: _readOptional(
+      json['bot_verification'],
+      BotVerification.fromJson,
+    ),
+    mainProfileTab: _readOptional(
+      json['main_profile_tab'],
+      ProfileTab.fromJson,
+    ),
+    upgradedFromBasicGroupId: _readInt(json['upgraded_from_basic_group_id']),
+    upgradedFromMaxMessageId: _readInt(json['upgraded_from_max_message_id']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo?.toJson(),
-        'description': description,
-        'member_count': memberCount,
-        'administrator_count': administratorCount,
-        'restricted_count': restrictedCount,
-        'banned_count': bannedCount,
-        'linked_chat_id': linkedChatId,
-        'direct_messages_chat_id': directMessagesChatId,
-        'slow_mode_delay': slowModeDelay,
-        'slow_mode_delay_expires_in': slowModeDelayExpiresIn,
-        'can_enable_paid_messages': canEnablePaidMessages,
-        'can_enable_paid_reaction': canEnablePaidReaction,
-        'can_get_members': canGetMembers,
-        'has_hidden_members': hasHiddenMembers,
-        'can_hide_members': canHideMembers,
-        'can_set_sticker_set': canSetStickerSet,
-        'can_set_location': canSetLocation,
-        'can_get_statistics': canGetStatistics,
-        'can_get_revenue_statistics': canGetRevenueStatistics,
-        'can_get_star_revenue_statistics': canGetStarRevenueStatistics,
-        'can_send_gift': canSendGift,
-        'can_toggle_aggressive_anti_spam': canToggleAggressiveAntiSpam,
-        'is_all_history_available': isAllHistoryAvailable,
-        'can_have_sponsored_messages': canHaveSponsoredMessages,
-        'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
-        'has_paid_media_allowed': hasPaidMediaAllowed,
-        'has_pinned_stories': hasPinnedStories,
-        'gift_count': giftCount,
-        'my_boost_count': myBoostCount,
-        'unrestrict_boost_count': unrestrictBoostCount,
-        'outgoing_paid_message_star_count': outgoingPaidMessageStarCount,
-        'sticker_set_id': stickerSetId.toString(),
-        'custom_emoji_sticker_set_id': customEmojiStickerSetId.toString(),
-        'location': location?.toJson(),
-        'invite_link': inviteLink?.toJson(),
-        'bot_commands': [for (final e in botCommands) e.toJson()],
-        'bot_verification': botVerification?.toJson(),
-        'main_profile_tab': mainProfileTab?.toJson(),
-        'upgraded_from_basic_group_id': upgradedFromBasicGroupId,
-        'upgraded_from_max_message_id': upgradedFromMaxMessageId,
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo?.toJson(),
+    'description': description,
+    'member_count': memberCount,
+    'administrator_count': administratorCount,
+    'restricted_count': restrictedCount,
+    'banned_count': bannedCount,
+    'linked_chat_id': linkedChatId,
+    'direct_messages_chat_id': directMessagesChatId,
+    'slow_mode_delay': slowModeDelay,
+    'slow_mode_delay_expires_in': slowModeDelayExpiresIn,
+    'can_enable_paid_messages': canEnablePaidMessages,
+    'can_enable_paid_reaction': canEnablePaidReaction,
+    'can_get_members': canGetMembers,
+    'has_hidden_members': hasHiddenMembers,
+    'can_hide_members': canHideMembers,
+    'can_set_sticker_set': canSetStickerSet,
+    'can_set_location': canSetLocation,
+    'can_get_statistics': canGetStatistics,
+    'can_get_revenue_statistics': canGetRevenueStatistics,
+    'can_get_star_revenue_statistics': canGetStarRevenueStatistics,
+    'can_send_gift': canSendGift,
+    'can_toggle_aggressive_anti_spam': canToggleAggressiveAntiSpam,
+    'is_all_history_available': isAllHistoryAvailable,
+    'can_have_sponsored_messages': canHaveSponsoredMessages,
+    'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
+    'has_paid_media_allowed': hasPaidMediaAllowed,
+    'has_pinned_stories': hasPinnedStories,
+    'gift_count': giftCount,
+    'my_boost_count': myBoostCount,
+    'unrestrict_boost_count': unrestrictBoostCount,
+    'outgoing_paid_message_star_count': outgoingPaidMessageStarCount,
+    'sticker_set_id': stickerSetId.toString(),
+    'custom_emoji_sticker_set_id': customEmojiStickerSetId.toString(),
+    'location': location?.toJson(),
+    'invite_link': inviteLink?.toJson(),
+    'bot_commands': [for (final e in botCommands) e.toJson()],
+    'bot_verification': botVerification?.toJson(),
+    'main_profile_tab': mainProfileTab?.toJson(),
+    'upgraded_from_basic_group_id': upgradedFromBasicGroupId,
+    'upgraded_from_max_message_id': upgradedFromMaxMessageId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -326,66 +334,64 @@ final class SupergroupFullInfo extends TdObject {
     int? upgradedFromMaxMessageId,
     dynamic extra,
     int? clientId,
-  }) =>
-      SupergroupFullInfo(
-        photo: photo != null ? photo() : this.photo,
-        description: description ?? this.description,
-        memberCount: memberCount ?? this.memberCount,
-        administratorCount: administratorCount ?? this.administratorCount,
-        restrictedCount: restrictedCount ?? this.restrictedCount,
-        bannedCount: bannedCount ?? this.bannedCount,
-        linkedChatId: linkedChatId ?? this.linkedChatId,
-        directMessagesChatId: directMessagesChatId ?? this.directMessagesChatId,
-        slowModeDelay: slowModeDelay ?? this.slowModeDelay,
-        slowModeDelayExpiresIn:
-            slowModeDelayExpiresIn ?? this.slowModeDelayExpiresIn,
-        canEnablePaidMessages:
-            canEnablePaidMessages ?? this.canEnablePaidMessages,
-        canEnablePaidReaction:
-            canEnablePaidReaction ?? this.canEnablePaidReaction,
-        canGetMembers: canGetMembers ?? this.canGetMembers,
-        hasHiddenMembers: hasHiddenMembers ?? this.hasHiddenMembers,
-        canHideMembers: canHideMembers ?? this.canHideMembers,
-        canSetStickerSet: canSetStickerSet ?? this.canSetStickerSet,
-        canSetLocation: canSetLocation ?? this.canSetLocation,
-        canGetStatistics: canGetStatistics ?? this.canGetStatistics,
-        canGetRevenueStatistics:
-            canGetRevenueStatistics ?? this.canGetRevenueStatistics,
-        canGetStarRevenueStatistics:
-            canGetStarRevenueStatistics ?? this.canGetStarRevenueStatistics,
-        canSendGift: canSendGift ?? this.canSendGift,
-        canToggleAggressiveAntiSpam:
-            canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
-        isAllHistoryAvailable:
-            isAllHistoryAvailable ?? this.isAllHistoryAvailable,
-        canHaveSponsoredMessages:
-            canHaveSponsoredMessages ?? this.canHaveSponsoredMessages,
-        hasAggressiveAntiSpamEnabled:
-            hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
-        hasPaidMediaAllowed: hasPaidMediaAllowed ?? this.hasPaidMediaAllowed,
-        hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
-        giftCount: giftCount ?? this.giftCount,
-        myBoostCount: myBoostCount ?? this.myBoostCount,
-        unrestrictBoostCount: unrestrictBoostCount ?? this.unrestrictBoostCount,
-        outgoingPaidMessageStarCount:
-            outgoingPaidMessageStarCount ?? this.outgoingPaidMessageStarCount,
-        stickerSetId: stickerSetId ?? this.stickerSetId,
-        customEmojiStickerSetId:
-            customEmojiStickerSetId ?? this.customEmojiStickerSetId,
-        location: location != null ? location() : this.location,
-        inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
-        botCommands: botCommands ?? this.botCommands,
-        botVerification:
-            botVerification != null ? botVerification() : this.botVerification,
-        mainProfileTab:
-            mainProfileTab != null ? mainProfileTab() : this.mainProfileTab,
-        upgradedFromBasicGroupId:
-            upgradedFromBasicGroupId ?? this.upgradedFromBasicGroupId,
-        upgradedFromMaxMessageId:
-            upgradedFromMaxMessageId ?? this.upgradedFromMaxMessageId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => SupergroupFullInfo(
+    photo: photo != null ? photo() : this.photo,
+    description: description ?? this.description,
+    memberCount: memberCount ?? this.memberCount,
+    administratorCount: administratorCount ?? this.administratorCount,
+    restrictedCount: restrictedCount ?? this.restrictedCount,
+    bannedCount: bannedCount ?? this.bannedCount,
+    linkedChatId: linkedChatId ?? this.linkedChatId,
+    directMessagesChatId: directMessagesChatId ?? this.directMessagesChatId,
+    slowModeDelay: slowModeDelay ?? this.slowModeDelay,
+    slowModeDelayExpiresIn:
+        slowModeDelayExpiresIn ?? this.slowModeDelayExpiresIn,
+    canEnablePaidMessages: canEnablePaidMessages ?? this.canEnablePaidMessages,
+    canEnablePaidReaction: canEnablePaidReaction ?? this.canEnablePaidReaction,
+    canGetMembers: canGetMembers ?? this.canGetMembers,
+    hasHiddenMembers: hasHiddenMembers ?? this.hasHiddenMembers,
+    canHideMembers: canHideMembers ?? this.canHideMembers,
+    canSetStickerSet: canSetStickerSet ?? this.canSetStickerSet,
+    canSetLocation: canSetLocation ?? this.canSetLocation,
+    canGetStatistics: canGetStatistics ?? this.canGetStatistics,
+    canGetRevenueStatistics:
+        canGetRevenueStatistics ?? this.canGetRevenueStatistics,
+    canGetStarRevenueStatistics:
+        canGetStarRevenueStatistics ?? this.canGetStarRevenueStatistics,
+    canSendGift: canSendGift ?? this.canSendGift,
+    canToggleAggressiveAntiSpam:
+        canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
+    isAllHistoryAvailable: isAllHistoryAvailable ?? this.isAllHistoryAvailable,
+    canHaveSponsoredMessages:
+        canHaveSponsoredMessages ?? this.canHaveSponsoredMessages,
+    hasAggressiveAntiSpamEnabled:
+        hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
+    hasPaidMediaAllowed: hasPaidMediaAllowed ?? this.hasPaidMediaAllowed,
+    hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
+    giftCount: giftCount ?? this.giftCount,
+    myBoostCount: myBoostCount ?? this.myBoostCount,
+    unrestrictBoostCount: unrestrictBoostCount ?? this.unrestrictBoostCount,
+    outgoingPaidMessageStarCount:
+        outgoingPaidMessageStarCount ?? this.outgoingPaidMessageStarCount,
+    stickerSetId: stickerSetId ?? this.stickerSetId,
+    customEmojiStickerSetId:
+        customEmojiStickerSetId ?? this.customEmojiStickerSetId,
+    location: location != null ? location() : this.location,
+    inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
+    botCommands: botCommands ?? this.botCommands,
+    botVerification: botVerification != null
+        ? botVerification()
+        : this.botVerification,
+    mainProfileTab: mainProfileTab != null
+        ? mainProfileTab()
+        : this.mainProfileTab,
+    upgradedFromBasicGroupId:
+        upgradedFromBasicGroupId ?? this.upgradedFromBasicGroupId,
+    upgradedFromMaxMessageId:
+        upgradedFromMaxMessageId ?? this.upgradedFromMaxMessageId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'supergroupFullInfo';

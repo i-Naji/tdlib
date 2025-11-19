@@ -8,28 +8,21 @@ part of '../tdapi.dart';
 /// Returns [TestInt].
 final class TestSquareInt extends TdFunction<TestInt> {
   /// Returns the squared received number; for testing only. This is an offline method. Can be called before authorization
-  const TestSquareInt({
-    required this.x,
-  });
+  const TestSquareInt({required this.x});
 
   /// Number to square
   final int x;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'x': x,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'x': x,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TestSquareInt copyWith({
-    int? x,
-  }) =>
-      TestSquareInt(
-        x: x ?? this.x,
-      );
+  TestSquareInt copyWith({int? x}) => TestSquareInt(x: x ?? this.x);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'testSquareInt';

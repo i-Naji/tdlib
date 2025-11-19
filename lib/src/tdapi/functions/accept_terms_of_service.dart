@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class AcceptTermsOfService extends TdFunction<Ok> {
   /// Accepts Telegram terms of services
-  const AcceptTermsOfService({
-    required this.termsOfServiceId,
-  });
+  const AcceptTermsOfService({required this.termsOfServiceId});
 
   /// Terms of service identifier
   final String termsOfServiceId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'terms_of_service_id': termsOfServiceId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'terms_of_service_id': termsOfServiceId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  AcceptTermsOfService copyWith({
-    String? termsOfServiceId,
-  }) =>
+  AcceptTermsOfService copyWith({String? termsOfServiceId}) =>
       AcceptTermsOfService(
         termsOfServiceId: termsOfServiceId ?? this.termsOfServiceId,
       );

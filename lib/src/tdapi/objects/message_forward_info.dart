@@ -31,18 +31,19 @@ final class MessageForwardInfo extends TdObject {
         origin: _readObject(json['origin'], MessageOrigin.fromJson),
         date: _readInt(json['date']),
         source: _readOptional(json['source'], ForwardSource.fromJson),
-        publicServiceAnnouncementType:
-            _readString(json['public_service_announcement_type']),
+        publicServiceAnnouncementType: _readString(
+          json['public_service_announcement_type'],
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'origin': origin.toJson(),
-        'date': date,
-        'source': source?.toJson(),
-        'public_service_announcement_type': publicServiceAnnouncementType,
-      };
+    '@type': CONSTRUCTOR,
+    'origin': origin.toJson(),
+    'date': date,
+    'source': source?.toJson(),
+    'public_service_announcement_type': publicServiceAnnouncementType,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,14 +52,13 @@ final class MessageForwardInfo extends TdObject {
     int? date,
     ForwardSource? Function()? source,
     String? publicServiceAnnouncementType,
-  }) =>
-      MessageForwardInfo(
-        origin: origin ?? this.origin,
-        date: date ?? this.date,
-        source: source != null ? source() : this.source,
-        publicServiceAnnouncementType:
-            publicServiceAnnouncementType ?? this.publicServiceAnnouncementType,
-      );
+  }) => MessageForwardInfo(
+    origin: origin ?? this.origin,
+    date: date ?? this.date,
+    source: source != null ? source() : this.source,
+    publicServiceAnnouncementType:
+        publicServiceAnnouncementType ?? this.publicServiceAnnouncementType,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageForwardInfo';

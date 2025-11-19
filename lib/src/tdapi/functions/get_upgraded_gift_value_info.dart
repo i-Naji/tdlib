@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [UpgradedGiftValueInfo].
 final class GetUpgradedGiftValueInfo extends TdFunction<UpgradedGiftValueInfo> {
   /// Returns information about value of an upgraded gift by its name
-  const GetUpgradedGiftValueInfo({
-    required this.name,
-  });
+  const GetUpgradedGiftValueInfo({required this.name});
 
   /// Unique name of the upgraded gift
   final String name;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'name': name,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'name': name,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetUpgradedGiftValueInfo copyWith({
-    String? name,
-  }) =>
-      GetUpgradedGiftValueInfo(
-        name: name ?? this.name,
-      );
+  GetUpgradedGiftValueInfo copyWith({String? name}) =>
+      GetUpgradedGiftValueInfo(name: name ?? this.name);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getUpgradedGiftValueInfo';

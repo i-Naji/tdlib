@@ -36,12 +36,12 @@ final class UnconfirmedSession extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'id': id.toString(),
-        'log_in_date': logInDate,
-        'device_model': deviceModel,
-        'location': location,
-      };
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'log_in_date': logInDate,
+    'device_model': deviceModel,
+    'location': location,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class UnconfirmedSession extends TdObject {
     int? logInDate,
     String? deviceModel,
     String? location,
-  }) =>
-      UnconfirmedSession(
-        id: id ?? this.id,
-        logInDate: logInDate ?? this.logInDate,
-        deviceModel: deviceModel ?? this.deviceModel,
-        location: location ?? this.location,
-      );
+  }) => UnconfirmedSession(
+    id: id ?? this.id,
+    logInDate: logInDate ?? this.logInDate,
+    deviceModel: deviceModel ?? this.deviceModel,
+    location: location ?? this.location,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'unconfirmedSession';

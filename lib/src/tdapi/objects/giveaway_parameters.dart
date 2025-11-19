@@ -41,8 +41,10 @@ final class GiveawayParameters extends TdObject {
   factory GiveawayParameters.fromJson(Map<String, dynamic> json) =>
       GiveawayParameters(
         boostedChatId: _readInt(json['boosted_chat_id']),
-        additionalChatIds:
-            _readList<int>(json['additional_chat_ids'], _readInt),
+        additionalChatIds: _readList<int>(
+          json['additional_chat_ids'],
+          _readInt,
+        ),
         winnersSelectionDate: _readInt(json['winners_selection_date']),
         onlyNewMembers: _readBool(json['only_new_members']),
         hasPublicWinners: _readBool(json['has_public_winners']),
@@ -52,15 +54,15 @@ final class GiveawayParameters extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'boosted_chat_id': boostedChatId,
-        'additional_chat_ids': additionalChatIds,
-        'winners_selection_date': winnersSelectionDate,
-        'only_new_members': onlyNewMembers,
-        'has_public_winners': hasPublicWinners,
-        'country_codes': countryCodes,
-        'prize_description': prizeDescription,
-      };
+    '@type': CONSTRUCTOR,
+    'boosted_chat_id': boostedChatId,
+    'additional_chat_ids': additionalChatIds,
+    'winners_selection_date': winnersSelectionDate,
+    'only_new_members': onlyNewMembers,
+    'has_public_winners': hasPublicWinners,
+    'country_codes': countryCodes,
+    'prize_description': prizeDescription,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -72,16 +74,15 @@ final class GiveawayParameters extends TdObject {
     bool? hasPublicWinners,
     List<String>? countryCodes,
     String? prizeDescription,
-  }) =>
-      GiveawayParameters(
-        boostedChatId: boostedChatId ?? this.boostedChatId,
-        additionalChatIds: additionalChatIds ?? this.additionalChatIds,
-        winnersSelectionDate: winnersSelectionDate ?? this.winnersSelectionDate,
-        onlyNewMembers: onlyNewMembers ?? this.onlyNewMembers,
-        hasPublicWinners: hasPublicWinners ?? this.hasPublicWinners,
-        countryCodes: countryCodes ?? this.countryCodes,
-        prizeDescription: prizeDescription ?? this.prizeDescription,
-      );
+  }) => GiveawayParameters(
+    boostedChatId: boostedChatId ?? this.boostedChatId,
+    additionalChatIds: additionalChatIds ?? this.additionalChatIds,
+    winnersSelectionDate: winnersSelectionDate ?? this.winnersSelectionDate,
+    onlyNewMembers: onlyNewMembers ?? this.onlyNewMembers,
+    hasPublicWinners: hasPublicWinners ?? this.hasPublicWinners,
+    countryCodes: countryCodes ?? this.countryCodes,
+    prizeDescription: prizeDescription ?? this.prizeDescription,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giveawayParameters';

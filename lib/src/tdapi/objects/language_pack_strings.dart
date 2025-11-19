@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of language pack strings
 final class LanguagePackStrings extends TdObject {
   /// Contains a list of language pack strings
-  const LanguagePackStrings({
-    required this.strings,
-    this.extra,
-    this.clientId,
-  });
+  const LanguagePackStrings({required this.strings, this.extra, this.clientId});
 
   /// A list of language pack strings
   final List<LanguagePackString> strings;
@@ -26,17 +22,19 @@ final class LanguagePackStrings extends TdObject {
   /// Parses a [LanguagePackStrings] from TDLib JSON.
   factory LanguagePackStrings.fromJson(Map<String, dynamic> json) =>
       LanguagePackStrings(
-        strings: _readList<LanguagePackString>(json['strings'],
-            (e) => _readObject(e, LanguagePackString.fromJson)),
+        strings: _readList<LanguagePackString>(
+          json['strings'],
+          (e) => _readObject(e, LanguagePackString.fromJson),
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'strings': [for (final e in strings) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'strings': [for (final e in strings) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,12 +42,11 @@ final class LanguagePackStrings extends TdObject {
     List<LanguagePackString>? strings,
     dynamic extra,
     int? clientId,
-  }) =>
-      LanguagePackStrings(
-        strings: strings ?? this.strings,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => LanguagePackStrings(
+    strings: strings ?? this.strings,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'languagePackStrings';

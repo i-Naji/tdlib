@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class AllowBotToSendMessages extends TdFunction<Ok> {
   /// Allows the specified bot to send messages to the user
-  const AllowBotToSendMessages({
-    required this.botUserId,
-  });
+  const AllowBotToSendMessages({required this.botUserId});
 
   /// Identifier of the target bot
   final int botUserId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  AllowBotToSendMessages copyWith({
-    int? botUserId,
-  }) =>
-      AllowBotToSendMessages(
-        botUserId: botUserId ?? this.botUserId,
-      );
+  AllowBotToSendMessages copyWith({int? botUserId}) =>
+      AllowBotToSendMessages(botUserId: botUserId ?? this.botUserId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'allowBotToSendMessages';

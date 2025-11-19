@@ -26,21 +26,20 @@ final class UpgradedGiftBackdropCount extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'backdrop': backdrop.toJson(),
-        'total_count': totalCount,
-      };
+    '@type': CONSTRUCTOR,
+    'backdrop': backdrop.toJson(),
+    'total_count': totalCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   UpgradedGiftBackdropCount copyWith({
     UpgradedGiftBackdrop? backdrop,
     int? totalCount,
-  }) =>
-      UpgradedGiftBackdropCount(
-        backdrop: backdrop ?? this.backdrop,
-        totalCount: totalCount ?? this.totalCount,
-      );
+  }) => UpgradedGiftBackdropCount(
+    backdrop: backdrop ?? this.backdrop,
+    totalCount: totalCount ?? this.totalCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradedGiftBackdropCount';

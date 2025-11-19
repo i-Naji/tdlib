@@ -31,7 +31,9 @@ final class BotMediaPreviewInfo extends TdObject {
   factory BotMediaPreviewInfo.fromJson(Map<String, dynamic> json) =>
       BotMediaPreviewInfo(
         previews: _readList<BotMediaPreview>(
-            json['previews'], (e) => _readObject(e, BotMediaPreview.fromJson)),
+          json['previews'],
+          (e) => _readObject(e, BotMediaPreview.fromJson),
+        ),
         languageCodes: _readList<String>(json['language_codes'], _readString),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -39,10 +41,10 @@ final class BotMediaPreviewInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'previews': [for (final e in previews) e.toJson()],
-        'language_codes': languageCodes,
-      };
+    '@type': CONSTRUCTOR,
+    'previews': [for (final e in previews) e.toJson()],
+    'language_codes': languageCodes,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -51,13 +53,12 @@ final class BotMediaPreviewInfo extends TdObject {
     List<String>? languageCodes,
     dynamic extra,
     int? clientId,
-  }) =>
-      BotMediaPreviewInfo(
-        previews: previews ?? this.previews,
-        languageCodes: languageCodes ?? this.languageCodes,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => BotMediaPreviewInfo(
+    previews: previews ?? this.previews,
+    languageCodes: languageCodes ?? this.languageCodes,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'botMediaPreviewInfo';

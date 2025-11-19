@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [CanSendGiftResult].
 final class CanSendGift extends TdFunction<CanSendGiftResult> {
   /// Checks whether a gift with next_send_date in the future can be sent already
-  const CanSendGift({
-    required this.giftId,
-  });
+  const CanSendGift({required this.giftId});
 
   /// Identifier of the gift to send
   final int giftId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'gift_id': giftId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'gift_id': giftId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CanSendGift copyWith({
-    int? giftId,
-  }) =>
-      CanSendGift(
-        giftId: giftId ?? this.giftId,
-      );
+  CanSendGift copyWith({int? giftId}) =>
+      CanSendGift(giftId: giftId ?? this.giftId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'canSendGift';

@@ -21,22 +21,21 @@ final class SetChatPaidMessageStarCount extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'paid_message_star_count': paidMessageStarCount,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'paid_message_star_count': paidMessageStarCount,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetChatPaidMessageStarCount copyWith({
     int? chatId,
     int? paidMessageStarCount,
-  }) =>
-      SetChatPaidMessageStarCount(
-        chatId: chatId ?? this.chatId,
-        paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
-      );
+  }) => SetChatPaidMessageStarCount(
+    chatId: chatId ?? this.chatId,
+    paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setChatPaidMessageStarCount';

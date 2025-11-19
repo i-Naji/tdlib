@@ -25,12 +25,12 @@ final class GetTonTransactions extends TdFunction<TonTransactions> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'direction': direction?.toJson(),
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'direction': direction?.toJson(),
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class GetTonTransactions extends TdFunction<TonTransactions> {
     TransactionDirection? Function()? direction,
     String? offset,
     int? limit,
-  }) =>
-      GetTonTransactions(
-        direction: direction != null ? direction() : this.direction,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => GetTonTransactions(
+    direction: direction != null ? direction() : this.direction,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getTonTransactions';

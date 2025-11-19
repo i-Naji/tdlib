@@ -81,28 +81,30 @@ final class DirectMessagesChatTopic extends TdObject {
         lastReadOutboxMessageId: _readInt(json['last_read_outbox_message_id']),
         unreadReactionCount: _readInt(json['unread_reaction_count']),
         lastMessage: _readOptional(json['last_message'], Message.fromJson),
-        draftMessage:
-            _readOptional(json['draft_message'], DraftMessage.fromJson),
+        draftMessage: _readOptional(
+          json['draft_message'],
+          DraftMessage.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'id': id,
-        'sender_id': senderId.toJson(),
-        'order': order.toString(),
-        'can_send_unpaid_messages': canSendUnpaidMessages,
-        'is_marked_as_unread': isMarkedAsUnread,
-        'unread_count': unreadCount,
-        'last_read_inbox_message_id': lastReadInboxMessageId,
-        'last_read_outbox_message_id': lastReadOutboxMessageId,
-        'unread_reaction_count': unreadReactionCount,
-        'last_message': lastMessage?.toJson(),
-        'draft_message': draftMessage?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'id': id,
+    'sender_id': senderId.toJson(),
+    'order': order.toString(),
+    'can_send_unpaid_messages': canSendUnpaidMessages,
+    'is_marked_as_unread': isMarkedAsUnread,
+    'unread_count': unreadCount,
+    'last_read_inbox_message_id': lastReadInboxMessageId,
+    'last_read_outbox_message_id': lastReadOutboxMessageId,
+    'unread_reaction_count': unreadReactionCount,
+    'last_message': lastMessage?.toJson(),
+    'draft_message': draftMessage?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -121,26 +123,24 @@ final class DirectMessagesChatTopic extends TdObject {
     DraftMessage? Function()? draftMessage,
     dynamic extra,
     int? clientId,
-  }) =>
-      DirectMessagesChatTopic(
-        chatId: chatId ?? this.chatId,
-        id: id ?? this.id,
-        senderId: senderId ?? this.senderId,
-        order: order ?? this.order,
-        canSendUnpaidMessages:
-            canSendUnpaidMessages ?? this.canSendUnpaidMessages,
-        isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
-        unreadCount: unreadCount ?? this.unreadCount,
-        lastReadInboxMessageId:
-            lastReadInboxMessageId ?? this.lastReadInboxMessageId,
-        lastReadOutboxMessageId:
-            lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
-        unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
-        lastMessage: lastMessage != null ? lastMessage() : this.lastMessage,
-        draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => DirectMessagesChatTopic(
+    chatId: chatId ?? this.chatId,
+    id: id ?? this.id,
+    senderId: senderId ?? this.senderId,
+    order: order ?? this.order,
+    canSendUnpaidMessages: canSendUnpaidMessages ?? this.canSendUnpaidMessages,
+    isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
+    unreadCount: unreadCount ?? this.unreadCount,
+    lastReadInboxMessageId:
+        lastReadInboxMessageId ?? this.lastReadInboxMessageId,
+    lastReadOutboxMessageId:
+        lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
+    unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
+    lastMessage: lastMessage != null ? lastMessage() : this.lastMessage,
+    draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'directMessagesChatTopic';

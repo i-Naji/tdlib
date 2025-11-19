@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [GiftChatThemes].
 final class GetGiftChatThemes extends TdFunction<GiftChatThemes> {
   /// Returns available to the current user gift chat themes
-  const GetGiftChatThemes({
-    required this.offset,
-    required this.limit,
-  });
+  const GetGiftChatThemes({required this.offset, required this.limit});
 
   /// Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
   final String offset;
@@ -21,22 +18,18 @@ final class GetGiftChatThemes extends TdFunction<GiftChatThemes> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetGiftChatThemes copyWith({
-    String? offset,
-    int? limit,
-  }) =>
-      GetGiftChatThemes(
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  GetGiftChatThemes copyWith({String? offset, int? limit}) => GetGiftChatThemes(
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getGiftChatThemes';

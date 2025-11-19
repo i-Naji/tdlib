@@ -8,29 +8,23 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class OpenSponsoredChat extends TdFunction<Ok> {
   /// Informs TDLib that the user opened a sponsored chat
-  const OpenSponsoredChat({
-    required this.sponsoredChatUniqueId,
-  });
+  const OpenSponsoredChat({required this.sponsoredChatUniqueId});
 
   /// Unique identifier of the sponsored chat
   final int sponsoredChatUniqueId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'sponsored_chat_unique_id': sponsoredChatUniqueId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'sponsored_chat_unique_id': sponsoredChatUniqueId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  OpenSponsoredChat copyWith({
-    int? sponsoredChatUniqueId,
-  }) =>
-      OpenSponsoredChat(
-        sponsoredChatUniqueId:
-            sponsoredChatUniqueId ?? this.sponsoredChatUniqueId,
-      );
+  OpenSponsoredChat copyWith({int? sponsoredChatUniqueId}) => OpenSponsoredChat(
+    sponsoredChatUniqueId: sponsoredChatUniqueId ?? this.sponsoredChatUniqueId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'openSponsoredChat';

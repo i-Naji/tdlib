@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class AddLogMessage extends TdFunction<Ok> {
   /// Adds a message to TDLib internal log. Can be called synchronously
-  const AddLogMessage({
-    required this.verbosityLevel,
-    required this.text,
-  });
+  const AddLogMessage({required this.verbosityLevel, required this.text});
 
   /// The minimum verbosity level needed for the message to be logged; 0-1023
   final int verbosityLevel;
@@ -21,22 +18,18 @@ final class AddLogMessage extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'verbosity_level': verbosityLevel,
-        'text': text,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'verbosity_level': verbosityLevel,
+    'text': text,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  AddLogMessage copyWith({
-    int? verbosityLevel,
-    String? text,
-  }) =>
-      AddLogMessage(
-        verbosityLevel: verbosityLevel ?? this.verbosityLevel,
-        text: text ?? this.text,
-      );
+  AddLogMessage copyWith({int? verbosityLevel, String? text}) => AddLogMessage(
+    verbosityLevel: verbosityLevel ?? this.verbosityLevel,
+    text: text ?? this.text,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addLogMessage';

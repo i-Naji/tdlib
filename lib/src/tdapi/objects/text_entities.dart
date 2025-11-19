@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of text entities
 final class TextEntities extends TdObject {
   /// Contains a list of text entities
-  const TextEntities({
-    required this.entities,
-    this.extra,
-    this.clientId,
-  });
+  const TextEntities({required this.entities, this.extra, this.clientId});
 
   /// List of text entities
   final List<TextEntity> entities;
@@ -25,17 +21,19 @@ final class TextEntities extends TdObject {
 
   /// Parses a [TextEntities] from TDLib JSON.
   factory TextEntities.fromJson(Map<String, dynamic> json) => TextEntities(
-        entities: _readList<TextEntity>(
-            json['entities'], (e) => _readObject(e, TextEntity.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    entities: _readList<TextEntity>(
+      json['entities'],
+      (e) => _readObject(e, TextEntity.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'entities': [for (final e in entities) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'entities': [for (final e in entities) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +41,11 @@ final class TextEntities extends TdObject {
     List<TextEntity>? entities,
     dynamic extra,
     int? clientId,
-  }) =>
-      TextEntities(
-        entities: entities ?? this.entities,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => TextEntities(
+    entities: entities ?? this.entities,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'textEntities';

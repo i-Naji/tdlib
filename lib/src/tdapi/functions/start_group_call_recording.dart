@@ -29,13 +29,13 @@ final class StartGroupCallRecording extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'title': title,
-        'record_video': recordVideo,
-        'use_portrait_orientation': usePortraitOrientation,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'title': title,
+    'record_video': recordVideo,
+    'use_portrait_orientation': usePortraitOrientation,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,14 +44,13 @@ final class StartGroupCallRecording extends TdFunction<Ok> {
     String? title,
     bool? recordVideo,
     bool? usePortraitOrientation,
-  }) =>
-      StartGroupCallRecording(
-        groupCallId: groupCallId ?? this.groupCallId,
-        title: title ?? this.title,
-        recordVideo: recordVideo ?? this.recordVideo,
-        usePortraitOrientation:
-            usePortraitOrientation ?? this.usePortraitOrientation,
-      );
+  }) => StartGroupCallRecording(
+    groupCallId: groupCallId ?? this.groupCallId,
+    title: title ?? this.title,
+    recordVideo: recordVideo ?? this.recordVideo,
+    usePortraitOrientation:
+        usePortraitOrientation ?? this.usePortraitOrientation,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'startGroupCallRecording';

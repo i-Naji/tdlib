@@ -33,21 +33,23 @@ final class AddedReactions extends TdObject {
 
   /// Parses a [AddedReactions] from TDLib JSON.
   factory AddedReactions.fromJson(Map<String, dynamic> json) => AddedReactions(
-        totalCount: _readInt(json['total_count']),
-        reactions: _readList<AddedReaction>(
-            json['reactions'], (e) => _readObject(e, AddedReaction.fromJson)),
-        nextOffset: _readString(json['next_offset']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    totalCount: _readInt(json['total_count']),
+    reactions: _readList<AddedReaction>(
+      json['reactions'],
+      (e) => _readObject(e, AddedReaction.fromJson),
+    ),
+    nextOffset: _readString(json['next_offset']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'reactions': [for (final e in reactions) e.toJson()],
-        'next_offset': nextOffset,
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'reactions': [for (final e in reactions) e.toJson()],
+    'next_offset': nextOffset,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -57,14 +59,13 @@ final class AddedReactions extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) =>
-      AddedReactions(
-        totalCount: totalCount ?? this.totalCount,
-        reactions: reactions ?? this.reactions,
-        nextOffset: nextOffset ?? this.nextOffset,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => AddedReactions(
+    totalCount: totalCount ?? this.totalCount,
+    reactions: reactions ?? this.reactions,
+    nextOffset: nextOffset ?? this.nextOffset,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addedReactions';

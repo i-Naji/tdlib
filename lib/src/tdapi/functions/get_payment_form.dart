@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [PaymentForm].
 final class GetPaymentForm extends TdFunction<PaymentForm> {
   /// Returns an invoice payment form. This method must be called when the user presses inline button of the type inlineKeyboardButtonTypeBuy, or wants to buy access to media in a messagePaidMedia message
-  const GetPaymentForm({
-    required this.inputInvoice,
-    this.theme,
-  });
+  const GetPaymentForm({required this.inputInvoice, this.theme});
 
   /// The invoice
   final InputInvoice inputInvoice;
@@ -21,22 +18,21 @@ final class GetPaymentForm extends TdFunction<PaymentForm> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'input_invoice': inputInvoice.toJson(),
-        'theme': theme?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'input_invoice': inputInvoice.toJson(),
+    'theme': theme?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetPaymentForm copyWith({
     InputInvoice? inputInvoice,
     ThemeParameters? Function()? theme,
-  }) =>
-      GetPaymentForm(
-        inputInvoice: inputInvoice ?? this.inputInvoice,
-        theme: theme != null ? theme() : this.theme,
-      );
+  }) => GetPaymentForm(
+    inputInvoice: inputInvoice ?? this.inputInvoice,
+    theme: theme != null ? theme() : this.theme,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getPaymentForm';

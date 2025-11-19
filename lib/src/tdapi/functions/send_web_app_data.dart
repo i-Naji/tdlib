@@ -25,20 +25,16 @@ final class SendWebAppData extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'button_text': buttonText,
-        'data': data,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'button_text': buttonText,
+    'data': data,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SendWebAppData copyWith({
-    int? botUserId,
-    String? buttonText,
-    String? data,
-  }) =>
+  SendWebAppData copyWith({int? botUserId, String? buttonText, String? data}) =>
       SendWebAppData(
         botUserId: botUserId ?? this.botUserId,
         buttonText: buttonText ?? this.buttonText,

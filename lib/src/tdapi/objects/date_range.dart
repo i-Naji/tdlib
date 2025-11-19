@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Represents a date range
 final class DateRange extends TdObject {
   /// Represents a date range
-  const DateRange({
-    required this.startDate,
-    required this.endDate,
-  });
+  const DateRange({required this.startDate, required this.endDate});
 
   /// Point in time (Unix timestamp) at which the date range begins
   final int startDate;
@@ -19,27 +16,23 @@ final class DateRange extends TdObject {
 
   /// Parses a [DateRange] from TDLib JSON.
   factory DateRange.fromJson(Map<String, dynamic> json) => DateRange(
-        startDate: _readInt(json['start_date']),
-        endDate: _readInt(json['end_date']),
-      );
+    startDate: _readInt(json['start_date']),
+    endDate: _readInt(json['end_date']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'start_date': startDate,
-        'end_date': endDate,
-      };
+    '@type': CONSTRUCTOR,
+    'start_date': startDate,
+    'end_date': endDate,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  DateRange copyWith({
-    int? startDate,
-    int? endDate,
-  }) =>
-      DateRange(
-        startDate: startDate ?? this.startDate,
-        endDate: endDate ?? this.endDate,
-      );
+  DateRange copyWith({int? startDate, int? endDate}) => DateRange(
+    startDate: startDate ?? this.startDate,
+    endDate: endDate ?? this.endDate,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'dateRange';

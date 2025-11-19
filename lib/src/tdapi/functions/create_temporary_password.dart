@@ -21,18 +21,15 @@ final class CreateTemporaryPassword extends TdFunction<TemporaryPasswordState> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'password': password,
-        'valid_for': validFor,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'password': password,
+    'valid_for': validFor,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CreateTemporaryPassword copyWith({
-    String? password,
-    int? validFor,
-  }) =>
+  CreateTemporaryPassword copyWith({String? password, int? validFor}) =>
       CreateTemporaryPassword(
         password: password ?? this.password,
         validFor: validFor ?? this.validFor,

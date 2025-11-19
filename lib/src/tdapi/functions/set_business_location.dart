@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetBusinessLocation extends TdFunction<Ok> {
   /// Changes the business location of the current user. Requires Telegram Business subscription
-  const SetBusinessLocation({
-    this.location,
-  });
+  const SetBusinessLocation({this.location});
 
   /// The new location of the business; pass null to remove the location
   final BusinessLocation? location;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'location': location?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'location': location?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetBusinessLocation copyWith({
-    BusinessLocation? Function()? location,
-  }) =>
+  SetBusinessLocation copyWith({BusinessLocation? Function()? location}) =>
       SetBusinessLocation(
         location: location != null ? location() : this.location,
       );

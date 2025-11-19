@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of available TDLib internal log tags
 final class LogTags extends TdObject {
   /// Contains a list of available TDLib internal log tags
-  const LogTags({
-    required this.tags,
-    this.extra,
-    this.clientId,
-  });
+  const LogTags({required this.tags, this.extra, this.clientId});
 
   /// List of log tags
   final List<String> tags;
@@ -25,24 +21,17 @@ final class LogTags extends TdObject {
 
   /// Parses a [LogTags] from TDLib JSON.
   factory LogTags.fromJson(Map<String, dynamic> json) => LogTags(
-        tags: _readList<String>(json['tags'], _readString),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    tags: _readList<String>(json['tags'], _readString),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'tags': tags,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'tags': tags};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  LogTags copyWith({
-    List<String>? tags,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  LogTags copyWith({List<String>? tags, dynamic extra, int? clientId}) =>
       LogTags(
         tags: tags ?? this.tags,
         extra: extra ?? this.extra,

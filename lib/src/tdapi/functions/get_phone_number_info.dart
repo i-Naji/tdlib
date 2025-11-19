@@ -8,25 +8,21 @@ part of '../tdapi.dart';
 /// Returns [PhoneNumberInfo].
 final class GetPhoneNumberInfo extends TdFunction<PhoneNumberInfo> {
   /// Returns information about a phone number by its prefix. Can be called before authorization
-  const GetPhoneNumberInfo({
-    required this.phoneNumberPrefix,
-  });
+  const GetPhoneNumberInfo({required this.phoneNumberPrefix});
 
   /// The phone number prefix
   final String phoneNumberPrefix;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'phone_number_prefix': phoneNumberPrefix,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'phone_number_prefix': phoneNumberPrefix,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetPhoneNumberInfo copyWith({
-    String? phoneNumberPrefix,
-  }) =>
+  GetPhoneNumberInfo copyWith({String? phoneNumberPrefix}) =>
       GetPhoneNumberInfo(
         phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix,
       );

@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Chats].
 final class GetChats extends TdFunction<Chats> {
   /// Returns an ordered list of chats from the beginning of a chat list. For informational purposes only. Use loadChats and updates processing instead to maintain chat lists in a consistent state
-  const GetChats({
-    this.chatList,
-    required this.limit,
-  });
+  const GetChats({this.chatList, required this.limit});
 
   /// The chat list in which to return chats; pass null to get chats from the main chat list
   final ChatList? chatList;
@@ -21,22 +18,18 @@ final class GetChats extends TdFunction<Chats> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_list': chatList?.toJson(),
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_list': chatList?.toJson(),
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChats copyWith({
-    ChatList? Function()? chatList,
-    int? limit,
-  }) =>
-      GetChats(
-        chatList: chatList != null ? chatList() : this.chatList,
-        limit: limit ?? this.limit,
-      );
+  GetChats copyWith({ChatList? Function()? chatList, int? limit}) => GetChats(
+    chatList: chatList != null ? chatList() : this.chatList,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChats';

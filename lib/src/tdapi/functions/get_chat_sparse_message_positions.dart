@@ -33,14 +33,14 @@ final class GetChatSparseMessagePositions extends TdFunction<MessagePositions> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'filter': filter.toJson(),
-        'from_message_id': fromMessageId,
-        'limit': limit,
-        'saved_messages_topic_id': savedMessagesTopicId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'filter': filter.toJson(),
+    'from_message_id': fromMessageId,
+    'limit': limit,
+    'saved_messages_topic_id': savedMessagesTopicId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class GetChatSparseMessagePositions extends TdFunction<MessagePositions> {
     int? fromMessageId,
     int? limit,
     int? savedMessagesTopicId,
-  }) =>
-      GetChatSparseMessagePositions(
-        chatId: chatId ?? this.chatId,
-        filter: filter ?? this.filter,
-        fromMessageId: fromMessageId ?? this.fromMessageId,
-        limit: limit ?? this.limit,
-        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-      );
+  }) => GetChatSparseMessagePositions(
+    chatId: chatId ?? this.chatId,
+    filter: filter ?? this.filter,
+    fromMessageId: fromMessageId ?? this.fromMessageId,
+    limit: limit ?? this.limit,
+    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatSparseMessagePositions';

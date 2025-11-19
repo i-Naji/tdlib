@@ -58,14 +58,14 @@ final class CollectibleItemInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'purchase_date': purchaseDate,
-        'currency': currency,
-        'amount': amount,
-        'cryptocurrency': cryptocurrency,
-        'cryptocurrency_amount': cryptocurrencyAmount.toString(),
-        'url': url,
-      };
+    '@type': CONSTRUCTOR,
+    'purchase_date': purchaseDate,
+    'currency': currency,
+    'amount': amount,
+    'cryptocurrency': cryptocurrency,
+    'cryptocurrency_amount': cryptocurrencyAmount.toString(),
+    'url': url,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -78,17 +78,16 @@ final class CollectibleItemInfo extends TdObject {
     String? url,
     dynamic extra,
     int? clientId,
-  }) =>
-      CollectibleItemInfo(
-        purchaseDate: purchaseDate ?? this.purchaseDate,
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        cryptocurrency: cryptocurrency ?? this.cryptocurrency,
-        cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
-        url: url ?? this.url,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => CollectibleItemInfo(
+    purchaseDate: purchaseDate ?? this.purchaseDate,
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    cryptocurrency: cryptocurrency ?? this.cryptocurrency,
+    cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
+    url: url ?? this.url,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'collectibleItemInfo';

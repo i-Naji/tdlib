@@ -29,13 +29,13 @@ final class SearchAffiliatePrograms extends TdFunction<FoundAffiliatePrograms> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'affiliate': affiliate.toJson(),
-        'sort_order': sortOrder.toJson(),
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'affiliate': affiliate.toJson(),
+    'sort_order': sortOrder.toJson(),
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -44,13 +44,12 @@ final class SearchAffiliatePrograms extends TdFunction<FoundAffiliatePrograms> {
     AffiliateProgramSortOrder? sortOrder,
     String? offset,
     int? limit,
-  }) =>
-      SearchAffiliatePrograms(
-        affiliate: affiliate ?? this.affiliate,
-        sortOrder: sortOrder ?? this.sortOrder,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => SearchAffiliatePrograms(
+    affiliate: affiliate ?? this.affiliate,
+    sortOrder: sortOrder ?? this.sortOrder,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchAffiliatePrograms';

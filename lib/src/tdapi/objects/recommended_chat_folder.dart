@@ -26,17 +26,14 @@ final class RecommendedChatFolder extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'folder': folder.toJson(),
-        'description': description,
-      };
+    '@type': CONSTRUCTOR,
+    'folder': folder.toJson(),
+    'description': description,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RecommendedChatFolder copyWith({
-    ChatFolder? folder,
-    String? description,
-  }) =>
+  RecommendedChatFolder copyWith({ChatFolder? folder, String? description}) =>
       RecommendedChatFolder(
         folder: folder ?? this.folder,
         description: description ?? this.description,

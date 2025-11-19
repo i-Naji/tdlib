@@ -45,34 +45,23 @@ final class UndecodedTextParseMode extends TextParseMode {
 /// The text uses Markdown-style formatting
 final class TextParseModeMarkdown extends TextParseMode {
   /// The text uses Markdown-style formatting
-  const TextParseModeMarkdown({
-    required this.version,
-  });
+  const TextParseModeMarkdown({required this.version});
 
   /// Version of the parser: 0 or 1 - Telegram Bot API "Markdown" parse mode, 2 - Telegram Bot API "MarkdownV2" parse mode
   final int version;
 
   /// Parses a [TextParseModeMarkdown] from TDLib JSON.
   factory TextParseModeMarkdown.fromJson(Map<String, dynamic> json) =>
-      TextParseModeMarkdown(
-        version: _readInt(json['version']),
-      );
+      TextParseModeMarkdown(version: _readInt(json['version']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'version': version,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'version': version};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  TextParseModeMarkdown copyWith({
-    int? version,
-  }) =>
-      TextParseModeMarkdown(
-        version: version ?? this.version,
-      );
+  TextParseModeMarkdown copyWith({int? version}) =>
+      TextParseModeMarkdown(version: version ?? this.version);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'textParseModeMarkdown';
@@ -91,9 +80,7 @@ final class TextParseModeHTML extends TextParseMode {
       const TextParseModeHTML();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

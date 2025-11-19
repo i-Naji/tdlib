@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class CloseWebApp extends TdFunction<Ok> {
   /// Informs TDLib that a previously opened Web App was closed
-  const CloseWebApp({
-    required this.webAppLaunchId,
-  });
+  const CloseWebApp({required this.webAppLaunchId});
 
   /// Identifier of Web App launch, received from openWebApp
   final int webAppLaunchId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'web_app_launch_id': webAppLaunchId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'web_app_launch_id': webAppLaunchId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CloseWebApp copyWith({
-    int? webAppLaunchId,
-  }) =>
-      CloseWebApp(
-        webAppLaunchId: webAppLaunchId ?? this.webAppLaunchId,
-      );
+  CloseWebApp copyWith({int? webAppLaunchId}) =>
+      CloseWebApp(webAppLaunchId: webAppLaunchId ?? this.webAppLaunchId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'closeWebApp';

@@ -21,22 +21,21 @@ final class GetChatNotificationSettingsExceptions extends TdFunction<Chats> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'scope': scope?.toJson(),
-        'compare_sound': compareSound,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'scope': scope?.toJson(),
+    'compare_sound': compareSound,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetChatNotificationSettingsExceptions copyWith({
     NotificationSettingsScope? Function()? scope,
     bool? compareSound,
-  }) =>
-      GetChatNotificationSettingsExceptions(
-        scope: scope != null ? scope() : this.scope,
-        compareSound: compareSound ?? this.compareSound,
-      );
+  }) => GetChatNotificationSettingsExceptions(
+    scope: scope != null ? scope() : this.scope,
+    compareSound: compareSound ?? this.compareSound,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatNotificationSettingsExceptions';

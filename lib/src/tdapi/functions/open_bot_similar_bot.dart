@@ -21,18 +21,15 @@ final class OpenBotSimilarBot extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'opened_bot_user_id': openedBotUserId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'opened_bot_user_id': openedBotUserId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  OpenBotSimilarBot copyWith({
-    int? botUserId,
-    int? openedBotUserId,
-  }) =>
+  OpenBotSimilarBot copyWith({int? botUserId, int? openedBotUserId}) =>
       OpenBotSimilarBot(
         botUserId: botUserId ?? this.botUserId,
         openedBotUserId: openedBotUserId ?? this.openedBotUserId,

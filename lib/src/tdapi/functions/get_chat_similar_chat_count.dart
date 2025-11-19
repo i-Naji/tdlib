@@ -21,18 +21,15 @@ final class GetChatSimilarChatCount extends TdFunction<Count> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'return_local': returnLocal,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'return_local': returnLocal,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatSimilarChatCount copyWith({
-    int? chatId,
-    bool? returnLocal,
-  }) =>
+  GetChatSimilarChatCount copyWith({int? chatId, bool? returnLocal}) =>
       GetChatSimilarChatCount(
         chatId: chatId ?? this.chatId,
         returnLocal: returnLocal ?? this.returnLocal,

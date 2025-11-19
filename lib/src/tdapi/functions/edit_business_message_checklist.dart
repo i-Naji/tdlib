@@ -33,14 +33,14 @@ final class EditBusinessMessageChecklist extends TdFunction<BusinessMessage> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'business_connection_id': businessConnectionId,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'reply_markup': replyMarkup?.toJson(),
-        'checklist': checklist.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'business_connection_id': businessConnectionId,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'reply_markup': replyMarkup?.toJson(),
+    'checklist': checklist.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class EditBusinessMessageChecklist extends TdFunction<BusinessMessage> {
     int? messageId,
     ReplyMarkup? Function()? replyMarkup,
     InputChecklist? checklist,
-  }) =>
-      EditBusinessMessageChecklist(
-        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
-        checklist: checklist ?? this.checklist,
-      );
+  }) => EditBusinessMessageChecklist(
+    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    checklist: checklist ?? this.checklist,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'editBusinessMessageChecklist';

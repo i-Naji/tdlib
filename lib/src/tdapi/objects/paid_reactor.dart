@@ -31,22 +31,22 @@ final class PaidReactor extends TdObject {
 
   /// Parses a [PaidReactor] from TDLib JSON.
   factory PaidReactor.fromJson(Map<String, dynamic> json) => PaidReactor(
-        senderId: _readOptional(json['sender_id'], MessageSender.fromJson),
-        starCount: _readInt(json['star_count']),
-        isTop: _readBool(json['is_top']),
-        isMe: _readBool(json['is_me']),
-        isAnonymous: _readBool(json['is_anonymous']),
-      );
+    senderId: _readOptional(json['sender_id'], MessageSender.fromJson),
+    starCount: _readInt(json['star_count']),
+    isTop: _readBool(json['is_top']),
+    isMe: _readBool(json['is_me']),
+    isAnonymous: _readBool(json['is_anonymous']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sender_id': senderId?.toJson(),
-        'star_count': starCount,
-        'is_top': isTop,
-        'is_me': isMe,
-        'is_anonymous': isAnonymous,
-      };
+    '@type': CONSTRUCTOR,
+    'sender_id': senderId?.toJson(),
+    'star_count': starCount,
+    'is_top': isTop,
+    'is_me': isMe,
+    'is_anonymous': isAnonymous,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,14 +56,13 @@ final class PaidReactor extends TdObject {
     bool? isTop,
     bool? isMe,
     bool? isAnonymous,
-  }) =>
-      PaidReactor(
-        senderId: senderId != null ? senderId() : this.senderId,
-        starCount: starCount ?? this.starCount,
-        isTop: isTop ?? this.isTop,
-        isMe: isMe ?? this.isMe,
-        isAnonymous: isAnonymous ?? this.isAnonymous,
-      );
+  }) => PaidReactor(
+    senderId: senderId != null ? senderId() : this.senderId,
+    starCount: starCount ?? this.starCount,
+    isTop: isTop ?? this.isTop,
+    isMe: isMe ?? this.isMe,
+    isAnonymous: isAnonymous ?? this.isAnonymous,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'paidReactor';

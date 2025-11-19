@@ -70,18 +70,20 @@ final class PaidMediaPreview extends PaidMedia {
         width: _readInt(json['width']),
         height: _readInt(json['height']),
         duration: _readInt(json['duration']),
-        minithumbnail:
-            _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
+        minithumbnail: _readOptional(
+          json['minithumbnail'],
+          Minithumbnail.fromJson,
+        ),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'width': width,
-        'height': height,
-        'duration': duration,
-        'minithumbnail': minithumbnail?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'width': width,
+    'height': height,
+    'duration': duration,
+    'minithumbnail': minithumbnail?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -91,14 +93,12 @@ final class PaidMediaPreview extends PaidMedia {
     int? height,
     int? duration,
     Minithumbnail? Function()? minithumbnail,
-  }) =>
-      PaidMediaPreview(
-        width: width ?? this.width,
-        height: height ?? this.height,
-        duration: duration ?? this.duration,
-        minithumbnail:
-            minithumbnail != null ? minithumbnail() : this.minithumbnail,
-      );
+  }) => PaidMediaPreview(
+    width: width ?? this.width,
+    height: height ?? this.height,
+    duration: duration ?? this.duration,
+    minithumbnail: minithumbnail != null ? minithumbnail() : this.minithumbnail,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'paidMediaPreview';
@@ -110,33 +110,26 @@ final class PaidMediaPreview extends PaidMedia {
 /// The media is a photo
 final class PaidMediaPhoto extends PaidMedia {
   /// The media is a photo
-  const PaidMediaPhoto({
-    required this.photo,
-  });
+  const PaidMediaPhoto({required this.photo});
 
   /// The photo
   final Photo photo;
 
   /// Parses a [PaidMediaPhoto] from TDLib JSON.
-  factory PaidMediaPhoto.fromJson(Map<String, dynamic> json) => PaidMediaPhoto(
-        photo: _readObject(json['photo'], Photo.fromJson),
-      );
+  factory PaidMediaPhoto.fromJson(Map<String, dynamic> json) =>
+      PaidMediaPhoto(photo: _readObject(json['photo'], Photo.fromJson));
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'photo': photo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'photo': photo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PaidMediaPhoto copyWith({
-    Photo? photo,
-  }) =>
-      PaidMediaPhoto(
-        photo: photo ?? this.photo,
-      );
+  PaidMediaPhoto copyWith({Photo? photo}) =>
+      PaidMediaPhoto(photo: photo ?? this.photo);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'paidMediaPhoto';
@@ -165,18 +158,18 @@ final class PaidMediaVideo extends PaidMedia {
 
   /// Parses a [PaidMediaVideo] from TDLib JSON.
   factory PaidMediaVideo.fromJson(Map<String, dynamic> json) => PaidMediaVideo(
-        video: _readObject(json['video'], Video.fromJson),
-        cover: _readOptional(json['cover'], Photo.fromJson),
-        startTimestamp: _readInt(json['start_timestamp']),
-      );
+    video: _readObject(json['video'], Video.fromJson),
+    cover: _readOptional(json['cover'], Photo.fromJson),
+    startTimestamp: _readInt(json['start_timestamp']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'video': video.toJson(),
-        'cover': cover?.toJson(),
-        'start_timestamp': startTimestamp,
-      };
+    '@type': CONSTRUCTOR,
+    'video': video.toJson(),
+    'cover': cover?.toJson(),
+    'start_timestamp': startTimestamp,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -185,12 +178,11 @@ final class PaidMediaVideo extends PaidMedia {
     Video? video,
     Photo? Function()? cover,
     int? startTimestamp,
-  }) =>
-      PaidMediaVideo(
-        video: video ?? this.video,
-        cover: cover != null ? cover() : this.cover,
-        startTimestamp: startTimestamp ?? this.startTimestamp,
-      );
+  }) => PaidMediaVideo(
+    video: video ?? this.video,
+    cover: cover != null ? cover() : this.cover,
+    startTimestamp: startTimestamp ?? this.startTimestamp,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'paidMediaVideo';
@@ -209,9 +201,7 @@ final class PaidMediaUnsupported extends PaidMedia {
       const PaidMediaUnsupported();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

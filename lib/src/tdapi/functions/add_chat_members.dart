@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [FailedToAddMembers].
 final class AddChatMembers extends TdFunction<FailedToAddMembers> {
   /// Adds multiple new members to a chat; requires can_invite_users member right. Currently, this method is only available for supergroups and channels. This method can't be used to join a chat. Members can't be added to a channel if it has more than 200 members. Returns information about members that weren't added
-  const AddChatMembers({
-    required this.chatId,
-    required this.userIds,
-  });
+  const AddChatMembers({required this.chatId, required this.userIds});
 
   /// Chat identifier
   final int chatId;
@@ -21,22 +18,18 @@ final class AddChatMembers extends TdFunction<FailedToAddMembers> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'user_ids': userIds,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'user_ids': userIds,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  AddChatMembers copyWith({
-    int? chatId,
-    List<int>? userIds,
-  }) =>
-      AddChatMembers(
-        chatId: chatId ?? this.chatId,
-        userIds: userIds ?? this.userIds,
-      );
+  AddChatMembers copyWith({int? chatId, List<int>? userIds}) => AddChatMembers(
+    chatId: chatId ?? this.chatId,
+    userIds: userIds ?? this.userIds,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addChatMembers';

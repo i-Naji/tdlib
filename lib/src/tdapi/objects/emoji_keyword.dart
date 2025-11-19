@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Represents an emoji with its keyword
 final class EmojiKeyword extends TdObject {
   /// Represents an emoji with its keyword
-  const EmojiKeyword({
-    required this.emoji,
-    required this.keyword,
-  });
+  const EmojiKeyword({required this.emoji, required this.keyword});
 
   /// The emoji
   final String emoji;
@@ -19,27 +16,23 @@ final class EmojiKeyword extends TdObject {
 
   /// Parses a [EmojiKeyword] from TDLib JSON.
   factory EmojiKeyword.fromJson(Map<String, dynamic> json) => EmojiKeyword(
-        emoji: _readString(json['emoji']),
-        keyword: _readString(json['keyword']),
-      );
+    emoji: _readString(json['emoji']),
+    keyword: _readString(json['keyword']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'emoji': emoji,
-        'keyword': keyword,
-      };
+    '@type': CONSTRUCTOR,
+    'emoji': emoji,
+    'keyword': keyword,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  EmojiKeyword copyWith({
-    String? emoji,
-    String? keyword,
-  }) =>
-      EmojiKeyword(
-        emoji: emoji ?? this.emoji,
-        keyword: keyword ?? this.keyword,
-      );
+  EmojiKeyword copyWith({String? emoji, String? keyword}) => EmojiKeyword(
+    emoji: emoji ?? this.emoji,
+    keyword: keyword ?? this.keyword,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'emojiKeyword';

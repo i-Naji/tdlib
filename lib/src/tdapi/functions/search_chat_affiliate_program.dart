@@ -21,18 +21,15 @@ final class SearchChatAffiliateProgram extends TdFunction<Chat> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'username': username,
-        'referrer': referrer,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'username': username,
+    'referrer': referrer,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchChatAffiliateProgram copyWith({
-    String? username,
-    String? referrer,
-  }) =>
+  SearchChatAffiliateProgram copyWith({String? username, String? referrer}) =>
       SearchChatAffiliateProgram(
         username: username ?? this.username,
         referrer: referrer ?? this.referrer,

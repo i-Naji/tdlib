@@ -54,26 +54,30 @@ final class EncryptedPassportElement extends TdObject {
         reverseSide: _readOptional(json['reverse_side'], DatedFile.fromJson),
         selfie: _readOptional(json['selfie'], DatedFile.fromJson),
         translation: _readList<DatedFile>(
-            json['translation'], (e) => _readObject(e, DatedFile.fromJson)),
+          json['translation'],
+          (e) => _readObject(e, DatedFile.fromJson),
+        ),
         files: _readList<DatedFile>(
-            json['files'], (e) => _readObject(e, DatedFile.fromJson)),
+          json['files'],
+          (e) => _readObject(e, DatedFile.fromJson),
+        ),
         value: _readString(json['value']),
         hash: _readString(json['hash']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'type': type.toJson(),
-        'data': data,
-        'front_side': frontSide.toJson(),
-        'reverse_side': reverseSide?.toJson(),
-        'selfie': selfie?.toJson(),
-        'translation': [for (final e in translation) e.toJson()],
-        'files': [for (final e in files) e.toJson()],
-        'value': value,
-        'hash': hash,
-      };
+    '@type': CONSTRUCTOR,
+    'type': type.toJson(),
+    'data': data,
+    'front_side': frontSide.toJson(),
+    'reverse_side': reverseSide?.toJson(),
+    'selfie': selfie?.toJson(),
+    'translation': [for (final e in translation) e.toJson()],
+    'files': [for (final e in files) e.toJson()],
+    'value': value,
+    'hash': hash,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -87,18 +91,17 @@ final class EncryptedPassportElement extends TdObject {
     List<DatedFile>? files,
     String? value,
     String? hash,
-  }) =>
-      EncryptedPassportElement(
-        type: type ?? this.type,
-        data: data ?? this.data,
-        frontSide: frontSide ?? this.frontSide,
-        reverseSide: reverseSide != null ? reverseSide() : this.reverseSide,
-        selfie: selfie != null ? selfie() : this.selfie,
-        translation: translation ?? this.translation,
-        files: files ?? this.files,
-        value: value ?? this.value,
-        hash: hash ?? this.hash,
-      );
+  }) => EncryptedPassportElement(
+    type: type ?? this.type,
+    data: data ?? this.data,
+    frontSide: frontSide ?? this.frontSide,
+    reverseSide: reverseSide != null ? reverseSide() : this.reverseSide,
+    selfie: selfie != null ? selfie() : this.selfie,
+    translation: translation ?? this.translation,
+    files: files ?? this.files,
+    value: value ?? this.value,
+    hash: hash ?? this.hash,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'encryptedPassportElement';

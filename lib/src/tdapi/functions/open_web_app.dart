@@ -37,15 +37,15 @@ final class OpenWebApp extends TdFunction<WebAppInfo> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'bot_user_id': botUserId,
-        'url': url,
-        'topic_id': topicId?.toJson(),
-        'reply_to': replyTo?.toJson(),
-        'parameters': parameters.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'bot_user_id': botUserId,
+    'url': url,
+    'topic_id': topicId?.toJson(),
+    'reply_to': replyTo?.toJson(),
+    'parameters': parameters.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class OpenWebApp extends TdFunction<WebAppInfo> {
     MessageTopic? Function()? topicId,
     InputMessageReplyTo? Function()? replyTo,
     WebAppOpenParameters? parameters,
-  }) =>
-      OpenWebApp(
-        chatId: chatId ?? this.chatId,
-        botUserId: botUserId ?? this.botUserId,
-        url: url ?? this.url,
-        topicId: topicId != null ? topicId() : this.topicId,
-        replyTo: replyTo != null ? replyTo() : this.replyTo,
-        parameters: parameters ?? this.parameters,
-      );
+  }) => OpenWebApp(
+    chatId: chatId ?? this.chatId,
+    botUserId: botUserId ?? this.botUserId,
+    url: url ?? this.url,
+    topicId: topicId != null ? topicId() : this.topicId,
+    replyTo: replyTo != null ? replyTo() : this.replyTo,
+    parameters: parameters ?? this.parameters,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'openWebApp';

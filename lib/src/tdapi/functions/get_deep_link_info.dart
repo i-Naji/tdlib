@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [DeepLinkInfo].
 final class GetDeepLinkInfo extends TdFunction<DeepLinkInfo> {
   /// Returns information about a tg:// deep link. Use "tg://need_update_for_some_feature" or "tg:some_unsupported_feature" for testing. Returns a 404 error for unknown links. Can be called before authorization
-  const GetDeepLinkInfo({
-    required this.link,
-  });
+  const GetDeepLinkInfo({required this.link});
 
   /// The link
   final String link;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'link': link,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'link': link,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetDeepLinkInfo copyWith({
-    String? link,
-  }) =>
-      GetDeepLinkInfo(
-        link: link ?? this.link,
-      );
+  GetDeepLinkInfo copyWith({String? link}) =>
+      GetDeepLinkInfo(link: link ?? this.link);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getDeepLinkInfo';

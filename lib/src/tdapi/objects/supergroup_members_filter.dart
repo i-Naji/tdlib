@@ -54,9 +54,7 @@ final class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
       const SupergroupMembersFilterRecent();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -74,34 +72,23 @@ final class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
 /// Returns contacts of the user, which are members of the supergroup or channel
 final class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
   /// Returns contacts of the user, which are members of the supergroup or channel
-  const SupergroupMembersFilterContacts({
-    required this.query,
-  });
+  const SupergroupMembersFilterContacts({required this.query});
 
   /// Query to search for
   final String query;
 
   /// Parses a [SupergroupMembersFilterContacts] from TDLib JSON.
   factory SupergroupMembersFilterContacts.fromJson(Map<String, dynamic> json) =>
-      SupergroupMembersFilterContacts(
-        query: _readString(json['query']),
-      );
+      SupergroupMembersFilterContacts(query: _readString(json['query']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'query': query,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'query': query};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  SupergroupMembersFilterContacts copyWith({
-    String? query,
-  }) =>
-      SupergroupMembersFilterContacts(
-        query: query ?? this.query,
-      );
+  SupergroupMembersFilterContacts copyWith({String? query}) =>
+      SupergroupMembersFilterContacts(query: query ?? this.query);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'supergroupMembersFilterContacts';
@@ -118,13 +105,11 @@ final class SupergroupMembersFilterAdministrators
 
   /// Parses a [SupergroupMembersFilterAdministrators] from TDLib JSON.
   factory SupergroupMembersFilterAdministrators.fromJson(
-          Map<String, dynamic> json) =>
-      const SupergroupMembersFilterAdministrators();
+    Map<String, dynamic> json,
+  ) => const SupergroupMembersFilterAdministrators();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -142,34 +127,23 @@ final class SupergroupMembersFilterAdministrators
 /// Used to search for supergroup or channel members via a (string) query
 final class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
   /// Used to search for supergroup or channel members via a (string) query
-  const SupergroupMembersFilterSearch({
-    required this.query,
-  });
+  const SupergroupMembersFilterSearch({required this.query});
 
   /// Query to search for
   final String query;
 
   /// Parses a [SupergroupMembersFilterSearch] from TDLib JSON.
   factory SupergroupMembersFilterSearch.fromJson(Map<String, dynamic> json) =>
-      SupergroupMembersFilterSearch(
-        query: _readString(json['query']),
-      );
+      SupergroupMembersFilterSearch(query: _readString(json['query']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'query': query,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'query': query};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  SupergroupMembersFilterSearch copyWith({
-    String? query,
-  }) =>
-      SupergroupMembersFilterSearch(
-        query: query ?? this.query,
-      );
+  SupergroupMembersFilterSearch copyWith({String? query}) =>
+      SupergroupMembersFilterSearch(query: query ?? this.query);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'supergroupMembersFilterSearch';
@@ -181,35 +155,24 @@ final class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
 /// Returns restricted supergroup members; can be used only by administrators
 final class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
   /// Returns restricted supergroup members; can be used only by administrators
-  const SupergroupMembersFilterRestricted({
-    required this.query,
-  });
+  const SupergroupMembersFilterRestricted({required this.query});
 
   /// Query to search for
   final String query;
 
   /// Parses a [SupergroupMembersFilterRestricted] from TDLib JSON.
   factory SupergroupMembersFilterRestricted.fromJson(
-          Map<String, dynamic> json) =>
-      SupergroupMembersFilterRestricted(
-        query: _readString(json['query']),
-      );
+    Map<String, dynamic> json,
+  ) => SupergroupMembersFilterRestricted(query: _readString(json['query']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'query': query,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'query': query};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  SupergroupMembersFilterRestricted copyWith({
-    String? query,
-  }) =>
-      SupergroupMembersFilterRestricted(
-        query: query ?? this.query,
-      );
+  SupergroupMembersFilterRestricted copyWith({String? query}) =>
+      SupergroupMembersFilterRestricted(query: query ?? this.query);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'supergroupMembersFilterRestricted';
@@ -221,34 +184,23 @@ final class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
 /// Returns users banned from the supergroup or channel; can be used only by administrators
 final class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
   /// Returns users banned from the supergroup or channel; can be used only by administrators
-  const SupergroupMembersFilterBanned({
-    required this.query,
-  });
+  const SupergroupMembersFilterBanned({required this.query});
 
   /// Query to search for
   final String query;
 
   /// Parses a [SupergroupMembersFilterBanned] from TDLib JSON.
   factory SupergroupMembersFilterBanned.fromJson(Map<String, dynamic> json) =>
-      SupergroupMembersFilterBanned(
-        query: _readString(json['query']),
-      );
+      SupergroupMembersFilterBanned(query: _readString(json['query']));
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'query': query,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'query': query};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  SupergroupMembersFilterBanned copyWith({
-    String? query,
-  }) =>
-      SupergroupMembersFilterBanned(
-        query: query ?? this.query,
-      );
+  SupergroupMembersFilterBanned copyWith({String? query}) =>
+      SupergroupMembersFilterBanned(query: query ?? this.query);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'supergroupMembersFilterBanned';
@@ -260,10 +212,7 @@ final class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
 /// Returns users which can be mentioned in the supergroup
 final class SupergroupMembersFilterMention extends SupergroupMembersFilter {
   /// Returns users which can be mentioned in the supergroup
-  const SupergroupMembersFilterMention({
-    required this.query,
-    this.topicId,
-  });
+  const SupergroupMembersFilterMention({required this.query, this.topicId});
 
   /// Query to search for
   final String query;
@@ -280,10 +229,10 @@ final class SupergroupMembersFilterMention extends SupergroupMembersFilter {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'query': query,
-        'topic_id': topicId?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'query': query,
+    'topic_id': topicId?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -291,11 +240,10 @@ final class SupergroupMembersFilterMention extends SupergroupMembersFilter {
   SupergroupMembersFilterMention copyWith({
     String? query,
     MessageTopic? Function()? topicId,
-  }) =>
-      SupergroupMembersFilterMention(
-        query: query ?? this.query,
-        topicId: topicId != null ? topicId() : this.topicId,
-      );
+  }) => SupergroupMembersFilterMention(
+    query: query ?? this.query,
+    topicId: topicId != null ? topicId() : this.topicId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'supergroupMembersFilterMention';
@@ -314,9 +262,7 @@ final class SupergroupMembersFilterBots extends SupergroupMembersFilter {
       const SupergroupMembersFilterBots();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.

@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [AvailableReactions].
 final class GetStoryAvailableReactions extends TdFunction<AvailableReactions> {
   /// Returns reactions, which can be chosen for a story
-  const GetStoryAvailableReactions({
-    required this.rowSize,
-  });
+  const GetStoryAvailableReactions({required this.rowSize});
 
   /// Number of reaction per row, 5-25
   final int rowSize;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'row_size': rowSize,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'row_size': rowSize,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetStoryAvailableReactions copyWith({
-    int? rowSize,
-  }) =>
-      GetStoryAvailableReactions(
-        rowSize: rowSize ?? this.rowSize,
-      );
+  GetStoryAvailableReactions copyWith({int? rowSize}) =>
+      GetStoryAvailableReactions(rowSize: rowSize ?? this.rowSize);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getStoryAvailableReactions';

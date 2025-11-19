@@ -31,19 +31,15 @@ final class ChatJoinRequest extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'date': date,
-        'bio': bio,
-      };
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'date': date,
+    'bio': bio,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ChatJoinRequest copyWith({
-    int? userId,
-    int? date,
-    String? bio,
-  }) =>
+  ChatJoinRequest copyWith({int? userId, int? date, String? bio}) =>
       ChatJoinRequest(
         userId: userId ?? this.userId,
         date: date ?? this.date,

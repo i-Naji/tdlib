@@ -45,9 +45,7 @@ final class UndecodedPollType extends PollType {
 /// A regular poll
 final class PollTypeRegular extends PollType {
   /// A regular poll
-  const PollTypeRegular({
-    required this.allowMultipleAnswers,
-  });
+  const PollTypeRegular({required this.allowMultipleAnswers});
 
   /// True, if multiple answer options can be chosen simultaneously
   final bool allowMultipleAnswers;
@@ -60,19 +58,16 @@ final class PollTypeRegular extends PollType {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'allow_multiple_answers': allowMultipleAnswers,
-      };
+    '@type': CONSTRUCTOR,
+    'allow_multiple_answers': allowMultipleAnswers,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PollTypeRegular copyWith({
-    bool? allowMultipleAnswers,
-  }) =>
-      PollTypeRegular(
-        allowMultipleAnswers: allowMultipleAnswers ?? this.allowMultipleAnswers,
-      );
+  PollTypeRegular copyWith({bool? allowMultipleAnswers}) => PollTypeRegular(
+    allowMultipleAnswers: allowMultipleAnswers ?? this.allowMultipleAnswers,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pollTypeRegular';
@@ -97,24 +92,21 @@ final class PollTypeQuiz extends PollType {
 
   /// Parses a [PollTypeQuiz] from TDLib JSON.
   factory PollTypeQuiz.fromJson(Map<String, dynamic> json) => PollTypeQuiz(
-        correctOptionId: _readInt(json['correct_option_id']),
-        explanation: _readObject(json['explanation'], FormattedText.fromJson),
-      );
+    correctOptionId: _readInt(json['correct_option_id']),
+    explanation: _readObject(json['explanation'], FormattedText.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'correct_option_id': correctOptionId,
-        'explanation': explanation.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'correct_option_id': correctOptionId,
+    'explanation': explanation.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PollTypeQuiz copyWith({
-    int? correctOptionId,
-    FormattedText? explanation,
-  }) =>
+  PollTypeQuiz copyWith({int? correctOptionId, FormattedText? explanation}) =>
       PollTypeQuiz(
         correctOptionId: correctOptionId ?? this.correctOptionId,
         explanation: explanation ?? this.explanation,

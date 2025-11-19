@@ -33,14 +33,14 @@ final class SetChatBackground extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'background': background?.toJson(),
-        'type': type?.toJson(),
-        'dark_theme_dimming': darkThemeDimming,
-        'only_for_self': onlyForSelf,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'background': background?.toJson(),
+    'type': type?.toJson(),
+    'dark_theme_dimming': darkThemeDimming,
+    'only_for_self': onlyForSelf,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,14 +50,13 @@ final class SetChatBackground extends TdFunction<Ok> {
     BackgroundType? Function()? type,
     int? darkThemeDimming,
     bool? onlyForSelf,
-  }) =>
-      SetChatBackground(
-        chatId: chatId ?? this.chatId,
-        background: background != null ? background() : this.background,
-        type: type != null ? type() : this.type,
-        darkThemeDimming: darkThemeDimming ?? this.darkThemeDimming,
-        onlyForSelf: onlyForSelf ?? this.onlyForSelf,
-      );
+  }) => SetChatBackground(
+    chatId: chatId ?? this.chatId,
+    background: background != null ? background() : this.background,
+    type: type != null ? type() : this.type,
+    darkThemeDimming: darkThemeDimming ?? this.darkThemeDimming,
+    onlyForSelf: onlyForSelf ?? this.onlyForSelf,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setChatBackground';

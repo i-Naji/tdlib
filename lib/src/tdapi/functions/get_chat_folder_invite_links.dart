@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [ChatFolderInviteLinks].
 final class GetChatFolderInviteLinks extends TdFunction<ChatFolderInviteLinks> {
   /// Returns invite links created by the current user for a shareable chat folder
-  const GetChatFolderInviteLinks({
-    required this.chatFolderId,
-  });
+  const GetChatFolderInviteLinks({required this.chatFolderId});
 
   /// Chat folder identifier
   final int chatFolderId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_folder_id': chatFolderId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_folder_id': chatFolderId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatFolderInviteLinks copyWith({
-    int? chatFolderId,
-  }) =>
-      GetChatFolderInviteLinks(
-        chatFolderId: chatFolderId ?? this.chatFolderId,
-      );
+  GetChatFolderInviteLinks copyWith({int? chatFolderId}) =>
+      GetChatFolderInviteLinks(chatFolderId: chatFolderId ?? this.chatFolderId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getChatFolderInviteLinks';

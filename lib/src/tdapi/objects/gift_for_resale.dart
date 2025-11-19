@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Describes a gift available for resale
 final class GiftForResale extends TdObject {
   /// Describes a gift available for resale
-  const GiftForResale({
-    required this.gift,
-    required this.receivedGiftId,
-  });
+  const GiftForResale({required this.gift, required this.receivedGiftId});
 
   /// The gift
   final UpgradedGift gift;
@@ -19,23 +16,20 @@ final class GiftForResale extends TdObject {
 
   /// Parses a [GiftForResale] from TDLib JSON.
   factory GiftForResale.fromJson(Map<String, dynamic> json) => GiftForResale(
-        gift: _readObject(json['gift'], UpgradedGift.fromJson),
-        receivedGiftId: _readString(json['received_gift_id']),
-      );
+    gift: _readObject(json['gift'], UpgradedGift.fromJson),
+    receivedGiftId: _readString(json['received_gift_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'gift': gift.toJson(),
-        'received_gift_id': receivedGiftId,
-      };
+    '@type': CONSTRUCTOR,
+    'gift': gift.toJson(),
+    'received_gift_id': receivedGiftId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GiftForResale copyWith({
-    UpgradedGift? gift,
-    String? receivedGiftId,
-  }) =>
+  GiftForResale copyWith({UpgradedGift? gift, String? receivedGiftId}) =>
       GiftForResale(
         gift: gift ?? this.gift,
         receivedGiftId: receivedGiftId ?? this.receivedGiftId,

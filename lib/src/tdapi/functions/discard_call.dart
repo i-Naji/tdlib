@@ -37,15 +37,15 @@ final class DiscardCall extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'call_id': callId,
-        'is_disconnected': isDisconnected,
-        'invite_link': inviteLink,
-        'duration': duration,
-        'is_video': isVideo,
-        'connection_id': connectionId.toString(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'call_id': callId,
+    'is_disconnected': isDisconnected,
+    'invite_link': inviteLink,
+    'duration': duration,
+    'is_video': isVideo,
+    'connection_id': connectionId.toString(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -56,15 +56,14 @@ final class DiscardCall extends TdFunction<Ok> {
     int? duration,
     bool? isVideo,
     int? connectionId,
-  }) =>
-      DiscardCall(
-        callId: callId ?? this.callId,
-        isDisconnected: isDisconnected ?? this.isDisconnected,
-        inviteLink: inviteLink ?? this.inviteLink,
-        duration: duration ?? this.duration,
-        isVideo: isVideo ?? this.isVideo,
-        connectionId: connectionId ?? this.connectionId,
-      );
+  }) => DiscardCall(
+    callId: callId ?? this.callId,
+    isDisconnected: isDisconnected ?? this.isDisconnected,
+    inviteLink: inviteLink ?? this.inviteLink,
+    duration: duration ?? this.duration,
+    isVideo: isVideo ?? this.isVideo,
+    connectionId: connectionId ?? this.connectionId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'discardCall';

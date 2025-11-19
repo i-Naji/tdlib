@@ -54,9 +54,7 @@ final class ResendCodeReasonUserRequest extends ResendCodeReason {
       const ResendCodeReasonUserRequest();
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -73,32 +71,28 @@ final class ResendCodeReasonUserRequest extends ResendCodeReason {
 /// The code is re-sent, because device verification has failed
 final class ResendCodeReasonVerificationFailed extends ResendCodeReason {
   /// The code is re-sent, because device verification has failed
-  const ResendCodeReasonVerificationFailed({
-    required this.errorMessage,
-  });
+  const ResendCodeReasonVerificationFailed({required this.errorMessage});
 
   /// Cause of the verification failure, for example, "PLAY_SERVICES_NOT_AVAILABLE", "APNS_RECEIVE_TIMEOUT", or "APNS_INIT_FAILED"
   final String errorMessage;
 
   /// Parses a [ResendCodeReasonVerificationFailed] from TDLib JSON.
   factory ResendCodeReasonVerificationFailed.fromJson(
-          Map<String, dynamic> json) =>
-      ResendCodeReasonVerificationFailed(
-        errorMessage: _readString(json['error_message']),
-      );
+    Map<String, dynamic> json,
+  ) => ResendCodeReasonVerificationFailed(
+    errorMessage: _readString(json['error_message']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'error_message': errorMessage,
-      };
+    '@type': CONSTRUCTOR,
+    'error_message': errorMessage,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ResendCodeReasonVerificationFailed copyWith({
-    String? errorMessage,
-  }) =>
+  ResendCodeReasonVerificationFailed copyWith({String? errorMessage}) =>
       ResendCodeReasonVerificationFailed(
         errorMessage: errorMessage ?? this.errorMessage,
       );

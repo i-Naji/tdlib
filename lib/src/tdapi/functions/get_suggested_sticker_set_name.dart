@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [Text].
 final class GetSuggestedStickerSetName extends TdFunction<Text> {
   /// Returns a suggested name for a new sticker set with a given title
-  const GetSuggestedStickerSetName({
-    required this.title,
-  });
+  const GetSuggestedStickerSetName({required this.title});
 
   /// Sticker set title; 1-64 characters
   final String title;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'title': title,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'title': title,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetSuggestedStickerSetName copyWith({
-    String? title,
-  }) =>
-      GetSuggestedStickerSetName(
-        title: title ?? this.title,
-      );
+  GetSuggestedStickerSetName copyWith({String? title}) =>
+      GetSuggestedStickerSetName(title: title ?? this.title);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getSuggestedStickerSetName';

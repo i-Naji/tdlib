@@ -6,10 +6,7 @@ part of '../tdapi.dart';
 /// Contains information about found messages sent on a specific day
 final class MessageCalendarDay extends TdObject {
   /// Contains information about found messages sent on a specific day
-  const MessageCalendarDay({
-    required this.totalCount,
-    required this.message,
-  });
+  const MessageCalendarDay({required this.totalCount, required this.message});
 
   /// Total number of found messages sent on the day
   final int totalCount;
@@ -26,17 +23,14 @@ final class MessageCalendarDay extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'message': message.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'total_count': totalCount,
+    'message': message.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  MessageCalendarDay copyWith({
-    int? totalCount,
-    Message? message,
-  }) =>
+  MessageCalendarDay copyWith({int? totalCount, Message? message}) =>
       MessageCalendarDay(
         totalCount: totalCount ?? this.totalCount,
         message: message ?? this.message,

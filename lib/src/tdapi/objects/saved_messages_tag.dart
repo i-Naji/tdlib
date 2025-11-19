@@ -31,19 +31,15 @@ final class SavedMessagesTag extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'tag': tag.toJson(),
-        'label': label,
-        'count': count,
-      };
+    '@type': CONSTRUCTOR,
+    'tag': tag.toJson(),
+    'label': label,
+    'count': count,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SavedMessagesTag copyWith({
-    ReactionType? tag,
-    String? label,
-    int? count,
-  }) =>
+  SavedMessagesTag copyWith({ReactionType? tag, String? label, int? count}) =>
       SavedMessagesTag(
         tag: tag ?? this.tag,
         label: label ?? this.label,

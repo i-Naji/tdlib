@@ -25,12 +25,12 @@ final class SearchPublicStoriesByLocation extends TdFunction<FoundStories> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'address': address.toJson(),
-        'offset': offset,
-        'limit': limit,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'address': address.toJson(),
+    'offset': offset,
+    'limit': limit,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -38,12 +38,11 @@ final class SearchPublicStoriesByLocation extends TdFunction<FoundStories> {
     LocationAddress? address,
     String? offset,
     int? limit,
-  }) =>
-      SearchPublicStoriesByLocation(
-        address: address ?? this.address,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-      );
+  }) => SearchPublicStoriesByLocation(
+    address: address ?? this.address,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchPublicStoriesByLocation';

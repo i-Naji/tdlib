@@ -21,22 +21,21 @@ final class SetScopeNotificationSettings extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'scope': scope.toJson(),
-        'notification_settings': notificationSettings.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'scope': scope.toJson(),
+    'notification_settings': notificationSettings.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetScopeNotificationSettings copyWith({
     NotificationSettingsScope? scope,
     ScopeNotificationSettings? notificationSettings,
-  }) =>
-      SetScopeNotificationSettings(
-        scope: scope ?? this.scope,
-        notificationSettings: notificationSettings ?? this.notificationSettings,
-      );
+  }) => SetScopeNotificationSettings(
+    scope: scope ?? this.scope,
+    notificationSettings: notificationSettings ?? this.notificationSettings,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setScopeNotificationSettings';

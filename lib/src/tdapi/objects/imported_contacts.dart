@@ -38,10 +38,10 @@ final class ImportedContacts extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_ids': userIds,
-        'importer_count': importerCount,
-      };
+    '@type': CONSTRUCTOR,
+    'user_ids': userIds,
+    'importer_count': importerCount,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -50,13 +50,12 @@ final class ImportedContacts extends TdObject {
     List<int>? importerCount,
     dynamic extra,
     int? clientId,
-  }) =>
-      ImportedContacts(
-        userIds: userIds ?? this.userIds,
-        importerCount: importerCount ?? this.importerCount,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ImportedContacts(
+    userIds: userIds ?? this.userIds,
+    importerCount: importerCount ?? this.importerCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'importedContacts';

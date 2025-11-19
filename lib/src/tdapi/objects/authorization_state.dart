@@ -47,10 +47,7 @@ final class UndecodedAuthorizationState extends AuthorizationState {
 /// Initialization parameters are needed. Call setTdlibParameters to provide them
 final class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
   /// Initialization parameters are needed. Call setTdlibParameters to provide them
-  const AuthorizationStateWaitTdlibParameters({
-    this.extra,
-    this.clientId,
-  });
+  const AuthorizationStateWaitTdlibParameters({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -62,16 +59,14 @@ final class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
 
   /// Parses a [AuthorizationStateWaitTdlibParameters] from TDLib JSON.
   factory AuthorizationStateWaitTdlibParameters.fromJson(
-          Map<String, dynamic> json) =>
-      AuthorizationStateWaitTdlibParameters(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => AuthorizationStateWaitTdlibParameters(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -79,11 +74,10 @@ final class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
   AuthorizationStateWaitTdlibParameters copyWith({
     dynamic extra,
     int? clientId,
-  }) =>
-      AuthorizationStateWaitTdlibParameters(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => AuthorizationStateWaitTdlibParameters(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'authorizationStateWaitTdlibParameters';
@@ -95,10 +89,7 @@ final class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
 /// TDLib needs the user's phone number to authorize. Call setAuthenticationPhoneNumber to provide the phone number, or use requestQrCodeAuthentication or checkAuthenticationBotToken for other authentication options
 final class AuthorizationStateWaitPhoneNumber extends AuthorizationState {
   /// TDLib needs the user's phone number to authorize. Call setAuthenticationPhoneNumber to provide the phone number, or use requestQrCodeAuthentication or checkAuthenticationBotToken for other authentication options
-  const AuthorizationStateWaitPhoneNumber({
-    this.extra,
-    this.clientId,
-  });
+  const AuthorizationStateWaitPhoneNumber({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -110,24 +101,19 @@ final class AuthorizationStateWaitPhoneNumber extends AuthorizationState {
 
   /// Parses a [AuthorizationStateWaitPhoneNumber] from TDLib JSON.
   factory AuthorizationStateWaitPhoneNumber.fromJson(
-          Map<String, dynamic> json) =>
-      AuthorizationStateWaitPhoneNumber(
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => AuthorizationStateWaitPhoneNumber(
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  AuthorizationStateWaitPhoneNumber copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  AuthorizationStateWaitPhoneNumber copyWith({dynamic extra, int? clientId}) =>
       AuthorizationStateWaitPhoneNumber(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -170,22 +156,22 @@ final class AuthorizationStateWaitPremiumPurchase extends AuthorizationState {
 
   /// Parses a [AuthorizationStateWaitPremiumPurchase] from TDLib JSON.
   factory AuthorizationStateWaitPremiumPurchase.fromJson(
-          Map<String, dynamic> json) =>
-      AuthorizationStateWaitPremiumPurchase(
-        storeProductId: _readString(json['store_product_id']),
-        supportEmailAddress: _readString(json['support_email_address']),
-        supportEmailSubject: _readString(json['support_email_subject']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => AuthorizationStateWaitPremiumPurchase(
+    storeProductId: _readString(json['store_product_id']),
+    supportEmailAddress: _readString(json['support_email_address']),
+    supportEmailSubject: _readString(json['support_email_subject']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'store_product_id': storeProductId,
-        'support_email_address': supportEmailAddress,
-        'support_email_subject': supportEmailSubject,
-      };
+    '@type': CONSTRUCTOR,
+    'store_product_id': storeProductId,
+    'support_email_address': supportEmailAddress,
+    'support_email_subject': supportEmailSubject,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -196,14 +182,13 @@ final class AuthorizationStateWaitPremiumPurchase extends AuthorizationState {
     String? supportEmailSubject,
     dynamic extra,
     int? clientId,
-  }) =>
-      AuthorizationStateWaitPremiumPurchase(
-        storeProductId: storeProductId ?? this.storeProductId,
-        supportEmailAddress: supportEmailAddress ?? this.supportEmailAddress,
-        supportEmailSubject: supportEmailSubject ?? this.supportEmailSubject,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => AuthorizationStateWaitPremiumPurchase(
+    storeProductId: storeProductId ?? this.storeProductId,
+    supportEmailAddress: supportEmailAddress ?? this.supportEmailAddress,
+    supportEmailSubject: supportEmailSubject ?? this.supportEmailSubject,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'authorizationStateWaitPremiumPurchase';
@@ -238,20 +223,20 @@ final class AuthorizationStateWaitEmailAddress extends AuthorizationState {
 
   /// Parses a [AuthorizationStateWaitEmailAddress] from TDLib JSON.
   factory AuthorizationStateWaitEmailAddress.fromJson(
-          Map<String, dynamic> json) =>
-      AuthorizationStateWaitEmailAddress(
-        allowAppleId: _readBool(json['allow_apple_id']),
-        allowGoogleId: _readBool(json['allow_google_id']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => AuthorizationStateWaitEmailAddress(
+    allowAppleId: _readBool(json['allow_apple_id']),
+    allowGoogleId: _readBool(json['allow_google_id']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'allow_apple_id': allowAppleId,
-        'allow_google_id': allowGoogleId,
-      };
+    '@type': CONSTRUCTOR,
+    'allow_apple_id': allowAppleId,
+    'allow_google_id': allowGoogleId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -261,13 +246,12 @@ final class AuthorizationStateWaitEmailAddress extends AuthorizationState {
     bool? allowGoogleId,
     dynamic extra,
     int? clientId,
-  }) =>
-      AuthorizationStateWaitEmailAddress(
-        allowAppleId: allowAppleId ?? this.allowAppleId,
-        allowGoogleId: allowGoogleId ?? this.allowGoogleId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => AuthorizationStateWaitEmailAddress(
+    allowAppleId: allowAppleId ?? this.allowAppleId,
+    allowGoogleId: allowGoogleId ?? this.allowGoogleId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'authorizationStateWaitEmailAddress';
@@ -314,21 +298,25 @@ final class AuthorizationStateWaitEmailCode extends AuthorizationState {
         allowAppleId: _readBool(json['allow_apple_id']),
         allowGoogleId: _readBool(json['allow_google_id']),
         codeInfo: _readObject(
-            json['code_info'], EmailAddressAuthenticationCodeInfo.fromJson),
+          json['code_info'],
+          EmailAddressAuthenticationCodeInfo.fromJson,
+        ),
         emailAddressResetState: _readOptional(
-            json['email_address_reset_state'], EmailAddressResetState.fromJson),
+          json['email_address_reset_state'],
+          EmailAddressResetState.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'allow_apple_id': allowAppleId,
-        'allow_google_id': allowGoogleId,
-        'code_info': codeInfo.toJson(),
-        'email_address_reset_state': emailAddressResetState?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'allow_apple_id': allowAppleId,
+    'allow_google_id': allowGoogleId,
+    'code_info': codeInfo.toJson(),
+    'email_address_reset_state': emailAddressResetState?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -340,17 +328,16 @@ final class AuthorizationStateWaitEmailCode extends AuthorizationState {
     EmailAddressResetState? Function()? emailAddressResetState,
     dynamic extra,
     int? clientId,
-  }) =>
-      AuthorizationStateWaitEmailCode(
-        allowAppleId: allowAppleId ?? this.allowAppleId,
-        allowGoogleId: allowGoogleId ?? this.allowGoogleId,
-        codeInfo: codeInfo ?? this.codeInfo,
-        emailAddressResetState: emailAddressResetState != null
-            ? emailAddressResetState()
-            : this.emailAddressResetState,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => AuthorizationStateWaitEmailCode(
+    allowAppleId: allowAppleId ?? this.allowAppleId,
+    allowGoogleId: allowGoogleId ?? this.allowGoogleId,
+    codeInfo: codeInfo ?? this.codeInfo,
+    emailAddressResetState: emailAddressResetState != null
+        ? emailAddressResetState()
+        : this.emailAddressResetState,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'authorizationStateWaitEmailCode';
@@ -382,17 +369,19 @@ final class AuthorizationStateWaitCode extends AuthorizationState {
   /// Parses a [AuthorizationStateWaitCode] from TDLib JSON.
   factory AuthorizationStateWaitCode.fromJson(Map<String, dynamic> json) =>
       AuthorizationStateWaitCode(
-        codeInfo:
-            _readObject(json['code_info'], AuthenticationCodeInfo.fromJson),
+        codeInfo: _readObject(
+          json['code_info'],
+          AuthenticationCodeInfo.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'code_info': codeInfo.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'code_info': codeInfo.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -401,12 +390,11 @@ final class AuthorizationStateWaitCode extends AuthorizationState {
     AuthenticationCodeInfo? codeInfo,
     dynamic extra,
     int? clientId,
-  }) =>
-      AuthorizationStateWaitCode(
-        codeInfo: codeInfo ?? this.codeInfo,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => AuthorizationStateWaitCode(
+    codeInfo: codeInfo ?? this.codeInfo,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'authorizationStateWaitCode';
@@ -438,18 +426,15 @@ final class AuthorizationStateWaitOtherDeviceConfirmation
 
   /// Parses a [AuthorizationStateWaitOtherDeviceConfirmation] from TDLib JSON.
   factory AuthorizationStateWaitOtherDeviceConfirmation.fromJson(
-          Map<String, dynamic> json) =>
-      AuthorizationStateWaitOtherDeviceConfirmation(
-        link: _readString(json['link']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => AuthorizationStateWaitOtherDeviceConfirmation(
+    link: _readString(json['link']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'link': link,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'link': link};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -458,12 +443,11 @@ final class AuthorizationStateWaitOtherDeviceConfirmation
     String? link,
     dynamic extra,
     int? clientId,
-  }) =>
-      AuthorizationStateWaitOtherDeviceConfirmation(
-        link: link ?? this.link,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => AuthorizationStateWaitOtherDeviceConfirmation(
+    link: link ?? this.link,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
@@ -495,19 +479,21 @@ final class AuthorizationStateWaitRegistration extends AuthorizationState {
 
   /// Parses a [AuthorizationStateWaitRegistration] from TDLib JSON.
   factory AuthorizationStateWaitRegistration.fromJson(
-          Map<String, dynamic> json) =>
-      AuthorizationStateWaitRegistration(
-        termsOfService:
-            _readObject(json['terms_of_service'], TermsOfService.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    Map<String, dynamic> json,
+  ) => AuthorizationStateWaitRegistration(
+    termsOfService: _readObject(
+      json['terms_of_service'],
+      TermsOfService.fromJson,
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'terms_of_service': termsOfService.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'terms_of_service': termsOfService.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -516,12 +502,11 @@ final class AuthorizationStateWaitRegistration extends AuthorizationState {
     TermsOfService? termsOfService,
     dynamic extra,
     int? clientId,
-  }) =>
-      AuthorizationStateWaitRegistration(
-        termsOfService: termsOfService ?? this.termsOfService,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => AuthorizationStateWaitRegistration(
+    termsOfService: termsOfService ?? this.termsOfService,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'authorizationStateWaitRegistration';
@@ -568,20 +553,21 @@ final class AuthorizationStateWaitPassword extends AuthorizationState {
         passwordHint: _readString(json['password_hint']),
         hasRecoveryEmailAddress: _readBool(json['has_recovery_email_address']),
         hasPassportData: _readBool(json['has_passport_data']),
-        recoveryEmailAddressPattern:
-            _readString(json['recovery_email_address_pattern']),
+        recoveryEmailAddressPattern: _readString(
+          json['recovery_email_address_pattern'],
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'password_hint': passwordHint,
-        'has_recovery_email_address': hasRecoveryEmailAddress,
-        'has_passport_data': hasPassportData,
-        'recovery_email_address_pattern': recoveryEmailAddressPattern,
-      };
+    '@type': CONSTRUCTOR,
+    'password_hint': passwordHint,
+    'has_recovery_email_address': hasRecoveryEmailAddress,
+    'has_passport_data': hasPassportData,
+    'recovery_email_address_pattern': recoveryEmailAddressPattern,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -593,17 +579,16 @@ final class AuthorizationStateWaitPassword extends AuthorizationState {
     String? recoveryEmailAddressPattern,
     dynamic extra,
     int? clientId,
-  }) =>
-      AuthorizationStateWaitPassword(
-        passwordHint: passwordHint ?? this.passwordHint,
-        hasRecoveryEmailAddress:
-            hasRecoveryEmailAddress ?? this.hasRecoveryEmailAddress,
-        hasPassportData: hasPassportData ?? this.hasPassportData,
-        recoveryEmailAddressPattern:
-            recoveryEmailAddressPattern ?? this.recoveryEmailAddressPattern,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => AuthorizationStateWaitPassword(
+    passwordHint: passwordHint ?? this.passwordHint,
+    hasRecoveryEmailAddress:
+        hasRecoveryEmailAddress ?? this.hasRecoveryEmailAddress,
+    hasPassportData: hasPassportData ?? this.hasPassportData,
+    recoveryEmailAddressPattern:
+        recoveryEmailAddressPattern ?? this.recoveryEmailAddressPattern,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'authorizationStateWaitPassword';
@@ -615,10 +600,7 @@ final class AuthorizationStateWaitPassword extends AuthorizationState {
 /// The user has been successfully authorized. TDLib is now ready to answer general requests
 final class AuthorizationStateReady extends AuthorizationState {
   /// The user has been successfully authorized. TDLib is now ready to answer general requests
-  const AuthorizationStateReady({
-    this.extra,
-    this.clientId,
-  });
+  const AuthorizationStateReady({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -636,17 +618,12 @@ final class AuthorizationStateReady extends AuthorizationState {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  AuthorizationStateReady copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  AuthorizationStateReady copyWith({dynamic extra, int? clientId}) =>
       AuthorizationStateReady(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -662,10 +639,7 @@ final class AuthorizationStateReady extends AuthorizationState {
 /// The user is currently logging out
 final class AuthorizationStateLoggingOut extends AuthorizationState {
   /// The user is currently logging out
-  const AuthorizationStateLoggingOut({
-    this.extra,
-    this.clientId,
-  });
+  const AuthorizationStateLoggingOut({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -683,17 +657,12 @@ final class AuthorizationStateLoggingOut extends AuthorizationState {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  AuthorizationStateLoggingOut copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  AuthorizationStateLoggingOut copyWith({dynamic extra, int? clientId}) =>
       AuthorizationStateLoggingOut(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -709,10 +678,7 @@ final class AuthorizationStateLoggingOut extends AuthorizationState {
 /// TDLib is closing, all subsequent queries will be answered with the error 500. Note that closing TDLib can take a while. All resources will be freed only after authorizationStateClosed has been received
 final class AuthorizationStateClosing extends AuthorizationState {
   /// TDLib is closing, all subsequent queries will be answered with the error 500. Note that closing TDLib can take a while. All resources will be freed only after authorizationStateClosed has been received
-  const AuthorizationStateClosing({
-    this.extra,
-    this.clientId,
-  });
+  const AuthorizationStateClosing({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -730,17 +696,12 @@ final class AuthorizationStateClosing extends AuthorizationState {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  AuthorizationStateClosing copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  AuthorizationStateClosing copyWith({dynamic extra, int? clientId}) =>
       AuthorizationStateClosing(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -756,10 +717,7 @@ final class AuthorizationStateClosing extends AuthorizationState {
 /// TDLib client is in its final state. All databases are closed and all resources are released. No other updates will be received after this. All queries will be responded to with error code 500. To continue working, one must create a new instance of the TDLib client
 final class AuthorizationStateClosed extends AuthorizationState {
   /// TDLib client is in its final state. All databases are closed and all resources are released. No other updates will be received after this. All queries will be responded to with error code 500. To continue working, one must create a new instance of the TDLib client
-  const AuthorizationStateClosed({
-    this.extra,
-    this.clientId,
-  });
+  const AuthorizationStateClosed({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.
   @override
@@ -777,17 +735,12 @@ final class AuthorizationStateClosed extends AuthorizationState {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  AuthorizationStateClosed copyWith({
-    dynamic extra,
-    int? clientId,
-  }) =>
+  AuthorizationStateClosed copyWith({dynamic extra, int? clientId}) =>
       AuthorizationStateClosed(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

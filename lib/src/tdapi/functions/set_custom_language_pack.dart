@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SetCustomLanguagePack extends TdFunction<Ok> {
   /// Adds or changes a custom local language pack to the current localization target
-  const SetCustomLanguagePack({
-    required this.info,
-    required this.strings,
-  });
+  const SetCustomLanguagePack({required this.info, required this.strings});
 
   /// Information about the language pack. Language pack identifier must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization
   final LanguagePackInfo info;
@@ -21,22 +18,21 @@ final class SetCustomLanguagePack extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'info': info.toJson(),
-        'strings': [for (final e in strings) e.toJson()],
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'info': info.toJson(),
+    'strings': [for (final e in strings) e.toJson()],
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetCustomLanguagePack copyWith({
     LanguagePackInfo? info,
     List<LanguagePackString>? strings,
-  }) =>
-      SetCustomLanguagePack(
-        info: info ?? this.info,
-        strings: strings ?? this.strings,
-      );
+  }) => SetCustomLanguagePack(
+    info: info ?? this.info,
+    strings: strings ?? this.strings,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setCustomLanguagePack';

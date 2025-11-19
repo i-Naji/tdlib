@@ -21,18 +21,15 @@ final class SellGift extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'business_connection_id': businessConnectionId,
-        'received_gift_id': receivedGiftId,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'business_connection_id': businessConnectionId,
+    'received_gift_id': receivedGiftId,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SellGift copyWith({
-    String? businessConnectionId,
-    String? receivedGiftId,
-  }) =>
+  SellGift copyWith({String? businessConnectionId, String? receivedGiftId}) =>
       SellGift(
         businessConnectionId: businessConnectionId ?? this.businessConnectionId,
         receivedGiftId: receivedGiftId ?? this.receivedGiftId,

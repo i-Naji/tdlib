@@ -65,38 +65,39 @@ final class ForumTopic extends TdObject {
 
   /// Parses a [ForumTopic] from TDLib JSON.
   factory ForumTopic.fromJson(Map<String, dynamic> json) => ForumTopic(
-        info: _readObject(json['info'], ForumTopicInfo.fromJson),
-        lastMessage: _readOptional(json['last_message'], Message.fromJson),
-        order: _readInt(json['order']),
-        isPinned: _readBool(json['is_pinned']),
-        unreadCount: _readInt(json['unread_count']),
-        lastReadInboxMessageId: _readInt(json['last_read_inbox_message_id']),
-        lastReadOutboxMessageId: _readInt(json['last_read_outbox_message_id']),
-        unreadMentionCount: _readInt(json['unread_mention_count']),
-        unreadReactionCount: _readInt(json['unread_reaction_count']),
-        notificationSettings: _readObject(
-            json['notification_settings'], ChatNotificationSettings.fromJson),
-        draftMessage:
-            _readOptional(json['draft_message'], DraftMessage.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    info: _readObject(json['info'], ForumTopicInfo.fromJson),
+    lastMessage: _readOptional(json['last_message'], Message.fromJson),
+    order: _readInt(json['order']),
+    isPinned: _readBool(json['is_pinned']),
+    unreadCount: _readInt(json['unread_count']),
+    lastReadInboxMessageId: _readInt(json['last_read_inbox_message_id']),
+    lastReadOutboxMessageId: _readInt(json['last_read_outbox_message_id']),
+    unreadMentionCount: _readInt(json['unread_mention_count']),
+    unreadReactionCount: _readInt(json['unread_reaction_count']),
+    notificationSettings: _readObject(
+      json['notification_settings'],
+      ChatNotificationSettings.fromJson,
+    ),
+    draftMessage: _readOptional(json['draft_message'], DraftMessage.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'info': info.toJson(),
-        'last_message': lastMessage?.toJson(),
-        'order': order.toString(),
-        'is_pinned': isPinned,
-        'unread_count': unreadCount,
-        'last_read_inbox_message_id': lastReadInboxMessageId,
-        'last_read_outbox_message_id': lastReadOutboxMessageId,
-        'unread_mention_count': unreadMentionCount,
-        'unread_reaction_count': unreadReactionCount,
-        'notification_settings': notificationSettings.toJson(),
-        'draft_message': draftMessage?.toJson(),
-      };
+    '@type': CONSTRUCTOR,
+    'info': info.toJson(),
+    'last_message': lastMessage?.toJson(),
+    'order': order.toString(),
+    'is_pinned': isPinned,
+    'unread_count': unreadCount,
+    'last_read_inbox_message_id': lastReadInboxMessageId,
+    'last_read_outbox_message_id': lastReadOutboxMessageId,
+    'unread_mention_count': unreadMentionCount,
+    'unread_reaction_count': unreadReactionCount,
+    'notification_settings': notificationSettings.toJson(),
+    'draft_message': draftMessage?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -114,24 +115,23 @@ final class ForumTopic extends TdObject {
     DraftMessage? Function()? draftMessage,
     dynamic extra,
     int? clientId,
-  }) =>
-      ForumTopic(
-        info: info ?? this.info,
-        lastMessage: lastMessage != null ? lastMessage() : this.lastMessage,
-        order: order ?? this.order,
-        isPinned: isPinned ?? this.isPinned,
-        unreadCount: unreadCount ?? this.unreadCount,
-        lastReadInboxMessageId:
-            lastReadInboxMessageId ?? this.lastReadInboxMessageId,
-        lastReadOutboxMessageId:
-            lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
-        unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
-        unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
-        notificationSettings: notificationSettings ?? this.notificationSettings,
-        draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ForumTopic(
+    info: info ?? this.info,
+    lastMessage: lastMessage != null ? lastMessage() : this.lastMessage,
+    order: order ?? this.order,
+    isPinned: isPinned ?? this.isPinned,
+    unreadCount: unreadCount ?? this.unreadCount,
+    lastReadInboxMessageId:
+        lastReadInboxMessageId ?? this.lastReadInboxMessageId,
+    lastReadOutboxMessageId:
+        lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
+    unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
+    unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
+    notificationSettings: notificationSettings ?? this.notificationSettings,
+    draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'forumTopic';

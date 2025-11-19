@@ -17,23 +17,21 @@ final class SetDefaultChannelAdministratorRights extends TdFunction<Ok> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'default_channel_administrator_rights':
-            defaultChannelAdministratorRights?.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'default_channel_administrator_rights': defaultChannelAdministratorRights
+        ?.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetDefaultChannelAdministratorRights copyWith({
     ChatAdministratorRights? Function()? defaultChannelAdministratorRights,
-  }) =>
-      SetDefaultChannelAdministratorRights(
-        defaultChannelAdministratorRights:
-            defaultChannelAdministratorRights != null
-                ? defaultChannelAdministratorRights()
-                : this.defaultChannelAdministratorRights,
-      );
+  }) => SetDefaultChannelAdministratorRights(
+    defaultChannelAdministratorRights: defaultChannelAdministratorRights != null
+        ? defaultChannelAdministratorRights()
+        : this.defaultChannelAdministratorRights,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'setDefaultChannelAdministratorRights';

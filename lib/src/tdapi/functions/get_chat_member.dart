@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [ChatMember].
 final class GetChatMember extends TdFunction<ChatMember> {
   /// Returns information about a single member of a chat
-  const GetChatMember({
-    required this.chatId,
-    required this.memberId,
-  });
+  const GetChatMember({required this.chatId, required this.memberId});
 
   /// Chat identifier
   final int chatId;
@@ -21,18 +18,15 @@ final class GetChatMember extends TdFunction<ChatMember> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'member_id': memberId.toJson(),
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'member_id': memberId.toJson(),
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatMember copyWith({
-    int? chatId,
-    MessageSender? memberId,
-  }) =>
+  GetChatMember copyWith({int? chatId, MessageSender? memberId}) =>
       GetChatMember(
         chatId: chatId ?? this.chatId,
         memberId: memberId ?? this.memberId,

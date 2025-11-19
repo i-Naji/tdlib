@@ -8,10 +8,7 @@ part of '../tdapi.dart';
 /// Returns [FoundWebApp].
 final class SearchWebApp extends TdFunction<FoundWebApp> {
   /// Returns information about a Web App by its short name. Returns a 404 error if the Web App is not found
-  const SearchWebApp({
-    required this.botUserId,
-    required this.webAppShortName,
-  });
+  const SearchWebApp({required this.botUserId, required this.webAppShortName});
 
   /// Identifier of the target bot
   final int botUserId;
@@ -21,18 +18,15 @@ final class SearchWebApp extends TdFunction<FoundWebApp> {
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
-        'web_app_short_name': webAppShortName,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+    'web_app_short_name': webAppShortName,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchWebApp copyWith({
-    int? botUserId,
-    String? webAppShortName,
-  }) =>
+  SearchWebApp copyWith({int? botUserId, String? webAppShortName}) =>
       SearchWebApp(
         botUserId: botUserId ?? this.botUserId,
         webAppShortName: webAppShortName ?? this.webAppShortName,

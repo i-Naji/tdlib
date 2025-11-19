@@ -8,28 +8,22 @@ part of '../tdapi.dart';
 /// Returns [PushReceiverId].
 final class GetPushReceiverId extends TdFunction<PushReceiverId> {
   /// Returns a globally unique push notification subscription identifier for identification of an account, which has received a push notification. Can be called synchronously
-  const GetPushReceiverId({
-    required this.payload,
-  });
+  const GetPushReceiverId({required this.payload});
 
   /// JSON-encoded push notification payload
   final String payload;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
-        '@type': CONSTRUCTOR,
-        'payload': payload,
-        if (extra != null) '@extra': extra,
-      };
+    '@type': CONSTRUCTOR,
+    'payload': payload,
+    '@extra': ?extra,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetPushReceiverId copyWith({
-    String? payload,
-  }) =>
-      GetPushReceiverId(
-        payload: payload ?? this.payload,
-      );
+  GetPushReceiverId copyWith({String? payload}) =>
+      GetPushReceiverId(payload: payload ?? this.payload);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getPushReceiverId';

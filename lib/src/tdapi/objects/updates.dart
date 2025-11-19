@@ -6,11 +6,7 @@ part of '../tdapi.dart';
 /// Contains a list of updates
 final class Updates extends TdObject {
   /// Contains a list of updates
-  const Updates({
-    required this.updates,
-    this.extra,
-    this.clientId,
-  });
+  const Updates({required this.updates, this.extra, this.clientId});
 
   /// List of updates
   final List<Update> updates;
@@ -25,25 +21,23 @@ final class Updates extends TdObject {
 
   /// Parses a [Updates] from TDLib JSON.
   factory Updates.fromJson(Map<String, dynamic> json) => Updates(
-        updates: _readList<Update>(
-            json['updates'], (e) => _readObject(e, Update.fromJson)),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
+    updates: _readList<Update>(
+      json['updates'],
+      (e) => _readObject(e, Update.fromJson),
+    ),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'updates': [for (final e in updates) e.toJson()],
-      };
+    '@type': CONSTRUCTOR,
+    'updates': [for (final e in updates) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  Updates copyWith({
-    List<Update>? updates,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  Updates copyWith({List<Update>? updates, dynamic extra, int? clientId}) =>
       Updates(
         updates: updates ?? this.updates,
         extra: extra ?? this.extra,

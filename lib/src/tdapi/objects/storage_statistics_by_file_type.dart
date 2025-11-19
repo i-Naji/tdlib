@@ -31,11 +31,11 @@ final class StorageStatisticsByFileType extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'file_type': fileType.toJson(),
-        'size': size,
-        'count': count,
-      };
+    '@type': CONSTRUCTOR,
+    'file_type': fileType.toJson(),
+    'size': size,
+    'count': count,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
@@ -43,12 +43,11 @@ final class StorageStatisticsByFileType extends TdObject {
     FileType? fileType,
     int? size,
     int? count,
-  }) =>
-      StorageStatisticsByFileType(
-        fileType: fileType ?? this.fileType,
-        size: size ?? this.size,
-        count: count ?? this.count,
-      );
+  }) => StorageStatisticsByFileType(
+    fileType: fileType ?? this.fileType,
+    size: size ?? this.size,
+    count: count ?? this.count,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storageStatisticsByFileType';

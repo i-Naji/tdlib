@@ -45,11 +45,7 @@ final class UndecodedMessageSender extends MessageSender {
 /// The message was sent by a known user
 final class MessageSenderUser extends MessageSender {
   /// The message was sent by a known user
-  const MessageSenderUser({
-    required this.userId,
-    this.extra,
-    this.clientId,
-  });
+  const MessageSenderUser({required this.userId, this.extra, this.clientId});
 
   /// Identifier of the user that sent the message
   final int userId;
@@ -71,19 +67,12 @@ final class MessageSenderUser extends MessageSender {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'user_id': userId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageSenderUser copyWith({
-    int? userId,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  MessageSenderUser copyWith({int? userId, dynamic extra, int? clientId}) =>
       MessageSenderUser(
         userId: userId ?? this.userId,
         extra: extra ?? this.extra,
@@ -100,11 +89,7 @@ final class MessageSenderUser extends MessageSender {
 /// The message was sent on behalf of a chat
 final class MessageSenderChat extends MessageSender {
   /// The message was sent on behalf of a chat
-  const MessageSenderChat({
-    required this.chatId,
-    this.extra,
-    this.clientId,
-  });
+  const MessageSenderChat({required this.chatId, this.extra, this.clientId});
 
   /// Identifier of the chat that sent the message
   final int chatId;
@@ -126,19 +111,12 @@ final class MessageSenderChat extends MessageSender {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-      };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'chat_id': chatId};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageSenderChat copyWith({
-    int? chatId,
-    dynamic extra,
-    int? clientId,
-  }) =>
+  MessageSenderChat copyWith({int? chatId, dynamic extra, int? clientId}) =>
       MessageSenderChat(
         chatId: chatId ?? this.chatId,
         extra: extra ?? this.extra,
