@@ -1,6 +1,7 @@
+import 'dart:js_interop';
+
 import 'td_plugin.dart';
 import 'web_interop.dart';
-import 'package:js/js_util.dart';
 
 /// TDLib Web Library Instance.
 class TdWebPlugin extends TdPlugin {
@@ -15,24 +16,24 @@ class TdWebPlugin extends TdPlugin {
 
   static Future<void> initialize([String? mode]) async {
     _platform = TdWebPlatform();
-    await promiseToFuture(_platform.init(mode));
+    await _platform.init(mode?.toJS).toDart;
     TdPlugin.instance = const TdWebPlugin();
   }
 
   @override
-  int tdCreate() => _platform.td_create();
+  int tdCreate() => _platform.tdCreate();
 
   @override
-  String? tdReceive([double? timeout]) => _platform.td_receive();
+  String? tdReceive([double? timeout]) => _platform.tdReceive();
 
   @override
-  void tdSend(int clientId, String event) => _platform.td_send(clientId, event);
+  void tdSend(int clientId, String event) => _platform.tdSend(clientId, event);
 
   @override
-  String? tdExecute(String event) => _platform.td_execute(event);
+  String? tdExecute(String event) => _platform.tdExecute(event);
 
   @override
-  num tdGetTimeout() => _platform.td_get_timeout();
+  num tdGetTimeout() => _platform.tdGetTimeout();
 
   @override
   void removeLogMessageCallback() {
@@ -42,7 +43,7 @@ class TdWebPlugin extends TdPlugin {
   }
 
   @override
-  void setLogMessageCallback(int maxVerbosityLevel, callback) {
+  void setLogMessageCallback(int maxVerbosityLevel, Object? callback) {
     throw UnsupportedError(
       "setLogMessageCallback is not supported in web platform",
     );

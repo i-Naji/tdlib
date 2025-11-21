@@ -1,30 +1,25 @@
-// ignore_for_file: non_constant_identifier_names
-@JS()
-library;
+import 'dart:js_interop';
 
-import 'package:flutter/foundation.dart' show visibleForTesting;
-import 'package:js/js.dart';
+/// The tdweb client the page loads from `tdlib.js` (`window.tdlib.default`).
+@JS('tdlib.default')
+extension type TdWebPlatform._(JSObject _) implements JSObject {
+  external TdWebPlatform();
 
-@visibleForTesting
-@JS()
-abstract class Promise<T> {
-  external factory Promise(
-    void Function(void Function(T result) resolve, Function reject) executor,
-  );
-  external Promise then(
-    void Function(T result) onFulfilled, [
-    Function onRejected,
-  ]);
-}
+  /// Loads the TDLib module; [mode] is `wasm` (default) or `asmjs`.
+  external JSPromise<JSAny?> init([JSString? mode]);
 
-@JS("tdlib.default")
-class TdWebPlatform {
-  external factory TdWebPlatform();
-  external Promise<void> init([String? tdlib_mode]);
-  // external Promise<void> initialize([String? libPath]);
-  external int td_create();
-  external void td_send(int clientId, String query);
-  external String? td_execute(String query);
-  external String? td_receive();
-  external int td_get_timeout();
+  @JS('td_create')
+  external int tdCreate();
+
+  @JS('td_send')
+  external void tdSend(int clientId, String query);
+
+  @JS('td_execute')
+  external String? tdExecute(String query);
+
+  @JS('td_receive')
+  external String? tdReceive();
+
+  @JS('td_get_timeout')
+  external int tdGetTimeout();
 }
