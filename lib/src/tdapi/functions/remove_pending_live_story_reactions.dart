@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Returns information about available video chat streams
+/// Removes all pending paid reactions in a live story group call
 ///
-/// Returns [VideoChatStreams].
-final class GetVideoChatStreams extends TdFunction<VideoChatStreams> {
-  /// Returns information about available video chat streams
-  const GetVideoChatStreams({required this.groupCallId});
+/// Returns [Ok].
+final class RemovePendingLiveStoryReactions extends TdFunction<Ok> {
+  /// Removes all pending paid reactions in a live story group call
+  const RemovePendingLiveStoryReactions({required this.groupCallId});
 
   /// Group call identifier
   final int groupCallId;
@@ -22,11 +22,13 @@ final class GetVideoChatStreams extends TdFunction<VideoChatStreams> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetVideoChatStreams copyWith({int? groupCallId}) =>
-      GetVideoChatStreams(groupCallId: groupCallId ?? this.groupCallId);
+  RemovePendingLiveStoryReactions copyWith({int? groupCallId}) =>
+      RemovePendingLiveStoryReactions(
+        groupCallId: groupCallId ?? this.groupCallId,
+      );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'getVideoChatStreams';
+  static const String CONSTRUCTOR = 'removePendingLiveStoryReactions';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -25,6 +25,8 @@ final class GroupCallParticipant extends TdObject {
     required this.canUnmuteSelf,
     required this.volumeLevel,
     required this.order,
+    this.extra,
+    this.clientId,
   });
 
   /// Identifier of the group call participant
@@ -81,6 +83,14 @@ final class GroupCallParticipant extends TdObject {
   /// User's order in the group call participant list. Orders must be compared lexicographically. The bigger is order, the higher is user in the list. If order is empty, the user must be removed from the participant list
   final String order;
 
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
   /// Parses a [GroupCallParticipant] from TDLib JSON.
   factory GroupCallParticipant.fromJson(
     Map<String, dynamic> json,
@@ -113,6 +123,8 @@ final class GroupCallParticipant extends TdObject {
     canUnmuteSelf: _readBool(json['can_unmute_self']),
     volumeLevel: _readInt(json['volume_level']),
     order: _readString(json['order']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
   );
 
   @override
@@ -159,6 +171,8 @@ final class GroupCallParticipant extends TdObject {
     bool? canUnmuteSelf,
     int? volumeLevel,
     String? order,
+    dynamic extra,
+    int? clientId,
   }) => GroupCallParticipant(
     participantId: participantId ?? this.participantId,
     audioSourceId: audioSourceId ?? this.audioSourceId,
@@ -184,6 +198,8 @@ final class GroupCallParticipant extends TdObject {
     canUnmuteSelf: canUnmuteSelf ?? this.canUnmuteSelf,
     volumeLevel: volumeLevel ?? this.volumeLevel,
     order: order ?? this.order,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
   );
 
   /// TDLib type name.

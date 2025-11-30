@@ -9,7 +9,7 @@ final class ChecklistTask extends TdObject {
   const ChecklistTask({
     required this.id,
     required this.text,
-    required this.completedByUserId,
+    this.completedBy,
     required this.completionDate,
   });
 
@@ -19,8 +19,8 @@ final class ChecklistTask extends TdObject {
   /// Text of the task; may contain only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, Url, EmailAddress, Mention, Hashtag, Cashtag and PhoneNumber entities
   final FormattedText text;
 
-  /// Identifier of the user that completed the task; 0 if the task isn't completed
-  final int completedByUserId;
+  /// Identifier of the user or chat that completed the task; may be null if the task isn't completed yet
+  final MessageSender? completedBy;
 
   /// Point in time (Unix timestamp) when the task was completed; 0 if the task isn't completed
   final int completionDate;
@@ -29,7 +29,7 @@ final class ChecklistTask extends TdObject {
   factory ChecklistTask.fromJson(Map<String, dynamic> json) => ChecklistTask(
     id: _readInt(json['id']),
     text: _readObject(json['text'], FormattedText.fromJson),
-    completedByUserId: _readInt(json['completed_by_user_id']),
+    completedBy: _readOptional(json['completed_by'], MessageSender.fromJson),
     completionDate: _readInt(json['completion_date']),
   );
 
@@ -38,7 +38,7 @@ final class ChecklistTask extends TdObject {
     '@type': CONSTRUCTOR,
     'id': id,
     'text': text.toJson(),
-    'completed_by_user_id': completedByUserId,
+    'completed_by': completedBy?.toJson(),
     'completion_date': completionDate,
   };
 
@@ -47,12 +47,12 @@ final class ChecklistTask extends TdObject {
   ChecklistTask copyWith({
     int? id,
     FormattedText? text,
-    int? completedByUserId,
+    MessageSender? Function()? completedBy,
     int? completionDate,
   }) => ChecklistTask(
     id: id ?? this.id,
     text: text ?? this.text,
-    completedByUserId: completedByUserId ?? this.completedByUserId,
+    completedBy: completedBy != null ? completedBy() : this.completedBy,
     completionDate: completionDate ?? this.completionDate,
   );
 

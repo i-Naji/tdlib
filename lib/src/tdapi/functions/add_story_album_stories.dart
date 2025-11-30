@@ -20,7 +20,7 @@ final class AddStoryAlbumStories extends TdFunction<StoryAlbum> {
   /// Identifier of the story album
   final int storyAlbumId;
 
-  /// Identifier of the stories to add to the album; 1-getOption("story_album_story_count_max") identifiers. If after addition the album has more than getOption("story_album_story_count_max") stories, then the last one are removed from the album
+  /// Identifier of the stories to add to the album; 1-getOption("story_album_size_max") identifiers. If after addition the album has more than getOption("story_album_size_max") stories, then the last one are removed from the album
   final List<int> storyIds;
 
   @override

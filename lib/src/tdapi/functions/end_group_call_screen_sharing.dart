@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Ends screen sharing in a joined group call
+/// Ends screen sharing in a joined group call; not supported in live stories
 ///
 /// Returns [Ok].
 final class EndGroupCallScreenSharing extends TdFunction<Ok> {
-  /// Ends screen sharing in a joined group call
+  /// Ends screen sharing in a joined group call; not supported in live stories
   const EndGroupCallScreenSharing({required this.groupCallId});
 
   /// Group call identifier

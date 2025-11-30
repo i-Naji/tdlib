@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of transaction with Telegram Stars
 ///
-/// One of: [StarTransactionTypePremiumBotDeposit], [StarTransactionTypeAppStoreDeposit], [StarTransactionTypeGooglePlayDeposit], [StarTransactionTypeFragmentDeposit], [StarTransactionTypeUserDeposit], [StarTransactionTypeGiveawayDeposit], [StarTransactionTypeFragmentWithdrawal], [StarTransactionTypeTelegramAdsWithdrawal], [StarTransactionTypeTelegramApiUsage], [StarTransactionTypeBotPaidMediaPurchase], [StarTransactionTypeBotPaidMediaSale], [StarTransactionTypeChannelPaidMediaPurchase], [StarTransactionTypeChannelPaidMediaSale], [StarTransactionTypeBotInvoicePurchase], [StarTransactionTypeBotInvoiceSale], [StarTransactionTypeBotSubscriptionPurchase], [StarTransactionTypeBotSubscriptionSale], [StarTransactionTypeChannelSubscriptionPurchase], [StarTransactionTypeChannelSubscriptionSale], [StarTransactionTypeGiftPurchase], [StarTransactionTypeGiftTransfer], [StarTransactionTypeGiftOriginalDetailsDrop], [StarTransactionTypeGiftSale], [StarTransactionTypeGiftUpgrade], [StarTransactionTypeGiftUpgradePurchase], [StarTransactionTypeUpgradedGiftPurchase], [StarTransactionTypeUpgradedGiftSale], [StarTransactionTypeChannelPaidReactionSend], [StarTransactionTypeChannelPaidReactionReceive], [StarTransactionTypeAffiliateProgramCommission], [StarTransactionTypePaidMessageSend], [StarTransactionTypePaidMessageReceive], [StarTransactionTypeSuggestedPostPaymentSend], [StarTransactionTypeSuggestedPostPaymentReceive], [StarTransactionTypePremiumPurchase], [StarTransactionTypeBusinessBotTransferSend], [StarTransactionTypeBusinessBotTransferReceive], [StarTransactionTypePublicPostSearch], [StarTransactionTypeUnsupported]; or [UndecodedStarTransactionType] for a type newer than this API.
+/// One of: [StarTransactionTypePremiumBotDeposit], [StarTransactionTypeAppStoreDeposit], [StarTransactionTypeGooglePlayDeposit], [StarTransactionTypeFragmentDeposit], [StarTransactionTypeUserDeposit], [StarTransactionTypeGiveawayDeposit], [StarTransactionTypeFragmentWithdrawal], [StarTransactionTypeTelegramAdsWithdrawal], [StarTransactionTypeTelegramApiUsage], [StarTransactionTypeBotPaidMediaPurchase], [StarTransactionTypeBotPaidMediaSale], [StarTransactionTypeChannelPaidMediaPurchase], [StarTransactionTypeChannelPaidMediaSale], [StarTransactionTypeBotInvoicePurchase], [StarTransactionTypeBotInvoiceSale], [StarTransactionTypeBotSubscriptionPurchase], [StarTransactionTypeBotSubscriptionSale], [StarTransactionTypeChannelSubscriptionPurchase], [StarTransactionTypeChannelSubscriptionSale], [StarTransactionTypeGiftPurchase], [StarTransactionTypeGiftTransfer], [StarTransactionTypeGiftOriginalDetailsDrop], [StarTransactionTypeGiftSale], [StarTransactionTypeGiftUpgrade], [StarTransactionTypeGiftUpgradePurchase], [StarTransactionTypeUpgradedGiftPurchase], [StarTransactionTypeUpgradedGiftSale], [StarTransactionTypeChannelPaidReactionSend], [StarTransactionTypeChannelPaidReactionReceive], [StarTransactionTypeAffiliateProgramCommission], [StarTransactionTypePaidMessageSend], [StarTransactionTypePaidMessageReceive], [StarTransactionTypePaidGroupCallMessageSend], [StarTransactionTypePaidGroupCallMessageReceive], [StarTransactionTypePaidGroupCallReactionSend], [StarTransactionTypePaidGroupCallReactionReceive], [StarTransactionTypeSuggestedPostPaymentSend], [StarTransactionTypeSuggestedPostPaymentReceive], [StarTransactionTypePremiumPurchase], [StarTransactionTypeBusinessBotTransferSend], [StarTransactionTypeBusinessBotTransferReceive], [StarTransactionTypePublicPostSearch], [StarTransactionTypeUnsupported]; or [UndecodedStarTransactionType] for a type newer than this API.
 sealed class StarTransactionType extends TdObject {
   const StarTransactionType();
 
@@ -1557,6 +1557,196 @@ final class StarTransactionTypePaidMessageReceive extends StarTransactionType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypePaidMessageReceive';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a sending of a paid group call message; for regular users only
+final class StarTransactionTypePaidGroupCallMessageSend
+    extends StarTransactionType {
+  /// The transaction is a sending of a paid group call message; for regular users only
+  const StarTransactionTypePaidGroupCallMessageSend({required this.chatId});
+
+  /// Identifier of the chat that received the payment
+  final int chatId;
+
+  /// Parses a [StarTransactionTypePaidGroupCallMessageSend] from TDLib JSON.
+  factory StarTransactionTypePaidGroupCallMessageSend.fromJson(
+    Map<String, dynamic> json,
+  ) => StarTransactionTypePaidGroupCallMessageSend(
+    chatId: _readInt(json['chat_id']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'chat_id': chatId};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StarTransactionTypePaidGroupCallMessageSend copyWith({int? chatId}) =>
+      StarTransactionTypePaidGroupCallMessageSend(
+        chatId: chatId ?? this.chatId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR =
+      'starTransactionTypePaidGroupCallMessageSend';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a receiving of a paid group call message; for regular users and channel chats only
+final class StarTransactionTypePaidGroupCallMessageReceive
+    extends StarTransactionType {
+  /// The transaction is a receiving of a paid group call message; for regular users and channel chats only
+  const StarTransactionTypePaidGroupCallMessageReceive({
+    required this.senderId,
+    required this.commissionPerMille,
+    required this.commissionStarAmount,
+  });
+
+  /// Identifier of the sender of the message
+  final MessageSender senderId;
+
+  /// The number of Telegram Stars received by the Telegram for each 1000 Telegram Stars paid for message sending
+  final int commissionPerMille;
+
+  /// The amount of Telegram Stars that were received by Telegram; can be negative for refunds
+  final StarAmount commissionStarAmount;
+
+  /// Parses a [StarTransactionTypePaidGroupCallMessageReceive] from TDLib JSON.
+  factory StarTransactionTypePaidGroupCallMessageReceive.fromJson(
+    Map<String, dynamic> json,
+  ) => StarTransactionTypePaidGroupCallMessageReceive(
+    senderId: _readObject(json['sender_id'], MessageSender.fromJson),
+    commissionPerMille: _readInt(json['commission_per_mille']),
+    commissionStarAmount: _readObject(
+      json['commission_star_amount'],
+      StarAmount.fromJson,
+    ),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'sender_id': senderId.toJson(),
+    'commission_per_mille': commissionPerMille,
+    'commission_star_amount': commissionStarAmount.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StarTransactionTypePaidGroupCallMessageReceive copyWith({
+    MessageSender? senderId,
+    int? commissionPerMille,
+    StarAmount? commissionStarAmount,
+  }) => StarTransactionTypePaidGroupCallMessageReceive(
+    senderId: senderId ?? this.senderId,
+    commissionPerMille: commissionPerMille ?? this.commissionPerMille,
+    commissionStarAmount: commissionStarAmount ?? this.commissionStarAmount,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR =
+      'starTransactionTypePaidGroupCallMessageReceive';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a sending of a paid group reaction; for regular users only
+final class StarTransactionTypePaidGroupCallReactionSend
+    extends StarTransactionType {
+  /// The transaction is a sending of a paid group reaction; for regular users only
+  const StarTransactionTypePaidGroupCallReactionSend({required this.chatId});
+
+  /// Identifier of the chat that received the payment
+  final int chatId;
+
+  /// Parses a [StarTransactionTypePaidGroupCallReactionSend] from TDLib JSON.
+  factory StarTransactionTypePaidGroupCallReactionSend.fromJson(
+    Map<String, dynamic> json,
+  ) => StarTransactionTypePaidGroupCallReactionSend(
+    chatId: _readInt(json['chat_id']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'chat_id': chatId};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StarTransactionTypePaidGroupCallReactionSend copyWith({int? chatId}) =>
+      StarTransactionTypePaidGroupCallReactionSend(
+        chatId: chatId ?? this.chatId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR =
+      'starTransactionTypePaidGroupCallReactionSend';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a receiving of a paid group call reaction; for regular users and channel chats only
+final class StarTransactionTypePaidGroupCallReactionReceive
+    extends StarTransactionType {
+  /// The transaction is a receiving of a paid group call reaction; for regular users and channel chats only
+  const StarTransactionTypePaidGroupCallReactionReceive({
+    required this.senderId,
+    required this.commissionPerMille,
+    required this.commissionStarAmount,
+  });
+
+  /// Identifier of the sender of the reaction
+  final MessageSender senderId;
+
+  /// The number of Telegram Stars received by the Telegram for each 1000 Telegram Stars paid for reaction sending
+  final int commissionPerMille;
+
+  /// The amount of Telegram Stars that were received by Telegram; can be negative for refunds
+  final StarAmount commissionStarAmount;
+
+  /// Parses a [StarTransactionTypePaidGroupCallReactionReceive] from TDLib JSON.
+  factory StarTransactionTypePaidGroupCallReactionReceive.fromJson(
+    Map<String, dynamic> json,
+  ) => StarTransactionTypePaidGroupCallReactionReceive(
+    senderId: _readObject(json['sender_id'], MessageSender.fromJson),
+    commissionPerMille: _readInt(json['commission_per_mille']),
+    commissionStarAmount: _readObject(
+      json['commission_star_amount'],
+      StarAmount.fromJson,
+    ),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'sender_id': senderId.toJson(),
+    'commission_per_mille': commissionPerMille,
+    'commission_star_amount': commissionStarAmount.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StarTransactionTypePaidGroupCallReactionReceive copyWith({
+    MessageSender? senderId,
+    int? commissionPerMille,
+    StarAmount? commissionStarAmount,
+  }) => StarTransactionTypePaidGroupCallReactionReceive(
+    senderId: senderId ?? this.senderId,
+    commissionPerMille: commissionPerMille ?? this.commissionPerMille,
+    commissionStarAmount: commissionStarAmount ?? this.commissionStarAmount,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR =
+      'starTransactionTypePaidGroupCallReactionReceive';
 
   @override
   String getConstructor() => CONSTRUCTOR;

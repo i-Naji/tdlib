@@ -21,6 +21,7 @@ final class Story extends TdObject {
     required this.canBeEdited,
     required this.canBeForwarded,
     required this.canBeReplied,
+    required this.canSetPrivacySettings,
     required this.canToggleIsPostedToChatPage,
     required this.canGetStatistics,
     required this.canGetInteractions,
@@ -64,7 +65,7 @@ final class Story extends TdObject {
   /// True, if the story is visible only for the current user
   final bool isVisibleOnlyForSelf;
 
-  /// True, if the story can be added to an album
+  /// True, if the story can be added to an album using createStoryAlbum and addStoryAlbumStories
   final bool canBeAddedToAlbum;
 
   /// True, if the story can be deleted
@@ -78,6 +79,9 @@ final class Story extends TdObject {
 
   /// True, if the story can be replied in the chat with the user that posted the story
   final bool canBeReplied;
+
+  /// True, if the story privacy settings can be changed
+  final bool canSetPrivacySettings;
 
   /// True, if the story's is_posted_to_chat_page value can be changed
   final bool canToggleIsPostedToChatPage;
@@ -139,6 +143,7 @@ final class Story extends TdObject {
     canBeEdited: _readBool(json['can_be_edited']),
     canBeForwarded: _readBool(json['can_be_forwarded']),
     canBeReplied: _readBool(json['can_be_replied']),
+    canSetPrivacySettings: _readBool(json['can_set_privacy_settings']),
     canToggleIsPostedToChatPage: _readBool(
       json['can_toggle_is_posted_to_chat_page'],
     ),
@@ -186,6 +191,7 @@ final class Story extends TdObject {
     'can_be_edited': canBeEdited,
     'can_be_forwarded': canBeForwarded,
     'can_be_replied': canBeReplied,
+    'can_set_privacy_settings': canSetPrivacySettings,
     'can_toggle_is_posted_to_chat_page': canToggleIsPostedToChatPage,
     'can_get_statistics': canGetStatistics,
     'can_get_interactions': canGetInteractions,
@@ -217,6 +223,7 @@ final class Story extends TdObject {
     bool? canBeEdited,
     bool? canBeForwarded,
     bool? canBeReplied,
+    bool? canSetPrivacySettings,
     bool? canToggleIsPostedToChatPage,
     bool? canGetStatistics,
     bool? canGetInteractions,
@@ -246,6 +253,7 @@ final class Story extends TdObject {
     canBeEdited: canBeEdited ?? this.canBeEdited,
     canBeForwarded: canBeForwarded ?? this.canBeForwarded,
     canBeReplied: canBeReplied ?? this.canBeReplied,
+    canSetPrivacySettings: canSetPrivacySettings ?? this.canSetPrivacySettings,
     canToggleIsPostedToChatPage:
         canToggleIsPostedToChatPage ?? this.canToggleIsPostedToChatPage,
     canGetStatistics: canGetStatistics ?? this.canGetStatistics,

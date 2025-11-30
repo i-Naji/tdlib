@@ -27,8 +27,7 @@ final class User extends TdObject {
     required this.isPremium,
     required this.isSupport,
     this.restrictionInfo,
-    required this.hasActiveStories,
-    required this.hasUnreadActiveStories,
+    this.activeStoryState,
     required this.restrictsNewChats,
     required this.paidMessageStarCount,
     required this.haveAccess,
@@ -99,11 +98,8 @@ final class User extends TdObject {
   /// Information about restrictions that must be applied to the corresponding private chat; may be null if none
   final RestrictionInfo? restrictionInfo;
 
-  /// True, if the user has non-expired stories available to the current user
-  final bool hasActiveStories;
-
-  /// True, if the user has unread non-expired stories available to the current user
-  final bool hasUnreadActiveStories;
+  /// State of active stories of the user; may be null if the user has no active stories
+  final ActiveStoryState? activeStoryState;
 
   /// True, if the user may restrict new chats with non-contacts. Use canSendMessageToUser to check whether the current user can message the user or try to create a chat with them
   final bool restrictsNewChats;
@@ -164,8 +160,10 @@ final class User extends TdObject {
       json['restriction_info'],
       RestrictionInfo.fromJson,
     ),
-    hasActiveStories: _readBool(json['has_active_stories']),
-    hasUnreadActiveStories: _readBool(json['has_unread_active_stories']),
+    activeStoryState: _readOptional(
+      json['active_story_state'],
+      ActiveStoryState.fromJson,
+    ),
     restrictsNewChats: _readBool(json['restricts_new_chats']),
     paidMessageStarCount: _readInt(json['paid_message_star_count']),
     haveAccess: _readBool(json['have_access']),
@@ -200,8 +198,7 @@ final class User extends TdObject {
     'is_premium': isPremium,
     'is_support': isSupport,
     'restriction_info': restrictionInfo?.toJson(),
-    'has_active_stories': hasActiveStories,
-    'has_unread_active_stories': hasUnreadActiveStories,
+    'active_story_state': activeStoryState?.toJson(),
     'restricts_new_chats': restrictsNewChats,
     'paid_message_star_count': paidMessageStarCount,
     'have_access': haveAccess,
@@ -233,8 +230,7 @@ final class User extends TdObject {
     bool? isPremium,
     bool? isSupport,
     RestrictionInfo? Function()? restrictionInfo,
-    bool? hasActiveStories,
-    bool? hasUnreadActiveStories,
+    ActiveStoryState? Function()? activeStoryState,
     bool? restrictsNewChats,
     int? paidMessageStarCount,
     bool? haveAccess,
@@ -272,9 +268,9 @@ final class User extends TdObject {
     restrictionInfo: restrictionInfo != null
         ? restrictionInfo()
         : this.restrictionInfo,
-    hasActiveStories: hasActiveStories ?? this.hasActiveStories,
-    hasUnreadActiveStories:
-        hasUnreadActiveStories ?? this.hasUnreadActiveStories,
+    activeStoryState: activeStoryState != null
+        ? activeStoryState()
+        : this.activeStoryState,
     restrictsNewChats: restrictsNewChats ?? this.restrictsNewChats,
     paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
     haveAccess: haveAccess ?? this.haveAccess,

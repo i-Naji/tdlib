@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Joins a group call that is not bound to a chat
+/// Joins a regular group call that is not bound to a chat
 ///
 /// Returns [GroupCallInfo].
 final class JoinGroupCall extends TdFunction<GroupCallInfo> {
-  /// Joins a group call that is not bound to a chat
+  /// Joins a regular group call that is not bound to a chat
   const JoinGroupCall({
     required this.inputGroupCall,
     required this.joinParameters,

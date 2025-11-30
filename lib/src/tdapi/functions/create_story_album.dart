@@ -20,7 +20,7 @@ final class CreateStoryAlbum extends TdFunction<StoryAlbum> {
   /// Name of the album; 1-12 characters
   final String name;
 
-  /// Identifiers of stories to add to the album; 0-getOption("story_album_story_count_max") identifiers
+  /// Identifiers of stories to add to the album; 0-getOption("story_album_size_max") identifiers
   final List<int> storyIds;
 
   @override

@@ -36,7 +36,7 @@ final class PostStory extends TdFunction<Story> {
   /// The privacy settings for the story; ignored for stories posted on behalf of supergroup and channel chats
   final StoryPrivacySettings privacySettings;
 
-  /// Identifiers of story albums to which the story will be added upon posting. An album can have up to getOption("story_album_story_count_max")
+  /// Identifiers of story albums to which the story will be added upon posting. An album can have up to getOption("story_album_size_max") stories
   final List<int> albumIds;
 
   /// Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise

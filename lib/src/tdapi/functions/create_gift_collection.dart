@@ -20,7 +20,7 @@ final class CreateGiftCollection extends TdFunction<GiftCollection> {
   /// Name of the collection; 1-12 characters
   final String name;
 
-  /// Identifier of the gifts to add to the collection; 0-getOption("gift_collection_gift_count_max") identifiers
+  /// Identifier of the gifts to add to the collection; 0-getOption("gift_collection_size_max") identifiers
   final List<String> receivedGiftIds;
 
   @override

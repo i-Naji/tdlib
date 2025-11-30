@@ -117,7 +117,7 @@ final class Message extends TdObject {
   /// Information about the message or the story this message is replying to; may be null if none
   final MessageReplyTo? replyTo;
 
-  /// Identifier of the topic within the chat to which the message belongs; may be null if none
+  /// Identifier of the topic within the chat to which the message belongs; may be null if none; may change when the chat is converted to a forum or back
   final MessageTopic? topicId;
 
   /// The message's self-destruct type; may be null if none

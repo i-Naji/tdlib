@@ -10,6 +10,7 @@ final class StoryInfo extends TdObject {
     required this.storyId,
     required this.date,
     required this.isForCloseFriends,
+    required this.isLive,
   });
 
   /// Unique story identifier among stories of the chat
@@ -21,11 +22,15 @@ final class StoryInfo extends TdObject {
   /// True, if the story is available only to close friends
   final bool isForCloseFriends;
 
+  /// True, if the story is a live story
+  final bool isLive;
+
   /// Parses a [StoryInfo] from TDLib JSON.
   factory StoryInfo.fromJson(Map<String, dynamic> json) => StoryInfo(
     storyId: _readInt(json['story_id']),
     date: _readInt(json['date']),
     isForCloseFriends: _readBool(json['is_for_close_friends']),
+    isLive: _readBool(json['is_live']),
   );
 
   @override
@@ -34,16 +39,22 @@ final class StoryInfo extends TdObject {
     'story_id': storyId,
     'date': date,
     'is_for_close_friends': isForCloseFriends,
+    'is_live': isLive,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  StoryInfo copyWith({int? storyId, int? date, bool? isForCloseFriends}) =>
-      StoryInfo(
-        storyId: storyId ?? this.storyId,
-        date: date ?? this.date,
-        isForCloseFriends: isForCloseFriends ?? this.isForCloseFriends,
-      );
+  StoryInfo copyWith({
+    int? storyId,
+    int? date,
+    bool? isForCloseFriends,
+    bool? isLive,
+  }) => StoryInfo(
+    storyId: storyId ?? this.storyId,
+    date: date ?? this.date,
+    isForCloseFriends: isForCloseFriends ?? this.isForCloseFriends,
+    isLive: isLive ?? this.isLive,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyInfo';

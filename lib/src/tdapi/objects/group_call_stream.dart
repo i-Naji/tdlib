@@ -3,10 +3,10 @@
 
 part of '../tdapi.dart';
 
-/// Describes an available stream in a video chat
-final class VideoChatStream extends TdObject {
-  /// Describes an available stream in a video chat
-  const VideoChatStream({
+/// Describes an available stream in a video chat or a live story
+final class GroupCallStream extends TdObject {
+  /// Describes an available stream in a video chat or a live story
+  const GroupCallStream({
     required this.channelId,
     required this.scale,
     required this.timeOffset,
@@ -21,9 +21,9 @@ final class VideoChatStream extends TdObject {
   /// Point in time when the stream currently ends; Unix timestamp in milliseconds
   final int timeOffset;
 
-  /// Parses a [VideoChatStream] from TDLib JSON.
-  factory VideoChatStream.fromJson(Map<String, dynamic> json) =>
-      VideoChatStream(
+  /// Parses a [GroupCallStream] from TDLib JSON.
+  factory GroupCallStream.fromJson(Map<String, dynamic> json) =>
+      GroupCallStream(
         channelId: _readInt(json['channel_id']),
         scale: _readInt(json['scale']),
         timeOffset: _readInt(json['time_offset']),
@@ -39,15 +39,15 @@ final class VideoChatStream extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  VideoChatStream copyWith({int? channelId, int? scale, int? timeOffset}) =>
-      VideoChatStream(
+  GroupCallStream copyWith({int? channelId, int? scale, int? timeOffset}) =>
+      GroupCallStream(
         channelId: channelId ?? this.channelId,
         scale: scale ?? this.scale,
         timeOffset: timeOffset ?? this.timeOffset,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'videoChatStream';
+  static const String CONSTRUCTOR = 'groupCallStream';
 
   @override
   String getConstructor() => CONSTRUCTOR;

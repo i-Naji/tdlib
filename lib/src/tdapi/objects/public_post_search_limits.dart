@@ -57,7 +57,7 @@ final class PublicPostSearchLimits extends TdObject {
     'daily_free_query_count': dailyFreeQueryCount,
     'remaining_free_query_count': remainingFreeQueryCount,
     'next_free_query_in': nextFreeQueryIn,
-    'star_count': starCount.toString(),
+    'star_count': starCount,
     'is_current_query_free': isCurrentQueryFree,
   };
 

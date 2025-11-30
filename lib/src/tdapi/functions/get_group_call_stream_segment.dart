@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Returns a file with a segment of a video chat stream in a modified OGG format for audio or MPEG-4 format for video
+/// Returns a file with a segment of a video chat or live story in a modified OGG format for audio or MPEG-4 format for video
 ///
 /// Returns [Data].
-final class GetVideoChatStreamSegment extends TdFunction<Data> {
-  /// Returns a file with a segment of a video chat stream in a modified OGG format for audio or MPEG-4 format for video
-  const GetVideoChatStreamSegment({
+final class GetGroupCallStreamSegment extends TdFunction<Data> {
+  /// Returns a file with a segment of a video chat or live story in a modified OGG format for audio or MPEG-4 format for video
+  const GetGroupCallStreamSegment({
     required this.groupCallId,
     required this.timeOffset,
     required this.scale,
@@ -44,13 +44,13 @@ final class GetVideoChatStreamSegment extends TdFunction<Data> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetVideoChatStreamSegment copyWith({
+  GetGroupCallStreamSegment copyWith({
     int? groupCallId,
     int? timeOffset,
     int? scale,
     int? channelId,
     GroupCallVideoQuality? Function()? videoQuality,
-  }) => GetVideoChatStreamSegment(
+  }) => GetGroupCallStreamSegment(
     groupCallId: groupCallId ?? this.groupCallId,
     timeOffset: timeOffset ?? this.timeOffset,
     scale: scale ?? this.scale,
@@ -59,7 +59,7 @@ final class GetVideoChatStreamSegment extends TdFunction<Data> {
   );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'getVideoChatStreamSegment';
+  static const String CONSTRUCTOR = 'getGroupCallStreamSegment';
 
   @override
   String getConstructor() => CONSTRUCTOR;

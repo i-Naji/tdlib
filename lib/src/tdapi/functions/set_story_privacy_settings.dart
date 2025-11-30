@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Changes privacy settings of a story. The method can be called only for stories posted on behalf of the current user and if story.can_be_edited == true
+/// Changes privacy settings of a story. The method can be called only for stories posted on behalf of the current user and if story.can_set_privacy_settings == true
 ///
 /// Returns [Ok].
 final class SetStoryPrivacySettings extends TdFunction<Ok> {
-  /// Changes privacy settings of a story. The method can be called only for stories posted on behalf of the current user and if story.can_be_edited == true
+  /// Changes privacy settings of a story. The method can be called only for stories posted on behalf of the current user and if story.can_set_privacy_settings == true
   const SetStoryPrivacySettings({
     required this.storyId,
     required this.privacySettings,

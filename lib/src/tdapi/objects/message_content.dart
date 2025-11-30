@@ -2698,6 +2698,7 @@ final class MessageGiftedPremium extends MessageContent {
     required this.cryptocurrency,
     required this.cryptocurrencyAmount,
     required this.monthCount,
+    required this.dayCount,
     this.sticker,
   });
 
@@ -2722,8 +2723,11 @@ final class MessageGiftedPremium extends MessageContent {
   /// The paid amount, in the smallest units of the cryptocurrency; 0 if none
   final int cryptocurrencyAmount;
 
-  /// Number of months the Telegram Premium subscription will be active
+  /// Number of months the Telegram Premium subscription will be active after code activation; 0 if the number of months isn't integer
   final int monthCount;
+
+  /// Number of days the Telegram Premium subscription will be active
+  final int dayCount;
 
   /// A sticker to be shown in the message; may be null if unknown
   final Sticker? sticker;
@@ -2739,6 +2743,7 @@ final class MessageGiftedPremium extends MessageContent {
         cryptocurrency: _readString(json['cryptocurrency']),
         cryptocurrencyAmount: _readInt(json['cryptocurrency_amount']),
         monthCount: _readInt(json['month_count']),
+        dayCount: _readInt(json['day_count']),
         sticker: _readOptional(json['sticker'], Sticker.fromJson),
       );
 
@@ -2753,6 +2758,7 @@ final class MessageGiftedPremium extends MessageContent {
     'cryptocurrency': cryptocurrency,
     'cryptocurrency_amount': cryptocurrencyAmount.toString(),
     'month_count': monthCount,
+    'day_count': dayCount,
     'sticker': sticker?.toJson(),
   };
 
@@ -2768,6 +2774,7 @@ final class MessageGiftedPremium extends MessageContent {
     String? cryptocurrency,
     int? cryptocurrencyAmount,
     int? monthCount,
+    int? dayCount,
     Sticker? Function()? sticker,
   }) => MessageGiftedPremium(
     gifterUserId: gifterUserId ?? this.gifterUserId,
@@ -2778,6 +2785,7 @@ final class MessageGiftedPremium extends MessageContent {
     cryptocurrency: cryptocurrency ?? this.cryptocurrency,
     cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
     monthCount: monthCount ?? this.monthCount,
+    dayCount: dayCount ?? this.dayCount,
     sticker: sticker != null ? sticker() : this.sticker,
   );
 
@@ -2801,6 +2809,7 @@ final class MessagePremiumGiftCode extends MessageContent {
     required this.cryptocurrency,
     required this.cryptocurrencyAmount,
     required this.monthCount,
+    required this.dayCount,
     this.sticker,
     required this.code,
   });
@@ -2829,8 +2838,11 @@ final class MessagePremiumGiftCode extends MessageContent {
   /// The paid amount, in the smallest units of the cryptocurrency; 0 if unknown
   final int cryptocurrencyAmount;
 
-  /// Number of months the Telegram Premium subscription will be active after code activation
+  /// Number of months the Telegram Premium subscription will be active after code activation; 0 if the number of months isn't integer
   final int monthCount;
+
+  /// Number of days the Telegram Premium subscription will be active after code activation
+  final int dayCount;
 
   /// A sticker to be shown in the message; may be null if unknown
   final Sticker? sticker;
@@ -2850,6 +2862,7 @@ final class MessagePremiumGiftCode extends MessageContent {
         cryptocurrency: _readString(json['cryptocurrency']),
         cryptocurrencyAmount: _readInt(json['cryptocurrency_amount']),
         monthCount: _readInt(json['month_count']),
+        dayCount: _readInt(json['day_count']),
         sticker: _readOptional(json['sticker'], Sticker.fromJson),
         code: _readString(json['code']),
       );
@@ -2866,6 +2879,7 @@ final class MessagePremiumGiftCode extends MessageContent {
     'cryptocurrency': cryptocurrency,
     'cryptocurrency_amount': cryptocurrencyAmount.toString(),
     'month_count': monthCount,
+    'day_count': dayCount,
     'sticker': sticker?.toJson(),
     'code': code,
   };
@@ -2883,6 +2897,7 @@ final class MessagePremiumGiftCode extends MessageContent {
     String? cryptocurrency,
     int? cryptocurrencyAmount,
     int? monthCount,
+    int? dayCount,
     Sticker? Function()? sticker,
     String? code,
   }) => MessagePremiumGiftCode(
@@ -2895,6 +2910,7 @@ final class MessagePremiumGiftCode extends MessageContent {
     cryptocurrency: cryptocurrency ?? this.cryptocurrency,
     cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
     monthCount: monthCount ?? this.monthCount,
+    dayCount: dayCount ?? this.dayCount,
     sticker: sticker != null ? sticker() : this.sticker,
     code: code ?? this.code,
   );

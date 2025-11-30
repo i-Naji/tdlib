@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Represents result of checking whether the current user can post a story on behalf of the specific chat
 ///
-/// One of: [CanPostStoryResultOk], [CanPostStoryResultPremiumNeeded], [CanPostStoryResultBoostNeeded], [CanPostStoryResultActiveStoryLimitExceeded], [CanPostStoryResultWeeklyLimitExceeded], [CanPostStoryResultMonthlyLimitExceeded]; or [UndecodedCanPostStoryResult] for a type newer than this API.
+/// One of: [CanPostStoryResultOk], [CanPostStoryResultPremiumNeeded], [CanPostStoryResultBoostNeeded], [CanPostStoryResultActiveStoryLimitExceeded], [CanPostStoryResultWeeklyLimitExceeded], [CanPostStoryResultMonthlyLimitExceeded], [CanPostStoryResultLiveStoryIsActive]; or [UndecodedCanPostStoryResult] for a type newer than this API.
 sealed class CanPostStoryResult extends TdObject {
   const CanPostStoryResult();
 
@@ -325,6 +325,58 @@ final class CanPostStoryResultMonthlyLimitExceeded extends CanPostStoryResult {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'canPostStoryResultMonthlyLimitExceeded';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The user or the chat has an active live story. The live story must be deleted first
+final class CanPostStoryResultLiveStoryIsActive extends CanPostStoryResult {
+  /// The user or the chat has an active live story. The live story must be deleted first
+  const CanPostStoryResultLiveStoryIsActive({
+    required this.storyId,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Identifier of the active live story
+  final int storyId;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [CanPostStoryResultLiveStoryIsActive] from TDLib JSON.
+  factory CanPostStoryResultLiveStoryIsActive.fromJson(
+    Map<String, dynamic> json,
+  ) => CanPostStoryResultLiveStoryIsActive(
+    storyId: _readInt(json['story_id']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'story_id': storyId};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  CanPostStoryResultLiveStoryIsActive copyWith({
+    int? storyId,
+    dynamic extra,
+    int? clientId,
+  }) => CanPostStoryResultLiveStoryIsActive(
+    storyId: storyId ?? this.storyId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'canPostStoryResultLiveStoryIsActive';
 
   @override
   String getConstructor() => CONSTRUCTOR;

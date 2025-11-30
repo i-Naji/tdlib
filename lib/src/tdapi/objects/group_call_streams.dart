@@ -3,13 +3,13 @@
 
 part of '../tdapi.dart';
 
-/// Represents a list of video chat streams
-final class VideoChatStreams extends TdObject {
-  /// Represents a list of video chat streams
-  const VideoChatStreams({required this.streams, this.extra, this.clientId});
+/// Represents a list of group call streams
+final class GroupCallStreams extends TdObject {
+  /// Represents a list of group call streams
+  const GroupCallStreams({required this.streams, this.extra, this.clientId});
 
-  /// A list of video chat streams
-  final List<VideoChatStream> streams;
+  /// A list of group call streams
+  final List<GroupCallStream> streams;
 
   /// "@extra" of the request this object answers.
   @override
@@ -19,12 +19,12 @@ final class VideoChatStreams extends TdObject {
   @override
   final int? clientId;
 
-  /// Parses a [VideoChatStreams] from TDLib JSON.
-  factory VideoChatStreams.fromJson(Map<String, dynamic> json) =>
-      VideoChatStreams(
-        streams: _readList<VideoChatStream>(
+  /// Parses a [GroupCallStreams] from TDLib JSON.
+  factory GroupCallStreams.fromJson(Map<String, dynamic> json) =>
+      GroupCallStreams(
+        streams: _readList<GroupCallStream>(
           json['streams'],
-          (e) => _readObject(e, VideoChatStream.fromJson),
+          (e) => _readObject(e, GroupCallStream.fromJson),
         ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -38,18 +38,18 @@ final class VideoChatStreams extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  VideoChatStreams copyWith({
-    List<VideoChatStream>? streams,
+  GroupCallStreams copyWith({
+    List<GroupCallStream>? streams,
     dynamic extra,
     int? clientId,
-  }) => VideoChatStreams(
+  }) => GroupCallStreams(
     streams: streams ?? this.streams,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'videoChatStreams';
+  static const String CONSTRUCTOR = 'groupCallStreams';
 
   @override
   String getConstructor() => CONSTRUCTOR;

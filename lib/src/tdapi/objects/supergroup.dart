@@ -31,8 +31,7 @@ final class Supergroup extends TdObject {
     required this.hasForumTabs,
     this.restrictionInfo,
     required this.paidMessageStarCount,
-    required this.hasActiveStories,
-    required this.hasUnreadActiveStories,
+    this.activeStoryState,
     this.extra,
     this.clientId,
   });
@@ -73,7 +72,7 @@ final class Supergroup extends TdObject {
   /// True, if users need to join the supergroup before they can send messages. May be false only for discussion supergroups and channel direct messages groups
   final bool joinToSendMessages;
 
-  /// True, if all users directly joining the supergroup need to be approved by supergroup administrators. Can be true only for non-broadcast supergroups with username, location, or a linked chat
+  /// True, if all users directly joining the supergroup need to be approved by supergroup administrators. May be true only for non-broadcast supergroups with username, location, or a linked chat
   final bool joinByRequest;
 
   /// True, if the slow mode is enabled in the supergroup
@@ -109,11 +108,8 @@ final class Supergroup extends TdObject {
   /// Number of Telegram Stars that must be paid by non-administrator users of the supergroup chat for each sent message
   final int paidMessageStarCount;
 
-  /// True, if the supergroup or channel has non-expired stories available to the current user
-  final bool hasActiveStories;
-
-  /// True, if the supergroup or channel has unread non-expired stories available to the current user
-  final bool hasUnreadActiveStories;
+  /// State of active stories of the supergroup or channel; may be null if there are no active stories
+  final ActiveStoryState? activeStoryState;
 
   /// "@extra" of the request this object answers.
   @override
@@ -157,8 +153,10 @@ final class Supergroup extends TdObject {
       RestrictionInfo.fromJson,
     ),
     paidMessageStarCount: _readInt(json['paid_message_star_count']),
-    hasActiveStories: _readBool(json['has_active_stories']),
-    hasUnreadActiveStories: _readBool(json['has_unread_active_stories']),
+    activeStoryState: _readOptional(
+      json['active_story_state'],
+      ActiveStoryState.fromJson,
+    ),
     extra: json['@extra'],
     clientId: _readClientId(json['@client_id']),
   );
@@ -190,8 +188,7 @@ final class Supergroup extends TdObject {
     'has_forum_tabs': hasForumTabs,
     'restriction_info': restrictionInfo?.toJson(),
     'paid_message_star_count': paidMessageStarCount,
-    'has_active_stories': hasActiveStories,
-    'has_unread_active_stories': hasUnreadActiveStories,
+    'active_story_state': activeStoryState?.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -221,8 +218,7 @@ final class Supergroup extends TdObject {
     bool? hasForumTabs,
     RestrictionInfo? Function()? restrictionInfo,
     int? paidMessageStarCount,
-    bool? hasActiveStories,
-    bool? hasUnreadActiveStories,
+    ActiveStoryState? Function()? activeStoryState,
     dynamic extra,
     int? clientId,
   }) => Supergroup(
@@ -258,9 +254,9 @@ final class Supergroup extends TdObject {
         ? restrictionInfo()
         : this.restrictionInfo,
     paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
-    hasActiveStories: hasActiveStories ?? this.hasActiveStories,
-    hasUnreadActiveStories:
-        hasUnreadActiveStories ?? this.hasUnreadActiveStories,
+    activeStoryState: activeStoryState != null
+        ? activeStoryState()
+        : this.activeStoryState,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );

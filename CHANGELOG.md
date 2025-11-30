@@ -1,3 +1,13 @@
+## 1.8.57
+* Update tdlib to **1.8.57** (`f0d04d357`), objects +30/−3/~16, functions +18/−3/~1.
+* Android build from i-Naji/libtdjson.
+* Bundle tdjson with a build hook, no setup on Android, iOS, macOS, Linux and Windows. Builds are listed in `hook/tdjson_sources.json`.
+* Use `@Native` bindings, TDLib works from any isolate.
+* Deprecate `tdJsonClient*`, use `tdCreate`, `tdSend` and `tdReceive`.
+* **Breaking:** require Flutter 3.38. Remove the Android plugin code and the bundled `.so` files.
+* Fix the version check for builds without a commit hash.
+* Use `dart:js_interop` on web (works with wasm), drop `js`.
+
 ## 1.8.56
 * Update tdlib to **1.8.56** (`8fbaf8441`), objects +10/−0/~23, functions +11/−4/~21.
 

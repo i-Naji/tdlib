@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes available user privacy settings
 ///
-/// One of: [UserPrivacySettingShowStatus], [UserPrivacySettingShowProfilePhoto], [UserPrivacySettingShowLinkInForwardedMessages], [UserPrivacySettingShowPhoneNumber], [UserPrivacySettingShowBio], [UserPrivacySettingShowBirthdate], [UserPrivacySettingAllowChatInvites], [UserPrivacySettingAllowCalls], [UserPrivacySettingAllowPeerToPeerCalls], [UserPrivacySettingAllowFindingByPhoneNumber], [UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages], [UserPrivacySettingAutosaveGifts], [UserPrivacySettingAllowUnpaidMessages]; or [UndecodedUserPrivacySetting] for a type newer than this API.
+/// One of: [UserPrivacySettingShowStatus], [UserPrivacySettingShowProfilePhoto], [UserPrivacySettingShowLinkInForwardedMessages], [UserPrivacySettingShowPhoneNumber], [UserPrivacySettingShowBio], [UserPrivacySettingShowBirthdate], [UserPrivacySettingShowProfileAudio], [UserPrivacySettingAllowChatInvites], [UserPrivacySettingAllowCalls], [UserPrivacySettingAllowPeerToPeerCalls], [UserPrivacySettingAllowFindingByPhoneNumber], [UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages], [UserPrivacySettingAutosaveGifts], [UserPrivacySettingAllowUnpaidMessages]; or [UndecodedUserPrivacySetting] for a type newer than this API.
 sealed class UserPrivacySetting extends TdObject {
   const UserPrivacySetting();
 
@@ -193,6 +193,32 @@ final class UserPrivacySettingShowBirthdate extends UserPrivacySetting {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userPrivacySettingShowBirthdate';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A privacy setting for managing whether the user's profile audio files are visible
+final class UserPrivacySettingShowProfileAudio extends UserPrivacySetting {
+  /// A privacy setting for managing whether the user's profile audio files are visible
+  const UserPrivacySettingShowProfileAudio();
+
+  /// Parses a [UserPrivacySettingShowProfileAudio] from TDLib JSON.
+  factory UserPrivacySettingShowProfileAudio.fromJson(
+    Map<String, dynamic> json,
+  ) => const UserPrivacySettingShowProfileAudio();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UserPrivacySettingShowProfileAudio copyWith() =>
+      const UserPrivacySettingShowProfileAudio();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'userPrivacySettingShowProfileAudio';
 
   @override
   String getConstructor() => CONSTRUCTOR;

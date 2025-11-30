@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Sent a suggested post based on a previously sent message in a channel direct messages chat. Can be also used to suggest price or time change for an existing suggested post. Returns the sent message
+/// Sends a suggested post based on a previously sent message in a channel direct messages chat. Can be also used to suggest price or time change for an existing suggested post. Returns the sent message
 ///
 /// Returns [Message].
 final class AddOffer extends TdFunction<Message> {
-  /// Sent a suggested post based on a previously sent message in a channel direct messages chat. Can be also used to suggest price or time change for an existing suggested post. Returns the sent message
+  /// Sends a suggested post based on a previously sent message in a channel direct messages chat. Can be also used to suggest price or time change for an existing suggested post. Returns the sent message
   const AddOffer({
     required this.chatId,
     required this.messageId,

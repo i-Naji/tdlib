@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a story
 ///
-/// One of: [StoryContentPhoto], [StoryContentVideo], [StoryContentUnsupported]; or [UndecodedStoryContent] for a type newer than this API.
+/// One of: [StoryContentPhoto], [StoryContentVideo], [StoryContentLive], [StoryContentUnsupported]; or [UndecodedStoryContent] for a type newer than this API.
 sealed class StoryContent extends TdObject {
   const StoryContent();
 
@@ -116,6 +116,50 @@ final class StoryContentVideo extends StoryContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyContentVideo';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A live story
+final class StoryContentLive extends StoryContent {
+  /// A live story
+  const StoryContentLive({
+    required this.groupCallId,
+    required this.isRtmpStream,
+  });
+
+  /// Identifier of the corresponding group call. The group call can be received through the method getGroupCall
+  final int groupCallId;
+
+  /// True, if the call is an RTMP stream instead of an ordinary group call
+  final bool isRtmpStream;
+
+  /// Parses a [StoryContentLive] from TDLib JSON.
+  factory StoryContentLive.fromJson(Map<String, dynamic> json) =>
+      StoryContentLive(
+        groupCallId: _readInt(json['group_call_id']),
+        isRtmpStream: _readBool(json['is_rtmp_stream']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'group_call_id': groupCallId,
+    'is_rtmp_stream': isRtmpStream,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StoryContentLive copyWith({int? groupCallId, bool? isRtmpStream}) =>
+      StoryContentLive(
+        groupCallId: groupCallId ?? this.groupCallId,
+        isRtmpStream: isRtmpStream ?? this.isRtmpStream,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'storyContentLive';
 
   @override
   String getConstructor() => CONSTRUCTOR;

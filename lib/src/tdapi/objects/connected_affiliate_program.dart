@@ -73,7 +73,7 @@ final class ConnectedAffiliateProgram extends TdObject {
     'connection_date': connectionDate,
     'is_disconnected': isDisconnected,
     'user_count': userCount.toString(),
-    'revenue_star_count': revenueStarCount.toString(),
+    'revenue_star_count': revenueStarCount,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable

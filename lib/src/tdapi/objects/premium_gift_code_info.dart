@@ -12,6 +12,7 @@ final class PremiumGiftCodeInfo extends TdObject {
     required this.isFromGiveaway,
     required this.giveawayMessageId,
     required this.monthCount,
+    required this.dayCount,
     required this.userId,
     required this.useDate,
     this.extra,
@@ -30,8 +31,11 @@ final class PremiumGiftCodeInfo extends TdObject {
   /// Identifier of the corresponding giveaway message in the creator_id chat; can be 0 or an identifier of a deleted message
   final int giveawayMessageId;
 
-  /// Number of months the Telegram Premium subscription will be active after code activation
+  /// Number of months the Telegram Premium subscription will be active after code activation; 0 if the number of months isn't integer
   final int monthCount;
+
+  /// Number of days the Telegram Premium subscription will be active after code activation
+  final int dayCount;
 
   /// Identifier of a user for which the code was created; 0 if none
   final int userId;
@@ -55,6 +59,7 @@ final class PremiumGiftCodeInfo extends TdObject {
         isFromGiveaway: _readBool(json['is_from_giveaway']),
         giveawayMessageId: _readInt(json['giveaway_message_id']),
         monthCount: _readInt(json['month_count']),
+        dayCount: _readInt(json['day_count']),
         userId: _readInt(json['user_id']),
         useDate: _readInt(json['use_date']),
         extra: json['@extra'],
@@ -69,6 +74,7 @@ final class PremiumGiftCodeInfo extends TdObject {
     'is_from_giveaway': isFromGiveaway,
     'giveaway_message_id': giveawayMessageId,
     'month_count': monthCount,
+    'day_count': dayCount,
     'user_id': userId,
     'use_date': useDate,
   };
@@ -81,6 +87,7 @@ final class PremiumGiftCodeInfo extends TdObject {
     bool? isFromGiveaway,
     int? giveawayMessageId,
     int? monthCount,
+    int? dayCount,
     int? userId,
     int? useDate,
     dynamic extra,
@@ -91,6 +98,7 @@ final class PremiumGiftCodeInfo extends TdObject {
     isFromGiveaway: isFromGiveaway ?? this.isFromGiveaway,
     giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
     monthCount: monthCount ?? this.monthCount,
+    dayCount: dayCount ?? this.dayCount,
     userId: userId ?? this.userId,
     useDate: useDate ?? this.useDate,
     extra: extra ?? this.extra,

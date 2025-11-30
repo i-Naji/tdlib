@@ -10,6 +10,7 @@ final class Usernames extends TdObject {
     required this.activeUsernames,
     required this.disabledUsernames,
     required this.editableUsername,
+    required this.collectibleUsernames,
   });
 
   /// List of active usernames; the first one must be shown as the primary username. The order of active usernames can be changed with reorderActiveUsernames, reorderBotActiveUsernames or reorderSupergroupActiveUsernames
@@ -18,8 +19,11 @@ final class Usernames extends TdObject {
   /// List of currently disabled usernames; the username can be activated with toggleUsernameIsActive, toggleBotUsernameIsActive, or toggleSupergroupUsernameIsActive
   final List<String> disabledUsernames;
 
-  /// Active or disabled username, which may be changed with setUsername or setSupergroupUsername. Information about other active usernames can be received using getCollectibleItemInfo
+  /// Active or disabled username, which may be changed with setUsername or setSupergroupUsername
   final String editableUsername;
+
+  /// Collectible usernames that were purchased at https://fragment.com and can be passed to getCollectibleItemInfo for more details
+  final List<String> collectibleUsernames;
 
   /// Parses a [Usernames] from TDLib JSON.
   factory Usernames.fromJson(Map<String, dynamic> json) => Usernames(
@@ -29,6 +33,10 @@ final class Usernames extends TdObject {
       _readString,
     ),
     editableUsername: _readString(json['editable_username']),
+    collectibleUsernames: _readList<String>(
+      json['collectible_usernames'],
+      _readString,
+    ),
   );
 
   @override
@@ -37,6 +45,7 @@ final class Usernames extends TdObject {
     'active_usernames': activeUsernames,
     'disabled_usernames': disabledUsernames,
     'editable_username': editableUsername,
+    'collectible_usernames': collectibleUsernames,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -45,10 +54,12 @@ final class Usernames extends TdObject {
     List<String>? activeUsernames,
     List<String>? disabledUsernames,
     String? editableUsername,
+    List<String>? collectibleUsernames,
   }) => Usernames(
     activeUsernames: activeUsernames ?? this.activeUsernames,
     disabledUsernames: disabledUsernames ?? this.disabledUsernames,
     editableUsername: editableUsername ?? this.editableUsername,
+    collectibleUsernames: collectibleUsernames ?? this.collectibleUsernames,
   );
 
   /// TDLib type name.

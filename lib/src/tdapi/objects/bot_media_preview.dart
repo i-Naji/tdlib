@@ -16,7 +16,7 @@ final class BotMediaPreview extends TdObject {
   /// Point in time (Unix timestamp) when the preview was added or changed last time
   final int date;
 
-  /// Content of the preview
+  /// Content of the preview; may only be of the types storyContentPhoto, storyContentVideo, or storyContentUnsupported
   final StoryContent content;
 
   /// "@extra" of the request this object answers.

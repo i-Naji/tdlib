@@ -10,10 +10,12 @@ final class GroupCall extends TdObject {
     required this.id,
     required this.title,
     required this.inviteLink,
+    required this.paidMessageStarCount,
     required this.scheduledStartDate,
     required this.enabledStartNotification,
     required this.isActive,
     required this.isVideoChat,
+    required this.isLiveStory,
     required this.isRtmpStream,
     required this.isJoined,
     required this.needRejoin,
@@ -22,6 +24,7 @@ final class GroupCall extends TdObject {
     required this.participantCount,
     required this.hasHiddenListeners,
     required this.loadedAllParticipants,
+    this.messageSenderId,
     required this.recentSpeakers,
     required this.isMyVideoEnabled,
     required this.isMyVideoPaused,
@@ -29,7 +32,9 @@ final class GroupCall extends TdObject {
     required this.muteNewParticipants,
     required this.canToggleMuteNewParticipants,
     required this.canSendMessages,
-    required this.canToggleCanSendMessages,
+    required this.areMessagesAllowed,
+    required this.canToggleAreMessagesAllowed,
+    required this.canDeleteMessages,
     required this.recordDuration,
     required this.isVideoRecorded,
     required this.duration,
@@ -43,8 +48,11 @@ final class GroupCall extends TdObject {
   /// Group call title; for video chats only
   final String title;
 
-  /// Invite link for the group call; for group calls that aren't bound to a chat. For video chats call getVideoChatInviteLink to get the link
+  /// Invite link for the group call; for group calls that aren't bound to a chat. For video chats call getVideoChatInviteLink to get the link. For live stories in chats with username call getInternalLink with internalLinkTypeLiveStory
   final String inviteLink;
+
+  /// The minimum number of Telegram Stars that must be paid by general participant for each sent message to the call; for live stories only
+  final int paidMessageStarCount;
 
   /// Point in time (Unix timestamp) when the group call is expected to be started by an administrator; 0 if it is already active or was ended; for video chats only
   final int scheduledStartDate;
@@ -58,7 +66,10 @@ final class GroupCall extends TdObject {
   /// True, if the call is bound to a chat
   final bool isVideoChat;
 
-  /// True, if the call is an RTMP stream instead of an ordinary video chat; for video chats only
+  /// True, if the call is a live story of a chat
+  final bool isLiveStory;
+
+  /// True, if the call is an RTMP stream instead of an ordinary video chat; for video chats and live stories only
   final bool isRtmpStream;
 
   /// True, if the call is joined
@@ -70,7 +81,7 @@ final class GroupCall extends TdObject {
   /// True, if the user is the owner of the call and can end the call, change volume level of other users, or ban users there; for group calls that aren't bound to a chat
   final bool isOwned;
 
-  /// True, if the current user can manage the group call; for video chats only
+  /// True, if the current user can manage the group call; for video chats and live stories only
   final bool canBeManaged;
 
   /// Number of participants in the group call
@@ -81,6 +92,9 @@ final class GroupCall extends TdObject {
 
   /// True, if all group call participants are loaded
   final bool loadedAllParticipants;
+
+  /// Message sender chosen to send messages to the group call; for live stories only; may be null if the call isn't a live story
+  final MessageSender? messageSenderId;
 
   /// At most 3 recently speaking users in the group call
   final List<GroupCallRecentSpeaker> recentSpeakers;
@@ -100,11 +114,17 @@ final class GroupCall extends TdObject {
   /// True, if the current user can enable or disable mute_new_participants setting; for video chats only
   final bool canToggleMuteNewParticipants;
 
-  /// True, if users can send messages to the group call
+  /// True, if the current user can send messages to the group call
   final bool canSendMessages;
 
-  /// True, if the current user can enable or disable sending messages in the group call
-  final bool canToggleCanSendMessages;
+  /// True, if sending of messages is allowed in the group call
+  final bool areMessagesAllowed;
+
+  /// True, if the current user can enable or disable sending of messages in the group call
+  final bool canToggleAreMessagesAllowed;
+
+  /// True, if the user can delete messages in the group call
+  final bool canDeleteMessages;
 
   /// Duration of the ongoing group call recording, in seconds; 0 if none. An updateGroupCall update is not triggered when value of this field changes, but the same recording goes on
   final int recordDuration;
@@ -128,10 +148,12 @@ final class GroupCall extends TdObject {
     id: _readInt(json['id']),
     title: _readString(json['title']),
     inviteLink: _readString(json['invite_link']),
+    paidMessageStarCount: _readInt(json['paid_message_star_count']),
     scheduledStartDate: _readInt(json['scheduled_start_date']),
     enabledStartNotification: _readBool(json['enabled_start_notification']),
     isActive: _readBool(json['is_active']),
     isVideoChat: _readBool(json['is_video_chat']),
+    isLiveStory: _readBool(json['is_live_story']),
     isRtmpStream: _readBool(json['is_rtmp_stream']),
     isJoined: _readBool(json['is_joined']),
     needRejoin: _readBool(json['need_rejoin']),
@@ -140,6 +162,10 @@ final class GroupCall extends TdObject {
     participantCount: _readInt(json['participant_count']),
     hasHiddenListeners: _readBool(json['has_hidden_listeners']),
     loadedAllParticipants: _readBool(json['loaded_all_participants']),
+    messageSenderId: _readOptional(
+      json['message_sender_id'],
+      MessageSender.fromJson,
+    ),
     recentSpeakers: _readList<GroupCallRecentSpeaker>(
       json['recent_speakers'],
       (e) => _readObject(e, GroupCallRecentSpeaker.fromJson),
@@ -152,7 +178,11 @@ final class GroupCall extends TdObject {
       json['can_toggle_mute_new_participants'],
     ),
     canSendMessages: _readBool(json['can_send_messages']),
-    canToggleCanSendMessages: _readBool(json['can_toggle_can_send_messages']),
+    areMessagesAllowed: _readBool(json['are_messages_allowed']),
+    canToggleAreMessagesAllowed: _readBool(
+      json['can_toggle_are_messages_allowed'],
+    ),
+    canDeleteMessages: _readBool(json['can_delete_messages']),
     recordDuration: _readInt(json['record_duration']),
     isVideoRecorded: _readBool(json['is_video_recorded']),
     duration: _readInt(json['duration']),
@@ -166,10 +196,12 @@ final class GroupCall extends TdObject {
     'id': id,
     'title': title,
     'invite_link': inviteLink,
+    'paid_message_star_count': paidMessageStarCount,
     'scheduled_start_date': scheduledStartDate,
     'enabled_start_notification': enabledStartNotification,
     'is_active': isActive,
     'is_video_chat': isVideoChat,
+    'is_live_story': isLiveStory,
     'is_rtmp_stream': isRtmpStream,
     'is_joined': isJoined,
     'need_rejoin': needRejoin,
@@ -178,6 +210,7 @@ final class GroupCall extends TdObject {
     'participant_count': participantCount,
     'has_hidden_listeners': hasHiddenListeners,
     'loaded_all_participants': loadedAllParticipants,
+    'message_sender_id': messageSenderId?.toJson(),
     'recent_speakers': [for (final e in recentSpeakers) e.toJson()],
     'is_my_video_enabled': isMyVideoEnabled,
     'is_my_video_paused': isMyVideoPaused,
@@ -185,7 +218,9 @@ final class GroupCall extends TdObject {
     'mute_new_participants': muteNewParticipants,
     'can_toggle_mute_new_participants': canToggleMuteNewParticipants,
     'can_send_messages': canSendMessages,
-    'can_toggle_can_send_messages': canToggleCanSendMessages,
+    'are_messages_allowed': areMessagesAllowed,
+    'can_toggle_are_messages_allowed': canToggleAreMessagesAllowed,
+    'can_delete_messages': canDeleteMessages,
     'record_duration': recordDuration,
     'is_video_recorded': isVideoRecorded,
     'duration': duration,
@@ -197,10 +232,12 @@ final class GroupCall extends TdObject {
     int? id,
     String? title,
     String? inviteLink,
+    int? paidMessageStarCount,
     int? scheduledStartDate,
     bool? enabledStartNotification,
     bool? isActive,
     bool? isVideoChat,
+    bool? isLiveStory,
     bool? isRtmpStream,
     bool? isJoined,
     bool? needRejoin,
@@ -209,6 +246,7 @@ final class GroupCall extends TdObject {
     int? participantCount,
     bool? hasHiddenListeners,
     bool? loadedAllParticipants,
+    MessageSender? Function()? messageSenderId,
     List<GroupCallRecentSpeaker>? recentSpeakers,
     bool? isMyVideoEnabled,
     bool? isMyVideoPaused,
@@ -216,7 +254,9 @@ final class GroupCall extends TdObject {
     bool? muteNewParticipants,
     bool? canToggleMuteNewParticipants,
     bool? canSendMessages,
-    bool? canToggleCanSendMessages,
+    bool? areMessagesAllowed,
+    bool? canToggleAreMessagesAllowed,
+    bool? canDeleteMessages,
     int? recordDuration,
     bool? isVideoRecorded,
     int? duration,
@@ -226,11 +266,13 @@ final class GroupCall extends TdObject {
     id: id ?? this.id,
     title: title ?? this.title,
     inviteLink: inviteLink ?? this.inviteLink,
+    paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
     scheduledStartDate: scheduledStartDate ?? this.scheduledStartDate,
     enabledStartNotification:
         enabledStartNotification ?? this.enabledStartNotification,
     isActive: isActive ?? this.isActive,
     isVideoChat: isVideoChat ?? this.isVideoChat,
+    isLiveStory: isLiveStory ?? this.isLiveStory,
     isRtmpStream: isRtmpStream ?? this.isRtmpStream,
     isJoined: isJoined ?? this.isJoined,
     needRejoin: needRejoin ?? this.needRejoin,
@@ -239,6 +281,9 @@ final class GroupCall extends TdObject {
     participantCount: participantCount ?? this.participantCount,
     hasHiddenListeners: hasHiddenListeners ?? this.hasHiddenListeners,
     loadedAllParticipants: loadedAllParticipants ?? this.loadedAllParticipants,
+    messageSenderId: messageSenderId != null
+        ? messageSenderId()
+        : this.messageSenderId,
     recentSpeakers: recentSpeakers ?? this.recentSpeakers,
     isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
     isMyVideoPaused: isMyVideoPaused ?? this.isMyVideoPaused,
@@ -247,8 +292,10 @@ final class GroupCall extends TdObject {
     canToggleMuteNewParticipants:
         canToggleMuteNewParticipants ?? this.canToggleMuteNewParticipants,
     canSendMessages: canSendMessages ?? this.canSendMessages,
-    canToggleCanSendMessages:
-        canToggleCanSendMessages ?? this.canToggleCanSendMessages,
+    areMessagesAllowed: areMessagesAllowed ?? this.areMessagesAllowed,
+    canToggleAreMessagesAllowed:
+        canToggleAreMessagesAllowed ?? this.canToggleAreMessagesAllowed,
+    canDeleteMessages: canDeleteMessages ?? this.canDeleteMessages,
     recordDuration: recordDuration ?? this.recordDuration,
     isVideoRecorded: isVideoRecorded ?? this.isVideoRecorded,
     duration: duration ?? this.duration,

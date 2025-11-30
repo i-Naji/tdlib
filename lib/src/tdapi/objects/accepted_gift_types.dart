@@ -10,6 +10,7 @@ final class AcceptedGiftTypes extends TdObject {
     required this.unlimitedGifts,
     required this.limitedGifts,
     required this.upgradedGifts,
+    required this.giftsFromChannels,
     required this.premiumSubscription,
   });
 
@@ -22,6 +23,9 @@ final class AcceptedGiftTypes extends TdObject {
   /// True, if upgraded gifts and regular gifts that can be upgraded for free are accepted
   final bool upgradedGifts;
 
+  /// True, if gifts from channels are accepted subject to other restrictions
+  final bool giftsFromChannels;
+
   /// True, if Telegram Premium subscription is accepted
   final bool premiumSubscription;
 
@@ -31,6 +35,7 @@ final class AcceptedGiftTypes extends TdObject {
         unlimitedGifts: _readBool(json['unlimited_gifts']),
         limitedGifts: _readBool(json['limited_gifts']),
         upgradedGifts: _readBool(json['upgraded_gifts']),
+        giftsFromChannels: _readBool(json['gifts_from_channels']),
         premiumSubscription: _readBool(json['premium_subscription']),
       );
 
@@ -40,6 +45,7 @@ final class AcceptedGiftTypes extends TdObject {
     'unlimited_gifts': unlimitedGifts,
     'limited_gifts': limitedGifts,
     'upgraded_gifts': upgradedGifts,
+    'gifts_from_channels': giftsFromChannels,
     'premium_subscription': premiumSubscription,
   };
 
@@ -49,11 +55,13 @@ final class AcceptedGiftTypes extends TdObject {
     bool? unlimitedGifts,
     bool? limitedGifts,
     bool? upgradedGifts,
+    bool? giftsFromChannels,
     bool? premiumSubscription,
   }) => AcceptedGiftTypes(
     unlimitedGifts: unlimitedGifts ?? this.unlimitedGifts,
     limitedGifts: limitedGifts ?? this.limitedGifts,
     upgradedGifts: upgradedGifts ?? this.upgradedGifts,
+    giftsFromChannels: giftsFromChannels ?? this.giftsFromChannels,
     premiumSubscription: premiumSubscription ?? this.premiumSubscription,
   );
 

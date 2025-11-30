@@ -16,7 +16,7 @@ final class SetVideoChatDefaultParticipant extends TdFunction<Ok> {
   /// Chat identifier
   final int chatId;
 
-  /// Default group call participant identifier to join the video chats
+  /// Default group call participant identifier to join the video chats in the chat
   final MessageSender defaultParticipantId;
 
   @override

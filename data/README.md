@@ -1,1 +1,1 @@
-[TDLib](https://github.com/tdlib/td) 1.8.56 API schema, commit [8fbaf8441](https://github.com/tdlib/td/blob/8fbaf8441a79214bd00a1f19ab0bbcc91cd04e52/td/generate/scheme/td_api.tl).
+[TDLib](https://github.com/tdlib/td) 1.8.57 API schema, commit [f0d04d357](https://github.com/tdlib/td/blob/f0d04d357c4ab2d4a7288e52dbeec3c2d9dd0a2d/td/generate/scheme/td_api.tl).

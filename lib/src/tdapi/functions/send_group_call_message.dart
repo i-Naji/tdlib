@@ -8,29 +8,41 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class SendGroupCallMessage extends TdFunction<Ok> {
   /// Sends a message to other participants of a group call. Requires groupCall.can_send_messages right
-  const SendGroupCallMessage({required this.groupCallId, required this.text});
+  const SendGroupCallMessage({
+    required this.groupCallId,
+    required this.text,
+    required this.paidMessageStarCount,
+  });
 
   /// Group call identifier
   final int groupCallId;
 
-  /// Text of the message to send; 1-getOption("group_call_message_text_length_max") characters
+  /// Text of the message to send; 1-getOption("group_call_message_text_length_max") characters for non-live-stories; see updateGroupCallMessageLevels for live story restrictions, which depends on paid_message_star_count. Can't contain line feeds for live stories
   final FormattedText text;
+
+  /// The number of Telegram Stars the user agreed to pay to send the message; for live stories only; 0-getOption("paid_group_call_message_star_count_max"). Must be 0 for messages sent to live stories posted by the current user
+  final int paidMessageStarCount;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
     'group_call_id': groupCallId,
     'text': text.toJson(),
+    'paid_message_star_count': paidMessageStarCount,
     '@extra': ?extra,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SendGroupCallMessage copyWith({int? groupCallId, FormattedText? text}) =>
-      SendGroupCallMessage(
-        groupCallId: groupCallId ?? this.groupCallId,
-        text: text ?? this.text,
-      );
+  SendGroupCallMessage copyWith({
+    int? groupCallId,
+    FormattedText? text,
+    int? paidMessageStarCount,
+  }) => SendGroupCallMessage(
+    groupCallId: groupCallId ?? this.groupCallId,
+    text: text ?? this.text,
+    paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'sendGroupCallMessage';

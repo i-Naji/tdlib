@@ -18,7 +18,7 @@ final class JoinVideoChat extends TdFunction<Text> {
   /// Group call identifier
   final int groupCallId;
 
-  /// Identifier of a group call participant, which will be used to join the call; pass null to join as self; video chats only
+  /// Identifier of a group call participant, which will be used to join the call; pass null to join as self
   final MessageSender? participantId;
 
   /// Parameters to join the call

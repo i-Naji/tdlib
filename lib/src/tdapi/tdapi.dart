@@ -22,6 +22,7 @@ part 'functions/add_log_message.dart';
 part 'functions/add_message_reaction.dart';
 part 'functions/add_network_statistics.dart';
 part 'functions/add_offer.dart';
+part 'functions/add_pending_live_story_reaction.dart';
 part 'functions/add_pending_paid_message_reaction.dart';
 part 'functions/add_profile_audio.dart';
 part 'functions/add_proxy.dart';
@@ -99,6 +100,7 @@ part 'functions/close_chat.dart';
 part 'functions/close_secret_chat.dart';
 part 'functions/close_story.dart';
 part 'functions/close_web_app.dart';
+part 'functions/commit_pending_live_story_reactions.dart';
 part 'functions/commit_pending_paid_message_reactions.dart';
 part 'functions/confirm_qr_code_authentication.dart';
 part 'functions/confirm_session.dart';
@@ -150,6 +152,8 @@ part 'functions/delete_direct_messages_chat_topic_messages_by_date.dart';
 part 'functions/delete_file.dart';
 part 'functions/delete_forum_topic.dart';
 part 'functions/delete_gift_collection.dart';
+part 'functions/delete_group_call_messages.dart';
+part 'functions/delete_group_call_messages_by_sender.dart';
 part 'functions/delete_language_pack.dart';
 part 'functions/delete_messages.dart';
 part 'functions/delete_passport_element.dart';
@@ -349,6 +353,8 @@ part 'functions/get_greeting_stickers.dart';
 part 'functions/get_grossing_web_app_bots.dart';
 part 'functions/get_group_call.dart';
 part 'functions/get_group_call_participants.dart';
+part 'functions/get_group_call_stream_segment.dart';
+part 'functions/get_group_call_streams.dart';
 part 'functions/get_groups_in_common.dart';
 part 'functions/get_imported_contact_count.dart';
 part 'functions/get_inactive_supergroup_chats.dart';
@@ -365,6 +371,10 @@ part 'functions/get_language_pack_info.dart';
 part 'functions/get_language_pack_string.dart';
 part 'functions/get_language_pack_strings.dart';
 part 'functions/get_link_preview.dart';
+part 'functions/get_live_story_available_message_senders.dart';
+part 'functions/get_live_story_rtmp_url.dart';
+part 'functions/get_live_story_streamer.dart';
+part 'functions/get_live_story_top_donors.dart';
 part 'functions/get_localization_target_info.dart';
 part 'functions/get_log_stream.dart';
 part 'functions/get_log_tag_verbosity_level.dart';
@@ -507,8 +517,6 @@ part 'functions/get_user_support_info.dart';
 part 'functions/get_video_chat_available_participants.dart';
 part 'functions/get_video_chat_invite_link.dart';
 part 'functions/get_video_chat_rtmp_url.dart';
-part 'functions/get_video_chat_stream_segment.dart';
-part 'functions/get_video_chat_streams.dart';
 part 'functions/get_video_message_advertisements.dart';
 part 'functions/get_web_app_link_url.dart';
 part 'functions/get_web_app_placeholder.dart';
@@ -521,10 +529,12 @@ part 'functions/import_contacts.dart';
 part 'functions/import_messages.dart';
 part 'functions/invite_group_call_participant.dart';
 part 'functions/invite_video_chat_participants.dart';
+part 'functions/is_login_email_address_required.dart';
 part 'functions/is_profile_audio.dart';
 part 'functions/join_chat.dart';
 part 'functions/join_chat_by_invite_link.dart';
 part 'functions/join_group_call.dart';
+part 'functions/join_live_story.dart';
 part 'functions/join_video_chat.dart';
 part 'functions/launch_prepaid_giveaway.dart';
 part 'functions/leave_chat.dart';
@@ -584,6 +594,7 @@ part 'functions/remove_message_reaction.dart';
 part 'functions/remove_message_sender_bot_verification.dart';
 part 'functions/remove_notification.dart';
 part 'functions/remove_notification_group.dart';
+part 'functions/remove_pending_live_story_reactions.dart';
 part 'functions/remove_pending_paid_message_reactions.dart';
 part 'functions/remove_profile_audio.dart';
 part 'functions/remove_proxy.dart';
@@ -607,6 +618,7 @@ part 'functions/reorder_quick_reply_shortcuts.dart';
 part 'functions/reorder_story_album_stories.dart';
 part 'functions/reorder_story_albums.dart';
 part 'functions/reorder_supergroup_active_usernames.dart';
+part 'functions/replace_live_story_rtmp_url.dart';
 part 'functions/replace_primary_chat_invite_link.dart';
 part 'functions/replace_sticker_in_set.dart';
 part 'functions/replace_video_chat_rtmp_url.dart';
@@ -773,10 +785,12 @@ part 'functions/set_game_score.dart';
 part 'functions/set_gift_collection_name.dart';
 part 'functions/set_gift_resale_price.dart';
 part 'functions/set_gift_settings.dart';
+part 'functions/set_group_call_paid_message_star_count.dart';
 part 'functions/set_group_call_participant_is_speaking.dart';
 part 'functions/set_group_call_participant_volume_level.dart';
 part 'functions/set_inactive_session_ttl.dart';
 part 'functions/set_inline_game_score.dart';
+part 'functions/set_live_story_message_sender.dart';
 part 'functions/set_log_stream.dart';
 part 'functions/set_log_tag_verbosity_level.dart';
 part 'functions/set_log_verbosity_level.dart';
@@ -839,6 +853,7 @@ part 'functions/share_phone_number.dart';
 part 'functions/share_users_with_bot.dart';
 part 'functions/start_group_call_recording.dart';
 part 'functions/start_group_call_screen_sharing.dart';
+part 'functions/start_live_story.dart';
 part 'functions/start_scheduled_video_chat.dart';
 part 'functions/stop_business_poll.dart';
 part 'functions/stop_poll.dart';
@@ -879,7 +894,7 @@ part 'functions/toggle_forum_topic_is_closed.dart';
 part 'functions/toggle_forum_topic_is_pinned.dart';
 part 'functions/toggle_general_forum_topic_is_hidden.dart';
 part 'functions/toggle_gift_is_saved.dart';
-part 'functions/toggle_group_call_can_send_messages.dart';
+part 'functions/toggle_group_call_are_messages_allowed.dart';
 part 'functions/toggle_group_call_is_my_video_enabled.dart';
 part 'functions/toggle_group_call_is_my_video_paused.dart';
 part 'functions/toggle_group_call_participant_is_hand_raised.dart';
@@ -927,6 +942,7 @@ part 'objects/accent_color.dart';
 part 'objects/accepted_gift_types.dart';
 part 'objects/account_info.dart';
 part 'objects/account_ttl.dart';
+part 'objects/active_story_state.dart';
 part 'objects/added_reaction.dart';
 part 'objects/added_reactions.dart';
 part 'objects/address.dart';
@@ -1192,10 +1208,14 @@ part 'objects/group_call_data_channel.dart';
 part 'objects/group_call_id.dart';
 part 'objects/group_call_info.dart';
 part 'objects/group_call_join_parameters.dart';
+part 'objects/group_call_message.dart';
+part 'objects/group_call_message_level.dart';
 part 'objects/group_call_participant.dart';
 part 'objects/group_call_participant_video_info.dart';
 part 'objects/group_call_participants.dart';
 part 'objects/group_call_recent_speaker.dart';
+part 'objects/group_call_stream.dart';
+part 'objects/group_call_streams.dart';
 part 'objects/group_call_video_quality.dart';
 part 'objects/group_call_video_source_group.dart';
 part 'objects/hashtags.dart';
@@ -1255,6 +1275,7 @@ part 'objects/link_preview.dart';
 part 'objects/link_preview_album_media.dart';
 part 'objects/link_preview_options.dart';
 part 'objects/link_preview_type.dart';
+part 'objects/live_story_donors.dart';
 part 'objects/local_file.dart';
 part 'objects/localization_target_info.dart';
 part 'objects/location.dart';
@@ -1455,6 +1476,7 @@ part 'objects/star_subscriptions.dart';
 part 'objects/star_transaction.dart';
 part 'objects/star_transaction_type.dart';
 part 'objects/star_transactions.dart';
+part 'objects/start_live_story_result.dart';
 part 'objects/statistical_graph.dart';
 part 'objects/statistical_value.dart';
 part 'objects/sticker.dart';
@@ -1571,8 +1593,6 @@ part 'objects/venue.dart';
 part 'objects/verification_status.dart';
 part 'objects/video.dart';
 part 'objects/video_chat.dart';
-part 'objects/video_chat_stream.dart';
-part 'objects/video_chat_streams.dart';
 part 'objects/video_message_advertisement.dart';
 part 'objects/video_message_advertisements.dart';
 part 'objects/video_note.dart';
@@ -1585,14 +1605,14 @@ part 'objects/web_app_open_parameters.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.56';
+const String tdlibVersion = '1.8.57';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '4f4df7c6436085391e0b6d74cc7a54cf274c7edf';
+const String tdlibSchemaCommit = 'f0d04d357c4ab2d4a7288e52dbeec3c2d9dd0a2d';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '4f4df7c6436085391e0b6d74cc7a54cf274c7edf',
+  'f0d04d357c4ab2d4a7288e52dbeec3c2d9dd0a2d',
 ];
 
 /// Base class of every TDLib object.
@@ -1977,6 +1997,14 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       StarTransactionTypePaidMessageSend.fromJson,
   'starTransactionTypePaidMessageReceive':
       StarTransactionTypePaidMessageReceive.fromJson,
+  'starTransactionTypePaidGroupCallMessageSend':
+      StarTransactionTypePaidGroupCallMessageSend.fromJson,
+  'starTransactionTypePaidGroupCallMessageReceive':
+      StarTransactionTypePaidGroupCallMessageReceive.fromJson,
+  'starTransactionTypePaidGroupCallReactionSend':
+      StarTransactionTypePaidGroupCallReactionSend.fromJson,
+  'starTransactionTypePaidGroupCallReactionReceive':
+      StarTransactionTypePaidGroupCallReactionReceive.fromJson,
   'starTransactionTypeSuggestedPostPaymentSend':
       StarTransactionTypeSuggestedPostPaymentSend.fromJson,
   'starTransactionTypeSuggestedPostPaymentReceive':
@@ -2003,6 +2031,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'tonTransactionTypeUnsupported': TonTransactionTypeUnsupported.fromJson,
   'tonTransaction': TonTransaction.fromJson,
   'tonTransactions': TonTransactions.fromJson,
+  'activeStoryStateLive': ActiveStoryStateLive.fromJson,
+  'activeStoryStateUnread': ActiveStoryStateUnread.fromJson,
+  'activeStoryStateRead': ActiveStoryStateRead.fromJson,
   'giveawayParticipantStatusEligible':
       GiveawayParticipantStatusEligible.fromJson,
   'giveawayParticipantStatusParticipating':
@@ -2109,6 +2140,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'paidReactionTypeAnonymous': PaidReactionTypeAnonymous.fromJson,
   'paidReactionTypeChat': PaidReactionTypeChat.fromJson,
   'paidReactor': PaidReactor.fromJson,
+  'liveStoryDonors': LiveStoryDonors.fromJson,
   'messageForwardInfo': MessageForwardInfo.fromJson,
   'messageImportInfo': MessageImportInfo.fromJson,
   'messageReplyInfo': MessageReplyInfo.fromJson,
@@ -2374,6 +2406,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'linkPreviewTypeGiftCollection': LinkPreviewTypeGiftCollection.fromJson,
   'linkPreviewTypeGroupCall': LinkPreviewTypeGroupCall.fromJson,
   'linkPreviewTypeInvoice': LinkPreviewTypeInvoice.fromJson,
+  'linkPreviewTypeLiveStory': LinkPreviewTypeLiveStory.fromJson,
   'linkPreviewTypeMessage': LinkPreviewTypeMessage.fromJson,
   'linkPreviewTypePhoto': LinkPreviewTypePhoto.fromJson,
   'linkPreviewTypePremiumGiftCode': LinkPreviewTypePremiumGiftCode.fromJson,
@@ -2775,6 +2808,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'storyVideo': StoryVideo.fromJson,
   'storyContentPhoto': StoryContentPhoto.fromJson,
   'storyContentVideo': StoryContentVideo.fromJson,
+  'storyContentLive': StoryContentLive.fromJson,
   'storyContentUnsupported': StoryContentUnsupported.fromJson,
   'inputStoryContentPhoto': InputStoryContentPhoto.fromJson,
   'inputStoryContentVideo': InputStoryContentVideo.fromJson,
@@ -2843,8 +2877,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'groupCallVideoQualityThumbnail': GroupCallVideoQualityThumbnail.fromJson,
   'groupCallVideoQualityMedium': GroupCallVideoQualityMedium.fromJson,
   'groupCallVideoQualityFull': GroupCallVideoQualityFull.fromJson,
-  'videoChatStream': VideoChatStream.fromJson,
-  'videoChatStreams': VideoChatStreams.fromJson,
+  'groupCallStream': GroupCallStream.fromJson,
+  'groupCallStreams': GroupCallStreams.fromJson,
   'rtmpUrl': RtmpUrl.fromJson,
   'groupCallRecentSpeaker': GroupCallRecentSpeaker.fromJson,
   'groupCall': GroupCall.fromJson,
@@ -2853,6 +2887,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'groupCallParticipant': GroupCallParticipant.fromJson,
   'groupCallParticipants': GroupCallParticipants.fromJson,
   'groupCallInfo': GroupCallInfo.fromJson,
+  'groupCallMessage': GroupCallMessage.fromJson,
+  'groupCallMessageLevel': GroupCallMessageLevel.fromJson,
   'inviteGroupCallParticipantResultUserPrivacyRestricted':
       InviteGroupCallParticipantResultUserPrivacyRestricted.fromJson,
   'inviteGroupCallParticipantResultUserAlreadyParticipant':
@@ -3198,6 +3234,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       CanPostStoryResultWeeklyLimitExceeded.fromJson,
   'canPostStoryResultMonthlyLimitExceeded':
       CanPostStoryResultMonthlyLimitExceeded.fromJson,
+  'canPostStoryResultLiveStoryIsActive':
+      CanPostStoryResultLiveStoryIsActive.fromJson,
+  'startLiveStoryResultOk': StartLiveStoryResultOk.fromJson,
+  'startLiveStoryResultFail': StartLiveStoryResultFail.fromJson,
   'canTransferOwnershipResultOk': CanTransferOwnershipResultOk.fromJson,
   'canTransferOwnershipResultPasswordNeeded':
       CanTransferOwnershipResultPasswordNeeded.fromJson,
@@ -3347,6 +3387,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       UserPrivacySettingShowPhoneNumber.fromJson,
   'userPrivacySettingShowBio': UserPrivacySettingShowBio.fromJson,
   'userPrivacySettingShowBirthdate': UserPrivacySettingShowBirthdate.fromJson,
+  'userPrivacySettingShowProfileAudio':
+      UserPrivacySettingShowProfileAudio.fromJson,
   'userPrivacySettingAllowChatInvites':
       UserPrivacySettingAllowChatInvites.fromJson,
   'userPrivacySettingAllowCalls': UserPrivacySettingAllowCalls.fromJson,
@@ -3442,6 +3484,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'internalLinkTypeInvoice': InternalLinkTypeInvoice.fromJson,
   'internalLinkTypeLanguagePack': InternalLinkTypeLanguagePack.fromJson,
   'internalLinkTypeLanguageSettings': InternalLinkTypeLanguageSettings.fromJson,
+  'internalLinkTypeLiveStory': InternalLinkTypeLiveStory.fromJson,
+  'internalLinkTypeLoginEmailSettings':
+      InternalLinkTypeLoginEmailSettings.fromJson,
   'internalLinkTypeMainWebApp': InternalLinkTypeMainWebApp.fromJson,
   'internalLinkTypeMessage': InternalLinkTypeMessage.fromJson,
   'internalLinkTypeMessageDraft': InternalLinkTypeMessageDraft.fromJson,
@@ -3449,8 +3494,11 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'internalLinkTypeMyToncoins': InternalLinkTypeMyToncoins.fromJson,
   'internalLinkTypePassportDataRequest':
       InternalLinkTypePassportDataRequest.fromJson,
+  'internalLinkTypePasswordSettings': InternalLinkTypePasswordSettings.fromJson,
   'internalLinkTypePhoneNumberConfirmation':
       InternalLinkTypePhoneNumberConfirmation.fromJson,
+  'internalLinkTypePhoneNumberPrivacySettings':
+      InternalLinkTypePhoneNumberPrivacySettings.fromJson,
   'internalLinkTypePremiumFeatures': InternalLinkTypePremiumFeatures.fromJson,
   'internalLinkTypePremiumGift': InternalLinkTypePremiumGift.fromJson,
   'internalLinkTypePremiumGiftCode': InternalLinkTypePremiumGiftCode.fromJson,
@@ -3569,6 +3617,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'suggestedActionExtendStarSubscriptions':
       SuggestedActionExtendStarSubscriptions.fromJson,
   'suggestedActionCustom': SuggestedActionCustom.fromJson,
+  'suggestedActionSetLoginEmailAddress':
+      SuggestedActionSetLoginEmailAddress.fromJson,
   'count': Count.fromJson,
   'text': Text.fromJson,
   'data': Data.fromJson,
@@ -3735,7 +3785,11 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateGroupCallParticipant': UpdateGroupCallParticipant.fromJson,
   'updateGroupCallParticipants': UpdateGroupCallParticipants.fromJson,
   'updateGroupCallVerificationState': UpdateGroupCallVerificationState.fromJson,
-  'updateGroupCallNewMessage': UpdateGroupCallNewMessage.fromJson,
+  'updateNewGroupCallMessage': UpdateNewGroupCallMessage.fromJson,
+  'updateNewGroupCallPaidReaction': UpdateNewGroupCallPaidReaction.fromJson,
+  'updateGroupCallMessageSendFailed': UpdateGroupCallMessageSendFailed.fromJson,
+  'updateGroupCallMessagesDeleted': UpdateGroupCallMessagesDeleted.fromJson,
+  'updateLiveStoryTopDonors': UpdateLiveStoryTopDonors.fromJson,
   'updateNewCallSignalingData': UpdateNewCallSignalingData.fromJson,
   'updateUserPrivacySettingRules': UpdateUserPrivacySettingRules.fromJson,
   'updateUnreadMessageCount': UpdateUnreadMessageCount.fromJson,
@@ -3747,6 +3801,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateChatActiveStories': UpdateChatActiveStories.fromJson,
   'updateStoryListChatCount': UpdateStoryListChatCount.fromJson,
   'updateStoryStealthMode': UpdateStoryStealthMode.fromJson,
+  'updateTrustedMiniAppBots': UpdateTrustedMiniAppBots.fromJson,
   'updateOption': UpdateOption.fromJson,
   'updateStickerSet': UpdateStickerSet.fromJson,
   'updateInstalledStickerSets': UpdateInstalledStickerSets.fromJson,
@@ -3779,6 +3834,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateStarRevenueStatus': UpdateStarRevenueStatus.fromJson,
   'updateTonRevenueStatus': UpdateTonRevenueStatus.fromJson,
   'updateSpeechRecognitionTrial': UpdateSpeechRecognitionTrial.fromJson,
+  'updateGroupCallMessageLevels': UpdateGroupCallMessageLevels.fromJson,
   'updateDiceEmojis': UpdateDiceEmojis.fromJson,
   'updateAnimatedEmojiMessageClicked':
       UpdateAnimatedEmojiMessageClicked.fromJson,

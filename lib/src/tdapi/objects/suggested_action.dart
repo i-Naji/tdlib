@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes an action suggested to the current user
 ///
-/// One of: [SuggestedActionEnableArchiveAndMuteNewChats], [SuggestedActionCheckPassword], [SuggestedActionCheckPhoneNumber], [SuggestedActionViewChecksHint], [SuggestedActionConvertToBroadcastGroup], [SuggestedActionSetPassword], [SuggestedActionUpgradePremium], [SuggestedActionRestorePremium], [SuggestedActionSubscribeToAnnualPremium], [SuggestedActionGiftPremiumForChristmas], [SuggestedActionSetBirthdate], [SuggestedActionSetProfilePhoto], [SuggestedActionExtendPremium], [SuggestedActionExtendStarSubscriptions], [SuggestedActionCustom]; or [UndecodedSuggestedAction] for a type newer than this API.
+/// One of: [SuggestedActionEnableArchiveAndMuteNewChats], [SuggestedActionCheckPassword], [SuggestedActionCheckPhoneNumber], [SuggestedActionViewChecksHint], [SuggestedActionConvertToBroadcastGroup], [SuggestedActionSetPassword], [SuggestedActionUpgradePremium], [SuggestedActionRestorePremium], [SuggestedActionSubscribeToAnnualPremium], [SuggestedActionGiftPremiumForChristmas], [SuggestedActionSetBirthdate], [SuggestedActionSetProfilePhoto], [SuggestedActionExtendPremium], [SuggestedActionExtendStarSubscriptions], [SuggestedActionCustom], [SuggestedActionSetLoginEmailAddress]; or [UndecodedSuggestedAction] for a type newer than this API.
 sealed class SuggestedAction extends TdObject {
   const SuggestedAction();
 
@@ -491,6 +491,42 @@ final class SuggestedActionCustom extends SuggestedAction {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'suggestedActionCustom';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Suggests the user to add login email address. Call isLoginEmailAddressRequired, and then setLoginEmailAddress or checkLoginEmailAddressCode to change the login email address
+final class SuggestedActionSetLoginEmailAddress extends SuggestedAction {
+  /// Suggests the user to add login email address. Call isLoginEmailAddressRequired, and then setLoginEmailAddress or checkLoginEmailAddressCode to change the login email address
+  const SuggestedActionSetLoginEmailAddress({required this.canBeHidden});
+
+  /// True, if the suggested action can be hidden using hideSuggestedAction. Otherwise, the user must not be able to use the app without setting up the email address
+  final bool canBeHidden;
+
+  /// Parses a [SuggestedActionSetLoginEmailAddress] from TDLib JSON.
+  factory SuggestedActionSetLoginEmailAddress.fromJson(
+    Map<String, dynamic> json,
+  ) => SuggestedActionSetLoginEmailAddress(
+    canBeHidden: _readBool(json['can_be_hidden']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'can_be_hidden': canBeHidden,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  SuggestedActionSetLoginEmailAddress copyWith({bool? canBeHidden}) =>
+      SuggestedActionSetLoginEmailAddress(
+        canBeHidden: canBeHidden ?? this.canBeHidden,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'suggestedActionSetLoginEmailAddress';
 
   @override
   String getConstructor() => CONSTRUCTOR;
