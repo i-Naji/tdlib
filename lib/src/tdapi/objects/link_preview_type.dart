@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of link preview
 ///
-/// One of: [LinkPreviewTypeAlbum], [LinkPreviewTypeAnimation], [LinkPreviewTypeApp], [LinkPreviewTypeArticle], [LinkPreviewTypeAudio], [LinkPreviewTypeBackground], [LinkPreviewTypeChannelBoost], [LinkPreviewTypeChat], [LinkPreviewTypeDirectMessagesChat], [LinkPreviewTypeDocument], [LinkPreviewTypeEmbeddedAnimationPlayer], [LinkPreviewTypeEmbeddedAudioPlayer], [LinkPreviewTypeEmbeddedVideoPlayer], [LinkPreviewTypeExternalAudio], [LinkPreviewTypeExternalVideo], [LinkPreviewTypeGiftCollection], [LinkPreviewTypeGroupCall], [LinkPreviewTypeInvoice], [LinkPreviewTypeLiveStory], [LinkPreviewTypeMessage], [LinkPreviewTypePhoto], [LinkPreviewTypePremiumGiftCode], [LinkPreviewTypeShareableChatFolder], [LinkPreviewTypeSticker], [LinkPreviewTypeStickerSet], [LinkPreviewTypeStory], [LinkPreviewTypeStoryAlbum], [LinkPreviewTypeSupergroupBoost], [LinkPreviewTypeTheme], [LinkPreviewTypeUnsupported], [LinkPreviewTypeUpgradedGift], [LinkPreviewTypeUser], [LinkPreviewTypeVideo], [LinkPreviewTypeVideoChat], [LinkPreviewTypeVideoNote], [LinkPreviewTypeVoiceNote], [LinkPreviewTypeWebApp]; or [UndecodedLinkPreviewType] for a type newer than this API.
+/// One of: [LinkPreviewTypeAlbum], [LinkPreviewTypeAnimation], [LinkPreviewTypeApp], [LinkPreviewTypeArticle], [LinkPreviewTypeAudio], [LinkPreviewTypeBackground], [LinkPreviewTypeChannelBoost], [LinkPreviewTypeChat], [LinkPreviewTypeDirectMessagesChat], [LinkPreviewTypeDocument], [LinkPreviewTypeEmbeddedAnimationPlayer], [LinkPreviewTypeEmbeddedAudioPlayer], [LinkPreviewTypeEmbeddedVideoPlayer], [LinkPreviewTypeExternalAudio], [LinkPreviewTypeExternalVideo], [LinkPreviewTypeGiftAuction], [LinkPreviewTypeGiftCollection], [LinkPreviewTypeGroupCall], [LinkPreviewTypeInvoice], [LinkPreviewTypeLiveStory], [LinkPreviewTypeMessage], [LinkPreviewTypePhoto], [LinkPreviewTypePremiumGiftCode], [LinkPreviewTypeShareableChatFolder], [LinkPreviewTypeSticker], [LinkPreviewTypeStickerSet], [LinkPreviewTypeStory], [LinkPreviewTypeStoryAlbum], [LinkPreviewTypeSupergroupBoost], [LinkPreviewTypeTheme], [LinkPreviewTypeUnsupported], [LinkPreviewTypeUpgradedGift], [LinkPreviewTypeUser], [LinkPreviewTypeVideo], [LinkPreviewTypeVideoChat], [LinkPreviewTypeVideoNote], [LinkPreviewTypeVoiceNote], [LinkPreviewTypeWebApp]; or [UndecodedLinkPreviewType] for a type newer than this API.
 sealed class LinkPreviewType extends TdObject {
   const LinkPreviewType();
 
@@ -752,6 +752,63 @@ final class LinkPreviewTypeExternalVideo extends LinkPreviewType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeExternalVideo';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The link is a link to a gift auction
+final class LinkPreviewTypeGiftAuction extends LinkPreviewType {
+  /// The link is a link to a gift auction
+  const LinkPreviewTypeGiftAuction({
+    required this.gift,
+    required this.giftBackground,
+    required this.auctionEndDate,
+  });
+
+  /// The gift
+  final Gift gift;
+
+  /// Background of the gift
+  final GiftBackground giftBackground;
+
+  /// Point in time (Unix timestamp) when the auction will be ended
+  final int auctionEndDate;
+
+  /// Parses a [LinkPreviewTypeGiftAuction] from TDLib JSON.
+  factory LinkPreviewTypeGiftAuction.fromJson(Map<String, dynamic> json) =>
+      LinkPreviewTypeGiftAuction(
+        gift: _readObject(json['gift'], Gift.fromJson),
+        giftBackground: _readObject(
+          json['gift_background'],
+          GiftBackground.fromJson,
+        ),
+        auctionEndDate: _readInt(json['auction_end_date']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'gift': gift.toJson(),
+    'gift_background': giftBackground.toJson(),
+    'auction_end_date': auctionEndDate,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  LinkPreviewTypeGiftAuction copyWith({
+    Gift? gift,
+    GiftBackground? giftBackground,
+    int? auctionEndDate,
+  }) => LinkPreviewTypeGiftAuction(
+    gift: gift ?? this.gift,
+    giftBackground: giftBackground ?? this.giftBackground,
+    auctionEndDate: auctionEndDate ?? this.auctionEndDate,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'linkPreviewTypeGiftAuction';
 
   @override
   String getConstructor() => CONSTRUCTOR;

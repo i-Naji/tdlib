@@ -3463,6 +3463,7 @@ final class MessageGift extends MessageContent {
     required this.sellStarCount,
     required this.prepaidUpgradeStarCount,
     required this.isUpgradeSeparate,
+    required this.isFromAuction,
     required this.isPrivate,
     required this.isSaved,
     required this.isPrepaidUpgrade,
@@ -3497,6 +3498,9 @@ final class MessageGift extends MessageContent {
 
   /// True, if the upgrade was bought after the gift was sent. In this case, prepaid upgrade cost must not be added to the gift cost
   final bool isUpgradeSeparate;
+
+  /// True, if the message is a notification about a gift won on an auction
+  final bool isFromAuction;
 
   /// True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them
   final bool isPrivate;
@@ -3535,6 +3539,7 @@ final class MessageGift extends MessageContent {
     sellStarCount: _readInt(json['sell_star_count']),
     prepaidUpgradeStarCount: _readInt(json['prepaid_upgrade_star_count']),
     isUpgradeSeparate: _readBool(json['is_upgrade_separate']),
+    isFromAuction: _readBool(json['is_from_auction']),
     isPrivate: _readBool(json['is_private']),
     isSaved: _readBool(json['is_saved']),
     isPrepaidUpgrade: _readBool(json['is_prepaid_upgrade']),
@@ -3557,6 +3562,7 @@ final class MessageGift extends MessageContent {
     'sell_star_count': sellStarCount,
     'prepaid_upgrade_star_count': prepaidUpgradeStarCount,
     'is_upgrade_separate': isUpgradeSeparate,
+    'is_from_auction': isFromAuction,
     'is_private': isPrivate,
     'is_saved': isSaved,
     'is_prepaid_upgrade': isPrepaidUpgrade,
@@ -3580,6 +3586,7 @@ final class MessageGift extends MessageContent {
     int? sellStarCount,
     int? prepaidUpgradeStarCount,
     bool? isUpgradeSeparate,
+    bool? isFromAuction,
     bool? isPrivate,
     bool? isSaved,
     bool? isPrepaidUpgrade,
@@ -3599,6 +3606,7 @@ final class MessageGift extends MessageContent {
     prepaidUpgradeStarCount:
         prepaidUpgradeStarCount ?? this.prepaidUpgradeStarCount,
     isUpgradeSeparate: isUpgradeSeparate ?? this.isUpgradeSeparate,
+    isFromAuction: isFromAuction ?? this.isFromAuction,
     isPrivate: isPrivate ?? this.isPrivate,
     isSaved: isSaved ?? this.isSaved,
     isPrepaidUpgrade: isPrepaidUpgrade ?? this.isPrepaidUpgrade,

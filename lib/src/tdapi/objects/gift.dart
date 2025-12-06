@@ -16,6 +16,7 @@ final class Gift extends TdObject {
     required this.hasColors,
     required this.isForBirthday,
     required this.isPremium,
+    this.auctionInfo,
     required this.nextSendDate,
     this.userLimits,
     this.overallLimits,
@@ -50,6 +51,9 @@ final class Gift extends TdObject {
   /// True, if the gift can be bought only by Telegram Premium subscribers
   final bool isPremium;
 
+  /// Information about the auction on which the gift can be purchased; may be null if the gift can be purchased directly
+  final GiftAuction? auctionInfo;
+
   /// Point in time (Unix timestamp) when the gift can be sent next time by the current user; can be 0 or a date in the past. If the date is in the future, then call canSendGift to get the reason, why the gift can't be sent now
   final int nextSendDate;
 
@@ -76,6 +80,7 @@ final class Gift extends TdObject {
     hasColors: _readBool(json['has_colors']),
     isForBirthday: _readBool(json['is_for_birthday']),
     isPremium: _readBool(json['is_premium']),
+    auctionInfo: _readOptional(json['auction_info'], GiftAuction.fromJson),
     nextSendDate: _readInt(json['next_send_date']),
     userLimits: _readOptional(json['user_limits'], GiftPurchaseLimits.fromJson),
     overallLimits: _readOptional(
@@ -98,6 +103,7 @@ final class Gift extends TdObject {
     'has_colors': hasColors,
     'is_for_birthday': isForBirthday,
     'is_premium': isPremium,
+    'auction_info': auctionInfo?.toJson(),
     'next_send_date': nextSendDate,
     'user_limits': userLimits?.toJson(),
     'overall_limits': overallLimits?.toJson(),
@@ -117,6 +123,7 @@ final class Gift extends TdObject {
     bool? hasColors,
     bool? isForBirthday,
     bool? isPremium,
+    GiftAuction? Function()? auctionInfo,
     int? nextSendDate,
     GiftPurchaseLimits? Function()? userLimits,
     GiftPurchaseLimits? Function()? overallLimits,
@@ -132,6 +139,7 @@ final class Gift extends TdObject {
     hasColors: hasColors ?? this.hasColors,
     isForBirthday: isForBirthday ?? this.isForBirthday,
     isPremium: isPremium ?? this.isPremium,
+    auctionInfo: auctionInfo != null ? auctionInfo() : this.auctionInfo,
     nextSendDate: nextSendDate ?? this.nextSendDate,
     userLimits: userLimits != null ? userLimits() : this.userLimits,
     overallLimits: overallLimits != null ? overallLimits() : this.overallLimits,
