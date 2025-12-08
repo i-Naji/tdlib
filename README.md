@@ -31,20 +31,37 @@ hooks:
 - Call `await TdPlugin.initialize();` before using the plugin.
 
 ## Usage
+### Runtime (Android, iOS, macOS, Linux, Windows)
 ```dart
-import 'package:tdlib/td_lifecycle.dart';
 import 'package:tdlib/td_runtime.dart' as td;
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final runtime = await td.TdRuntime.start();
-  TdLifecycle(runtime);
+final runtime = await td.TdRuntime.start(); // checks the native TDLib version
+final client = runtime.createClient();
 
-  final client = runtime.createClient();
-  client.authorizationStates.listen((state) {
-    // send td.SetTdlibParameters on AuthorizationStateWaitTdlibParameters, ...
-  });
-  final td.User me = await client.invoke(const td.GetMe());
-}
+client.updates.listen((update) {}); // every update, in TDLib's order
+client.on<td.UpdateNewMessage>().listen((u) {});
+client.authorizationStates.listen((state) {}); // current state first
+
+final td.User me = await client.invoke(const td.GetMe()); // throws TdException
+client.send(const td.SetOption(name: 'online', value: td.OptionValueBoolean(value: true)));
+
+final log = td.TdRuntime.execute(const td.GetLogVerbosityLevel()); // synchronous requests
+await runtime.close(); // closes all clients
+```
+Optional, ties the runtime to the app lifecycle (online status, resume, quit):
+```dart
+import 'package:tdlib/td_lifecycle.dart';
+
+TdLifecycle(runtime);
+```
+### Low-level (every platform, including web)
+```dart
+import 'package:tdlib/td_api.dart';
+import 'package:tdlib/td_client.dart';
+
+await TdPlugin.initialize();
+final clientId = tdCreate();
+tdSend(clientId, const GetOption(name: 'version'), 1); // 1 comes back as @extra
+final TdObject? event = tdReceive(1.0); // blocks, keep it off the UI isolate
 ```
 [Getting started with TDLib](https://core.telegram.org/tdlib/getting-started)
