@@ -15,3 +15,6 @@ dart run generator/generate.dart
   `tdapi.dart`.
 
 The output is formatted by `dart format` afterwards.
+
+`tool/update_tdlib.dart` moves the package to a new TDLib version: it finds the
+builds, writes the manifest and `data/td_api.tl`, then runs this generator.
