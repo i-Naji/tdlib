@@ -5,7 +5,8 @@ import 'dart:js_interop';
 extension type TdWebPlatform._(JSObject _) implements JSObject {
   external TdWebPlatform();
 
-  /// Loads the TDLib module; [mode] is `wasm` (default) or `asmjs`.
+  /// Loads the TDLib module. [mode] was tdweb's `wasm` / `asmjs` switch;
+  /// builds from tool/build_tdweb.sh are wasm only and ignore it.
   external JSPromise<JSAny?> init([JSString? mode]);
 
   @JS('td_create')

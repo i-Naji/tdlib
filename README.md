@@ -29,6 +29,7 @@ hooks:
   <script src="/tdlib.js" type="application/javascript"></script>
   ```
 - Call `await TdPlugin.initialize();` before using the plugin.
+- `tool/build_tdweb.sh` rebuilds `data/web_pkg` from TDLib sources (needs Docker).
 
 ## Usage
 ### Runtime (Android, iOS, macOS, Linux, Windows)
