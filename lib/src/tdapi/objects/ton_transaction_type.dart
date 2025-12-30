@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of transaction with Toncoins
 ///
-/// One of: [TonTransactionTypeFragmentDeposit], [TonTransactionTypeSuggestedPostPayment], [TonTransactionTypeUpgradedGiftPurchase], [TonTransactionTypeUpgradedGiftSale], [TonTransactionTypeUnsupported]; or [UndecodedTonTransactionType] for a type newer than this API.
+/// One of: [TonTransactionTypeFragmentDeposit], [TonTransactionTypeFragmentWithdrawal], [TonTransactionTypeSuggestedPostPayment], [TonTransactionTypeGiftPurchaseOffer], [TonTransactionTypeUpgradedGiftPurchase], [TonTransactionTypeUpgradedGiftSale], [TonTransactionTypeUnsupported]; or [UndecodedTonTransactionType] for a type newer than this API.
 sealed class TonTransactionType extends TdObject {
   const TonTransactionType();
 
@@ -88,6 +88,48 @@ final class TonTransactionTypeFragmentDeposit extends TonTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// The transaction is a withdrawal of earned Toncoins to Fragment
+final class TonTransactionTypeFragmentWithdrawal extends TonTransactionType {
+  /// The transaction is a withdrawal of earned Toncoins to Fragment
+  const TonTransactionTypeFragmentWithdrawal({this.withdrawalState});
+
+  /// State of the withdrawal; may be null for refunds from Fragment
+  final RevenueWithdrawalState? withdrawalState;
+
+  /// Parses a [TonTransactionTypeFragmentWithdrawal] from TDLib JSON.
+  factory TonTransactionTypeFragmentWithdrawal.fromJson(
+    Map<String, dynamic> json,
+  ) => TonTransactionTypeFragmentWithdrawal(
+    withdrawalState: _readOptional(
+      json['withdrawal_state'],
+      RevenueWithdrawalState.fromJson,
+    ),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'withdrawal_state': withdrawalState?.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  TonTransactionTypeFragmentWithdrawal copyWith({
+    RevenueWithdrawalState? Function()? withdrawalState,
+  }) => TonTransactionTypeFragmentWithdrawal(
+    withdrawalState: withdrawalState != null
+        ? withdrawalState()
+        : this.withdrawalState,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'tonTransactionTypeFragmentWithdrawal';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// The transaction is a payment for a suggested post
 final class TonTransactionTypeSuggestedPostPayment extends TonTransactionType {
   /// The transaction is a payment for a suggested post
@@ -118,9 +160,43 @@ final class TonTransactionTypeSuggestedPostPayment extends TonTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a purchase of an upgraded gift for some user or channel; for regular users only
+/// The transaction is an offer of gift purchase
+final class TonTransactionTypeGiftPurchaseOffer extends TonTransactionType {
+  /// The transaction is an offer of gift purchase
+  const TonTransactionTypeGiftPurchaseOffer({required this.gift});
+
+  /// The gift
+  final UpgradedGift gift;
+
+  /// Parses a [TonTransactionTypeGiftPurchaseOffer] from TDLib JSON.
+  factory TonTransactionTypeGiftPurchaseOffer.fromJson(
+    Map<String, dynamic> json,
+  ) => TonTransactionTypeGiftPurchaseOffer(
+    gift: _readObject(json['gift'], UpgradedGift.fromJson),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'gift': gift.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  TonTransactionTypeGiftPurchaseOffer copyWith({UpgradedGift? gift}) =>
+      TonTransactionTypeGiftPurchaseOffer(gift: gift ?? this.gift);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'tonTransactionTypeGiftPurchaseOffer';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a purchase of an upgraded gift for some user or channel
 final class TonTransactionTypeUpgradedGiftPurchase extends TonTransactionType {
-  /// The transaction is a purchase of an upgraded gift for some user or channel; for regular users only
+  /// The transaction is a purchase of an upgraded gift for some user or channel
   const TonTransactionTypeUpgradedGiftPurchase({
     required this.userId,
     required this.gift,
@@ -165,14 +241,15 @@ final class TonTransactionTypeUpgradedGiftPurchase extends TonTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a sale of an upgraded gift; for regular users only
+/// The transaction is a sale of an upgraded gift
 final class TonTransactionTypeUpgradedGiftSale extends TonTransactionType {
-  /// The transaction is a sale of an upgraded gift; for regular users only
+  /// The transaction is a sale of an upgraded gift
   const TonTransactionTypeUpgradedGiftSale({
     required this.userId,
     required this.gift,
     required this.commissionPerMille,
     required this.commissionToncoinAmount,
+    required this.viaOffer,
   });
 
   /// Identifier of the user that bought the gift
@@ -187,6 +264,9 @@ final class TonTransactionTypeUpgradedGiftSale extends TonTransactionType {
   /// The amount of Toncoins that were received by the Telegram; in the smallest units of the currency
   final int commissionToncoinAmount;
 
+  /// True, if the gift was sold through a purchase offer
+  final bool viaOffer;
+
   /// Parses a [TonTransactionTypeUpgradedGiftSale] from TDLib JSON.
   factory TonTransactionTypeUpgradedGiftSale.fromJson(
     Map<String, dynamic> json,
@@ -195,6 +275,7 @@ final class TonTransactionTypeUpgradedGiftSale extends TonTransactionType {
     gift: _readObject(json['gift'], UpgradedGift.fromJson),
     commissionPerMille: _readInt(json['commission_per_mille']),
     commissionToncoinAmount: _readInt(json['commission_toncoin_amount']),
+    viaOffer: _readBool(json['via_offer']),
   );
 
   @override
@@ -204,6 +285,7 @@ final class TonTransactionTypeUpgradedGiftSale extends TonTransactionType {
     'gift': gift.toJson(),
     'commission_per_mille': commissionPerMille,
     'commission_toncoin_amount': commissionToncoinAmount,
+    'via_offer': viaOffer,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -214,12 +296,14 @@ final class TonTransactionTypeUpgradedGiftSale extends TonTransactionType {
     UpgradedGift? gift,
     int? commissionPerMille,
     int? commissionToncoinAmount,
+    bool? viaOffer,
   }) => TonTransactionTypeUpgradedGiftSale(
     userId: userId ?? this.userId,
     gift: gift ?? this.gift,
     commissionPerMille: commissionPerMille ?? this.commissionPerMille,
     commissionToncoinAmount:
         commissionToncoinAmount ?? this.commissionToncoinAmount,
+    viaOffer: viaOffer ?? this.viaOffer,
   );
 
   /// TDLib type name.

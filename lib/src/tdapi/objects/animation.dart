@@ -16,6 +16,8 @@ final class Animation extends TdObject {
     this.minithumbnail,
     this.thumbnail,
     required this.animation,
+    this.extra,
+    this.clientId,
   });
 
   /// Duration of the animation, in seconds; as defined by the sender
@@ -45,6 +47,14 @@ final class Animation extends TdObject {
   /// File containing the animation
   final File animation;
 
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
   /// Parses a [Animation] from TDLib JSON.
   factory Animation.fromJson(Map<String, dynamic> json) => Animation(
     duration: _readInt(json['duration']),
@@ -56,6 +66,8 @@ final class Animation extends TdObject {
     minithumbnail: _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
     thumbnail: _readOptional(json['thumbnail'], Thumbnail.fromJson),
     animation: _readObject(json['animation'], File.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
   );
 
   @override
@@ -84,6 +96,8 @@ final class Animation extends TdObject {
     Minithumbnail? Function()? minithumbnail,
     Thumbnail? Function()? thumbnail,
     File? animation,
+    dynamic extra,
+    int? clientId,
   }) => Animation(
     duration: duration ?? this.duration,
     width: width ?? this.width,
@@ -94,6 +108,8 @@ final class Animation extends TdObject {
     minithumbnail: minithumbnail != null ? minithumbnail() : this.minithumbnail,
     thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
     animation: animation ?? this.animation,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
   );
 
   /// TDLib type name.

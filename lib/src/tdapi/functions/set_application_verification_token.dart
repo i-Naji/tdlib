@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Application or reCAPTCHA verification has been completed. Can be called before authorization
+/// Informs TDLib that application or reCAPTCHA verification has been completed. Can be called before authorization
 ///
 /// Returns [Ok].
 final class SetApplicationVerificationToken extends TdFunction<Ok> {
-  /// Application or reCAPTCHA verification has been completed. Can be called before authorization
+  /// Informs TDLib that application or reCAPTCHA verification has been completed. Can be called before authorization
   const SetApplicationVerificationToken({
     required this.verificationId,
     required this.token,

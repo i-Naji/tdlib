@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferDeclined], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -2415,7 +2415,7 @@ final class MessagePaymentSuccessful extends MessageContent {
   /// Identifier of the chat, containing the corresponding invoice message
   final int invoiceChatId;
 
-  /// Identifier of the message with the corresponding invoice; can be 0 or an identifier of a deleted message
+  /// Identifier of the message with the corresponding invoice; may be 0 or an identifier of a deleted message
   final int invoiceMessageId;
 
   /// Currency for the price of the product
@@ -3028,7 +3028,7 @@ final class MessageGiveawayCompleted extends MessageContent {
     required this.unclaimedPrizeCount,
   });
 
-  /// Identifier of the message with the giveaway; can be 0 if the message was deleted
+  /// Identifier of the message with the giveaway; may be 0 or an identifier of a deleted message
   final int giveawayMessageId;
 
   /// Number of winners in the giveaway
@@ -3394,7 +3394,7 @@ final class MessageGiveawayPrizeStars extends MessageContent {
   /// Identifier of the supergroup or channel chat, which was automatically boosted by the winners of the giveaway
   final int boostedChatId;
 
-  /// Identifier of the message with the giveaway in the boosted chat; can be 0 if the message was deleted
+  /// Identifier of the message with the giveaway in the boosted chat; may be 0 or an identifier of a deleted message
   final int giveawayMessageId;
 
   /// True, if the corresponding winner wasn't chosen and the Telegram Stars were received by the owner of the boosted chat
@@ -3460,6 +3460,7 @@ final class MessageGift extends MessageContent {
     required this.receiverId,
     required this.receivedGiftId,
     required this.text,
+    required this.uniqueGiftNumber,
     required this.sellStarCount,
     required this.prepaidUpgradeStarCount,
     required this.isUpgradeSeparate,
@@ -3489,6 +3490,9 @@ final class MessageGift extends MessageContent {
 
   /// Message added to the gift
   final FormattedText text;
+
+  /// Unique number of the gift among gifts upgraded from the same gift after upgrade; 0 if yet unassigned
+  final int uniqueGiftNumber;
 
   /// Number of Telegram Stars that can be claimed by the receiver instead of the regular gift; 0 if the gift can't be sold by the receiver
   final int sellStarCount;
@@ -3536,6 +3540,7 @@ final class MessageGift extends MessageContent {
     receiverId: _readObject(json['receiver_id'], MessageSender.fromJson),
     receivedGiftId: _readString(json['received_gift_id']),
     text: _readObject(json['text'], FormattedText.fromJson),
+    uniqueGiftNumber: _readInt(json['unique_gift_number']),
     sellStarCount: _readInt(json['sell_star_count']),
     prepaidUpgradeStarCount: _readInt(json['prepaid_upgrade_star_count']),
     isUpgradeSeparate: _readBool(json['is_upgrade_separate']),
@@ -3559,6 +3564,7 @@ final class MessageGift extends MessageContent {
     'receiver_id': receiverId.toJson(),
     'received_gift_id': receivedGiftId,
     'text': text.toJson(),
+    'unique_gift_number': uniqueGiftNumber,
     'sell_star_count': sellStarCount,
     'prepaid_upgrade_star_count': prepaidUpgradeStarCount,
     'is_upgrade_separate': isUpgradeSeparate,
@@ -3583,6 +3589,7 @@ final class MessageGift extends MessageContent {
     MessageSender? receiverId,
     String? receivedGiftId,
     FormattedText? text,
+    int? uniqueGiftNumber,
     int? sellStarCount,
     int? prepaidUpgradeStarCount,
     bool? isUpgradeSeparate,
@@ -3602,6 +3609,7 @@ final class MessageGift extends MessageContent {
     receiverId: receiverId ?? this.receiverId,
     receivedGiftId: receivedGiftId ?? this.receivedGiftId,
     text: text ?? this.text,
+    uniqueGiftNumber: uniqueGiftNumber ?? this.uniqueGiftNumber,
     sellStarCount: sellStarCount ?? this.sellStarCount,
     prepaidUpgradeStarCount:
         prepaidUpgradeStarCount ?? this.prepaidUpgradeStarCount,
@@ -3825,6 +3833,132 @@ final class MessageRefundedUpgradedGift extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// An offer to purchase an upgraded gift was sent or received
+final class MessageUpgradedGiftPurchaseOffer extends MessageContent {
+  /// An offer to purchase an upgraded gift was sent or received
+  const MessageUpgradedGiftPurchaseOffer({
+    required this.gift,
+    required this.state,
+    required this.price,
+    required this.expirationDate,
+  });
+
+  /// The gift
+  final UpgradedGift gift;
+
+  /// State of the offer
+  final GiftPurchaseOfferState state;
+
+  /// The proposed price
+  final GiftResalePrice price;
+
+  /// Point in time (Unix timestamp) when the offer will expire or has expired
+  final int expirationDate;
+
+  /// Parses a [MessageUpgradedGiftPurchaseOffer] from TDLib JSON.
+  factory MessageUpgradedGiftPurchaseOffer.fromJson(
+    Map<String, dynamic> json,
+  ) => MessageUpgradedGiftPurchaseOffer(
+    gift: _readObject(json['gift'], UpgradedGift.fromJson),
+    state: _readObject(json['state'], GiftPurchaseOfferState.fromJson),
+    price: _readObject(json['price'], GiftResalePrice.fromJson),
+    expirationDate: _readInt(json['expiration_date']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'gift': gift.toJson(),
+    'state': state.toJson(),
+    'price': price.toJson(),
+    'expiration_date': expirationDate,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageUpgradedGiftPurchaseOffer copyWith({
+    UpgradedGift? gift,
+    GiftPurchaseOfferState? state,
+    GiftResalePrice? price,
+    int? expirationDate,
+  }) => MessageUpgradedGiftPurchaseOffer(
+    gift: gift ?? this.gift,
+    state: state ?? this.state,
+    price: price ?? this.price,
+    expirationDate: expirationDate ?? this.expirationDate,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageUpgradedGiftPurchaseOffer';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An offer to purchase a gift was declined or expired
+final class MessageUpgradedGiftPurchaseOfferDeclined extends MessageContent {
+  /// An offer to purchase a gift was declined or expired
+  const MessageUpgradedGiftPurchaseOfferDeclined({
+    required this.gift,
+    required this.price,
+    required this.offerMessageId,
+    required this.wasExpired,
+  });
+
+  /// The gift
+  final UpgradedGift gift;
+
+  /// The proposed price
+  final GiftResalePrice price;
+
+  /// Identifier of the message with purchase offer which was declined or expired; may be 0 or an identifier of a deleted message
+  final int offerMessageId;
+
+  /// True, if the offer has expired; otherwise, the offer was explicitly declined
+  final bool wasExpired;
+
+  /// Parses a [MessageUpgradedGiftPurchaseOfferDeclined] from TDLib JSON.
+  factory MessageUpgradedGiftPurchaseOfferDeclined.fromJson(
+    Map<String, dynamic> json,
+  ) => MessageUpgradedGiftPurchaseOfferDeclined(
+    gift: _readObject(json['gift'], UpgradedGift.fromJson),
+    price: _readObject(json['price'], GiftResalePrice.fromJson),
+    offerMessageId: _readInt(json['offer_message_id']),
+    wasExpired: _readBool(json['was_expired']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'gift': gift.toJson(),
+    'price': price.toJson(),
+    'offer_message_id': offerMessageId,
+    'was_expired': wasExpired,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageUpgradedGiftPurchaseOfferDeclined copyWith({
+    UpgradedGift? gift,
+    GiftResalePrice? price,
+    int? offerMessageId,
+    bool? wasExpired,
+  }) => MessageUpgradedGiftPurchaseOfferDeclined(
+    gift: gift ?? this.gift,
+    price: price ?? this.price,
+    offerMessageId: offerMessageId ?? this.offerMessageId,
+    wasExpired: wasExpired ?? this.wasExpired,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageUpgradedGiftPurchaseOfferDeclined';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// Paid messages were refunded
 final class MessagePaidMessagesRefunded extends MessageContent {
   /// Paid messages were refunded
@@ -3960,7 +4094,7 @@ final class MessageChecklistTasksDone extends MessageContent {
     required this.markedAsNotDoneTaskIds,
   });
 
-  /// Identifier of the message with the checklist; can be 0 if the message was deleted
+  /// Identifier of the message with the checklist; may be 0 or an identifier of a deleted message
   final int checklistMessageId;
 
   /// Identifiers of tasks that were marked as done
@@ -4020,7 +4154,7 @@ final class MessageChecklistTasksAdded extends MessageContent {
     required this.tasks,
   });
 
-  /// Identifier of the message with the checklist; can be 0 if the message was deleted
+  /// Identifier of the message with the checklist; may be 0 or an identifier of a deleted message
   final int checklistMessageId;
 
   /// List of tasks added to the checklist
@@ -4069,7 +4203,7 @@ final class MessageSuggestedPostApprovalFailed extends MessageContent {
     required this.price,
   });
 
-  /// Identifier of the message with the suggested post; can be 0 if the message was deleted
+  /// Identifier of the message with the suggested post; may be 0 or an identifier of a deleted message
   final int suggestedPostMessageId;
 
   /// Price of the suggested post
@@ -4118,7 +4252,7 @@ final class MessageSuggestedPostApproved extends MessageContent {
     required this.sendDate,
   });
 
-  /// Identifier of the message with the suggested post; can be 0 if the message was deleted
+  /// Identifier of the message with the suggested post; may be 0 or an identifier of a deleted message
   final int suggestedPostMessageId;
 
   /// Price of the suggested post; may be null if the post is non-paid
@@ -4172,7 +4306,7 @@ final class MessageSuggestedPostDeclined extends MessageContent {
     required this.comment,
   });
 
-  /// Identifier of the message with the suggested post; can be 0 if the message was deleted
+  /// Identifier of the message with the suggested post; may be 0 or an identifier of a deleted message
   final int suggestedPostMessageId;
 
   /// Comment added by administrator of the channel when the post was declined
@@ -4220,7 +4354,7 @@ final class MessageSuggestedPostPaid extends MessageContent {
     required this.tonAmount,
   });
 
-  /// Identifier of the message with the suggested post; can be 0 if the message was deleted
+  /// Identifier of the message with the suggested post; may be 0 or an identifier of a deleted message
   final int suggestedPostMessageId;
 
   /// The amount of received Telegram Stars
@@ -4274,7 +4408,7 @@ final class MessageSuggestedPostRefunded extends MessageContent {
     required this.reason,
   });
 
-  /// Identifier of the message with the suggested post; can be 0 if the message was deleted
+  /// Identifier of the message with the suggested post; may be 0 or an identifier of a deleted message
   final int suggestedPostMessageId;
 
   /// Reason of the refund

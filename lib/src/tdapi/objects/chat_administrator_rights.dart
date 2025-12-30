@@ -43,7 +43,7 @@ final class ChatAdministratorRights extends TdObject {
   /// True, if the administrator can invite new users to the chat
   final bool canInviteUsers;
 
-  /// True, if the administrator can restrict, ban, or unban chat members or view supergroup statistics; always true for channels
+  /// True, if the administrator can restrict, ban, or unban chat members or view supergroup statistics
   final bool canRestrictMembers;
 
   /// True, if the administrator can pin messages; applicable to basic groups and supergroups only

@@ -13,6 +13,7 @@ final class Gift extends TdObject {
     required this.starCount,
     required this.defaultSellStarCount,
     required this.upgradeStarCount,
+    required this.upgradeVariantCount,
     required this.hasColors,
     required this.isForBirthday,
     required this.isPremium,
@@ -20,6 +21,7 @@ final class Gift extends TdObject {
     required this.nextSendDate,
     this.userLimits,
     this.overallLimits,
+    required this.background,
     required this.firstSendDate,
     required this.lastSendDate,
   });
@@ -42,6 +44,9 @@ final class Gift extends TdObject {
   /// Number of Telegram Stars that must be paid to upgrade the gift; 0 if upgrade isn't possible
   final int upgradeStarCount;
 
+  /// Number of unique gift variants that are available for the upgraded gift; 0 if unknown
+  final int upgradeVariantCount;
+
   /// True, if the gift can be used to customize the user's name, and backgrounds of profile photo, reply header, and link preview
   final bool hasColors;
 
@@ -54,7 +59,7 @@ final class Gift extends TdObject {
   /// Information about the auction on which the gift can be purchased; may be null if the gift can be purchased directly
   final GiftAuction? auctionInfo;
 
-  /// Point in time (Unix timestamp) when the gift can be sent next time by the current user; can be 0 or a date in the past. If the date is in the future, then call canSendGift to get the reason, why the gift can't be sent now
+  /// Point in time (Unix timestamp) when the gift can be sent next time by the current user; may be 0 or a date in the past. If the date is in the future, then call canSendGift to get the reason, why the gift can't be sent now
   final int nextSendDate;
 
   /// Number of times the gift can be purchased by the current user; may be null if not limited
@@ -62,6 +67,9 @@ final class Gift extends TdObject {
 
   /// Number of times the gift can be purchased all users; may be null if not limited
   final GiftPurchaseLimits? overallLimits;
+
+  /// Background of the gift
+  final GiftBackground background;
 
   /// Point in time (Unix timestamp) when the gift was send for the first time; for sold out gifts only
   final int firstSendDate;
@@ -77,6 +85,7 @@ final class Gift extends TdObject {
     starCount: _readInt(json['star_count']),
     defaultSellStarCount: _readInt(json['default_sell_star_count']),
     upgradeStarCount: _readInt(json['upgrade_star_count']),
+    upgradeVariantCount: _readInt(json['upgrade_variant_count']),
     hasColors: _readBool(json['has_colors']),
     isForBirthday: _readBool(json['is_for_birthday']),
     isPremium: _readBool(json['is_premium']),
@@ -87,6 +96,7 @@ final class Gift extends TdObject {
       json['overall_limits'],
       GiftPurchaseLimits.fromJson,
     ),
+    background: _readObject(json['background'], GiftBackground.fromJson),
     firstSendDate: _readInt(json['first_send_date']),
     lastSendDate: _readInt(json['last_send_date']),
   );
@@ -100,6 +110,7 @@ final class Gift extends TdObject {
     'star_count': starCount,
     'default_sell_star_count': defaultSellStarCount,
     'upgrade_star_count': upgradeStarCount,
+    'upgrade_variant_count': upgradeVariantCount,
     'has_colors': hasColors,
     'is_for_birthday': isForBirthday,
     'is_premium': isPremium,
@@ -107,6 +118,7 @@ final class Gift extends TdObject {
     'next_send_date': nextSendDate,
     'user_limits': userLimits?.toJson(),
     'overall_limits': overallLimits?.toJson(),
+    'background': background.toJson(),
     'first_send_date': firstSendDate,
     'last_send_date': lastSendDate,
   };
@@ -120,6 +132,7 @@ final class Gift extends TdObject {
     int? starCount,
     int? defaultSellStarCount,
     int? upgradeStarCount,
+    int? upgradeVariantCount,
     bool? hasColors,
     bool? isForBirthday,
     bool? isPremium,
@@ -127,6 +140,7 @@ final class Gift extends TdObject {
     int? nextSendDate,
     GiftPurchaseLimits? Function()? userLimits,
     GiftPurchaseLimits? Function()? overallLimits,
+    GiftBackground? background,
     int? firstSendDate,
     int? lastSendDate,
   }) => Gift(
@@ -136,6 +150,7 @@ final class Gift extends TdObject {
     starCount: starCount ?? this.starCount,
     defaultSellStarCount: defaultSellStarCount ?? this.defaultSellStarCount,
     upgradeStarCount: upgradeStarCount ?? this.upgradeStarCount,
+    upgradeVariantCount: upgradeVariantCount ?? this.upgradeVariantCount,
     hasColors: hasColors ?? this.hasColors,
     isForBirthday: isForBirthday ?? this.isForBirthday,
     isPremium: isPremium ?? this.isPremium,
@@ -143,6 +158,7 @@ final class Gift extends TdObject {
     nextSendDate: nextSendDate ?? this.nextSendDate,
     userLimits: userLimits != null ? userLimits() : this.userLimits,
     overallLimits: overallLimits != null ? overallLimits() : this.overallLimits,
+    background: background ?? this.background,
     firstSendDate: firstSendDate ?? this.firstSendDate,
     lastSendDate: lastSendDate ?? this.lastSendDate,
   );

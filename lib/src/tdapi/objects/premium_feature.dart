@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a feature available to Premium users
 ///
-/// One of: [PremiumFeatureIncreasedLimits], [PremiumFeatureIncreasedUploadFileSize], [PremiumFeatureImprovedDownloadSpeed], [PremiumFeatureVoiceRecognition], [PremiumFeatureDisabledAds], [PremiumFeatureUniqueReactions], [PremiumFeatureUniqueStickers], [PremiumFeatureCustomEmoji], [PremiumFeatureAdvancedChatManagement], [PremiumFeatureProfileBadge], [PremiumFeatureEmojiStatus], [PremiumFeatureAnimatedProfilePhoto], [PremiumFeatureForumTopicIcon], [PremiumFeatureAppIcons], [PremiumFeatureRealTimeChatTranslation], [PremiumFeatureUpgradedStories], [PremiumFeatureChatBoost], [PremiumFeatureAccentColor], [PremiumFeatureBackgroundForBoth], [PremiumFeatureSavedMessagesTags], [PremiumFeatureMessagePrivacy], [PremiumFeatureLastSeenTimes], [PremiumFeatureBusiness], [PremiumFeatureMessageEffects], [PremiumFeatureChecklists]; or [UndecodedPremiumFeature] for a type newer than this API.
+/// One of: [PremiumFeatureIncreasedLimits], [PremiumFeatureIncreasedUploadFileSize], [PremiumFeatureImprovedDownloadSpeed], [PremiumFeatureVoiceRecognition], [PremiumFeatureDisabledAds], [PremiumFeatureUniqueReactions], [PremiumFeatureUniqueStickers], [PremiumFeatureCustomEmoji], [PremiumFeatureAdvancedChatManagement], [PremiumFeatureProfileBadge], [PremiumFeatureEmojiStatus], [PremiumFeatureAnimatedProfilePhoto], [PremiumFeatureForumTopicIcon], [PremiumFeatureAppIcons], [PremiumFeatureRealTimeChatTranslation], [PremiumFeatureUpgradedStories], [PremiumFeatureChatBoost], [PremiumFeatureAccentColor], [PremiumFeatureBackgroundForBoth], [PremiumFeatureSavedMessagesTags], [PremiumFeatureMessagePrivacy], [PremiumFeatureLastSeenTimes], [PremiumFeatureBusiness], [PremiumFeatureMessageEffects], [PremiumFeatureChecklists], [PremiumFeaturePaidMessages]; or [UndecodedPremiumFeature] for a type newer than this API.
 sealed class PremiumFeature extends TdObject {
   const PremiumFeature();
 
@@ -657,6 +657,30 @@ final class PremiumFeatureChecklists extends PremiumFeature {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumFeatureChecklists';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The ability to require a payment for incoming messages in new chats
+final class PremiumFeaturePaidMessages extends PremiumFeature {
+  /// The ability to require a payment for incoming messages in new chats
+  const PremiumFeaturePaidMessages();
+
+  /// Parses a [PremiumFeaturePaidMessages] from TDLib JSON.
+  factory PremiumFeaturePaidMessages.fromJson(Map<String, dynamic> json) =>
+      const PremiumFeaturePaidMessages();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PremiumFeaturePaidMessages copyWith() => const PremiumFeaturePaidMessages();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'premiumFeaturePaidMessages';
 
   @override
   String getConstructor() => CONSTRUCTOR;

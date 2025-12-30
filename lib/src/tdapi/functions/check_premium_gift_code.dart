@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Return information about a Telegram Premium gift code
+/// Returns information about a Telegram Premium gift code
 ///
 /// Returns [PremiumGiftCodeInfo].
 final class CheckPremiumGiftCode extends TdFunction<PremiumGiftCodeInfo> {
-  /// Return information about a Telegram Premium gift code
+  /// Returns information about a Telegram Premium gift code
   const CheckPremiumGiftCode({required this.code});
 
   /// The code to check

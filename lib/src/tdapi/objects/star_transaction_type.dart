@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of transaction with Telegram Stars
 ///
-/// One of: [StarTransactionTypePremiumBotDeposit], [StarTransactionTypeAppStoreDeposit], [StarTransactionTypeGooglePlayDeposit], [StarTransactionTypeFragmentDeposit], [StarTransactionTypeUserDeposit], [StarTransactionTypeGiveawayDeposit], [StarTransactionTypeFragmentWithdrawal], [StarTransactionTypeTelegramAdsWithdrawal], [StarTransactionTypeTelegramApiUsage], [StarTransactionTypeBotPaidMediaPurchase], [StarTransactionTypeBotPaidMediaSale], [StarTransactionTypeChannelPaidMediaPurchase], [StarTransactionTypeChannelPaidMediaSale], [StarTransactionTypeBotInvoicePurchase], [StarTransactionTypeBotInvoiceSale], [StarTransactionTypeBotSubscriptionPurchase], [StarTransactionTypeBotSubscriptionSale], [StarTransactionTypeChannelSubscriptionPurchase], [StarTransactionTypeChannelSubscriptionSale], [StarTransactionTypeGiftAuctionBid], [StarTransactionTypeGiftPurchase], [StarTransactionTypeGiftTransfer], [StarTransactionTypeGiftOriginalDetailsDrop], [StarTransactionTypeGiftSale], [StarTransactionTypeGiftUpgrade], [StarTransactionTypeGiftUpgradePurchase], [StarTransactionTypeUpgradedGiftPurchase], [StarTransactionTypeUpgradedGiftSale], [StarTransactionTypeChannelPaidReactionSend], [StarTransactionTypeChannelPaidReactionReceive], [StarTransactionTypeAffiliateProgramCommission], [StarTransactionTypePaidMessageSend], [StarTransactionTypePaidMessageReceive], [StarTransactionTypePaidGroupCallMessageSend], [StarTransactionTypePaidGroupCallMessageReceive], [StarTransactionTypePaidGroupCallReactionSend], [StarTransactionTypePaidGroupCallReactionReceive], [StarTransactionTypeSuggestedPostPaymentSend], [StarTransactionTypeSuggestedPostPaymentReceive], [StarTransactionTypePremiumPurchase], [StarTransactionTypeBusinessBotTransferSend], [StarTransactionTypeBusinessBotTransferReceive], [StarTransactionTypePublicPostSearch], [StarTransactionTypeUnsupported]; or [UndecodedStarTransactionType] for a type newer than this API.
+/// One of: [StarTransactionTypePremiumBotDeposit], [StarTransactionTypeAppStoreDeposit], [StarTransactionTypeGooglePlayDeposit], [StarTransactionTypeFragmentDeposit], [StarTransactionTypeUserDeposit], [StarTransactionTypeGiveawayDeposit], [StarTransactionTypeFragmentWithdrawal], [StarTransactionTypeTelegramAdsWithdrawal], [StarTransactionTypeTelegramApiUsage], [StarTransactionTypeBotPaidMediaPurchase], [StarTransactionTypeBotPaidMediaSale], [StarTransactionTypeChannelPaidMediaPurchase], [StarTransactionTypeChannelPaidMediaSale], [StarTransactionTypeBotInvoicePurchase], [StarTransactionTypeBotInvoiceSale], [StarTransactionTypeBotSubscriptionPurchase], [StarTransactionTypeBotSubscriptionSale], [StarTransactionTypeChannelSubscriptionPurchase], [StarTransactionTypeChannelSubscriptionSale], [StarTransactionTypeGiftAuctionBid], [StarTransactionTypeGiftPurchase], [StarTransactionTypeGiftPurchaseOffer], [StarTransactionTypeGiftTransfer], [StarTransactionTypeGiftOriginalDetailsDrop], [StarTransactionTypeGiftSale], [StarTransactionTypeGiftUpgrade], [StarTransactionTypeGiftUpgradePurchase], [StarTransactionTypeUpgradedGiftPurchase], [StarTransactionTypeUpgradedGiftSale], [StarTransactionTypeChannelPaidReactionSend], [StarTransactionTypeChannelPaidReactionReceive], [StarTransactionTypeAffiliateProgramCommission], [StarTransactionTypePaidMessageSend], [StarTransactionTypePaidMessageReceive], [StarTransactionTypePaidGroupCallMessageSend], [StarTransactionTypePaidGroupCallMessageReceive], [StarTransactionTypePaidGroupCallReactionSend], [StarTransactionTypePaidGroupCallReactionReceive], [StarTransactionTypeSuggestedPostPaymentSend], [StarTransactionTypeSuggestedPostPaymentReceive], [StarTransactionTypePremiumPurchase], [StarTransactionTypeBusinessBotTransferSend], [StarTransactionTypeBusinessBotTransferReceive], [StarTransactionTypePublicPostSearch], [StarTransactionTypeUnsupported]; or [UndecodedStarTransactionType] for a type newer than this API.
 sealed class StarTransactionType extends TdObject {
   const StarTransactionType();
 
@@ -44,9 +44,9 @@ final class UndecodedStarTransactionType extends StarTransactionType {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// The transaction is a deposit of Telegram Stars from the Premium bot; for regular users only
+/// The transaction is a deposit of Telegram Stars from the Premium bot; relevant for regular users only
 final class StarTransactionTypePremiumBotDeposit extends StarTransactionType {
-  /// The transaction is a deposit of Telegram Stars from the Premium bot; for regular users only
+  /// The transaction is a deposit of Telegram Stars from the Premium bot; relevant for regular users only
   const StarTransactionTypePremiumBotDeposit();
 
   /// Parses a [StarTransactionTypePremiumBotDeposit] from TDLib JSON.
@@ -70,9 +70,9 @@ final class StarTransactionTypePremiumBotDeposit extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a deposit of Telegram Stars from App Store; for regular users only
+/// The transaction is a deposit of Telegram Stars from App Store; relevant for regular users only
 final class StarTransactionTypeAppStoreDeposit extends StarTransactionType {
-  /// The transaction is a deposit of Telegram Stars from App Store; for regular users only
+  /// The transaction is a deposit of Telegram Stars from App Store; relevant for regular users only
   const StarTransactionTypeAppStoreDeposit();
 
   /// Parses a [StarTransactionTypeAppStoreDeposit] from TDLib JSON.
@@ -96,9 +96,9 @@ final class StarTransactionTypeAppStoreDeposit extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a deposit of Telegram Stars from Google Play; for regular users only
+/// The transaction is a deposit of Telegram Stars from Google Play; relevant for regular users only
 final class StarTransactionTypeGooglePlayDeposit extends StarTransactionType {
-  /// The transaction is a deposit of Telegram Stars from Google Play; for regular users only
+  /// The transaction is a deposit of Telegram Stars from Google Play; relevant for regular users only
   const StarTransactionTypeGooglePlayDeposit();
 
   /// Parses a [StarTransactionTypeGooglePlayDeposit] from TDLib JSON.
@@ -122,9 +122,9 @@ final class StarTransactionTypeGooglePlayDeposit extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a deposit of Telegram Stars from Fragment; for regular users and bots only
+/// The transaction is a deposit of Telegram Stars from Fragment; relevant for regular users and bots only
 final class StarTransactionTypeFragmentDeposit extends StarTransactionType {
-  /// The transaction is a deposit of Telegram Stars from Fragment; for regular users and bots only
+  /// The transaction is a deposit of Telegram Stars from Fragment; relevant for regular users and bots only
   const StarTransactionTypeFragmentDeposit();
 
   /// Parses a [StarTransactionTypeFragmentDeposit] from TDLib JSON.
@@ -148,9 +148,9 @@ final class StarTransactionTypeFragmentDeposit extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a deposit of Telegram Stars by another user; for regular users only
+/// The transaction is a deposit of Telegram Stars by another user; relevant for regular users only
 final class StarTransactionTypeUserDeposit extends StarTransactionType {
-  /// The transaction is a deposit of Telegram Stars by another user; for regular users only
+  /// The transaction is a deposit of Telegram Stars by another user; relevant for regular users only
   const StarTransactionTypeUserDeposit({required this.userId, this.sticker});
 
   /// Identifier of the user that gifted Telegram Stars; 0 if the user was anonymous
@@ -191,9 +191,9 @@ final class StarTransactionTypeUserDeposit extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a deposit of Telegram Stars from a giveaway; for regular users only
+/// The transaction is a deposit of Telegram Stars from a giveaway; relevant for regular users only
 final class StarTransactionTypeGiveawayDeposit extends StarTransactionType {
-  /// The transaction is a deposit of Telegram Stars from a giveaway; for regular users only
+  /// The transaction is a deposit of Telegram Stars from a giveaway; relevant for regular users only
   const StarTransactionTypeGiveawayDeposit({
     required this.chatId,
     required this.giveawayMessageId,
@@ -202,7 +202,7 @@ final class StarTransactionTypeGiveawayDeposit extends StarTransactionType {
   /// Identifier of a supergroup or a channel chat that created the giveaway
   final int chatId;
 
-  /// Identifier of the message with the giveaway; can be 0 or an identifier of a deleted message
+  /// Identifier of the message with the giveaway; may be 0 or an identifier of a deleted message
   final int giveawayMessageId;
 
   /// Parses a [StarTransactionTypeGiveawayDeposit] from TDLib JSON.
@@ -238,9 +238,9 @@ final class StarTransactionTypeGiveawayDeposit extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a withdrawal of earned Telegram Stars to Fragment; for regular users, bots, supergroup and channel chats only
+/// The transaction is a withdrawal of earned Telegram Stars to Fragment; relevant for regular users, bots, supergroup and channel chats only
 final class StarTransactionTypeFragmentWithdrawal extends StarTransactionType {
-  /// The transaction is a withdrawal of earned Telegram Stars to Fragment; for regular users, bots, supergroup and channel chats only
+  /// The transaction is a withdrawal of earned Telegram Stars to Fragment; relevant for regular users, bots, supergroup and channel chats only
   const StarTransactionTypeFragmentWithdrawal({this.withdrawalState});
 
   /// State of the withdrawal; may be null for refunds from Fragment
@@ -280,10 +280,10 @@ final class StarTransactionTypeFragmentWithdrawal extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a withdrawal of earned Telegram Stars to Telegram Ad platform; for bots and channel chats only
+/// The transaction is a withdrawal of earned Telegram Stars to Telegram Ad platform; relevant for bots and channel chats only
 final class StarTransactionTypeTelegramAdsWithdrawal
     extends StarTransactionType {
-  /// The transaction is a withdrawal of earned Telegram Stars to Telegram Ad platform; for bots and channel chats only
+  /// The transaction is a withdrawal of earned Telegram Stars to Telegram Ad platform; relevant for bots and channel chats only
   const StarTransactionTypeTelegramAdsWithdrawal();
 
   /// Parses a [StarTransactionTypeTelegramAdsWithdrawal] from TDLib JSON.
@@ -307,9 +307,9 @@ final class StarTransactionTypeTelegramAdsWithdrawal
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a payment for Telegram API usage; for bots only
+/// The transaction is a payment for Telegram API usage; relevant for bots only
 final class StarTransactionTypeTelegramApiUsage extends StarTransactionType {
-  /// The transaction is a payment for Telegram API usage; for bots only
+  /// The transaction is a payment for Telegram API usage; relevant for bots only
   const StarTransactionTypeTelegramApiUsage({required this.requestCount});
 
   /// The number of billed requests
@@ -343,10 +343,10 @@ final class StarTransactionTypeTelegramApiUsage extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a purchase of paid media from a bot or a business account by the current user; for regular users only
+/// The transaction is a purchase of paid media from a bot or a business account by the current user; relevant for regular users only
 final class StarTransactionTypeBotPaidMediaPurchase
     extends StarTransactionType {
-  /// The transaction is a purchase of paid media from a bot or a business account by the current user; for regular users only
+  /// The transaction is a purchase of paid media from a bot or a business account by the current user; relevant for regular users only
   const StarTransactionTypeBotPaidMediaPurchase({
     required this.userId,
     required this.media,
@@ -394,9 +394,9 @@ final class StarTransactionTypeBotPaidMediaPurchase
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a sale of paid media by the bot or a business account managed by the bot; for bots only
+/// The transaction is a sale of paid media by the bot or a business account managed by the bot; relevant for bots only
 final class StarTransactionTypeBotPaidMediaSale extends StarTransactionType {
-  /// The transaction is a sale of paid media by the bot or a business account managed by the bot; for bots only
+  /// The transaction is a sale of paid media by the bot or a business account managed by the bot; relevant for bots only
   const StarTransactionTypeBotPaidMediaSale({
     required this.userId,
     required this.media,
@@ -460,10 +460,10 @@ final class StarTransactionTypeBotPaidMediaSale extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a purchase of paid media from a channel by the current user; for regular users only
+/// The transaction is a purchase of paid media from a channel by the current user; relevant for regular users only
 final class StarTransactionTypeChannelPaidMediaPurchase
     extends StarTransactionType {
-  /// The transaction is a purchase of paid media from a channel by the current user; for regular users only
+  /// The transaction is a purchase of paid media from a channel by the current user; relevant for regular users only
   const StarTransactionTypeChannelPaidMediaPurchase({
     required this.chatId,
     required this.messageId,
@@ -473,7 +473,7 @@ final class StarTransactionTypeChannelPaidMediaPurchase
   /// Identifier of the channel chat that sent the paid media
   final int chatId;
 
-  /// Identifier of the corresponding message with paid media; can be 0 or an identifier of a deleted message
+  /// Identifier of the corresponding message with paid media; may be 0 or an identifier of a deleted message
   final int messageId;
 
   /// The bought media if the transaction wasn't refunded
@@ -520,10 +520,10 @@ final class StarTransactionTypeChannelPaidMediaPurchase
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a sale of paid media by the channel chat; for channel chats only
+/// The transaction is a sale of paid media by the channel chat; relevant for channel chats only
 final class StarTransactionTypeChannelPaidMediaSale
     extends StarTransactionType {
-  /// The transaction is a sale of paid media by the channel chat; for channel chats only
+  /// The transaction is a sale of paid media by the channel chat; relevant for channel chats only
   const StarTransactionTypeChannelPaidMediaSale({
     required this.userId,
     required this.messageId,
@@ -533,7 +533,7 @@ final class StarTransactionTypeChannelPaidMediaSale
   /// Identifier of the user that bought the media
   final int userId;
 
-  /// Identifier of the corresponding message with paid media; can be 0 or an identifier of a deleted message
+  /// Identifier of the corresponding message with paid media; may be 0 or an identifier of a deleted message
   final int messageId;
 
   /// The bought media
@@ -579,9 +579,9 @@ final class StarTransactionTypeChannelPaidMediaSale
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a purchase of a product from a bot or a business account by the current user; for regular users only
+/// The transaction is a purchase of a product from a bot or a business account by the current user; relevant for regular users only
 final class StarTransactionTypeBotInvoicePurchase extends StarTransactionType {
-  /// The transaction is a purchase of a product from a bot or a business account by the current user; for regular users only
+  /// The transaction is a purchase of a product from a bot or a business account by the current user; relevant for regular users only
   const StarTransactionTypeBotInvoicePurchase({
     required this.userId,
     required this.productInfo,
@@ -626,9 +626,9 @@ final class StarTransactionTypeBotInvoicePurchase extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a sale of a product by the bot; for bots only
+/// The transaction is a sale of a product by the bot; relevant for bots only
 final class StarTransactionTypeBotInvoiceSale extends StarTransactionType {
-  /// The transaction is a sale of a product by the bot; for bots only
+  /// The transaction is a sale of a product by the bot; relevant for bots only
   const StarTransactionTypeBotInvoiceSale({
     required this.userId,
     required this.productInfo,
@@ -689,10 +689,10 @@ final class StarTransactionTypeBotInvoiceSale extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a purchase of a subscription from a bot or a business account by the current user; for regular users only
+/// The transaction is a purchase of a subscription from a bot or a business account by the current user; relevant for regular users only
 final class StarTransactionTypeBotSubscriptionPurchase
     extends StarTransactionType {
-  /// The transaction is a purchase of a subscription from a bot or a business account by the current user; for regular users only
+  /// The transaction is a purchase of a subscription from a bot or a business account by the current user; relevant for regular users only
   const StarTransactionTypeBotSubscriptionPurchase({
     required this.userId,
     required this.subscriptionPeriod,
@@ -746,9 +746,9 @@ final class StarTransactionTypeBotSubscriptionPurchase
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a sale of a subscription by the bot; for bots only
+/// The transaction is a sale of a subscription by the bot; relevant for bots only
 final class StarTransactionTypeBotSubscriptionSale extends StarTransactionType {
-  /// The transaction is a sale of a subscription by the bot; for bots only
+  /// The transaction is a sale of a subscription by the bot; relevant for bots only
   const StarTransactionTypeBotSubscriptionSale({
     required this.userId,
     required this.subscriptionPeriod,
@@ -817,10 +817,10 @@ final class StarTransactionTypeBotSubscriptionSale extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a purchase of a subscription to a channel chat by the current user; for regular users only
+/// The transaction is a purchase of a subscription to a channel chat by the current user; relevant for regular users only
 final class StarTransactionTypeChannelSubscriptionPurchase
     extends StarTransactionType {
-  /// The transaction is a purchase of a subscription to a channel chat by the current user; for regular users only
+  /// The transaction is a purchase of a subscription to a channel chat by the current user; relevant for regular users only
   const StarTransactionTypeChannelSubscriptionPurchase({
     required this.chatId,
     required this.subscriptionPeriod,
@@ -866,10 +866,10 @@ final class StarTransactionTypeChannelSubscriptionPurchase
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a sale of a subscription by the channel chat; for channel chats only
+/// The transaction is a sale of a subscription by the channel chat; relevant for channel chats only
 final class StarTransactionTypeChannelSubscriptionSale
     extends StarTransactionType {
-  /// The transaction is a sale of a subscription by the channel chat; for channel chats only
+  /// The transaction is a sale of a subscription by the channel chat; relevant for channel chats only
   const StarTransactionTypeChannelSubscriptionSale({
     required this.userId,
     required this.subscriptionPeriod,
@@ -915,9 +915,9 @@ final class StarTransactionTypeChannelSubscriptionSale
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a bid on a gift auction; for regular users only
+/// The transaction is a bid on a gift auction; relevant for regular users only
 final class StarTransactionTypeGiftAuctionBid extends StarTransactionType {
-  /// The transaction is a bid on a gift auction; for regular users only
+  /// The transaction is a bid on a gift auction; relevant for regular users only
   const StarTransactionTypeGiftAuctionBid({
     required this.ownerId,
     required this.gift,
@@ -962,9 +962,9 @@ final class StarTransactionTypeGiftAuctionBid extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a purchase of a regular gift; for regular users and bots only
+/// The transaction is a purchase of a regular gift; relevant for regular users and bots only
 final class StarTransactionTypeGiftPurchase extends StarTransactionType {
-  /// The transaction is a purchase of a regular gift; for regular users and bots only
+  /// The transaction is a purchase of a regular gift; relevant for regular users and bots only
   const StarTransactionTypeGiftPurchase({
     required this.ownerId,
     required this.gift,
@@ -1008,9 +1008,43 @@ final class StarTransactionTypeGiftPurchase extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a transfer of an upgraded gift; for regular users only
+/// The transaction is an offer of gift purchase; relevant for regular users only
+final class StarTransactionTypeGiftPurchaseOffer extends StarTransactionType {
+  /// The transaction is an offer of gift purchase; relevant for regular users only
+  const StarTransactionTypeGiftPurchaseOffer({required this.gift});
+
+  /// The gift
+  final UpgradedGift gift;
+
+  /// Parses a [StarTransactionTypeGiftPurchaseOffer] from TDLib JSON.
+  factory StarTransactionTypeGiftPurchaseOffer.fromJson(
+    Map<String, dynamic> json,
+  ) => StarTransactionTypeGiftPurchaseOffer(
+    gift: _readObject(json['gift'], UpgradedGift.fromJson),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'gift': gift.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StarTransactionTypeGiftPurchaseOffer copyWith({UpgradedGift? gift}) =>
+      StarTransactionTypeGiftPurchaseOffer(gift: gift ?? this.gift);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'starTransactionTypeGiftPurchaseOffer';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a transfer of an upgraded gift; relevant for regular users only
 final class StarTransactionTypeGiftTransfer extends StarTransactionType {
-  /// The transaction is a transfer of an upgraded gift; for regular users only
+  /// The transaction is a transfer of an upgraded gift; relevant for regular users only
   const StarTransactionTypeGiftTransfer({
     required this.ownerId,
     required this.gift,
@@ -1054,10 +1088,10 @@ final class StarTransactionTypeGiftTransfer extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a drop of original details of an upgraded gift; for regular users only
+/// The transaction is a drop of original details of an upgraded gift; relevant for regular users only
 final class StarTransactionTypeGiftOriginalDetailsDrop
     extends StarTransactionType {
-  /// The transaction is a drop of original details of an upgraded gift; for regular users only
+  /// The transaction is a drop of original details of an upgraded gift; relevant for regular users only
   const StarTransactionTypeGiftOriginalDetailsDrop({
     required this.ownerId,
     required this.gift,
@@ -1103,9 +1137,9 @@ final class StarTransactionTypeGiftOriginalDetailsDrop
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a sale of a received gift; for regular users and channel chats only
+/// The transaction is a sale of a received gift; relevant for regular users and channel chats only
 final class StarTransactionTypeGiftSale extends StarTransactionType {
-  /// The transaction is a sale of a received gift; for regular users and channel chats only
+  /// The transaction is a sale of a received gift; relevant for regular users and channel chats only
   const StarTransactionTypeGiftSale({required this.userId, required this.gift});
 
   /// Identifier of the user that sent the gift
@@ -1144,9 +1178,9 @@ final class StarTransactionTypeGiftSale extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is an upgrade of a gift; for regular users only
+/// The transaction is an upgrade of a gift; relevant for regular users only
 final class StarTransactionTypeGiftUpgrade extends StarTransactionType {
-  /// The transaction is an upgrade of a gift; for regular users only
+  /// The transaction is an upgrade of a gift; relevant for regular users only
   const StarTransactionTypeGiftUpgrade({
     required this.userId,
     required this.gift,
@@ -1188,9 +1222,9 @@ final class StarTransactionTypeGiftUpgrade extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a purchase of an upgrade of a gift owned by another user or channel; for regular users only
+/// The transaction is a purchase of an upgrade of a gift owned by another user or channel; relevant for regular users only
 final class StarTransactionTypeGiftUpgradePurchase extends StarTransactionType {
-  /// The transaction is a purchase of an upgrade of a gift owned by another user or channel; for regular users only
+  /// The transaction is a purchase of an upgrade of a gift owned by another user or channel; relevant for regular users only
   const StarTransactionTypeGiftUpgradePurchase({
     required this.ownerId,
     required this.gift,
@@ -1235,10 +1269,10 @@ final class StarTransactionTypeGiftUpgradePurchase extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a purchase of an upgraded gift for some user or channel; for regular users only
+/// The transaction is a purchase of an upgraded gift for some user or channel; relevant for regular users only
 final class StarTransactionTypeUpgradedGiftPurchase
     extends StarTransactionType {
-  /// The transaction is a purchase of an upgraded gift for some user or channel; for regular users only
+  /// The transaction is a purchase of an upgraded gift for some user or channel; relevant for regular users only
   const StarTransactionTypeUpgradedGiftPurchase({
     required this.userId,
     required this.gift,
@@ -1283,14 +1317,15 @@ final class StarTransactionTypeUpgradedGiftPurchase
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a sale of an upgraded gift; for regular users only
+/// The transaction is a sale of an upgraded gift; relevant for regular users only
 final class StarTransactionTypeUpgradedGiftSale extends StarTransactionType {
-  /// The transaction is a sale of an upgraded gift; for regular users only
+  /// The transaction is a sale of an upgraded gift; relevant for regular users only
   const StarTransactionTypeUpgradedGiftSale({
     required this.userId,
     required this.gift,
     required this.commissionPerMille,
     required this.commissionStarAmount,
+    required this.viaOffer,
   });
 
   /// Identifier of the user that bought the gift
@@ -1305,6 +1340,9 @@ final class StarTransactionTypeUpgradedGiftSale extends StarTransactionType {
   /// The amount of Telegram Stars that were received by Telegram; can be negative for refunds
   final StarAmount commissionStarAmount;
 
+  /// True, if the gift was sold through a purchase offer
+  final bool viaOffer;
+
   /// Parses a [StarTransactionTypeUpgradedGiftSale] from TDLib JSON.
   factory StarTransactionTypeUpgradedGiftSale.fromJson(
     Map<String, dynamic> json,
@@ -1316,6 +1354,7 @@ final class StarTransactionTypeUpgradedGiftSale extends StarTransactionType {
       json['commission_star_amount'],
       StarAmount.fromJson,
     ),
+    viaOffer: _readBool(json['via_offer']),
   );
 
   @override
@@ -1325,6 +1364,7 @@ final class StarTransactionTypeUpgradedGiftSale extends StarTransactionType {
     'gift': gift.toJson(),
     'commission_per_mille': commissionPerMille,
     'commission_star_amount': commissionStarAmount.toJson(),
+    'via_offer': viaOffer,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -1335,11 +1375,13 @@ final class StarTransactionTypeUpgradedGiftSale extends StarTransactionType {
     UpgradedGift? gift,
     int? commissionPerMille,
     StarAmount? commissionStarAmount,
+    bool? viaOffer,
   }) => StarTransactionTypeUpgradedGiftSale(
     userId: userId ?? this.userId,
     gift: gift ?? this.gift,
     commissionPerMille: commissionPerMille ?? this.commissionPerMille,
     commissionStarAmount: commissionStarAmount ?? this.commissionStarAmount,
+    viaOffer: viaOffer ?? this.viaOffer,
   );
 
   /// TDLib type name.
@@ -1349,10 +1391,10 @@ final class StarTransactionTypeUpgradedGiftSale extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a sending of a paid reaction to a message in a channel chat by the current user; for regular users only
+/// The transaction is a sending of a paid reaction to a message in a channel chat by the current user; relevant for regular users only
 final class StarTransactionTypeChannelPaidReactionSend
     extends StarTransactionType {
-  /// The transaction is a sending of a paid reaction to a message in a channel chat by the current user; for regular users only
+  /// The transaction is a sending of a paid reaction to a message in a channel chat by the current user; relevant for regular users only
   const StarTransactionTypeChannelPaidReactionSend({
     required this.chatId,
     required this.messageId,
@@ -1361,7 +1403,7 @@ final class StarTransactionTypeChannelPaidReactionSend
   /// Identifier of the channel chat
   final int chatId;
 
-  /// Identifier of the reacted message; can be 0 or an identifier of a deleted message
+  /// Identifier of the reacted message; may be 0 or an identifier of a deleted message
   final int messageId;
 
   /// Parses a [StarTransactionTypeChannelPaidReactionSend] from TDLib JSON.
@@ -1398,10 +1440,10 @@ final class StarTransactionTypeChannelPaidReactionSend
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a receiving of a paid reaction to a message by the channel chat; for channel chats only
+/// The transaction is a receiving of a paid reaction to a message by the channel chat; relevant for channel chats only
 final class StarTransactionTypeChannelPaidReactionReceive
     extends StarTransactionType {
-  /// The transaction is a receiving of a paid reaction to a message by the channel chat; for channel chats only
+  /// The transaction is a receiving of a paid reaction to a message by the channel chat; relevant for channel chats only
   const StarTransactionTypeChannelPaidReactionReceive({
     required this.userId,
     required this.messageId,
@@ -1410,7 +1452,7 @@ final class StarTransactionTypeChannelPaidReactionReceive
   /// Identifier of the user that added the paid reaction
   final int userId;
 
-  /// Identifier of the reacted message; can be 0 or an identifier of a deleted message
+  /// Identifier of the reacted message; may be 0 or an identifier of a deleted message
   final int messageId;
 
   /// Parses a [StarTransactionTypeChannelPaidReactionReceive] from TDLib JSON.
@@ -1447,10 +1489,10 @@ final class StarTransactionTypeChannelPaidReactionReceive
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a receiving of a commission from an affiliate program; for regular users, bots and channel chats only
+/// The transaction is a receiving of a commission from an affiliate program; relevant for regular users, bots and channel chats only
 final class StarTransactionTypeAffiliateProgramCommission
     extends StarTransactionType {
-  /// The transaction is a receiving of a commission from an affiliate program; for regular users, bots and channel chats only
+  /// The transaction is a receiving of a commission from an affiliate program; relevant for regular users, bots and channel chats only
   const StarTransactionTypeAffiliateProgramCommission({
     required this.chatId,
     required this.commissionPerMille,
@@ -1496,9 +1538,9 @@ final class StarTransactionTypeAffiliateProgramCommission
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a sending of a paid message; for regular users only
+/// The transaction is a sending of a paid message; relevant for regular users only
 final class StarTransactionTypePaidMessageSend extends StarTransactionType {
-  /// The transaction is a sending of a paid message; for regular users only
+  /// The transaction is a sending of a paid message; relevant for regular users only
   const StarTransactionTypePaidMessageSend({
     required this.chatId,
     required this.messageCount,
@@ -1543,9 +1585,9 @@ final class StarTransactionTypePaidMessageSend extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a receiving of a paid message; for regular users, supergroup and channel chats only
+/// The transaction is a receiving of a paid message; relevant for regular users, supergroup and channel chats only
 final class StarTransactionTypePaidMessageReceive extends StarTransactionType {
-  /// The transaction is a receiving of a paid message; for regular users, supergroup and channel chats only
+  /// The transaction is a receiving of a paid message; relevant for regular users, supergroup and channel chats only
   const StarTransactionTypePaidMessageReceive({
     required this.senderId,
     required this.messageCount,
@@ -1609,10 +1651,10 @@ final class StarTransactionTypePaidMessageReceive extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a sending of a paid group call message; for regular users only
+/// The transaction is a sending of a paid group call message; relevant for regular users only
 final class StarTransactionTypePaidGroupCallMessageSend
     extends StarTransactionType {
-  /// The transaction is a sending of a paid group call message; for regular users only
+  /// The transaction is a sending of a paid group call message; relevant for regular users only
   const StarTransactionTypePaidGroupCallMessageSend({required this.chatId});
 
   /// Identifier of the chat that received the payment
@@ -1644,10 +1686,10 @@ final class StarTransactionTypePaidGroupCallMessageSend
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a receiving of a paid group call message; for regular users and channel chats only
+/// The transaction is a receiving of a paid group call message; relevant for regular users and channel chats only
 final class StarTransactionTypePaidGroupCallMessageReceive
     extends StarTransactionType {
-  /// The transaction is a receiving of a paid group call message; for regular users and channel chats only
+  /// The transaction is a receiving of a paid group call message; relevant for regular users and channel chats only
   const StarTransactionTypePaidGroupCallMessageReceive({
     required this.senderId,
     required this.commissionPerMille,
@@ -1704,10 +1746,10 @@ final class StarTransactionTypePaidGroupCallMessageReceive
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a sending of a paid group reaction; for regular users only
+/// The transaction is a sending of a paid group reaction; relevant for regular users only
 final class StarTransactionTypePaidGroupCallReactionSend
     extends StarTransactionType {
-  /// The transaction is a sending of a paid group reaction; for regular users only
+  /// The transaction is a sending of a paid group reaction; relevant for regular users only
   const StarTransactionTypePaidGroupCallReactionSend({required this.chatId});
 
   /// Identifier of the chat that received the payment
@@ -1739,10 +1781,10 @@ final class StarTransactionTypePaidGroupCallReactionSend
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a receiving of a paid group call reaction; for regular users and channel chats only
+/// The transaction is a receiving of a paid group call reaction; relevant for regular users and channel chats only
 final class StarTransactionTypePaidGroupCallReactionReceive
     extends StarTransactionType {
-  /// The transaction is a receiving of a paid group call reaction; for regular users and channel chats only
+  /// The transaction is a receiving of a paid group call reaction; relevant for regular users and channel chats only
   const StarTransactionTypePaidGroupCallReactionReceive({
     required this.senderId,
     required this.commissionPerMille,
@@ -1799,10 +1841,10 @@ final class StarTransactionTypePaidGroupCallReactionReceive
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a payment for a suggested post; for regular users only
+/// The transaction is a payment for a suggested post; relevant for regular users only
 final class StarTransactionTypeSuggestedPostPaymentSend
     extends StarTransactionType {
-  /// The transaction is a payment for a suggested post; for regular users only
+  /// The transaction is a payment for a suggested post; relevant for regular users only
   const StarTransactionTypeSuggestedPostPaymentSend({required this.chatId});
 
   /// Identifier of the channel chat that posted the post
@@ -1834,10 +1876,10 @@ final class StarTransactionTypeSuggestedPostPaymentSend
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a receiving of a payment for a suggested post by the channel chat; for channel chats only
+/// The transaction is a receiving of a payment for a suggested post by the channel chat; relevant for channel chats only
 final class StarTransactionTypeSuggestedPostPaymentReceive
     extends StarTransactionType {
-  /// The transaction is a receiving of a payment for a suggested post by the channel chat; for channel chats only
+  /// The transaction is a receiving of a payment for a suggested post by the channel chat; relevant for channel chats only
   const StarTransactionTypeSuggestedPostPaymentReceive({required this.userId});
 
   /// Identifier of the user that paid for the suggested post
@@ -1869,9 +1911,9 @@ final class StarTransactionTypeSuggestedPostPaymentReceive
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a purchase of Telegram Premium subscription; for regular users and bots only
+/// The transaction is a purchase of Telegram Premium subscription; relevant for regular users and bots only
 final class StarTransactionTypePremiumPurchase extends StarTransactionType {
-  /// The transaction is a purchase of Telegram Premium subscription; for regular users and bots only
+  /// The transaction is a purchase of Telegram Premium subscription; relevant for regular users and bots only
   const StarTransactionTypePremiumPurchase({
     required this.userId,
     required this.monthCount,
@@ -1924,10 +1966,10 @@ final class StarTransactionTypePremiumPurchase extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a transfer of Telegram Stars to a business bot; for regular users only
+/// The transaction is a transfer of Telegram Stars to a business bot; relevant for regular users only
 final class StarTransactionTypeBusinessBotTransferSend
     extends StarTransactionType {
-  /// The transaction is a transfer of Telegram Stars to a business bot; for regular users only
+  /// The transaction is a transfer of Telegram Stars to a business bot; relevant for regular users only
   const StarTransactionTypeBusinessBotTransferSend({required this.userId});
 
   /// Identifier of the bot that received Telegram Stars
@@ -1957,10 +1999,10 @@ final class StarTransactionTypeBusinessBotTransferSend
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a transfer of Telegram Stars from a business account; for bots only
+/// The transaction is a transfer of Telegram Stars from a business account; relevant for bots only
 final class StarTransactionTypeBusinessBotTransferReceive
     extends StarTransactionType {
-  /// The transaction is a transfer of Telegram Stars from a business account; for bots only
+  /// The transaction is a transfer of Telegram Stars from a business account; relevant for bots only
   const StarTransactionTypeBusinessBotTransferReceive({required this.userId});
 
   /// Identifier of the user that sent Telegram Stars
@@ -1992,9 +2034,9 @@ final class StarTransactionTypeBusinessBotTransferReceive
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a payment for search of posts in public Telegram channels; for regular users only
+/// The transaction is a payment for search of posts in public Telegram channels; relevant for regular users only
 final class StarTransactionTypePublicPostSearch extends StarTransactionType {
-  /// The transaction is a payment for search of posts in public Telegram channels; for regular users only
+  /// The transaction is a payment for search of posts in public Telegram channels; relevant for regular users only
   const StarTransactionTypePublicPostSearch();
 
   /// Parses a [StarTransactionTypePublicPostSearch] from TDLib JSON.

@@ -28,7 +28,7 @@ final class PremiumGiftCodeInfo extends TdObject {
   /// True, if the gift code was created for a giveaway
   final bool isFromGiveaway;
 
-  /// Identifier of the corresponding giveaway message in the creator_id chat; can be 0 or an identifier of a deleted message
+  /// Identifier of the corresponding giveaway message in the creator_id chat; may be 0 or an identifier of a deleted message
   final int giveawayMessageId;
 
   /// Number of months the Telegram Premium subscription will be active after code activation; 0 if the number of months isn't integer

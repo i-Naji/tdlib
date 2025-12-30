@@ -1,3 +1,8 @@
+## 1.8.59
+* Update tdlib to **1.8.59** (`cecbf1296`), objects +15/−0/~11, functions +11/−0/~0.
+* Android build from i-Naji/libtdjson.
+* Add `tool/build_tdweb.sh`, `data/web_pkg` follows the TDLib version now.
+
 ## 1.8.58
 * Update tdlib to **1.8.58** (`889bdf060`), objects +14/−0/~2, functions +6/−0/~0.
 * Android build from i-Naji/libtdjson.

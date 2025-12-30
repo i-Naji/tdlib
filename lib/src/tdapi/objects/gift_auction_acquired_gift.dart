@@ -12,6 +12,7 @@ final class GiftAuctionAcquiredGift extends TdObject {
     required this.starCount,
     required this.auctionRoundNumber,
     required this.auctionRoundPosition,
+    required this.uniqueGiftNumber,
     required this.text,
     required this.isPrivate,
   });
@@ -31,6 +32,9 @@ final class GiftAuctionAcquiredGift extends TdObject {
   /// Position of the user in the round among all auction participants
   final int auctionRoundPosition;
 
+  /// Unique number of the gift among gifts upgraded from the same gift after upgrade; 0 if yet unassigned
+  final int uniqueGiftNumber;
+
   /// Message added to the gift
   final FormattedText text;
 
@@ -45,6 +49,7 @@ final class GiftAuctionAcquiredGift extends TdObject {
         starCount: _readInt(json['star_count']),
         auctionRoundNumber: _readInt(json['auction_round_number']),
         auctionRoundPosition: _readInt(json['auction_round_position']),
+        uniqueGiftNumber: _readInt(json['unique_gift_number']),
         text: _readObject(json['text'], FormattedText.fromJson),
         isPrivate: _readBool(json['is_private']),
       );
@@ -57,6 +62,7 @@ final class GiftAuctionAcquiredGift extends TdObject {
     'star_count': starCount,
     'auction_round_number': auctionRoundNumber,
     'auction_round_position': auctionRoundPosition,
+    'unique_gift_number': uniqueGiftNumber,
     'text': text.toJson(),
     'is_private': isPrivate,
   };
@@ -69,6 +75,7 @@ final class GiftAuctionAcquiredGift extends TdObject {
     int? starCount,
     int? auctionRoundNumber,
     int? auctionRoundPosition,
+    int? uniqueGiftNumber,
     FormattedText? text,
     bool? isPrivate,
   }) => GiftAuctionAcquiredGift(
@@ -77,6 +84,7 @@ final class GiftAuctionAcquiredGift extends TdObject {
     starCount: starCount ?? this.starCount,
     auctionRoundNumber: auctionRoundNumber ?? this.auctionRoundNumber,
     auctionRoundPosition: auctionRoundPosition ?? this.auctionRoundPosition,
+    uniqueGiftNumber: uniqueGiftNumber ?? this.uniqueGiftNumber,
     text: text ?? this.text,
     isPrivate: isPrivate ?? this.isPrivate,
   );

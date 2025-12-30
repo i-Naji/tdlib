@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Check whether the current user can message another user or try to create a chat with them
+/// Checks whether the current user can message another user or try to create a chat with them
 ///
 /// Returns [CanSendMessageToUserResult].
 final class CanSendMessageToUser
     extends TdFunction<CanSendMessageToUserResult> {
-  /// Check whether the current user can message another user or try to create a chat with them
+  /// Checks whether the current user can message another user or try to create a chat with them
   const CanSendMessageToUser({required this.userId, required this.onlyLocal});
 
   /// Identifier of the other user

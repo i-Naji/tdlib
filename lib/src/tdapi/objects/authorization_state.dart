@@ -86,9 +86,9 @@ final class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// TDLib needs the user's phone number to authorize. Call setAuthenticationPhoneNumber to provide the phone number, or use requestQrCodeAuthentication or checkAuthenticationBotToken for other authentication options
+/// TDLib needs the user's phone number to authorize. Call setAuthenticationPhoneNumber to provide the phone number, or use requestQrCodeAuthentication, getAuthenticationPasskeyParameters, or checkAuthenticationBotToken for other authentication options
 final class AuthorizationStateWaitPhoneNumber extends AuthorizationState {
-  /// TDLib needs the user's phone number to authorize. Call setAuthenticationPhoneNumber to provide the phone number, or use requestQrCodeAuthentication or checkAuthenticationBotToken for other authentication options
+  /// TDLib needs the user's phone number to authorize. Call setAuthenticationPhoneNumber to provide the phone number, or use requestQrCodeAuthentication, getAuthenticationPasskeyParameters, or checkAuthenticationBotToken for other authentication options
   const AuthorizationStateWaitPhoneNumber({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.

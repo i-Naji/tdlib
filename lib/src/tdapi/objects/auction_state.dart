@@ -42,24 +42,26 @@ final class UndecodedAuctionState extends AuctionState {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// Contains information about an ongoing auction
+/// Contains information about an ongoing or scheduled auction
 final class AuctionStateActive extends AuctionState {
-  /// Contains information about an ongoing auction
+  /// Contains information about an ongoing or scheduled auction
   const AuctionStateActive({
     required this.startDate,
     required this.endDate,
     required this.minBid,
     required this.bidLevels,
     required this.topBidderUserIds,
+    required this.rounds,
     required this.currentRoundEndDate,
     required this.currentRoundNumber,
     required this.totalRoundCount,
+    required this.distributedItemCount,
     required this.leftItemCount,
     required this.acquiredItemCount,
     this.userBid,
   });
 
-  /// Point in time (Unix timestamp) when the auction started
+  /// Point in time (Unix timestamp) when the auction started or will start
   final int startDate;
 
   /// Point in time (Unix timestamp) when the auction will be ended
@@ -74,6 +76,9 @@ final class AuctionStateActive extends AuctionState {
   /// User identifiers of at most 3 users with the biggest bids
   final List<int> topBidderUserIds;
 
+  /// Rounds of the auction in which their duration or extension rules are changed
+  final List<AuctionRound> rounds;
+
   /// Point in time (Unix timestamp) when the current round will end
   final int currentRoundEndDate;
 
@@ -83,10 +88,13 @@ final class AuctionStateActive extends AuctionState {
   /// The total number of rounds
   final int totalRoundCount;
 
-  /// The number of items that have to be distributed on the auciton
+  /// The number of items that were purchased on the auction by all users
+  final int distributedItemCount;
+
+  /// The number of items that have to be distributed on the auction
   final int leftItemCount;
 
-  /// The number of items that were purchased by the current user on the auciton
+  /// The number of items that were purchased by the current user on the auction
   final int acquiredItemCount;
 
   /// Bid of the current user in the auction; may be null if none
@@ -103,9 +111,14 @@ final class AuctionStateActive extends AuctionState {
           (e) => _readObject(e, AuctionBid.fromJson),
         ),
         topBidderUserIds: _readList<int>(json['top_bidder_user_ids'], _readInt),
+        rounds: _readList<AuctionRound>(
+          json['rounds'],
+          (e) => _readObject(e, AuctionRound.fromJson),
+        ),
         currentRoundEndDate: _readInt(json['current_round_end_date']),
         currentRoundNumber: _readInt(json['current_round_number']),
         totalRoundCount: _readInt(json['total_round_count']),
+        distributedItemCount: _readInt(json['distributed_item_count']),
         leftItemCount: _readInt(json['left_item_count']),
         acquiredItemCount: _readInt(json['acquired_item_count']),
         userBid: _readOptional(json['user_bid'], UserAuctionBid.fromJson),
@@ -119,9 +132,11 @@ final class AuctionStateActive extends AuctionState {
     'min_bid': minBid,
     'bid_levels': [for (final e in bidLevels) e.toJson()],
     'top_bidder_user_ids': topBidderUserIds,
+    'rounds': [for (final e in rounds) e.toJson()],
     'current_round_end_date': currentRoundEndDate,
     'current_round_number': currentRoundNumber,
     'total_round_count': totalRoundCount,
+    'distributed_item_count': distributedItemCount,
     'left_item_count': leftItemCount,
     'acquired_item_count': acquiredItemCount,
     'user_bid': userBid?.toJson(),
@@ -136,9 +151,11 @@ final class AuctionStateActive extends AuctionState {
     int? minBid,
     List<AuctionBid>? bidLevels,
     List<int>? topBidderUserIds,
+    List<AuctionRound>? rounds,
     int? currentRoundEndDate,
     int? currentRoundNumber,
     int? totalRoundCount,
+    int? distributedItemCount,
     int? leftItemCount,
     int? acquiredItemCount,
     UserAuctionBid? Function()? userBid,
@@ -148,9 +165,11 @@ final class AuctionStateActive extends AuctionState {
     minBid: minBid ?? this.minBid,
     bidLevels: bidLevels ?? this.bidLevels,
     topBidderUserIds: topBidderUserIds ?? this.topBidderUserIds,
+    rounds: rounds ?? this.rounds,
     currentRoundEndDate: currentRoundEndDate ?? this.currentRoundEndDate,
     currentRoundNumber: currentRoundNumber ?? this.currentRoundNumber,
     totalRoundCount: totalRoundCount ?? this.totalRoundCount,
+    distributedItemCount: distributedItemCount ?? this.distributedItemCount,
     leftItemCount: leftItemCount ?? this.leftItemCount,
     acquiredItemCount: acquiredItemCount ?? this.acquiredItemCount,
     userBid: userBid != null ? userBid() : this.userBid,
@@ -171,6 +190,9 @@ final class AuctionStateFinished extends AuctionState {
     required this.endDate,
     required this.averagePrice,
     required this.acquiredItemCount,
+    required this.telegramListedItemCount,
+    required this.fragmentListedItemCount,
+    required this.fragmentUrl,
   });
 
   /// Point in time (Unix timestamp) when the auction started
@@ -182,8 +204,17 @@ final class AuctionStateFinished extends AuctionState {
   /// Average price of bought items in Telegram Stars
   final int averagePrice;
 
-  /// The number of items that were purchased by the current user on the auciton
+  /// The number of items that were purchased by the current user on the auction
   final int acquiredItemCount;
+
+  /// Number of items from the auction being resold on Telegram
+  final int telegramListedItemCount;
+
+  /// Number of items from the auction being resold on Fragment
+  final int fragmentListedItemCount;
+
+  /// The HTTPS link to the Fragment for the resold items; may be empty if there are no such items being sold on Fragment
+  final String fragmentUrl;
 
   /// Parses a [AuctionStateFinished] from TDLib JSON.
   factory AuctionStateFinished.fromJson(Map<String, dynamic> json) =>
@@ -192,6 +223,9 @@ final class AuctionStateFinished extends AuctionState {
         endDate: _readInt(json['end_date']),
         averagePrice: _readInt(json['average_price']),
         acquiredItemCount: _readInt(json['acquired_item_count']),
+        telegramListedItemCount: _readInt(json['telegram_listed_item_count']),
+        fragmentListedItemCount: _readInt(json['fragment_listed_item_count']),
+        fragmentUrl: _readString(json['fragment_url']),
       );
 
   @override
@@ -201,6 +235,9 @@ final class AuctionStateFinished extends AuctionState {
     'end_date': endDate,
     'average_price': averagePrice,
     'acquired_item_count': acquiredItemCount,
+    'telegram_listed_item_count': telegramListedItemCount,
+    'fragment_listed_item_count': fragmentListedItemCount,
+    'fragment_url': fragmentUrl,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -211,11 +248,19 @@ final class AuctionStateFinished extends AuctionState {
     int? endDate,
     int? averagePrice,
     int? acquiredItemCount,
+    int? telegramListedItemCount,
+    int? fragmentListedItemCount,
+    String? fragmentUrl,
   }) => AuctionStateFinished(
     startDate: startDate ?? this.startDate,
     endDate: endDate ?? this.endDate,
     averagePrice: averagePrice ?? this.averagePrice,
     acquiredItemCount: acquiredItemCount ?? this.acquiredItemCount,
+    telegramListedItemCount:
+        telegramListedItemCount ?? this.telegramListedItemCount,
+    fragmentListedItemCount:
+        fragmentListedItemCount ?? this.fragmentListedItemCount,
+    fragmentUrl: fragmentUrl ?? this.fragmentUrl,
   );
 
   /// TDLib type name.

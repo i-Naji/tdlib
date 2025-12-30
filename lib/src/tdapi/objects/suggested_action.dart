@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes an action suggested to the current user
 ///
-/// One of: [SuggestedActionEnableArchiveAndMuteNewChats], [SuggestedActionCheckPassword], [SuggestedActionCheckPhoneNumber], [SuggestedActionViewChecksHint], [SuggestedActionConvertToBroadcastGroup], [SuggestedActionSetPassword], [SuggestedActionUpgradePremium], [SuggestedActionRestorePremium], [SuggestedActionSubscribeToAnnualPremium], [SuggestedActionGiftPremiumForChristmas], [SuggestedActionSetBirthdate], [SuggestedActionSetProfilePhoto], [SuggestedActionExtendPremium], [SuggestedActionExtendStarSubscriptions], [SuggestedActionCustom], [SuggestedActionSetLoginEmailAddress]; or [UndecodedSuggestedAction] for a type newer than this API.
+/// One of: [SuggestedActionEnableArchiveAndMuteNewChats], [SuggestedActionCheckPassword], [SuggestedActionCheckPhoneNumber], [SuggestedActionViewChecksHint], [SuggestedActionConvertToBroadcastGroup], [SuggestedActionSetPassword], [SuggestedActionUpgradePremium], [SuggestedActionRestorePremium], [SuggestedActionSubscribeToAnnualPremium], [SuggestedActionGiftPremiumForChristmas], [SuggestedActionSetBirthdate], [SuggestedActionSetProfilePhoto], [SuggestedActionExtendPremium], [SuggestedActionExtendStarSubscriptions], [SuggestedActionCustom], [SuggestedActionSetLoginEmailAddress], [SuggestedActionAddLoginPasskey]; or [UndecodedSuggestedAction] for a type newer than this API.
 sealed class SuggestedAction extends TdObject {
   const SuggestedAction();
 
@@ -527,6 +527,31 @@ final class SuggestedActionSetLoginEmailAddress extends SuggestedAction {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'suggestedActionSetLoginEmailAddress';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Suggests the user to add a passkey for login using addLoginPasskey
+final class SuggestedActionAddLoginPasskey extends SuggestedAction {
+  /// Suggests the user to add a passkey for login using addLoginPasskey
+  const SuggestedActionAddLoginPasskey();
+
+  /// Parses a [SuggestedActionAddLoginPasskey] from TDLib JSON.
+  factory SuggestedActionAddLoginPasskey.fromJson(Map<String, dynamic> json) =>
+      const SuggestedActionAddLoginPasskey();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  SuggestedActionAddLoginPasskey copyWith() =>
+      const SuggestedActionAddLoginPasskey();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'suggestedActionAddLoginPasskey';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Return emojis matching the keyword. Supported only if the file database is enabled. Order of results is unspecified
+/// Returns emojis matching the keyword. Supported only if the file database is enabled. Order of results is unspecified
 ///
 /// Returns [Emojis].
 final class GetKeywordEmojis extends TdFunction<Emojis> {
-  /// Return emojis matching the keyword. Supported only if the file database is enabled. Order of results is unspecified
+  /// Returns emojis matching the keyword. Supported only if the file database is enabled. Order of results is unspecified
   const GetKeywordEmojis({
     required this.text,
     required this.inputLanguageCodes,

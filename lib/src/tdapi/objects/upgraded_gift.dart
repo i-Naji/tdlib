@@ -29,8 +29,10 @@ final class UpgradedGift extends TdObject {
     this.originalDetails,
     this.colors,
     this.resaleParameters,
+    required this.canSendPurchaseOffer,
     required this.valueCurrency,
     required this.valueAmount,
+    required this.valueUsdAmount,
     this.extra,
     this.clientId,
   });
@@ -101,11 +103,17 @@ final class UpgradedGift extends TdObject {
   /// Resale parameters of the gift; may be null if resale isn't possible
   final GiftResaleParameters? resaleParameters;
 
+  /// True, if an offer to purchase the gift can be sent using sendGiftPurchaseOffer
+  final bool canSendPurchaseOffer;
+
   /// ISO 4217 currency code of the currency in which value of the gift is represented; may be empty if unavailable
   final String valueCurrency;
 
   /// Estimated value of the gift; in the smallest units of the currency; 0 if unavailable
   final int valueAmount;
+
+  /// Estimated value of the gift in USD; in USD cents; 0 if unavailable
+  final int valueUsdAmount;
 
   /// "@extra" of the request this object answers.
   @override
@@ -145,8 +153,10 @@ final class UpgradedGift extends TdObject {
       json['resale_parameters'],
       GiftResaleParameters.fromJson,
     ),
+    canSendPurchaseOffer: _readBool(json['can_send_purchase_offer']),
     valueCurrency: _readString(json['value_currency']),
     valueAmount: _readInt(json['value_amount']),
+    valueUsdAmount: _readInt(json['value_usd_amount']),
     extra: json['@extra'],
     clientId: _readClientId(json['@client_id']),
   );
@@ -176,8 +186,10 @@ final class UpgradedGift extends TdObject {
     'original_details': originalDetails?.toJson(),
     'colors': colors?.toJson(),
     'resale_parameters': resaleParameters?.toJson(),
+    'can_send_purchase_offer': canSendPurchaseOffer,
     'value_currency': valueCurrency,
     'value_amount': valueAmount,
+    'value_usd_amount': valueUsdAmount,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -205,8 +217,10 @@ final class UpgradedGift extends TdObject {
     UpgradedGiftOriginalDetails? Function()? originalDetails,
     UpgradedGiftColors? Function()? colors,
     GiftResaleParameters? Function()? resaleParameters,
+    bool? canSendPurchaseOffer,
     String? valueCurrency,
     int? valueAmount,
+    int? valueUsdAmount,
     dynamic extra,
     int? clientId,
   }) => UpgradedGift(
@@ -236,8 +250,10 @@ final class UpgradedGift extends TdObject {
     resaleParameters: resaleParameters != null
         ? resaleParameters()
         : this.resaleParameters,
+    canSendPurchaseOffer: canSendPurchaseOffer ?? this.canSendPurchaseOffer,
     valueCurrency: valueCurrency ?? this.valueCurrency,
     valueAmount: valueAmount ?? this.valueAmount,
+    valueUsdAmount: valueUsdAmount ?? this.valueUsdAmount,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );

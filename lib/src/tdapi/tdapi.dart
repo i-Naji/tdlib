@@ -19,6 +19,7 @@ part 'functions/add_file_to_downloads.dart';
 part 'functions/add_gift_collection_gifts.dart';
 part 'functions/add_local_message.dart';
 part 'functions/add_log_message.dart';
+part 'functions/add_login_passkey.dart';
 part 'functions/add_message_reaction.dart';
 part 'functions/add_network_statistics.dart';
 part 'functions/add_offer.dart';
@@ -66,6 +67,7 @@ part 'functions/change_sticker_set.dart';
 part 'functions/check_authentication_bot_token.dart';
 part 'functions/check_authentication_code.dart';
 part 'functions/check_authentication_email_code.dart';
+part 'functions/check_authentication_passkey.dart';
 part 'functions/check_authentication_password.dart';
 part 'functions/check_authentication_password_recovery_code.dart';
 part 'functions/check_authentication_premium_purchase.dart';
@@ -229,6 +231,7 @@ part 'functions/get_archive_chat_list_settings.dart';
 part 'functions/get_archived_sticker_sets.dart';
 part 'functions/get_attached_sticker_sets.dart';
 part 'functions/get_attachment_menu_bot.dart';
+part 'functions/get_authentication_passkey_parameters.dart';
 part 'functions/get_authorization_state.dart';
 part 'functions/get_auto_download_settings_presets.dart';
 part 'functions/get_autosave_settings.dart';
@@ -351,6 +354,7 @@ part 'functions/get_gift_auction_state.dart';
 part 'functions/get_gift_chat_themes.dart';
 part 'functions/get_gift_collections.dart';
 part 'functions/get_gift_upgrade_preview.dart';
+part 'functions/get_gift_upgrade_variants.dart';
 part 'functions/get_giveaway_info.dart';
 part 'functions/get_greeting_stickers.dart';
 part 'functions/get_grossing_web_app_bots.dart';
@@ -383,6 +387,7 @@ part 'functions/get_log_stream.dart';
 part 'functions/get_log_tag_verbosity_level.dart';
 part 'functions/get_log_tags.dart';
 part 'functions/get_log_verbosity_level.dart';
+part 'functions/get_login_passkeys.dart';
 part 'functions/get_login_url.dart';
 part 'functions/get_login_url_info.dart';
 part 'functions/get_main_web_app.dart';
@@ -415,6 +420,7 @@ part 'functions/get_option.dart';
 part 'functions/get_owned_bots.dart';
 part 'functions/get_owned_sticker_sets.dart';
 part 'functions/get_paid_message_revenue.dart';
+part 'functions/get_passkey_parameters.dart';
 part 'functions/get_passport_authorization_form.dart';
 part 'functions/get_passport_authorization_form_available_elements.dart';
 part 'functions/get_passport_element.dart';
@@ -473,6 +479,7 @@ part 'functions/get_star_withdrawal_url.dart';
 part 'functions/get_statistical_graph.dart';
 part 'functions/get_sticker_emojis.dart';
 part 'functions/get_sticker_outline.dart';
+part 'functions/get_sticker_outline_svg_path.dart';
 part 'functions/get_sticker_set.dart';
 part 'functions/get_sticker_set_name.dart';
 part 'functions/get_stickers.dart';
@@ -509,6 +516,7 @@ part 'functions/get_upgraded_gift.dart';
 part 'functions/get_upgraded_gift_emoji_statuses.dart';
 part 'functions/get_upgraded_gift_value_info.dart';
 part 'functions/get_upgraded_gift_withdrawal_url.dart';
+part 'functions/get_upgraded_gifts_promotional_animation.dart';
 part 'functions/get_user.dart';
 part 'functions/get_user_chat_boosts.dart';
 part 'functions/get_user_full_info.dart';
@@ -571,6 +579,7 @@ part 'functions/preliminary_upload_file.dart';
 part 'functions/process_chat_folder_new_chats.dart';
 part 'functions/process_chat_join_request.dart';
 part 'functions/process_chat_join_requests.dart';
+part 'functions/process_gift_purchase_offer.dart';
 part 'functions/process_push_notification.dart';
 part 'functions/rate_speech_recognition.dart';
 part 'functions/read_all_chat_mentions.dart';
@@ -596,6 +605,7 @@ part 'functions/remove_favorite_sticker.dart';
 part 'functions/remove_file_from_downloads.dart';
 part 'functions/remove_gift_collection_gifts.dart';
 part 'functions/remove_installed_background.dart';
+part 'functions/remove_login_passkey.dart';
 part 'functions/remove_message_reaction.dart';
 part 'functions/remove_message_sender_bot_verification.dart';
 part 'functions/remove_notification.dart';
@@ -706,6 +716,7 @@ part 'functions/send_chat_action.dart';
 part 'functions/send_custom_request.dart';
 part 'functions/send_email_address_verification_code.dart';
 part 'functions/send_gift.dart';
+part 'functions/send_gift_purchase_offer.dart';
 part 'functions/send_group_call_message.dart';
 part 'functions/send_inline_query_result_message.dart';
 part 'functions/send_message.dart';
@@ -968,6 +979,7 @@ part 'objects/archive_chat_list_settings.dart';
 part 'objects/attachment_menu_bot.dart';
 part 'objects/attachment_menu_bot_color.dart';
 part 'objects/auction_bid.dart';
+part 'objects/auction_round.dart';
 part 'objects/auction_state.dart';
 part 'objects/audio.dart';
 part 'objects/audios.dart';
@@ -1205,12 +1217,14 @@ part 'objects/gift_collections.dart';
 part 'objects/gift_for_resale.dart';
 part 'objects/gift_for_resale_order.dart';
 part 'objects/gift_purchase_limits.dart';
+part 'objects/gift_purchase_offer_state.dart';
 part 'objects/gift_resale_parameters.dart';
 part 'objects/gift_resale_price.dart';
 part 'objects/gift_resale_result.dart';
 part 'objects/gift_settings.dart';
 part 'objects/gift_upgrade_preview.dart';
 part 'objects/gift_upgrade_price.dart';
+part 'objects/gift_upgrade_variants.dart';
 part 'objects/gifts_for_resale.dart';
 part 'objects/giveaway_info.dart';
 part 'objects/giveaway_parameters.dart';
@@ -1362,6 +1376,8 @@ part 'objects/page_block_vertical_alignment.dart';
 part 'objects/paid_media.dart';
 part 'objects/paid_reaction_type.dart';
 part 'objects/paid_reactor.dart';
+part 'objects/passkey.dart';
+part 'objects/passkeys.dart';
 part 'objects/passport_authorization_form.dart';
 part 'objects/passport_element.dart';
 part 'objects/passport_element_error.dart';
@@ -1619,14 +1635,14 @@ part 'objects/web_app_open_parameters.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.58';
+const String tdlibVersion = '1.8.59';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '889bdf06029f98f3d04cac874dafab6f4f847c47';
+const String tdlibSchemaCommit = 'cecbf129676ee284817ddfe94af87405a3ed5d2b';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '889bdf06029f98f3d04cac874dafab6f4f847c47',
+  'cecbf129676ee284817ddfe94af87405a3ed5d2b',
 ];
 
 /// Base class of every TDLib object.
@@ -1714,6 +1730,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'textEntities': TextEntities.fromJson,
   'formattedText': FormattedText.fromJson,
   'termsOfService': TermsOfService.fromJson,
+  'passkey': Passkey.fromJson,
+  'passkeys': Passkeys.fromJson,
   'authorizationStateWaitTdlibParameters':
       AuthorizationStateWaitTdlibParameters.fromJson,
   'authorizationStateWaitPhoneNumber':
@@ -1860,6 +1878,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'chatAdministratorRights': ChatAdministratorRights.fromJson,
   'giftResalePriceStar': GiftResalePriceStar.fromJson,
   'giftResalePriceTon': GiftResalePriceTon.fromJson,
+  'giftPurchaseOfferStatePending': GiftPurchaseOfferStatePending.fromJson,
+  'giftPurchaseOfferStateAccepted': GiftPurchaseOfferStateAccepted.fromJson,
+  'giftPurchaseOfferStateRejected': GiftPurchaseOfferStateRejected.fromJson,
   'suggestedPostPriceStar': SuggestedPostPriceStar.fromJson,
   'suggestedPostPriceTon': SuggestedPostPriceTon.fromJson,
   'suggestedPostStatePending': SuggestedPostStatePending.fromJson,
@@ -1920,6 +1941,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'upgradedGiftOriginResale': UpgradedGiftOriginResale.fromJson,
   'upgradedGiftOriginBlockchain': UpgradedGiftOriginBlockchain.fromJson,
   'upgradedGiftOriginPrepaidUpgrade': UpgradedGiftOriginPrepaidUpgrade.fromJson,
+  'upgradedGiftOriginOffer': UpgradedGiftOriginOffer.fromJson,
   'upgradedGiftModel': UpgradedGiftModel.fromJson,
   'upgradedGiftSymbol': UpgradedGiftSymbol.fromJson,
   'upgradedGiftBackdropColors': UpgradedGiftBackdropColors.fromJson,
@@ -1952,8 +1974,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'receivedGift': ReceivedGift.fromJson,
   'receivedGifts': ReceivedGifts.fromJson,
   'giftUpgradePreview': GiftUpgradePreview.fromJson,
+  'giftUpgradeVariants': GiftUpgradeVariants.fromJson,
   'auctionBid': AuctionBid.fromJson,
   'userAuctionBid': UserAuctionBid.fromJson,
+  'auctionRound': AuctionRound.fromJson,
   'auctionStateActive': AuctionStateActive.fromJson,
   'auctionStateFinished': AuctionStateFinished.fromJson,
   'giftAuctionState': GiftAuctionState.fromJson,
@@ -2001,6 +2025,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'starTransactionTypeGiftAuctionBid':
       StarTransactionTypeGiftAuctionBid.fromJson,
   'starTransactionTypeGiftPurchase': StarTransactionTypeGiftPurchase.fromJson,
+  'starTransactionTypeGiftPurchaseOffer':
+      StarTransactionTypeGiftPurchaseOffer.fromJson,
   'starTransactionTypeGiftTransfer': StarTransactionTypeGiftTransfer.fromJson,
   'starTransactionTypeGiftOriginalDetailsDrop':
       StarTransactionTypeGiftOriginalDetailsDrop.fromJson,
@@ -2047,8 +2073,12 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'starTransactions': StarTransactions.fromJson,
   'tonTransactionTypeFragmentDeposit':
       TonTransactionTypeFragmentDeposit.fromJson,
+  'tonTransactionTypeFragmentWithdrawal':
+      TonTransactionTypeFragmentWithdrawal.fromJson,
   'tonTransactionTypeSuggestedPostPayment':
       TonTransactionTypeSuggestedPostPayment.fromJson,
+  'tonTransactionTypeGiftPurchaseOffer':
+      TonTransactionTypeGiftPurchaseOffer.fromJson,
   'tonTransactionTypeUpgradedGiftPurchase':
       TonTransactionTypeUpgradedGiftPurchase.fromJson,
   'tonTransactionTypeUpgradedGiftSale':
@@ -2667,6 +2697,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageGift': MessageGift.fromJson,
   'messageUpgradedGift': MessageUpgradedGift.fromJson,
   'messageRefundedUpgradedGift': MessageRefundedUpgradedGift.fromJson,
+  'messageUpgradedGiftPurchaseOffer': MessageUpgradedGiftPurchaseOffer.fromJson,
+  'messageUpgradedGiftPurchaseOfferDeclined':
+      MessageUpgradedGiftPurchaseOfferDeclined.fromJson,
   'messagePaidMessagesRefunded': MessagePaidMessagesRefunded.fromJson,
   'messagePaidMessagePriceChanged': MessagePaidMessagePriceChanged.fromJson,
   'messageDirectMessagePriceChanged': MessageDirectMessagePriceChanged.fromJson,
@@ -3159,6 +3192,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'premiumFeatureBusiness': PremiumFeatureBusiness.fromJson,
   'premiumFeatureMessageEffects': PremiumFeatureMessageEffects.fromJson,
   'premiumFeatureChecklists': PremiumFeatureChecklists.fromJson,
+  'premiumFeaturePaidMessages': PremiumFeaturePaidMessages.fromJson,
   'businessFeatureLocation': BusinessFeatureLocation.fromJson,
   'businessFeatureOpeningHours': BusinessFeatureOpeningHours.fromJson,
   'businessFeatureQuickReplies': BusinessFeatureQuickReplies.fromJson,
@@ -3646,6 +3680,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'suggestedActionCustom': SuggestedActionCustom.fromJson,
   'suggestedActionSetLoginEmailAddress':
       SuggestedActionSetLoginEmailAddress.fromJson,
+  'suggestedActionAddLoginPasskey': SuggestedActionAddLoginPasskey.fromJson,
   'count': Count.fromJson,
   'text': Text.fromJson,
   'data': Data.fromJson,

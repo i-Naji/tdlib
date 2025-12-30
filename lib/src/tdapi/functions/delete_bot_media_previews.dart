@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Delete media previews from the list of media previews of a bot
+/// Deletes media previews from the list of media previews of a bot
 ///
 /// Returns [Ok].
 final class DeleteBotMediaPreviews extends TdFunction<Ok> {
-  /// Delete media previews from the list of media previews of a bot
+  /// Deletes media previews from the list of media previews of a bot
   const DeleteBotMediaPreviews({
     required this.botUserId,
     required this.languageCode,

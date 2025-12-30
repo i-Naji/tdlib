@@ -6,7 +6,11 @@ part of '../tdapi.dart';
 /// Describes an auction on which a gift can be purchased
 final class GiftAuction extends TdObject {
   /// Describes an auction on which a gift can be purchased
-  const GiftAuction({required this.id, required this.giftsPerRound});
+  const GiftAuction({
+    required this.id,
+    required this.giftsPerRound,
+    required this.startDate,
+  });
 
   /// Identifier of the auction
   final String id;
@@ -14,10 +18,14 @@ final class GiftAuction extends TdObject {
   /// Number of gifts distributed in each round
   final int giftsPerRound;
 
+  /// Point in time (Unix timestamp) when the auction will start
+  final int startDate;
+
   /// Parses a [GiftAuction] from TDLib JSON.
   factory GiftAuction.fromJson(Map<String, dynamic> json) => GiftAuction(
     id: _readString(json['id']),
     giftsPerRound: _readInt(json['gifts_per_round']),
+    startDate: _readInt(json['start_date']),
   );
 
   @override
@@ -25,14 +33,17 @@ final class GiftAuction extends TdObject {
     '@type': CONSTRUCTOR,
     'id': id,
     'gifts_per_round': giftsPerRound,
+    'start_date': startDate,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GiftAuction copyWith({String? id, int? giftsPerRound}) => GiftAuction(
-    id: id ?? this.id,
-    giftsPerRound: giftsPerRound ?? this.giftsPerRound,
-  );
+  GiftAuction copyWith({String? id, int? giftsPerRound, int? startDate}) =>
+      GiftAuction(
+        id: id ?? this.id,
+        giftsPerRound: giftsPerRound ?? this.giftsPerRound,
+        startDate: startDate ?? this.startDate,
+      );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giftAuction';

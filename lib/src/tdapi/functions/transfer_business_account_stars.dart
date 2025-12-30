@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Transfer Telegram Stars from the business account to the business bot; for bots only
+/// Transfers Telegram Stars from the business account to the business bot; for bots only
 ///
 /// Returns [Ok].
 final class TransferBusinessAccountStars extends TdFunction<Ok> {
-  /// Transfer Telegram Stars from the business account to the business bot; for bots only
+  /// Transfers Telegram Stars from the business account to the business bot; for bots only
   const TransferBusinessAccountStars({
     required this.businessConnectionId,
     required this.starCount,

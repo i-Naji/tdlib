@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes origin from which the upgraded gift was obtained
 ///
-/// One of: [UpgradedGiftOriginUpgrade], [UpgradedGiftOriginTransfer], [UpgradedGiftOriginResale], [UpgradedGiftOriginBlockchain], [UpgradedGiftOriginPrepaidUpgrade]; or [UndecodedUpgradedGiftOrigin] for a type newer than this API.
+/// One of: [UpgradedGiftOriginUpgrade], [UpgradedGiftOriginTransfer], [UpgradedGiftOriginResale], [UpgradedGiftOriginBlockchain], [UpgradedGiftOriginPrepaidUpgrade], [UpgradedGiftOriginOffer]; or [UndecodedUpgradedGiftOrigin] for a type newer than this API.
 sealed class UpgradedGiftOrigin extends TdObject {
   const UpgradedGiftOrigin();
 
@@ -49,7 +49,7 @@ final class UpgradedGiftOriginUpgrade extends UpgradedGiftOrigin {
   /// The gift was obtained by upgrading of a previously received gift
   const UpgradedGiftOriginUpgrade({required this.giftMessageId});
 
-  /// Identifier of the message with the regular gift that was upgraded; can be 0 or an identifier of a deleted message
+  /// Identifier of the message with the regular gift that was upgraded; may be 0 or an identifier of a deleted message
   final int giftMessageId;
 
   /// Parses a [UpgradedGiftOriginUpgrade] from TDLib JSON.
@@ -108,7 +108,7 @@ final class UpgradedGiftOriginResale extends UpgradedGiftOrigin {
   /// The gift was bought from another user
   const UpgradedGiftOriginResale({required this.price});
 
-  /// Price paid by the sender for the gift
+  /// Price paid for the gift
   final GiftResalePrice price;
 
   /// Parses a [UpgradedGiftOriginResale] from TDLib JSON.
@@ -182,6 +182,39 @@ final class UpgradedGiftOriginPrepaidUpgrade extends UpgradedGiftOrigin {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradedGiftOriginPrepaidUpgrade';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The gift was bought through an offer
+final class UpgradedGiftOriginOffer extends UpgradedGiftOrigin {
+  /// The gift was bought through an offer
+  const UpgradedGiftOriginOffer({required this.price});
+
+  /// Price paid for the gift
+  final GiftResalePrice price;
+
+  /// Parses a [UpgradedGiftOriginOffer] from TDLib JSON.
+  factory UpgradedGiftOriginOffer.fromJson(Map<String, dynamic> json) =>
+      UpgradedGiftOriginOffer(
+        price: _readObject(json['price'], GiftResalePrice.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'price': price.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpgradedGiftOriginOffer copyWith({GiftResalePrice? price}) =>
+      UpgradedGiftOriginOffer(price: price ?? this.price);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'upgradedGiftOriginOffer';
 
   @override
   String getConstructor() => CONSTRUCTOR;

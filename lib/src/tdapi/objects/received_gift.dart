@@ -10,6 +10,7 @@ final class ReceivedGift extends TdObject {
     required this.receivedGiftId,
     this.senderId,
     required this.text,
+    required this.uniqueGiftNumber,
     required this.isPrivate,
     required this.isSaved,
     required this.isPinned,
@@ -40,6 +41,9 @@ final class ReceivedGift extends TdObject {
 
   /// Message added to the gift
   final FormattedText text;
+
+  /// Unique number of the gift among gifts upgraded from the same gift after upgrade; 0 if yet unassigned
+  final int uniqueGiftNumber;
 
   /// True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone are able to see them
   final bool isPrivate;
@@ -108,6 +112,7 @@ final class ReceivedGift extends TdObject {
     receivedGiftId: _readString(json['received_gift_id']),
     senderId: _readOptional(json['sender_id'], MessageSender.fromJson),
     text: _readObject(json['text'], FormattedText.fromJson),
+    uniqueGiftNumber: _readInt(json['unique_gift_number']),
     isPrivate: _readBool(json['is_private']),
     isSaved: _readBool(json['is_saved']),
     isPinned: _readBool(json['is_pinned']),
@@ -138,6 +143,7 @@ final class ReceivedGift extends TdObject {
     'received_gift_id': receivedGiftId,
     'sender_id': senderId?.toJson(),
     'text': text.toJson(),
+    'unique_gift_number': uniqueGiftNumber,
     'is_private': isPrivate,
     'is_saved': isSaved,
     'is_pinned': isPinned,
@@ -164,6 +170,7 @@ final class ReceivedGift extends TdObject {
     String? receivedGiftId,
     MessageSender? Function()? senderId,
     FormattedText? text,
+    int? uniqueGiftNumber,
     bool? isPrivate,
     bool? isSaved,
     bool? isPinned,
@@ -188,6 +195,7 @@ final class ReceivedGift extends TdObject {
     receivedGiftId: receivedGiftId ?? this.receivedGiftId,
     senderId: senderId != null ? senderId() : this.senderId,
     text: text ?? this.text,
+    uniqueGiftNumber: uniqueGiftNumber ?? this.uniqueGiftNumber,
     isPrivate: isPrivate ?? this.isPrivate,
     isSaved: isSaved ?? this.isSaved,
     isPinned: isPinned ?? this.isPinned,

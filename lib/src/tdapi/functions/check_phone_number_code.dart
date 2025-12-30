@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Check the authentication code and completes the request for which the code was sent if appropriate
+/// Checks the authentication code and completes the request for which the code was sent if appropriate
 ///
 /// Returns [Ok].
 final class CheckPhoneNumberCode extends TdFunction<Ok> {
-  /// Check the authentication code and completes the request for which the code was sent if appropriate
+  /// Checks the authentication code and completes the request for which the code was sent if appropriate
   const CheckPhoneNumberCode({required this.code});
 
   /// Authentication code to check
