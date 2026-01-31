@@ -16,7 +16,7 @@ final class DropGiftOriginalDetails extends TdFunction<Ok> {
   /// Identifier of the gift
   final String receivedGiftId;
 
-  /// The amount of Telegram Stars required to pay for the operation
+  /// The Telegram Star amount required to pay for the operation
   final int starCount;
 
   @override

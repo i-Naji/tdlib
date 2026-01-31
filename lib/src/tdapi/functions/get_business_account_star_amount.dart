@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns the amount of Telegram Stars owned by a business account; for bots only
+/// Returns the Telegram Star amount owned by a business account; for bots only
 ///
 /// Returns [StarAmount].
 final class GetBusinessAccountStarAmount extends TdFunction<StarAmount> {
-  /// Returns the amount of Telegram Stars owned by a business account; for bots only
+  /// Returns the Telegram Star amount owned by a business account; for bots only
   const GetBusinessAccountStarAmount({required this.businessConnectionId});
 
   /// Unique identifier of business connection

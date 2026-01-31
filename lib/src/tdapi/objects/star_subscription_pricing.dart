@@ -14,7 +14,7 @@ final class StarSubscriptionPricing extends TdObject {
   /// The number of seconds between consecutive Telegram Star debiting
   final int period;
 
-  /// The amount of Telegram Stars that must be paid for each period
+  /// The Telegram Star amount that must be paid for each period
   final int starCount;
 
   /// Parses a [StarSubscriptionPricing] from TDLib JSON.

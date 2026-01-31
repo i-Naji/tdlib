@@ -261,7 +261,7 @@ final class TonTransactionTypeUpgradedGiftSale extends TonTransactionType {
   /// The number of Toncoins received by the Telegram for each 1000 Toncoins received by the seller of the gift
   final int commissionPerMille;
 
-  /// The amount of Toncoins that were received by the Telegram; in the smallest units of the currency
+  /// The Toncoin amount that was received by the Telegram; in the smallest units of the currency
   final int commissionToncoinAmount;
 
   /// True, if the gift was sold through a purchase offer

@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Returns an affiliate program that were connected to the given affiliate by identifier of the bot that created the program
+/// Returns an affiliate program that was connected to the given affiliate by identifier of the bot that created the program
 ///
 /// Returns [ConnectedAffiliateProgram].
 final class GetConnectedAffiliateProgram
     extends TdFunction<ConnectedAffiliateProgram> {
-  /// Returns an affiliate program that were connected to the given affiliate by identifier of the bot that created the program
+  /// Returns an affiliate program that was connected to the given affiliate by identifier of the bot that created the program
   const GetConnectedAffiliateProgram({
     required this.affiliate,
     required this.botUserId,

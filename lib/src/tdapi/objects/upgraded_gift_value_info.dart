@@ -37,7 +37,7 @@ final class UpgradedGiftValueInfo extends TdObject {
   /// Point in time (Unix timestamp) when the corresponding regular gift was originally purchased
   final int initialSaleDate;
 
-  /// Amount of Telegram Stars that were paid for the gift
+  /// The Telegram Star amount that was paid for the gift
   final int initialSaleStarCount;
 
   /// Initial price of the gift; in the smallest units of the currency

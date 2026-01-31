@@ -24,7 +24,7 @@ final class TransferGift extends TdFunction<Ok> {
   /// Identifier of the user or the channel chat that will receive the gift
   final MessageSender newOwnerId;
 
-  /// The amount of Telegram Stars required to pay for the transfer
+  /// The Telegram Star amount required to pay for the transfer
   final int starCount;
 
   @override

@@ -47,7 +47,7 @@ final class GiftResalePriceStar extends GiftResalePrice {
   /// Describes price of a resold gift in Telegram Stars
   const GiftResalePriceStar({required this.starCount});
 
-  /// The amount of Telegram Stars expected to be paid for the gift. Must be in range getOption("gift_resale_star_count_min")-getOption("gift_resale_star_count_max") for gifts put for resale
+  /// The Telegram Star amount expected to be paid for the gift. Must be in the range getOption("gift_resale_star_count_min")-getOption("gift_resale_star_count_max") for gifts put for resale
   final int starCount;
 
   /// Parses a [GiftResalePriceStar] from TDLib JSON.
@@ -78,7 +78,7 @@ final class GiftResalePriceTon extends GiftResalePrice {
   /// Describes price of a resold gift in Toncoins
   const GiftResalePriceTon({required this.toncoinCentCount});
 
-  /// The amount of 1/100 of Toncoin expected to be paid for the gift. Must be in range getOption("gift_resale_toncoin_cent_count_min")-getOption("gift_resale_toncoin_cent_count_max")
+  /// The amount of 1/100 of Toncoin expected to be paid for the gift. Must be in the range getOption("gift_resale_toncoin_cent_count_min")-getOption("gift_resale_toncoin_cent_count_max")
   final int toncoinCentCount;
 
   /// Parses a [GiftResalePriceTon] from TDLib JSON.

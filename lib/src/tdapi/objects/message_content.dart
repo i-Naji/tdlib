@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferDeclined], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -936,7 +936,7 @@ final class MessageDice extends MessageContent {
   /// Emoji on which the dice throw animation is based
   final String emoji;
 
-  /// The dice value. If the value is 0, the dice don't have final state yet
+  /// The dice value. If the value is 0, then the dice don't have final state yet
   final int value;
 
   /// Number of frame after which a success animation like a shower of confetti needs to be shown on updateMessageSendSucceeded
@@ -1043,6 +1043,79 @@ final class MessagePoll extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messagePoll';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A stake dice message. The dice value is randomly generated by the server
+final class MessageStakeDice extends MessageContent {
+  /// A stake dice message. The dice value is randomly generated by the server
+  const MessageStakeDice({
+    this.initialState,
+    this.finalState,
+    required this.value,
+    required this.stakeToncoinAmount,
+    required this.prizeToncoinAmount,
+  });
+
+  /// The animated stickers with the initial dice animation; may be null if unknown. The update updateMessageContent will be sent when the sticker became known
+  final DiceStickers? initialState;
+
+  /// The animated stickers with the final dice animation; may be null if unknown. The update updateMessageContent will be sent when the sticker became known
+  final DiceStickers? finalState;
+
+  /// The dice value. If the value is 0, then the dice don't have final state yet
+  final int value;
+
+  /// The Toncoin amount that was staked; in the smallest units of the currency
+  final int stakeToncoinAmount;
+
+  /// The Toncoin amount that was gained from the roll; in the smallest units of the currency; -1 if the dice don't have final state yet
+  final int prizeToncoinAmount;
+
+  /// Parses a [MessageStakeDice] from TDLib JSON.
+  factory MessageStakeDice.fromJson(Map<String, dynamic> json) =>
+      MessageStakeDice(
+        initialState: _readOptional(
+          json['initial_state'],
+          DiceStickers.fromJson,
+        ),
+        finalState: _readOptional(json['final_state'], DiceStickers.fromJson),
+        value: _readInt(json['value']),
+        stakeToncoinAmount: _readInt(json['stake_toncoin_amount']),
+        prizeToncoinAmount: _readInt(json['prize_toncoin_amount']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'initial_state': initialState?.toJson(),
+    'final_state': finalState?.toJson(),
+    'value': value,
+    'stake_toncoin_amount': stakeToncoinAmount,
+    'prize_toncoin_amount': prizeToncoinAmount,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageStakeDice copyWith({
+    DiceStickers? Function()? initialState,
+    DiceStickers? Function()? finalState,
+    int? value,
+    int? stakeToncoinAmount,
+    int? prizeToncoinAmount,
+  }) => MessageStakeDice(
+    initialState: initialState != null ? initialState() : this.initialState,
+    finalState: finalState != null ? finalState() : this.finalState,
+    value: value ?? this.value,
+    stakeToncoinAmount: stakeToncoinAmount ?? this.stakeToncoinAmount,
+    prizeToncoinAmount: prizeToncoinAmount ?? this.prizeToncoinAmount,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageStakeDice';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -3320,7 +3393,7 @@ final class MessageGiftedTon extends MessageContent {
   /// The identifier of a user that received Toncoins; 0 if the gift is incoming
   final int receiverUserId;
 
-  /// The received amount of Toncoins, in the smallest units of the cryptocurrency
+  /// The received Toncoin amount, in the smallest units of the cryptocurrency
   final int tonAmount;
 
   /// Identifier of the transaction for Toncoin credit; for receiver only
@@ -3896,10 +3969,10 @@ final class MessageUpgradedGiftPurchaseOffer extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// An offer to purchase a gift was declined or expired
-final class MessageUpgradedGiftPurchaseOfferDeclined extends MessageContent {
-  /// An offer to purchase a gift was declined or expired
-  const MessageUpgradedGiftPurchaseOfferDeclined({
+/// An offer to purchase a gift was rejected or expired
+final class MessageUpgradedGiftPurchaseOfferRejected extends MessageContent {
+  /// An offer to purchase a gift was rejected or expired
+  const MessageUpgradedGiftPurchaseOfferRejected({
     required this.gift,
     required this.price,
     required this.offerMessageId,
@@ -3912,16 +3985,16 @@ final class MessageUpgradedGiftPurchaseOfferDeclined extends MessageContent {
   /// The proposed price
   final GiftResalePrice price;
 
-  /// Identifier of the message with purchase offer which was declined or expired; may be 0 or an identifier of a deleted message
+  /// Identifier of the message with purchase offer which was rejected or expired; may be 0 or an identifier of a deleted message
   final int offerMessageId;
 
-  /// True, if the offer has expired; otherwise, the offer was explicitly declined
+  /// True, if the offer has expired; otherwise, the offer was explicitly rejected
   final bool wasExpired;
 
-  /// Parses a [MessageUpgradedGiftPurchaseOfferDeclined] from TDLib JSON.
-  factory MessageUpgradedGiftPurchaseOfferDeclined.fromJson(
+  /// Parses a [MessageUpgradedGiftPurchaseOfferRejected] from TDLib JSON.
+  factory MessageUpgradedGiftPurchaseOfferRejected.fromJson(
     Map<String, dynamic> json,
-  ) => MessageUpgradedGiftPurchaseOfferDeclined(
+  ) => MessageUpgradedGiftPurchaseOfferRejected(
     gift: _readObject(json['gift'], UpgradedGift.fromJson),
     price: _readObject(json['price'], GiftResalePrice.fromJson),
     offerMessageId: _readInt(json['offer_message_id']),
@@ -3940,12 +4013,12 @@ final class MessageUpgradedGiftPurchaseOfferDeclined extends MessageContent {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageUpgradedGiftPurchaseOfferDeclined copyWith({
+  MessageUpgradedGiftPurchaseOfferRejected copyWith({
     UpgradedGift? gift,
     GiftResalePrice? price,
     int? offerMessageId,
     bool? wasExpired,
-  }) => MessageUpgradedGiftPurchaseOfferDeclined(
+  }) => MessageUpgradedGiftPurchaseOfferRejected(
     gift: gift ?? this.gift,
     price: price ?? this.price,
     offerMessageId: offerMessageId ?? this.offerMessageId,
@@ -3953,7 +4026,7 @@ final class MessageUpgradedGiftPurchaseOfferDeclined extends MessageContent {
   );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'messageUpgradedGiftPurchaseOfferDeclined';
+  static const String CONSTRUCTOR = 'messageUpgradedGiftPurchaseOfferRejected';
 
   @override
   String getConstructor() => CONSTRUCTOR;

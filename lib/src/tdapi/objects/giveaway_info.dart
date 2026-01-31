@@ -149,7 +149,7 @@ final class GiveawayInfoCompleted extends GiveawayInfo {
   /// Telegram Premium gift code that was received by the current user; empty if the user isn't a winner in the giveaway or the giveaway isn't a Telegram Premium giveaway
   final String giftCode;
 
-  /// The amount of Telegram Stars won by the current user; 0 if the user isn't a winner in the giveaway or the giveaway isn't a Telegram Star giveaway
+  /// The Telegram Star amount won by the current user; 0 if the user isn't a winner in the giveaway or the giveaway isn't a Telegram Star giveaway
   final int wonStarCount;
 
   /// "@extra" of the request this object answers.

@@ -1337,7 +1337,7 @@ final class StarTransactionTypeUpgradedGiftSale extends StarTransactionType {
   /// The number of Telegram Stars received by the Telegram for each 1000 Telegram Stars received by the seller of the gift
   final int commissionPerMille;
 
-  /// The amount of Telegram Stars that were received by Telegram; can be negative for refunds
+  /// The Telegram Star amount that was received by Telegram; can be negative for refunds
   final StarAmount commissionStarAmount;
 
   /// True, if the gift was sold through a purchase offer
@@ -1604,7 +1604,7 @@ final class StarTransactionTypePaidMessageReceive extends StarTransactionType {
   /// The number of Telegram Stars received by the Telegram for each 1000 Telegram Stars paid for message sending
   final int commissionPerMille;
 
-  /// The amount of Telegram Stars that were received by Telegram; can be negative for refunds
+  /// The Telegram Star amount that was received by Telegram; can be negative for refunds
   final StarAmount commissionStarAmount;
 
   /// Parses a [StarTransactionTypePaidMessageReceive] from TDLib JSON.
@@ -1702,7 +1702,7 @@ final class StarTransactionTypePaidGroupCallMessageReceive
   /// The number of Telegram Stars received by the Telegram for each 1000 Telegram Stars paid for message sending
   final int commissionPerMille;
 
-  /// The amount of Telegram Stars that were received by Telegram; can be negative for refunds
+  /// The Telegram Star amount that was received by Telegram; can be negative for refunds
   final StarAmount commissionStarAmount;
 
   /// Parses a [StarTransactionTypePaidGroupCallMessageReceive] from TDLib JSON.
@@ -1797,7 +1797,7 @@ final class StarTransactionTypePaidGroupCallReactionReceive
   /// The number of Telegram Stars received by the Telegram for each 1000 Telegram Stars paid for reaction sending
   final int commissionPerMille;
 
-  /// The amount of Telegram Stars that were received by Telegram; can be negative for refunds
+  /// The Telegram Star amount that was received by Telegram; can be negative for refunds
   final StarAmount commissionStarAmount;
 
   /// Parses a [StarTransactionTypePaidGroupCallReactionReceive] from TDLib JSON.

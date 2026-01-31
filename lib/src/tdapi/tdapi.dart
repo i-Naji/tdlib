@@ -468,6 +468,7 @@ part 'functions/get_scope_notification_settings.dart';
 part 'functions/get_search_sponsored_chats.dart';
 part 'functions/get_searched_for_tags.dart';
 part 'functions/get_secret_chat.dart';
+part 'functions/get_stake_dice_state.dart';
 part 'functions/get_star_ad_account_url.dart';
 part 'functions/get_star_gift_payment_options.dart';
 part 'functions/get_star_giveaway_payment_options.dart';
@@ -876,6 +877,7 @@ part 'functions/stop_business_poll.dart';
 part 'functions/stop_poll.dart';
 part 'functions/suggest_user_birthdate.dart';
 part 'functions/suggest_user_profile_photo.dart';
+part 'functions/summarize_message.dart';
 part 'functions/synchronize_language_pack.dart';
 part 'functions/terminate_all_other_sessions.dart';
 part 'functions/terminate_session.dart';
@@ -1489,6 +1491,7 @@ part 'objects/sponsored_chat.dart';
 part 'objects/sponsored_chats.dart';
 part 'objects/sponsored_message.dart';
 part 'objects/sponsored_messages.dart';
+part 'objects/stake_dice_state.dart';
 part 'objects/star_amount.dart';
 part 'objects/star_count.dart';
 part 'objects/star_giveaway_payment_option.dart';
@@ -1635,14 +1638,14 @@ part 'objects/web_app_open_parameters.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.59';
+const String tdlibVersion = '1.8.60';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = 'cecbf129676ee284817ddfe94af87405a3ed5d2b';
+const String tdlibSchemaCommit = 'cb863c1600082404428f1a84e407b866b9d412a8';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  'cecbf129676ee284817ddfe94af87405a3ed5d2b',
+  'cb863c1600082404428f1a84e407b866b9d412a8',
 ];
 
 /// Base class of every TDLib object.
@@ -1812,6 +1815,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'location': Location.fromJson,
   'venue': Venue.fromJson,
   'game': Game.fromJson,
+  'stakeDiceState': StakeDiceState.fromJson,
   'webApp': WebApp.fromJson,
   'poll': Poll.fromJson,
   'alternativeVideo': AlternativeVideo.fromJson,
@@ -2646,6 +2650,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageDice': MessageDice.fromJson,
   'messageGame': MessageGame.fromJson,
   'messagePoll': MessagePoll.fromJson,
+  'messageStakeDice': MessageStakeDice.fromJson,
   'messageStory': MessageStory.fromJson,
   'messageChecklist': MessageChecklist.fromJson,
   'messageInvoice': MessageInvoice.fromJson,
@@ -2698,8 +2703,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageUpgradedGift': MessageUpgradedGift.fromJson,
   'messageRefundedUpgradedGift': MessageRefundedUpgradedGift.fromJson,
   'messageUpgradedGiftPurchaseOffer': MessageUpgradedGiftPurchaseOffer.fromJson,
-  'messageUpgradedGiftPurchaseOfferDeclined':
-      MessageUpgradedGiftPurchaseOfferDeclined.fromJson,
+  'messageUpgradedGiftPurchaseOfferRejected':
+      MessageUpgradedGiftPurchaseOfferRejected.fromJson,
   'messagePaidMessagesRefunded': MessagePaidMessagesRefunded.fromJson,
   'messagePaidMessagePriceChanged': MessagePaidMessagePriceChanged.fromJson,
   'messageDirectMessagePriceChanged': MessageDirectMessagePriceChanged.fromJson,
@@ -2775,6 +2780,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputMessageGame': InputMessageGame.fromJson,
   'inputMessageInvoice': InputMessageInvoice.fromJson,
   'inputMessagePoll': InputMessagePoll.fromJson,
+  'inputMessageStakeDice': InputMessageStakeDice.fromJson,
   'inputMessageStory': InputMessageStory.fromJson,
   'inputMessageChecklist': InputMessageChecklist.fromJson,
   'inputMessageForwarded': InputMessageForwarded.fromJson,
@@ -3900,6 +3906,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateSpeechRecognitionTrial': UpdateSpeechRecognitionTrial.fromJson,
   'updateGroupCallMessageLevels': UpdateGroupCallMessageLevels.fromJson,
   'updateDiceEmojis': UpdateDiceEmojis.fromJson,
+  'updateStakeDiceState': UpdateStakeDiceState.fromJson,
   'updateAnimatedEmojiMessageClicked':
       UpdateAnimatedEmojiMessageClicked.fromJson,
   'updateAnimationSearchParameters': UpdateAnimationSearchParameters.fromJson,

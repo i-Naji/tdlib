@@ -20,7 +20,7 @@ final class BuyGiftUpgrade extends TdFunction<Ok> {
   /// Prepaid upgrade hash as received along with the gift
   final String prepaidUpgradeHash;
 
-  /// The amount of Telegram Stars the user agreed to pay for the upgrade; must be equal to gift.upgrade_star_count
+  /// The Telegram Star amount the user agreed to pay for the upgrade; must be equal to gift.upgrade_star_count
   final int starCount;
 
   @override

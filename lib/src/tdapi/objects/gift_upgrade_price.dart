@@ -11,7 +11,7 @@ final class GiftUpgradePrice extends TdObject {
   /// Point in time (Unix timestamp) when the price will be in effect
   final int date;
 
-  /// The amount of Telegram Stars required to pay to upgrade the gift
+  /// The Telegram Star amount required to pay to upgrade the gift
   final int starCount;
 
   /// Parses a [GiftUpgradePrice] from TDLib JSON.

@@ -32,7 +32,7 @@ final class Sticker extends TdObject {
   /// Sticker height; as defined by the sender
   final int height;
 
-  /// Emoji corresponding to the sticker
+  /// Emoji corresponding to the sticker; may be empty if unknown
   final String emoji;
 
   /// Sticker format

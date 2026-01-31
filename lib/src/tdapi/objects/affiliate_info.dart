@@ -18,7 +18,7 @@ final class AffiliateInfo extends TdObject {
   /// Identifier of the chat which received the commission
   final int affiliateChatId;
 
-  /// The amount of Telegram Stars that were received by the affiliate; can be negative for refunds
+  /// The Telegram Star amount that was received by the affiliate; can be negative for refunds
   final StarAmount starAmount;
 
   /// Parses a [AffiliateInfo] from TDLib JSON.

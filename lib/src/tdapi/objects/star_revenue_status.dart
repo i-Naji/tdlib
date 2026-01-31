@@ -14,13 +14,13 @@ final class StarRevenueStatus extends TdObject {
     required this.nextWithdrawalIn,
   });
 
-  /// Total amount of Telegram Stars earned
+  /// Total Telegram Star amount earned
   final StarAmount totalAmount;
 
-  /// The amount of Telegram Stars that aren't withdrawn yet
+  /// The Telegram Star amount that isn't withdrawn yet
   final StarAmount currentAmount;
 
-  /// The amount of Telegram Stars that are available for withdrawal
+  /// The Telegram Star amount that is available for withdrawal
   final StarAmount availableAmount;
 
   /// True, if Telegram Stars can be withdrawn now or later

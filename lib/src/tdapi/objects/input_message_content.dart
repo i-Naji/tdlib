@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// The content of a message to send
 ///
-/// One of: [InputMessageText], [InputMessageAnimation], [InputMessageAudio], [InputMessageDocument], [InputMessagePaidMedia], [InputMessagePhoto], [InputMessageSticker], [InputMessageVideo], [InputMessageVideoNote], [InputMessageVoiceNote], [InputMessageLocation], [InputMessageVenue], [InputMessageContact], [InputMessageDice], [InputMessageGame], [InputMessageInvoice], [InputMessagePoll], [InputMessageStory], [InputMessageChecklist], [InputMessageForwarded]; or [UndecodedInputMessageContent] for a type newer than this API.
+/// One of: [InputMessageText], [InputMessageAnimation], [InputMessageAudio], [InputMessageDocument], [InputMessagePaidMedia], [InputMessagePhoto], [InputMessageSticker], [InputMessageVideo], [InputMessageVideoNote], [InputMessageVoiceNote], [InputMessageLocation], [InputMessageVenue], [InputMessageContact], [InputMessageDice], [InputMessageGame], [InputMessageInvoice], [InputMessagePoll], [InputMessageStakeDice], [InputMessageStory], [InputMessageChecklist], [InputMessageForwarded]; or [UndecodedInputMessageContent] for a type newer than this API.
 sealed class InputMessageContent extends TdObject {
   const InputMessageContent();
 
@@ -59,7 +59,7 @@ final class InputMessageText extends InputMessageContent {
   /// Options to be used for generation of a link preview; may be null if none; pass null to use default link preview options
   final LinkPreviewOptions? linkPreviewOptions;
 
-  /// True, if a chat message draft must be deleted
+  /// True, if the chat message draft must be deleted
   final bool clearDraft;
 
   /// Parses a [InputMessageText] from TDLib JSON.
@@ -1335,6 +1335,60 @@ final class InputMessagePoll extends InputMessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessagePoll';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A stake dice message
+final class InputMessageStakeDice extends InputMessageContent {
+  /// A stake dice message
+  const InputMessageStakeDice({
+    required this.stateHash,
+    required this.stakeToncoinAmount,
+    required this.clearDraft,
+  });
+
+  /// Hash of the stake dice state. The state hash can be used only if it was received recently enough. Otherwise, a new state must be requested using getStakeDiceState
+  final String stateHash;
+
+  /// The Toncoin amount that will be staked; in the smallest units of the currency. Must be in the range getOption("stake_dice_stake_amount_min")-getOption("stake_dice_stake_amount_max")
+  final int stakeToncoinAmount;
+
+  /// True, if the chat message draft must be deleted
+  final bool clearDraft;
+
+  /// Parses a [InputMessageStakeDice] from TDLib JSON.
+  factory InputMessageStakeDice.fromJson(Map<String, dynamic> json) =>
+      InputMessageStakeDice(
+        stateHash: _readString(json['state_hash']),
+        stakeToncoinAmount: _readInt(json['stake_toncoin_amount']),
+        clearDraft: _readBool(json['clear_draft']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'state_hash': stateHash,
+    'stake_toncoin_amount': stakeToncoinAmount,
+    'clear_draft': clearDraft,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputMessageStakeDice copyWith({
+    String? stateHash,
+    int? stakeToncoinAmount,
+    bool? clearDraft,
+  }) => InputMessageStakeDice(
+    stateHash: stateHash ?? this.stateHash,
+    stakeToncoinAmount: stakeToncoinAmount ?? this.stakeToncoinAmount,
+    clearDraft: clearDraft ?? this.clearDraft,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputMessageStakeDice';
 
   @override
   String getConstructor() => CONSTRUCTOR;

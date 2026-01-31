@@ -10,29 +10,29 @@ final class ProcessGiftPurchaseOffer extends TdFunction<Ok> {
   /// Handles a pending gift purchase offer
   const ProcessGiftPurchaseOffer({
     required this.messageId,
-    required this.approve,
+    required this.accept,
   });
 
   /// Identifier of the message with the gift purchase offer
   final int messageId;
 
-  /// Pass true to approve the request; pass false to decline it
-  final bool approve;
+  /// Pass true to accept the request; pass false to reject it
+  final bool accept;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
     'message_id': messageId,
-    'approve': approve,
+    'accept': accept,
     '@extra': ?extra,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ProcessGiftPurchaseOffer copyWith({int? messageId, bool? approve}) =>
+  ProcessGiftPurchaseOffer copyWith({int? messageId, bool? accept}) =>
       ProcessGiftPurchaseOffer(
         messageId: messageId ?? this.messageId,
-        approve: approve ?? this.approve,
+        accept: accept ?? this.accept,
       );
 
   /// TDLib type name.

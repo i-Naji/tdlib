@@ -42,6 +42,7 @@ final class Message extends TdObject {
     required this.mediaAlbumId,
     required this.effectId,
     this.restrictionInfo,
+    required this.summaryLanguageCode,
     required this.content,
     this.replyMarkup,
     this.extra,
@@ -153,6 +154,9 @@ final class Message extends TdObject {
   /// Information about the restrictions that must be applied to the message content; may be null if none
   final RestrictionInfo? restrictionInfo;
 
+  /// IETF language tag of the message language on which it can be summarized; empty if summary isn't available for the message
+  final String summaryLanguageCode;
+
   /// Content of the message
   final MessageContent content;
 
@@ -228,6 +232,7 @@ final class Message extends TdObject {
       json['restriction_info'],
       RestrictionInfo.fromJson,
     ),
+    summaryLanguageCode: _readString(json['summary_language_code']),
     content: _readObject(json['content'], MessageContent.fromJson),
     replyMarkup: _readOptional(json['reply_markup'], ReplyMarkup.fromJson),
     extra: json['@extra'],
@@ -272,6 +277,7 @@ final class Message extends TdObject {
     'media_album_id': mediaAlbumId.toString(),
     'effect_id': effectId.toString(),
     'restriction_info': restrictionInfo?.toJson(),
+    'summary_language_code': summaryLanguageCode,
     'content': content.toJson(),
     'reply_markup': replyMarkup?.toJson(),
   };
@@ -314,6 +320,7 @@ final class Message extends TdObject {
     int? mediaAlbumId,
     int? effectId,
     RestrictionInfo? Function()? restrictionInfo,
+    String? summaryLanguageCode,
     MessageContent? content,
     ReplyMarkup? Function()? replyMarkup,
     dynamic extra,
@@ -367,6 +374,7 @@ final class Message extends TdObject {
     restrictionInfo: restrictionInfo != null
         ? restrictionInfo()
         : this.restrictionInfo,
+    summaryLanguageCode: summaryLanguageCode ?? this.summaryLanguageCode,
     content: content ?? this.content,
     replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
     extra: extra ?? this.extra,

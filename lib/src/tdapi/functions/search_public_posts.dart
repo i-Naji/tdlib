@@ -24,7 +24,7 @@ final class SearchPublicPosts extends TdFunction<FoundPublicPosts> {
   /// The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
   final int limit;
 
-  /// The amount of Telegram Stars the user agreed to pay for the search; pass 0 for free searches
+  /// The Telegram Star amount the user agreed to pay for the search; pass 0 for free searches
   final int starCount;
 
   @override

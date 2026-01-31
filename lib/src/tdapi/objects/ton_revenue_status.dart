@@ -13,13 +13,13 @@ final class TonRevenueStatus extends TdObject {
     required this.withdrawalEnabled,
   });
 
-  /// Total amount of Toncoins earned; in the smallest units of the cryptocurrency
+  /// Total Toncoin amount earned; in the smallest units of the cryptocurrency
   final int totalAmount;
 
-  /// Amount of Toncoins that aren't withdrawn yet; in the smallest units of the cryptocurrency
+  /// The Toncoin amount that isn't withdrawn yet; in the smallest units of the cryptocurrency
   final int balanceAmount;
 
-  /// Amount of Toncoins that are available for withdrawal; in the smallest units of the cryptocurrency
+  /// The Toncoin amount that is available for withdrawal; in the smallest units of the cryptocurrency
   final int availableAmount;
 
   /// True, if Toncoins can be withdrawn

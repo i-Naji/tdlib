@@ -22,7 +22,7 @@ final class PremiumGiftPaymentOption extends TdObject {
   /// The amount to pay, in the smallest units of the currency
   final int amount;
 
-  /// The alternative amount of Telegram Stars to pay; 0 if payment in Telegram Stars is not possible
+  /// The alternative Telegram Star amount to pay; 0 if payment in Telegram Stars is not possible
   final int starCount;
 
   /// The discount associated with this option, as a percentage

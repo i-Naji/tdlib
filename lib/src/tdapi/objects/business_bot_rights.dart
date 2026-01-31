@@ -47,7 +47,7 @@ final class BusinessBotRights extends TdObject {
   /// True, if the bot can edit username of the business account
   final bool canEditUsername;
 
-  /// True, if the bot can view gifts and amount of Telegram Stars owned by the business account
+  /// True, if the bot can view gifts and Telegram Star amount owned by the business account
   final bool canViewGiftsAndStars;
 
   /// True, if the bot can sell regular gifts received by the business account
