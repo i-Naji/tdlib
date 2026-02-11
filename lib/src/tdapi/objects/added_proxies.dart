@@ -3,13 +3,13 @@
 
 part of '../tdapi.dart';
 
-/// Represents a list of proxy servers
-final class Proxies extends TdObject {
-  /// Represents a list of proxy servers
-  const Proxies({required this.proxies, this.extra, this.clientId});
+/// Represents a list of added proxy servers
+final class AddedProxies extends TdObject {
+  /// Represents a list of added proxy servers
+  const AddedProxies({required this.proxies, this.extra, this.clientId});
 
   /// List of proxy servers
-  final List<Proxy> proxies;
+  final List<AddedProxy> proxies;
 
   /// "@extra" of the request this object answers.
   @override
@@ -19,11 +19,11 @@ final class Proxies extends TdObject {
   @override
   final int? clientId;
 
-  /// Parses a [Proxies] from TDLib JSON.
-  factory Proxies.fromJson(Map<String, dynamic> json) => Proxies(
-    proxies: _readList<Proxy>(
+  /// Parses a [AddedProxies] from TDLib JSON.
+  factory AddedProxies.fromJson(Map<String, dynamic> json) => AddedProxies(
+    proxies: _readList<AddedProxy>(
       json['proxies'],
-      (e) => _readObject(e, Proxy.fromJson),
+      (e) => _readObject(e, AddedProxy.fromJson),
     ),
     extra: json['@extra'],
     clientId: _readClientId(json['@client_id']),
@@ -37,15 +37,18 @@ final class Proxies extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  Proxies copyWith({List<Proxy>? proxies, dynamic extra, int? clientId}) =>
-      Proxies(
-        proxies: proxies ?? this.proxies,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  AddedProxies copyWith({
+    List<AddedProxy>? proxies,
+    dynamic extra,
+    int? clientId,
+  }) => AddedProxies(
+    proxies: proxies ?? this.proxies,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'proxies';
+  static const String CONSTRUCTOR = 'addedProxies';
 
   @override
   String getConstructor() => CONSTRUCTOR;

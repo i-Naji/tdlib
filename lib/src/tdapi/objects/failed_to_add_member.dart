@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Contains information about a user that has failed to be added to a chat
+/// Contains information about a user who has failed to be added to a chat
 final class FailedToAddMember extends TdObject {
-  /// Contains information about a user that has failed to be added to a chat
+  /// Contains information about a user who has failed to be added to a chat
   const FailedToAddMember({
     required this.userId,
     required this.premiumWouldAllowInvite,

@@ -9,21 +9,13 @@ part of '../tdapi.dart';
 final class TestProxy extends TdFunction<Ok> {
   /// Sends a simple network request to the Telegram servers via proxy; for testing only. Can be called before authorization
   const TestProxy({
-    required this.server,
-    required this.port,
-    required this.type,
+    required this.proxy,
     required this.dcId,
     required this.timeout,
   });
 
-  /// Proxy server domain or IP address
-  final String server;
-
-  /// Proxy server port
-  final int port;
-
-  /// Proxy type
-  final ProxyType type;
+  /// The proxy to test
+  final Proxy proxy;
 
   /// Identifier of a datacenter with which to test connection
   final int dcId;
@@ -34,9 +26,7 @@ final class TestProxy extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
-    'server': server,
-    'port': port,
-    'type': type.toJson(),
+    'proxy': proxy.toJson(),
     'dc_id': dcId,
     'timeout': timeout,
     '@extra': ?extra,
@@ -44,16 +34,8 @@ final class TestProxy extends TdFunction<Ok> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TestProxy copyWith({
-    String? server,
-    int? port,
-    ProxyType? type,
-    int? dcId,
-    double? timeout,
-  }) => TestProxy(
-    server: server ?? this.server,
-    port: port ?? this.port,
-    type: type ?? this.type,
+  TestProxy copyWith({Proxy? proxy, int? dcId, double? timeout}) => TestProxy(
+    proxy: proxy ?? this.proxy,
     dcId: dcId ?? this.dcId,
     timeout: timeout ?? this.timeout,
   );

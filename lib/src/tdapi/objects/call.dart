@@ -8,6 +8,7 @@ final class Call extends TdObject {
   /// Describes a call
   const Call({
     required this.id,
+    required this.uniqueId,
     required this.userId,
     required this.isOutgoing,
     required this.isVideo,
@@ -16,6 +17,9 @@ final class Call extends TdObject {
 
   /// Call identifier, not persistent
   final int id;
+
+  /// Persistent unique call identifier; 0 if isn't assigned yet by the server
+  final int uniqueId;
 
   /// User identifier of the other call participant
   final int userId;
@@ -32,6 +36,7 @@ final class Call extends TdObject {
   /// Parses a [Call] from TDLib JSON.
   factory Call.fromJson(Map<String, dynamic> json) => Call(
     id: _readInt(json['id']),
+    uniqueId: _readInt(json['unique_id']),
     userId: _readInt(json['user_id']),
     isOutgoing: _readBool(json['is_outgoing']),
     isVideo: _readBool(json['is_video']),
@@ -42,6 +47,7 @@ final class Call extends TdObject {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'id': id,
+    'unique_id': uniqueId.toString(),
     'user_id': userId,
     'is_outgoing': isOutgoing,
     'is_video': isVideo,
@@ -52,12 +58,14 @@ final class Call extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   Call copyWith({
     int? id,
+    int? uniqueId,
     int? userId,
     bool? isOutgoing,
     bool? isVideo,
     CallState? state,
   }) => Call(
     id: id ?? this.id,
+    uniqueId: uniqueId ?? this.uniqueId,
     userId: userId ?? this.userId,
     isOutgoing: isOutgoing ?? this.isOutgoing,
     isVideo: isVideo ?? this.isVideo,

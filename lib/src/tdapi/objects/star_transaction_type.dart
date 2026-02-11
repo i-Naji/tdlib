@@ -153,7 +153,7 @@ final class StarTransactionTypeUserDeposit extends StarTransactionType {
   /// The transaction is a deposit of Telegram Stars by another user; relevant for regular users only
   const StarTransactionTypeUserDeposit({required this.userId, this.sticker});
 
-  /// Identifier of the user that gifted Telegram Stars; 0 if the user was anonymous
+  /// Identifier of the user who gifted Telegram Stars; 0 if the user was anonymous
   final int userId;
 
   /// The sticker to be shown in the transaction information; may be null if unknown
@@ -352,7 +352,7 @@ final class StarTransactionTypeBotPaidMediaPurchase
     required this.media,
   });
 
-  /// Identifier of the bot or the business account user that sent the paid media
+  /// Identifier of the bot or the business account user who sent the paid media
   final int userId;
 
   /// The bought media if the transaction wasn't refunded
@@ -404,7 +404,7 @@ final class StarTransactionTypeBotPaidMediaSale extends StarTransactionType {
     this.affiliate,
   });
 
-  /// Identifier of the user that bought the media
+  /// Identifier of the user who bought the media
   final int userId;
 
   /// The bought media
@@ -530,7 +530,7 @@ final class StarTransactionTypeChannelPaidMediaSale
     required this.media,
   });
 
-  /// Identifier of the user that bought the media
+  /// Identifier of the user who bought the media
   final int userId;
 
   /// Identifier of the corresponding message with paid media; may be 0 or an identifier of a deleted message
@@ -587,7 +587,7 @@ final class StarTransactionTypeBotInvoicePurchase extends StarTransactionType {
     required this.productInfo,
   });
 
-  /// Identifier of the bot or the business account user that created the invoice
+  /// Identifier of the bot or the business account user who created the invoice
   final int userId;
 
   /// Information about the bought product
@@ -636,7 +636,7 @@ final class StarTransactionTypeBotInvoiceSale extends StarTransactionType {
     this.affiliate,
   });
 
-  /// Identifier of the user that bought the product
+  /// Identifier of the user who bought the product
   final int userId;
 
   /// Information about the bought product
@@ -699,7 +699,7 @@ final class StarTransactionTypeBotSubscriptionPurchase
     required this.productInfo,
   });
 
-  /// Identifier of the bot or the business account user that created the subscription link
+  /// Identifier of the bot or the business account user who created the subscription link
   final int userId;
 
   /// The number of seconds between consecutive Telegram Star debitings
@@ -757,7 +757,7 @@ final class StarTransactionTypeBotSubscriptionSale extends StarTransactionType {
     this.affiliate,
   });
 
-  /// Identifier of the user that bought the subscription
+  /// Identifier of the user who bought the subscription
   final int userId;
 
   /// The number of seconds between consecutive Telegram Star debitings
@@ -875,7 +875,7 @@ final class StarTransactionTypeChannelSubscriptionSale
     required this.subscriptionPeriod,
   });
 
-  /// Identifier of the user that bought the subscription
+  /// Identifier of the user who bought the subscription
   final int userId;
 
   /// The number of seconds between consecutive Telegram Star debitings
@@ -923,7 +923,7 @@ final class StarTransactionTypeGiftAuctionBid extends StarTransactionType {
     required this.gift,
   });
 
-  /// Identifier of the user that will receive the gift
+  /// Identifier of the user who will receive the gift
   final MessageSender ownerId;
 
   /// The gift
@@ -1142,7 +1142,7 @@ final class StarTransactionTypeGiftSale extends StarTransactionType {
   /// The transaction is a sale of a received gift; relevant for regular users and channel chats only
   const StarTransactionTypeGiftSale({required this.userId, required this.gift});
 
-  /// Identifier of the user that sent the gift
+  /// Identifier of the user who sent the gift
   final int userId;
 
   /// The gift
@@ -1186,7 +1186,7 @@ final class StarTransactionTypeGiftUpgrade extends StarTransactionType {
     required this.gift,
   });
 
-  /// Identifier of the user that initially sent the gift
+  /// Identifier of the user who initially sent the gift
   final int userId;
 
   /// The upgraded gift
@@ -1278,7 +1278,7 @@ final class StarTransactionTypeUpgradedGiftPurchase
     required this.gift,
   });
 
-  /// Identifier of the user that sold the gift
+  /// Identifier of the user who sold the gift
   final int userId;
 
   /// The gift
@@ -1328,7 +1328,7 @@ final class StarTransactionTypeUpgradedGiftSale extends StarTransactionType {
     required this.viaOffer,
   });
 
-  /// Identifier of the user that bought the gift
+  /// Identifier of the user who bought the gift
   final int userId;
 
   /// The gift
@@ -1449,7 +1449,7 @@ final class StarTransactionTypeChannelPaidReactionReceive
     required this.messageId,
   });
 
-  /// Identifier of the user that added the paid reaction
+  /// Identifier of the user who added the paid reaction
   final int userId;
 
   /// Identifier of the reacted message; may be 0 or an identifier of a deleted message
@@ -1882,7 +1882,7 @@ final class StarTransactionTypeSuggestedPostPaymentReceive
   /// The transaction is a receiving of a payment for a suggested post by the channel chat; relevant for channel chats only
   const StarTransactionTypeSuggestedPostPaymentReceive({required this.userId});
 
-  /// Identifier of the user that paid for the suggested post
+  /// Identifier of the user who paid for the suggested post
   final int userId;
 
   /// Parses a [StarTransactionTypeSuggestedPostPaymentReceive] from TDLib JSON.
@@ -1920,7 +1920,7 @@ final class StarTransactionTypePremiumPurchase extends StarTransactionType {
     this.sticker,
   });
 
-  /// Identifier of the user that received the Telegram Premium subscription
+  /// Identifier of the user who received the Telegram Premium subscription
   final int userId;
 
   /// Number of months the Telegram Premium subscription will be active
@@ -2005,7 +2005,7 @@ final class StarTransactionTypeBusinessBotTransferReceive
   /// The transaction is a transfer of Telegram Stars from a business account; relevant for bots only
   const StarTransactionTypeBusinessBotTransferReceive({required this.userId});
 
-  /// Identifier of the user that sent Telegram Stars
+  /// Identifier of the user who sent Telegram Stars
   final int userId;
 
   /// Parses a [StarTransactionTypeBusinessBotTransferReceive] from TDLib JSON.

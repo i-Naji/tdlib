@@ -3,34 +3,47 @@
 
 part of '../tdapi.dart';
 
-/// Returns an HTTP URL which can be used to automatically authorize the current user on a website after clicking an HTTP link. Use the method getExternalLinkInfo to find whether a prior user confirmation is needed
+/// Returns an HTTP URL which can be used to automatically authorize the current user on a website after clicking an HTTP link. Use the method getExternalLinkInfo to find whether a prior user confirmation is needed. May return an empty link if just a toast about successful login has to be shown
 ///
 /// Returns [HttpUrl].
 final class GetExternalLink extends TdFunction<HttpUrl> {
-  /// Returns an HTTP URL which can be used to automatically authorize the current user on a website after clicking an HTTP link. Use the method getExternalLinkInfo to find whether a prior user confirmation is needed
-  const GetExternalLink({required this.link, required this.allowWriteAccess});
+  /// Returns an HTTP URL which can be used to automatically authorize the current user on a website after clicking an HTTP link. Use the method getExternalLinkInfo to find whether a prior user confirmation is needed. May return an empty link if just a toast about successful login has to be shown
+  const GetExternalLink({
+    required this.link,
+    required this.allowWriteAccess,
+    required this.allowPhoneNumberAccess,
+  });
 
   /// The HTTP link
   final String link;
 
-  /// Pass true if the current user allowed the bot, returned in getExternalLinkInfo, to send them messages
+  /// Pass true if the current user allowed the bot that was returned in getExternalLinkInfo, to send them messages
   final bool allowWriteAccess;
+
+  /// Pass true if the current user allowed the bot that was returned in getExternalLinkInfo, to access their phone number
+  final bool allowPhoneNumberAccess;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
     'link': link,
     'allow_write_access': allowWriteAccess,
+    'allow_phone_number_access': allowPhoneNumberAccess,
     '@extra': ?extra,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetExternalLink copyWith({String? link, bool? allowWriteAccess}) =>
-      GetExternalLink(
-        link: link ?? this.link,
-        allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
-      );
+  GetExternalLink copyWith({
+    String? link,
+    bool? allowWriteAccess,
+    bool? allowPhoneNumberAccess,
+  }) => GetExternalLink(
+    link: link ?? this.link,
+    allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
+    allowPhoneNumberAccess:
+        allowPhoneNumberAccess ?? this.allowPhoneNumberAccess,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getExternalLink';

@@ -22,7 +22,7 @@ final class PlaceGiftAuctionBid extends TdFunction<Ok> {
   /// The number of Telegram Stars to place in the bid
   final int starCount;
 
-  /// Identifier of the user that will receive the gift
+  /// Identifier of the user who will receive the gift
   final int userId;
 
   /// Text to show along with the gift; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed. Must be empty if the receiver enabled paid messages

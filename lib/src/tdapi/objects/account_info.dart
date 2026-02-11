@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Contains basic information about another user that started a chat with the current user
+/// Contains basic information about another user who started a chat with the current user
 final class AccountInfo extends TdObject {
-  /// Contains basic information about another user that started a chat with the current user
+  /// Contains basic information about another user who started a chat with the current user
   const AccountInfo({
     required this.registrationMonth,
     required this.registrationYear,

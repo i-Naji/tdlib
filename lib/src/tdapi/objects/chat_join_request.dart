@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Describes a user that sent a join request and waits for administrator approval
+/// Describes a user who sent a join request and waits for administrator approval
 final class ChatJoinRequest extends TdObject {
-  /// Describes a user that sent a join request and waits for administrator approval
+  /// Describes a user who sent a join request and waits for administrator approval
   const ChatJoinRequest({
     required this.userId,
     required this.date,

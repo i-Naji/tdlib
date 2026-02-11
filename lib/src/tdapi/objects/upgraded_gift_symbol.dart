@@ -9,7 +9,7 @@ final class UpgradedGiftSymbol extends TdObject {
   const UpgradedGiftSymbol({
     required this.name,
     required this.sticker,
-    required this.rarityPerMille,
+    required this.rarity,
   });
 
   /// Name of the symbol
@@ -18,15 +18,18 @@ final class UpgradedGiftSymbol extends TdObject {
   /// The sticker representing the symbol
   final Sticker sticker;
 
-  /// The number of upgraded gifts that receive this symbol for each 1000 gifts upgraded
-  final int rarityPerMille;
+  /// The rarity of the symbol
+  final UpgradedGiftAttributeRarity rarity;
 
   /// Parses a [UpgradedGiftSymbol] from TDLib JSON.
   factory UpgradedGiftSymbol.fromJson(Map<String, dynamic> json) =>
       UpgradedGiftSymbol(
         name: _readString(json['name']),
         sticker: _readObject(json['sticker'], Sticker.fromJson),
-        rarityPerMille: _readInt(json['rarity_per_mille']),
+        rarity: _readObject(
+          json['rarity'],
+          UpgradedGiftAttributeRarity.fromJson,
+        ),
       );
 
   @override
@@ -34,7 +37,7 @@ final class UpgradedGiftSymbol extends TdObject {
     '@type': CONSTRUCTOR,
     'name': name,
     'sticker': sticker.toJson(),
-    'rarity_per_mille': rarityPerMille,
+    'rarity': rarity.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -42,11 +45,11 @@ final class UpgradedGiftSymbol extends TdObject {
   UpgradedGiftSymbol copyWith({
     String? name,
     Sticker? sticker,
-    int? rarityPerMille,
+    UpgradedGiftAttributeRarity? rarity,
   }) => UpgradedGiftSymbol(
     name: name ?? this.name,
     sticker: sticker ?? this.sticker,
-    rarityPerMille: rarityPerMille ?? this.rarityPerMille,
+    rarity: rarity ?? this.rarity,
   );
 
   /// TDLib type name.

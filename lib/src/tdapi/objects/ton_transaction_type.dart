@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of transaction with Toncoins
 ///
-/// One of: [TonTransactionTypeFragmentDeposit], [TonTransactionTypeFragmentWithdrawal], [TonTransactionTypeSuggestedPostPayment], [TonTransactionTypeGiftPurchaseOffer], [TonTransactionTypeUpgradedGiftPurchase], [TonTransactionTypeUpgradedGiftSale], [TonTransactionTypeUnsupported]; or [UndecodedTonTransactionType] for a type newer than this API.
+/// One of: [TonTransactionTypeFragmentDeposit], [TonTransactionTypeFragmentWithdrawal], [TonTransactionTypeSuggestedPostPayment], [TonTransactionTypeGiftPurchaseOffer], [TonTransactionTypeUpgradedGiftPurchase], [TonTransactionTypeUpgradedGiftSale], [TonTransactionTypeStakeDiceStake], [TonTransactionTypeStakeDicePayout], [TonTransactionTypeUnsupported]; or [UndecodedTonTransactionType] for a type newer than this API.
 sealed class TonTransactionType extends TdObject {
   const TonTransactionType();
 
@@ -202,7 +202,7 @@ final class TonTransactionTypeUpgradedGiftPurchase extends TonTransactionType {
     required this.gift,
   });
 
-  /// Identifier of the user that sold the gift
+  /// Identifier of the user who sold the gift
   final int userId;
 
   /// The gift
@@ -252,7 +252,7 @@ final class TonTransactionTypeUpgradedGiftSale extends TonTransactionType {
     required this.viaOffer,
   });
 
-  /// Identifier of the user that bought the gift
+  /// Identifier of the user who bought the gift
   final int userId;
 
   /// The gift
@@ -308,6 +308,58 @@ final class TonTransactionTypeUpgradedGiftSale extends TonTransactionType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'tonTransactionTypeUpgradedGiftSale';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a payment for stake dice throw
+final class TonTransactionTypeStakeDiceStake extends TonTransactionType {
+  /// The transaction is a payment for stake dice throw
+  const TonTransactionTypeStakeDiceStake();
+
+  /// Parses a [TonTransactionTypeStakeDiceStake] from TDLib JSON.
+  factory TonTransactionTypeStakeDiceStake.fromJson(
+    Map<String, dynamic> json,
+  ) => const TonTransactionTypeStakeDiceStake();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  TonTransactionTypeStakeDiceStake copyWith() =>
+      const TonTransactionTypeStakeDiceStake();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'tonTransactionTypeStakeDiceStake';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a payment for successful stake dice throw
+final class TonTransactionTypeStakeDicePayout extends TonTransactionType {
+  /// The transaction is a payment for successful stake dice throw
+  const TonTransactionTypeStakeDicePayout();
+
+  /// Parses a [TonTransactionTypeStakeDicePayout] from TDLib JSON.
+  factory TonTransactionTypeStakeDicePayout.fromJson(
+    Map<String, dynamic> json,
+  ) => const TonTransactionTypeStakeDicePayout();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  TonTransactionTypeStakeDicePayout copyWith() =>
+      const TonTransactionTypeStakeDicePayout();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'tonTransactionTypeStakeDicePayout';
 
   @override
   String getConstructor() => CONSTRUCTOR;

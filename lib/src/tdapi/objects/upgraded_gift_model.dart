@@ -9,7 +9,8 @@ final class UpgradedGiftModel extends TdObject {
   const UpgradedGiftModel({
     required this.name,
     required this.sticker,
-    required this.rarityPerMille,
+    required this.rarity,
+    required this.isCrafted,
   });
 
   /// Name of the model
@@ -18,15 +19,22 @@ final class UpgradedGiftModel extends TdObject {
   /// The sticker representing the upgraded gift
   final Sticker sticker;
 
-  /// The number of upgraded gifts that receive this model for each 1000 gifts upgraded
-  final int rarityPerMille;
+  /// The rarity of the model
+  final UpgradedGiftAttributeRarity rarity;
+
+  /// True, if the model can be obtained only through gift crafting
+  final bool isCrafted;
 
   /// Parses a [UpgradedGiftModel] from TDLib JSON.
   factory UpgradedGiftModel.fromJson(Map<String, dynamic> json) =>
       UpgradedGiftModel(
         name: _readString(json['name']),
         sticker: _readObject(json['sticker'], Sticker.fromJson),
-        rarityPerMille: _readInt(json['rarity_per_mille']),
+        rarity: _readObject(
+          json['rarity'],
+          UpgradedGiftAttributeRarity.fromJson,
+        ),
+        isCrafted: _readBool(json['is_crafted']),
       );
 
   @override
@@ -34,7 +42,8 @@ final class UpgradedGiftModel extends TdObject {
     '@type': CONSTRUCTOR,
     'name': name,
     'sticker': sticker.toJson(),
-    'rarity_per_mille': rarityPerMille,
+    'rarity': rarity.toJson(),
+    'is_crafted': isCrafted,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -42,11 +51,13 @@ final class UpgradedGiftModel extends TdObject {
   UpgradedGiftModel copyWith({
     String? name,
     Sticker? sticker,
-    int? rarityPerMille,
+    UpgradedGiftAttributeRarity? rarity,
+    bool? isCrafted,
   }) => UpgradedGiftModel(
     name: name ?? this.name,
     sticker: sticker ?? this.sticker,
-    rarityPerMille: rarityPerMille ?? this.rarityPerMille,
+    rarity: rarity ?? this.rarity,
+    isCrafted: isCrafted ?? this.isCrafted,
   );
 
   /// TDLib type name.

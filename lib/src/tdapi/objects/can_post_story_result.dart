@@ -229,7 +229,7 @@ final class CanPostStoryResultWeeklyLimitExceeded extends CanPostStoryResult {
     this.clientId,
   });
 
-  /// Time left before the user can post the next story
+  /// Time left before the user can post the next story, in seconds
   final int retryAfter;
 
   /// "@extra" of the request this object answers.
@@ -284,7 +284,7 @@ final class CanPostStoryResultMonthlyLimitExceeded extends CanPostStoryResult {
     this.clientId,
   });
 
-  /// Time left before the user can post the next story
+  /// Time left before the user can post the next story, in seconds
   final int retryAfter;
 
   /// "@extra" of the request this object answers.

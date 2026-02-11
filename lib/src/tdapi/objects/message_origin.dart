@@ -47,7 +47,7 @@ final class MessageOriginUser extends MessageOrigin {
   /// The message was originally sent by a known user
   const MessageOriginUser({required this.senderUserId});
 
-  /// Identifier of the user that originally sent the message
+  /// Identifier of the user who originally sent the message
   final int senderUserId;
 
   /// Parses a [MessageOriginUser] from TDLib JSON.

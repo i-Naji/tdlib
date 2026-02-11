@@ -8,6 +8,7 @@ final class GroupCall extends TdObject {
   /// Describes a group call
   const GroupCall({
     required this.id,
+    required this.uniqueId,
     required this.title,
     required this.inviteLink,
     required this.paidMessageStarCount,
@@ -44,6 +45,9 @@ final class GroupCall extends TdObject {
 
   /// Group call identifier
   final int id;
+
+  /// Persistent unique group call identifier
+  final int uniqueId;
 
   /// Group call title; for video chats only
   final String title;
@@ -146,6 +150,7 @@ final class GroupCall extends TdObject {
   /// Parses a [GroupCall] from TDLib JSON.
   factory GroupCall.fromJson(Map<String, dynamic> json) => GroupCall(
     id: _readInt(json['id']),
+    uniqueId: _readInt(json['unique_id']),
     title: _readString(json['title']),
     inviteLink: _readString(json['invite_link']),
     paidMessageStarCount: _readInt(json['paid_message_star_count']),
@@ -194,6 +199,7 @@ final class GroupCall extends TdObject {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'id': id,
+    'unique_id': uniqueId.toString(),
     'title': title,
     'invite_link': inviteLink,
     'paid_message_star_count': paidMessageStarCount,
@@ -230,6 +236,7 @@ final class GroupCall extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   GroupCall copyWith({
     int? id,
+    int? uniqueId,
     String? title,
     String? inviteLink,
     int? paidMessageStarCount,
@@ -264,6 +271,7 @@ final class GroupCall extends TdObject {
     int? clientId,
   }) => GroupCall(
     id: id ?? this.id,
+    uniqueId: uniqueId ?? this.uniqueId,
     title: title ?? this.title,
     inviteLink: inviteLink ?? this.inviteLink,
     paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,

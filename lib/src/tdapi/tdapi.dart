@@ -108,6 +108,7 @@ part 'functions/commit_pending_paid_message_reactions.dart';
 part 'functions/confirm_qr_code_authentication.dart';
 part 'functions/confirm_session.dart';
 part 'functions/connect_affiliate_program.dart';
+part 'functions/craft_gift.dart';
 part 'functions/create_basic_group_chat.dart';
 part 'functions/create_business_chat_link.dart';
 part 'functions/create_call.dart';
@@ -289,6 +290,7 @@ part 'functions/get_chat_message_calendar.dart';
 part 'functions/get_chat_message_count.dart';
 part 'functions/get_chat_message_position.dart';
 part 'functions/get_chat_notification_settings_exceptions.dart';
+part 'functions/get_chat_owner_after_leaving.dart';
 part 'functions/get_chat_pinned_message.dart';
 part 'functions/get_chat_posted_to_chat_page_stories.dart';
 part 'functions/get_chat_revenue_statistics.dart';
@@ -354,7 +356,7 @@ part 'functions/get_gift_auction_state.dart';
 part 'functions/get_gift_chat_themes.dart';
 part 'functions/get_gift_collections.dart';
 part 'functions/get_gift_upgrade_preview.dart';
-part 'functions/get_gift_upgrade_variants.dart';
+part 'functions/get_gifts_for_crafting.dart';
 part 'functions/get_giveaway_info.dart';
 part 'functions/get_greeting_stickers.dart';
 part 'functions/get_grossing_web_app_bots.dart';
@@ -441,7 +443,6 @@ part 'functions/get_premium_sticker_examples.dart';
 part 'functions/get_premium_stickers.dart';
 part 'functions/get_prepared_inline_message.dart';
 part 'functions/get_proxies.dart';
-part 'functions/get_proxy_link.dart';
 part 'functions/get_public_post_search_limits.dart';
 part 'functions/get_push_receiver_id.dart';
 part 'functions/get_read_date_privacy_settings.dart';
@@ -516,6 +517,7 @@ part 'functions/get_trending_sticker_sets.dart';
 part 'functions/get_upgraded_gift.dart';
 part 'functions/get_upgraded_gift_emoji_statuses.dart';
 part 'functions/get_upgraded_gift_value_info.dart';
+part 'functions/get_upgraded_gift_variants.dart';
 part 'functions/get_upgraded_gift_withdrawal_url.dart';
 part 'functions/get_upgraded_gifts_promotional_animation.dart';
 part 'functions/get_user.dart';
@@ -962,6 +964,8 @@ part 'objects/accepted_gift_types.dart';
 part 'objects/account_info.dart';
 part 'objects/account_ttl.dart';
 part 'objects/active_story_state.dart';
+part 'objects/added_proxies.dart';
+part 'objects/added_proxy.dart';
 part 'objects/added_reaction.dart';
 part 'objects/added_reactions.dart';
 part 'objects/address.dart';
@@ -980,6 +984,7 @@ part 'objects/animations.dart';
 part 'objects/archive_chat_list_settings.dart';
 part 'objects/attachment_menu_bot.dart';
 part 'objects/attachment_menu_bot_color.dart';
+part 'objects/attribute_craft_persistence_probability.dart';
 part 'objects/auction_bid.dart';
 part 'objects/auction_round.dart';
 part 'objects/auction_state.dart';
@@ -1040,6 +1045,7 @@ part 'objects/business_opening_hours.dart';
 part 'objects/business_opening_hours_interval.dart';
 part 'objects/business_recipients.dart';
 part 'objects/business_start_page.dart';
+part 'objects/button_style.dart';
 part 'objects/call.dart';
 part 'objects/call_discard_reason.dart';
 part 'objects/call_id.dart';
@@ -1143,6 +1149,7 @@ part 'objects/contact.dart';
 part 'objects/count.dart';
 part 'objects/countries.dart';
 part 'objects/country_info.dart';
+part 'objects/craft_gift_result.dart';
 part 'objects/created_basic_group_chat.dart';
 part 'objects/current_weather.dart';
 part 'objects/custom_request_result.dart';
@@ -1227,6 +1234,7 @@ part 'objects/gift_settings.dart';
 part 'objects/gift_upgrade_preview.dart';
 part 'objects/gift_upgrade_price.dart';
 part 'objects/gift_upgrade_variants.dart';
+part 'objects/gifts_for_crafting.dart';
 part 'objects/gifts_for_resale.dart';
 part 'objects/giveaway_info.dart';
 part 'objects/giveaway_parameters.dart';
@@ -1431,7 +1439,6 @@ part 'objects/profile_accent_color.dart';
 part 'objects/profile_accent_colors.dart';
 part 'objects/profile_photo.dart';
 part 'objects/profile_tab.dart';
-part 'objects/proxies.dart';
 part 'objects/proxy.dart';
 part 'objects/proxy_type.dart';
 part 'objects/public_chat_type.dart';
@@ -1483,6 +1490,7 @@ part 'objects/sent_web_app_message.dart';
 part 'objects/session.dart';
 part 'objects/session_type.dart';
 part 'objects/sessions.dart';
+part 'objects/settings_section.dart';
 part 'objects/shared_chat.dart';
 part 'objects/shared_user.dart';
 part 'objects/shipping_option.dart';
@@ -1533,6 +1541,7 @@ part 'objects/story_area.dart';
 part 'objects/story_area_position.dart';
 part 'objects/story_area_type.dart';
 part 'objects/story_content.dart';
+part 'objects/story_content_type.dart';
 part 'objects/story_full_id.dart';
 part 'objects/story_info.dart';
 part 'objects/story_interaction.dart';
@@ -1596,6 +1605,7 @@ part 'objects/updates.dart';
 part 'objects/upgrade_gift_result.dart';
 part 'objects/upgraded_gift.dart';
 part 'objects/upgraded_gift_attribute_id.dart';
+part 'objects/upgraded_gift_attribute_rarity.dart';
 part 'objects/upgraded_gift_backdrop.dart';
 part 'objects/upgraded_gift_backdrop_colors.dart';
 part 'objects/upgraded_gift_backdrop_count.dart';
@@ -1638,14 +1648,14 @@ part 'objects/web_app_open_parameters.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.60';
+const String tdlibVersion = '1.8.61';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = 'cb863c1600082404428f1a84e407b866b9d412a8';
+const String tdlibSchemaCommit = '6d509061574d684117f74133056aa43df89022fc';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  'cb863c1600082404428f1a84e407b866b9d412a8',
+  '6d509061574d684117f74133056aa43df89022fc',
 ];
 
 /// Base class of every TDLib object.
@@ -1946,6 +1956,15 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'upgradedGiftOriginBlockchain': UpgradedGiftOriginBlockchain.fromJson,
   'upgradedGiftOriginPrepaidUpgrade': UpgradedGiftOriginPrepaidUpgrade.fromJson,
   'upgradedGiftOriginOffer': UpgradedGiftOriginOffer.fromJson,
+  'upgradedGiftOriginCraft': UpgradedGiftOriginCraft.fromJson,
+  'upgradedGiftAttributeRarityPerMille':
+      UpgradedGiftAttributeRarityPerMille.fromJson,
+  'upgradedGiftAttributeRarityUncommon':
+      UpgradedGiftAttributeRarityUncommon.fromJson,
+  'upgradedGiftAttributeRarityRare': UpgradedGiftAttributeRarityRare.fromJson,
+  'upgradedGiftAttributeRarityEpic': UpgradedGiftAttributeRarityEpic.fromJson,
+  'upgradedGiftAttributeRarityLegendary':
+      UpgradedGiftAttributeRarityLegendary.fromJson,
   'upgradedGiftModel': UpgradedGiftModel.fromJson,
   'upgradedGiftSymbol': UpgradedGiftSymbol.fromJson,
   'upgradedGiftBackdropColors': UpgradedGiftBackdropColors.fromJson,
@@ -1956,6 +1975,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'upgradedGift': UpgradedGift.fromJson,
   'upgradedGiftValueInfo': UpgradedGiftValueInfo.fromJson,
   'upgradeGiftResult': UpgradeGiftResult.fromJson,
+  'craftGiftResultSuccess': CraftGiftResultSuccess.fromJson,
+  'craftGiftResultTooEarly': CraftGiftResultTooEarly.fromJson,
+  'craftGiftResultInvalidGift': CraftGiftResultInvalidGift.fromJson,
+  'craftGiftResultFail': CraftGiftResultFail.fromJson,
   'availableGift': AvailableGift.fromJson,
   'availableGifts': AvailableGifts.fromJson,
   'giftUpgradePrice': GiftUpgradePrice.fromJson,
@@ -1977,6 +2000,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'sentGiftUpgraded': SentGiftUpgraded.fromJson,
   'receivedGift': ReceivedGift.fromJson,
   'receivedGifts': ReceivedGifts.fromJson,
+  'attributeCraftPersistenceProbability':
+      AttributeCraftPersistenceProbability.fromJson,
+  'giftsForCrafting': GiftsForCrafting.fromJson,
   'giftUpgradePreview': GiftUpgradePreview.fromJson,
   'giftUpgradeVariants': GiftUpgradeVariants.fromJson,
   'auctionBid': AuctionBid.fromJson,
@@ -2087,6 +2113,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       TonTransactionTypeUpgradedGiftPurchase.fromJson,
   'tonTransactionTypeUpgradedGiftSale':
       TonTransactionTypeUpgradedGiftSale.fromJson,
+  'tonTransactionTypeStakeDiceStake': TonTransactionTypeStakeDiceStake.fromJson,
+  'tonTransactionTypeStakeDicePayout':
+      TonTransactionTypeStakeDicePayout.fromJson,
   'tonTransactionTypeUnsupported': TonTransactionTypeUnsupported.fromJson,
   'tonTransaction': TonTransaction.fromJson,
   'tonTransactions': TonTransactions.fromJson,
@@ -2323,6 +2352,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'chatActionBarAddContact': ChatActionBarAddContact.fromJson,
   'chatActionBarSharePhoneNumber': ChatActionBarSharePhoneNumber.fromJson,
   'chatActionBarJoinRequest': ChatActionBarJoinRequest.fromJson,
+  'buttonStyleDefault': ButtonStyleDefault.fromJson,
+  'buttonStylePrimary': ButtonStylePrimary.fromJson,
+  'buttonStyleDanger': ButtonStyleDanger.fromJson,
+  'buttonStyleSuccess': ButtonStyleSuccess.fromJson,
   'keyboardButtonTypeText': KeyboardButtonTypeText.fromJson,
   'keyboardButtonTypeRequestPhoneNumber':
       KeyboardButtonTypeRequestPhoneNumber.fromJson,
@@ -2666,6 +2699,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageChatChangeTitle': MessageChatChangeTitle.fromJson,
   'messageChatChangePhoto': MessageChatChangePhoto.fromJson,
   'messageChatDeletePhoto': MessageChatDeletePhoto.fromJson,
+  'messageChatOwnerLeft': MessageChatOwnerLeft.fromJson,
+  'messageChatOwnerChanged': MessageChatOwnerChanged.fromJson,
   'messageChatAddMembers': MessageChatAddMembers.fromJson,
   'messageChatJoinByLink': MessageChatJoinByLink.fromJson,
   'messageChatJoinByRequest': MessageChatJoinByRequest.fromJson,
@@ -2871,6 +2906,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputStoryArea': InputStoryArea.fromJson,
   'inputStoryAreas': InputStoryAreas.fromJson,
   'storyVideo': StoryVideo.fromJson,
+  'storyContentTypePhoto': StoryContentTypePhoto.fromJson,
+  'storyContentTypeVideo': StoryContentTypeVideo.fromJson,
+  'storyContentTypeLive': StoryContentTypeLive.fromJson,
+  'storyContentTypeUnsupported': StoryContentTypeUnsupported.fromJson,
   'storyContentPhoto': StoryContentPhoto.fromJson,
   'storyContentVideo': StoryContentVideo.fromJson,
   'storyContentLive': StoryContentLive.fromJson,
@@ -3408,6 +3447,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'notificationSounds': NotificationSounds.fromJson,
   'notification': Notification.fromJson,
   'notificationGroup': NotificationGroup.fromJson,
+  'proxy': Proxy.fromJson,
   'optionValueBoolean': OptionValueBoolean.fromJson,
   'optionValueEmpty': OptionValueEmpty.fromJson,
   'optionValueInteger': OptionValueInteger.fromJson,
@@ -3517,7 +3557,28 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'reportStoryResultOk': ReportStoryResultOk.fromJson,
   'reportStoryResultOptionRequired': ReportStoryResultOptionRequired.fromJson,
   'reportStoryResultTextRequired': ReportStoryResultTextRequired.fromJson,
-  'internalLinkTypeActiveSessions': InternalLinkTypeActiveSessions.fromJson,
+  'settingsSectionAppearance': SettingsSectionAppearance.fromJson,
+  'settingsSectionAskQuestion': SettingsSectionAskQuestion.fromJson,
+  'settingsSectionBusiness': SettingsSectionBusiness.fromJson,
+  'settingsSectionChatFolders': SettingsSectionChatFolders.fromJson,
+  'settingsSectionDataAndStorage': SettingsSectionDataAndStorage.fromJson,
+  'settingsSectionDevices': SettingsSectionDevices.fromJson,
+  'settingsSectionEditProfile': SettingsSectionEditProfile.fromJson,
+  'settingsSectionFaq': SettingsSectionFaq.fromJson,
+  'settingsSectionFeatures': SettingsSectionFeatures.fromJson,
+  'settingsSectionInAppBrowser': SettingsSectionInAppBrowser.fromJson,
+  'settingsSectionLanguage': SettingsSectionLanguage.fromJson,
+  'settingsSectionMyStars': SettingsSectionMyStars.fromJson,
+  'settingsSectionMyToncoins': SettingsSectionMyToncoins.fromJson,
+  'settingsSectionNotifications': SettingsSectionNotifications.fromJson,
+  'settingsSectionPowerSaving': SettingsSectionPowerSaving.fromJson,
+  'settingsSectionPremium': SettingsSectionPremium.fromJson,
+  'settingsSectionPrivacyAndSecurity':
+      SettingsSectionPrivacyAndSecurity.fromJson,
+  'settingsSectionPrivacyPolicy': SettingsSectionPrivacyPolicy.fromJson,
+  'settingsSectionQrCode': SettingsSectionQrCode.fromJson,
+  'settingsSectionSearch': SettingsSectionSearch.fromJson,
+  'settingsSectionSendGift': SettingsSectionSendGift.fromJson,
   'internalLinkTypeAttachmentMenuBot':
       InternalLinkTypeAttachmentMenuBot.fromJson,
   'internalLinkTypeAuthenticationCode':
@@ -3527,22 +3588,16 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'internalLinkTypeBotStart': InternalLinkTypeBotStart.fromJson,
   'internalLinkTypeBotStartInGroup': InternalLinkTypeBotStartInGroup.fromJson,
   'internalLinkTypeBusinessChat': InternalLinkTypeBusinessChat.fromJson,
-  'internalLinkTypeBuyStars': InternalLinkTypeBuyStars.fromJson,
-  'internalLinkTypeChangePhoneNumber':
-      InternalLinkTypeChangePhoneNumber.fromJson,
+  'internalLinkTypeCallsPage': InternalLinkTypeCallsPage.fromJson,
   'internalLinkTypeChatAffiliateProgram':
       InternalLinkTypeChatAffiliateProgram.fromJson,
   'internalLinkTypeChatBoost': InternalLinkTypeChatBoost.fromJson,
   'internalLinkTypeChatFolderInvite': InternalLinkTypeChatFolderInvite.fromJson,
-  'internalLinkTypeChatFolderSettings':
-      InternalLinkTypeChatFolderSettings.fromJson,
   'internalLinkTypeChatInvite': InternalLinkTypeChatInvite.fromJson,
-  'internalLinkTypeDefaultMessageAutoDeleteTimerSettings':
-      InternalLinkTypeDefaultMessageAutoDeleteTimerSettings.fromJson,
+  'internalLinkTypeChatSelection': InternalLinkTypeChatSelection.fromJson,
+  'internalLinkTypeContactsPage': InternalLinkTypeContactsPage.fromJson,
   'internalLinkTypeDirectMessagesChat':
       InternalLinkTypeDirectMessagesChat.fromJson,
-  'internalLinkTypeEditProfileSettings':
-      InternalLinkTypeEditProfileSettings.fromJson,
   'internalLinkTypeGame': InternalLinkTypeGame.fromJson,
   'internalLinkTypeGiftAuction': InternalLinkTypeGiftAuction.fromJson,
   'internalLinkTypeGiftCollection': InternalLinkTypeGiftCollection.fromJson,
@@ -3550,40 +3605,38 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'internalLinkTypeInstantView': InternalLinkTypeInstantView.fromJson,
   'internalLinkTypeInvoice': InternalLinkTypeInvoice.fromJson,
   'internalLinkTypeLanguagePack': InternalLinkTypeLanguagePack.fromJson,
-  'internalLinkTypeLanguageSettings': InternalLinkTypeLanguageSettings.fromJson,
   'internalLinkTypeLiveStory': InternalLinkTypeLiveStory.fromJson,
-  'internalLinkTypeLoginEmailSettings':
-      InternalLinkTypeLoginEmailSettings.fromJson,
   'internalLinkTypeMainWebApp': InternalLinkTypeMainWebApp.fromJson,
   'internalLinkTypeMessage': InternalLinkTypeMessage.fromJson,
   'internalLinkTypeMessageDraft': InternalLinkTypeMessageDraft.fromJson,
-  'internalLinkTypeMyStars': InternalLinkTypeMyStars.fromJson,
-  'internalLinkTypeMyToncoins': InternalLinkTypeMyToncoins.fromJson,
+  'internalLinkTypeMyProfilePage': InternalLinkTypeMyProfilePage.fromJson,
+  'internalLinkTypeNewChannelChat': InternalLinkTypeNewChannelChat.fromJson,
+  'internalLinkTypeNewGroupChat': InternalLinkTypeNewGroupChat.fromJson,
+  'internalLinkTypeNewPrivateChat': InternalLinkTypeNewPrivateChat.fromJson,
+  'internalLinkTypeNewStory': InternalLinkTypeNewStory.fromJson,
   'internalLinkTypePassportDataRequest':
       InternalLinkTypePassportDataRequest.fromJson,
-  'internalLinkTypePasswordSettings': InternalLinkTypePasswordSettings.fromJson,
   'internalLinkTypePhoneNumberConfirmation':
       InternalLinkTypePhoneNumberConfirmation.fromJson,
-  'internalLinkTypePhoneNumberPrivacySettings':
-      InternalLinkTypePhoneNumberPrivacySettings.fromJson,
-  'internalLinkTypePremiumFeatures': InternalLinkTypePremiumFeatures.fromJson,
-  'internalLinkTypePremiumGift': InternalLinkTypePremiumGift.fromJson,
+  'internalLinkTypePremiumFeaturesPage':
+      InternalLinkTypePremiumFeaturesPage.fromJson,
   'internalLinkTypePremiumGiftCode': InternalLinkTypePremiumGiftCode.fromJson,
-  'internalLinkTypePrivacyAndSecuritySettings':
-      InternalLinkTypePrivacyAndSecuritySettings.fromJson,
+  'internalLinkTypePremiumGiftPurchase':
+      InternalLinkTypePremiumGiftPurchase.fromJson,
   'internalLinkTypeProxy': InternalLinkTypeProxy.fromJson,
   'internalLinkTypePublicChat': InternalLinkTypePublicChat.fromJson,
   'internalLinkTypeQrCodeAuthentication':
       InternalLinkTypeQrCodeAuthentication.fromJson,
   'internalLinkTypeRestorePurchases': InternalLinkTypeRestorePurchases.fromJson,
+  'internalLinkTypeSavedMessages': InternalLinkTypeSavedMessages.fromJson,
+  'internalLinkTypeSearch': InternalLinkTypeSearch.fromJson,
   'internalLinkTypeSettings': InternalLinkTypeSettings.fromJson,
+  'internalLinkTypeStarPurchase': InternalLinkTypeStarPurchase.fromJson,
   'internalLinkTypeStickerSet': InternalLinkTypeStickerSet.fromJson,
   'internalLinkTypeStory': InternalLinkTypeStory.fromJson,
   'internalLinkTypeStoryAlbum': InternalLinkTypeStoryAlbum.fromJson,
   'internalLinkTypeTheme': InternalLinkTypeTheme.fromJson,
-  'internalLinkTypeThemeSettings': InternalLinkTypeThemeSettings.fromJson,
   'internalLinkTypeUnknownDeepLink': InternalLinkTypeUnknownDeepLink.fromJson,
-  'internalLinkTypeUnsupportedProxy': InternalLinkTypeUnsupportedProxy.fromJson,
   'internalLinkTypeUpgradedGift': InternalLinkTypeUpgradedGift.fromJson,
   'internalLinkTypeUserPhoneNumber': InternalLinkTypeUserPhoneNumber.fromJson,
   'internalLinkTypeUserToken': InternalLinkTypeUserToken.fromJson,
@@ -3699,8 +3752,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'proxyTypeSocks5': ProxyTypeSocks5.fromJson,
   'proxyTypeHttp': ProxyTypeHttp.fromJson,
   'proxyTypeMtproto': ProxyTypeMtproto.fromJson,
-  'proxy': Proxy.fromJson,
-  'proxies': Proxies.fromJson,
+  'addedProxy': AddedProxy.fromJson,
+  'addedProxies': AddedProxies.fromJson,
   'inputSticker': InputSticker.fromJson,
   'dateRange': DateRange.fromJson,
   'statisticalValue': StatisticalValue.fromJson,

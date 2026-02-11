@@ -5,57 +5,39 @@ part of '../tdapi.dart';
 
 /// Edits an existing proxy server for network requests. Can be called before authorization
 ///
-/// Returns [Proxy].
-final class EditProxy extends TdFunction<Proxy> {
+/// Returns [AddedProxy].
+final class EditProxy extends TdFunction<AddedProxy> {
   /// Edits an existing proxy server for network requests. Can be called before authorization
   const EditProxy({
     required this.proxyId,
-    required this.server,
-    required this.port,
+    required this.proxy,
     required this.enable,
-    required this.type,
   });
 
   /// Proxy identifier
   final int proxyId;
 
-  /// Proxy server domain or IP address
-  final String server;
-
-  /// Proxy server port
-  final int port;
+  /// The new information about the proxy
+  final Proxy proxy;
 
   /// Pass true to immediately enable the proxy
   final bool enable;
-
-  /// Proxy type
-  final ProxyType type;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
     'proxy_id': proxyId,
-    'server': server,
-    'port': port,
+    'proxy': proxy.toJson(),
     'enable': enable,
-    'type': type.toJson(),
     '@extra': ?extra,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  EditProxy copyWith({
-    int? proxyId,
-    String? server,
-    int? port,
-    bool? enable,
-    ProxyType? type,
-  }) => EditProxy(
+  EditProxy copyWith({int? proxyId, Proxy? proxy, bool? enable}) => EditProxy(
     proxyId: proxyId ?? this.proxyId,
-    server: server ?? this.server,
-    port: port ?? this.port,
+    proxy: proxy ?? this.proxy,
     enable: enable ?? this.enable,
-    type: type ?? this.type,
   );
 
   /// TDLib type name.

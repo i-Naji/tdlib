@@ -20,7 +20,7 @@ final class BusinessConnection extends TdObject {
   /// Unique identifier of the connection
   final String id;
 
-  /// Identifier of the business user that created the connection
+  /// Identifier of the business user who created the connection
   final int userId;
 
   /// Chat identifier of the private chat with the user

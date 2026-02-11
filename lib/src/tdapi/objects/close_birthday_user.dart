@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Describes a user that had or will have a birthday soon
+/// Describes a user who had or will have a birthday soon
 final class CloseBirthdayUser extends TdObject {
-  /// Describes a user that had or will have a birthday soon
+  /// Describes a user who had or will have a birthday soon
   const CloseBirthdayUser({required this.userId, required this.birthdate});
 
   /// User identifier

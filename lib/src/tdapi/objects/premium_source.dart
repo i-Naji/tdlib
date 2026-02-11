@@ -177,9 +177,9 @@ final class PremiumSourceStoryFeature extends PremiumSource {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A user opened an internal link of the type internalLinkTypePremiumFeatures
+/// A user opened an internal link of the type internalLinkTypePremiumFeaturesPage
 final class PremiumSourceLink extends PremiumSource {
-  /// A user opened an internal link of the type internalLinkTypePremiumFeatures
+  /// A user opened an internal link of the type internalLinkTypePremiumFeaturesPage
   const PremiumSourceLink({required this.referrer});
 
   /// The referrer from the link

@@ -47,7 +47,7 @@ final class MessageSenderUser extends MessageSender {
   /// The message was sent by a known user
   const MessageSenderUser({required this.userId, this.extra, this.clientId});
 
-  /// Identifier of the user that sent the message
+  /// Identifier of the user who sent the message
   final int userId;
 
   /// "@extra" of the request this object answers.

@@ -77,7 +77,7 @@ final class Story extends TdObject {
   /// True, if the story can be forwarded as a message or reposted as a story. Otherwise, screenshotting and saving of the story content must be also forbidden
   final bool canBeForwarded;
 
-  /// True, if the story can be replied in the chat with the user that posted the story
+  /// True, if the story can be replied in the chat with the user who posted the story
   final bool canBeReplied;
 
   /// True, if the story privacy settings can be changed

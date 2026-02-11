@@ -6,10 +6,21 @@ part of '../tdapi.dart';
 /// Represents a single button in a bot keyboard
 final class KeyboardButton extends TdObject {
   /// Represents a single button in a bot keyboard
-  const KeyboardButton({required this.text, required this.type});
+  const KeyboardButton({
+    required this.text,
+    required this.iconCustomEmojiId,
+    required this.style,
+    required this.type,
+  });
 
   /// Text of the button
   final String text;
+
+  /// Identifier of the custom emoji that must be shown on the button; 0 if none
+  final int iconCustomEmojiId;
+
+  /// Style of the button
+  final ButtonStyle style;
 
   /// Type of the button
   final KeyboardButtonType type;
@@ -17,6 +28,8 @@ final class KeyboardButton extends TdObject {
   /// Parses a [KeyboardButton] from TDLib JSON.
   factory KeyboardButton.fromJson(Map<String, dynamic> json) => KeyboardButton(
     text: _readString(json['text']),
+    iconCustomEmojiId: _readInt(json['icon_custom_emoji_id']),
+    style: _readObject(json['style'], ButtonStyle.fromJson),
     type: _readObject(json['type'], KeyboardButtonType.fromJson),
   );
 
@@ -24,13 +37,24 @@ final class KeyboardButton extends TdObject {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'text': text,
+    'icon_custom_emoji_id': iconCustomEmojiId.toString(),
+    'style': style.toJson(),
     'type': type.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  KeyboardButton copyWith({String? text, KeyboardButtonType? type}) =>
-      KeyboardButton(text: text ?? this.text, type: type ?? this.type);
+  KeyboardButton copyWith({
+    String? text,
+    int? iconCustomEmojiId,
+    ButtonStyle? style,
+    KeyboardButtonType? type,
+  }) => KeyboardButton(
+    text: text ?? this.text,
+    iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
+    style: style ?? this.style,
+    type: type ?? this.type,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'keyboardButton';

@@ -19,7 +19,7 @@ final class PremiumGiftCodeInfo extends TdObject {
     this.clientId,
   });
 
-  /// Identifier of a chat or a user that created the gift code; may be null if unknown. If null and the code is from messagePremiumGiftCode message, then creator_id from the message can be used
+  /// Identifier of a chat or a user who created the gift code; may be null if unknown. If null and the code is from messagePremiumGiftCode message, then creator_id from the message can be used
   final MessageSender? creatorId;
 
   /// Point in time (Unix timestamp) when the code was created

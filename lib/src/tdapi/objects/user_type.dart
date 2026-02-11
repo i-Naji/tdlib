@@ -99,6 +99,7 @@ final class UserTypeBot extends UserType {
     required this.canReadAllGroupMessages,
     required this.hasMainWebApp,
     required this.hasTopics,
+    required this.allowsUsersToCreateTopics,
     required this.isInline,
     required this.inlineQueryPlaceholder,
     required this.needLocation,
@@ -121,6 +122,9 @@ final class UserTypeBot extends UserType {
 
   /// True, if the bot has topics
   final bool hasTopics;
+
+  /// True, if users can create and delete topics in the chat with the bot
+  final bool allowsUsersToCreateTopics;
 
   /// True, if the bot supports inline queries
   final bool isInline;
@@ -147,6 +151,7 @@ final class UserTypeBot extends UserType {
     canReadAllGroupMessages: _readBool(json['can_read_all_group_messages']),
     hasMainWebApp: _readBool(json['has_main_web_app']),
     hasTopics: _readBool(json['has_topics']),
+    allowsUsersToCreateTopics: _readBool(json['allows_users_to_create_topics']),
     isInline: _readBool(json['is_inline']),
     inlineQueryPlaceholder: _readString(json['inline_query_placeholder']),
     needLocation: _readBool(json['need_location']),
@@ -165,6 +170,7 @@ final class UserTypeBot extends UserType {
     'can_read_all_group_messages': canReadAllGroupMessages,
     'has_main_web_app': hasMainWebApp,
     'has_topics': hasTopics,
+    'allows_users_to_create_topics': allowsUsersToCreateTopics,
     'is_inline': isInline,
     'inline_query_placeholder': inlineQueryPlaceholder,
     'need_location': needLocation,
@@ -182,6 +188,7 @@ final class UserTypeBot extends UserType {
     bool? canReadAllGroupMessages,
     bool? hasMainWebApp,
     bool? hasTopics,
+    bool? allowsUsersToCreateTopics,
     bool? isInline,
     String? inlineQueryPlaceholder,
     bool? needLocation,
@@ -195,6 +202,8 @@ final class UserTypeBot extends UserType {
         canReadAllGroupMessages ?? this.canReadAllGroupMessages,
     hasMainWebApp: hasMainWebApp ?? this.hasMainWebApp,
     hasTopics: hasTopics ?? this.hasTopics,
+    allowsUsersToCreateTopics:
+        allowsUsersToCreateTopics ?? this.allowsUsersToCreateTopics,
     isInline: isInline ?? this.isInline,
     inlineQueryPlaceholder:
         inlineQueryPlaceholder ?? this.inlineQueryPlaceholder,

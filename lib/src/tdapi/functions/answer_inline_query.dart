@@ -20,7 +20,7 @@ final class AnswerInlineQuery extends TdFunction<Ok> {
   /// Identifier of the inline query
   final int inlineQueryId;
 
-  /// Pass true if results may be cached and returned only for the user that sent the query. By default, results may be returned to any user who sends the same query
+  /// Pass true if results may be cached and returned only for the user who sent the query. By default, results may be returned to any user who sends the same query
   final bool isPersonal;
 
   /// Button to be shown above inline query results; pass null if none

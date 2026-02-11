@@ -10,7 +10,7 @@ final class UpgradedGiftBackdrop extends TdObject {
     required this.id,
     required this.name,
     required this.colors,
-    required this.rarityPerMille,
+    required this.rarity,
   });
 
   /// Unique identifier of the backdrop
@@ -22,20 +22,18 @@ final class UpgradedGiftBackdrop extends TdObject {
   /// Colors of the backdrop
   final UpgradedGiftBackdropColors colors;
 
-  /// The number of upgraded gifts that receive this backdrop for each 1000 gifts upgraded
-  final int rarityPerMille;
+  /// The rarity of the backdrop
+  final UpgradedGiftAttributeRarity rarity;
 
   /// Parses a [UpgradedGiftBackdrop] from TDLib JSON.
-  factory UpgradedGiftBackdrop.fromJson(Map<String, dynamic> json) =>
-      UpgradedGiftBackdrop(
-        id: _readInt(json['id']),
-        name: _readString(json['name']),
-        colors: _readObject(
-          json['colors'],
-          UpgradedGiftBackdropColors.fromJson,
-        ),
-        rarityPerMille: _readInt(json['rarity_per_mille']),
-      );
+  factory UpgradedGiftBackdrop.fromJson(
+    Map<String, dynamic> json,
+  ) => UpgradedGiftBackdrop(
+    id: _readInt(json['id']),
+    name: _readString(json['name']),
+    colors: _readObject(json['colors'], UpgradedGiftBackdropColors.fromJson),
+    rarity: _readObject(json['rarity'], UpgradedGiftAttributeRarity.fromJson),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
@@ -43,7 +41,7 @@ final class UpgradedGiftBackdrop extends TdObject {
     'id': id,
     'name': name,
     'colors': colors.toJson(),
-    'rarity_per_mille': rarityPerMille,
+    'rarity': rarity.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -52,12 +50,12 @@ final class UpgradedGiftBackdrop extends TdObject {
     int? id,
     String? name,
     UpgradedGiftBackdropColors? colors,
-    int? rarityPerMille,
+    UpgradedGiftAttributeRarity? rarity,
   }) => UpgradedGiftBackdrop(
     id: id ?? this.id,
     name: name ?? this.name,
     colors: colors ?? this.colors,
-    rarityPerMille: rarityPerMille ?? this.rarityPerMille,
+    rarity: rarity ?? this.rarity,
   );
 
   /// TDLib type name.

@@ -47,7 +47,14 @@ final class UndecodedGiftResaleResult extends GiftResaleResult {
 /// Operation was successfully completed
 final class GiftResaleResultOk extends GiftResaleResult {
   /// Operation was successfully completed
-  const GiftResaleResultOk({this.extra, this.clientId});
+  const GiftResaleResultOk({
+    required this.receivedGiftId,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Unique identifier of the received gift; only for the gifts sent to the current user
+  final String receivedGiftId;
 
   /// "@extra" of the request this object answers.
   @override
@@ -60,21 +67,29 @@ final class GiftResaleResultOk extends GiftResaleResult {
   /// Parses a [GiftResaleResultOk] from TDLib JSON.
   factory GiftResaleResultOk.fromJson(Map<String, dynamic> json) =>
       GiftResaleResultOk(
+        receivedGiftId: _readString(json['received_gift_id']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'received_gift_id': receivedGiftId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  GiftResaleResultOk copyWith({dynamic extra, int? clientId}) =>
-      GiftResaleResultOk(
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  GiftResaleResultOk copyWith({
+    String? receivedGiftId,
+    dynamic extra,
+    int? clientId,
+  }) => GiftResaleResultOk(
+    receivedGiftId: receivedGiftId ?? this.receivedGiftId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'giftResaleResultOk';

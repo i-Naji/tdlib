@@ -13,7 +13,7 @@ final class RefundStarPayment extends TdFunction<Ok> {
     required this.telegramPaymentChargeId,
   });
 
-  /// Identifier of the user that did the payment
+  /// Identifier of the user who did the payment
   final int userId;
 
   /// Telegram payment identifier

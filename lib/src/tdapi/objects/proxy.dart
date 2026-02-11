@@ -3,22 +3,10 @@
 
 part of '../tdapi.dart';
 
-/// Contains information about a proxy server
+/// Describes a proxy server
 final class Proxy extends TdObject {
-  /// Contains information about a proxy server
-  const Proxy({
-    required this.id,
-    required this.server,
-    required this.port,
-    required this.lastUsedDate,
-    required this.isEnabled,
-    required this.type,
-    this.extra,
-    this.clientId,
-  });
-
-  /// Unique identifier of the proxy
-  final int id;
+  /// Describes a proxy server
+  const Proxy({required this.server, required this.port, required this.type});
 
   /// Proxy server domain or IP address
   final String server;
@@ -26,66 +14,30 @@ final class Proxy extends TdObject {
   /// Proxy server port
   final int port;
 
-  /// Point in time (Unix timestamp) when the proxy was last used; 0 if never
-  final int lastUsedDate;
-
-  /// True, if the proxy is enabled now
-  final bool isEnabled;
-
   /// Type of the proxy
   final ProxyType type;
 
-  /// "@extra" of the request this object answers.
-  @override
-  final dynamic extra;
-
-  /// Identifier of the TDLib client that sent this object.
-  @override
-  final int? clientId;
-
   /// Parses a [Proxy] from TDLib JSON.
   factory Proxy.fromJson(Map<String, dynamic> json) => Proxy(
-    id: _readInt(json['id']),
     server: _readString(json['server']),
     port: _readInt(json['port']),
-    lastUsedDate: _readInt(json['last_used_date']),
-    isEnabled: _readBool(json['is_enabled']),
     type: _readObject(json['type'], ProxyType.fromJson),
-    extra: json['@extra'],
-    clientId: _readClientId(json['@client_id']),
   );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'id': id,
     'server': server,
     'port': port,
-    'last_used_date': lastUsedDate,
-    'is_enabled': isEnabled,
     'type': type.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  Proxy copyWith({
-    int? id,
-    String? server,
-    int? port,
-    int? lastUsedDate,
-    bool? isEnabled,
-    ProxyType? type,
-    dynamic extra,
-    int? clientId,
-  }) => Proxy(
-    id: id ?? this.id,
+  Proxy copyWith({String? server, int? port, ProxyType? type}) => Proxy(
     server: server ?? this.server,
     port: port ?? this.port,
-    lastUsedDate: lastUsedDate ?? this.lastUsedDate,
-    isEnabled: isEnabled ?? this.isEnabled,
     type: type ?? this.type,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
   );
 
   /// TDLib type name.

@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Contains information about a user that added paid reactions
+/// Contains information about a user who added paid reactions
 final class PaidReactor extends TdObject {
-  /// Contains information about a user that added paid reactions
+  /// Contains information about a user who added paid reactions
   const PaidReactor({
     this.senderId,
     required this.starCount,

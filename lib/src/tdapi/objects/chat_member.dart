@@ -18,7 +18,7 @@ final class ChatMember extends TdObject {
   /// Identifier of the chat member. Currently, other chats can be only Left or Banned. Only supergroups and channels can have other chats as Left or Banned members and these chats must be supergroups or channels
   final MessageSender memberId;
 
-  /// Identifier of a user that invited/promoted/banned this member in the chat; 0 if unknown
+  /// Identifier of a user who invited/promoted/banned this member in the chat; 0 if unknown
   final int inviterUserId;
 
   /// Point in time (Unix timestamp) when the user joined/was promoted/was banned in the chat

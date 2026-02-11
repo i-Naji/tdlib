@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatOwnerLeft], [MessageChatOwnerChanged], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -1371,12 +1371,16 @@ final class MessageCall extends MessageContent {
 final class MessageGroupCall extends MessageContent {
   /// A message with information about a group call not bound to a chat. If the message is incoming, the call isn't active, isn't missed, and has no duration, and getOption("can_accept_calls") is true, then incoming call screen must be shown to the user. Use getGroupCallParticipants to show current group call participants on the screen. Use joinGroupCall to accept the call or declineGroupCallInvitation to decline it. If the call become active or missed, then the call screen must be hidden
   const MessageGroupCall({
+    required this.uniqueId,
     required this.isActive,
     required this.wasMissed,
     required this.isVideo,
     required this.duration,
     required this.otherParticipantIds,
   });
+
+  /// Persistent unique group call identifier
+  final int uniqueId;
 
   /// True, if the call is active, i.e. the called user joined the call
   final bool isActive;
@@ -1396,6 +1400,7 @@ final class MessageGroupCall extends MessageContent {
   /// Parses a [MessageGroupCall] from TDLib JSON.
   factory MessageGroupCall.fromJson(Map<String, dynamic> json) =>
       MessageGroupCall(
+        uniqueId: _readInt(json['unique_id']),
         isActive: _readBool(json['is_active']),
         wasMissed: _readBool(json['was_missed']),
         isVideo: _readBool(json['is_video']),
@@ -1409,6 +1414,7 @@ final class MessageGroupCall extends MessageContent {
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
+    'unique_id': uniqueId.toString(),
     'is_active': isActive,
     'was_missed': wasMissed,
     'is_video': isVideo,
@@ -1420,12 +1426,14 @@ final class MessageGroupCall extends MessageContent {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageGroupCall copyWith({
+    int? uniqueId,
     bool? isActive,
     bool? wasMissed,
     bool? isVideo,
     int? duration,
     List<MessageSender>? otherParticipantIds,
   }) => MessageGroupCall(
+    uniqueId: uniqueId ?? this.uniqueId,
     isActive: isActive ?? this.isActive,
     wasMissed: wasMissed ?? this.wasMissed,
     isVideo: isVideo ?? this.isVideo,
@@ -1744,6 +1752,73 @@ final class MessageChatDeletePhoto extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageChatDeletePhoto';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The owner of the chat has left
+final class MessageChatOwnerLeft extends MessageContent {
+  /// The owner of the chat has left
+  const MessageChatOwnerLeft({required this.newOwnerUserId});
+
+  /// Identifier of the user who will become the new owner of the chat if the previous owner isn't return; 0 if none
+  final int newOwnerUserId;
+
+  /// Parses a [MessageChatOwnerLeft] from TDLib JSON.
+  factory MessageChatOwnerLeft.fromJson(Map<String, dynamic> json) =>
+      MessageChatOwnerLeft(newOwnerUserId: _readInt(json['new_owner_user_id']));
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'new_owner_user_id': newOwnerUserId,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageChatOwnerLeft copyWith({int? newOwnerUserId}) => MessageChatOwnerLeft(
+    newOwnerUserId: newOwnerUserId ?? this.newOwnerUserId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageChatOwnerLeft';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The owner of the chat has changed
+final class MessageChatOwnerChanged extends MessageContent {
+  /// The owner of the chat has changed
+  const MessageChatOwnerChanged({required this.newOwnerUserId});
+
+  /// Identifier of the user who is the new owner of the chat
+  final int newOwnerUserId;
+
+  /// Parses a [MessageChatOwnerChanged] from TDLib JSON.
+  factory MessageChatOwnerChanged.fromJson(Map<String, dynamic> json) =>
+      MessageChatOwnerChanged(
+        newOwnerUserId: _readInt(json['new_owner_user_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'new_owner_user_id': newOwnerUserId,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageChatOwnerChanged copyWith({int? newOwnerUserId}) =>
+      MessageChatOwnerChanged(
+        newOwnerUserId: newOwnerUserId ?? this.newOwnerUserId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageChatOwnerChanged';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2775,10 +2850,10 @@ final class MessageGiftedPremium extends MessageContent {
     this.sticker,
   });
 
-  /// The identifier of a user that gifted Telegram Premium; 0 if the gift was anonymous or is outgoing
+  /// The identifier of a user who gifted Telegram Premium; 0 if the gift was anonymous or is outgoing
   final int gifterUserId;
 
-  /// The identifier of a user that received Telegram Premium; 0 if the gift is incoming
+  /// The identifier of a user who received Telegram Premium; 0 if the gift is incoming
   final int receiverUserId;
 
   /// Message added to the gifted Telegram Premium by the sender
@@ -2887,7 +2962,7 @@ final class MessagePremiumGiftCode extends MessageContent {
     required this.code,
   });
 
-  /// Identifier of a chat or a user that created the gift code; may be null if unknown
+  /// Identifier of a chat or a user who created the gift code; may be null if unknown
   final MessageSender? creatorId;
 
   /// Message added to the gift
@@ -3289,10 +3364,10 @@ final class MessageGiftedStars extends MessageContent {
     this.sticker,
   });
 
-  /// The identifier of a user that gifted Telegram Stars; 0 if the gift was anonymous or is outgoing
+  /// The identifier of a user who gifted Telegram Stars; 0 if the gift was anonymous or is outgoing
   final int gifterUserId;
 
-  /// The identifier of a user that received Telegram Stars; 0 if the gift is incoming
+  /// The identifier of a user who received Telegram Stars; 0 if the gift is incoming
   final int receiverUserId;
 
   /// Currency for the paid amount
@@ -3387,10 +3462,10 @@ final class MessageGiftedTon extends MessageContent {
     this.sticker,
   });
 
-  /// The identifier of a user that gifted Toncoins; 0 if the gift was anonymous or is outgoing
+  /// The identifier of a user who gifted Toncoins; 0 if the gift was anonymous or is outgoing
   final int gifterUserId;
 
-  /// The identifier of a user that received Toncoins; 0 if the gift is incoming
+  /// The identifier of a user who received Toncoins; 0 if the gift is incoming
   final int receiverUserId;
 
   /// The received Toncoin amount, in the smallest units of the cryptocurrency
@@ -3724,6 +3799,7 @@ final class MessageUpgradedGift extends MessageContent {
     required this.nextTransferDate,
     required this.nextResaleDate,
     required this.exportDate,
+    required this.craftDate,
   });
 
   /// The gift
@@ -3765,6 +3841,9 @@ final class MessageUpgradedGift extends MessageContent {
   /// Point in time (Unix timestamp) when the gift can be transferred to the TON blockchain as an NFT; can be in the past; 0 if NFT export isn't possible; only for the receiver of the gift
   final int exportDate;
 
+  /// Point in time (Unix timestamp) when the gift can be used to craft another gift can be in the past; only for the receiver of the gift
+  final int craftDate;
+
   /// Parses a [MessageUpgradedGift] from TDLib JSON.
   factory MessageUpgradedGift.fromJson(Map<String, dynamic> json) =>
       MessageUpgradedGift(
@@ -3783,6 +3862,7 @@ final class MessageUpgradedGift extends MessageContent {
         nextTransferDate: _readInt(json['next_transfer_date']),
         nextResaleDate: _readInt(json['next_resale_date']),
         exportDate: _readInt(json['export_date']),
+        craftDate: _readInt(json['craft_date']),
       );
 
   @override
@@ -3801,6 +3881,7 @@ final class MessageUpgradedGift extends MessageContent {
     'next_transfer_date': nextTransferDate,
     'next_resale_date': nextResaleDate,
     'export_date': exportDate,
+    'craft_date': craftDate,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -3820,6 +3901,7 @@ final class MessageUpgradedGift extends MessageContent {
     int? nextTransferDate,
     int? nextResaleDate,
     int? exportDate,
+    int? craftDate,
   }) => MessageUpgradedGift(
     gift: gift ?? this.gift,
     senderId: senderId != null ? senderId() : this.senderId,
@@ -3835,6 +3917,7 @@ final class MessageUpgradedGift extends MessageContent {
     nextTransferDate: nextTransferDate ?? this.nextTransferDate,
     nextResaleDate: nextResaleDate ?? this.nextResaleDate,
     exportDate: exportDate ?? this.exportDate,
+    craftDate: craftDate ?? this.craftDate,
   );
 
   /// TDLib type name.

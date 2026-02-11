@@ -29,6 +29,7 @@ final class ReceivedGift extends TdObject {
     required this.nextResaleDate,
     required this.exportDate,
     required this.prepaidUpgradeHash,
+    required this.craftDate,
     this.extra,
     this.clientId,
   });
@@ -99,6 +100,9 @@ final class ReceivedGift extends TdObject {
   /// If non-empty, then the user can pay for an upgrade of the gift using buyGiftUpgrade
   final String prepaidUpgradeHash;
 
+  /// Point in time (Unix timestamp) when the gift can be used to craft another gift can be in the past; only for the receiver of the gift
+  final int craftDate;
+
   /// "@extra" of the request this object answers.
   @override
   final dynamic extra;
@@ -133,6 +137,7 @@ final class ReceivedGift extends TdObject {
     nextResaleDate: _readInt(json['next_resale_date']),
     exportDate: _readInt(json['export_date']),
     prepaidUpgradeHash: _readString(json['prepaid_upgrade_hash']),
+    craftDate: _readInt(json['craft_date']),
     extra: json['@extra'],
     clientId: _readClientId(json['@client_id']),
   );
@@ -162,6 +167,7 @@ final class ReceivedGift extends TdObject {
     'next_resale_date': nextResaleDate,
     'export_date': exportDate,
     'prepaid_upgrade_hash': prepaidUpgradeHash,
+    'craft_date': craftDate,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -189,6 +195,7 @@ final class ReceivedGift extends TdObject {
     int? nextResaleDate,
     int? exportDate,
     String? prepaidUpgradeHash,
+    int? craftDate,
     dynamic extra,
     int? clientId,
   }) => ReceivedGift(
@@ -216,6 +223,7 @@ final class ReceivedGift extends TdObject {
     nextResaleDate: nextResaleDate ?? this.nextResaleDate,
     exportDate: exportDate ?? this.exportDate,
     prepaidUpgradeHash: prepaidUpgradeHash ?? this.prepaidUpgradeHash,
+    craftDate: craftDate ?? this.craftDate,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );

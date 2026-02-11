@@ -127,7 +127,7 @@ final class ChatRevenueTransactionTypeSuggestedPostEarnings
   /// Describes earnings from a published suggested post
   const ChatRevenueTransactionTypeSuggestedPostEarnings({required this.userId});
 
-  /// Identifier of the user that paid for the suggested post
+  /// Identifier of the user who paid for the suggested post
   final int userId;
 
   /// Parses a [ChatRevenueTransactionTypeSuggestedPostEarnings] from TDLib JSON.

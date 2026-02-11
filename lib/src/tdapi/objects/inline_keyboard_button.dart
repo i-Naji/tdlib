@@ -6,10 +6,21 @@ part of '../tdapi.dart';
 /// Represents a single button in an inline keyboard
 final class InlineKeyboardButton extends TdObject {
   /// Represents a single button in an inline keyboard
-  const InlineKeyboardButton({required this.text, required this.type});
+  const InlineKeyboardButton({
+    required this.text,
+    required this.iconCustomEmojiId,
+    required this.style,
+    required this.type,
+  });
 
   /// Text of the button
   final String text;
+
+  /// Identifier of the custom emoji that must be shown on the button; 0 if none
+  final int iconCustomEmojiId;
+
+  /// Style of the button
+  final ButtonStyle style;
 
   /// Type of the button
   final InlineKeyboardButtonType type;
@@ -18,6 +29,8 @@ final class InlineKeyboardButton extends TdObject {
   factory InlineKeyboardButton.fromJson(Map<String, dynamic> json) =>
       InlineKeyboardButton(
         text: _readString(json['text']),
+        iconCustomEmojiId: _readInt(json['icon_custom_emoji_id']),
+        style: _readObject(json['style'], ButtonStyle.fromJson),
         type: _readObject(json['type'], InlineKeyboardButtonType.fromJson),
       );
 
@@ -25,6 +38,8 @@ final class InlineKeyboardButton extends TdObject {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'text': text,
+    'icon_custom_emoji_id': iconCustomEmojiId.toString(),
+    'style': style.toJson(),
     'type': type.toJson(),
   };
 
@@ -32,8 +47,15 @@ final class InlineKeyboardButton extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   InlineKeyboardButton copyWith({
     String? text,
+    int? iconCustomEmojiId,
+    ButtonStyle? style,
     InlineKeyboardButtonType? type,
-  }) => InlineKeyboardButton(text: text ?? this.text, type: type ?? this.type);
+  }) => InlineKeyboardButton(
+    text: text ?? this.text,
+    iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
+    style: style ?? this.style,
+    type: type ?? this.type,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineKeyboardButton';

@@ -15,6 +15,8 @@ final class UpgradedGift extends TdObject {
     required this.number,
     required this.totalUpgradedCount,
     required this.maxUpgradedCount,
+    required this.isBurned,
+    required this.isCrafted,
     required this.isPremium,
     required this.isThemeAvailable,
     required this.usedThemeChatId,
@@ -30,6 +32,7 @@ final class UpgradedGift extends TdObject {
     this.colors,
     this.resaleParameters,
     required this.canSendPurchaseOffer,
+    required this.craftProbabilityPerMille,
     required this.valueCurrency,
     required this.valueAmount,
     required this.valueUsdAmount,
@@ -60,6 +63,12 @@ final class UpgradedGift extends TdObject {
 
   /// The maximum number of gifts that can be upgraded from the same gift
   final int maxUpgradedCount;
+
+  /// True, if the gift was used to craft another gift
+  final bool isBurned;
+
+  /// True, if the gift was craft from another gifts
+  final bool isCrafted;
 
   /// True, if the original gift could have been bought only by Telegram Premium subscribers
   final bool isPremium;
@@ -97,7 +106,7 @@ final class UpgradedGift extends TdObject {
   /// Information about the originally sent gift; may be null if unknown
   final UpgradedGiftOriginalDetails? originalDetails;
 
-  /// Colors that can be set for user's name, background of empty chat photo, replies to messages and link previews; may be null if none
+  /// Colors that can be set for user's name, background of empty chat photo, replies to messages and link previews; may be null if none or unknown
   final UpgradedGiftColors? colors;
 
   /// Resale parameters of the gift; may be null if resale isn't possible
@@ -105,6 +114,9 @@ final class UpgradedGift extends TdObject {
 
   /// True, if an offer to purchase the gift can be sent using sendGiftPurchaseOffer
   final bool canSendPurchaseOffer;
+
+  /// Probability that the gift adds to the chance of successful crafting of a new gift; 0 if the gift can't be used for crafting
+  final int craftProbabilityPerMille;
 
   /// ISO 4217 currency code of the currency in which value of the gift is represented; may be empty if unavailable
   final String valueCurrency;
@@ -133,6 +145,8 @@ final class UpgradedGift extends TdObject {
     number: _readInt(json['number']),
     totalUpgradedCount: _readInt(json['total_upgraded_count']),
     maxUpgradedCount: _readInt(json['max_upgraded_count']),
+    isBurned: _readBool(json['is_burned']),
+    isCrafted: _readBool(json['is_crafted']),
     isPremium: _readBool(json['is_premium']),
     isThemeAvailable: _readBool(json['is_theme_available']),
     usedThemeChatId: _readInt(json['used_theme_chat_id']),
@@ -154,6 +168,7 @@ final class UpgradedGift extends TdObject {
       GiftResaleParameters.fromJson,
     ),
     canSendPurchaseOffer: _readBool(json['can_send_purchase_offer']),
+    craftProbabilityPerMille: _readInt(json['craft_probability_per_mille']),
     valueCurrency: _readString(json['value_currency']),
     valueAmount: _readInt(json['value_amount']),
     valueUsdAmount: _readInt(json['value_usd_amount']),
@@ -172,6 +187,8 @@ final class UpgradedGift extends TdObject {
     'number': number,
     'total_upgraded_count': totalUpgradedCount,
     'max_upgraded_count': maxUpgradedCount,
+    'is_burned': isBurned,
+    'is_crafted': isCrafted,
     'is_premium': isPremium,
     'is_theme_available': isThemeAvailable,
     'used_theme_chat_id': usedThemeChatId,
@@ -187,6 +204,7 @@ final class UpgradedGift extends TdObject {
     'colors': colors?.toJson(),
     'resale_parameters': resaleParameters?.toJson(),
     'can_send_purchase_offer': canSendPurchaseOffer,
+    'craft_probability_per_mille': craftProbabilityPerMille,
     'value_currency': valueCurrency,
     'value_amount': valueAmount,
     'value_usd_amount': valueUsdAmount,
@@ -203,6 +221,8 @@ final class UpgradedGift extends TdObject {
     int? number,
     int? totalUpgradedCount,
     int? maxUpgradedCount,
+    bool? isBurned,
+    bool? isCrafted,
     bool? isPremium,
     bool? isThemeAvailable,
     int? usedThemeChatId,
@@ -218,6 +238,7 @@ final class UpgradedGift extends TdObject {
     UpgradedGiftColors? Function()? colors,
     GiftResaleParameters? Function()? resaleParameters,
     bool? canSendPurchaseOffer,
+    int? craftProbabilityPerMille,
     String? valueCurrency,
     int? valueAmount,
     int? valueUsdAmount,
@@ -232,6 +253,8 @@ final class UpgradedGift extends TdObject {
     number: number ?? this.number,
     totalUpgradedCount: totalUpgradedCount ?? this.totalUpgradedCount,
     maxUpgradedCount: maxUpgradedCount ?? this.maxUpgradedCount,
+    isBurned: isBurned ?? this.isBurned,
+    isCrafted: isCrafted ?? this.isCrafted,
     isPremium: isPremium ?? this.isPremium,
     isThemeAvailable: isThemeAvailable ?? this.isThemeAvailable,
     usedThemeChatId: usedThemeChatId ?? this.usedThemeChatId,
@@ -251,6 +274,8 @@ final class UpgradedGift extends TdObject {
         ? resaleParameters()
         : this.resaleParameters,
     canSendPurchaseOffer: canSendPurchaseOffer ?? this.canSendPurchaseOffer,
+    craftProbabilityPerMille:
+        craftProbabilityPerMille ?? this.craftProbabilityPerMille,
     valueCurrency: valueCurrency ?? this.valueCurrency,
     valueAmount: valueAmount ?? this.valueAmount,
     valueUsdAmount: valueUsdAmount ?? this.valueUsdAmount,

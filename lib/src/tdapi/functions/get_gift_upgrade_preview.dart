@@ -8,22 +8,22 @@ part of '../tdapi.dart';
 /// Returns [GiftUpgradePreview].
 final class GetGiftUpgradePreview extends TdFunction<GiftUpgradePreview> {
   /// Returns examples of possible upgraded gifts for a regular gift
-  const GetGiftUpgradePreview({required this.giftId});
+  const GetGiftUpgradePreview({required this.regularGiftId});
 
-  /// Identifier of the gift
-  final int giftId;
+  /// Identifier of the regular gift
+  final int regularGiftId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
-    'gift_id': giftId.toString(),
+    'regular_gift_id': regularGiftId.toString(),
     '@extra': ?extra,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetGiftUpgradePreview copyWith({int? giftId}) =>
-      GetGiftUpgradePreview(giftId: giftId ?? this.giftId);
+  GetGiftUpgradePreview copyWith({int? regularGiftId}) =>
+      GetGiftUpgradePreview(regularGiftId: regularGiftId ?? this.regularGiftId);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getGiftUpgradePreview';
