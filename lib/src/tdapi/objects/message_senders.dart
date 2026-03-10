@@ -13,7 +13,7 @@ final class MessageSenders extends TdObject {
     this.clientId,
   });
 
-  /// Approximate total number of messages senders found
+  /// Approximate total number of message senders found
   final int totalCount;
 
   /// List of message senders

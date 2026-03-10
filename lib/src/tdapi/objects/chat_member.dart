@@ -8,6 +8,7 @@ final class ChatMember extends TdObject {
   /// Describes a user or a chat as a member of another chat
   const ChatMember({
     required this.memberId,
+    required this.tag,
     required this.inviterUserId,
     required this.joinedChatDate,
     required this.status,
@@ -17,6 +18,9 @@ final class ChatMember extends TdObject {
 
   /// Identifier of the chat member. Currently, other chats can be only Left or Banned. Only supergroups and channels can have other chats as Left or Banned members and these chats must be supergroups or channels
   final MessageSender memberId;
+
+  /// Tag of the chat member or its custom title if the member is an administrator of the chat; 0-16 characters without emoji; applicable to basic groups and supergroups only
+  final String tag;
 
   /// Identifier of a user who invited/promoted/banned this member in the chat; 0 if unknown
   final int inviterUserId;
@@ -38,6 +42,7 @@ final class ChatMember extends TdObject {
   /// Parses a [ChatMember] from TDLib JSON.
   factory ChatMember.fromJson(Map<String, dynamic> json) => ChatMember(
     memberId: _readObject(json['member_id'], MessageSender.fromJson),
+    tag: _readString(json['tag']),
     inviterUserId: _readInt(json['inviter_user_id']),
     joinedChatDate: _readInt(json['joined_chat_date']),
     status: _readObject(json['status'], ChatMemberStatus.fromJson),
@@ -49,6 +54,7 @@ final class ChatMember extends TdObject {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'member_id': memberId.toJson(),
+    'tag': tag,
     'inviter_user_id': inviterUserId,
     'joined_chat_date': joinedChatDate,
     'status': status.toJson(),
@@ -58,6 +64,7 @@ final class ChatMember extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   ChatMember copyWith({
     MessageSender? memberId,
+    String? tag,
     int? inviterUserId,
     int? joinedChatDate,
     ChatMemberStatus? status,
@@ -65,6 +72,7 @@ final class ChatMember extends TdObject {
     int? clientId,
   }) => ChatMember(
     memberId: memberId ?? this.memberId,
+    tag: tag ?? this.tag,
     inviterUserId: inviterUserId ?? this.inviterUserId,
     joinedChatDate: joinedChatDate ?? this.joinedChatDate,
     status: status ?? this.status,

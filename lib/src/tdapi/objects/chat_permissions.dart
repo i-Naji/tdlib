@@ -17,6 +17,7 @@ final class ChatPermissions extends TdObject {
     required this.canSendPolls,
     required this.canSendOtherMessages,
     required this.canAddLinkPreviews,
+    required this.canEditTag,
     required this.canChangeInfo,
     required this.canInviteUsers,
     required this.canPinMessages,
@@ -53,6 +54,9 @@ final class ChatPermissions extends TdObject {
   /// True, if the user may add a link preview to their messages
   final bool canAddLinkPreviews;
 
+  /// True, if the user may change the tag of self
+  final bool canEditTag;
+
   /// True, if the user can change the chat title, photo, and other settings
   final bool canChangeInfo;
 
@@ -78,6 +82,7 @@ final class ChatPermissions extends TdObject {
         canSendPolls: _readBool(json['can_send_polls']),
         canSendOtherMessages: _readBool(json['can_send_other_messages']),
         canAddLinkPreviews: _readBool(json['can_add_link_previews']),
+        canEditTag: _readBool(json['can_edit_tag']),
         canChangeInfo: _readBool(json['can_change_info']),
         canInviteUsers: _readBool(json['can_invite_users']),
         canPinMessages: _readBool(json['can_pin_messages']),
@@ -97,6 +102,7 @@ final class ChatPermissions extends TdObject {
     'can_send_polls': canSendPolls,
     'can_send_other_messages': canSendOtherMessages,
     'can_add_link_previews': canAddLinkPreviews,
+    'can_edit_tag': canEditTag,
     'can_change_info': canChangeInfo,
     'can_invite_users': canInviteUsers,
     'can_pin_messages': canPinMessages,
@@ -116,6 +122,7 @@ final class ChatPermissions extends TdObject {
     bool? canSendPolls,
     bool? canSendOtherMessages,
     bool? canAddLinkPreviews,
+    bool? canEditTag,
     bool? canChangeInfo,
     bool? canInviteUsers,
     bool? canPinMessages,
@@ -131,6 +138,7 @@ final class ChatPermissions extends TdObject {
     canSendPolls: canSendPolls ?? this.canSendPolls,
     canSendOtherMessages: canSendOtherMessages ?? this.canSendOtherMessages,
     canAddLinkPreviews: canAddLinkPreviews ?? this.canAddLinkPreviews,
+    canEditTag: canEditTag ?? this.canEditTag,
     canChangeInfo: canChangeInfo ?? this.canChangeInfo,
     canInviteUsers: canInviteUsers ?? this.canInviteUsers,
     canPinMessages: canPinMessages ?? this.canPinMessages,

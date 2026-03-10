@@ -15,6 +15,7 @@ final class ChatEventLogFilters extends TdObject {
     required this.memberInvites,
     required this.memberPromotions,
     required this.memberRestrictions,
+    required this.memberTagChanges,
     required this.infoChanges,
     required this.settingChanges,
     required this.inviteLinkChanges,
@@ -47,6 +48,9 @@ final class ChatEventLogFilters extends TdObject {
   /// True, if member restricted/unrestricted/banned/unbanned events need to be returned
   final bool memberRestrictions;
 
+  /// True, if member tag and custom title change events need to be returned
+  final bool memberTagChanges;
+
   /// True, if changes in chat information need to be returned
   final bool infoChanges;
 
@@ -76,6 +80,7 @@ final class ChatEventLogFilters extends TdObject {
         memberInvites: _readBool(json['member_invites']),
         memberPromotions: _readBool(json['member_promotions']),
         memberRestrictions: _readBool(json['member_restrictions']),
+        memberTagChanges: _readBool(json['member_tag_changes']),
         infoChanges: _readBool(json['info_changes']),
         settingChanges: _readBool(json['setting_changes']),
         inviteLinkChanges: _readBool(json['invite_link_changes']),
@@ -95,6 +100,7 @@ final class ChatEventLogFilters extends TdObject {
     'member_invites': memberInvites,
     'member_promotions': memberPromotions,
     'member_restrictions': memberRestrictions,
+    'member_tag_changes': memberTagChanges,
     'info_changes': infoChanges,
     'setting_changes': settingChanges,
     'invite_link_changes': inviteLinkChanges,
@@ -114,6 +120,7 @@ final class ChatEventLogFilters extends TdObject {
     bool? memberInvites,
     bool? memberPromotions,
     bool? memberRestrictions,
+    bool? memberTagChanges,
     bool? infoChanges,
     bool? settingChanges,
     bool? inviteLinkChanges,
@@ -129,6 +136,7 @@ final class ChatEventLogFilters extends TdObject {
     memberInvites: memberInvites ?? this.memberInvites,
     memberPromotions: memberPromotions ?? this.memberPromotions,
     memberRestrictions: memberRestrictions ?? this.memberRestrictions,
+    memberTagChanges: memberTagChanges ?? this.memberTagChanges,
     infoChanges: infoChanges ?? this.infoChanges,
     settingChanges: settingChanges ?? this.settingChanges,
     inviteLinkChanges: inviteLinkChanges ?? this.inviteLinkChanges,

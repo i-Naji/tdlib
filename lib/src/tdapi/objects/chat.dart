@@ -170,7 +170,7 @@ final class Chat extends TdObject {
   /// Information about pending join requests; may be null if none
   final ChatJoinRequestsInfo? pendingJoinRequests;
 
-  /// Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat
+  /// Identifier of the message from which reply markup needs to be used; 0 if there is no reply markup in the chat
   final int replyMarkupMessageId;
 
   /// A draft of a message in the chat; may be null if none

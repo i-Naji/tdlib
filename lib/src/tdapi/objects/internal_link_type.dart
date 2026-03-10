@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes an internal https://t.me or tg: link, which must be processed by the application in a special way
 ///
-/// One of: [InternalLinkTypeAttachmentMenuBot], [InternalLinkTypeAuthenticationCode], [InternalLinkTypeBackground], [InternalLinkTypeBotAddToChannel], [InternalLinkTypeBotStart], [InternalLinkTypeBotStartInGroup], [InternalLinkTypeBusinessChat], [InternalLinkTypeCallsPage], [InternalLinkTypeChatAffiliateProgram], [InternalLinkTypeChatBoost], [InternalLinkTypeChatFolderInvite], [InternalLinkTypeChatInvite], [InternalLinkTypeChatSelection], [InternalLinkTypeContactsPage], [InternalLinkTypeDirectMessagesChat], [InternalLinkTypeGame], [InternalLinkTypeGiftAuction], [InternalLinkTypeGiftCollection], [InternalLinkTypeGroupCall], [InternalLinkTypeInstantView], [InternalLinkTypeInvoice], [InternalLinkTypeLanguagePack], [InternalLinkTypeLiveStory], [InternalLinkTypeMainWebApp], [InternalLinkTypeMessage], [InternalLinkTypeMessageDraft], [InternalLinkTypeMyProfilePage], [InternalLinkTypeNewChannelChat], [InternalLinkTypeNewGroupChat], [InternalLinkTypeNewPrivateChat], [InternalLinkTypeNewStory], [InternalLinkTypePassportDataRequest], [InternalLinkTypePhoneNumberConfirmation], [InternalLinkTypePremiumFeaturesPage], [InternalLinkTypePremiumGiftCode], [InternalLinkTypePremiumGiftPurchase], [InternalLinkTypeProxy], [InternalLinkTypePublicChat], [InternalLinkTypeQrCodeAuthentication], [InternalLinkTypeRestorePurchases], [InternalLinkTypeSavedMessages], [InternalLinkTypeSearch], [InternalLinkTypeSettings], [InternalLinkTypeStarPurchase], [InternalLinkTypeStickerSet], [InternalLinkTypeStory], [InternalLinkTypeStoryAlbum], [InternalLinkTypeTheme], [InternalLinkTypeUnknownDeepLink], [InternalLinkTypeUpgradedGift], [InternalLinkTypeUserPhoneNumber], [InternalLinkTypeUserToken], [InternalLinkTypeVideoChat], [InternalLinkTypeWebApp]; or [UndecodedInternalLinkType] for a type newer than this API.
+/// One of: [InternalLinkTypeAttachmentMenuBot], [InternalLinkTypeAuthenticationCode], [InternalLinkTypeBackground], [InternalLinkTypeBotAddToChannel], [InternalLinkTypeBotStart], [InternalLinkTypeBotStartInGroup], [InternalLinkTypeBusinessChat], [InternalLinkTypeCallsPage], [InternalLinkTypeChatAffiliateProgram], [InternalLinkTypeChatBoost], [InternalLinkTypeChatFolderInvite], [InternalLinkTypeChatInvite], [InternalLinkTypeChatSelection], [InternalLinkTypeContactsPage], [InternalLinkTypeDirectMessagesChat], [InternalLinkTypeGame], [InternalLinkTypeGiftAuction], [InternalLinkTypeGiftCollection], [InternalLinkTypeGroupCall], [InternalLinkTypeInstantView], [InternalLinkTypeInvoice], [InternalLinkTypeLanguagePack], [InternalLinkTypeLiveStory], [InternalLinkTypeMainWebApp], [InternalLinkTypeMessage], [InternalLinkTypeMessageDraft], [InternalLinkTypeMyProfilePage], [InternalLinkTypeNewChannelChat], [InternalLinkTypeNewGroupChat], [InternalLinkTypeNewPrivateChat], [InternalLinkTypeNewStory], [InternalLinkTypeOauth], [InternalLinkTypePassportDataRequest], [InternalLinkTypePhoneNumberConfirmation], [InternalLinkTypePremiumFeaturesPage], [InternalLinkTypePremiumGiftCode], [InternalLinkTypePremiumGiftPurchase], [InternalLinkTypeProxy], [InternalLinkTypePublicChat], [InternalLinkTypeQrCodeAuthentication], [InternalLinkTypeRestorePurchases], [InternalLinkTypeSavedMessages], [InternalLinkTypeSearch], [InternalLinkTypeSettings], [InternalLinkTypeStarPurchase], [InternalLinkTypeStickerSet], [InternalLinkTypeStory], [InternalLinkTypeStoryAlbum], [InternalLinkTypeTheme], [InternalLinkTypeUnknownDeepLink], [InternalLinkTypeUpgradedGift], [InternalLinkTypeUserPhoneNumber], [InternalLinkTypeUserToken], [InternalLinkTypeVideoChat], [InternalLinkTypeWebApp]; or [UndecodedInternalLinkType] for a type newer than this API.
 sealed class InternalLinkType extends TdObject {
   const InternalLinkType();
 
@@ -1755,6 +1755,50 @@ final class InternalLinkTypeNewStory extends InternalLinkType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeNewStory';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The link is an OAuth link. Call getOauthLinkInfo with the given URL to process the link if the link was received from outside of the application; otherwise, ignore it. After getOauthLinkInfo, show the user confirmation dialog and process it with checkOauthRequestMatchCode, acceptOauthRequest or declineOauthRequest
+final class InternalLinkTypeOauth extends InternalLinkType {
+  /// The link is an OAuth link. Call getOauthLinkInfo with the given URL to process the link if the link was received from outside of the application; otherwise, ignore it. After getOauthLinkInfo, show the user confirmation dialog and process it with checkOauthRequestMatchCode, acceptOauthRequest or declineOauthRequest
+  const InternalLinkTypeOauth({required this.url, this.extra, this.clientId});
+
+  /// URL to be passed to getOauthLinkInfo
+  final String url;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [InternalLinkTypeOauth] from TDLib JSON.
+  factory InternalLinkTypeOauth.fromJson(Map<String, dynamic> json) =>
+      InternalLinkTypeOauth(
+        url: _readString(json['url']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'url': url};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InternalLinkTypeOauth copyWith({String? url, dynamic extra, int? clientId}) =>
+      InternalLinkTypeOauth(
+        url: url ?? this.url,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'internalLinkTypeOauth';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -48,13 +48,9 @@ final class UndecodedChatMemberStatus extends ChatMemberStatus {
 final class ChatMemberStatusCreator extends ChatMemberStatus {
   /// The user is the owner of the chat and has all the administrator privileges
   const ChatMemberStatusCreator({
-    required this.customTitle,
     required this.isAnonymous,
     required this.isMember,
   });
-
-  /// A custom title of the owner; 0-16 characters without emoji; applicable to supergroups only
-  final String customTitle;
 
   /// True, if the creator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
   final bool isAnonymous;
@@ -65,7 +61,6 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
   /// Parses a [ChatMemberStatusCreator] from TDLib JSON.
   factory ChatMemberStatusCreator.fromJson(Map<String, dynamic> json) =>
       ChatMemberStatusCreator(
-        customTitle: _readString(json['custom_title']),
         isAnonymous: _readBool(json['is_anonymous']),
         isMember: _readBool(json['is_member']),
       );
@@ -73,7 +68,6 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'custom_title': customTitle,
     'is_anonymous': isAnonymous,
     'is_member': isMember,
   };
@@ -81,15 +75,11 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatMemberStatusCreator copyWith({
-    String? customTitle,
-    bool? isAnonymous,
-    bool? isMember,
-  }) => ChatMemberStatusCreator(
-    customTitle: customTitle ?? this.customTitle,
-    isAnonymous: isAnonymous ?? this.isAnonymous,
-    isMember: isMember ?? this.isMember,
-  );
+  ChatMemberStatusCreator copyWith({bool? isAnonymous, bool? isMember}) =>
+      ChatMemberStatusCreator(
+        isAnonymous: isAnonymous ?? this.isAnonymous,
+        isMember: isMember ?? this.isMember,
+      );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatMemberStatusCreator';
@@ -102,13 +92,9 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
 final class ChatMemberStatusAdministrator extends ChatMemberStatus {
   /// The user is a member of the chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, ban unprivileged members, and manage video chats. In supergroups and channels, there are more detailed options for administrator privileges
   const ChatMemberStatusAdministrator({
-    required this.customTitle,
     required this.canBeEdited,
     required this.rights,
   });
-
-  /// A custom title of the administrator; 0-16 characters without emoji; applicable to supergroups only
-  final String customTitle;
 
   /// True, if the current user can edit the administrator privileges for the called user
   final bool canBeEdited;
@@ -119,7 +105,6 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
   /// Parses a [ChatMemberStatusAdministrator] from TDLib JSON.
   factory ChatMemberStatusAdministrator.fromJson(Map<String, dynamic> json) =>
       ChatMemberStatusAdministrator(
-        customTitle: _readString(json['custom_title']),
         canBeEdited: _readBool(json['can_be_edited']),
         rights: _readObject(json['rights'], ChatAdministratorRights.fromJson),
       );
@@ -127,7 +112,6 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'custom_title': customTitle,
     'can_be_edited': canBeEdited,
     'rights': rights.toJson(),
   };
@@ -136,11 +120,9 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatMemberStatusAdministrator copyWith({
-    String? customTitle,
     bool? canBeEdited,
     ChatAdministratorRights? rights,
   }) => ChatMemberStatusAdministrator(
-    customTitle: customTitle ?? this.customTitle,
     canBeEdited: canBeEdited ?? this.canBeEdited,
     rights: rights ?? this.rights,
   );

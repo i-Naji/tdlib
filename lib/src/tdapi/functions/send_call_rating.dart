@@ -16,7 +16,7 @@ final class SendCallRating extends TdFunction<Ok> {
   });
 
   /// Call identifier
-  final int callId;
+  final InputCall callId;
 
   /// Call rating; 1-5
   final int rating;
@@ -30,7 +30,7 @@ final class SendCallRating extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
-    'call_id': callId,
+    'call_id': callId.toJson(),
     'rating': rating,
     'comment': comment,
     'problems': [for (final e in problems) e.toJson()],
@@ -40,7 +40,7 @@ final class SendCallRating extends TdFunction<Ok> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SendCallRating copyWith({
-    int? callId,
+    InputCall? callId,
     int? rating,
     String? comment,
     List<CallProblem>? problems,

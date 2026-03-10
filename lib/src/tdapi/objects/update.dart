@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains notifications about data changes
 ///
-/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageFactCheck], [UpdateMessageSuggestedPostInfo], [UpdateMessageLiveLocationViewed], [UpdateVideoPublished], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColors], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatAddedToList], [UpdateChatRemovedFromList], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatBusinessBotManageBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatEmojiStatus], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatViewAsTopics], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateSavedMessagesTopic], [UpdateSavedMessagesTopicCount], [UpdateDirectMessagesChatTopic], [UpdateTopicMessageCount], [UpdateQuickReplyShortcut], [UpdateQuickReplyShortcutDeleted], [UpdateQuickReplyShortcuts], [UpdateQuickReplyShortcutMessages], [UpdateForumTopicInfo], [UpdateForumTopic], [UpdateScopeNotificationSettings], [UpdateReactionNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdatePendingTextMessage], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateServiceNotification], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateApplicationVerificationRequired], [UpdateApplicationRecaptchaVerificationRequired], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateGroupCallParticipants], [UpdateGroupCallVerificationState], [UpdateNewGroupCallMessage], [UpdateNewGroupCallPaidReaction], [UpdateGroupCallMessageSendFailed], [UpdateGroupCallMessagesDeleted], [UpdateLiveStoryTopDonors], [UpdateNewCallSignalingData], [UpdateGiftAuctionState], [UpdateActiveGiftAuctions], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateStory], [UpdateStoryDeleted], [UpdateStoryPostSucceeded], [UpdateStoryPostFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateTrustedMiniAppBots], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateDefaultBackground], [UpdateEmojiChatThemes], [UpdateAccentColors], [UpdateProfileAccentColors], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateFreezeState], [UpdateAgeVerificationParameters], [UpdateTermsOfService], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateAvailableMessageEffects], [UpdateDefaultReactionType], [UpdateDefaultPaidReactionType], [UpdateSavedMessagesTags], [UpdateActiveLiveLocationMessages], [UpdateOwnedStarCount], [UpdateOwnedTonCount], [UpdateChatRevenueAmount], [UpdateStarRevenueStatus], [UpdateTonRevenueStatus], [UpdateSpeechRecognitionTrial], [UpdateGroupCallMessageLevels], [UpdateDiceEmojis], [UpdateStakeDiceState], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateSuggestedActions], [UpdateSpeedLimitNotification], [UpdateContactCloseBirthdays], [UpdateAutosaveSettings], [UpdateBusinessConnection], [UpdateNewBusinessMessage], [UpdateBusinessMessageEdited], [UpdateBusinessMessagesDeleted], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewBusinessCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdatePoll], [UpdatePollAnswer], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost], [UpdateMessageReaction], [UpdateMessageReactions], [UpdatePaidMediaPurchased]; or [UndecodedUpdate] for a type newer than this API.
+/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageFactCheck], [UpdateMessageSuggestedPostInfo], [UpdateMessageLiveLocationViewed], [UpdateVideoPublished], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColors], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatAddedToList], [UpdateChatRemovedFromList], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatBusinessBotManageBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatEmojiStatus], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatViewAsTopics], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateSavedMessagesTopic], [UpdateSavedMessagesTopicCount], [UpdateDirectMessagesChatTopic], [UpdateTopicMessageCount], [UpdateQuickReplyShortcut], [UpdateQuickReplyShortcutDeleted], [UpdateQuickReplyShortcuts], [UpdateQuickReplyShortcutMessages], [UpdateForumTopicInfo], [UpdateForumTopic], [UpdateScopeNotificationSettings], [UpdateReactionNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdatePendingTextMessage], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateServiceNotification], [UpdateNewOauthRequest], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateApplicationVerificationRequired], [UpdateApplicationRecaptchaVerificationRequired], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateGroupCallParticipants], [UpdateGroupCallVerificationState], [UpdateNewGroupCallMessage], [UpdateNewGroupCallPaidReaction], [UpdateGroupCallMessageSendFailed], [UpdateGroupCallMessagesDeleted], [UpdateLiveStoryTopDonors], [UpdateNewCallSignalingData], [UpdateGiftAuctionState], [UpdateActiveGiftAuctions], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateStory], [UpdateStoryDeleted], [UpdateStoryPostSucceeded], [UpdateStoryPostFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateTrustedMiniAppBots], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateDefaultBackground], [UpdateEmojiChatThemes], [UpdateAccentColors], [UpdateProfileAccentColors], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateFreezeState], [UpdateAgeVerificationParameters], [UpdateTermsOfService], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateAvailableMessageEffects], [UpdateDefaultReactionType], [UpdateDefaultPaidReactionType], [UpdateSavedMessagesTags], [UpdateActiveLiveLocationMessages], [UpdateOwnedStarCount], [UpdateOwnedTonCount], [UpdateChatRevenueAmount], [UpdateStarRevenueStatus], [UpdateTonRevenueStatus], [UpdateSpeechRecognitionTrial], [UpdateGroupCallMessageLevels], [UpdateDiceEmojis], [UpdateStakeDiceState], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateSuggestedActions], [UpdateSpeedLimitNotification], [UpdateContactCloseBirthdays], [UpdateAutosaveSettings], [UpdateBusinessConnection], [UpdateNewBusinessMessage], [UpdateBusinessMessageEdited], [UpdateBusinessMessagesDeleted], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewBusinessCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdatePoll], [UpdatePollAnswer], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost], [UpdateMessageReaction], [UpdateMessageReactions], [UpdatePaidMediaPurchased]; or [UndecodedUpdate] for a type newer than this API.
 sealed class Update extends TdObject {
   const Update();
 
@@ -2435,12 +2435,12 @@ final class UpdateChatPendingJoinRequests extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The default chat reply markup was changed. Can occur because new messages with reply markup were received or because an old reply markup was hidden by the user
+/// The chat reply markup was changed
 final class UpdateChatReplyMarkup extends Update {
-  /// The default chat reply markup was changed. Can occur because new messages with reply markup were received or because an old reply markup was hidden by the user
+  /// The chat reply markup was changed
   const UpdateChatReplyMarkup({
     required this.chatId,
-    required this.replyMarkupMessageId,
+    this.replyMarkupMessage,
     this.extra,
     this.clientId,
   });
@@ -2448,8 +2448,8 @@ final class UpdateChatReplyMarkup extends Update {
   /// Chat identifier
   final int chatId;
 
-  /// Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat
-  final int replyMarkupMessageId;
+  /// The message from which the reply markup must be used; may be null if there is no default reply markup in the chat
+  final Message? replyMarkupMessage;
 
   /// "@extra" of the request this object answers.
   @override
@@ -2463,7 +2463,10 @@ final class UpdateChatReplyMarkup extends Update {
   factory UpdateChatReplyMarkup.fromJson(Map<String, dynamic> json) =>
       UpdateChatReplyMarkup(
         chatId: _readInt(json['chat_id']),
-        replyMarkupMessageId: _readInt(json['reply_markup_message_id']),
+        replyMarkupMessage: _readOptional(
+          json['reply_markup_message'],
+          Message.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -2472,7 +2475,7 @@ final class UpdateChatReplyMarkup extends Update {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'chat_id': chatId,
-    'reply_markup_message_id': replyMarkupMessageId,
+    'reply_markup_message': replyMarkupMessage?.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -2480,12 +2483,14 @@ final class UpdateChatReplyMarkup extends Update {
   @override
   UpdateChatReplyMarkup copyWith({
     int? chatId,
-    int? replyMarkupMessageId,
+    Message? Function()? replyMarkupMessage,
     dynamic extra,
     int? clientId,
   }) => UpdateChatReplyMarkup(
     chatId: chatId ?? this.chatId,
-    replyMarkupMessageId: replyMarkupMessageId ?? this.replyMarkupMessageId,
+    replyMarkupMessage: replyMarkupMessage != null
+        ? replyMarkupMessage()
+        : this.replyMarkupMessage,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );
@@ -5185,6 +5190,76 @@ final class UpdateServiceNotification extends Update {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateServiceNotification';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An OAuth authorization request was received
+final class UpdateNewOauthRequest extends Update {
+  /// An OAuth authorization request was received
+  const UpdateNewOauthRequest({
+    required this.domain,
+    required this.location,
+    required this.url,
+    this.extra,
+    this.clientId,
+  });
+
+  /// A domain of the URL where the user authorizes
+  final String domain;
+
+  /// Human-readable description of a country and a region from which the authorization is performed, based on the IP address
+  final String location;
+
+  /// The URL to pass to getOauthLinkInfo; the link is valid for 60 seconds
+  final String url;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateNewOauthRequest] from TDLib JSON.
+  factory UpdateNewOauthRequest.fromJson(Map<String, dynamic> json) =>
+      UpdateNewOauthRequest(
+        domain: _readString(json['domain']),
+        location: _readString(json['location']),
+        url: _readString(json['url']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'domain': domain,
+    'location': location,
+    'url': url,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateNewOauthRequest copyWith({
+    String? domain,
+    String? location,
+    String? url,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateNewOauthRequest(
+    domain: domain ?? this.domain,
+    location: location ?? this.location,
+    url: url ?? this.url,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateNewOauthRequest';
 
   @override
   String getConstructor() => CONSTRUCTOR;

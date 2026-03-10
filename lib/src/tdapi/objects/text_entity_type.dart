@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Represents a part of the text which must be formatted differently
 ///
-/// One of: [TextEntityTypeMention], [TextEntityTypeHashtag], [TextEntityTypeCashtag], [TextEntityTypeBotCommand], [TextEntityTypeUrl], [TextEntityTypeEmailAddress], [TextEntityTypePhoneNumber], [TextEntityTypeBankCardNumber], [TextEntityTypeBold], [TextEntityTypeItalic], [TextEntityTypeUnderline], [TextEntityTypeStrikethrough], [TextEntityTypeSpoiler], [TextEntityTypeCode], [TextEntityTypePre], [TextEntityTypePreCode], [TextEntityTypeBlockQuote], [TextEntityTypeExpandableBlockQuote], [TextEntityTypeTextUrl], [TextEntityTypeMentionName], [TextEntityTypeCustomEmoji], [TextEntityTypeMediaTimestamp]; or [UndecodedTextEntityType] for a type newer than this API.
+/// One of: [TextEntityTypeMention], [TextEntityTypeHashtag], [TextEntityTypeCashtag], [TextEntityTypeBotCommand], [TextEntityTypeUrl], [TextEntityTypeEmailAddress], [TextEntityTypePhoneNumber], [TextEntityTypeBankCardNumber], [TextEntityTypeBold], [TextEntityTypeItalic], [TextEntityTypeUnderline], [TextEntityTypeStrikethrough], [TextEntityTypeSpoiler], [TextEntityTypeCode], [TextEntityTypePre], [TextEntityTypePreCode], [TextEntityTypeBlockQuote], [TextEntityTypeExpandableBlockQuote], [TextEntityTypeTextUrl], [TextEntityTypeMentionName], [TextEntityTypeCustomEmoji], [TextEntityTypeMediaTimestamp], [TextEntityTypeDateTime]; or [UndecodedTextEntityType] for a type newer than this API.
 sealed class TextEntityType extends TdObject {
   const TextEntityType();
 
@@ -602,6 +602,54 @@ final class TextEntityTypeMediaTimestamp extends TextEntityType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'textEntityTypeMediaTimestamp';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A date and time
+final class TextEntityTypeDateTime extends TextEntityType {
+  /// A date and time
+  const TextEntityTypeDateTime({required this.unixTime, this.formattingType});
+
+  /// Point in time (Unix timestamp) representing the date and time
+  final int unixTime;
+
+  /// Date and time formatting type; may be null if none and the original text must not be changed
+  final DateTimeFormattingType? formattingType;
+
+  /// Parses a [TextEntityTypeDateTime] from TDLib JSON.
+  factory TextEntityTypeDateTime.fromJson(Map<String, dynamic> json) =>
+      TextEntityTypeDateTime(
+        unixTime: _readInt(json['unix_time']),
+        formattingType: _readOptional(
+          json['formatting_type'],
+          DateTimeFormattingType.fromJson,
+        ),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'unix_time': unixTime,
+    'formatting_type': formattingType?.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  TextEntityTypeDateTime copyWith({
+    int? unixTime,
+    DateTimeFormattingType? Function()? formattingType,
+  }) => TextEntityTypeDateTime(
+    unixTime: unixTime ?? this.unixTime,
+    formattingType: formattingType != null
+        ? formattingType()
+        : this.formattingType,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'textEntityTypeDateTime';
 
   @override
   String getConstructor() => CONSTRUCTOR;

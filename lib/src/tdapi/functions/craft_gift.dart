@@ -10,7 +10,7 @@ final class CraftGift extends TdFunction<CraftGiftResult> {
   /// Crafts a new gift from other gifts that will be permanently lost
   const CraftGift({required this.receivedGiftIds});
 
-  /// Identifier of the gifts to use for crafting
+  /// Identifier of the gifts to use for crafting. In the case of a successful craft, the resulting gift will have the number of the first gift. Consequently, the first gift must not have been withdrawn to the TON blockchain as an NFT and must have an empty gift_address
   final List<String> receivedGiftIds;
 
   @override

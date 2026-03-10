@@ -42,9 +42,9 @@ final class UndecodedReplyMarkup extends ReplyMarkup {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// Instructs application to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, updateChatReplyMarkup with message_id == 0 will be sent
+/// Instructs application to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, updateChatReplyMarkup with reply_markup_message == null will be sent
 final class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
-  /// Instructs application to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, updateChatReplyMarkup with message_id == 0 will be sent
+  /// Instructs application to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, updateChatReplyMarkup with reply_markup_message == null will be sent
   const ReplyMarkupRemoveKeyboard({required this.isPersonal});
 
   /// True, if the keyboard is removed only for the mentioned users or the target user of a reply

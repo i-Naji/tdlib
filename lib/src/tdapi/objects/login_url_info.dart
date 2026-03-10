@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Contains information about an inline button of type inlineKeyboardButtonTypeLoginUrl
+/// Contains information about an inline button of type inlineKeyboardButtonTypeLoginUrl or an external link
 ///
 /// One of: [LoginUrlInfoOpen], [LoginUrlInfoRequestConfirmation]; or [UndecodedLoginUrlInfo] for a type newer than this API.
 sealed class LoginUrlInfo extends TdObject {
@@ -112,11 +112,6 @@ final class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
     required this.domain,
     required this.botUserId,
     required this.requestWriteAccess,
-    required this.requestPhoneNumberAccess,
-    required this.browser,
-    required this.platform,
-    required this.ipAddress,
-    required this.location,
     this.extra,
     this.clientId,
   });
@@ -133,21 +128,6 @@ final class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
   /// True, if the user must be asked for the permission to the bot to send them messages
   final bool requestWriteAccess;
 
-  /// True, if the user must be asked for the permission to share their phone number
-  final bool requestPhoneNumberAccess;
-
-  /// The version of a browser used for the authorization; may be empty if irrelevant
-  final String browser;
-
-  /// Operating system the browser is running on; may be empty if irrelevant
-  final String platform;
-
-  /// IP address from which the authorization is performed, in human-readable format; may be empty if irrelevant
-  final String ipAddress;
-
-  /// Human-readable description of a country and a region from which the authorization is performed, based on the IP address; may be empty if irrelevant
-  final String location;
-
   /// "@extra" of the request this object answers.
   @override
   final dynamic extra;
@@ -163,13 +143,6 @@ final class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
         domain: _readString(json['domain']),
         botUserId: _readInt(json['bot_user_id']),
         requestWriteAccess: _readBool(json['request_write_access']),
-        requestPhoneNumberAccess: _readBool(
-          json['request_phone_number_access'],
-        ),
-        browser: _readString(json['browser']),
-        platform: _readString(json['platform']),
-        ipAddress: _readString(json['ip_address']),
-        location: _readString(json['location']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -181,11 +154,6 @@ final class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
     'domain': domain,
     'bot_user_id': botUserId,
     'request_write_access': requestWriteAccess,
-    'request_phone_number_access': requestPhoneNumberAccess,
-    'browser': browser,
-    'platform': platform,
-    'ip_address': ipAddress,
-    'location': location,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -196,11 +164,6 @@ final class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
     String? domain,
     int? botUserId,
     bool? requestWriteAccess,
-    bool? requestPhoneNumberAccess,
-    String? browser,
-    String? platform,
-    String? ipAddress,
-    String? location,
     dynamic extra,
     int? clientId,
   }) => LoginUrlInfoRequestConfirmation(
@@ -208,12 +171,6 @@ final class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
     domain: domain ?? this.domain,
     botUserId: botUserId ?? this.botUserId,
     requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
-    requestPhoneNumberAccess:
-        requestPhoneNumberAccess ?? this.requestPhoneNumberAccess,
-    browser: browser ?? this.browser,
-    platform: platform ?? this.platform,
-    ipAddress: ipAddress ?? this.ipAddress,
-    location: location ?? this.location,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );

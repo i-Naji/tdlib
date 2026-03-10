@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatOwnerLeft], [MessageChatOwnerChanged], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatOwnerLeft], [MessageChatOwnerChanged], [MessageChatHasProtectedContentToggled], [MessageChatHasProtectedContentDisableRequested], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -1315,10 +1315,14 @@ final class MessageInvoice extends MessageContent {
 final class MessageCall extends MessageContent {
   /// A message with information about an ended call
   const MessageCall({
+    required this.uniqueId,
     required this.isVideo,
     required this.discardReason,
     required this.duration,
   });
+
+  /// Persistent unique call identifier; 0 for calls from other devices, which can't be passed as inputCallFromMessage
+  final int uniqueId;
 
   /// True, if the call was a video call
   final bool isVideo;
@@ -1331,6 +1335,7 @@ final class MessageCall extends MessageContent {
 
   /// Parses a [MessageCall] from TDLib JSON.
   factory MessageCall.fromJson(Map<String, dynamic> json) => MessageCall(
+    uniqueId: _readInt(json['unique_id']),
     isVideo: _readBool(json['is_video']),
     discardReason: _readObject(
       json['discard_reason'],
@@ -1342,6 +1347,7 @@ final class MessageCall extends MessageContent {
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
+    'unique_id': uniqueId.toString(),
     'is_video': isVideo,
     'discard_reason': discardReason.toJson(),
     'duration': duration,
@@ -1351,10 +1357,12 @@ final class MessageCall extends MessageContent {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageCall copyWith({
+    int? uniqueId,
     bool? isVideo,
     CallDiscardReason? discardReason,
     int? duration,
   }) => MessageCall(
+    uniqueId: uniqueId ?? this.uniqueId,
     isVideo: isVideo ?? this.isVideo,
     discardReason: discardReason ?? this.discardReason,
     duration: duration ?? this.duration,
@@ -1819,6 +1827,103 @@ final class MessageChatOwnerChanged extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageChatOwnerChanged';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Chat has_protected_content setting was changed or request to change it was rejected
+final class MessageChatHasProtectedContentToggled extends MessageContent {
+  /// Chat has_protected_content setting was changed or request to change it was rejected
+  const MessageChatHasProtectedContentToggled({
+    required this.requestMessageId,
+    required this.oldHasProtectedContent,
+    required this.newHasProtectedContent,
+  });
+
+  /// Identifier of the message with the request to change the setting; can be an identifier of a deleted message or 0
+  final int requestMessageId;
+
+  /// Previous value of the setting
+  final bool oldHasProtectedContent;
+
+  /// New value of the setting
+  final bool newHasProtectedContent;
+
+  /// Parses a [MessageChatHasProtectedContentToggled] from TDLib JSON.
+  factory MessageChatHasProtectedContentToggled.fromJson(
+    Map<String, dynamic> json,
+  ) => MessageChatHasProtectedContentToggled(
+    requestMessageId: _readInt(json['request_message_id']),
+    oldHasProtectedContent: _readBool(json['old_has_protected_content']),
+    newHasProtectedContent: _readBool(json['new_has_protected_content']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'request_message_id': requestMessageId,
+    'old_has_protected_content': oldHasProtectedContent,
+    'new_has_protected_content': newHasProtectedContent,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageChatHasProtectedContentToggled copyWith({
+    int? requestMessageId,
+    bool? oldHasProtectedContent,
+    bool? newHasProtectedContent,
+  }) => MessageChatHasProtectedContentToggled(
+    requestMessageId: requestMessageId ?? this.requestMessageId,
+    oldHasProtectedContent:
+        oldHasProtectedContent ?? this.oldHasProtectedContent,
+    newHasProtectedContent:
+        newHasProtectedContent ?? this.newHasProtectedContent,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageChatHasProtectedContentToggled';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Chat has_protected_content setting was requested to be disabled
+final class MessageChatHasProtectedContentDisableRequested
+    extends MessageContent {
+  /// Chat has_protected_content setting was requested to be disabled
+  const MessageChatHasProtectedContentDisableRequested({
+    required this.isExpired,
+  });
+
+  /// True, if the request has expired
+  final bool isExpired;
+
+  /// Parses a [MessageChatHasProtectedContentDisableRequested] from TDLib JSON.
+  factory MessageChatHasProtectedContentDisableRequested.fromJson(
+    Map<String, dynamic> json,
+  ) => MessageChatHasProtectedContentDisableRequested(
+    isExpired: _readBool(json['is_expired']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'is_expired': isExpired,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageChatHasProtectedContentDisableRequested copyWith({bool? isExpired}) =>
+      MessageChatHasProtectedContentDisableRequested(
+        isExpired: isExpired ?? this.isExpired,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR =
+      'messageChatHasProtectedContentDisableRequested';
 
   @override
   String getConstructor() => CONSTRUCTOR;

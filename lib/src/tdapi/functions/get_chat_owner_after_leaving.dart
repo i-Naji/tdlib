@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns the user who will become the owner of the chat after 7 days if the current user does not return to the chat during that period; requires owner privileges in the chat. Available only for supergroups and channel chats
+/// Returns the user who will become the owner of the chat after 7 days if the current user does not return to the supergroup or channel during that period or immediately for basic groups; requires owner privileges in the chat. Available only for supergroups and channel chats
 ///
 /// Returns [User].
 final class GetChatOwnerAfterLeaving extends TdFunction<User> {
-  /// Returns the user who will become the owner of the chat after 7 days if the current user does not return to the chat during that period; requires owner privileges in the chat. Available only for supergroups and channel chats
+  /// Returns the user who will become the owner of the chat after 7 days if the current user does not return to the supergroup or channel during that period or immediately for basic groups; requires owner privileges in the chat. Available only for supergroups and channel chats
   const GetChatOwnerAfterLeaving({required this.chatId});
 
   /// Chat identifier

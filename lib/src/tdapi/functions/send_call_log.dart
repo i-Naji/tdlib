@@ -11,7 +11,7 @@ final class SendCallLog extends TdFunction<Ok> {
   const SendCallLog({required this.callId, required this.logFile});
 
   /// Call identifier
-  final int callId;
+  final InputCall callId;
 
   /// Call log file. Only inputFileLocal and inputFileGenerated are supported
   final InputFile logFile;
@@ -19,14 +19,14 @@ final class SendCallLog extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
-    'call_id': callId,
+    'call_id': callId.toJson(),
     'log_file': logFile.toJson(),
     '@extra': ?extra,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SendCallLog copyWith({int? callId, InputFile? logFile}) => SendCallLog(
+  SendCallLog copyWith({InputCall? callId, InputFile? logFile}) => SendCallLog(
     callId: callId ?? this.callId,
     logFile: logFile ?? this.logFile,
   );

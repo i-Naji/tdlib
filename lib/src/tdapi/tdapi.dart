@@ -4,6 +4,7 @@
 import 'dart:convert' show json;
 
 part 'functions/accept_call.dart';
+part 'functions/accept_oauth_request.dart';
 part 'functions/accept_terms_of_service.dart';
 part 'functions/activate_story_stealth_mode.dart';
 part 'functions/add_bot_media_preview.dart';
@@ -77,6 +78,7 @@ part 'functions/check_chat_username.dart';
 part 'functions/check_created_public_chats_limit.dart';
 part 'functions/check_email_address_verification_code.dart';
 part 'functions/check_login_email_address_code.dart';
+part 'functions/check_oauth_request_match_code.dart';
 part 'functions/check_password_recovery_code.dart';
 part 'functions/check_phone_number_code.dart';
 part 'functions/check_premium_gift_code.dart';
@@ -131,6 +133,7 @@ part 'functions/create_supergroup_chat.dart';
 part 'functions/create_temporary_password.dart';
 part 'functions/create_video_chat.dart';
 part 'functions/decline_group_call_invitation.dart';
+part 'functions/decline_oauth_request.dart';
 part 'functions/decline_suggested_post.dart';
 part 'functions/decrypt_group_call_data.dart';
 part 'functions/delete_account.dart';
@@ -418,6 +421,7 @@ part 'functions/get_message_viewers.dart';
 part 'functions/get_messages.dart';
 part 'functions/get_network_statistics.dart';
 part 'functions/get_new_chat_privacy_settings.dart';
+part 'functions/get_oauth_link_info.dart';
 part 'functions/get_option.dart';
 part 'functions/get_owned_bots.dart';
 part 'functions/get_owned_sticker_sets.dart';
@@ -580,6 +584,7 @@ part 'functions/place_gift_auction_bid.dart';
 part 'functions/post_story.dart';
 part 'functions/preliminary_upload_file.dart';
 part 'functions/process_chat_folder_new_chats.dart';
+part 'functions/process_chat_has_protected_content_disable_request.dart';
 part 'functions/process_chat_join_request.dart';
 part 'functions/process_chat_join_requests.dart';
 part 'functions/process_gift_purchase_offer.dart';
@@ -775,6 +780,7 @@ part 'functions/set_chat_draft_message.dart';
 part 'functions/set_chat_emoji_status.dart';
 part 'functions/set_chat_location.dart';
 part 'functions/set_chat_member_status.dart';
+part 'functions/set_chat_member_tag.dart';
 part 'functions/set_chat_message_auto_delete_time.dart';
 part 'functions/set_chat_message_sender.dart';
 part 'functions/set_chat_notification_settings.dart';
@@ -1157,6 +1163,8 @@ part 'objects/data.dart';
 part 'objects/database_statistics.dart';
 part 'objects/date.dart';
 part 'objects/date_range.dart';
+part 'objects/date_time_formatting_type.dart';
+part 'objects/date_time_part_precision.dart';
 part 'objects/dated_file.dart';
 part 'objects/deep_link_info.dart';
 part 'objects/device_token.dart';
@@ -1269,6 +1277,7 @@ part 'objects/inline_query_results_button_type.dart';
 part 'objects/input_background.dart';
 part 'objects/input_business_chat_link.dart';
 part 'objects/input_business_start_page.dart';
+part 'objects/input_call.dart';
 part 'objects/input_chat_photo.dart';
 part 'objects/input_chat_theme.dart';
 part 'objects/input_checklist.dart';
@@ -1372,6 +1381,7 @@ part 'objects/notification_settings_scope.dart';
 part 'objects/notification_sound.dart';
 part 'objects/notification_sounds.dart';
 part 'objects/notification_type.dart';
+part 'objects/oauth_link_info.dart';
 part 'objects/ok.dart';
 part 'objects/option_value.dart';
 part 'objects/order_info.dart';
@@ -1416,6 +1426,8 @@ part 'objects/point.dart';
 part 'objects/poll.dart';
 part 'objects/poll_option.dart';
 part 'objects/poll_type.dart';
+part 'objects/poll_voter.dart';
+part 'objects/poll_voters.dart';
 part 'objects/premium_feature.dart';
 part 'objects/premium_feature_promotion_animation.dart';
 part 'objects/premium_features.dart';
@@ -1648,14 +1660,14 @@ part 'objects/web_app_open_parameters.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.61';
+const String tdlibVersion = '1.8.62';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '6d509061574d684117f74133056aa43df89022fc';
+const String tdlibSchemaCommit = 'af0cb1d30a1e5cb1a10cd83b48998ca9ea9ce249';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '6d509061574d684117f74133056aa43df89022fc',
+  'af0cb1d30a1e5cb1a10cd83b48998ca9ea9ce249',
 ];
 
 /// Base class of every TDLib object.
@@ -2207,6 +2219,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageSenders': MessageSenders.fromJson,
   'chatMessageSender': ChatMessageSender.fromJson,
   'chatMessageSenders': ChatMessageSenders.fromJson,
+  'pollVoter': PollVoter.fromJson,
+  'pollVoters': PollVoters.fromJson,
   'messageReadDateRead': MessageReadDateRead.fromJson,
   'messageReadDateUnread': MessageReadDateUnread.fromJson,
   'messageReadDateTooOld': MessageReadDateTooOld.fromJson,
@@ -2386,6 +2400,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'replyMarkupInlineKeyboard': ReplyMarkupInlineKeyboard.fromJson,
   'loginUrlInfoOpen': LoginUrlInfoOpen.fromJson,
   'loginUrlInfoRequestConfirmation': LoginUrlInfoRequestConfirmation.fromJson,
+  'oauthLinkInfo': OauthLinkInfo.fromJson,
   'themeParameters': ThemeParameters.fromJson,
   'webAppOpenModeCompact': WebAppOpenModeCompact.fromJson,
   'webAppOpenModeFullSize': WebAppOpenModeFullSize.fromJson,
@@ -2701,6 +2716,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageChatDeletePhoto': MessageChatDeletePhoto.fromJson,
   'messageChatOwnerLeft': MessageChatOwnerLeft.fromJson,
   'messageChatOwnerChanged': MessageChatOwnerChanged.fromJson,
+  'messageChatHasProtectedContentToggled':
+      MessageChatHasProtectedContentToggled.fromJson,
+  'messageChatHasProtectedContentDisableRequested':
+      MessageChatHasProtectedContentDisableRequested.fromJson,
   'messageChatAddMembers': MessageChatAddMembers.fromJson,
   'messageChatJoinByLink': MessageChatJoinByLink.fromJson,
   'messageChatJoinByRequest': MessageChatJoinByRequest.fromJson,
@@ -2761,6 +2780,11 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messagePassportDataReceived': MessagePassportDataReceived.fromJson,
   'messageProximityAlertTriggered': MessageProximityAlertTriggered.fromJson,
   'messageUnsupported': MessageUnsupported.fromJson,
+  'dateTimePartPrecisionNone': DateTimePartPrecisionNone.fromJson,
+  'dateTimePartPrecisionShort': DateTimePartPrecisionShort.fromJson,
+  'dateTimePartPrecisionLong': DateTimePartPrecisionLong.fromJson,
+  'dateTimeFormattingTypeRelative': DateTimeFormattingTypeRelative.fromJson,
+  'dateTimeFormattingTypeAbsolute': DateTimeFormattingTypeAbsolute.fromJson,
   'textEntityTypeMention': TextEntityTypeMention.fromJson,
   'textEntityTypeHashtag': TextEntityTypeHashtag.fromJson,
   'textEntityTypeCashtag': TextEntityTypeCashtag.fromJson,
@@ -2784,6 +2808,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'textEntityTypeMentionName': TextEntityTypeMentionName.fromJson,
   'textEntityTypeCustomEmoji': TextEntityTypeCustomEmoji.fromJson,
   'textEntityTypeMediaTimestamp': TextEntityTypeMediaTimestamp.fromJson,
+  'textEntityTypeDateTime': TextEntityTypeDateTime.fromJson,
   'inputThumbnail': InputThumbnail.fromJson,
   'inputPaidMediaTypePhoto': InputPaidMediaTypePhoto.fromJson,
   'inputPaidMediaTypeVideo': InputPaidMediaTypeVideo.fromJson,
@@ -2971,6 +2996,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'callServer': CallServer.fromJson,
   'callId': CallId.fromJson,
   'groupCallId': GroupCallId.fromJson,
+  'inputCallDiscarded': InputCallDiscarded.fromJson,
+  'inputCallFromMessage': InputCallFromMessage.fromJson,
   'callStatePending': CallStatePending.fromJson,
   'callStateExchangingKeys': CallStateExchangingKeys.fromJson,
   'callStateReady': CallStateReady.fromJson,
@@ -3110,6 +3137,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'chatEventMemberLeft': ChatEventMemberLeft.fromJson,
   'chatEventMemberPromoted': ChatEventMemberPromoted.fromJson,
   'chatEventMemberRestricted': ChatEventMemberRestricted.fromJson,
+  'chatEventMemberTagChanged': ChatEventMemberTagChanged.fromJson,
   'chatEventMemberSubscriptionExtended':
       ChatEventMemberSubscriptionExtended.fromJson,
   'chatEventAvailableReactionsChanged':
@@ -3238,6 +3266,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'premiumFeatureMessageEffects': PremiumFeatureMessageEffects.fromJson,
   'premiumFeatureChecklists': PremiumFeatureChecklists.fromJson,
   'premiumFeaturePaidMessages': PremiumFeaturePaidMessages.fromJson,
+  'premiumFeatureProtectPrivateChatContent':
+      PremiumFeatureProtectPrivateChatContent.fromJson,
   'businessFeatureLocation': BusinessFeatureLocation.fromJson,
   'businessFeatureOpeningHours': BusinessFeatureOpeningHours.fromJson,
   'businessFeatureQuickReplies': BusinessFeatureQuickReplies.fromJson,
@@ -3614,6 +3644,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'internalLinkTypeNewGroupChat': InternalLinkTypeNewGroupChat.fromJson,
   'internalLinkTypeNewPrivateChat': InternalLinkTypeNewPrivateChat.fromJson,
   'internalLinkTypeNewStory': InternalLinkTypeNewStory.fromJson,
+  'internalLinkTypeOauth': InternalLinkTypeOauth.fromJson,
   'internalLinkTypePassportDataRequest':
       InternalLinkTypePassportDataRequest.fromJson,
   'internalLinkTypePhoneNumberConfirmation':
@@ -3890,6 +3921,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateBasicGroupFullInfo': UpdateBasicGroupFullInfo.fromJson,
   'updateSupergroupFullInfo': UpdateSupergroupFullInfo.fromJson,
   'updateServiceNotification': UpdateServiceNotification.fromJson,
+  'updateNewOauthRequest': UpdateNewOauthRequest.fromJson,
   'updateFile': UpdateFile.fromJson,
   'updateFileGenerationStart': UpdateFileGenerationStart.fromJson,
   'updateFileGenerationStop': UpdateFileGenerationStop.fromJson,

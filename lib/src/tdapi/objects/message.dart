@@ -37,6 +37,7 @@ final class Message extends TdObject {
     required this.viaBotUserId,
     required this.senderBusinessBotUserId,
     required this.senderBoostCount,
+    required this.senderTag,
     required this.paidMessageStarCount,
     required this.authorSignature,
     required this.mediaAlbumId,
@@ -139,6 +140,9 @@ final class Message extends TdObject {
   /// Number of times the sender of the message boosted the supergroup at the time the message was sent; 0 if none or unknown. For messages sent by the current user, supergroupFullInfo.my_boost_count must be used instead
   final int senderBoostCount;
 
+  /// Tag of the sender of the message in the supergroup at the time the message was sent; may be empty if none or unknown. For messages sent in basic groups or supergroup administrators, the current custom title or tag must be used instead
+  final String senderTag;
+
   /// The number of Telegram Stars the sender paid to send the message
   final int paidMessageStarCount;
 
@@ -224,6 +228,7 @@ final class Message extends TdObject {
     viaBotUserId: _readInt(json['via_bot_user_id']),
     senderBusinessBotUserId: _readInt(json['sender_business_bot_user_id']),
     senderBoostCount: _readInt(json['sender_boost_count']),
+    senderTag: _readString(json['sender_tag']),
     paidMessageStarCount: _readInt(json['paid_message_star_count']),
     authorSignature: _readString(json['author_signature']),
     mediaAlbumId: _readInt(json['media_album_id']),
@@ -272,6 +277,7 @@ final class Message extends TdObject {
     'via_bot_user_id': viaBotUserId,
     'sender_business_bot_user_id': senderBusinessBotUserId,
     'sender_boost_count': senderBoostCount,
+    'sender_tag': senderTag,
     'paid_message_star_count': paidMessageStarCount,
     'author_signature': authorSignature,
     'media_album_id': mediaAlbumId.toString(),
@@ -315,6 +321,7 @@ final class Message extends TdObject {
     int? viaBotUserId,
     int? senderBusinessBotUserId,
     int? senderBoostCount,
+    String? senderTag,
     int? paidMessageStarCount,
     String? authorSignature,
     int? mediaAlbumId,
@@ -367,6 +374,7 @@ final class Message extends TdObject {
     senderBusinessBotUserId:
         senderBusinessBotUserId ?? this.senderBusinessBotUserId,
     senderBoostCount: senderBoostCount ?? this.senderBoostCount,
+    senderTag: senderTag ?? this.senderTag,
     paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
     authorSignature: authorSignature ?? this.authorSignature,
     mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,

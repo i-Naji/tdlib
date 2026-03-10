@@ -425,6 +425,7 @@ final class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
   /// The link is a link to an animation player
   const LinkPreviewTypeEmbeddedAnimationPlayer({
     required this.url,
+    this.animation,
     this.thumbnail,
     required this.duration,
     required this.width,
@@ -433,6 +434,9 @@ final class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
 
   /// URL of the external animation player
   final String url;
+
+  /// The cached animation; may be null if unknown
+  final Animation? animation;
 
   /// Thumbnail of the animation; may be null if unknown
   final Photo? thumbnail;
@@ -451,6 +455,7 @@ final class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
     Map<String, dynamic> json,
   ) => LinkPreviewTypeEmbeddedAnimationPlayer(
     url: _readString(json['url']),
+    animation: _readOptional(json['animation'], Animation.fromJson),
     thumbnail: _readOptional(json['thumbnail'], Photo.fromJson),
     duration: _readInt(json['duration']),
     width: _readInt(json['width']),
@@ -461,6 +466,7 @@ final class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'url': url,
+    'animation': animation?.toJson(),
     'thumbnail': thumbnail?.toJson(),
     'duration': duration,
     'width': width,
@@ -472,12 +478,14 @@ final class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
   @override
   LinkPreviewTypeEmbeddedAnimationPlayer copyWith({
     String? url,
+    Animation? Function()? animation,
     Photo? Function()? thumbnail,
     int? duration,
     int? width,
     int? height,
   }) => LinkPreviewTypeEmbeddedAnimationPlayer(
     url: url ?? this.url,
+    animation: animation != null ? animation() : this.animation,
     thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
     duration: duration ?? this.duration,
     width: width ?? this.width,
@@ -496,6 +504,7 @@ final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
   /// The link is a link to an audio player
   const LinkPreviewTypeEmbeddedAudioPlayer({
     required this.url,
+    this.audio,
     this.thumbnail,
     required this.duration,
     required this.width,
@@ -504,6 +513,9 @@ final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
 
   /// URL of the external audio player
   final String url;
+
+  /// The cached audio; may be null if unknown
+  final Audio? audio;
 
   /// Thumbnail of the audio; may be null if unknown
   final Photo? thumbnail;
@@ -522,6 +534,7 @@ final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
     Map<String, dynamic> json,
   ) => LinkPreviewTypeEmbeddedAudioPlayer(
     url: _readString(json['url']),
+    audio: _readOptional(json['audio'], Audio.fromJson),
     thumbnail: _readOptional(json['thumbnail'], Photo.fromJson),
     duration: _readInt(json['duration']),
     width: _readInt(json['width']),
@@ -532,6 +545,7 @@ final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'url': url,
+    'audio': audio?.toJson(),
     'thumbnail': thumbnail?.toJson(),
     'duration': duration,
     'width': width,
@@ -543,12 +557,14 @@ final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
   @override
   LinkPreviewTypeEmbeddedAudioPlayer copyWith({
     String? url,
+    Audio? Function()? audio,
     Photo? Function()? thumbnail,
     int? duration,
     int? width,
     int? height,
   }) => LinkPreviewTypeEmbeddedAudioPlayer(
     url: url ?? this.url,
+    audio: audio != null ? audio() : this.audio,
     thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
     duration: duration ?? this.duration,
     width: width ?? this.width,
@@ -567,6 +583,7 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
   /// The link is a link to a video player
   const LinkPreviewTypeEmbeddedVideoPlayer({
     required this.url,
+    this.video,
     this.thumbnail,
     required this.duration,
     required this.width,
@@ -575,6 +592,9 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
 
   /// URL of the external video player
   final String url;
+
+  /// The cached video; may be null if unknown
+  final Video? video;
 
   /// Thumbnail of the video; may be null if unknown
   final Photo? thumbnail;
@@ -593,6 +613,7 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
     Map<String, dynamic> json,
   ) => LinkPreviewTypeEmbeddedVideoPlayer(
     url: _readString(json['url']),
+    video: _readOptional(json['video'], Video.fromJson),
     thumbnail: _readOptional(json['thumbnail'], Photo.fromJson),
     duration: _readInt(json['duration']),
     width: _readInt(json['width']),
@@ -603,6 +624,7 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'url': url,
+    'video': video?.toJson(),
     'thumbnail': thumbnail?.toJson(),
     'duration': duration,
     'width': width,
@@ -614,12 +636,14 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
   @override
   LinkPreviewTypeEmbeddedVideoPlayer copyWith({
     String? url,
+    Video? Function()? video,
     Photo? Function()? thumbnail,
     int? duration,
     int? width,
     int? height,
   }) => LinkPreviewTypeEmbeddedVideoPlayer(
     url: url ?? this.url,
+    video: video != null ? video() : this.video,
     thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
     duration: duration ?? this.duration,
     width: width ?? this.width,

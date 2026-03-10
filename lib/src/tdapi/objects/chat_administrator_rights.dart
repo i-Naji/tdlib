@@ -22,6 +22,7 @@ final class ChatAdministratorRights extends TdObject {
     required this.canEditStories,
     required this.canDeleteStories,
     required this.canManageDirectMessages,
+    required this.canManageTags,
     required this.isAnonymous,
   });
 
@@ -70,6 +71,9 @@ final class ChatAdministratorRights extends TdObject {
   /// True, if the administrator can answer to channel direct messages; applicable to channels only
   final bool canManageDirectMessages;
 
+  /// True, if the administrator can change tags of other users; applicable to basic groups and supergroups only
+  final bool canManageTags;
+
   /// True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
   final bool isAnonymous;
 
@@ -91,6 +95,7 @@ final class ChatAdministratorRights extends TdObject {
         canEditStories: _readBool(json['can_edit_stories']),
         canDeleteStories: _readBool(json['can_delete_stories']),
         canManageDirectMessages: _readBool(json['can_manage_direct_messages']),
+        canManageTags: _readBool(json['can_manage_tags']),
         isAnonymous: _readBool(json['is_anonymous']),
       );
 
@@ -112,6 +117,7 @@ final class ChatAdministratorRights extends TdObject {
     'can_edit_stories': canEditStories,
     'can_delete_stories': canDeleteStories,
     'can_manage_direct_messages': canManageDirectMessages,
+    'can_manage_tags': canManageTags,
     'is_anonymous': isAnonymous,
   };
 
@@ -133,6 +139,7 @@ final class ChatAdministratorRights extends TdObject {
     bool? canEditStories,
     bool? canDeleteStories,
     bool? canManageDirectMessages,
+    bool? canManageTags,
     bool? isAnonymous,
   }) => ChatAdministratorRights(
     canManageChat: canManageChat ?? this.canManageChat,
@@ -151,6 +158,7 @@ final class ChatAdministratorRights extends TdObject {
     canDeleteStories: canDeleteStories ?? this.canDeleteStories,
     canManageDirectMessages:
         canManageDirectMessages ?? this.canManageDirectMessages,
+    canManageTags: canManageTags ?? this.canManageTags,
     isAnonymous: isAnonymous ?? this.isAnonymous,
   );
 

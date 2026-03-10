@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Creates a video chat (a group call bound to a chat). Available only for basic groups, supergroups and channels; requires can_manage_video_chats administrator right
+/// Creates a video chat (a group call bound to a chat); for basic groups, supergroups and channels only; requires can_manage_video_chats administrator right
 ///
 /// Returns [GroupCallId].
 final class CreateVideoChat extends TdFunction<GroupCallId> {
-  /// Creates a video chat (a group call bound to a chat). Available only for basic groups, supergroups and channels; requires can_manage_video_chats administrator right
+  /// Creates a video chat (a group call bound to a chat); for basic groups, supergroups and channels only; requires can_manage_video_chats administrator right
   const CreateVideoChat({
     required this.chatId,
     required this.title,

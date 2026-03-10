@@ -41,6 +41,8 @@ final class MessageProperties extends TdObject {
     required this.canReportReactions,
     required this.canReportSupergroupSpam,
     required this.canSetFactCheck,
+    required this.hasProtectedContentByCurrentUser,
+    required this.hasProtectedContentByOtherUser,
     required this.needShowStatistics,
     this.extra,
     this.clientId,
@@ -148,6 +150,12 @@ final class MessageProperties extends TdObject {
   /// True, if fact check for the message can be changed through setMessageFactCheck
   final bool canSetFactCheck;
 
+  /// True, if content of the message can't be saved locally, because it is protected by the current user; if true, then can_be_saved is false
+  final bool hasProtectedContentByCurrentUser;
+
+  /// True, if content of the message can't be saved locally, because it is protected by the other user; if true, then can_be_saved is false
+  final bool hasProtectedContentByOtherUser;
+
   /// True, if message statistics must be available from context menu of the message
   final bool needShowStatistics;
 
@@ -199,6 +207,12 @@ final class MessageProperties extends TdObject {
     canReportReactions: _readBool(json['can_report_reactions']),
     canReportSupergroupSpam: _readBool(json['can_report_supergroup_spam']),
     canSetFactCheck: _readBool(json['can_set_fact_check']),
+    hasProtectedContentByCurrentUser: _readBool(
+      json['has_protected_content_by_current_user'],
+    ),
+    hasProtectedContentByOtherUser: _readBool(
+      json['has_protected_content_by_other_user'],
+    ),
     needShowStatistics: _readBool(json['need_show_statistics']),
     extra: json['@extra'],
     clientId: _readClientId(json['@client_id']),
@@ -241,6 +255,8 @@ final class MessageProperties extends TdObject {
     'can_report_reactions': canReportReactions,
     'can_report_supergroup_spam': canReportSupergroupSpam,
     'can_set_fact_check': canSetFactCheck,
+    'has_protected_content_by_current_user': hasProtectedContentByCurrentUser,
+    'has_protected_content_by_other_user': hasProtectedContentByOtherUser,
     'need_show_statistics': needShowStatistics,
   };
 
@@ -281,6 +297,8 @@ final class MessageProperties extends TdObject {
     bool? canReportReactions,
     bool? canReportSupergroupSpam,
     bool? canSetFactCheck,
+    bool? hasProtectedContentByCurrentUser,
+    bool? hasProtectedContentByOtherUser,
     bool? needShowStatistics,
     dynamic extra,
     int? clientId,
@@ -328,6 +346,11 @@ final class MessageProperties extends TdObject {
     canReportSupergroupSpam:
         canReportSupergroupSpam ?? this.canReportSupergroupSpam,
     canSetFactCheck: canSetFactCheck ?? this.canSetFactCheck,
+    hasProtectedContentByCurrentUser:
+        hasProtectedContentByCurrentUser ??
+        this.hasProtectedContentByCurrentUser,
+    hasProtectedContentByOtherUser:
+        hasProtectedContentByOtherUser ?? this.hasProtectedContentByOtherUser,
     needShowStatistics: needShowStatistics ?? this.needShowStatistics,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,

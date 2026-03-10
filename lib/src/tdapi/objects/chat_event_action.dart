@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Represents a chat event
 ///
-/// One of: [ChatEventMessageEdited], [ChatEventMessageDeleted], [ChatEventMessagePinned], [ChatEventMessageUnpinned], [ChatEventPollStopped], [ChatEventMemberJoined], [ChatEventMemberJoinedByInviteLink], [ChatEventMemberJoinedByRequest], [ChatEventMemberInvited], [ChatEventMemberLeft], [ChatEventMemberPromoted], [ChatEventMemberRestricted], [ChatEventMemberSubscriptionExtended], [ChatEventAvailableReactionsChanged], [ChatEventBackgroundChanged], [ChatEventDescriptionChanged], [ChatEventEmojiStatusChanged], [ChatEventLinkedChatChanged], [ChatEventLocationChanged], [ChatEventMessageAutoDeleteTimeChanged], [ChatEventPermissionsChanged], [ChatEventPhotoChanged], [ChatEventSlowModeDelayChanged], [ChatEventStickerSetChanged], [ChatEventCustomEmojiStickerSetChanged], [ChatEventTitleChanged], [ChatEventUsernameChanged], [ChatEventActiveUsernamesChanged], [ChatEventAccentColorChanged], [ChatEventProfileAccentColorChanged], [ChatEventHasProtectedContentToggled], [ChatEventInvitesToggled], [ChatEventIsAllHistoryAvailableToggled], [ChatEventHasAggressiveAntiSpamEnabledToggled], [ChatEventSignMessagesToggled], [ChatEventShowMessageSenderToggled], [ChatEventAutomaticTranslationToggled], [ChatEventInviteLinkEdited], [ChatEventInviteLinkRevoked], [ChatEventInviteLinkDeleted], [ChatEventVideoChatCreated], [ChatEventVideoChatEnded], [ChatEventVideoChatMuteNewParticipantsToggled], [ChatEventVideoChatParticipantIsMutedToggled], [ChatEventVideoChatParticipantVolumeLevelChanged], [ChatEventIsForumToggled], [ChatEventForumTopicCreated], [ChatEventForumTopicEdited], [ChatEventForumTopicToggleIsClosed], [ChatEventForumTopicToggleIsHidden], [ChatEventForumTopicDeleted], [ChatEventForumTopicPinned]; or [UndecodedChatEventAction] for a type newer than this API.
+/// One of: [ChatEventMessageEdited], [ChatEventMessageDeleted], [ChatEventMessagePinned], [ChatEventMessageUnpinned], [ChatEventPollStopped], [ChatEventMemberJoined], [ChatEventMemberJoinedByInviteLink], [ChatEventMemberJoinedByRequest], [ChatEventMemberInvited], [ChatEventMemberLeft], [ChatEventMemberPromoted], [ChatEventMemberRestricted], [ChatEventMemberTagChanged], [ChatEventMemberSubscriptionExtended], [ChatEventAvailableReactionsChanged], [ChatEventBackgroundChanged], [ChatEventDescriptionChanged], [ChatEventEmojiStatusChanged], [ChatEventLinkedChatChanged], [ChatEventLocationChanged], [ChatEventMessageAutoDeleteTimeChanged], [ChatEventPermissionsChanged], [ChatEventPhotoChanged], [ChatEventSlowModeDelayChanged], [ChatEventStickerSetChanged], [ChatEventCustomEmojiStickerSetChanged], [ChatEventTitleChanged], [ChatEventUsernameChanged], [ChatEventActiveUsernamesChanged], [ChatEventAccentColorChanged], [ChatEventProfileAccentColorChanged], [ChatEventHasProtectedContentToggled], [ChatEventInvitesToggled], [ChatEventIsAllHistoryAvailableToggled], [ChatEventHasAggressiveAntiSpamEnabledToggled], [ChatEventSignMessagesToggled], [ChatEventShowMessageSenderToggled], [ChatEventAutomaticTranslationToggled], [ChatEventInviteLinkEdited], [ChatEventInviteLinkRevoked], [ChatEventInviteLinkDeleted], [ChatEventVideoChatCreated], [ChatEventVideoChatEnded], [ChatEventVideoChatMuteNewParticipantsToggled], [ChatEventVideoChatParticipantIsMutedToggled], [ChatEventVideoChatParticipantVolumeLevelChanged], [ChatEventIsForumToggled], [ChatEventForumTopicCreated], [ChatEventForumTopicEdited], [ChatEventForumTopicToggleIsClosed], [ChatEventForumTopicToggleIsHidden], [ChatEventForumTopicDeleted], [ChatEventForumTopicPinned]; or [UndecodedChatEventAction] for a type newer than this API.
 sealed class ChatEventAction extends TdObject {
   const ChatEventAction();
 
@@ -520,6 +520,60 @@ final class ChatEventMemberRestricted extends ChatEventAction {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventMemberRestricted';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A chat member tag has been changed
+final class ChatEventMemberTagChanged extends ChatEventAction {
+  /// A chat member tag has been changed
+  const ChatEventMemberTagChanged({
+    required this.userId,
+    required this.oldTag,
+    required this.newTag,
+  });
+
+  /// Affected chat member user identifier
+  final int userId;
+
+  /// Previous tag of the chat member
+  final String oldTag;
+
+  /// New tag of the chat member
+  final String newTag;
+
+  /// Parses a [ChatEventMemberTagChanged] from TDLib JSON.
+  factory ChatEventMemberTagChanged.fromJson(Map<String, dynamic> json) =>
+      ChatEventMemberTagChanged(
+        userId: _readInt(json['user_id']),
+        oldTag: _readString(json['old_tag']),
+        newTag: _readString(json['new_tag']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'old_tag': oldTag,
+    'new_tag': newTag,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  ChatEventMemberTagChanged copyWith({
+    int? userId,
+    String? oldTag,
+    String? newTag,
+  }) => ChatEventMemberTagChanged(
+    userId: userId ?? this.userId,
+    oldTag: oldTag ?? this.oldTag,
+    newTag: newTag ?? this.newTag,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'chatEventMemberTagChanged';
 
   @override
   String getConstructor() => CONSTRUCTOR;
