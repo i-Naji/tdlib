@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatOwnerLeft], [MessageChatOwnerChanged], [MessageChatHasProtectedContentToggled], [MessageChatHasProtectedContentDisableRequested], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessagePollOptionAdded], [MessagePollOptionDeleted], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatOwnerLeft], [MessageChatOwnerChanged], [MessageChatHasProtectedContentToggled], [MessageChatHasProtectedContentDisableRequested], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessageManagedBotCreated], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -320,6 +320,7 @@ final class MessagePhoto extends MessageContent {
   /// A photo message
   const MessagePhoto({
     required this.photo,
+    this.video,
     required this.caption,
     required this.showCaptionAboveMedia,
     required this.hasSpoiler,
@@ -328,6 +329,9 @@ final class MessagePhoto extends MessageContent {
 
   /// The photo
   final Photo photo;
+
+  /// The video representing the live photo; may be null if the photo is static
+  final Video? video;
 
   /// Photo caption
   final FormattedText caption;
@@ -344,6 +348,7 @@ final class MessagePhoto extends MessageContent {
   /// Parses a [MessagePhoto] from TDLib JSON.
   factory MessagePhoto.fromJson(Map<String, dynamic> json) => MessagePhoto(
     photo: _readObject(json['photo'], Photo.fromJson),
+    video: _readOptional(json['video'], Video.fromJson),
     caption: _readObject(json['caption'], FormattedText.fromJson),
     showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
     hasSpoiler: _readBool(json['has_spoiler']),
@@ -354,6 +359,7 @@ final class MessagePhoto extends MessageContent {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'photo': photo.toJson(),
+    'video': video?.toJson(),
     'caption': caption.toJson(),
     'show_caption_above_media': showCaptionAboveMedia,
     'has_spoiler': hasSpoiler,
@@ -365,12 +371,14 @@ final class MessagePhoto extends MessageContent {
   @override
   MessagePhoto copyWith({
     Photo? photo,
+    Video? Function()? video,
     FormattedText? caption,
     bool? showCaptionAboveMedia,
     bool? hasSpoiler,
     bool? isSecret,
   }) => MessagePhoto(
     photo: photo ?? this.photo,
+    video: video != null ? video() : this.video,
     caption: caption ?? this.caption,
     showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
     hasSpoiler: hasSpoiler ?? this.hasSpoiler,
@@ -1021,25 +1029,56 @@ final class MessageGame extends MessageContent {
 /// A message with a poll
 final class MessagePoll extends MessageContent {
   /// A message with a poll
-  const MessagePoll({required this.poll});
+  const MessagePoll({
+    required this.poll,
+    required this.description,
+    required this.media,
+    required this.canAddOption,
+  });
 
-  /// The poll description
+  /// Information about the poll
   final Poll poll;
 
+  /// Description of the poll
+  final FormattedText description;
+
+  /// Media attached to the poll. Currently, can be only of the types messageAnimation, messageAudio, messageDocument, messageLocation, messagePhoto, messageVenue, or messageVideo without caption
+  final MessageContent media;
+
+  /// True, if an option can be added to the poll using addPollOption
+  final bool canAddOption;
+
   /// Parses a [MessagePoll] from TDLib JSON.
-  factory MessagePoll.fromJson(Map<String, dynamic> json) =>
-      MessagePoll(poll: _readObject(json['poll'], Poll.fromJson));
+  factory MessagePoll.fromJson(Map<String, dynamic> json) => MessagePoll(
+    poll: _readObject(json['poll'], Poll.fromJson),
+    description: _readObject(json['description'], FormattedText.fromJson),
+    media: _readObject(json['media'], MessageContent.fromJson),
+    canAddOption: _readBool(json['can_add_option']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'poll': poll.toJson(),
+    'description': description.toJson(),
+    'media': media.toJson(),
+    'can_add_option': canAddOption,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessagePoll copyWith({Poll? poll}) => MessagePoll(poll: poll ?? this.poll);
+  MessagePoll copyWith({
+    Poll? poll,
+    FormattedText? description,
+    MessageContent? media,
+    bool? canAddOption,
+  }) => MessagePoll(
+    poll: poll ?? this.poll,
+    description: description ?? this.description,
+    media: media ?? this.media,
+    canAddOption: canAddOption ?? this.canAddOption,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messagePoll';
@@ -1601,6 +1640,114 @@ final class MessageInviteVideoChatParticipants extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageInviteVideoChatParticipants';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A message with information about an added poll option
+final class MessagePollOptionAdded extends MessageContent {
+  /// A message with information about an added poll option
+  const MessagePollOptionAdded({
+    required this.pollMessageId,
+    required this.optionId,
+    required this.text,
+  });
+
+  /// Identifier of the message with the poll; can be an identifier of a deleted message or 0
+  final int pollMessageId;
+
+  /// Identifier of the added option in the poll
+  final String optionId;
+
+  /// Text of the option; 1-100 characters; may contain only custom emoji entities
+  final FormattedText text;
+
+  /// Parses a [MessagePollOptionAdded] from TDLib JSON.
+  factory MessagePollOptionAdded.fromJson(Map<String, dynamic> json) =>
+      MessagePollOptionAdded(
+        pollMessageId: _readInt(json['poll_message_id']),
+        optionId: _readString(json['option_id']),
+        text: _readObject(json['text'], FormattedText.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'poll_message_id': pollMessageId,
+    'option_id': optionId,
+    'text': text.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessagePollOptionAdded copyWith({
+    int? pollMessageId,
+    String? optionId,
+    FormattedText? text,
+  }) => MessagePollOptionAdded(
+    pollMessageId: pollMessageId ?? this.pollMessageId,
+    optionId: optionId ?? this.optionId,
+    text: text ?? this.text,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messagePollOptionAdded';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A message with information about a deleted poll option
+final class MessagePollOptionDeleted extends MessageContent {
+  /// A message with information about a deleted poll option
+  const MessagePollOptionDeleted({
+    required this.pollMessageId,
+    required this.optionId,
+    required this.text,
+  });
+
+  /// Identifier of the message with the poll; can be an identifier of a deleted message or 0
+  final int pollMessageId;
+
+  /// Identifier of the deleted option in the poll
+  final String optionId;
+
+  /// Text of the option; 1-100 characters; may contain only custom emoji entities
+  final FormattedText text;
+
+  /// Parses a [MessagePollOptionDeleted] from TDLib JSON.
+  factory MessagePollOptionDeleted.fromJson(Map<String, dynamic> json) =>
+      MessagePollOptionDeleted(
+        pollMessageId: _readInt(json['poll_message_id']),
+        optionId: _readString(json['option_id']),
+        text: _readObject(json['text'], FormattedText.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'poll_message_id': pollMessageId,
+    'option_id': optionId,
+    'text': text.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessagePollOptionDeleted copyWith({
+    int? pollMessageId,
+    String? optionId,
+    FormattedText? text,
+  }) => MessagePollOptionDeleted(
+    pollMessageId: pollMessageId ?? this.pollMessageId,
+    optionId: optionId ?? this.optionId,
+    text: text ?? this.text,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messagePollOptionDeleted';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2646,6 +2793,37 @@ final class MessageGameScore extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageGameScore';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A bot managed by another bot was created by the user
+final class MessageManagedBotCreated extends MessageContent {
+  /// A bot managed by another bot was created by the user
+  const MessageManagedBotCreated({required this.botUserId});
+
+  /// User identifier of the created bot
+  final int botUserId;
+
+  /// Parses a [MessageManagedBotCreated] from TDLib JSON.
+  factory MessageManagedBotCreated.fromJson(Map<String, dynamic> json) =>
+      MessageManagedBotCreated(botUserId: _readInt(json['bot_user_id']));
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageManagedBotCreated copyWith({int? botUserId}) =>
+      MessageManagedBotCreated(botUserId: botUserId ?? this.botUserId);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageManagedBotCreated';
 
   @override
   String getConstructor() => CONSTRUCTOR;

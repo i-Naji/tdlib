@@ -45,29 +45,19 @@ final class UndecodedPollType extends PollType {
 /// A regular poll
 final class PollTypeRegular extends PollType {
   /// A regular poll
-  const PollTypeRegular({required this.allowMultipleAnswers});
-
-  /// True, if multiple answer options can be chosen simultaneously
-  final bool allowMultipleAnswers;
+  const PollTypeRegular();
 
   /// Parses a [PollTypeRegular] from TDLib JSON.
   factory PollTypeRegular.fromJson(Map<String, dynamic> json) =>
-      PollTypeRegular(
-        allowMultipleAnswers: _readBool(json['allow_multiple_answers']),
-      );
+      const PollTypeRegular();
 
   @override
-  Map<String, dynamic> toJson() => {
-    '@type': CONSTRUCTOR,
-    'allow_multiple_answers': allowMultipleAnswers,
-  };
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PollTypeRegular copyWith({bool? allowMultipleAnswers}) => PollTypeRegular(
-    allowMultipleAnswers: allowMultipleAnswers ?? this.allowMultipleAnswers,
-  );
+  PollTypeRegular copyWith() => const PollTypeRegular();
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pollTypeRegular';
@@ -76,41 +66,56 @@ final class PollTypeRegular extends PollType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A poll in quiz mode, which has exactly one correct answer option and can be answered only once
+/// A poll in quiz mode, which has predefined correct answers
 final class PollTypeQuiz extends PollType {
-  /// A poll in quiz mode, which has exactly one correct answer option and can be answered only once
+  /// A poll in quiz mode, which has predefined correct answers
   const PollTypeQuiz({
-    required this.correctOptionId,
+    required this.correctOptionIds,
     required this.explanation,
+    this.explanationMedia,
   });
 
-  /// 0-based identifier of the correct answer option; -1 for a yet unanswered poll
-  final int correctOptionId;
+  /// Increasing list of 0-based identifiers of the correct answer options; empty for a yet unanswered poll
+  final List<int> correctOptionIds;
 
-  /// Text that is shown when the user chooses an incorrect answer or taps on the lamp icon; 0-200 characters with at most 2 line feeds; empty for a yet unanswered poll
+  /// Text that is shown when the user chooses an incorrect answer or taps on the lamp icon; empty for a yet unanswered poll
   final FormattedText explanation;
+
+  /// Media that is shown when the user chooses an incorrect answer or taps on the lamp icon; may be null if none or the poll is unanswered yet. Currently, can be only of the types messageAnimation, messageAudio, messageDocument, messageLocation, messagePhoto, messageVenue, or messageVideo without caption
+  final MessageContent? explanationMedia;
 
   /// Parses a [PollTypeQuiz] from TDLib JSON.
   factory PollTypeQuiz.fromJson(Map<String, dynamic> json) => PollTypeQuiz(
-    correctOptionId: _readInt(json['correct_option_id']),
+    correctOptionIds: _readList<int>(json['correct_option_ids'], _readInt),
     explanation: _readObject(json['explanation'], FormattedText.fromJson),
+    explanationMedia: _readOptional(
+      json['explanation_media'],
+      MessageContent.fromJson,
+    ),
   );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'correct_option_id': correctOptionId,
+    'correct_option_ids': correctOptionIds,
     'explanation': explanation.toJson(),
+    'explanation_media': explanationMedia?.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PollTypeQuiz copyWith({int? correctOptionId, FormattedText? explanation}) =>
-      PollTypeQuiz(
-        correctOptionId: correctOptionId ?? this.correctOptionId,
-        explanation: explanation ?? this.explanation,
-      );
+  PollTypeQuiz copyWith({
+    List<int>? correctOptionIds,
+    FormattedText? explanation,
+    MessageContent? Function()? explanationMedia,
+  }) => PollTypeQuiz(
+    correctOptionIds: correctOptionIds ?? this.correctOptionIds,
+    explanation: explanation ?? this.explanation,
+    explanationMedia: explanationMedia != null
+        ? explanationMedia()
+        : this.explanationMedia,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pollTypeQuiz';

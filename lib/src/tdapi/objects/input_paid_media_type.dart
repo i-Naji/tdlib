@@ -47,19 +47,28 @@ final class UndecodedInputPaidMediaType extends InputPaidMediaType {
 /// The media is a photo. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20
 final class InputPaidMediaTypePhoto extends InputPaidMediaType {
   /// The media is a photo. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20
-  const InputPaidMediaTypePhoto();
+  const InputPaidMediaTypePhoto({this.video});
+
+  /// Video of the live photo; pass null if the photo isn't a live photo
+  final InputFile? video;
 
   /// Parses a [InputPaidMediaTypePhoto] from TDLib JSON.
   factory InputPaidMediaTypePhoto.fromJson(Map<String, dynamic> json) =>
-      const InputPaidMediaTypePhoto();
+      InputPaidMediaTypePhoto(
+        video: _readOptional(json['video'], InputFile.fromJson),
+      );
 
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'video': video?.toJson(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputPaidMediaTypePhoto copyWith() => const InputPaidMediaTypePhoto();
+  InputPaidMediaTypePhoto copyWith({InputFile? Function()? video}) =>
+      InputPaidMediaTypePhoto(video: video != null ? video() : this.video);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPaidMediaTypePhoto';

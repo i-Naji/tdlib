@@ -50,6 +50,7 @@ final class MessageReplyToMessage extends MessageReplyTo {
     required this.messageId,
     this.quote,
     required this.checklistTaskId,
+    required this.pollOptionId,
     this.origin,
     required this.originSendDate,
     this.content,
@@ -67,6 +68,9 @@ final class MessageReplyToMessage extends MessageReplyTo {
   /// Identifier of the checklist task in the original message that was replied; 0 if none
   final int checklistTaskId;
 
+  /// Identifier of the poll option in the original message that was replied; empty if none
+  final String pollOptionId;
+
   /// Information about origin of the message if the message was from another chat or topic; may be null for messages from the same chat
   final MessageOrigin? origin;
 
@@ -83,6 +87,7 @@ final class MessageReplyToMessage extends MessageReplyTo {
         messageId: _readInt(json['message_id']),
         quote: _readOptional(json['quote'], TextQuote.fromJson),
         checklistTaskId: _readInt(json['checklist_task_id']),
+        pollOptionId: _readString(json['poll_option_id']),
         origin: _readOptional(json['origin'], MessageOrigin.fromJson),
         originSendDate: _readInt(json['origin_send_date']),
         content: _readOptional(json['content'], MessageContent.fromJson),
@@ -95,6 +100,7 @@ final class MessageReplyToMessage extends MessageReplyTo {
     'message_id': messageId,
     'quote': quote?.toJson(),
     'checklist_task_id': checklistTaskId,
+    'poll_option_id': pollOptionId,
     'origin': origin?.toJson(),
     'origin_send_date': originSendDate,
     'content': content?.toJson(),
@@ -108,6 +114,7 @@ final class MessageReplyToMessage extends MessageReplyTo {
     int? messageId,
     TextQuote? Function()? quote,
     int? checklistTaskId,
+    String? pollOptionId,
     MessageOrigin? Function()? origin,
     int? originSendDate,
     MessageContent? Function()? content,
@@ -116,6 +123,7 @@ final class MessageReplyToMessage extends MessageReplyTo {
     messageId: messageId ?? this.messageId,
     quote: quote != null ? quote() : this.quote,
     checklistTaskId: checklistTaskId ?? this.checklistTaskId,
+    pollOptionId: pollOptionId ?? this.pollOptionId,
     origin: origin != null ? origin() : this.origin,
     originSendDate: originSendDate ?? this.originSendDate,
     content: content != null ? content() : this.content,

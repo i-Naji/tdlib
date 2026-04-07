@@ -53,7 +53,7 @@ final class InputMessageText extends InputMessageContent {
     required this.clearDraft,
   });
 
-  /// Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, ExpandableBlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
+  /// Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, ExpandableBlockQuote, Code, Pre, PreCode, TextUrl, MentionName, and DateTime entities are allowed to be specified manually
   final FormattedText text;
 
   /// Options to be used for generation of a link preview; may be null if none; pass null to use default link preview options
@@ -435,6 +435,7 @@ final class InputMessagePhoto extends InputMessageContent {
   const InputMessagePhoto({
     required this.photo,
     this.thumbnail,
+    this.video,
     required this.addedStickerFileIds,
     required this.width,
     required this.height,
@@ -449,6 +450,9 @@ final class InputMessagePhoto extends InputMessageContent {
 
   /// Photo thumbnail to be sent; pass null to skip thumbnail uploading. The thumbnail is sent to the other party only in secret chats
   final InputThumbnail? thumbnail;
+
+  /// Video of the live photo; not supported in secret chats; pass null if the photo isn't a live photo
+  final InputFile? video;
 
   /// File identifiers of the stickers added to the photo, if applicable
   final List<int> addedStickerFileIds;
@@ -476,6 +480,7 @@ final class InputMessagePhoto extends InputMessageContent {
       InputMessagePhoto(
         photo: _readObject(json['photo'], InputFile.fromJson),
         thumbnail: _readOptional(json['thumbnail'], InputThumbnail.fromJson),
+        video: _readOptional(json['video'], InputFile.fromJson),
         addedStickerFileIds: _readList<int>(
           json['added_sticker_file_ids'],
           _readInt,
@@ -496,6 +501,7 @@ final class InputMessagePhoto extends InputMessageContent {
     '@type': CONSTRUCTOR,
     'photo': photo.toJson(),
     'thumbnail': thumbnail?.toJson(),
+    'video': video?.toJson(),
     'added_sticker_file_ids': addedStickerFileIds,
     'width': width,
     'height': height,
@@ -511,6 +517,7 @@ final class InputMessagePhoto extends InputMessageContent {
   InputMessagePhoto copyWith({
     InputFile? photo,
     InputThumbnail? Function()? thumbnail,
+    InputFile? Function()? video,
     List<int>? addedStickerFileIds,
     int? width,
     int? height,
@@ -521,6 +528,7 @@ final class InputMessagePhoto extends InputMessageContent {
   }) => InputMessagePhoto(
     photo: photo ?? this.photo,
     thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    video: video != null ? video() : this.video,
     addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
     width: width ?? this.width,
     height: height ?? this.height,
@@ -1257,7 +1265,12 @@ final class InputMessagePoll extends InputMessageContent {
   const InputMessagePoll({
     required this.question,
     required this.options,
+    this.description,
     required this.isAnonymous,
+    required this.allowsMultipleAnswers,
+    required this.allowsRevoting,
+    required this.shuffleOptions,
+    required this.hideResultsUntilCloses,
     required this.type,
     required this.openPeriod,
     required this.closeDate,
@@ -1267,19 +1280,34 @@ final class InputMessagePoll extends InputMessageContent {
   /// Poll question; 1-255 characters (up to 300 characters for bots). Only custom emoji entities are allowed to be added and only by Premium users
   final FormattedText question;
 
-  /// List of poll answer options, 2-getOption("poll_answer_count_max") strings 1-100 characters each. Only custom emoji entities are allowed to be added and only by Premium users
-  final List<FormattedText> options;
+  /// List of poll answer options; 2-getOption("poll_answer_count_max") options
+  final List<InputPollOption> options;
+
+  /// Poll description; pass null to use an empty description; 0-getOption("message_caption_length_max") characters
+  final FormattedText? description;
 
   /// True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels
   final bool isAnonymous;
 
-  /// Type of the poll
-  final PollType type;
+  /// True, if multiple answer options can be chosen simultaneously
+  final bool allowsMultipleAnswers;
 
-  /// Amount of time the poll will be active after creation, in seconds; for bots only
+  /// True, if the poll can be answered multiple times
+  final bool allowsRevoting;
+
+  /// True, if poll options must be shown in a fixed random order
+  final bool shuffleOptions;
+
+  /// True, if the poll results will appear only after the poll closes
+  final bool hideResultsUntilCloses;
+
+  /// Type of the poll
+  final InputPollType type;
+
+  /// Amount of time the poll will be active after creation, in seconds; 0-getOption("poll_open_period_max"); pass 0 if not specified
   final int openPeriod;
 
-  /// Point in time (Unix timestamp) when the poll will automatically be closed; for bots only
+  /// Point in time (Unix timestamp) when the poll will automatically be closed; must be 0-getOption("poll_open_period_max") seconds in the future; pass 0 if not specified
   final int closeDate;
 
   /// True, if the poll needs to be sent already closed; for bots only
@@ -1289,12 +1317,17 @@ final class InputMessagePoll extends InputMessageContent {
   factory InputMessagePoll.fromJson(Map<String, dynamic> json) =>
       InputMessagePoll(
         question: _readObject(json['question'], FormattedText.fromJson),
-        options: _readList<FormattedText>(
+        options: _readList<InputPollOption>(
           json['options'],
-          (e) => _readObject(e, FormattedText.fromJson),
+          (e) => _readObject(e, InputPollOption.fromJson),
         ),
+        description: _readOptional(json['description'], FormattedText.fromJson),
         isAnonymous: _readBool(json['is_anonymous']),
-        type: _readObject(json['type'], PollType.fromJson),
+        allowsMultipleAnswers: _readBool(json['allows_multiple_answers']),
+        allowsRevoting: _readBool(json['allows_revoting']),
+        shuffleOptions: _readBool(json['shuffle_options']),
+        hideResultsUntilCloses: _readBool(json['hide_results_until_closes']),
+        type: _readObject(json['type'], InputPollType.fromJson),
         openPeriod: _readInt(json['open_period']),
         closeDate: _readInt(json['close_date']),
         isClosed: _readBool(json['is_closed']),
@@ -1305,7 +1338,12 @@ final class InputMessagePoll extends InputMessageContent {
     '@type': CONSTRUCTOR,
     'question': question.toJson(),
     'options': [for (final e in options) e.toJson()],
+    'description': description?.toJson(),
     'is_anonymous': isAnonymous,
+    'allows_multiple_answers': allowsMultipleAnswers,
+    'allows_revoting': allowsRevoting,
+    'shuffle_options': shuffleOptions,
+    'hide_results_until_closes': hideResultsUntilCloses,
     'type': type.toJson(),
     'open_period': openPeriod,
     'close_date': closeDate,
@@ -1317,16 +1355,27 @@ final class InputMessagePoll extends InputMessageContent {
   @override
   InputMessagePoll copyWith({
     FormattedText? question,
-    List<FormattedText>? options,
+    List<InputPollOption>? options,
+    FormattedText? Function()? description,
     bool? isAnonymous,
-    PollType? type,
+    bool? allowsMultipleAnswers,
+    bool? allowsRevoting,
+    bool? shuffleOptions,
+    bool? hideResultsUntilCloses,
+    InputPollType? type,
     int? openPeriod,
     int? closeDate,
     bool? isClosed,
   }) => InputMessagePoll(
     question: question ?? this.question,
     options: options ?? this.options,
+    description: description != null ? description() : this.description,
     isAnonymous: isAnonymous ?? this.isAnonymous,
+    allowsMultipleAnswers: allowsMultipleAnswers ?? this.allowsMultipleAnswers,
+    allowsRevoting: allowsRevoting ?? this.allowsRevoting,
+    shuffleOptions: shuffleOptions ?? this.shuffleOptions,
+    hideResultsUntilCloses:
+        hideResultsUntilCloses ?? this.hideResultsUntilCloses,
     type: type ?? this.type,
     openPeriod: openPeriod ?? this.openPeriod,
     closeDate: closeDate ?? this.closeDate,

@@ -11,6 +11,8 @@ final class KeyboardButton extends TdObject {
     required this.iconCustomEmojiId,
     required this.style,
     required this.type,
+    this.extra,
+    this.clientId,
   });
 
   /// Text of the button
@@ -25,12 +27,22 @@ final class KeyboardButton extends TdObject {
   /// Type of the button
   final KeyboardButtonType type;
 
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
   /// Parses a [KeyboardButton] from TDLib JSON.
   factory KeyboardButton.fromJson(Map<String, dynamic> json) => KeyboardButton(
     text: _readString(json['text']),
     iconCustomEmojiId: _readInt(json['icon_custom_emoji_id']),
     style: _readObject(json['style'], ButtonStyle.fromJson),
     type: _readObject(json['type'], KeyboardButtonType.fromJson),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
   );
 
   @override
@@ -49,11 +61,15 @@ final class KeyboardButton extends TdObject {
     int? iconCustomEmojiId,
     ButtonStyle? style,
     KeyboardButtonType? type,
+    dynamic extra,
+    int? clientId,
   }) => KeyboardButton(
     text: text ?? this.text,
     iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
     style: style ?? this.style,
     type: type ?? this.type,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
   );
 
   /// TDLib type name.

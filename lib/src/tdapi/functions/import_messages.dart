@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Imports messages exported from another app
+/// Imports messages exported from another application
 ///
 /// Returns [Ok].
 final class ImportMessages extends TdFunction<Ok> {
-  /// Imports messages exported from another app
+  /// Imports messages exported from another application
   const ImportMessages({
     required this.chatId,
     required this.messageFile,

@@ -11,7 +11,7 @@ final class InputChecklistTask extends TdObject {
   /// Unique identifier of the task; must be positive
   final int id;
 
-  /// Text of the task; 1-getOption("checklist_task_text_length_max") characters without line feeds. May contain only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities
+  /// Text of the task; 1-getOption("checklist_task_text_length_max") characters without line feeds. May contain only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities
   final FormattedText text;
 
   /// Parses a [InputChecklistTask] from TDLib JSON.

@@ -12,7 +12,7 @@ final class TextQuote extends TdObject {
     required this.isManual,
   });
 
-  /// Text of the quote. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities can be present in the text
+  /// Text of the quote. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities can be present in the text
   final FormattedText text;
 
   /// Approximate quote position in the original message in UTF-16 code units as specified by the message sender

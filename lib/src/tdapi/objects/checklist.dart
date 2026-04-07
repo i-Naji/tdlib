@@ -15,7 +15,7 @@ final class Checklist extends TdObject {
     required this.canMarkTasksAsDone,
   });
 
-  /// Title of the checklist; may contain only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities
+  /// Title of the checklist; may contain only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities
   final FormattedText title;
 
   /// List of tasks in the checklist

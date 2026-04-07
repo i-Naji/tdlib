@@ -9,18 +9,14 @@ part of '../tdapi.dart';
 final class ShareChatWithBot extends TdFunction<Ok> {
   /// Shares a chat after pressing a keyboardButtonTypeRequestChat button with the bot
   const ShareChatWithBot({
-    required this.chatId,
-    required this.messageId,
+    required this.source,
     required this.buttonId,
     required this.sharedChatId,
     required this.onlyCheck,
   });
 
-  /// Identifier of the chat with the bot
-  final int chatId;
-
-  /// Identifier of the message with the button
-  final int messageId;
+  /// Source of the button
+  final KeyboardButtonSource source;
 
   /// Identifier of the button
   final int buttonId;
@@ -34,8 +30,7 @@ final class ShareChatWithBot extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
-    'chat_id': chatId,
-    'message_id': messageId,
+    'source': source.toJson(),
     'button_id': buttonId,
     'shared_chat_id': sharedChatId,
     'only_check': onlyCheck,
@@ -45,14 +40,12 @@ final class ShareChatWithBot extends TdFunction<Ok> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ShareChatWithBot copyWith({
-    int? chatId,
-    int? messageId,
+    KeyboardButtonSource? source,
     int? buttonId,
     int? sharedChatId,
     bool? onlyCheck,
   }) => ShareChatWithBot(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
+    source: source ?? this.source,
     buttonId: buttonId ?? this.buttonId,
     sharedChatId: sharedChatId ?? this.sharedChatId,
     onlyCheck: onlyCheck ?? this.onlyCheck,

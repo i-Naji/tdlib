@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a keyboard button type
 ///
-/// One of: [KeyboardButtonTypeText], [KeyboardButtonTypeRequestPhoneNumber], [KeyboardButtonTypeRequestLocation], [KeyboardButtonTypeRequestPoll], [KeyboardButtonTypeRequestUsers], [KeyboardButtonTypeRequestChat], [KeyboardButtonTypeWebApp]; or [UndecodedKeyboardButtonType] for a type newer than this API.
+/// One of: [KeyboardButtonTypeText], [KeyboardButtonTypeRequestPhoneNumber], [KeyboardButtonTypeRequestLocation], [KeyboardButtonTypeRequestPoll], [KeyboardButtonTypeRequestUsers], [KeyboardButtonTypeRequestChat], [KeyboardButtonTypeRequestManagedBot], [KeyboardButtonTypeWebApp]; or [UndecodedKeyboardButtonType] for a type newer than this API.
 sealed class KeyboardButtonType extends TdObject {
   const KeyboardButtonType();
 
@@ -408,6 +408,61 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'keyboardButtonTypeRequestChat';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A button that requests creation of a managed bot by the current user; available only in private chats. Use the method createBot to complete the request
+final class KeyboardButtonTypeRequestManagedBot extends KeyboardButtonType {
+  /// A button that requests creation of a managed bot by the current user; available only in private chats. Use the method createBot to complete the request
+  const KeyboardButtonTypeRequestManagedBot({
+    required this.id,
+    required this.suggestedName,
+    required this.suggestedUsername,
+  });
+
+  /// Unique button identifier
+  final int id;
+
+  /// Suggested name for the bot; may be empty if not specified
+  final String suggestedName;
+
+  /// Suggested username for the bot; may be empty if not specified
+  final String suggestedUsername;
+
+  /// Parses a [KeyboardButtonTypeRequestManagedBot] from TDLib JSON.
+  factory KeyboardButtonTypeRequestManagedBot.fromJson(
+    Map<String, dynamic> json,
+  ) => KeyboardButtonTypeRequestManagedBot(
+    id: _readInt(json['id']),
+    suggestedName: _readString(json['suggested_name']),
+    suggestedUsername: _readString(json['suggested_username']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'id': id,
+    'suggested_name': suggestedName,
+    'suggested_username': suggestedUsername,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  KeyboardButtonTypeRequestManagedBot copyWith({
+    int? id,
+    String? suggestedName,
+    String? suggestedUsername,
+  }) => KeyboardButtonTypeRequestManagedBot(
+    id: id ?? this.id,
+    suggestedName: suggestedName ?? this.suggestedName,
+    suggestedUsername: suggestedUsername ?? this.suggestedUsername,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'keyboardButtonTypeRequestManagedBot';
 
   @override
   String getConstructor() => CONSTRUCTOR;

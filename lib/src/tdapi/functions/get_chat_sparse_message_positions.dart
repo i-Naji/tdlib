@@ -19,7 +19,7 @@ final class GetChatSparseMessagePositions extends TdFunction<MessagePositions> {
   /// Identifier of the chat in which to return information about message positions
   final int chatId;
 
-  /// Filter for message content. Filters searchMessagesFilterEmpty, searchMessagesFilterMention, searchMessagesFilterUnreadMention, and searchMessagesFilterUnreadReaction are unsupported in this function
+  /// Filter for message content. Filters searchMessagesFilterEmpty, searchMessagesFilterMention, searchMessagesFilterUnreadMention, searchMessagesFilterUnreadReaction, and searchMessagesFilterUnreadPollVote are unsupported in this function
   final SearchMessagesFilter filter;
 
   /// The message identifier from which to return information about message positions

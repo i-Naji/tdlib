@@ -26,6 +26,7 @@ part 'functions/add_network_statistics.dart';
 part 'functions/add_offer.dart';
 part 'functions/add_pending_live_story_reaction.dart';
 part 'functions/add_pending_paid_message_reaction.dart';
+part 'functions/add_poll_option.dart';
 part 'functions/add_profile_audio.dart';
 part 'functions/add_proxy.dart';
 part 'functions/add_quick_reply_shortcut_inline_query_result_message.dart';
@@ -72,6 +73,7 @@ part 'functions/check_authentication_passkey.dart';
 part 'functions/check_authentication_password.dart';
 part 'functions/check_authentication_password_recovery_code.dart';
 part 'functions/check_authentication_premium_purchase.dart';
+part 'functions/check_bot_username.dart';
 part 'functions/check_chat_folder_invite_link.dart';
 part 'functions/check_chat_invite_link.dart';
 part 'functions/check_chat_username.dart';
@@ -107,11 +109,13 @@ part 'functions/close_story.dart';
 part 'functions/close_web_app.dart';
 part 'functions/commit_pending_live_story_reactions.dart';
 part 'functions/commit_pending_paid_message_reactions.dart';
+part 'functions/compose_text_with_ai.dart';
 part 'functions/confirm_qr_code_authentication.dart';
 part 'functions/confirm_session.dart';
 part 'functions/connect_affiliate_program.dart';
 part 'functions/craft_gift.dart';
 part 'functions/create_basic_group_chat.dart';
+part 'functions/create_bot.dart';
 part 'functions/create_business_chat_link.dart';
 part 'functions/create_call.dart';
 part 'functions/create_chat_folder.dart';
@@ -164,6 +168,7 @@ part 'functions/delete_group_call_messages_by_sender.dart';
 part 'functions/delete_language_pack.dart';
 part 'functions/delete_messages.dart';
 part 'functions/delete_passport_element.dart';
+part 'functions/delete_poll_option.dart';
 part 'functions/delete_profile_photo.dart';
 part 'functions/delete_quick_reply_shortcut.dart';
 part 'functions/delete_quick_reply_shortcut_messages.dart';
@@ -223,6 +228,7 @@ part 'functions/end_group_call.dart';
 part 'functions/end_group_call_recording.dart';
 part 'functions/end_group_call_screen_sharing.dart';
 part 'functions/finish_file_generation.dart';
+part 'functions/fix_text_with_ai.dart';
 part 'functions/forward_messages.dart';
 part 'functions/get_account_ttl.dart';
 part 'functions/get_active_sessions.dart';
@@ -253,6 +259,7 @@ part 'functions/get_bot_media_previews.dart';
 part 'functions/get_bot_name.dart';
 part 'functions/get_bot_similar_bot_count.dart';
 part 'functions/get_bot_similar_bots.dart';
+part 'functions/get_bot_token.dart';
 part 'functions/get_business_account_star_amount.dart';
 part 'functions/get_business_chat_link_info.dart';
 part 'functions/get_business_chat_links.dart';
@@ -435,6 +442,7 @@ part 'functions/get_payment_form.dart';
 part 'functions/get_payment_receipt.dart';
 part 'functions/get_phone_number_info.dart';
 part 'functions/get_phone_number_info_sync.dart';
+part 'functions/get_poll_option_properties.dart';
 part 'functions/get_poll_voters.dart';
 part 'functions/get_preferred_country_language.dart';
 part 'functions/get_premium_features.dart';
@@ -446,6 +454,7 @@ part 'functions/get_premium_state.dart';
 part 'functions/get_premium_sticker_examples.dart';
 part 'functions/get_premium_stickers.dart';
 part 'functions/get_prepared_inline_message.dart';
+part 'functions/get_prepared_keyboard_button.dart';
 part 'functions/get_proxies.dart';
 part 'functions/get_public_post_search_limits.dart';
 part 'functions/get_push_receiver_id.dart';
@@ -558,6 +567,7 @@ part 'functions/join_video_chat.dart';
 part 'functions/launch_prepaid_giveaway.dart';
 part 'functions/leave_chat.dart';
 part 'functions/leave_group_call.dart';
+part 'functions/listen_to_audio.dart';
 part 'functions/load_active_stories.dart';
 part 'functions/load_chats.dart';
 part 'functions/load_direct_messages_chat_topics.dart';
@@ -591,9 +601,11 @@ part 'functions/process_gift_purchase_offer.dart';
 part 'functions/process_push_notification.dart';
 part 'functions/rate_speech_recognition.dart';
 part 'functions/read_all_chat_mentions.dart';
+part 'functions/read_all_chat_poll_votes.dart';
 part 'functions/read_all_chat_reactions.dart';
 part 'functions/read_all_direct_messages_chat_topic_reactions.dart';
 part 'functions/read_all_forum_topic_mentions.dart';
+part 'functions/read_all_forum_topic_poll_votes.dart';
 part 'functions/read_all_forum_topic_reactions.dart';
 part 'functions/read_business_message.dart';
 part 'functions/read_chat_list.dart';
@@ -676,6 +688,7 @@ part 'functions/revoke_chat_invite_link.dart';
 part 'functions/revoke_group_call_invite_link.dart';
 part 'functions/save_application_log_event.dart';
 part 'functions/save_prepared_inline_message.dart';
+part 'functions/save_prepared_keyboard_button.dart';
 part 'functions/search_affiliate_programs.dart';
 part 'functions/search_background.dart';
 part 'functions/search_call_messages.dart';
@@ -729,6 +742,7 @@ part 'functions/send_group_call_message.dart';
 part 'functions/send_inline_query_result_message.dart';
 part 'functions/send_message.dart';
 part 'functions/send_message_album.dart';
+part 'functions/send_message_view_metrics.dart';
 part 'functions/send_passport_authorization_form.dart';
 part 'functions/send_payment_form.dart';
 part 'functions/send_phone_number_code.dart';
@@ -1169,6 +1183,9 @@ part 'objects/dated_file.dart';
 part 'objects/deep_link_info.dart';
 part 'objects/device_token.dart';
 part 'objects/dice_stickers.dart';
+part 'objects/diff_entity.dart';
+part 'objects/diff_entity_type.dart';
+part 'objects/diff_text.dart';
 part 'objects/direct_messages_chat_topic.dart';
 part 'objects/document.dart';
 part 'objects/downloaded_file_counts.dart';
@@ -1200,6 +1217,7 @@ part 'objects/file_downloaded_prefix_size.dart';
 part 'objects/file_type.dart';
 part 'objects/firebase_authentication_settings.dart';
 part 'objects/firebase_device_verification_parameters.dart';
+part 'objects/fixed_text.dart';
 part 'objects/formatted_text.dart';
 part 'objects/forum_topic.dart';
 part 'objects/forum_topic_icon.dart';
@@ -1296,6 +1314,8 @@ part 'objects/input_passport_element.dart';
 part 'objects/input_passport_element_error.dart';
 part 'objects/input_passport_element_error_source.dart';
 part 'objects/input_personal_document.dart';
+part 'objects/input_poll_option.dart';
+part 'objects/input_poll_type.dart';
 part 'objects/input_sticker.dart';
 part 'objects/input_story_area.dart';
 part 'objects/input_story_area_type.dart';
@@ -1311,6 +1331,7 @@ part 'objects/invoice.dart';
 part 'objects/json_object_member.dart';
 part 'objects/json_value.dart';
 part 'objects/keyboard_button.dart';
+part 'objects/keyboard_button_source.dart';
 part 'objects/keyboard_button_type.dart';
 part 'objects/labeled_price_part.dart';
 part 'objects/language_pack_info.dart';
@@ -1425,6 +1446,7 @@ part 'objects/photo_size.dart';
 part 'objects/point.dart';
 part 'objects/poll.dart';
 part 'objects/poll_option.dart';
+part 'objects/poll_option_properties.dart';
 part 'objects/poll_type.dart';
 part 'objects/poll_voter.dart';
 part 'objects/poll_voters.dart';
@@ -1591,6 +1613,7 @@ part 'objects/test_vector_int_object.dart';
 part 'objects/test_vector_string.dart';
 part 'objects/test_vector_string_object.dart';
 part 'objects/text.dart';
+part 'objects/text_composition_style.dart';
 part 'objects/text_entities.dart';
 part 'objects/text_entity.dart';
 part 'objects/text_entity_type.dart';
@@ -1660,14 +1683,14 @@ part 'objects/web_app_open_parameters.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.62';
+const String tdlibVersion = '1.8.63';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = 'af0cb1d30a1e5cb1a10cd83b48998ca9ea9ce249';
+const String tdlibSchemaCommit = '1677a0c77f30bbb337f91cf6627d62b2a62a8f87';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  'af0cb1d30a1e5cb1a10cd83b48998ca9ea9ce249',
+  '1677a0c77f30bbb337f91cf6627d62b2a62a8f87',
 ];
 
 /// Base class of every TDLib object.
@@ -1754,6 +1777,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'textEntity': TextEntity.fromJson,
   'textEntities': TextEntities.fromJson,
   'formattedText': FormattedText.fromJson,
+  'diffEntity': DiffEntity.fromJson,
+  'diffText': DiffText.fromJson,
+  'fixedText': FixedText.fromJson,
+  'textCompositionStyle': TextCompositionStyle.fromJson,
   'termsOfService': TermsOfService.fromJson,
   'passkey': Passkey.fromJson,
   'passkeys': Passkeys.fromJson,
@@ -1817,8 +1844,11 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'closedVectorPath': ClosedVectorPath.fromJson,
   'outline': Outline.fromJson,
   'pollOption': PollOption.fromJson,
+  'inputPollOption': InputPollOption.fromJson,
   'pollTypeRegular': PollTypeRegular.fromJson,
   'pollTypeQuiz': PollTypeQuiz.fromJson,
+  'inputPollTypeRegular': InputPollTypeRegular.fromJson,
+  'inputPollTypeQuiz': InputPollTypeQuiz.fromJson,
   'checklistTask': ChecklistTask.fromJson,
   'inputChecklistTask': InputChecklistTask.fromJson,
   'checklist': Checklist.fromJson,
@@ -2378,6 +2408,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'keyboardButtonTypeRequestPoll': KeyboardButtonTypeRequestPoll.fromJson,
   'keyboardButtonTypeRequestUsers': KeyboardButtonTypeRequestUsers.fromJson,
   'keyboardButtonTypeRequestChat': KeyboardButtonTypeRequestChat.fromJson,
+  'keyboardButtonTypeRequestManagedBot':
+      KeyboardButtonTypeRequestManagedBot.fromJson,
   'keyboardButtonTypeWebApp': KeyboardButtonTypeWebApp.fromJson,
   'keyboardButton': KeyboardButton.fromJson,
   'inlineKeyboardButtonTypeUrl': InlineKeyboardButtonTypeUrl.fromJson,
@@ -2393,6 +2425,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inlineKeyboardButtonTypeBuy': InlineKeyboardButtonTypeBuy.fromJson,
   'inlineKeyboardButtonTypeUser': InlineKeyboardButtonTypeUser.fromJson,
   'inlineKeyboardButtonTypeCopyText': InlineKeyboardButtonTypeCopyText.fromJson,
+  'keyboardButtonSourceMessage': KeyboardButtonSourceMessage.fromJson,
+  'keyboardButtonSourceWebApp': KeyboardButtonSourceWebApp.fromJson,
   'inlineKeyboardButton': InlineKeyboardButton.fromJson,
   'replyMarkupRemoveKeyboard': ReplyMarkupRemoveKeyboard.fromJson,
   'replyMarkupForceReply': ReplyMarkupForceReply.fromJson,
@@ -2518,6 +2552,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'linkPreviewTypeMessage': LinkPreviewTypeMessage.fromJson,
   'linkPreviewTypePhoto': LinkPreviewTypePhoto.fromJson,
   'linkPreviewTypePremiumGiftCode': LinkPreviewTypePremiumGiftCode.fromJson,
+  'linkPreviewTypeRequestManagedBot': LinkPreviewTypeRequestManagedBot.fromJson,
   'linkPreviewTypeShareableChatFolder':
       LinkPreviewTypeShareableChatFolder.fromJson,
   'linkPreviewTypeSticker': LinkPreviewTypeSticker.fromJson,
@@ -2709,6 +2744,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageVideoChatEnded': MessageVideoChatEnded.fromJson,
   'messageInviteVideoChatParticipants':
       MessageInviteVideoChatParticipants.fromJson,
+  'messagePollOptionAdded': MessagePollOptionAdded.fromJson,
+  'messagePollOptionDeleted': MessagePollOptionDeleted.fromJson,
   'messageBasicGroupChatCreate': MessageBasicGroupChatCreate.fromJson,
   'messageSupergroupChatCreate': MessageSupergroupChatCreate.fromJson,
   'messageChatChangeTitle': MessageChatChangeTitle.fromJson,
@@ -2741,6 +2778,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageSuggestBirthdate': MessageSuggestBirthdate.fromJson,
   'messageCustomServiceAction': MessageCustomServiceAction.fromJson,
   'messageGameScore': MessageGameScore.fromJson,
+  'messageManagedBotCreated': MessageManagedBotCreated.fromJson,
   'messagePaymentSuccessful': MessagePaymentSuccessful.fromJson,
   'messagePaymentSuccessfulBot': MessagePaymentSuccessfulBot.fromJson,
   'messagePaymentRefunded': MessagePaymentRefunded.fromJson,
@@ -2809,6 +2847,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'textEntityTypeCustomEmoji': TextEntityTypeCustomEmoji.fromJson,
   'textEntityTypeMediaTimestamp': TextEntityTypeMediaTimestamp.fromJson,
   'textEntityTypeDateTime': TextEntityTypeDateTime.fromJson,
+  'diffEntityTypeInsert': DiffEntityTypeInsert.fromJson,
+  'diffEntityTypeReplace': DiffEntityTypeReplace.fromJson,
+  'diffEntityTypeDelete': DiffEntityTypeDelete.fromJson,
   'inputThumbnail': InputThumbnail.fromJson,
   'inputPaidMediaTypePhoto': InputPaidMediaTypePhoto.fromJson,
   'inputPaidMediaTypeVideo': InputPaidMediaTypeVideo.fromJson,
@@ -2845,11 +2886,13 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputMessageChecklist': InputMessageChecklist.fromJson,
   'inputMessageForwarded': InputMessageForwarded.fromJson,
   'messageProperties': MessageProperties.fromJson,
+  'pollOptionProperties': PollOptionProperties.fromJson,
   'searchMessagesFilterEmpty': SearchMessagesFilterEmpty.fromJson,
   'searchMessagesFilterAnimation': SearchMessagesFilterAnimation.fromJson,
   'searchMessagesFilterAudio': SearchMessagesFilterAudio.fromJson,
   'searchMessagesFilterDocument': SearchMessagesFilterDocument.fromJson,
   'searchMessagesFilterPhoto': SearchMessagesFilterPhoto.fromJson,
+  'searchMessagesFilterPoll': SearchMessagesFilterPoll.fromJson,
   'searchMessagesFilterVideo': SearchMessagesFilterVideo.fromJson,
   'searchMessagesFilterVoiceNote': SearchMessagesFilterVoiceNote.fromJson,
   'searchMessagesFilterPhotoAndVideo':
@@ -2864,6 +2907,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       SearchMessagesFilterUnreadMention.fromJson,
   'searchMessagesFilterUnreadReaction':
       SearchMessagesFilterUnreadReaction.fromJson,
+  'searchMessagesFilterUnreadPollVote':
+      SearchMessagesFilterUnreadPollVote.fromJson,
   'searchMessagesFilterFailedToSend': SearchMessagesFilterFailedToSend.fromJson,
   'searchMessagesFilterPinned': SearchMessagesFilterPinned.fromJson,
   'searchMessagesChatTypeFilterPrivate':
@@ -3235,6 +3280,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'premiumLimitTypeStorySuggestedReactionAreaCount':
       PremiumLimitTypeStorySuggestedReactionAreaCount.fromJson,
   'premiumLimitTypeSimilarChatCount': PremiumLimitTypeSimilarChatCount.fromJson,
+  'premiumLimitTypeOwnedBotCount': PremiumLimitTypeOwnedBotCount.fromJson,
   'premiumFeatureIncreasedLimits': PremiumFeatureIncreasedLimits.fromJson,
   'premiumFeatureIncreasedUploadFileSize':
       PremiumFeatureIncreasedUploadFileSize.fromJson,
@@ -3268,6 +3314,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'premiumFeaturePaidMessages': PremiumFeaturePaidMessages.fromJson,
   'premiumFeatureProtectPrivateChatContent':
       PremiumFeatureProtectPrivateChatContent.fromJson,
+  'premiumFeatureTextComposition': PremiumFeatureTextComposition.fromJson,
   'businessFeatureLocation': BusinessFeatureLocation.fromJson,
   'businessFeatureOpeningHours': BusinessFeatureOpeningHours.fromJson,
   'businessFeatureQuickReplies': BusinessFeatureQuickReplies.fromJson,
@@ -3462,6 +3509,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       PushMessageContentChecklistTasksAdded.fromJson,
   'pushMessageContentChecklistTasksDone':
       PushMessageContentChecklistTasksDone.fromJson,
+  'pushMessageContentPollOptionAdded':
+      PushMessageContentPollOptionAdded.fromJson,
   'pushMessageContentMessageForwards':
       PushMessageContentMessageForwards.fromJson,
   'pushMessageContentMediaAlbum': PushMessageContentMediaAlbum.fromJson,
@@ -3658,6 +3707,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'internalLinkTypePublicChat': InternalLinkTypePublicChat.fromJson,
   'internalLinkTypeQrCodeAuthentication':
       InternalLinkTypeQrCodeAuthentication.fromJson,
+  'internalLinkTypeRequestManagedBot':
+      InternalLinkTypeRequestManagedBot.fromJson,
   'internalLinkTypeRestorePurchases': InternalLinkTypeRestorePurchases.fromJson,
   'internalLinkTypeSavedMessages': InternalLinkTypeSavedMessages.fromJson,
   'internalLinkTypeSearch': InternalLinkTypeSearch.fromJson,
@@ -3683,6 +3734,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'fileTypeAnimation': FileTypeAnimation.fromJson,
   'fileTypeAudio': FileTypeAudio.fromJson,
   'fileTypeDocument': FileTypeDocument.fromJson,
+  'fileTypeLivePhotoVideo': FileTypeLivePhotoVideo.fromJson,
   'fileTypeNotificationSound': FileTypeNotificationSound.fromJson,
   'fileTypePhoto': FileTypePhoto.fromJson,
   'fileTypePhotoStory': FileTypePhotoStory.fromJson,
@@ -3690,6 +3742,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'fileTypeSecret': FileTypeSecret.fromJson,
   'fileTypeSecretThumbnail': FileTypeSecretThumbnail.fromJson,
   'fileTypeSecure': FileTypeSecure.fromJson,
+  'fileTypeSelfDestructingLivePhotoVideo':
+      FileTypeSelfDestructingLivePhotoVideo.fromJson,
   'fileTypeSelfDestructingPhoto': FileTypeSelfDestructingPhoto.fromJson,
   'fileTypeSelfDestructingVideo': FileTypeSelfDestructingVideo.fromJson,
   'fileTypeSelfDestructingVideoNote': FileTypeSelfDestructingVideoNote.fromJson,
@@ -3881,6 +3935,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateChatTheme': UpdateChatTheme.fromJson,
   'updateChatUnreadMentionCount': UpdateChatUnreadMentionCount.fromJson,
   'updateChatUnreadReactionCount': UpdateChatUnreadReactionCount.fromJson,
+  'updateChatUnreadPollVoteCount': UpdateChatUnreadPollVoteCount.fromJson,
   'updateChatVideoChat': UpdateChatVideoChat.fromJson,
   'updateChatDefaultDisableNotification':
       UpdateChatDefaultDisableNotification.fromJson,
@@ -3995,6 +4050,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateAnimatedEmojiMessageClicked':
       UpdateAnimatedEmojiMessageClicked.fromJson,
   'updateAnimationSearchParameters': UpdateAnimationSearchParameters.fromJson,
+  'updateTextCompositionStyles': UpdateTextCompositionStyles.fromJson,
   'updateSuggestedActions': UpdateSuggestedActions.fromJson,
   'updateSpeedLimitNotification': UpdateSpeedLimitNotification.fromJson,
   'updateContactCloseBirthdays': UpdateContactCloseBirthdays.fromJson,
@@ -4014,6 +4070,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateNewCustomQuery': UpdateNewCustomQuery.fromJson,
   'updatePoll': UpdatePoll.fromJson,
   'updatePollAnswer': UpdatePollAnswer.fromJson,
+  'updateManagedBot': UpdateManagedBot.fromJson,
   'updateChatMember': UpdateChatMember.fromJson,
   'updateNewChatJoinRequest': UpdateNewChatJoinRequest.fromJson,
   'updateChatBoost': UpdateChatBoost.fromJson,

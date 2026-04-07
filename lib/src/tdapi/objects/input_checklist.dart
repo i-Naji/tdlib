@@ -13,7 +13,7 @@ final class InputChecklist extends TdObject {
     required this.othersCanMarkTasksAsDone,
   });
 
-  /// Title of the checklist; 1-getOption("checklist_title_length_max") characters. May contain only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities
+  /// Title of the checklist; 1-getOption("checklist_title_length_max") characters. May contain only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities
   final FormattedText title;
 
   /// List of tasks in the checklist; 1-getOption("checklist_task_count_max") tasks

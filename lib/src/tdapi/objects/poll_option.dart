@@ -7,21 +7,35 @@ part of '../tdapi.dart';
 final class PollOption extends TdObject {
   /// Describes one answer option of a poll
   const PollOption({
+    required this.id,
     required this.text,
+    required this.media,
     required this.voterCount,
     required this.votePercentage,
+    required this.recentVoterIds,
     required this.isChosen,
     required this.isBeingChosen,
+    this.author,
+    required this.additionDate,
   });
 
-  /// Option text; 1-100 characters. Only custom emoji entities are allowed
+  /// Unique identifier of the option in the poll
+  final String id;
+
+  /// Option text; 1-100 characters; may contain only custom emoji entities
   final FormattedText text;
 
-  /// Number of voters for this option, available only for closed or voted polls
+  /// Option media. Currently, can be only of the types messageAnimation, messageLocation, messagePhoto, messageSticker, messageVenue, or messageVideo without caption
+  final MessageContent media;
+
+  /// Number of voters for this option, available only for closed or voted polls, or if the current user is the creator of the poll
   final int voterCount;
 
   /// The percentage of votes for this option; 0-100
   final int votePercentage;
+
+  /// Identifiers of recent voters for the option, if the poll is non-anonymous and poll results are available
+  final List<MessageSender> recentVoterIds;
 
   /// True, if the option was chosen by the user
   final bool isChosen;
@@ -29,39 +43,68 @@ final class PollOption extends TdObject {
   /// True, if the option is being chosen by a pending setPollAnswer request
   final bool isBeingChosen;
 
+  /// Identifier of the user or chat who added the option; may be null if the option existed from creation of the poll
+  final MessageSender? author;
+
+  /// Point in time (Unix timestamp) when the option was added; 0 if the option existed from creation of the poll
+  final int additionDate;
+
   /// Parses a [PollOption] from TDLib JSON.
   factory PollOption.fromJson(Map<String, dynamic> json) => PollOption(
+    id: _readString(json['id']),
     text: _readObject(json['text'], FormattedText.fromJson),
+    media: _readObject(json['media'], MessageContent.fromJson),
     voterCount: _readInt(json['voter_count']),
     votePercentage: _readInt(json['vote_percentage']),
+    recentVoterIds: _readList<MessageSender>(
+      json['recent_voter_ids'],
+      (e) => _readObject(e, MessageSender.fromJson),
+    ),
     isChosen: _readBool(json['is_chosen']),
     isBeingChosen: _readBool(json['is_being_chosen']),
+    author: _readOptional(json['author'], MessageSender.fromJson),
+    additionDate: _readInt(json['addition_date']),
   );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
+    'id': id,
     'text': text.toJson(),
+    'media': media.toJson(),
     'voter_count': voterCount,
     'vote_percentage': votePercentage,
+    'recent_voter_ids': [for (final e in recentVoterIds) e.toJson()],
     'is_chosen': isChosen,
     'is_being_chosen': isBeingChosen,
+    'author': author?.toJson(),
+    'addition_date': additionDate,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   PollOption copyWith({
+    String? id,
     FormattedText? text,
+    MessageContent? media,
     int? voterCount,
     int? votePercentage,
+    List<MessageSender>? recentVoterIds,
     bool? isChosen,
     bool? isBeingChosen,
+    MessageSender? Function()? author,
+    int? additionDate,
   }) => PollOption(
+    id: id ?? this.id,
     text: text ?? this.text,
+    media: media ?? this.media,
     voterCount: voterCount ?? this.voterCount,
     votePercentage: votePercentage ?? this.votePercentage,
+    recentVoterIds: recentVoterIds ?? this.recentVoterIds,
     isChosen: isChosen ?? this.isChosen,
     isBeingChosen: isBeingChosen ?? this.isBeingChosen,
+    author: author != null ? author() : this.author,
+    additionDate: additionDate ?? this.additionDate,
   );
 
   /// TDLib type name.

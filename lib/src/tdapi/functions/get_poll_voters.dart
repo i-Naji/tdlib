@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns message senders voted for the specified option in a non-anonymous polls. For optimal performance, the number of returned users is chosen by TDLib
+/// Returns message senders voted for the specified option in a poll; use poll.can_get_voters to check whether the method can be used. For optimal performance, the number of returned users is chosen by TDLib
 ///
 /// Returns [PollVoters].
 final class GetPollVoters extends TdFunction<PollVoters> {
-  /// Returns message senders voted for the specified option in a non-anonymous polls. For optimal performance, the number of returned users is chosen by TDLib
+  /// Returns message senders voted for the specified option in a poll; use poll.can_get_voters to check whether the method can be used. For optimal performance, the number of returned users is chosen by TDLib
   const GetPollVoters({
     required this.chatId,
     required this.messageId,

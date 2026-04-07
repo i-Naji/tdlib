@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of limit, increased for Premium users
 ///
-/// One of: [PremiumLimitTypeSupergroupCount], [PremiumLimitTypePinnedChatCount], [PremiumLimitTypeCreatedPublicChatCount], [PremiumLimitTypeSavedAnimationCount], [PremiumLimitTypeFavoriteStickerCount], [PremiumLimitTypeChatFolderCount], [PremiumLimitTypeChatFolderChosenChatCount], [PremiumLimitTypePinnedArchivedChatCount], [PremiumLimitTypePinnedSavedMessagesTopicCount], [PremiumLimitTypeCaptionLength], [PremiumLimitTypeBioLength], [PremiumLimitTypeChatFolderInviteLinkCount], [PremiumLimitTypeShareableChatFolderCount], [PremiumLimitTypeActiveStoryCount], [PremiumLimitTypeWeeklyPostedStoryCount], [PremiumLimitTypeMonthlyPostedStoryCount], [PremiumLimitTypeStoryCaptionLength], [PremiumLimitTypeStorySuggestedReactionAreaCount], [PremiumLimitTypeSimilarChatCount]; or [UndecodedPremiumLimitType] for a type newer than this API.
+/// One of: [PremiumLimitTypeSupergroupCount], [PremiumLimitTypePinnedChatCount], [PremiumLimitTypeCreatedPublicChatCount], [PremiumLimitTypeSavedAnimationCount], [PremiumLimitTypeFavoriteStickerCount], [PremiumLimitTypeChatFolderCount], [PremiumLimitTypeChatFolderChosenChatCount], [PremiumLimitTypePinnedArchivedChatCount], [PremiumLimitTypePinnedSavedMessagesTopicCount], [PremiumLimitTypeCaptionLength], [PremiumLimitTypeBioLength], [PremiumLimitTypeChatFolderInviteLinkCount], [PremiumLimitTypeShareableChatFolderCount], [PremiumLimitTypeActiveStoryCount], [PremiumLimitTypeWeeklyPostedStoryCount], [PremiumLimitTypeMonthlyPostedStoryCount], [PremiumLimitTypeStoryCaptionLength], [PremiumLimitTypeStorySuggestedReactionAreaCount], [PremiumLimitTypeSimilarChatCount], [PremiumLimitTypeOwnedBotCount]; or [UndecodedPremiumLimitType] for a type newer than this API.
 sealed class PremiumLimitType extends TdObject {
   const PremiumLimitType();
 
@@ -531,6 +531,31 @@ final class PremiumLimitTypeSimilarChatCount extends PremiumLimitType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumLimitTypeSimilarChatCount';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The maximum number of owned bots
+final class PremiumLimitTypeOwnedBotCount extends PremiumLimitType {
+  /// The maximum number of owned bots
+  const PremiumLimitTypeOwnedBotCount();
+
+  /// Parses a [PremiumLimitTypeOwnedBotCount] from TDLib JSON.
+  factory PremiumLimitTypeOwnedBotCount.fromJson(Map<String, dynamic> json) =>
+      const PremiumLimitTypeOwnedBotCount();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PremiumLimitTypeOwnedBotCount copyWith() =>
+      const PremiumLimitTypeOwnedBotCount();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'premiumLimitTypeOwnedBotCount';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes a built-in theme of an official app
+/// Describes a built-in theme of an official application
 ///
 /// One of: [BuiltInThemeClassic], [BuiltInThemeDay], [BuiltInThemeNight], [BuiltInThemeTinted], [BuiltInThemeArctic]; or [UndecodedBuiltInTheme] for a type newer than this API.
 sealed class BuiltInTheme extends TdObject {

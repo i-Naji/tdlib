@@ -16,6 +16,7 @@ final class ForumTopic extends TdObject {
     required this.lastReadOutboxMessageId,
     required this.unreadMentionCount,
     required this.unreadReactionCount,
+    required this.unreadPollVoteCount,
     required this.notificationSettings,
     this.draftMessage,
     this.extra,
@@ -49,6 +50,9 @@ final class ForumTopic extends TdObject {
   /// Number of messages with unread reactions in the topic
   final int unreadReactionCount;
 
+  /// Number of messages with unread poll votes in the topic
+  final int unreadPollVoteCount;
+
   /// Notification settings for the topic
   final ChatNotificationSettings notificationSettings;
 
@@ -74,6 +78,7 @@ final class ForumTopic extends TdObject {
     lastReadOutboxMessageId: _readInt(json['last_read_outbox_message_id']),
     unreadMentionCount: _readInt(json['unread_mention_count']),
     unreadReactionCount: _readInt(json['unread_reaction_count']),
+    unreadPollVoteCount: _readInt(json['unread_poll_vote_count']),
     notificationSettings: _readObject(
       json['notification_settings'],
       ChatNotificationSettings.fromJson,
@@ -95,6 +100,7 @@ final class ForumTopic extends TdObject {
     'last_read_outbox_message_id': lastReadOutboxMessageId,
     'unread_mention_count': unreadMentionCount,
     'unread_reaction_count': unreadReactionCount,
+    'unread_poll_vote_count': unreadPollVoteCount,
     'notification_settings': notificationSettings.toJson(),
     'draft_message': draftMessage?.toJson(),
   };
@@ -111,6 +117,7 @@ final class ForumTopic extends TdObject {
     int? lastReadOutboxMessageId,
     int? unreadMentionCount,
     int? unreadReactionCount,
+    int? unreadPollVoteCount,
     ChatNotificationSettings? notificationSettings,
     DraftMessage? Function()? draftMessage,
     dynamic extra,
@@ -127,6 +134,7 @@ final class ForumTopic extends TdObject {
         lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
     unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
     unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
+    unreadPollVoteCount: unreadPollVoteCount ?? this.unreadPollVoteCount,
     notificationSettings: notificationSettings ?? this.notificationSettings,
     draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
     extra: extra ?? this.extra,

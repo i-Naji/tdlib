@@ -1,3 +1,8 @@
+## 1.8.63
+* Update tdlib to **1.8.63** (`1677a0c77`), objects +29/−0/~24, functions +14/−0/~7.
+* Android build from i-Naji/libtdjson.
+* Update the web package to TDLib 1.8.63.
+
 ## 1.8.62
 * Update tdlib to **1.8.62** (`af0cb1d30`), objects +17/−0/~14, functions +6/−0/~5.
 * Android build from i-Naji/libtdjson.

@@ -16,7 +16,7 @@ final class ChecklistTask extends TdObject {
   /// Unique identifier of the task
   final int id;
 
-  /// Text of the task; may contain only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, Url, EmailAddress, Mention, Hashtag, Cashtag and PhoneNumber entities
+  /// Text of the task; may contain only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, DateTime and automatically found entities
   final FormattedText text;
 
   /// Identifier of the user or chat that completed the task; may be null if the task isn't completed yet

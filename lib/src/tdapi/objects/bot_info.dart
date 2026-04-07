@@ -11,6 +11,7 @@ final class BotInfo extends TdObject {
     required this.description,
     this.photo,
     this.animation,
+    required this.managerBotUserId,
     this.menuButton,
     required this.commands,
     required this.privacyPolicyUrl,
@@ -42,6 +43,9 @@ final class BotInfo extends TdObject {
 
   /// Animation shown in the chat with the bot if the chat is empty; may be null
   final Animation? animation;
+
+  /// Identifier of the bot, which manages the bot; 0 if none or unknown; for owner of the bot only
+  final int managerBotUserId;
 
   /// Information about a button to show instead of the bot commands menu button; may be null if ordinary bot commands menu must be shown
   final BotMenuButton? menuButton;
@@ -103,6 +107,7 @@ final class BotInfo extends TdObject {
     description: _readString(json['description']),
     photo: _readOptional(json['photo'], Photo.fromJson),
     animation: _readOptional(json['animation'], Animation.fromJson),
+    managerBotUserId: _readInt(json['manager_bot_user_id']),
     menuButton: _readOptional(json['menu_button'], BotMenuButton.fromJson),
     commands: _readList<BotCommand>(
       json['commands'],
@@ -159,6 +164,7 @@ final class BotInfo extends TdObject {
     'description': description,
     'photo': photo?.toJson(),
     'animation': animation?.toJson(),
+    'manager_bot_user_id': managerBotUserId,
     'menu_button': menuButton?.toJson(),
     'commands': [for (final e in commands) e.toJson()],
     'privacy_policy_url': privacyPolicyUrl,
@@ -188,6 +194,7 @@ final class BotInfo extends TdObject {
     String? description,
     Photo? Function()? photo,
     Animation? Function()? animation,
+    int? managerBotUserId,
     BotMenuButton? Function()? menuButton,
     List<BotCommand>? commands,
     String? privacyPolicyUrl,
@@ -211,6 +218,7 @@ final class BotInfo extends TdObject {
     description: description ?? this.description,
     photo: photo != null ? photo() : this.photo,
     animation: animation != null ? animation() : this.animation,
+    managerBotUserId: managerBotUserId ?? this.managerBotUserId,
     menuButton: menuButton != null ? menuButton() : this.menuButton,
     commands: commands ?? this.commands,
     privacyPolicyUrl: privacyPolicyUrl ?? this.privacyPolicyUrl,

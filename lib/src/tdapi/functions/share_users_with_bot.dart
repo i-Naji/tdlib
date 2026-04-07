@@ -9,18 +9,14 @@ part of '../tdapi.dart';
 final class ShareUsersWithBot extends TdFunction<Ok> {
   /// Shares users after pressing a keyboardButtonTypeRequestUsers button with the bot
   const ShareUsersWithBot({
-    required this.chatId,
-    required this.messageId,
+    required this.source,
     required this.buttonId,
     required this.sharedUserIds,
     required this.onlyCheck,
   });
 
-  /// Identifier of the chat with the bot
-  final int chatId;
-
-  /// Identifier of the message with the button
-  final int messageId;
+  /// Source of the button
+  final KeyboardButtonSource source;
 
   /// Identifier of the button
   final int buttonId;
@@ -34,8 +30,7 @@ final class ShareUsersWithBot extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
-    'chat_id': chatId,
-    'message_id': messageId,
+    'source': source.toJson(),
     'button_id': buttonId,
     'shared_user_ids': sharedUserIds,
     'only_check': onlyCheck,
@@ -45,14 +40,12 @@ final class ShareUsersWithBot extends TdFunction<Ok> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ShareUsersWithBot copyWith({
-    int? chatId,
-    int? messageId,
+    KeyboardButtonSource? source,
     int? buttonId,
     List<int>? sharedUserIds,
     bool? onlyCheck,
   }) => ShareUsersWithBot(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
+    source: source ?? this.source,
     buttonId: buttonId ?? this.buttonId,
     sharedUserIds: sharedUserIds ?? this.sharedUserIds,
     onlyCheck: onlyCheck ?? this.onlyCheck,

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Represents the type of file
 ///
-/// One of: [FileTypeNone], [FileTypeAnimation], [FileTypeAudio], [FileTypeDocument], [FileTypeNotificationSound], [FileTypePhoto], [FileTypePhotoStory], [FileTypeProfilePhoto], [FileTypeSecret], [FileTypeSecretThumbnail], [FileTypeSecure], [FileTypeSelfDestructingPhoto], [FileTypeSelfDestructingVideo], [FileTypeSelfDestructingVideoNote], [FileTypeSelfDestructingVoiceNote], [FileTypeSticker], [FileTypeThumbnail], [FileTypeUnknown], [FileTypeVideo], [FileTypeVideoNote], [FileTypeVideoStory], [FileTypeVoiceNote], [FileTypeWallpaper]; or [UndecodedFileType] for a type newer than this API.
+/// One of: [FileTypeNone], [FileTypeAnimation], [FileTypeAudio], [FileTypeDocument], [FileTypeLivePhotoVideo], [FileTypeNotificationSound], [FileTypePhoto], [FileTypePhotoStory], [FileTypeProfilePhoto], [FileTypeSecret], [FileTypeSecretThumbnail], [FileTypeSecure], [FileTypeSelfDestructingLivePhotoVideo], [FileTypeSelfDestructingPhoto], [FileTypeSelfDestructingVideo], [FileTypeSelfDestructingVideoNote], [FileTypeSelfDestructingVoiceNote], [FileTypeSticker], [FileTypeThumbnail], [FileTypeUnknown], [FileTypeVideo], [FileTypeVideoNote], [FileTypeVideoStory], [FileTypeVoiceNote], [FileTypeWallpaper]; or [UndecodedFileType] for a type newer than this API.
 sealed class FileType extends TdObject {
   const FileType();
 
@@ -133,6 +133,30 @@ final class FileTypeDocument extends FileType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'fileTypeDocument';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The file is a video for a live photo
+final class FileTypeLivePhotoVideo extends FileType {
+  /// The file is a video for a live photo
+  const FileTypeLivePhotoVideo();
+
+  /// Parses a [FileTypeLivePhotoVideo] from TDLib JSON.
+  factory FileTypeLivePhotoVideo.fromJson(Map<String, dynamic> json) =>
+      const FileTypeLivePhotoVideo();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  FileTypeLivePhotoVideo copyWith() => const FileTypeLivePhotoVideo();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'fileTypeLivePhotoVideo';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -301,6 +325,32 @@ final class FileTypeSecure extends FileType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'fileTypeSecure';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The file is a seld-destructing video for a live photo in a private chat
+final class FileTypeSelfDestructingLivePhotoVideo extends FileType {
+  /// The file is a seld-destructing video for a live photo in a private chat
+  const FileTypeSelfDestructingLivePhotoVideo();
+
+  /// Parses a [FileTypeSelfDestructingLivePhotoVideo] from TDLib JSON.
+  factory FileTypeSelfDestructingLivePhotoVideo.fromJson(
+    Map<String, dynamic> json,
+  ) => const FileTypeSelfDestructingLivePhotoVideo();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  FileTypeSelfDestructingLivePhotoVideo copyWith() =>
+      const FileTypeSelfDestructingLivePhotoVideo();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'fileTypeSelfDestructingLivePhotoVideo';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -21,7 +21,7 @@ final class GetChatMessagePosition extends TdFunction<Count> {
   /// Pass topic identifier to get position among messages only in specific topic; pass null to get position among all chat messages; message threads aren't supported
   final MessageTopic? topicId;
 
-  /// Filter for message content; searchMessagesFilterEmpty, searchMessagesFilterUnreadMention, searchMessagesFilterUnreadReaction, and searchMessagesFilterFailedToSend are unsupported in this function
+  /// Filter for message content; searchMessagesFilterEmpty, searchMessagesFilterUnreadMention, searchMessagesFilterUnreadReaction, searchMessagesFilterUnreadPollVote, and searchMessagesFilterFailedToSend are unsupported in this function
   final SearchMessagesFilter filter;
 
   /// Message identifier

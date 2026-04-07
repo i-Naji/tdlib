@@ -20,6 +20,7 @@ final class UserFullInfo extends TdObject {
     required this.hasSponsoredMessagesEnabled,
     required this.needPhoneNumberPrivacyException,
     required this.setChatBackground,
+    required this.usesUnofficialApp,
     this.bio,
     this.birthdate,
     required this.personalChatId,
@@ -79,6 +80,9 @@ final class UserFullInfo extends TdObject {
 
   /// True, if the user set chat background for both chat users and it wasn't reverted yet
   final bool setChatBackground;
+
+  /// True, if the user uses an unofficial application that poses a security risk
+  final bool usesUnofficialApp;
 
   /// A short user bio; may be null for bots
   final FormattedText? bio;
@@ -160,6 +164,7 @@ final class UserFullInfo extends TdObject {
       json['need_phone_number_privacy_exception'],
     ),
     setChatBackground: _readBool(json['set_chat_background']),
+    usesUnofficialApp: _readBool(json['uses_unofficial_app']),
     bio: _readOptional(json['bio'], FormattedText.fromJson),
     birthdate: _readOptional(json['birthdate'], Birthdate.fromJson),
     personalChatId: _readInt(json['personal_chat_id']),
@@ -211,6 +216,7 @@ final class UserFullInfo extends TdObject {
     'has_sponsored_messages_enabled': hasSponsoredMessagesEnabled,
     'need_phone_number_privacy_exception': needPhoneNumberPrivacyException,
     'set_chat_background': setChatBackground,
+    'uses_unofficial_app': usesUnofficialApp,
     'bio': bio?.toJson(),
     'birthdate': birthdate?.toJson(),
     'personal_chat_id': personalChatId,
@@ -246,6 +252,7 @@ final class UserFullInfo extends TdObject {
     bool? hasSponsoredMessagesEnabled,
     bool? needPhoneNumberPrivacyException,
     bool? setChatBackground,
+    bool? usesUnofficialApp,
     FormattedText? Function()? bio,
     Birthdate? Function()? birthdate,
     int? personalChatId,
@@ -284,6 +291,7 @@ final class UserFullInfo extends TdObject {
     needPhoneNumberPrivacyException:
         needPhoneNumberPrivacyException ?? this.needPhoneNumberPrivacyException,
     setChatBackground: setChatBackground ?? this.setChatBackground,
+    usesUnofficialApp: usesUnofficialApp ?? this.usesUnofficialApp,
     bio: bio != null ? bio() : this.bio,
     birthdate: birthdate != null ? birthdate() : this.birthdate,
     personalChatId: personalChatId ?? this.personalChatId,

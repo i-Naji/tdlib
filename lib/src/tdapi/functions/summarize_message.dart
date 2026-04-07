@@ -12,6 +12,7 @@ final class SummarizeMessage extends TdFunction<FormattedText> {
     required this.chatId,
     required this.messageId,
     required this.translateToLanguageCode,
+    required this.tone,
   });
 
   /// Identifier of the chat to which the message belongs
@@ -20,8 +21,11 @@ final class SummarizeMessage extends TdFunction<FormattedText> {
   /// Identifier of the message
   final int messageId;
 
-  /// Pass a language code to which the summary will be translated; may be empty if translation isn't needed. See translateText.to_language_code for the list of supported values
+  /// Pass a language code to which the summary will be translated; pass an empty string if translation isn't needed. See translateText.to_language_code for the list of supported values
   final String translateToLanguageCode;
+
+  /// Tone of the summarization; see translateText.tone for the list of supported values
+  final String tone;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
@@ -29,6 +33,7 @@ final class SummarizeMessage extends TdFunction<FormattedText> {
     'chat_id': chatId,
     'message_id': messageId,
     'translate_to_language_code': translateToLanguageCode,
+    'tone': tone,
     '@extra': ?extra,
   };
 
@@ -38,11 +43,13 @@ final class SummarizeMessage extends TdFunction<FormattedText> {
     int? chatId,
     int? messageId,
     String? translateToLanguageCode,
+    String? tone,
   }) => SummarizeMessage(
     chatId: chatId ?? this.chatId,
     messageId: messageId ?? this.messageId,
     translateToLanguageCode:
         translateToLanguageCode ?? this.translateToLanguageCode,
+    tone: tone ?? this.tone,
   );
 
   /// TDLib type name.

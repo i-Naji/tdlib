@@ -10,6 +10,7 @@ final class ChatAdministrator extends TdObject {
     required this.userId,
     required this.customTitle,
     required this.isOwner,
+    required this.canBeEdited,
   });
 
   /// User identifier of the administrator
@@ -21,12 +22,16 @@ final class ChatAdministrator extends TdObject {
   /// True, if the user is the owner of the chat
   final bool isOwner;
 
+  /// True, if the current user can edit the administrator privileges for the administrator
+  final bool canBeEdited;
+
   /// Parses a [ChatAdministrator] from TDLib JSON.
   factory ChatAdministrator.fromJson(Map<String, dynamic> json) =>
       ChatAdministrator(
         userId: _readInt(json['user_id']),
         customTitle: _readString(json['custom_title']),
         isOwner: _readBool(json['is_owner']),
+        canBeEdited: _readBool(json['can_be_edited']),
       );
 
   @override
@@ -35,6 +40,7 @@ final class ChatAdministrator extends TdObject {
     'user_id': userId,
     'custom_title': customTitle,
     'is_owner': isOwner,
+    'can_be_edited': canBeEdited,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -43,10 +49,12 @@ final class ChatAdministrator extends TdObject {
     int? userId,
     String? customTitle,
     bool? isOwner,
+    bool? canBeEdited,
   }) => ChatAdministrator(
     userId: userId ?? this.userId,
     customTitle: customTitle ?? this.customTitle,
     isOwner: isOwner ?? this.isOwner,
+    canBeEdited: canBeEdited ?? this.canBeEdited,
   );
 
   /// TDLib type name.

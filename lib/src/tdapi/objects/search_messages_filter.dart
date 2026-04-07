@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Represents a filter for message search results
 ///
-/// One of: [SearchMessagesFilterEmpty], [SearchMessagesFilterAnimation], [SearchMessagesFilterAudio], [SearchMessagesFilterDocument], [SearchMessagesFilterPhoto], [SearchMessagesFilterVideo], [SearchMessagesFilterVoiceNote], [SearchMessagesFilterPhotoAndVideo], [SearchMessagesFilterUrl], [SearchMessagesFilterChatPhoto], [SearchMessagesFilterVideoNote], [SearchMessagesFilterVoiceAndVideoNote], [SearchMessagesFilterMention], [SearchMessagesFilterUnreadMention], [SearchMessagesFilterUnreadReaction], [SearchMessagesFilterFailedToSend], [SearchMessagesFilterPinned]; or [UndecodedSearchMessagesFilter] for a type newer than this API.
+/// One of: [SearchMessagesFilterEmpty], [SearchMessagesFilterAnimation], [SearchMessagesFilterAudio], [SearchMessagesFilterDocument], [SearchMessagesFilterPhoto], [SearchMessagesFilterPoll], [SearchMessagesFilterVideo], [SearchMessagesFilterVoiceNote], [SearchMessagesFilterPhotoAndVideo], [SearchMessagesFilterUrl], [SearchMessagesFilterChatPhoto], [SearchMessagesFilterVideoNote], [SearchMessagesFilterVoiceAndVideoNote], [SearchMessagesFilterMention], [SearchMessagesFilterUnreadMention], [SearchMessagesFilterUnreadReaction], [SearchMessagesFilterUnreadPollVote], [SearchMessagesFilterFailedToSend], [SearchMessagesFilterPinned]; or [UndecodedSearchMessagesFilter] for a type newer than this API.
 sealed class SearchMessagesFilter extends TdObject {
   const SearchMessagesFilter();
 
@@ -161,6 +161,30 @@ final class SearchMessagesFilterPhoto extends SearchMessagesFilter {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchMessagesFilterPhoto';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Returns only poll messages
+final class SearchMessagesFilterPoll extends SearchMessagesFilter {
+  /// Returns only poll messages
+  const SearchMessagesFilterPoll();
+
+  /// Parses a [SearchMessagesFilterPoll] from TDLib JSON.
+  factory SearchMessagesFilterPoll.fromJson(Map<String, dynamic> json) =>
+      const SearchMessagesFilterPoll();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  SearchMessagesFilterPoll copyWith() => const SearchMessagesFilterPoll();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'searchMessagesFilterPoll';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -365,9 +389,9 @@ final class SearchMessagesFilterMention extends SearchMessagesFilter {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can't be additionally filtered by a query, a message thread or by the sending user
+/// Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can't be additionally filtered by a query or by the sending user
 final class SearchMessagesFilterUnreadMention extends SearchMessagesFilter {
-  /// Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can't be additionally filtered by a query, a message thread or by the sending user
+  /// Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can't be additionally filtered by a query or by the sending user
   const SearchMessagesFilterUnreadMention();
 
   /// Parses a [SearchMessagesFilterUnreadMention] from TDLib JSON.
@@ -391,9 +415,9 @@ final class SearchMessagesFilterUnreadMention extends SearchMessagesFilter {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Returns only messages with unread reactions for the current user. When using this filter the results can't be additionally filtered by a query, a message thread or by the sending user
+/// Returns only messages with unread reactions for the current user. When using this filter the results can't be additionally filtered by a query or by the sending user
 final class SearchMessagesFilterUnreadReaction extends SearchMessagesFilter {
-  /// Returns only messages with unread reactions for the current user. When using this filter the results can't be additionally filtered by a query, a message thread or by the sending user
+  /// Returns only messages with unread reactions for the current user. When using this filter the results can't be additionally filtered by a query or by the sending user
   const SearchMessagesFilterUnreadReaction();
 
   /// Parses a [SearchMessagesFilterUnreadReaction] from TDLib JSON.
@@ -412,6 +436,32 @@ final class SearchMessagesFilterUnreadReaction extends SearchMessagesFilter {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchMessagesFilterUnreadReaction';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Returns only messages with unread poll votes for the current user. When using this filter the results can't be additionally filtered by a query or by the sending user
+final class SearchMessagesFilterUnreadPollVote extends SearchMessagesFilter {
+  /// Returns only messages with unread poll votes for the current user. When using this filter the results can't be additionally filtered by a query or by the sending user
+  const SearchMessagesFilterUnreadPollVote();
+
+  /// Parses a [SearchMessagesFilterUnreadPollVote] from TDLib JSON.
+  factory SearchMessagesFilterUnreadPollVote.fromJson(
+    Map<String, dynamic> json,
+  ) => const SearchMessagesFilterUnreadPollVote();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  SearchMessagesFilterUnreadPollVote copyWith() =>
+      const SearchMessagesFilterUnreadPollVote();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'searchMessagesFilterUnreadPollVote';
 
   @override
   String getConstructor() => CONSTRUCTOR;

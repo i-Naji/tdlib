@@ -12,6 +12,8 @@ final class GetMessageLink extends TdFunction<MessageLink> {
     required this.chatId,
     required this.messageId,
     required this.mediaTimestamp,
+    required this.checklistTaskId,
+    required this.pollOptionId,
     required this.forAlbum,
     required this.inMessageThread,
   });
@@ -25,6 +27,12 @@ final class GetMessageLink extends TdFunction<MessageLink> {
   /// If not 0, timestamp from which the video/audio/video note/voice note/story playing must start, in seconds. The media can be in the message content or in its link preview
   final int mediaTimestamp;
 
+  /// If not 0, identifier of the checklist task in the message to be linked
+  final int checklistTaskId;
+
+  /// If not empty, identifier of the poll option in the message to be linked
+  final String pollOptionId;
+
   /// Pass true to create a link for the whole media album
   final bool forAlbum;
 
@@ -37,6 +45,8 @@ final class GetMessageLink extends TdFunction<MessageLink> {
     'chat_id': chatId,
     'message_id': messageId,
     'media_timestamp': mediaTimestamp,
+    'checklist_task_id': checklistTaskId,
+    'poll_option_id': pollOptionId,
     'for_album': forAlbum,
     'in_message_thread': inMessageThread,
     '@extra': ?extra,
@@ -48,12 +58,16 @@ final class GetMessageLink extends TdFunction<MessageLink> {
     int? chatId,
     int? messageId,
     int? mediaTimestamp,
+    int? checklistTaskId,
+    String? pollOptionId,
     bool? forAlbum,
     bool? inMessageThread,
   }) => GetMessageLink(
     chatId: chatId ?? this.chatId,
     messageId: messageId ?? this.messageId,
     mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
+    checklistTaskId: checklistTaskId ?? this.checklistTaskId,
+    pollOptionId: pollOptionId ?? this.pollOptionId,
     forAlbum: forAlbum ?? this.forAlbum,
     inMessageThread: inMessageThread ?? this.inMessageThread,
   );

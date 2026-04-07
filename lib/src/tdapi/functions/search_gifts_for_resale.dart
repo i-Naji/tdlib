@@ -12,6 +12,7 @@ final class SearchGiftsForResale extends TdFunction<GiftsForResale> {
     required this.giftId,
     required this.order,
     required this.forCrafting,
+    required this.forStars,
     required this.attributes,
     required this.offset,
     required this.limit,
@@ -25,6 +26,9 @@ final class SearchGiftsForResale extends TdFunction<GiftsForResale> {
 
   /// Pass true to get only gifts suitable for crafting
   final bool forCrafting;
+
+  /// Pass true to get only gifts that can be bought using Telegram Stars
+  final bool forStars;
 
   /// Attributes used to filter received gifts. If multiple attributes of the same type are specified, then all of them are allowed. If none attributes of specific type are specified, then all values for this attribute type are allowed
   final List<UpgradedGiftAttributeId> attributes;
@@ -41,6 +45,7 @@ final class SearchGiftsForResale extends TdFunction<GiftsForResale> {
     'gift_id': giftId.toString(),
     'order': order.toJson(),
     'for_crafting': forCrafting,
+    'for_stars': forStars,
     'attributes': [for (final e in attributes) e.toJson()],
     'offset': offset,
     'limit': limit,
@@ -53,6 +58,7 @@ final class SearchGiftsForResale extends TdFunction<GiftsForResale> {
     int? giftId,
     GiftForResaleOrder? order,
     bool? forCrafting,
+    bool? forStars,
     List<UpgradedGiftAttributeId>? attributes,
     String? offset,
     int? limit,
@@ -60,6 +66,7 @@ final class SearchGiftsForResale extends TdFunction<GiftsForResale> {
     giftId: giftId ?? this.giftId,
     order: order ?? this.order,
     forCrafting: forCrafting ?? this.forCrafting,
+    forStars: forStars ?? this.forStars,
     attributes: attributes ?? this.attributes,
     offset: offset ?? this.offset,
     limit: limit ?? this.limit,

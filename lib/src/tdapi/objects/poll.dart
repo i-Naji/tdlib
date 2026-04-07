@@ -12,7 +12,11 @@ final class Poll extends TdObject {
     required this.options,
     required this.totalVoterCount,
     required this.recentVoterIds,
+    required this.canGetVoters,
     required this.isAnonymous,
+    required this.allowsMultipleAnswers,
+    required this.allowsRevoting,
+    required this.optionOrder,
     required this.type,
     required this.openPeriod,
     required this.closeDate,
@@ -22,7 +26,7 @@ final class Poll extends TdObject {
   /// Unique poll identifier
   final int id;
 
-  /// Poll question; 1-300 characters. Only custom emoji entities are allowed
+  /// Poll question; 1-300 characters; may contain only custom emoji entities
   final FormattedText question;
 
   /// List of poll answer options
@@ -31,11 +35,23 @@ final class Poll extends TdObject {
   /// Total number of voters, participating in the poll
   final int totalVoterCount;
 
-  /// Identifiers of recent voters, if the poll is non-anonymous
+  /// Identifiers of recent voters, if the poll is non-anonymous and poll results are available
   final List<MessageSender> recentVoterIds;
+
+  /// True, if the current user can get voters in the poll
+  final bool canGetVoters;
 
   /// True, if the poll is anonymous
   final bool isAnonymous;
+
+  /// True, if multiple answer options can be chosen simultaneously
+  final bool allowsMultipleAnswers;
+
+  /// True, if the poll can be answered multiple times
+  final bool allowsRevoting;
+
+  /// The list of 0-based poll identifiers in which the options of the poll must be shown; empty if the order of options must not be changed
+  final List<int> optionOrder;
 
   /// Type of the poll
   final PollType type;
@@ -62,7 +78,11 @@ final class Poll extends TdObject {
       json['recent_voter_ids'],
       (e) => _readObject(e, MessageSender.fromJson),
     ),
+    canGetVoters: _readBool(json['can_get_voters']),
     isAnonymous: _readBool(json['is_anonymous']),
+    allowsMultipleAnswers: _readBool(json['allows_multiple_answers']),
+    allowsRevoting: _readBool(json['allows_revoting']),
+    optionOrder: _readList<int>(json['option_order'], _readInt),
     type: _readObject(json['type'], PollType.fromJson),
     openPeriod: _readInt(json['open_period']),
     closeDate: _readInt(json['close_date']),
@@ -77,7 +97,11 @@ final class Poll extends TdObject {
     'options': [for (final e in options) e.toJson()],
     'total_voter_count': totalVoterCount,
     'recent_voter_ids': [for (final e in recentVoterIds) e.toJson()],
+    'can_get_voters': canGetVoters,
     'is_anonymous': isAnonymous,
+    'allows_multiple_answers': allowsMultipleAnswers,
+    'allows_revoting': allowsRevoting,
+    'option_order': optionOrder,
     'type': type.toJson(),
     'open_period': openPeriod,
     'close_date': closeDate,
@@ -92,7 +116,11 @@ final class Poll extends TdObject {
     List<PollOption>? options,
     int? totalVoterCount,
     List<MessageSender>? recentVoterIds,
+    bool? canGetVoters,
     bool? isAnonymous,
+    bool? allowsMultipleAnswers,
+    bool? allowsRevoting,
+    List<int>? optionOrder,
     PollType? type,
     int? openPeriod,
     int? closeDate,
@@ -103,7 +131,11 @@ final class Poll extends TdObject {
     options: options ?? this.options,
     totalVoterCount: totalVoterCount ?? this.totalVoterCount,
     recentVoterIds: recentVoterIds ?? this.recentVoterIds,
+    canGetVoters: canGetVoters ?? this.canGetVoters,
     isAnonymous: isAnonymous ?? this.isAnonymous,
+    allowsMultipleAnswers: allowsMultipleAnswers ?? this.allowsMultipleAnswers,
+    allowsRevoting: allowsRevoting ?? this.allowsRevoting,
+    optionOrder: optionOrder ?? this.optionOrder,
     type: type ?? this.type,
     openPeriod: openPeriod ?? this.openPeriod,
     closeDate: closeDate ?? this.closeDate,

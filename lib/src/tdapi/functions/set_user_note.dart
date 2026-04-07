@@ -13,7 +13,7 @@ final class SetUserNote extends TdFunction<Ok> {
   /// User identifier
   final int userId;
 
-  /// Note to set for the user; 0-getOption("user_note_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed
+  /// Note to set for the user; 0-getOption("user_note_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed
   final FormattedText note;
 
   @override

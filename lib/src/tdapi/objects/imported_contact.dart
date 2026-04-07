@@ -22,7 +22,7 @@ final class ImportedContact extends TdObject {
   /// Last name of the user; 0-64 characters
   final String lastName;
 
-  /// Note to add about the user; 0-getOption("user_note_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed; pass null to keep the current user's note
+  /// Note to add about the user; 0-getOption("user_note_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed; pass null to keep the current user's note
   final FormattedText? note;
 
   /// Parses a [ImportedContact] from TDLib JSON.

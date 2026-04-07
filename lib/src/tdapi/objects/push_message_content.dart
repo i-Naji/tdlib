@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains content of a push message notification
 ///
-/// One of: [PushMessageContentHidden], [PushMessageContentAnimation], [PushMessageContentAudio], [PushMessageContentContact], [PushMessageContentContactRegistered], [PushMessageContentDocument], [PushMessageContentGame], [PushMessageContentGameScore], [PushMessageContentInvoice], [PushMessageContentLocation], [PushMessageContentPaidMedia], [PushMessageContentPhoto], [PushMessageContentPoll], [PushMessageContentPremiumGiftCode], [PushMessageContentGiveaway], [PushMessageContentGift], [PushMessageContentUpgradedGift], [PushMessageContentScreenshotTaken], [PushMessageContentSticker], [PushMessageContentStory], [PushMessageContentText], [PushMessageContentChecklist], [PushMessageContentVideo], [PushMessageContentVideoNote], [PushMessageContentVoiceNote], [PushMessageContentBasicGroupChatCreate], [PushMessageContentVideoChatStarted], [PushMessageContentVideoChatEnded], [PushMessageContentInviteVideoChatParticipants], [PushMessageContentChatAddMembers], [PushMessageContentChatChangePhoto], [PushMessageContentChatChangeTitle], [PushMessageContentChatSetBackground], [PushMessageContentChatSetTheme], [PushMessageContentChatDeleteMember], [PushMessageContentChatJoinByLink], [PushMessageContentChatJoinByRequest], [PushMessageContentRecurringPayment], [PushMessageContentSuggestProfilePhoto], [PushMessageContentSuggestBirthdate], [PushMessageContentProximityAlertTriggered], [PushMessageContentChecklistTasksAdded], [PushMessageContentChecklistTasksDone], [PushMessageContentMessageForwards], [PushMessageContentMediaAlbum]; or [UndecodedPushMessageContent] for a type newer than this API.
+/// One of: [PushMessageContentHidden], [PushMessageContentAnimation], [PushMessageContentAudio], [PushMessageContentContact], [PushMessageContentContactRegistered], [PushMessageContentDocument], [PushMessageContentGame], [PushMessageContentGameScore], [PushMessageContentInvoice], [PushMessageContentLocation], [PushMessageContentPaidMedia], [PushMessageContentPhoto], [PushMessageContentPoll], [PushMessageContentPremiumGiftCode], [PushMessageContentGiveaway], [PushMessageContentGift], [PushMessageContentUpgradedGift], [PushMessageContentScreenshotTaken], [PushMessageContentSticker], [PushMessageContentStory], [PushMessageContentText], [PushMessageContentChecklist], [PushMessageContentVideo], [PushMessageContentVideoNote], [PushMessageContentVoiceNote], [PushMessageContentBasicGroupChatCreate], [PushMessageContentVideoChatStarted], [PushMessageContentVideoChatEnded], [PushMessageContentInviteVideoChatParticipants], [PushMessageContentChatAddMembers], [PushMessageContentChatChangePhoto], [PushMessageContentChatChangeTitle], [PushMessageContentChatSetBackground], [PushMessageContentChatSetTheme], [PushMessageContentChatDeleteMember], [PushMessageContentChatJoinByLink], [PushMessageContentChatJoinByRequest], [PushMessageContentRecurringPayment], [PushMessageContentSuggestProfilePhoto], [PushMessageContentSuggestBirthdate], [PushMessageContentProximityAlertTriggered], [PushMessageContentChecklistTasksAdded], [PushMessageContentChecklistTasksDone], [PushMessageContentPollOptionAdded], [PushMessageContentMessageForwards], [PushMessageContentMediaAlbum]; or [UndecodedPushMessageContent] for a type newer than this API.
 sealed class PushMessageContent extends TdObject {
   const PushMessageContent();
 
@@ -1747,6 +1747,35 @@ final class PushMessageContentChecklistTasksDone extends PushMessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentChecklistTasksDone';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An option was added to a poll
+final class PushMessageContentPollOptionAdded extends PushMessageContent {
+  /// An option was added to a poll
+  const PushMessageContentPollOptionAdded({required this.text});
+
+  /// Text of the option
+  final String text;
+
+  /// Parses a [PushMessageContentPollOptionAdded] from TDLib JSON.
+  factory PushMessageContentPollOptionAdded.fromJson(
+    Map<String, dynamic> json,
+  ) => PushMessageContentPollOptionAdded(text: _readString(json['text']));
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'text': text};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PushMessageContentPollOptionAdded copyWith({String? text}) =>
+      PushMessageContentPollOptionAdded(text: text ?? this.text);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'pushMessageContentPollOptionAdded';
 
   @override
   String getConstructor() => CONSTRUCTOR;

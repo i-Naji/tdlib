@@ -501,7 +501,7 @@ final class SuggestedActionSetLoginEmailAddress extends SuggestedAction {
   /// Suggests the user to add login email address. Call isLoginEmailAddressRequired, and then setLoginEmailAddress or checkLoginEmailAddressCode to change the login email address
   const SuggestedActionSetLoginEmailAddress({required this.canBeHidden});
 
-  /// True, if the suggested action can be hidden using hideSuggestedAction. Otherwise, the user must not be able to use the app without setting up the email address
+  /// True, if the suggested action can be hidden using hideSuggestedAction. Otherwise, the user must not be able to use the application without setting up the email address
   final bool canBeHidden;
 
   /// Parses a [SuggestedActionSetLoginEmailAddress] from TDLib JSON.

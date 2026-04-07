@@ -67,7 +67,7 @@ final class TelegramPaymentPurposePremiumGift extends TelegramPaymentPurpose {
   /// Number of months the Telegram Premium subscription will be active for the user
   final int monthCount;
 
-  /// Text to show to the user receiving Telegram Premium; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed
+  /// Text to show to the user receiving Telegram Premium; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed
   final FormattedText text;
 
   /// Parses a [TelegramPaymentPurposePremiumGift] from TDLib JSON.
@@ -143,7 +143,7 @@ final class TelegramPaymentPurposePremiumGiftCodes
   /// Number of months the Telegram Premium subscription will be active for the users
   final int monthCount;
 
-  /// Text to show along with the gift codes; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed
+  /// Text to show along with the gift codes; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed
   final FormattedText text;
 
   /// Parses a [TelegramPaymentPurposePremiumGiftCodes] from TDLib JSON.

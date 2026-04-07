@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of link preview
 ///
-/// One of: [LinkPreviewTypeAlbum], [LinkPreviewTypeAnimation], [LinkPreviewTypeApp], [LinkPreviewTypeArticle], [LinkPreviewTypeAudio], [LinkPreviewTypeBackground], [LinkPreviewTypeChannelBoost], [LinkPreviewTypeChat], [LinkPreviewTypeDirectMessagesChat], [LinkPreviewTypeDocument], [LinkPreviewTypeEmbeddedAnimationPlayer], [LinkPreviewTypeEmbeddedAudioPlayer], [LinkPreviewTypeEmbeddedVideoPlayer], [LinkPreviewTypeExternalAudio], [LinkPreviewTypeExternalVideo], [LinkPreviewTypeGiftAuction], [LinkPreviewTypeGiftCollection], [LinkPreviewTypeGroupCall], [LinkPreviewTypeInvoice], [LinkPreviewTypeLiveStory], [LinkPreviewTypeMessage], [LinkPreviewTypePhoto], [LinkPreviewTypePremiumGiftCode], [LinkPreviewTypeShareableChatFolder], [LinkPreviewTypeSticker], [LinkPreviewTypeStickerSet], [LinkPreviewTypeStory], [LinkPreviewTypeStoryAlbum], [LinkPreviewTypeSupergroupBoost], [LinkPreviewTypeTheme], [LinkPreviewTypeUnsupported], [LinkPreviewTypeUpgradedGift], [LinkPreviewTypeUser], [LinkPreviewTypeVideo], [LinkPreviewTypeVideoChat], [LinkPreviewTypeVideoNote], [LinkPreviewTypeVoiceNote], [LinkPreviewTypeWebApp]; or [UndecodedLinkPreviewType] for a type newer than this API.
+/// One of: [LinkPreviewTypeAlbum], [LinkPreviewTypeAnimation], [LinkPreviewTypeApp], [LinkPreviewTypeArticle], [LinkPreviewTypeAudio], [LinkPreviewTypeBackground], [LinkPreviewTypeChannelBoost], [LinkPreviewTypeChat], [LinkPreviewTypeDirectMessagesChat], [LinkPreviewTypeDocument], [LinkPreviewTypeEmbeddedAnimationPlayer], [LinkPreviewTypeEmbeddedAudioPlayer], [LinkPreviewTypeEmbeddedVideoPlayer], [LinkPreviewTypeExternalAudio], [LinkPreviewTypeExternalVideo], [LinkPreviewTypeGiftAuction], [LinkPreviewTypeGiftCollection], [LinkPreviewTypeGroupCall], [LinkPreviewTypeInvoice], [LinkPreviewTypeLiveStory], [LinkPreviewTypeMessage], [LinkPreviewTypePhoto], [LinkPreviewTypePremiumGiftCode], [LinkPreviewTypeRequestManagedBot], [LinkPreviewTypeShareableChatFolder], [LinkPreviewTypeSticker], [LinkPreviewTypeStickerSet], [LinkPreviewTypeStory], [LinkPreviewTypeStoryAlbum], [LinkPreviewTypeSupergroupBoost], [LinkPreviewTypeTheme], [LinkPreviewTypeUnsupported], [LinkPreviewTypeUpgradedGift], [LinkPreviewTypeUser], [LinkPreviewTypeVideo], [LinkPreviewTypeVideoChat], [LinkPreviewTypeVideoNote], [LinkPreviewTypeVoiceNote], [LinkPreviewTypeWebApp]; or [UndecodedLinkPreviewType] for a type newer than this API.
 sealed class LinkPreviewType extends TdObject {
   const LinkPreviewType();
 
@@ -1028,6 +1028,32 @@ final class LinkPreviewTypePremiumGiftCode extends LinkPreviewType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypePremiumGiftCode';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The link is a link to a dialog for creating of a managed bot
+final class LinkPreviewTypeRequestManagedBot extends LinkPreviewType {
+  /// The link is a link to a dialog for creating of a managed bot
+  const LinkPreviewTypeRequestManagedBot();
+
+  /// Parses a [LinkPreviewTypeRequestManagedBot] from TDLib JSON.
+  factory LinkPreviewTypeRequestManagedBot.fromJson(
+    Map<String, dynamic> json,
+  ) => const LinkPreviewTypeRequestManagedBot();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  LinkPreviewTypeRequestManagedBot copyWith() =>
+      const LinkPreviewTypeRequestManagedBot();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'linkPreviewTypeRequestManagedBot';
 
   @override
   String getConstructor() => CONSTRUCTOR;

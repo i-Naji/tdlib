@@ -3,12 +3,13 @@
 
 part of '../tdapi.dart';
 
-/// Contains information about notification settings for reactions
+/// Contains information about notification settings for reactions and poll votes
 final class ReactionNotificationSettings extends TdObject {
-  /// Contains information about notification settings for reactions
+  /// Contains information about notification settings for reactions and poll votes
   const ReactionNotificationSettings({
     required this.messageReactionSource,
     required this.storyReactionSource,
+    required this.pollVoteSource,
     required this.soundId,
     required this.showPreview,
   });
@@ -18,6 +19,9 @@ final class ReactionNotificationSettings extends TdObject {
 
   /// Source of story reactions for which notifications are shown
   final ReactionNotificationSource storyReactionSource;
+
+  /// Source of poll votes for which notifications are shown
+  final ReactionNotificationSource pollVoteSource;
 
   /// Identifier of the notification sound to be played; 0 if sound is disabled
   final int soundId;
@@ -36,6 +40,10 @@ final class ReactionNotificationSettings extends TdObject {
           json['story_reaction_source'],
           ReactionNotificationSource.fromJson,
         ),
+        pollVoteSource: _readObject(
+          json['poll_vote_source'],
+          ReactionNotificationSource.fromJson,
+        ),
         soundId: _readInt(json['sound_id']),
         showPreview: _readBool(json['show_preview']),
       );
@@ -45,6 +53,7 @@ final class ReactionNotificationSettings extends TdObject {
     '@type': CONSTRUCTOR,
     'message_reaction_source': messageReactionSource.toJson(),
     'story_reaction_source': storyReactionSource.toJson(),
+    'poll_vote_source': pollVoteSource.toJson(),
     'sound_id': soundId.toString(),
     'show_preview': showPreview,
   };
@@ -54,11 +63,13 @@ final class ReactionNotificationSettings extends TdObject {
   ReactionNotificationSettings copyWith({
     ReactionNotificationSource? messageReactionSource,
     ReactionNotificationSource? storyReactionSource,
+    ReactionNotificationSource? pollVoteSource,
     int? soundId,
     bool? showPreview,
   }) => ReactionNotificationSettings(
     messageReactionSource: messageReactionSource ?? this.messageReactionSource,
     storyReactionSource: storyReactionSource ?? this.storyReactionSource,
+    pollVoteSource: pollVoteSource ?? this.pollVoteSource,
     soundId: soundId ?? this.soundId,
     showPreview: showPreview ?? this.showPreview,
   );

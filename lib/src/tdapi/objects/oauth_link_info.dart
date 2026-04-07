@@ -10,6 +10,8 @@ final class OauthLinkInfo extends TdObject {
     required this.userId,
     required this.url,
     required this.domain,
+    required this.fromApp,
+    required this.verifiedAppName,
     required this.botUserId,
     required this.requestWriteAccess,
     required this.requestPhoneNumberAccess,
@@ -23,7 +25,7 @@ final class OauthLinkInfo extends TdObject {
     this.clientId,
   });
 
-  /// Identifier of the user for which the link was generated; may be 0 if unknown. The corresponding user may be unknown. If the user is logged in the app, then they must be chosen for authorization by default
+  /// Identifier of the user for which the link was generated; may be 0 if unknown. The corresponding user may be unknown. If the user is logged in the application, then they must be chosen for authorization by default
   final int userId;
 
   /// An HTTP URL where the user authorizes
@@ -31,6 +33,12 @@ final class OauthLinkInfo extends TdObject {
 
   /// A domain of the URL
   final String domain;
+
+  /// True, if the authorization originates from an application
+  final bool fromApp;
+
+  /// Verified name of the application; if empty, then "Unverified App" must be shown instead
+  final String verifiedAppName;
 
   /// User identifier of a bot linked with the website
   final int botUserId;
@@ -72,6 +80,8 @@ final class OauthLinkInfo extends TdObject {
     userId: _readInt(json['user_id']),
     url: _readString(json['url']),
     domain: _readString(json['domain']),
+    fromApp: _readBool(json['from_app']),
+    verifiedAppName: _readString(json['verified_app_name']),
     botUserId: _readInt(json['bot_user_id']),
     requestWriteAccess: _readBool(json['request_write_access']),
     requestPhoneNumberAccess: _readBool(json['request_phone_number_access']),
@@ -91,6 +101,8 @@ final class OauthLinkInfo extends TdObject {
     'user_id': userId,
     'url': url,
     'domain': domain,
+    'from_app': fromApp,
+    'verified_app_name': verifiedAppName,
     'bot_user_id': botUserId,
     'request_write_access': requestWriteAccess,
     'request_phone_number_access': requestPhoneNumberAccess,
@@ -108,6 +120,8 @@ final class OauthLinkInfo extends TdObject {
     int? userId,
     String? url,
     String? domain,
+    bool? fromApp,
+    String? verifiedAppName,
     int? botUserId,
     bool? requestWriteAccess,
     bool? requestPhoneNumberAccess,
@@ -123,6 +137,8 @@ final class OauthLinkInfo extends TdObject {
     userId: userId ?? this.userId,
     url: url ?? this.url,
     domain: domain ?? this.domain,
+    fromApp: fromApp ?? this.fromApp,
+    verifiedAppName: verifiedAppName ?? this.verifiedAppName,
     botUserId: botUserId ?? this.botUserId,
     requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
     requestPhoneNumberAccess:

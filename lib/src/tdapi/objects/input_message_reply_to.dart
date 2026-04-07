@@ -51,6 +51,7 @@ final class InputMessageReplyToMessage extends InputMessageReplyTo {
     required this.messageId,
     this.quote,
     required this.checklistTaskId,
+    required this.pollOptionId,
   });
 
   /// The identifier of the message to be replied in the same chat and forum topic. A message can be replied in the same chat and forum topic only if messageProperties.can_be_replied
@@ -62,12 +63,16 @@ final class InputMessageReplyToMessage extends InputMessageReplyTo {
   /// Identifier of the checklist task in the message to be replied; pass 0 to reply to the whole message
   final int checklistTaskId;
 
+  /// Identifier of the poll option in the message to be replied; pass an empty string if none
+  final String pollOptionId;
+
   /// Parses a [InputMessageReplyToMessage] from TDLib JSON.
   factory InputMessageReplyToMessage.fromJson(Map<String, dynamic> json) =>
       InputMessageReplyToMessage(
         messageId: _readInt(json['message_id']),
         quote: _readOptional(json['quote'], InputTextQuote.fromJson),
         checklistTaskId: _readInt(json['checklist_task_id']),
+        pollOptionId: _readString(json['poll_option_id']),
       );
 
   @override
@@ -76,6 +81,7 @@ final class InputMessageReplyToMessage extends InputMessageReplyTo {
     'message_id': messageId,
     'quote': quote?.toJson(),
     'checklist_task_id': checklistTaskId,
+    'poll_option_id': pollOptionId,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -85,10 +91,12 @@ final class InputMessageReplyToMessage extends InputMessageReplyTo {
     int? messageId,
     InputTextQuote? Function()? quote,
     int? checklistTaskId,
+    String? pollOptionId,
   }) => InputMessageReplyToMessage(
     messageId: messageId ?? this.messageId,
     quote: quote != null ? quote() : this.quote,
     checklistTaskId: checklistTaskId ?? this.checklistTaskId,
+    pollOptionId: pollOptionId ?? this.pollOptionId,
   );
 
   /// TDLib type name.
@@ -106,6 +114,7 @@ final class InputMessageReplyToExternalMessage extends InputMessageReplyTo {
     required this.messageId,
     this.quote,
     required this.checklistTaskId,
+    required this.pollOptionId,
   });
 
   /// The identifier of the chat to which the message to be replied belongs
@@ -120,6 +129,9 @@ final class InputMessageReplyToExternalMessage extends InputMessageReplyTo {
   /// Identifier of the checklist task in the message to be replied; pass 0 to reply to the whole message
   final int checklistTaskId;
 
+  /// Identifier of the poll option in the message to be replied; pass an empty string if none
+  final String pollOptionId;
+
   /// Parses a [InputMessageReplyToExternalMessage] from TDLib JSON.
   factory InputMessageReplyToExternalMessage.fromJson(
     Map<String, dynamic> json,
@@ -128,6 +140,7 @@ final class InputMessageReplyToExternalMessage extends InputMessageReplyTo {
     messageId: _readInt(json['message_id']),
     quote: _readOptional(json['quote'], InputTextQuote.fromJson),
     checklistTaskId: _readInt(json['checklist_task_id']),
+    pollOptionId: _readString(json['poll_option_id']),
   );
 
   @override
@@ -137,6 +150,7 @@ final class InputMessageReplyToExternalMessage extends InputMessageReplyTo {
     'message_id': messageId,
     'quote': quote?.toJson(),
     'checklist_task_id': checklistTaskId,
+    'poll_option_id': pollOptionId,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -147,11 +161,13 @@ final class InputMessageReplyToExternalMessage extends InputMessageReplyTo {
     int? messageId,
     InputTextQuote? Function()? quote,
     int? checklistTaskId,
+    String? pollOptionId,
   }) => InputMessageReplyToExternalMessage(
     chatId: chatId ?? this.chatId,
     messageId: messageId ?? this.messageId,
     quote: quote != null ? quote() : this.quote,
     checklistTaskId: checklistTaskId ?? this.checklistTaskId,
+    pollOptionId: pollOptionId ?? this.pollOptionId,
   );
 
   /// TDLib type name.

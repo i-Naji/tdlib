@@ -12,6 +12,8 @@ final class MessageLinkInfo extends TdObject {
     this.topicId,
     this.message,
     required this.mediaTimestamp,
+    required this.checklistTaskId,
+    required this.pollOptionId,
     required this.forAlbum,
     this.extra,
     this.clientId,
@@ -32,6 +34,12 @@ final class MessageLinkInfo extends TdObject {
   /// Timestamp from which the video/audio/video note/voice note/story playing must start, in seconds; 0 if not specified. The media can be in the message content or in its link preview
   final int mediaTimestamp;
 
+  /// Identifier of the checklist task that is linked; 0 if none
+  final int checklistTaskId;
+
+  /// Identifier of the poll option that is linked; empty if none
+  final String pollOptionId;
+
   /// True, if the whole media album to which the message belongs is linked
   final bool forAlbum;
 
@@ -51,6 +59,8 @@ final class MessageLinkInfo extends TdObject {
         topicId: _readOptional(json['topic_id'], MessageTopic.fromJson),
         message: _readOptional(json['message'], Message.fromJson),
         mediaTimestamp: _readInt(json['media_timestamp']),
+        checklistTaskId: _readInt(json['checklist_task_id']),
+        pollOptionId: _readString(json['poll_option_id']),
         forAlbum: _readBool(json['for_album']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -64,6 +74,8 @@ final class MessageLinkInfo extends TdObject {
     'topic_id': topicId?.toJson(),
     'message': message?.toJson(),
     'media_timestamp': mediaTimestamp,
+    'checklist_task_id': checklistTaskId,
+    'poll_option_id': pollOptionId,
     'for_album': forAlbum,
   };
 
@@ -75,6 +87,8 @@ final class MessageLinkInfo extends TdObject {
     MessageTopic? Function()? topicId,
     Message? Function()? message,
     int? mediaTimestamp,
+    int? checklistTaskId,
+    String? pollOptionId,
     bool? forAlbum,
     dynamic extra,
     int? clientId,
@@ -84,6 +98,8 @@ final class MessageLinkInfo extends TdObject {
     topicId: topicId != null ? topicId() : this.topicId,
     message: message != null ? message() : this.message,
     mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
+    checklistTaskId: checklistTaskId ?? this.checklistTaskId,
+    pollOptionId: pollOptionId ?? this.pollOptionId,
     forAlbum: forAlbum ?? this.forAlbum,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
