@@ -21,6 +21,7 @@ final class Message extends TdObject {
     required this.isPaidStarSuggestedPost,
     required this.isPaidTonSuggestedPost,
     required this.containsUnreadMention,
+    required this.containsUnreadPollVotes,
     required this.date,
     required this.editDate,
     this.forwardInfo,
@@ -35,6 +36,7 @@ final class Message extends TdObject {
     required this.selfDestructIn,
     required this.autoDeleteIn,
     required this.viaBotUserId,
+    this.guestBotCallerId,
     required this.senderBusinessBotUserId,
     required this.senderBoostCount,
     required this.senderTag,
@@ -92,6 +94,9 @@ final class Message extends TdObject {
   /// True, if the message contains an unread mention for the current user
   final bool containsUnreadMention;
 
+  /// True, if the message is a poll message with unread votes
+  final bool containsUnreadPollVotes;
+
   /// Point in time (Unix timestamp) when the message was sent; 0 for scheduled messages
   final int date;
 
@@ -133,6 +138,9 @@ final class Message extends TdObject {
 
   /// If non-zero, the user identifier of the inline bot through which this message was sent
   final int viaBotUserId;
+
+  /// The identifier of the user or chat which used a guest bot to send the message; may be null if none
+  final MessageSender? guestBotCallerId;
 
   /// If non-zero, the user identifier of the business bot that sent this message
   final int senderBusinessBotUserId;
@@ -197,6 +205,7 @@ final class Message extends TdObject {
     isPaidStarSuggestedPost: _readBool(json['is_paid_star_suggested_post']),
     isPaidTonSuggestedPost: _readBool(json['is_paid_ton_suggested_post']),
     containsUnreadMention: _readBool(json['contains_unread_mention']),
+    containsUnreadPollVotes: _readBool(json['contains_unread_poll_votes']),
     date: _readInt(json['date']),
     editDate: _readInt(json['edit_date']),
     forwardInfo: _readOptional(
@@ -226,6 +235,10 @@ final class Message extends TdObject {
     selfDestructIn: _readDouble(json['self_destruct_in']),
     autoDeleteIn: _readDouble(json['auto_delete_in']),
     viaBotUserId: _readInt(json['via_bot_user_id']),
+    guestBotCallerId: _readOptional(
+      json['guest_bot_caller_id'],
+      MessageSender.fromJson,
+    ),
     senderBusinessBotUserId: _readInt(json['sender_business_bot_user_id']),
     senderBoostCount: _readInt(json['sender_boost_count']),
     senderTag: _readString(json['sender_tag']),
@@ -261,6 +274,7 @@ final class Message extends TdObject {
     'is_paid_star_suggested_post': isPaidStarSuggestedPost,
     'is_paid_ton_suggested_post': isPaidTonSuggestedPost,
     'contains_unread_mention': containsUnreadMention,
+    'contains_unread_poll_votes': containsUnreadPollVotes,
     'date': date,
     'edit_date': editDate,
     'forward_info': forwardInfo?.toJson(),
@@ -275,6 +289,7 @@ final class Message extends TdObject {
     'self_destruct_in': selfDestructIn,
     'auto_delete_in': autoDeleteIn,
     'via_bot_user_id': viaBotUserId,
+    'guest_bot_caller_id': guestBotCallerId?.toJson(),
     'sender_business_bot_user_id': senderBusinessBotUserId,
     'sender_boost_count': senderBoostCount,
     'sender_tag': senderTag,
@@ -305,6 +320,7 @@ final class Message extends TdObject {
     bool? isPaidStarSuggestedPost,
     bool? isPaidTonSuggestedPost,
     bool? containsUnreadMention,
+    bool? containsUnreadPollVotes,
     int? date,
     int? editDate,
     MessageForwardInfo? Function()? forwardInfo,
@@ -319,6 +335,7 @@ final class Message extends TdObject {
     double? selfDestructIn,
     double? autoDeleteIn,
     int? viaBotUserId,
+    MessageSender? Function()? guestBotCallerId,
     int? senderBusinessBotUserId,
     int? senderBoostCount,
     String? senderTag,
@@ -351,6 +368,8 @@ final class Message extends TdObject {
     isPaidTonSuggestedPost:
         isPaidTonSuggestedPost ?? this.isPaidTonSuggestedPost,
     containsUnreadMention: containsUnreadMention ?? this.containsUnreadMention,
+    containsUnreadPollVotes:
+        containsUnreadPollVotes ?? this.containsUnreadPollVotes,
     date: date ?? this.date,
     editDate: editDate ?? this.editDate,
     forwardInfo: forwardInfo != null ? forwardInfo() : this.forwardInfo,
@@ -371,6 +390,9 @@ final class Message extends TdObject {
     selfDestructIn: selfDestructIn ?? this.selfDestructIn,
     autoDeleteIn: autoDeleteIn ?? this.autoDeleteIn,
     viaBotUserId: viaBotUserId ?? this.viaBotUserId,
+    guestBotCallerId: guestBotCallerId != null
+        ? guestBotCallerId()
+        : this.guestBotCallerId,
     senderBusinessBotUserId:
         senderBusinessBotUserId ?? this.senderBusinessBotUserId,
     senderBoostCount: senderBoostCount ?? this.senderBoostCount,

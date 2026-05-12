@@ -330,9 +330,9 @@ final class FileTypeSecure extends FileType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The file is a seld-destructing video for a live photo in a private chat
+/// The file is a self-destructing video for a live photo in a private chat
 final class FileTypeSelfDestructingLivePhotoVideo extends FileType {
-  /// The file is a seld-destructing video for a live photo in a private chat
+  /// The file is a self-destructing video for a live photo in a private chat
   const FileTypeSelfDestructingLivePhotoVideo();
 
   /// Parses a [FileTypeSelfDestructingLivePhotoVideo] from TDLib JSON.

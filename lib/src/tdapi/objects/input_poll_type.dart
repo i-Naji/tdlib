@@ -83,6 +83,7 @@ final class InputPollTypeQuiz extends InputPollType {
   const InputPollTypeQuiz({
     required this.correctOptionIds,
     required this.explanation,
+    this.explanationMedia,
   });
 
   /// Increasing list of 0-based identifiers of the correct answer options; must be non-empty
@@ -91,11 +92,18 @@ final class InputPollTypeQuiz extends InputPollType {
   /// Text that is shown when the user chooses an incorrect answer or taps on the lamp icon; 0-200 characters with at most 2 line feeds
   final FormattedText explanation;
 
+  /// Media that is shown when the user chooses an incorrect answer or taps on the lamp icon; pass null if none. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, non-live inputMessageLocation, inputMessagePhoto, inputMessageVenue, or inputMessageVideo without caption
+  final InputMessageContent? explanationMedia;
+
   /// Parses a [InputPollTypeQuiz] from TDLib JSON.
   factory InputPollTypeQuiz.fromJson(Map<String, dynamic> json) =>
       InputPollTypeQuiz(
         correctOptionIds: _readList<int>(json['correct_option_ids'], _readInt),
         explanation: _readObject(json['explanation'], FormattedText.fromJson),
+        explanationMedia: _readOptional(
+          json['explanation_media'],
+          InputMessageContent.fromJson,
+        ),
       );
 
   @override
@@ -103,6 +111,7 @@ final class InputPollTypeQuiz extends InputPollType {
     '@type': CONSTRUCTOR,
     'correct_option_ids': correctOptionIds,
     'explanation': explanation.toJson(),
+    'explanation_media': explanationMedia?.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -111,9 +120,13 @@ final class InputPollTypeQuiz extends InputPollType {
   InputPollTypeQuiz copyWith({
     List<int>? correctOptionIds,
     FormattedText? explanation,
+    InputMessageContent? Function()? explanationMedia,
   }) => InputPollTypeQuiz(
     correctOptionIds: correctOptionIds ?? this.correctOptionIds,
     explanation: explanation ?? this.explanation,
+    explanationMedia: explanationMedia != null
+        ? explanationMedia()
+        : this.explanationMedia,
   );
 
   /// TDLib type name.

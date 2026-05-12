@@ -9,7 +9,7 @@ final class PollOption extends TdObject {
   const PollOption({
     required this.id,
     required this.text,
-    required this.media,
+    this.media,
     required this.voterCount,
     required this.votePercentage,
     required this.recentVoterIds,
@@ -19,14 +19,14 @@ final class PollOption extends TdObject {
     required this.additionDate,
   });
 
-  /// Unique identifier of the option in the poll
+  /// Unique identifier of the option in the poll; may be empty if yet unassigned
   final String id;
 
   /// Option text; 1-100 characters; may contain only custom emoji entities
   final FormattedText text;
 
-  /// Option media. Currently, can be only of the types messageAnimation, messageLocation, messagePhoto, messageSticker, messageVenue, or messageVideo without caption
-  final MessageContent media;
+  /// Option media; may be null if none. If present, currently, can be only of the types messageAnimation, messageLocation, messagePhoto, messageSticker, messageVenue, or messageVideo without caption
+  final MessageContent? media;
 
   /// Number of voters for this option, available only for closed or voted polls, or if the current user is the creator of the poll
   final int voterCount;
@@ -53,7 +53,7 @@ final class PollOption extends TdObject {
   factory PollOption.fromJson(Map<String, dynamic> json) => PollOption(
     id: _readString(json['id']),
     text: _readObject(json['text'], FormattedText.fromJson),
-    media: _readObject(json['media'], MessageContent.fromJson),
+    media: _readOptional(json['media'], MessageContent.fromJson),
     voterCount: _readInt(json['voter_count']),
     votePercentage: _readInt(json['vote_percentage']),
     recentVoterIds: _readList<MessageSender>(
@@ -71,7 +71,7 @@ final class PollOption extends TdObject {
     '@type': CONSTRUCTOR,
     'id': id,
     'text': text.toJson(),
-    'media': media.toJson(),
+    'media': media?.toJson(),
     'voter_count': voterCount,
     'vote_percentage': votePercentage,
     'recent_voter_ids': [for (final e in recentVoterIds) e.toJson()],
@@ -86,7 +86,7 @@ final class PollOption extends TdObject {
   PollOption copyWith({
     String? id,
     FormattedText? text,
-    MessageContent? media,
+    MessageContent? Function()? media,
     int? voterCount,
     int? votePercentage,
     List<MessageSender>? recentVoterIds,
@@ -97,7 +97,7 @@ final class PollOption extends TdObject {
   }) => PollOption(
     id: id ?? this.id,
     text: text ?? this.text,
-    media: media ?? this.media,
+    media: media != null ? media() : this.media,
     voterCount: voterCount ?? this.voterCount,
     votePercentage: votePercentage ?? this.votePercentage,
     recentVoterIds: recentVoterIds ?? this.recentVoterIds,

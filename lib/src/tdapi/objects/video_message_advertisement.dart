@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Describes an advertisent to be shown while a video from a message is watched
+/// Describes an advertisement to be shown while a video from a message is watched
 final class VideoMessageAdvertisement extends TdObject {
-  /// Describes an advertisent to be shown while a video from a message is watched
+  /// Describes an advertisement to be shown while a video from a message is watched
   const VideoMessageAdvertisement({
     required this.uniqueId,
     required this.text,

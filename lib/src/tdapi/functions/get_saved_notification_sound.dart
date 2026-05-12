@@ -5,8 +5,8 @@ part of '../tdapi.dart';
 
 /// Returns saved notification sound by its identifier. Returns a 404 error if there is no saved notification sound with the specified identifier
 ///
-/// Returns [NotificationSounds].
-final class GetSavedNotificationSound extends TdFunction<NotificationSounds> {
+/// Returns [NotificationSound].
+final class GetSavedNotificationSound extends TdFunction<NotificationSound> {
   /// Returns saved notification sound by its identifier. Returns a 404 error if there is no saved notification sound with the specified identifier
   const GetSavedNotificationSound({required this.notificationSoundId});
 

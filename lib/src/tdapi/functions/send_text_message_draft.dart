@@ -12,7 +12,7 @@ final class SendTextMessageDraft extends TdFunction<Ok> {
     required this.chatId,
     required this.forumTopicId,
     required this.draftId,
-    required this.text,
+    this.text,
   });
 
   /// Chat identifier
@@ -24,8 +24,8 @@ final class SendTextMessageDraft extends TdFunction<Ok> {
   /// Unique identifier of the draft
   final int draftId;
 
-  /// Draft text of the message
-  final FormattedText text;
+  /// Draft text of the message; pass null to show a "Thinking..." placeholder
+  final FormattedText? text;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
@@ -33,7 +33,7 @@ final class SendTextMessageDraft extends TdFunction<Ok> {
     'chat_id': chatId,
     'forum_topic_id': forumTopicId,
     'draft_id': draftId.toString(),
-    'text': text.toJson(),
+    'text': text?.toJson(),
     '@extra': ?extra,
   };
 
@@ -43,12 +43,12 @@ final class SendTextMessageDraft extends TdFunction<Ok> {
     int? chatId,
     int? forumTopicId,
     int? draftId,
-    FormattedText? text,
+    FormattedText? Function()? text,
   }) => SendTextMessageDraft(
     chatId: chatId ?? this.chatId,
     forumTopicId: forumTopicId ?? this.forumTopicId,
     draftId: draftId ?? this.draftId,
-    text: text ?? this.text,
+    text: text != null ? text() : this.text,
   );
 
   /// TDLib type name.

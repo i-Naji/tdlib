@@ -16,11 +16,14 @@ final class Poll extends TdObject {
     required this.isAnonymous,
     required this.allowsMultipleAnswers,
     required this.allowsRevoting,
+    required this.membersOnly,
+    required this.countryCodes,
     required this.optionOrder,
     required this.type,
     required this.openPeriod,
     required this.closeDate,
     required this.isClosed,
+    this.voteRestrictionReason,
   });
 
   /// Unique poll identifier
@@ -38,7 +41,7 @@ final class Poll extends TdObject {
   /// Identifiers of recent voters, if the poll is non-anonymous and poll results are available
   final List<MessageSender> recentVoterIds;
 
-  /// True, if the current user can get voters in the poll
+  /// True, if the current user can get voters in the poll using getPollVoters
   final bool canGetVoters;
 
   /// True, if the poll is anonymous
@@ -49,6 +52,12 @@ final class Poll extends TdObject {
 
   /// True, if the poll can be answered multiple times
   final bool allowsRevoting;
+
+  /// True, if only the users that are members of the chat for more than a day will be able to vote
+  final bool membersOnly;
+
+  /// The list of two-letter ISO 3166-1 alpha-2 codes of countries, users from which will be able to vote. If empty, then all users can participate in the poll
+  final List<String> countryCodes;
 
   /// The list of 0-based poll identifiers in which the options of the poll must be shown; empty if the order of options must not be changed
   final List<int> optionOrder;
@@ -64,6 +73,9 @@ final class Poll extends TdObject {
 
   /// True, if the poll is closed
   final bool isClosed;
+
+  /// The reason describing, why the current user can't vote in the poll; may be null if the user can vote in the poll
+  final PollVoteRestrictionReason? voteRestrictionReason;
 
   /// Parses a [Poll] from TDLib JSON.
   factory Poll.fromJson(Map<String, dynamic> json) => Poll(
@@ -82,11 +94,17 @@ final class Poll extends TdObject {
     isAnonymous: _readBool(json['is_anonymous']),
     allowsMultipleAnswers: _readBool(json['allows_multiple_answers']),
     allowsRevoting: _readBool(json['allows_revoting']),
+    membersOnly: _readBool(json['members_only']),
+    countryCodes: _readList<String>(json['country_codes'], _readString),
     optionOrder: _readList<int>(json['option_order'], _readInt),
     type: _readObject(json['type'], PollType.fromJson),
     openPeriod: _readInt(json['open_period']),
     closeDate: _readInt(json['close_date']),
     isClosed: _readBool(json['is_closed']),
+    voteRestrictionReason: _readOptional(
+      json['vote_restriction_reason'],
+      PollVoteRestrictionReason.fromJson,
+    ),
   );
 
   @override
@@ -101,11 +119,14 @@ final class Poll extends TdObject {
     'is_anonymous': isAnonymous,
     'allows_multiple_answers': allowsMultipleAnswers,
     'allows_revoting': allowsRevoting,
+    'members_only': membersOnly,
+    'country_codes': countryCodes,
     'option_order': optionOrder,
     'type': type.toJson(),
     'open_period': openPeriod,
     'close_date': closeDate,
     'is_closed': isClosed,
+    'vote_restriction_reason': voteRestrictionReason?.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -120,11 +141,14 @@ final class Poll extends TdObject {
     bool? isAnonymous,
     bool? allowsMultipleAnswers,
     bool? allowsRevoting,
+    bool? membersOnly,
+    List<String>? countryCodes,
     List<int>? optionOrder,
     PollType? type,
     int? openPeriod,
     int? closeDate,
     bool? isClosed,
+    PollVoteRestrictionReason? Function()? voteRestrictionReason,
   }) => Poll(
     id: id ?? this.id,
     question: question ?? this.question,
@@ -135,11 +159,16 @@ final class Poll extends TdObject {
     isAnonymous: isAnonymous ?? this.isAnonymous,
     allowsMultipleAnswers: allowsMultipleAnswers ?? this.allowsMultipleAnswers,
     allowsRevoting: allowsRevoting ?? this.allowsRevoting,
+    membersOnly: membersOnly ?? this.membersOnly,
+    countryCodes: countryCodes ?? this.countryCodes,
     optionOrder: optionOrder ?? this.optionOrder,
     type: type ?? this.type,
     openPeriod: openPeriod ?? this.openPeriod,
     closeDate: closeDate ?? this.closeDate,
     isClosed: isClosed ?? this.isClosed,
+    voteRestrictionReason: voteRestrictionReason != null
+        ? voteRestrictionReason()
+        : this.voteRestrictionReason,
   );
 
   /// TDLib type name.

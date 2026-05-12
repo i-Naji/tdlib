@@ -3,14 +3,14 @@
 
 part of '../tdapi.dart';
 
-/// Returns token of a created bot; for bots only
+/// Returns token of a managed bot; for bots only
 ///
 /// Returns [Text].
-final class GetBotToken extends TdFunction<Text> {
-  /// Returns token of a created bot; for bots only
-  const GetBotToken({required this.botUserId, required this.revoke});
+final class GetManagedBotToken extends TdFunction<Text> {
+  /// Returns token of a managed bot; for bots only
+  const GetManagedBotToken({required this.botUserId, required this.revoke});
 
-  /// Identifier of the created bot
+  /// Identifier of the managed bot
   final int botUserId;
 
   /// Pass true to revoke the current token and create a new one
@@ -26,13 +26,14 @@ final class GetBotToken extends TdFunction<Text> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetBotToken copyWith({int? botUserId, bool? revoke}) => GetBotToken(
-    botUserId: botUserId ?? this.botUserId,
-    revoke: revoke ?? this.revoke,
-  );
+  GetManagedBotToken copyWith({int? botUserId, bool? revoke}) =>
+      GetManagedBotToken(
+        botUserId: botUserId ?? this.botUserId,
+        revoke: revoke ?? this.revoke,
+      );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'getBotToken';
+  static const String CONSTRUCTOR = 'getManagedBotToken';
 
   @override
   String getConstructor() => CONSTRUCTOR;

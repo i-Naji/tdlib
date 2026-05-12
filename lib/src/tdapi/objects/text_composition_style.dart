@@ -10,16 +10,50 @@ final class TextCompositionStyle extends TdObject {
     required this.name,
     required this.customEmojiId,
     required this.title,
+    required this.isCustom,
+    required this.isCreator,
+    required this.installCount,
+    required this.prompt,
+    required this.creatorUserId,
+    this.englishExample,
+    this.extra,
+    this.clientId,
   });
 
   /// Name of the style
   final String name;
 
-  /// Identifier of the custom emoji corresponding to the style
+  /// Identifier of the custom emoji corresponding to the style; 0 if none
   final int customEmojiId;
 
   /// Title of the style in the user application's language
   final String title;
+
+  /// True, if the style is created by a user
+  final bool isCustom;
+
+  /// True, if the user is creator of the style
+  final bool isCreator;
+
+  /// Number of users that installed the style; for created custom styles only; 0 if unknown
+  final int installCount;
+
+  /// Prompt of the style; for created custom styles only
+  final String prompt;
+
+  /// User identifier of the creator of the style; 0 if none of unknown
+  final int creatorUserId;
+
+  /// Example of the style usage in English; may be null if unknown
+  final TextCompositionStyleExample? englishExample;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
 
   /// Parses a [TextCompositionStyle] from TDLib JSON.
   factory TextCompositionStyle.fromJson(Map<String, dynamic> json) =>
@@ -27,6 +61,17 @@ final class TextCompositionStyle extends TdObject {
         name: _readString(json['name']),
         customEmojiId: _readInt(json['custom_emoji_id']),
         title: _readString(json['title']),
+        isCustom: _readBool(json['is_custom']),
+        isCreator: _readBool(json['is_creator']),
+        installCount: _readInt(json['install_count']),
+        prompt: _readString(json['prompt']),
+        creatorUserId: _readInt(json['creator_user_id']),
+        englishExample: _readOptional(
+          json['english_example'],
+          TextCompositionStyleExample.fromJson,
+        ),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
       );
 
   @override
@@ -35,6 +80,12 @@ final class TextCompositionStyle extends TdObject {
     'name': name,
     'custom_emoji_id': customEmojiId.toString(),
     'title': title,
+    'is_custom': isCustom,
+    'is_creator': isCreator,
+    'install_count': installCount,
+    'prompt': prompt,
+    'creator_user_id': creatorUserId,
+    'english_example': englishExample?.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -43,10 +94,28 @@ final class TextCompositionStyle extends TdObject {
     String? name,
     int? customEmojiId,
     String? title,
+    bool? isCustom,
+    bool? isCreator,
+    int? installCount,
+    String? prompt,
+    int? creatorUserId,
+    TextCompositionStyleExample? Function()? englishExample,
+    dynamic extra,
+    int? clientId,
   }) => TextCompositionStyle(
     name: name ?? this.name,
     customEmojiId: customEmojiId ?? this.customEmojiId,
     title: title ?? this.title,
+    isCustom: isCustom ?? this.isCustom,
+    isCreator: isCreator ?? this.isCreator,
+    installCount: installCount ?? this.installCount,
+    prompt: prompt ?? this.prompt,
+    creatorUserId: creatorUserId ?? this.creatorUserId,
+    englishExample: englishExample != null
+        ? englishExample()
+        : this.englishExample,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
   );
 
   /// TDLib type name.

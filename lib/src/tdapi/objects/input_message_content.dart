@@ -1266,9 +1266,12 @@ final class InputMessagePoll extends InputMessageContent {
     required this.question,
     required this.options,
     this.description,
+    this.media,
     required this.isAnonymous,
     required this.allowsMultipleAnswers,
     required this.allowsRevoting,
+    required this.membersOnly,
+    required this.countryCodes,
     required this.shuffleOptions,
     required this.hideResultsUntilCloses,
     required this.type,
@@ -1280,11 +1283,14 @@ final class InputMessagePoll extends InputMessageContent {
   /// Poll question; 1-255 characters (up to 300 characters for bots). Only custom emoji entities are allowed to be added and only by Premium users
   final FormattedText question;
 
-  /// List of poll answer options; 2-getOption("poll_answer_count_max") options
+  /// List of poll answer options; 1-getOption("poll_answer_count_max") options
   final List<InputPollOption> options;
 
   /// Poll description; pass null to use an empty description; 0-getOption("message_caption_length_max") characters
   final FormattedText? description;
+
+  /// Media attached to the poll; pass null if none. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, non-live inputMessageLocation, inputMessagePhoto, inputMessageVenue, or inputMessageVideo without caption
+  final InputMessageContent? media;
 
   /// True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels
   final bool isAnonymous;
@@ -1294,6 +1300,12 @@ final class InputMessagePoll extends InputMessageContent {
 
   /// True, if the poll can be answered multiple times
   final bool allowsRevoting;
+
+  /// True, if only the users that are members of the chat for more than a day will be able to vote; for channel chats only
+  final bool membersOnly;
+
+  /// The list of two-letter ISO 3166-1 alpha-2 codes of countries, users from which will be able to vote; for channel chats only. If empty, then all users can participate in the poll. There can be up to getOption("poll_country_count_max") chosen countries
+  final List<String> countryCodes;
 
   /// True, if poll options must be shown in a fixed random order
   final bool shuffleOptions;
@@ -1322,9 +1334,12 @@ final class InputMessagePoll extends InputMessageContent {
           (e) => _readObject(e, InputPollOption.fromJson),
         ),
         description: _readOptional(json['description'], FormattedText.fromJson),
+        media: _readOptional(json['media'], InputMessageContent.fromJson),
         isAnonymous: _readBool(json['is_anonymous']),
         allowsMultipleAnswers: _readBool(json['allows_multiple_answers']),
         allowsRevoting: _readBool(json['allows_revoting']),
+        membersOnly: _readBool(json['members_only']),
+        countryCodes: _readList<String>(json['country_codes'], _readString),
         shuffleOptions: _readBool(json['shuffle_options']),
         hideResultsUntilCloses: _readBool(json['hide_results_until_closes']),
         type: _readObject(json['type'], InputPollType.fromJson),
@@ -1339,9 +1354,12 @@ final class InputMessagePoll extends InputMessageContent {
     'question': question.toJson(),
     'options': [for (final e in options) e.toJson()],
     'description': description?.toJson(),
+    'media': media?.toJson(),
     'is_anonymous': isAnonymous,
     'allows_multiple_answers': allowsMultipleAnswers,
     'allows_revoting': allowsRevoting,
+    'members_only': membersOnly,
+    'country_codes': countryCodes,
     'shuffle_options': shuffleOptions,
     'hide_results_until_closes': hideResultsUntilCloses,
     'type': type.toJson(),
@@ -1357,9 +1375,12 @@ final class InputMessagePoll extends InputMessageContent {
     FormattedText? question,
     List<InputPollOption>? options,
     FormattedText? Function()? description,
+    InputMessageContent? Function()? media,
     bool? isAnonymous,
     bool? allowsMultipleAnswers,
     bool? allowsRevoting,
+    bool? membersOnly,
+    List<String>? countryCodes,
     bool? shuffleOptions,
     bool? hideResultsUntilCloses,
     InputPollType? type,
@@ -1370,9 +1391,12 @@ final class InputMessagePoll extends InputMessageContent {
     question: question ?? this.question,
     options: options ?? this.options,
     description: description != null ? description() : this.description,
+    media: media != null ? media() : this.media,
     isAnonymous: isAnonymous ?? this.isAnonymous,
     allowsMultipleAnswers: allowsMultipleAnswers ?? this.allowsMultipleAnswers,
     allowsRevoting: allowsRevoting ?? this.allowsRevoting,
+    membersOnly: membersOnly ?? this.membersOnly,
+    countryCodes: countryCodes ?? this.countryCodes,
     shuffleOptions: shuffleOptions ?? this.shuffleOptions,
     hideResultsUntilCloses:
         hideResultsUntilCloses ?? this.hideResultsUntilCloses,

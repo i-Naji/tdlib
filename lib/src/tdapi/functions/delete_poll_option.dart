@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Adds an option to a poll
+/// Deletes an option from a poll
 ///
 /// Returns [Ok].
 final class DeletePollOption extends TdFunction<Ok> {
-  /// Adds an option to a poll
+  /// Deletes an option from a poll
   const DeletePollOption({
     required this.chatId,
     required this.messageId,

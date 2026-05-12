@@ -9,9 +9,13 @@ part of '../tdapi.dart';
 final class CheckAuthenticationPremiumPurchase extends TdFunction<Ok> {
   /// Checks whether an in-store purchase of Telegram Premium is possible before authorization. Works only when the current authorization state is authorizationStateWaitPremiumPurchase
   const CheckAuthenticationPremiumPurchase({
+    required this.premiumDayCount,
     required this.currency,
     required this.amount,
   });
+
+  /// The number of days for which the Telegram Premium subscription will be granted
+  final int premiumDayCount;
 
   /// ISO 4217 currency code of the payment currency
   final String currency;
@@ -22,6 +26,7 @@ final class CheckAuthenticationPremiumPurchase extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
+    'premium_day_count': premiumDayCount,
     'currency': currency,
     'amount': amount,
     '@extra': ?extra,
@@ -30,9 +35,11 @@ final class CheckAuthenticationPremiumPurchase extends TdFunction<Ok> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   CheckAuthenticationPremiumPurchase copyWith({
+    int? premiumDayCount,
     String? currency,
     int? amount,
   }) => CheckAuthenticationPremiumPurchase(
+    premiumDayCount: premiumDayCount ?? this.premiumDayCount,
     currency: currency ?? this.currency,
     amount: amount ?? this.amount,
   );

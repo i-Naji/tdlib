@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns promotional anumation for upgraded gifts
+/// Returns promotional animation for upgraded gifts
 ///
 /// Returns [Animation].
 final class GetUpgradedGiftsPromotionalAnimation extends TdFunction<Animation> {
-  /// Returns promotional anumation for upgraded gifts
+  /// Returns promotional animation for upgraded gifts
   const GetUpgradedGiftsPromotionalAnimation();
 
   @override

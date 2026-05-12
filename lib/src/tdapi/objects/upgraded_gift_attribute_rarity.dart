@@ -45,10 +45,10 @@ final class UndecodedUpgradedGiftAttributeRarity
   String getConstructor() => _readString(json['@type']);
 }
 
-/// The rarity is represented as the numeric frequence of the model
+/// The rarity is represented as the numeric frequency of the model
 final class UpgradedGiftAttributeRarityPerMille
     extends UpgradedGiftAttributeRarity {
-  /// The rarity is represented as the numeric frequence of the model
+  /// The rarity is represented as the numeric frequency of the model
   const UpgradedGiftAttributeRarityPerMille({required this.perMille});
 
   /// The number of upgraded gifts that receive this attribute for each 1000 gifts upgraded; if 0, then it can be shown as "&lt;0.1%"

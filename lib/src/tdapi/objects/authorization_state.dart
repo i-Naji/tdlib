@@ -131,6 +131,7 @@ final class AuthorizationStateWaitPremiumPurchase extends AuthorizationState {
   /// The user must buy Telegram Premium as an in-store purchase to log in. Call checkAuthenticationPremiumPurchase and then setAuthenticationPremiumPurchaseTransaction
   const AuthorizationStateWaitPremiumPurchase({
     required this.storeProductId,
+    required this.premiumDayCount,
     required this.supportEmailAddress,
     required this.supportEmailSubject,
     this.extra,
@@ -139,6 +140,9 @@ final class AuthorizationStateWaitPremiumPurchase extends AuthorizationState {
 
   /// Identifier of the store product that must be bought
   final String storeProductId;
+
+  /// Duration of the Telegram Premium subscription after the purchase; may be 0 if Telegram Premium subscription will not be granted
+  final int premiumDayCount;
 
   /// Email address to use for support if the user has issues with Telegram Premium purchase
   final String supportEmailAddress;
@@ -159,6 +163,7 @@ final class AuthorizationStateWaitPremiumPurchase extends AuthorizationState {
     Map<String, dynamic> json,
   ) => AuthorizationStateWaitPremiumPurchase(
     storeProductId: _readString(json['store_product_id']),
+    premiumDayCount: _readInt(json['premium_day_count']),
     supportEmailAddress: _readString(json['support_email_address']),
     supportEmailSubject: _readString(json['support_email_subject']),
     extra: json['@extra'],
@@ -169,6 +174,7 @@ final class AuthorizationStateWaitPremiumPurchase extends AuthorizationState {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'store_product_id': storeProductId,
+    'premium_day_count': premiumDayCount,
     'support_email_address': supportEmailAddress,
     'support_email_subject': supportEmailSubject,
   };
@@ -178,12 +184,14 @@ final class AuthorizationStateWaitPremiumPurchase extends AuthorizationState {
   @override
   AuthorizationStateWaitPremiumPurchase copyWith({
     String? storeProductId,
+    int? premiumDayCount,
     String? supportEmailAddress,
     String? supportEmailSubject,
     dynamic extra,
     int? clientId,
   }) => AuthorizationStateWaitPremiumPurchase(
     storeProductId: storeProductId ?? this.storeProductId,
+    premiumDayCount: premiumDayCount ?? this.premiumDayCount,
     supportEmailAddress: supportEmailAddress ?? this.supportEmailAddress,
     supportEmailSubject: supportEmailSubject ?? this.supportEmailSubject,
     extra: extra ?? this.extra,
@@ -457,9 +465,9 @@ final class AuthorizationStateWaitOtherDeviceConfirmation
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The user is unregistered and need to accept terms of service and enter their first name and last name to finish registration. Call registerUser to accept the terms of service and provide the data
+/// The user is unregistered and needs to accept terms of service and enter their first name and last name to finish registration. Call registerUser to accept the terms of service and provide the data
 final class AuthorizationStateWaitRegistration extends AuthorizationState {
-  /// The user is unregistered and need to accept terms of service and enter their first name and last name to finish registration. Call registerUser to accept the terms of service and provide the data
+  /// The user is unregistered and needs to accept terms of service and enter their first name and last name to finish registration. Call registerUser to accept the terms of service and provide the data
   const AuthorizationStateWaitRegistration({
     required this.termsOfService,
     this.extra,

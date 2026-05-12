@@ -38,10 +38,12 @@ part 'functions/add_saved_animation.dart';
 part 'functions/add_saved_notification_sound.dart';
 part 'functions/add_sticker_to_set.dart';
 part 'functions/add_story_album_stories.dart';
+part 'functions/add_text_composition_style.dart';
 part 'functions/allow_bot_to_send_messages.dart';
 part 'functions/allow_unpaid_messages_from_user.dart';
 part 'functions/answer_callback_query.dart';
 part 'functions/answer_custom_query.dart';
+part 'functions/answer_guest_query.dart';
 part 'functions/answer_inline_query.dart';
 part 'functions/answer_pre_checkout_query.dart';
 part 'functions/answer_shipping_query.dart';
@@ -135,6 +137,7 @@ part 'functions/create_secret_chat.dart';
 part 'functions/create_story_album.dart';
 part 'functions/create_supergroup_chat.dart';
 part 'functions/create_temporary_password.dart';
+part 'functions/create_text_composition_style.dart';
 part 'functions/create_video_chat.dart';
 part 'functions/decline_group_call_invitation.dart';
 part 'functions/decline_oauth_request.dart';
@@ -142,6 +145,7 @@ part 'functions/decline_suggested_post.dart';
 part 'functions/decrypt_group_call_data.dart';
 part 'functions/delete_account.dart';
 part 'functions/delete_all_call_messages.dart';
+part 'functions/delete_all_recent_message_reactions_from_sender.dart';
 part 'functions/delete_all_revoked_chat_invite_links.dart';
 part 'functions/delete_bot_media_previews.dart';
 part 'functions/delete_business_chat_link.dart';
@@ -166,6 +170,7 @@ part 'functions/delete_gift_collection.dart';
 part 'functions/delete_group_call_messages.dart';
 part 'functions/delete_group_call_messages_by_sender.dart';
 part 'functions/delete_language_pack.dart';
+part 'functions/delete_message_reactions_from_sender.dart';
 part 'functions/delete_messages.dart';
 part 'functions/delete_passport_element.dart';
 part 'functions/delete_poll_option.dart';
@@ -180,6 +185,7 @@ part 'functions/delete_saved_order_info.dart';
 part 'functions/delete_sticker_set.dart';
 part 'functions/delete_story.dart';
 part 'functions/delete_story_album.dart';
+part 'functions/delete_text_composition_style.dart';
 part 'functions/destroy.dart';
 part 'functions/disable_all_supergroup_usernames.dart';
 part 'functions/disable_proxy.dart';
@@ -221,6 +227,7 @@ part 'functions/edit_quick_reply_message.dart';
 part 'functions/edit_star_subscription.dart';
 part 'functions/edit_story.dart';
 part 'functions/edit_story_cover.dart';
+part 'functions/edit_text_composition_style.dart';
 part 'functions/edit_user_star_subscription.dart';
 part 'functions/enable_proxy.dart';
 part 'functions/encrypt_group_call_data.dart';
@@ -259,7 +266,6 @@ part 'functions/get_bot_media_previews.dart';
 part 'functions/get_bot_name.dart';
 part 'functions/get_bot_similar_bot_count.dart';
 part 'functions/get_bot_similar_bots.dart';
-part 'functions/get_bot_token.dart';
 part 'functions/get_business_account_star_amount.dart';
 part 'functions/get_business_chat_link_info.dart';
 part 'functions/get_business_chat_links.dart';
@@ -403,6 +409,8 @@ part 'functions/get_login_passkeys.dart';
 part 'functions/get_login_url.dart';
 part 'functions/get_login_url_info.dart';
 part 'functions/get_main_web_app.dart';
+part 'functions/get_managed_bot_access_settings.dart';
+part 'functions/get_managed_bot_token.dart';
 part 'functions/get_map_thumbnail_file.dart';
 part 'functions/get_markdown_text.dart';
 part 'functions/get_me.dart';
@@ -440,9 +448,11 @@ part 'functions/get_passport_element.dart';
 part 'functions/get_password_state.dart';
 part 'functions/get_payment_form.dart';
 part 'functions/get_payment_receipt.dart';
+part 'functions/get_personal_chat_history.dart';
 part 'functions/get_phone_number_info.dart';
 part 'functions/get_phone_number_info_sync.dart';
 part 'functions/get_poll_option_properties.dart';
+part 'functions/get_poll_vote_statistics.dart';
 part 'functions/get_poll_voters.dart';
 part 'functions/get_preferred_country_language.dart';
 part 'functions/get_premium_features.dart';
@@ -517,6 +527,7 @@ part 'functions/get_supergroup_members.dart';
 part 'functions/get_support_name.dart';
 part 'functions/get_support_user.dart';
 part 'functions/get_temporary_password_state.dart';
+part 'functions/get_text_composition_style_example.dart';
 part 'functions/get_text_entities.dart';
 part 'functions/get_theme_parameters_json_string.dart';
 part 'functions/get_themed_chat_emoji_statuses.dart';
@@ -642,6 +653,7 @@ part 'functions/remove_saved_notification_sound.dart';
 part 'functions/remove_searched_for_tag.dart';
 part 'functions/remove_sticker_from_set.dart';
 part 'functions/remove_story_album_stories.dart';
+part 'functions/remove_text_composition_style.dart';
 part 'functions/remove_top_chat.dart';
 part 'functions/reorder_active_usernames.dart';
 part 'functions/reorder_bot_active_usernames.dart';
@@ -721,6 +733,7 @@ part 'functions/search_sticker_set.dart';
 part 'functions/search_sticker_sets.dart';
 part 'functions/search_stickers.dart';
 part 'functions/search_strings_by_prefix.dart';
+part 'functions/search_text_composition_style.dart';
 part 'functions/search_user_by_phone_number.dart';
 part 'functions/search_user_by_token.dart';
 part 'functions/search_web_app.dart';
@@ -836,6 +849,7 @@ part 'functions/set_log_tag_verbosity_level.dart';
 part 'functions/set_log_verbosity_level.dart';
 part 'functions/set_login_email_address.dart';
 part 'functions/set_main_profile_tab.dart';
+part 'functions/set_managed_bot_access_settings.dart';
 part 'functions/set_menu_button.dart';
 part 'functions/set_message_fact_check.dart';
 part 'functions/set_message_reactions.dart';
@@ -1032,6 +1046,7 @@ part 'objects/basic_group.dart';
 part 'objects/basic_group_full_info.dart';
 part 'objects/birthdate.dart';
 part 'objects/block_list.dart';
+part 'objects/bot_access_settings.dart';
 part 'objects/bot_command.dart';
 part 'objects/bot_command_scope.dart';
 part 'objects/bot_commands.dart';
@@ -1288,6 +1303,7 @@ part 'objects/imported_contact.dart';
 part 'objects/imported_contacts.dart';
 part 'objects/inline_keyboard_button.dart';
 part 'objects/inline_keyboard_button_type.dart';
+part 'objects/inline_message_id.dart';
 part 'objects/inline_query_result.dart';
 part 'objects/inline_query_results.dart';
 part 'objects/inline_query_results_button.dart';
@@ -1448,6 +1464,8 @@ part 'objects/poll.dart';
 part 'objects/poll_option.dart';
 part 'objects/poll_option_properties.dart';
 part 'objects/poll_type.dart';
+part 'objects/poll_vote_restriction_reason.dart';
+part 'objects/poll_vote_statistics.dart';
 part 'objects/poll_voter.dart';
 part 'objects/poll_voters.dart';
 part 'objects/premium_feature.dart';
@@ -1520,7 +1538,6 @@ part 'objects/seconds.dart';
 part 'objects/secret_chat.dart';
 part 'objects/secret_chat_state.dart';
 part 'objects/sent_gift.dart';
-part 'objects/sent_web_app_message.dart';
 part 'objects/session.dart';
 part 'objects/session_type.dart';
 part 'objects/sessions.dart';
@@ -1614,6 +1631,7 @@ part 'objects/test_vector_string.dart';
 part 'objects/test_vector_string_object.dart';
 part 'objects/text.dart';
 part 'objects/text_composition_style.dart';
+part 'objects/text_composition_style_example.dart';
 part 'objects/text_entities.dart';
 part 'objects/text_entity.dart';
 part 'objects/text_entity_type.dart';
@@ -1683,14 +1701,14 @@ part 'objects/web_app_open_parameters.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.63';
+const String tdlibVersion = '1.8.64';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '1677a0c77f30bbb337f91cf6627d62b2a62a8f87';
+const String tdlibSchemaCommit = '49b3bcbb6bfebf2ed44dd9f25102d2e1a94a58c4';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '1677a0c77f30bbb337f91cf6627d62b2a62a8f87',
+  '49b3bcbb6bfebf2ed44dd9f25102d2e1a94a58c4',
 ];
 
 /// Base class of every TDLib object.
@@ -1780,6 +1798,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'diffEntity': DiffEntity.fromJson,
   'diffText': DiffText.fromJson,
   'fixedText': FixedText.fromJson,
+  'textCompositionStyleExample': TextCompositionStyleExample.fromJson,
   'textCompositionStyle': TextCompositionStyle.fromJson,
   'termsOfService': TermsOfService.fromJson,
   'passkey': Passkey.fromJson,
@@ -1849,6 +1868,16 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'pollTypeQuiz': PollTypeQuiz.fromJson,
   'inputPollTypeRegular': InputPollTypeRegular.fromJson,
   'inputPollTypeQuiz': InputPollTypeQuiz.fromJson,
+  'pollVoteRestrictionReasonClosed': PollVoteRestrictionReasonClosed.fromJson,
+  'pollVoteRestrictionReasonYetUnsent':
+      PollVoteRestrictionReasonYetUnsent.fromJson,
+  'pollVoteRestrictionReasonScheduled':
+      PollVoteRestrictionReasonScheduled.fromJson,
+  'pollVoteRestrictionReasonCountryRestricted':
+      PollVoteRestrictionReasonCountryRestricted.fromJson,
+  'pollVoteRestrictionReasonMembershipRequired':
+      PollVoteRestrictionReasonMembershipRequired.fromJson,
+  'pollVoteRestrictionReasonOther': PollVoteRestrictionReasonOther.fromJson,
   'checklistTask': ChecklistTask.fromJson,
   'inputChecklistTask': InputChecklistTask.fromJson,
   'checklist': Checklist.fromJson,
@@ -1892,6 +1921,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'botCommand': BotCommand.fromJson,
   'botCommands': BotCommands.fromJson,
   'botMenuButton': BotMenuButton.fromJson,
+  'botAccessSettings': BotAccessSettings.fromJson,
   'botVerificationParameters': BotVerificationParameters.fromJson,
   'botVerification': BotVerification.fromJson,
   'verificationStatus': VerificationStatus.fromJson,
@@ -2560,6 +2590,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'linkPreviewTypeStory': LinkPreviewTypeStory.fromJson,
   'linkPreviewTypeStoryAlbum': LinkPreviewTypeStoryAlbum.fromJson,
   'linkPreviewTypeSupergroupBoost': LinkPreviewTypeSupergroupBoost.fromJson,
+  'linkPreviewTypeTextCompositionStyle':
+      LinkPreviewTypeTextCompositionStyle.fromJson,
   'linkPreviewTypeTheme': LinkPreviewTypeTheme.fromJson,
   'linkPreviewTypeUnsupported': LinkPreviewTypeUnsupported.fromJson,
   'linkPreviewTypeUpgradedGift': LinkPreviewTypeUpgradedGift.fromJson,
@@ -3103,6 +3135,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       ReactionUnavailabilityReasonAnonymousAdministrator.fromJson,
   'reactionUnavailabilityReasonGuest':
       ReactionUnavailabilityReasonGuest.fromJson,
+  'reactionUnavailabilityReasonRestricted':
+      ReactionUnavailabilityReasonRestricted.fromJson,
   'animations': Animations.fromJson,
   'diceStickersRegular': DiceStickersRegular.fromJson,
   'diceStickersSlotMachine': DiceStickersSlotMachine.fromJson,
@@ -3114,7 +3148,6 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'businessConnection': BusinessConnection.fromJson,
   'attachmentMenuBotColor': AttachmentMenuBotColor.fromJson,
   'attachmentMenuBot': AttachmentMenuBot.fromJson,
-  'sentWebAppMessage': SentWebAppMessage.fromJson,
   'botWriteAccessAllowReasonConnectedWebsite':
       BotWriteAccessAllowReasonConnectedWebsite.fromJson,
   'botWriteAccessAllowReasonAddedToAttachmentMenu':
@@ -3159,6 +3192,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       InlineQueryResultsButtonTypeWebApp.fromJson,
   'inlineQueryResultsButton': InlineQueryResultsButton.fromJson,
   'inlineQueryResults': InlineQueryResults.fromJson,
+  'inlineMessageId': InlineMessageId.fromJson,
   'preparedInlineMessageId': PreparedInlineMessageId.fromJson,
   'preparedInlineMessage': PreparedInlineMessage.fromJson,
   'callbackQueryPayloadData': CallbackQueryPayloadData.fromJson,
@@ -3281,6 +3315,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       PremiumLimitTypeStorySuggestedReactionAreaCount.fromJson,
   'premiumLimitTypeSimilarChatCount': PremiumLimitTypeSimilarChatCount.fromJson,
   'premiumLimitTypeOwnedBotCount': PremiumLimitTypeOwnedBotCount.fromJson,
+  'premiumLimitTypeCustomTextCompositionStyleCount':
+      PremiumLimitTypeCustomTextCompositionStyleCount.fromJson,
   'premiumFeatureIncreasedLimits': PremiumFeatureIncreasedLimits.fromJson,
   'premiumFeatureIncreasedUploadFileSize':
       PremiumFeatureIncreasedUploadFileSize.fromJson,
@@ -3717,6 +3753,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'internalLinkTypeStickerSet': InternalLinkTypeStickerSet.fromJson,
   'internalLinkTypeStory': InternalLinkTypeStory.fromJson,
   'internalLinkTypeStoryAlbum': InternalLinkTypeStoryAlbum.fromJson,
+  'internalLinkTypeTextCompositionStyle':
+      InternalLinkTypeTextCompositionStyle.fromJson,
   'internalLinkTypeTheme': InternalLinkTypeTheme.fromJson,
   'internalLinkTypeUnknownDeepLink': InternalLinkTypeUnknownDeepLink.fromJson,
   'internalLinkTypeUpgradedGift': InternalLinkTypeUpgradedGift.fromJson,
@@ -3791,6 +3829,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'topChatCategoryGroups': TopChatCategoryGroups.fromJson,
   'topChatCategoryChannels': TopChatCategoryChannels.fromJson,
   'topChatCategoryInlineBots': TopChatCategoryInlineBots.fromJson,
+  'topChatCategoryGuestBots': TopChatCategoryGuestBots.fromJson,
   'topChatCategoryWebAppBots': TopChatCategoryWebAppBots.fromJson,
   'topChatCategoryCalls': TopChatCategoryCalls.fromJson,
   'topChatCategoryForwardChats': TopChatCategoryForwardChats.fromJson,
@@ -3858,6 +3897,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'chatRevenueStatistics': ChatRevenueStatistics.fromJson,
   'messageStatistics': MessageStatistics.fromJson,
   'storyStatistics': StoryStatistics.fromJson,
+  'pollVoteStatistics': PollVoteStatistics.fromJson,
   'revenueWithdrawalStatePending': RevenueWithdrawalStatePending.fromJson,
   'revenueWithdrawalStateSucceeded': RevenueWithdrawalStateSucceeded.fromJson,
   'revenueWithdrawalStateFailed': RevenueWithdrawalStateFailed.fromJson,
@@ -3906,6 +3946,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateMessageContentOpened': UpdateMessageContentOpened.fromJson,
   'updateMessageMentionRead': UpdateMessageMentionRead.fromJson,
   'updateMessageUnreadReactions': UpdateMessageUnreadReactions.fromJson,
+  'updateMessageContainsUnreadPollVotes':
+      UpdateMessageContainsUnreadPollVotes.fromJson,
   'updateMessageFactCheck': UpdateMessageFactCheck.fromJson,
   'updateMessageSuggestedPostInfo': UpdateMessageSuggestedPostInfo.fromJson,
   'updateMessageLiveLocationViewed': UpdateMessageLiveLocationViewed.fromJson,
@@ -4061,6 +4103,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateBusinessMessagesDeleted': UpdateBusinessMessagesDeleted.fromJson,
   'updateNewInlineQuery': UpdateNewInlineQuery.fromJson,
   'updateNewChosenInlineResult': UpdateNewChosenInlineResult.fromJson,
+  'updateNewGuestQuery': UpdateNewGuestQuery.fromJson,
   'updateNewCallbackQuery': UpdateNewCallbackQuery.fromJson,
   'updateNewInlineCallbackQuery': UpdateNewInlineCallbackQuery.fromJson,
   'updateNewBusinessCallbackQuery': UpdateNewBusinessCallbackQuery.fromJson,

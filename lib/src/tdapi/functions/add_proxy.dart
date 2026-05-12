@@ -8,7 +8,11 @@ part of '../tdapi.dart';
 /// Returns [AddedProxy].
 final class AddProxy extends TdFunction<AddedProxy> {
   /// Adds a proxy server for network requests. Can be called before authorization
-  const AddProxy({required this.proxy, required this.enable});
+  const AddProxy({
+    required this.proxy,
+    required this.enable,
+    required this.comment,
+  });
 
   /// The proxy to add
   final Proxy proxy;
@@ -16,18 +20,25 @@ final class AddProxy extends TdFunction<AddedProxy> {
   /// Pass true to immediately enable the proxy
   final bool enable;
 
+  /// Comment to set for the proxy
+  final String comment;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
     'proxy': proxy.toJson(),
     'enable': enable,
+    'comment': comment,
     '@extra': ?extra,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  AddProxy copyWith({Proxy? proxy, bool? enable}) =>
-      AddProxy(proxy: proxy ?? this.proxy, enable: enable ?? this.enable);
+  AddProxy copyWith({Proxy? proxy, bool? enable, String? comment}) => AddProxy(
+    proxy: proxy ?? this.proxy,
+    enable: enable ?? this.enable,
+    comment: comment ?? this.comment,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addProxy';

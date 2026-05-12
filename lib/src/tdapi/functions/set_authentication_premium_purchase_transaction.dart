@@ -11,6 +11,7 @@ final class SetAuthenticationPremiumPurchaseTransaction extends TdFunction<Ok> {
   const SetAuthenticationPremiumPurchaseTransaction({
     required this.transaction,
     required this.isRestore,
+    required this.premiumDayCount,
     required this.currency,
     required this.amount,
   });
@@ -20,6 +21,9 @@ final class SetAuthenticationPremiumPurchaseTransaction extends TdFunction<Ok> {
 
   /// Pass true if this is a restore of a Telegram Premium purchase; only for App Store
   final bool isRestore;
+
+  /// The number of days for which the Telegram Premium subscription will be granted
+  final int premiumDayCount;
 
   /// ISO 4217 currency code of the payment currency
   final String currency;
@@ -32,6 +36,7 @@ final class SetAuthenticationPremiumPurchaseTransaction extends TdFunction<Ok> {
     '@type': CONSTRUCTOR,
     'transaction': transaction.toJson(),
     'is_restore': isRestore,
+    'premium_day_count': premiumDayCount,
     'currency': currency,
     'amount': amount,
     '@extra': ?extra,
@@ -42,11 +47,13 @@ final class SetAuthenticationPremiumPurchaseTransaction extends TdFunction<Ok> {
   SetAuthenticationPremiumPurchaseTransaction copyWith({
     StoreTransaction? transaction,
     bool? isRestore,
+    int? premiumDayCount,
     String? currency,
     int? amount,
   }) => SetAuthenticationPremiumPurchaseTransaction(
     transaction: transaction ?? this.transaction,
     isRestore: isRestore ?? this.isRestore,
+    premiumDayCount: premiumDayCount ?? this.premiumDayCount,
     currency: currency ?? this.currency,
     amount: amount ?? this.amount,
   );

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes why the current user can't add reactions to the message, despite some other users can
 ///
-/// One of: [ReactionUnavailabilityReasonAnonymousAdministrator], [ReactionUnavailabilityReasonGuest]; or [UndecodedReactionUnavailabilityReason] for a type newer than this API.
+/// One of: [ReactionUnavailabilityReasonAnonymousAdministrator], [ReactionUnavailabilityReasonGuest], [ReactionUnavailabilityReasonRestricted]; or [UndecodedReactionUnavailabilityReason] for a type newer than this API.
 sealed class ReactionUnavailabilityReason extends TdObject {
   const ReactionUnavailabilityReason();
 
@@ -95,6 +95,33 @@ final class ReactionUnavailabilityReasonGuest
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reactionUnavailabilityReasonGuest';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The user is restricted in the chat
+final class ReactionUnavailabilityReasonRestricted
+    extends ReactionUnavailabilityReason {
+  /// The user is restricted in the chat
+  const ReactionUnavailabilityReasonRestricted();
+
+  /// Parses a [ReactionUnavailabilityReasonRestricted] from TDLib JSON.
+  factory ReactionUnavailabilityReasonRestricted.fromJson(
+    Map<String, dynamic> json,
+  ) => const ReactionUnavailabilityReasonRestricted();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  ReactionUnavailabilityReasonRestricted copyWith() =>
+      const ReactionUnavailabilityReasonRestricted();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'reactionUnavailabilityReasonRestricted';
 
   @override
   String getConstructor() => CONSTRUCTOR;

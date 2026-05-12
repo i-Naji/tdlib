@@ -23,6 +23,7 @@ final class MessageProperties extends TdObject {
     required this.canBeRepliedInAnotherChat,
     required this.canBeSaved,
     required this.canBeSharedInStory,
+    required this.canDeleteReactions,
     required this.canEditMedia,
     required this.canEditSchedulingState,
     required this.canEditSuggestedPostInfo,
@@ -31,6 +32,7 @@ final class MessageProperties extends TdObject {
     required this.canGetLink,
     required this.canGetMediaTimestampLinks,
     required this.canGetMessageThread,
+    required this.canGetPollVoteStatistics,
     required this.canGetReadDate,
     required this.canGetStatistics,
     required this.canGetVideoAdvertisements,
@@ -96,6 +98,9 @@ final class MessageProperties extends TdObject {
   /// True, if the message can be shared in a story using inputStoryAreaTypeMessage
   final bool canBeSharedInStory;
 
+  /// True, if the user can delete reactions of other users in the message using the method deleteMessageReactionsFromSender
+  final bool canDeleteReactions;
+
   /// True, if the message can be edited using the method editMessageMedia
   final bool canEditMedia;
 
@@ -120,13 +125,16 @@ final class MessageProperties extends TdObject {
   /// True, if information about the message thread is available through getMessageThread and getMessageThreadHistory
   final bool canGetMessageThread;
 
+  /// True, if the message is a poll and vote statistics are available through getPollVoteStatistics
+  final bool canGetPollVoteStatistics;
+
   /// True, if read date of the message can be received through getMessageReadDate
   final bool canGetReadDate;
 
   /// True, if message statistics are available through getMessageStatistics and message forwards can be received using getMessagePublicForwards
   final bool canGetStatistics;
 
-  /// True, if advertisements for video of the message can be received though getVideoMessageAdvertisements
+  /// True, if advertisements for video of the message can be received through getVideoMessageAdvertisements
   final bool canGetVideoAdvertisements;
 
   /// True, if chat members already viewed the message can be received through getMessageViewers
@@ -189,6 +197,7 @@ final class MessageProperties extends TdObject {
     ),
     canBeSaved: _readBool(json['can_be_saved']),
     canBeSharedInStory: _readBool(json['can_be_shared_in_story']),
+    canDeleteReactions: _readBool(json['can_delete_reactions']),
     canEditMedia: _readBool(json['can_edit_media']),
     canEditSchedulingState: _readBool(json['can_edit_scheduling_state']),
     canEditSuggestedPostInfo: _readBool(json['can_edit_suggested_post_info']),
@@ -197,6 +206,7 @@ final class MessageProperties extends TdObject {
     canGetLink: _readBool(json['can_get_link']),
     canGetMediaTimestampLinks: _readBool(json['can_get_media_timestamp_links']),
     canGetMessageThread: _readBool(json['can_get_message_thread']),
+    canGetPollVoteStatistics: _readBool(json['can_get_poll_vote_statistics']),
     canGetReadDate: _readBool(json['can_get_read_date']),
     canGetStatistics: _readBool(json['can_get_statistics']),
     canGetVideoAdvertisements: _readBool(json['can_get_video_advertisements']),
@@ -237,6 +247,7 @@ final class MessageProperties extends TdObject {
     'can_be_replied_in_another_chat': canBeRepliedInAnotherChat,
     'can_be_saved': canBeSaved,
     'can_be_shared_in_story': canBeSharedInStory,
+    'can_delete_reactions': canDeleteReactions,
     'can_edit_media': canEditMedia,
     'can_edit_scheduling_state': canEditSchedulingState,
     'can_edit_suggested_post_info': canEditSuggestedPostInfo,
@@ -245,6 +256,7 @@ final class MessageProperties extends TdObject {
     'can_get_link': canGetLink,
     'can_get_media_timestamp_links': canGetMediaTimestampLinks,
     'can_get_message_thread': canGetMessageThread,
+    'can_get_poll_vote_statistics': canGetPollVoteStatistics,
     'can_get_read_date': canGetReadDate,
     'can_get_statistics': canGetStatistics,
     'can_get_video_advertisements': canGetVideoAdvertisements,
@@ -279,6 +291,7 @@ final class MessageProperties extends TdObject {
     bool? canBeRepliedInAnotherChat,
     bool? canBeSaved,
     bool? canBeSharedInStory,
+    bool? canDeleteReactions,
     bool? canEditMedia,
     bool? canEditSchedulingState,
     bool? canEditSuggestedPostInfo,
@@ -287,6 +300,7 @@ final class MessageProperties extends TdObject {
     bool? canGetLink,
     bool? canGetMediaTimestampLinks,
     bool? canGetMessageThread,
+    bool? canGetPollVoteStatistics,
     bool? canGetReadDate,
     bool? canGetStatistics,
     bool? canGetVideoAdvertisements,
@@ -323,6 +337,7 @@ final class MessageProperties extends TdObject {
         canBeRepliedInAnotherChat ?? this.canBeRepliedInAnotherChat,
     canBeSaved: canBeSaved ?? this.canBeSaved,
     canBeSharedInStory: canBeSharedInStory ?? this.canBeSharedInStory,
+    canDeleteReactions: canDeleteReactions ?? this.canDeleteReactions,
     canEditMedia: canEditMedia ?? this.canEditMedia,
     canEditSchedulingState:
         canEditSchedulingState ?? this.canEditSchedulingState,
@@ -334,6 +349,8 @@ final class MessageProperties extends TdObject {
     canGetMediaTimestampLinks:
         canGetMediaTimestampLinks ?? this.canGetMediaTimestampLinks,
     canGetMessageThread: canGetMessageThread ?? this.canGetMessageThread,
+    canGetPollVoteStatistics:
+        canGetPollVoteStatistics ?? this.canGetPollVoteStatistics,
     canGetReadDate: canGetReadDate ?? this.canGetReadDate,
     canGetStatistics: canGetStatistics ?? this.canGetStatistics,
     canGetVideoAdvertisements:

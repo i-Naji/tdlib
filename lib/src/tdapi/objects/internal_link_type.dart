@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes an internal https://t.me or tg: link, which must be processed by the application in a special way
 ///
-/// One of: [InternalLinkTypeAttachmentMenuBot], [InternalLinkTypeAuthenticationCode], [InternalLinkTypeBackground], [InternalLinkTypeBotAddToChannel], [InternalLinkTypeBotStart], [InternalLinkTypeBotStartInGroup], [InternalLinkTypeBusinessChat], [InternalLinkTypeCallsPage], [InternalLinkTypeChatAffiliateProgram], [InternalLinkTypeChatBoost], [InternalLinkTypeChatFolderInvite], [InternalLinkTypeChatInvite], [InternalLinkTypeChatSelection], [InternalLinkTypeContactsPage], [InternalLinkTypeDirectMessagesChat], [InternalLinkTypeGame], [InternalLinkTypeGiftAuction], [InternalLinkTypeGiftCollection], [InternalLinkTypeGroupCall], [InternalLinkTypeInstantView], [InternalLinkTypeInvoice], [InternalLinkTypeLanguagePack], [InternalLinkTypeLiveStory], [InternalLinkTypeMainWebApp], [InternalLinkTypeMessage], [InternalLinkTypeMessageDraft], [InternalLinkTypeMyProfilePage], [InternalLinkTypeNewChannelChat], [InternalLinkTypeNewGroupChat], [InternalLinkTypeNewPrivateChat], [InternalLinkTypeNewStory], [InternalLinkTypeOauth], [InternalLinkTypePassportDataRequest], [InternalLinkTypePhoneNumberConfirmation], [InternalLinkTypePremiumFeaturesPage], [InternalLinkTypePremiumGiftCode], [InternalLinkTypePremiumGiftPurchase], [InternalLinkTypeProxy], [InternalLinkTypePublicChat], [InternalLinkTypeQrCodeAuthentication], [InternalLinkTypeRequestManagedBot], [InternalLinkTypeRestorePurchases], [InternalLinkTypeSavedMessages], [InternalLinkTypeSearch], [InternalLinkTypeSettings], [InternalLinkTypeStarPurchase], [InternalLinkTypeStickerSet], [InternalLinkTypeStory], [InternalLinkTypeStoryAlbum], [InternalLinkTypeTheme], [InternalLinkTypeUnknownDeepLink], [InternalLinkTypeUpgradedGift], [InternalLinkTypeUserPhoneNumber], [InternalLinkTypeUserToken], [InternalLinkTypeVideoChat], [InternalLinkTypeWebApp]; or [UndecodedInternalLinkType] for a type newer than this API.
+/// One of: [InternalLinkTypeAttachmentMenuBot], [InternalLinkTypeAuthenticationCode], [InternalLinkTypeBackground], [InternalLinkTypeBotAddToChannel], [InternalLinkTypeBotStart], [InternalLinkTypeBotStartInGroup], [InternalLinkTypeBusinessChat], [InternalLinkTypeCallsPage], [InternalLinkTypeChatAffiliateProgram], [InternalLinkTypeChatBoost], [InternalLinkTypeChatFolderInvite], [InternalLinkTypeChatInvite], [InternalLinkTypeChatSelection], [InternalLinkTypeContactsPage], [InternalLinkTypeDirectMessagesChat], [InternalLinkTypeGame], [InternalLinkTypeGiftAuction], [InternalLinkTypeGiftCollection], [InternalLinkTypeGroupCall], [InternalLinkTypeInstantView], [InternalLinkTypeInvoice], [InternalLinkTypeLanguagePack], [InternalLinkTypeLiveStory], [InternalLinkTypeMainWebApp], [InternalLinkTypeMessage], [InternalLinkTypeMessageDraft], [InternalLinkTypeMyProfilePage], [InternalLinkTypeNewChannelChat], [InternalLinkTypeNewGroupChat], [InternalLinkTypeNewPrivateChat], [InternalLinkTypeNewStory], [InternalLinkTypeOauth], [InternalLinkTypePassportDataRequest], [InternalLinkTypePhoneNumberConfirmation], [InternalLinkTypePremiumFeaturesPage], [InternalLinkTypePremiumGiftCode], [InternalLinkTypePremiumGiftPurchase], [InternalLinkTypeProxy], [InternalLinkTypePublicChat], [InternalLinkTypeQrCodeAuthentication], [InternalLinkTypeRequestManagedBot], [InternalLinkTypeRestorePurchases], [InternalLinkTypeSavedMessages], [InternalLinkTypeSearch], [InternalLinkTypeSettings], [InternalLinkTypeStarPurchase], [InternalLinkTypeStickerSet], [InternalLinkTypeStory], [InternalLinkTypeStoryAlbum], [InternalLinkTypeTextCompositionStyle], [InternalLinkTypeTheme], [InternalLinkTypeUnknownDeepLink], [InternalLinkTypeUpgradedGift], [InternalLinkTypeUserPhoneNumber], [InternalLinkTypeUserToken], [InternalLinkTypeVideoChat], [InternalLinkTypeWebApp]; or [UndecodedInternalLinkType] for a type newer than this API.
 sealed class InternalLinkType extends TdObject {
   const InternalLinkType();
 
@@ -2285,7 +2285,7 @@ final class InternalLinkTypeRequestManagedBot extends InternalLinkType {
   /// Username of the bot which will manage the new bot
   final String managerBotUsername;
 
-  /// Suggested username for the bot
+  /// Suggested username for the bot; always ends with "bot" case-insensitive
   final String suggestedBotUsername;
 
   /// Suggested name for the bot; may be empty if not specified
@@ -2756,6 +2756,61 @@ final class InternalLinkTypeStoryAlbum extends InternalLinkType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeStoryAlbum';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The link is a link to a text composition style. Call searchTextCompositionStyle with the given style name to get information about the style. If the style is found and the user wants to add it, then call addTextCompositionStyle
+final class InternalLinkTypeTextCompositionStyle extends InternalLinkType {
+  /// The link is a link to a text composition style. Call searchTextCompositionStyle with the given style name to get information about the style. If the style is found and the user wants to add it, then call addTextCompositionStyle
+  const InternalLinkTypeTextCompositionStyle({
+    required this.styleName,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Name of the style
+  final String styleName;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [InternalLinkTypeTextCompositionStyle] from TDLib JSON.
+  factory InternalLinkTypeTextCompositionStyle.fromJson(
+    Map<String, dynamic> json,
+  ) => InternalLinkTypeTextCompositionStyle(
+    styleName: _readString(json['style_name']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'style_name': styleName,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InternalLinkTypeTextCompositionStyle copyWith({
+    String? styleName,
+    dynamic extra,
+    int? clientId,
+  }) => InternalLinkTypeTextCompositionStyle(
+    styleName: styleName ?? this.styleName,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'internalLinkTypeTextCompositionStyle';
 
   @override
   String getConstructor() => CONSTRUCTOR;

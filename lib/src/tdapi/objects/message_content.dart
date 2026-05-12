@@ -1032,7 +1032,7 @@ final class MessagePoll extends MessageContent {
   const MessagePoll({
     required this.poll,
     required this.description,
-    required this.media,
+    this.media,
     required this.canAddOption,
   });
 
@@ -1042,8 +1042,8 @@ final class MessagePoll extends MessageContent {
   /// Description of the poll
   final FormattedText description;
 
-  /// Media attached to the poll. Currently, can be only of the types messageAnimation, messageAudio, messageDocument, messageLocation, messagePhoto, messageVenue, or messageVideo without caption
-  final MessageContent media;
+  /// Media attached to the poll; may be null if none. If present, currently, can be only of the types messageAnimation, messageAudio, messageDocument, messageLocation, messagePhoto, messageVenue, or messageVideo without caption
+  final MessageContent? media;
 
   /// True, if an option can be added to the poll using addPollOption
   final bool canAddOption;
@@ -1052,7 +1052,7 @@ final class MessagePoll extends MessageContent {
   factory MessagePoll.fromJson(Map<String, dynamic> json) => MessagePoll(
     poll: _readObject(json['poll'], Poll.fromJson),
     description: _readObject(json['description'], FormattedText.fromJson),
-    media: _readObject(json['media'], MessageContent.fromJson),
+    media: _readOptional(json['media'], MessageContent.fromJson),
     canAddOption: _readBool(json['can_add_option']),
   );
 
@@ -1061,7 +1061,7 @@ final class MessagePoll extends MessageContent {
     '@type': CONSTRUCTOR,
     'poll': poll.toJson(),
     'description': description.toJson(),
-    'media': media.toJson(),
+    'media': media?.toJson(),
     'can_add_option': canAddOption,
   };
 
@@ -1071,12 +1071,12 @@ final class MessagePoll extends MessageContent {
   MessagePoll copyWith({
     Poll? poll,
     FormattedText? description,
-    MessageContent? media,
+    MessageContent? Function()? media,
     bool? canAddOption,
   }) => MessagePoll(
     poll: poll ?? this.poll,
     description: description ?? this.description,
-    media: media ?? this.media,
+    media: media != null ? media() : this.media,
     canAddOption: canAddOption ?? this.canAddOption,
   );
 

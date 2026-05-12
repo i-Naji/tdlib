@@ -6,25 +6,37 @@ part of '../tdapi.dart';
 /// Describes one answer option of a poll to be created
 final class InputPollOption extends TdObject {
   /// Describes one answer option of a poll to be created
-  const InputPollOption({required this.text});
+  const InputPollOption({required this.text, this.media});
 
   /// Option text; 1-100 characters. Only custom emoji entities are allowed to be added and only by Premium users
   final FormattedText text;
 
+  /// Option media; pass null if none; ignored in addPollOption. Must be one of the following types: inputMessageAnimation, non-live inputMessageLocation, inputMessagePhoto, inputMessageSticker, inputMessageVenue, or inputMessageVideo without caption
+  final InputMessageContent? media;
+
   /// Parses a [InputPollOption] from TDLib JSON.
   factory InputPollOption.fromJson(Map<String, dynamic> json) =>
-      InputPollOption(text: _readObject(json['text'], FormattedText.fromJson));
+      InputPollOption(
+        text: _readObject(json['text'], FormattedText.fromJson),
+        media: _readOptional(json['media'], InputMessageContent.fromJson),
+      );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'text': text.toJson(),
+    'media': media?.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  InputPollOption copyWith({FormattedText? text}) =>
-      InputPollOption(text: text ?? this.text);
+  InputPollOption copyWith({
+    FormattedText? text,
+    InputMessageContent? Function()? media,
+  }) => InputPollOption(
+    text: text ?? this.text,
+    media: media != null ? media() : this.media,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPollOption';

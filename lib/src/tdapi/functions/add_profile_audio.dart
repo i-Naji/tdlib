@@ -8,22 +8,48 @@ part of '../tdapi.dart';
 /// Returns [Ok].
 final class AddProfileAudio extends TdFunction<Ok> {
   /// Adds an audio file to the beginning of the profile audio files of the current user
-  const AddProfileAudio({required this.fileId});
+  const AddProfileAudio({
+    required this.audio,
+    required this.duration,
+    required this.title,
+    required this.performer,
+  });
 
-  /// Identifier of the audio file to be added. The file must have been uploaded to the server
-  final int fileId;
+  /// The audio file to be added
+  final InputFile audio;
+
+  /// Duration of the audio, in seconds; may be replaced by the server; ignored for already uploaded files
+  final int duration;
+
+  /// Title of the audio; 0-64 characters; may be replaced by the server; ignored for already uploaded files
+  final String title;
+
+  /// Performer of the audio; 0-64 characters, may be replaced by the server; ignored for already uploaded files
+  final String performer;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
-    'file_id': fileId,
+    'audio': audio.toJson(),
+    'duration': duration,
+    'title': title,
+    'performer': performer,
     '@extra': ?extra,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  AddProfileAudio copyWith({int? fileId}) =>
-      AddProfileAudio(fileId: fileId ?? this.fileId);
+  AddProfileAudio copyWith({
+    InputFile? audio,
+    int? duration,
+    String? title,
+    String? performer,
+  }) => AddProfileAudio(
+    audio: audio ?? this.audio,
+    duration: duration ?? this.duration,
+    title: title ?? this.title,
+    performer: performer ?? this.performer,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addProfileAudio';

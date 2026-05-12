@@ -23,7 +23,7 @@ final class ReactionNotificationSettings extends TdObject {
   /// Source of poll votes for which notifications are shown
   final ReactionNotificationSource pollVoteSource;
 
-  /// Identifier of the notification sound to be played; 0 if sound is disabled
+  /// Identifier of the notification sound to be played; 0 if sound is disabled; pass -1 to use the app-dependent default sound
   final int soundId;
 
   /// True, if reaction sender and emoji must be displayed in notifications

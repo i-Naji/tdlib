@@ -10,6 +10,7 @@ final class AddedProxy extends TdObject {
     required this.id,
     required this.lastUsedDate,
     required this.isEnabled,
+    required this.comment,
     required this.proxy,
     this.extra,
     this.clientId,
@@ -23,6 +24,9 @@ final class AddedProxy extends TdObject {
 
   /// True, if the proxy is enabled now
   final bool isEnabled;
+
+  /// Comment for the proxy added by the user
+  final String comment;
 
   /// The proxy
   final Proxy proxy;
@@ -40,6 +44,7 @@ final class AddedProxy extends TdObject {
     id: _readInt(json['id']),
     lastUsedDate: _readInt(json['last_used_date']),
     isEnabled: _readBool(json['is_enabled']),
+    comment: _readString(json['comment']),
     proxy: _readObject(json['proxy'], Proxy.fromJson),
     extra: json['@extra'],
     clientId: _readClientId(json['@client_id']),
@@ -51,6 +56,7 @@ final class AddedProxy extends TdObject {
     'id': id,
     'last_used_date': lastUsedDate,
     'is_enabled': isEnabled,
+    'comment': comment,
     'proxy': proxy.toJson(),
   };
 
@@ -60,6 +66,7 @@ final class AddedProxy extends TdObject {
     int? id,
     int? lastUsedDate,
     bool? isEnabled,
+    String? comment,
     Proxy? proxy,
     dynamic extra,
     int? clientId,
@@ -67,6 +74,7 @@ final class AddedProxy extends TdObject {
     id: id ?? this.id,
     lastUsedDate: lastUsedDate ?? this.lastUsedDate,
     isEnabled: isEnabled ?? this.isEnabled,
+    comment: comment ?? this.comment,
     proxy: proxy ?? this.proxy,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,

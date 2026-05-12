@@ -12,6 +12,7 @@ final class EditProxy extends TdFunction<AddedProxy> {
     required this.proxyId,
     required this.proxy,
     required this.enable,
+    required this.comment,
   });
 
   /// Proxy identifier
@@ -23,21 +24,31 @@ final class EditProxy extends TdFunction<AddedProxy> {
   /// Pass true to immediately enable the proxy
   final bool enable;
 
+  /// New comment for the proxy
+  final String comment;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
     'proxy_id': proxyId,
     'proxy': proxy.toJson(),
     'enable': enable,
+    'comment': comment,
     '@extra': ?extra,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  EditProxy copyWith({int? proxyId, Proxy? proxy, bool? enable}) => EditProxy(
+  EditProxy copyWith({
+    int? proxyId,
+    Proxy? proxy,
+    bool? enable,
+    String? comment,
+  }) => EditProxy(
     proxyId: proxyId ?? this.proxyId,
     proxy: proxy ?? this.proxy,
     enable: enable ?? this.enable,
+    comment: comment ?? this.comment,
   );
 
   /// TDLib type name.

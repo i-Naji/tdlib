@@ -3,17 +3,17 @@
 
 part of '../tdapi.dart';
 
-/// Information about the message sent by answerWebAppQuery
-final class SentWebAppMessage extends TdObject {
-  /// Information about the message sent by answerWebAppQuery
-  const SentWebAppMessage({
-    required this.inlineMessageId,
+/// A detailed statistics about poll votes
+final class PollVoteStatistics extends TdObject {
+  /// A detailed statistics about poll votes
+  const PollVoteStatistics({
+    required this.voteGraph,
     this.extra,
     this.clientId,
   });
 
-  /// Identifier of the sent inline message, if known
-  final String inlineMessageId;
+  /// A graph containing distribution of votes in the poll
+  final StatisticalGraph voteGraph;
 
   /// "@extra" of the request this object answers.
   @override
@@ -23,10 +23,10 @@ final class SentWebAppMessage extends TdObject {
   @override
   final int? clientId;
 
-  /// Parses a [SentWebAppMessage] from TDLib JSON.
-  factory SentWebAppMessage.fromJson(Map<String, dynamic> json) =>
-      SentWebAppMessage(
-        inlineMessageId: _readString(json['inline_message_id']),
+  /// Parses a [PollVoteStatistics] from TDLib JSON.
+  factory PollVoteStatistics.fromJson(Map<String, dynamic> json) =>
+      PollVoteStatistics(
+        voteGraph: _readObject(json['vote_graph'], StatisticalGraph.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -34,23 +34,23 @@ final class SentWebAppMessage extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'inline_message_id': inlineMessageId,
+    'vote_graph': voteGraph.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SentWebAppMessage copyWith({
-    String? inlineMessageId,
+  PollVoteStatistics copyWith({
+    StatisticalGraph? voteGraph,
     dynamic extra,
     int? clientId,
-  }) => SentWebAppMessage(
-    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+  }) => PollVoteStatistics(
+    voteGraph: voteGraph ?? this.voteGraph,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'sentWebAppMessage';
+  static const String CONSTRUCTOR = 'pollVoteStatistics';
 
   @override
   String getConstructor() => CONSTRUCTOR;
