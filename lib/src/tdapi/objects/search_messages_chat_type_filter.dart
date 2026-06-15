@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Represents a filter for type of the chats in which to search messages
+/// Represents a filter for type of the chats in which to search for messages
 ///
 /// One of: [SearchMessagesChatTypeFilterPrivate], [SearchMessagesChatTypeFilterGroup], [SearchMessagesChatTypeFilterChannel]; or [UndecodedSearchMessagesChatTypeFilter] for a type newer than this API.
 sealed class SearchMessagesChatTypeFilter extends TdObject {

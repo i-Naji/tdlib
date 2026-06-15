@@ -41,7 +41,7 @@ final class TextCompositionStyle extends TdObject {
   /// Prompt of the style; for created custom styles only
   final String prompt;
 
-  /// User identifier of the creator of the style; 0 if none of unknown
+  /// User identifier of the creator of the style; 0 if none or unknown
   final int creatorUserId;
 
   /// Example of the style usage in English; may be null if unknown

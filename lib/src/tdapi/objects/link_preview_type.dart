@@ -152,9 +152,9 @@ final class LinkPreviewTypeApp extends LinkPreviewType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a web site
+/// The link is a link to a website
 final class LinkPreviewTypeArticle extends LinkPreviewType {
-  /// The link is a link to a web site
+  /// The link is a link to a website
   const LinkPreviewTypeArticle({this.photo});
 
   /// Article's main photo; may be null

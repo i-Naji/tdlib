@@ -20,7 +20,7 @@ final class EditQuickReplyMessage extends TdFunction<Ok> {
   /// Identifier of the message
   final int messageId;
 
-  /// New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageChecklist, inputMessageDocument, inputMessagePhoto, inputMessageText, or inputMessageVideo
+  /// New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageChecklist, inputMessageDocument, inputMessagePhoto, inputMessageRichMessage, inputMessageText, or inputMessageVideo
   final InputMessageContent inputMessageContent;
 
   @override

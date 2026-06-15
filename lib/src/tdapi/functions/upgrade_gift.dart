@@ -24,7 +24,7 @@ final class UpgradeGift extends TdFunction<UpgradeGiftResult> {
   /// Pass true to keep the original gift text, sender and receiver in the upgraded gift
   final bool keepOriginalDetails;
 
-  /// The Telegram Star amount required to pay for the upgrade. It the gift has prepaid_upgrade_star_count &gt; 0, then pass 0, otherwise, pass gift.upgrade_star_count
+  /// The Telegram Star amount required to pay for the upgrade. If the gift has prepaid_upgrade_star_count &gt; 0, then pass 0, otherwise, pass gift.upgrade_star_count
   final int starCount;
 
   @override

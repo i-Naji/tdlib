@@ -35,7 +35,7 @@ final class Animation extends TdObject {
   /// MIME type of the file, usually "image/gif" or "video/mp4"
   final String mimeType;
 
-  /// True, if stickers were added to the animation. The list of corresponding sticker set can be received using getAttachedStickerSets
+  /// True, if stickers were added to the animation. The list of corresponding sticker sets can be received using getAttachedStickerSets
   final bool hasStickers;
 
   /// Animation minithumbnail; may be null

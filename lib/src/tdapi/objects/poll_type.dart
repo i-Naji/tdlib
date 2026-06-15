@@ -81,8 +81,8 @@ final class PollTypeQuiz extends PollType {
   /// Text that is shown when the user chooses an incorrect answer or taps on the lamp icon; empty for a yet unanswered poll
   final FormattedText explanation;
 
-  /// Media that is shown when the user chooses an incorrect answer or taps on the lamp icon; may be null if none or the poll is unanswered yet. If present, currently, can be only of the types messageAnimation, messageAudio, messageDocument, messageLocation, messagePhoto, messageVenue, or messageVideo without caption
-  final MessageContent? explanationMedia;
+  /// Media that is shown when the user chooses an incorrect answer or taps on the lamp icon; may be null if none or the poll is unanswered yet. If present, currently, can be only of the types pollMediaAnimation, pollMediaAudio, pollMediaDocument, pollMediaLocation, pollMediaPhoto, pollMediaVenue, or pollMediaVideo
+  final PollMedia? explanationMedia;
 
   /// Parses a [PollTypeQuiz] from TDLib JSON.
   factory PollTypeQuiz.fromJson(Map<String, dynamic> json) => PollTypeQuiz(
@@ -90,7 +90,7 @@ final class PollTypeQuiz extends PollType {
     explanation: _readObject(json['explanation'], FormattedText.fromJson),
     explanationMedia: _readOptional(
       json['explanation_media'],
-      MessageContent.fromJson,
+      PollMedia.fromJson,
     ),
   );
 
@@ -108,7 +108,7 @@ final class PollTypeQuiz extends PollType {
   PollTypeQuiz copyWith({
     List<int>? correctOptionIds,
     FormattedText? explanation,
-    MessageContent? Function()? explanationMedia,
+    PollMedia? Function()? explanationMedia,
   }) => PollTypeQuiz(
     correctOptionIds: correctOptionIds ?? this.correctOptionIds,
     explanation: explanation ?? this.explanation,

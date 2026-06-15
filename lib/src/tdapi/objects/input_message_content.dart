@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// The content of a message to send
 ///
-/// One of: [InputMessageText], [InputMessageAnimation], [InputMessageAudio], [InputMessageDocument], [InputMessagePaidMedia], [InputMessagePhoto], [InputMessageSticker], [InputMessageVideo], [InputMessageVideoNote], [InputMessageVoiceNote], [InputMessageLocation], [InputMessageVenue], [InputMessageContact], [InputMessageDice], [InputMessageGame], [InputMessageInvoice], [InputMessagePoll], [InputMessageStakeDice], [InputMessageStory], [InputMessageChecklist], [InputMessageForwarded]; or [UndecodedInputMessageContent] for a type newer than this API.
+/// One of: [InputMessageText], [InputMessageRichMessage], [InputMessageAnimation], [InputMessageAudio], [InputMessageDocument], [InputMessagePaidMedia], [InputMessagePhoto], [InputMessageSticker], [InputMessageVideo], [InputMessageVideoNote], [InputMessageVoiceNote], [InputMessageLiveLocation], [InputMessageLocation], [InputMessageVenue], [InputMessageContact], [InputMessageDice], [InputMessageGame], [InputMessageInvoice], [InputMessagePoll], [InputMessageStakeDice], [InputMessageStory], [InputMessageChecklist], [InputMessageForwarded]; or [UndecodedInputMessageContent] for a type newer than this API.
 sealed class InputMessageContent extends TdObject {
   const InputMessageContent();
 
@@ -59,7 +59,7 @@ final class InputMessageText extends InputMessageContent {
   /// Options to be used for generation of a link preview; may be null if none; pass null to use default link preview options
   final LinkPreviewOptions? linkPreviewOptions;
 
-  /// True, if the chat message draft must be deleted
+  /// Pass true to delete message draft in the chat
   final bool clearDraft;
 
   /// Parses a [InputMessageText] from TDLib JSON.
@@ -103,38 +103,64 @@ final class InputMessageText extends InputMessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// A rich message
+final class InputMessageRichMessage extends InputMessageContent {
+  /// A rich message
+  const InputMessageRichMessage({
+    required this.message,
+    required this.clearDraft,
+  });
+
+  /// The rich message to send
+  final InputRichMessage message;
+
+  /// Pass true to delete message draft in the chat
+  final bool clearDraft;
+
+  /// Parses a [InputMessageRichMessage] from TDLib JSON.
+  factory InputMessageRichMessage.fromJson(Map<String, dynamic> json) =>
+      InputMessageRichMessage(
+        message: _readObject(json['message'], InputRichMessage.fromJson),
+        clearDraft: _readBool(json['clear_draft']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'message': message.toJson(),
+    'clear_draft': clearDraft,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputMessageRichMessage copyWith({
+    InputRichMessage? message,
+    bool? clearDraft,
+  }) => InputMessageRichMessage(
+    message: message ?? this.message,
+    clearDraft: clearDraft ?? this.clearDraft,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputMessageRichMessage';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// An animation message (GIF-style).
 final class InputMessageAnimation extends InputMessageContent {
   /// An animation message (GIF-style).
   const InputMessageAnimation({
     required this.animation,
-    this.thumbnail,
-    required this.addedStickerFileIds,
-    required this.duration,
-    required this.width,
-    required this.height,
     this.caption,
     required this.showCaptionAboveMedia,
     required this.hasSpoiler,
   });
 
-  /// Animation file to be sent
-  final InputFile animation;
-
-  /// Animation thumbnail; pass null to skip thumbnail uploading
-  final InputThumbnail? thumbnail;
-
-  /// File identifiers of the stickers added to the animation, if applicable
-  final List<int> addedStickerFileIds;
-
-  /// Duration of the animation, in seconds
-  final int duration;
-
-  /// Width of the animation; may be replaced by the server
-  final int width;
-
-  /// Height of the animation; may be replaced by the server
-  final int height;
+  /// The animation to be sent
+  final InputAnimation animation;
 
   /// Animation caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
@@ -148,15 +174,7 @@ final class InputMessageAnimation extends InputMessageContent {
   /// Parses a [InputMessageAnimation] from TDLib JSON.
   factory InputMessageAnimation.fromJson(Map<String, dynamic> json) =>
       InputMessageAnimation(
-        animation: _readObject(json['animation'], InputFile.fromJson),
-        thumbnail: _readOptional(json['thumbnail'], InputThumbnail.fromJson),
-        addedStickerFileIds: _readList<int>(
-          json['added_sticker_file_ids'],
-          _readInt,
-        ),
-        duration: _readInt(json['duration']),
-        width: _readInt(json['width']),
-        height: _readInt(json['height']),
+        animation: _readObject(json['animation'], InputAnimation.fromJson),
         caption: _readOptional(json['caption'], FormattedText.fromJson),
         showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
         hasSpoiler: _readBool(json['has_spoiler']),
@@ -166,11 +184,6 @@ final class InputMessageAnimation extends InputMessageContent {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'animation': animation.toJson(),
-    'thumbnail': thumbnail?.toJson(),
-    'added_sticker_file_ids': addedStickerFileIds,
-    'duration': duration,
-    'width': width,
-    'height': height,
     'caption': caption?.toJson(),
     'show_caption_above_media': showCaptionAboveMedia,
     'has_spoiler': hasSpoiler,
@@ -180,22 +193,12 @@ final class InputMessageAnimation extends InputMessageContent {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageAnimation copyWith({
-    InputFile? animation,
-    InputThumbnail? Function()? thumbnail,
-    List<int>? addedStickerFileIds,
-    int? duration,
-    int? width,
-    int? height,
+    InputAnimation? animation,
     FormattedText? Function()? caption,
     bool? showCaptionAboveMedia,
     bool? hasSpoiler,
   }) => InputMessageAnimation(
     animation: animation ?? this.animation,
-    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
-    duration: duration ?? this.duration,
-    width: width ?? this.width,
-    height: height ?? this.height,
     caption: caption != null ? caption() : this.caption,
     showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
     hasSpoiler: hasSpoiler ?? this.hasSpoiler,
@@ -211,29 +214,10 @@ final class InputMessageAnimation extends InputMessageContent {
 /// An audio message
 final class InputMessageAudio extends InputMessageContent {
   /// An audio message
-  const InputMessageAudio({
-    required this.audio,
-    this.albumCoverThumbnail,
-    required this.duration,
-    required this.title,
-    required this.performer,
-    this.caption,
-  });
+  const InputMessageAudio({required this.audio, this.caption});
 
-  /// Audio file to be sent
-  final InputFile audio;
-
-  /// Thumbnail of the cover for the album; pass null to skip thumbnail uploading
-  final InputThumbnail? albumCoverThumbnail;
-
-  /// Duration of the audio, in seconds; may be replaced by the server
-  final int duration;
-
-  /// Title of the audio; 0-64 characters; may be replaced by the server
-  final String title;
-
-  /// Performer of the audio; 0-64 characters, may be replaced by the server
-  final String performer;
+  /// Audio to be sent
+  final InputAudio audio;
 
   /// Audio caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
@@ -241,14 +225,7 @@ final class InputMessageAudio extends InputMessageContent {
   /// Parses a [InputMessageAudio] from TDLib JSON.
   factory InputMessageAudio.fromJson(Map<String, dynamic> json) =>
       InputMessageAudio(
-        audio: _readObject(json['audio'], InputFile.fromJson),
-        albumCoverThumbnail: _readOptional(
-          json['album_cover_thumbnail'],
-          InputThumbnail.fromJson,
-        ),
-        duration: _readInt(json['duration']),
-        title: _readString(json['title']),
-        performer: _readString(json['performer']),
+        audio: _readObject(json['audio'], InputAudio.fromJson),
         caption: _readOptional(json['caption'], FormattedText.fromJson),
       );
 
@@ -256,10 +233,6 @@ final class InputMessageAudio extends InputMessageContent {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'audio': audio.toJson(),
-    'album_cover_thumbnail': albumCoverThumbnail?.toJson(),
-    'duration': duration,
-    'title': title,
-    'performer': performer,
     'caption': caption?.toJson(),
   };
 
@@ -267,20 +240,10 @@ final class InputMessageAudio extends InputMessageContent {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageAudio copyWith({
-    InputFile? audio,
-    InputThumbnail? Function()? albumCoverThumbnail,
-    int? duration,
-    String? title,
-    String? performer,
+    InputAudio? audio,
     FormattedText? Function()? caption,
   }) => InputMessageAudio(
     audio: audio ?? this.audio,
-    albumCoverThumbnail: albumCoverThumbnail != null
-        ? albumCoverThumbnail()
-        : this.albumCoverThumbnail,
-    duration: duration ?? this.duration,
-    title: title ?? this.title,
-    performer: performer ?? this.performer,
     caption: caption != null ? caption() : this.caption,
   );
 
@@ -294,21 +257,10 @@ final class InputMessageAudio extends InputMessageContent {
 /// A document message (general file)
 final class InputMessageDocument extends InputMessageContent {
   /// A document message (general file)
-  const InputMessageDocument({
-    required this.document,
-    this.thumbnail,
-    required this.disableContentTypeDetection,
-    this.caption,
-  });
+  const InputMessageDocument({required this.document, this.caption});
 
   /// Document to be sent
-  final InputFile document;
-
-  /// Document thumbnail; pass null to skip thumbnail uploading
-  final InputThumbnail? thumbnail;
-
-  /// Pass true to disable automatic file type detection and send the document as a file. Always true for files sent to secret chats
-  final bool disableContentTypeDetection;
+  final InputDocument document;
 
   /// Document caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
@@ -316,11 +268,7 @@ final class InputMessageDocument extends InputMessageContent {
   /// Parses a [InputMessageDocument] from TDLib JSON.
   factory InputMessageDocument.fromJson(Map<String, dynamic> json) =>
       InputMessageDocument(
-        document: _readObject(json['document'], InputFile.fromJson),
-        thumbnail: _readOptional(json['thumbnail'], InputThumbnail.fromJson),
-        disableContentTypeDetection: _readBool(
-          json['disable_content_type_detection'],
-        ),
+        document: _readObject(json['document'], InputDocument.fromJson),
         caption: _readOptional(json['caption'], FormattedText.fromJson),
       );
 
@@ -328,8 +276,6 @@ final class InputMessageDocument extends InputMessageContent {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'document': document.toJson(),
-    'thumbnail': thumbnail?.toJson(),
-    'disable_content_type_detection': disableContentTypeDetection,
     'caption': caption?.toJson(),
   };
 
@@ -337,15 +283,10 @@ final class InputMessageDocument extends InputMessageContent {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageDocument copyWith({
-    InputFile? document,
-    InputThumbnail? Function()? thumbnail,
-    bool? disableContentTypeDetection,
+    InputDocument? document,
     FormattedText? Function()? caption,
   }) => InputMessageDocument(
     document: document ?? this.document,
-    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-    disableContentTypeDetection:
-        disableContentTypeDetection ?? this.disableContentTypeDetection,
     caption: caption != null ? caption() : this.caption,
   );
 
@@ -434,34 +375,14 @@ final class InputMessagePhoto extends InputMessageContent {
   /// A photo message
   const InputMessagePhoto({
     required this.photo,
-    this.thumbnail,
-    this.video,
-    required this.addedStickerFileIds,
-    required this.width,
-    required this.height,
     this.caption,
     required this.showCaptionAboveMedia,
     this.selfDestructType,
     required this.hasSpoiler,
   });
 
-  /// Photo to send. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20
-  final InputFile photo;
-
-  /// Photo thumbnail to be sent; pass null to skip thumbnail uploading. The thumbnail is sent to the other party only in secret chats
-  final InputThumbnail? thumbnail;
-
-  /// Video of the live photo; not supported in secret chats; pass null if the photo isn't a live photo
-  final InputFile? video;
-
-  /// File identifiers of the stickers added to the photo, if applicable
-  final List<int> addedStickerFileIds;
-
-  /// Photo width
-  final int width;
-
-  /// Photo height
-  final int height;
+  /// Photo to be sent
+  final InputPhoto photo;
 
   /// Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
@@ -478,15 +399,7 @@ final class InputMessagePhoto extends InputMessageContent {
   /// Parses a [InputMessagePhoto] from TDLib JSON.
   factory InputMessagePhoto.fromJson(Map<String, dynamic> json) =>
       InputMessagePhoto(
-        photo: _readObject(json['photo'], InputFile.fromJson),
-        thumbnail: _readOptional(json['thumbnail'], InputThumbnail.fromJson),
-        video: _readOptional(json['video'], InputFile.fromJson),
-        addedStickerFileIds: _readList<int>(
-          json['added_sticker_file_ids'],
-          _readInt,
-        ),
-        width: _readInt(json['width']),
-        height: _readInt(json['height']),
+        photo: _readObject(json['photo'], InputPhoto.fromJson),
         caption: _readOptional(json['caption'], FormattedText.fromJson),
         showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
         selfDestructType: _readOptional(
@@ -500,11 +413,6 @@ final class InputMessagePhoto extends InputMessageContent {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'photo': photo.toJson(),
-    'thumbnail': thumbnail?.toJson(),
-    'video': video?.toJson(),
-    'added_sticker_file_ids': addedStickerFileIds,
-    'width': width,
-    'height': height,
     'caption': caption?.toJson(),
     'show_caption_above_media': showCaptionAboveMedia,
     'self_destruct_type': selfDestructType?.toJson(),
@@ -515,23 +423,13 @@ final class InputMessagePhoto extends InputMessageContent {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessagePhoto copyWith({
-    InputFile? photo,
-    InputThumbnail? Function()? thumbnail,
-    InputFile? Function()? video,
-    List<int>? addedStickerFileIds,
-    int? width,
-    int? height,
+    InputPhoto? photo,
     FormattedText? Function()? caption,
     bool? showCaptionAboveMedia,
     MessageSelfDestructType? Function()? selfDestructType,
     bool? hasSpoiler,
   }) => InputMessagePhoto(
     photo: photo ?? this.photo,
-    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-    video: video != null ? video() : this.video,
-    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
-    width: width ?? this.width,
-    height: height ?? this.height,
     caption: caption != null ? caption() : this.caption,
     showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
     selfDestructType: selfDestructType != null
@@ -622,46 +520,14 @@ final class InputMessageVideo extends InputMessageContent {
   /// A video message
   const InputMessageVideo({
     required this.video,
-    this.thumbnail,
-    this.cover,
-    required this.startTimestamp,
-    required this.addedStickerFileIds,
-    required this.duration,
-    required this.width,
-    required this.height,
-    required this.supportsStreaming,
     this.caption,
     required this.showCaptionAboveMedia,
     this.selfDestructType,
     required this.hasSpoiler,
   });
 
-  /// Video to be sent. The video is expected to be re-encoded to MPEG4 format with H.264 codec by the sender
-  final InputFile video;
-
-  /// Video thumbnail; pass null to skip thumbnail uploading
-  final InputThumbnail? thumbnail;
-
-  /// Cover of the video; pass null to skip cover uploading; not supported in secret chats and for self-destructing messages
-  final InputFile? cover;
-
-  /// Timestamp from which the video playing must start, in seconds
-  final int startTimestamp;
-
-  /// File identifiers of the stickers added to the video, if applicable
-  final List<int> addedStickerFileIds;
-
-  /// Duration of the video, in seconds
-  final int duration;
-
-  /// Video width
-  final int width;
-
-  /// Video height
-  final int height;
-
-  /// True, if the video is expected to be streamed
-  final bool supportsStreaming;
+  /// Video to be sent
+  final InputVideo video;
 
   /// Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
@@ -678,18 +544,7 @@ final class InputMessageVideo extends InputMessageContent {
   /// Parses a [InputMessageVideo] from TDLib JSON.
   factory InputMessageVideo.fromJson(Map<String, dynamic> json) =>
       InputMessageVideo(
-        video: _readObject(json['video'], InputFile.fromJson),
-        thumbnail: _readOptional(json['thumbnail'], InputThumbnail.fromJson),
-        cover: _readOptional(json['cover'], InputFile.fromJson),
-        startTimestamp: _readInt(json['start_timestamp']),
-        addedStickerFileIds: _readList<int>(
-          json['added_sticker_file_ids'],
-          _readInt,
-        ),
-        duration: _readInt(json['duration']),
-        width: _readInt(json['width']),
-        height: _readInt(json['height']),
-        supportsStreaming: _readBool(json['supports_streaming']),
+        video: _readObject(json['video'], InputVideo.fromJson),
         caption: _readOptional(json['caption'], FormattedText.fromJson),
         showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
         selfDestructType: _readOptional(
@@ -703,14 +558,6 @@ final class InputMessageVideo extends InputMessageContent {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'video': video.toJson(),
-    'thumbnail': thumbnail?.toJson(),
-    'cover': cover?.toJson(),
-    'start_timestamp': startTimestamp,
-    'added_sticker_file_ids': addedStickerFileIds,
-    'duration': duration,
-    'width': width,
-    'height': height,
-    'supports_streaming': supportsStreaming,
     'caption': caption?.toJson(),
     'show_caption_above_media': showCaptionAboveMedia,
     'self_destruct_type': selfDestructType?.toJson(),
@@ -721,29 +568,13 @@ final class InputMessageVideo extends InputMessageContent {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageVideo copyWith({
-    InputFile? video,
-    InputThumbnail? Function()? thumbnail,
-    InputFile? Function()? cover,
-    int? startTimestamp,
-    List<int>? addedStickerFileIds,
-    int? duration,
-    int? width,
-    int? height,
-    bool? supportsStreaming,
+    InputVideo? video,
     FormattedText? Function()? caption,
     bool? showCaptionAboveMedia,
     MessageSelfDestructType? Function()? selfDestructType,
     bool? hasSpoiler,
   }) => InputMessageVideo(
     video: video ?? this.video,
-    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-    cover: cover != null ? cover() : this.cover,
-    startTimestamp: startTimestamp ?? this.startTimestamp,
-    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
-    duration: duration ?? this.duration,
-    width: width ?? this.width,
-    height: height ?? this.height,
-    supportsStreaming: supportsStreaming ?? this.supportsStreaming,
     caption: caption != null ? caption() : this.caption,
     showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
     selfDestructType: selfDestructType != null
@@ -854,7 +685,7 @@ final class InputMessageVoiceNote extends InputMessageContent {
   /// Waveform representation of the voice note in 5-bit format
   final String waveform;
 
-  /// Voice note caption; may be null if empty; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  /// Voice note caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
   /// Voice note self-destruct type; may be null if none; pass null if none; private chats only
@@ -909,60 +740,64 @@ final class InputMessageVoiceNote extends InputMessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A message with a location
-final class InputMessageLocation extends InputMessageContent {
-  /// A message with a location
-  const InputMessageLocation({
-    required this.location,
-    required this.livePeriod,
-    required this.heading,
-    required this.proximityAlertRadius,
-  });
+/// A message with a live location
+final class InputMessageLiveLocation extends InputMessageContent {
+  /// A message with a live location
+  const InputMessageLiveLocation({required this.location});
 
-  /// Location to be sent
-  final Location location;
+  /// Initial state of the live location to be sent. Live period must be equal to 0x7FFFFFFF for permanent live locations, or between 60 and 86400
+  final LiveLocation location;
 
-  /// Period for which the location can be updated, in seconds; must be between 60 and 86400 for a temporary live location, 0x7FFFFFFF for permanent live location, and 0 otherwise
-  final int livePeriod;
-
-  /// For live locations, a direction in which the location moves, in degrees; 1-360. Pass 0 if unknown
-  final int heading;
-
-  /// For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can't be enabled in channels and Saved Messages
-  final int proximityAlertRadius;
-
-  /// Parses a [InputMessageLocation] from TDLib JSON.
-  factory InputMessageLocation.fromJson(Map<String, dynamic> json) =>
-      InputMessageLocation(
-        location: _readObject(json['location'], Location.fromJson),
-        livePeriod: _readInt(json['live_period']),
-        heading: _readInt(json['heading']),
-        proximityAlertRadius: _readInt(json['proximity_alert_radius']),
+  /// Parses a [InputMessageLiveLocation] from TDLib JSON.
+  factory InputMessageLiveLocation.fromJson(Map<String, dynamic> json) =>
+      InputMessageLiveLocation(
+        location: _readObject(json['location'], LiveLocation.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'location': location.toJson(),
-    'live_period': livePeriod,
-    'heading': heading,
-    'proximity_alert_radius': proximityAlertRadius,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputMessageLocation copyWith({
-    Location? location,
-    int? livePeriod,
-    int? heading,
-    int? proximityAlertRadius,
-  }) => InputMessageLocation(
-    location: location ?? this.location,
-    livePeriod: livePeriod ?? this.livePeriod,
-    heading: heading ?? this.heading,
-    proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
-  );
+  InputMessageLiveLocation copyWith({LiveLocation? location}) =>
+      InputMessageLiveLocation(location: location ?? this.location);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputMessageLiveLocation';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A message with a location
+final class InputMessageLocation extends InputMessageContent {
+  /// A message with a location
+  const InputMessageLocation({required this.location});
+
+  /// Location to be sent
+  final Location location;
+
+  /// Parses a [InputMessageLocation] from TDLib JSON.
+  factory InputMessageLocation.fromJson(Map<String, dynamic> json) =>
+      InputMessageLocation(
+        location: _readObject(json['location'], Location.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'location': location.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputMessageLocation copyWith({Location? location}) =>
+      InputMessageLocation(location: location ?? this.location);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageLocation';
@@ -1043,7 +878,7 @@ final class InputMessageDice extends InputMessageContent {
   /// Emoji on which the dice throw animation is based
   final String emoji;
 
-  /// True, if the chat message draft must be deleted
+  /// Pass true to delete message draft in the chat
   final bool clearDraft;
 
   /// Parses a [InputMessageDice] from TDLib JSON.
@@ -1289,8 +1124,8 @@ final class InputMessagePoll extends InputMessageContent {
   /// Poll description; pass null to use an empty description; 0-getOption("message_caption_length_max") characters
   final FormattedText? description;
 
-  /// Media attached to the poll; pass null if none. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, non-live inputMessageLocation, inputMessagePhoto, inputMessageVenue, or inputMessageVideo without caption
-  final InputMessageContent? media;
+  /// Media attached to the poll; pass null if none. Must be one of the following types: inputPollMediaAnimation, inputPollMediaAudio, inputPollMediaDocument, inputPollMediaLocation, inputPollMediaPhoto, inputPollMediaVenue, or inputPollMediaVideo without caption
+  final InputPollMedia? media;
 
   /// True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels
   final bool isAnonymous;
@@ -1334,7 +1169,7 @@ final class InputMessagePoll extends InputMessageContent {
           (e) => _readObject(e, InputPollOption.fromJson),
         ),
         description: _readOptional(json['description'], FormattedText.fromJson),
-        media: _readOptional(json['media'], InputMessageContent.fromJson),
+        media: _readOptional(json['media'], InputPollMedia.fromJson),
         isAnonymous: _readBool(json['is_anonymous']),
         allowsMultipleAnswers: _readBool(json['allows_multiple_answers']),
         allowsRevoting: _readBool(json['allows_revoting']),
@@ -1375,7 +1210,7 @@ final class InputMessagePoll extends InputMessageContent {
     FormattedText? question,
     List<InputPollOption>? options,
     FormattedText? Function()? description,
-    InputMessageContent? Function()? media,
+    InputPollMedia? Function()? media,
     bool? isAnonymous,
     bool? allowsMultipleAnswers,
     bool? allowsRevoting,
@@ -1428,7 +1263,7 @@ final class InputMessageStakeDice extends InputMessageContent {
   /// The Toncoin amount that will be staked; in the smallest units of the currency. Must be in the range getOption("stake_dice_stake_amount_min")-getOption("stake_dice_stake_amount_max")
   final int stakeToncoinAmount;
 
-  /// True, if the chat message draft must be deleted
+  /// Pass true to delete message draft in the chat
   final bool clearDraft;
 
   /// Parses a [InputMessageStakeDice] from TDLib JSON.

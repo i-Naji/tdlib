@@ -3,15 +3,13 @@
 
 part of '../tdapi.dart';
 
-/// Describes a bot connected to a business account
+/// Describes a business bot connected to an account
 final class BusinessConnectedBot extends TdObject {
-  /// Describes a bot connected to a business account
+  /// Describes a business bot connected to an account
   const BusinessConnectedBot({
     required this.botUserId,
     required this.recipients,
     required this.rights,
-    this.extra,
-    this.clientId,
   });
 
   /// User identifier of the bot
@@ -23,14 +21,6 @@ final class BusinessConnectedBot extends TdObject {
   /// Rights of the bot
   final BusinessBotRights rights;
 
-  /// "@extra" of the request this object answers.
-  @override
-  final dynamic extra;
-
-  /// Identifier of the TDLib client that sent this object.
-  @override
-  final int? clientId;
-
   /// Parses a [BusinessConnectedBot] from TDLib JSON.
   factory BusinessConnectedBot.fromJson(Map<String, dynamic> json) =>
       BusinessConnectedBot(
@@ -40,8 +30,6 @@ final class BusinessConnectedBot extends TdObject {
           BusinessRecipients.fromJson,
         ),
         rights: _readObject(json['rights'], BusinessBotRights.fromJson),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
       );
 
   @override
@@ -58,14 +46,10 @@ final class BusinessConnectedBot extends TdObject {
     int? botUserId,
     BusinessRecipients? recipients,
     BusinessBotRights? rights,
-    dynamic extra,
-    int? clientId,
   }) => BusinessConnectedBot(
     botUserId: botUserId ?? this.botUserId,
     recipients: recipients ?? this.recipients,
     rights: rights ?? this.rights,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
   );
 
   /// TDLib type name.

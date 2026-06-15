@@ -8,22 +8,31 @@ part of '../tdapi.dart';
 /// Returns [Chats].
 final class SearchPublicChats extends TdFunction<Chats> {
   /// Searches public chats by looking for specified query in their username and title. Currently, only private chats, supergroups and channels can be public. Returns a meaningful number of results. Excludes private chats with contacts and chats from the chat list from the results
-  const SearchPublicChats({required this.query});
+  const SearchPublicChats({required this.query, this.typeFilter});
 
   /// Query to search for
   final String query;
+
+  /// Additional filter for type of the chats to be returned; pass null to search for chats of all types
+  final SearchChatTypeFilter? typeFilter;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
     'query': query,
+    'type_filter': typeFilter?.toJson(),
     '@extra': ?extra,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchPublicChats copyWith({String? query}) =>
-      SearchPublicChats(query: query ?? this.query);
+  SearchPublicChats copyWith({
+    String? query,
+    SearchChatTypeFilter? Function()? typeFilter,
+  }) => SearchPublicChats(
+    query: query ?? this.query,
+    typeFilter: typeFilter != null ? typeFilter() : this.typeFilter,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchPublicChats';

@@ -20,7 +20,7 @@ final class AddQuickReplyShortcutMessage extends TdFunction<QuickReplyMessage> {
   /// Identifier of a quick reply message in the same shortcut to be replied; pass 0 if none
   final int replyToMessageId;
 
-  /// The content of the message to be added; inputMessagePaidMedia, inputMessageForwarded and inputMessageLocation with live_period aren't supported
+  /// The content of the message to be added; inputMessagePaidMedia, inputMessageForwarded and inputMessageLiveLocation
   final InputMessageContent inputMessageContent;
 
   @override

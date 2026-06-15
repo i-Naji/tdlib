@@ -92,8 +92,8 @@ final class InputPollTypeQuiz extends InputPollType {
   /// Text that is shown when the user chooses an incorrect answer or taps on the lamp icon; 0-200 characters with at most 2 line feeds
   final FormattedText explanation;
 
-  /// Media that is shown when the user chooses an incorrect answer or taps on the lamp icon; pass null if none. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, non-live inputMessageLocation, inputMessagePhoto, inputMessageVenue, or inputMessageVideo without caption
-  final InputMessageContent? explanationMedia;
+  /// Media that is shown when the user chooses an incorrect answer or taps on the lamp icon; pass null if none. Must be one of the following types: inputPollMediaAnimation, inputPollMediaAudio, inputPollMediaDocument, inputPollMediaLocation, inputPollMediaPhoto, inputPollMediaVenue, or inputPollMediaVideo without caption
+  final InputPollMedia? explanationMedia;
 
   /// Parses a [InputPollTypeQuiz] from TDLib JSON.
   factory InputPollTypeQuiz.fromJson(Map<String, dynamic> json) =>
@@ -102,7 +102,7 @@ final class InputPollTypeQuiz extends InputPollType {
         explanation: _readObject(json['explanation'], FormattedText.fromJson),
         explanationMedia: _readOptional(
           json['explanation_media'],
-          InputMessageContent.fromJson,
+          InputPollMedia.fromJson,
         ),
       );
 
@@ -120,7 +120,7 @@ final class InputPollTypeQuiz extends InputPollType {
   InputPollTypeQuiz copyWith({
     List<int>? correctOptionIds,
     FormattedText? explanation,
-    InputMessageContent? Function()? explanationMedia,
+    InputPollMedia? Function()? explanationMedia,
   }) => InputPollTypeQuiz(
     correctOptionIds: correctOptionIds ?? this.correctOptionIds,
     explanation: explanation ?? this.explanation,

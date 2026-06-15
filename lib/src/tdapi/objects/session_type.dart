@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Represents the type of session
+/// Describes type of user session
 ///
-/// One of: [SessionTypeAndroid], [SessionTypeApple], [SessionTypeBrave], [SessionTypeChrome], [SessionTypeEdge], [SessionTypeFirefox], [SessionTypeIpad], [SessionTypeIphone], [SessionTypeLinux], [SessionTypeMac], [SessionTypeOpera], [SessionTypeSafari], [SessionTypeUbuntu], [SessionTypeUnknown], [SessionTypeVivaldi], [SessionTypeWindows], [SessionTypeXbox]; or [UndecodedSessionType] for a type newer than this API.
+/// One of: [SessionTypeDevice], [SessionTypeConnectedBot]; or [UndecodedSessionType] for a type newer than this API.
 sealed class SessionType extends TdObject {
   const SessionType();
 
@@ -42,409 +42,63 @@ final class UndecodedSessionType extends SessionType {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// The session is running on an Android device
-final class SessionTypeAndroid extends SessionType {
-  /// The session is running on an Android device
-  const SessionTypeAndroid();
+/// A regular session from a device
+final class SessionTypeDevice extends SessionType {
+  /// A regular session from a device
+  const SessionTypeDevice({required this.sessionId});
 
-  /// Parses a [SessionTypeAndroid] from TDLib JSON.
-  factory SessionTypeAndroid.fromJson(Map<String, dynamic> json) =>
-      const SessionTypeAndroid();
+  /// Unique identifier of the session. Use terminateSession to terminate it or confirmSession to confirm it if it isn't confirmed yet
+  final int sessionId;
+
+  /// Parses a [SessionTypeDevice] from TDLib JSON.
+  factory SessionTypeDevice.fromJson(Map<String, dynamic> json) =>
+      SessionTypeDevice(sessionId: _readInt(json['session_id']));
 
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'session_id': sessionId.toString(),
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  SessionTypeAndroid copyWith() => const SessionTypeAndroid();
+  SessionTypeDevice copyWith({int? sessionId}) =>
+      SessionTypeDevice(sessionId: sessionId ?? this.sessionId);
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'sessionTypeAndroid';
+  static const String CONSTRUCTOR = 'sessionTypeDevice';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The session is running on a generic Apple device
-final class SessionTypeApple extends SessionType {
-  /// The session is running on a generic Apple device
-  const SessionTypeApple();
+/// A business bot connected to the current user's account
+final class SessionTypeConnectedBot extends SessionType {
+  /// A business bot connected to the current user's account
+  const SessionTypeConnectedBot({required this.botUserId});
 
-  /// Parses a [SessionTypeApple] from TDLib JSON.
-  factory SessionTypeApple.fromJson(Map<String, dynamic> json) =>
-      const SessionTypeApple();
+  /// User identifier of the bot. Use deleteBusinessConnectedBot to remove it or confirmBusinessConnectedBot to confirm it if it isn't confirmed yet
+  final int botUserId;
+
+  /// Parses a [SessionTypeConnectedBot] from TDLib JSON.
+  factory SessionTypeConnectedBot.fromJson(Map<String, dynamic> json) =>
+      SessionTypeConnectedBot(botUserId: _readInt(json['bot_user_id']));
 
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'bot_user_id': botUserId,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  SessionTypeApple copyWith() => const SessionTypeApple();
+  SessionTypeConnectedBot copyWith({int? botUserId}) =>
+      SessionTypeConnectedBot(botUserId: botUserId ?? this.botUserId);
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'sessionTypeApple';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// The session is running on the Brave browser
-final class SessionTypeBrave extends SessionType {
-  /// The session is running on the Brave browser
-  const SessionTypeBrave();
-
-  /// Parses a [SessionTypeBrave] from TDLib JSON.
-  factory SessionTypeBrave.fromJson(Map<String, dynamic> json) =>
-      const SessionTypeBrave();
-
-  @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SessionTypeBrave copyWith() => const SessionTypeBrave();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'sessionTypeBrave';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// The session is running on the Chrome browser
-final class SessionTypeChrome extends SessionType {
-  /// The session is running on the Chrome browser
-  const SessionTypeChrome();
-
-  /// Parses a [SessionTypeChrome] from TDLib JSON.
-  factory SessionTypeChrome.fromJson(Map<String, dynamic> json) =>
-      const SessionTypeChrome();
-
-  @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SessionTypeChrome copyWith() => const SessionTypeChrome();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'sessionTypeChrome';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// The session is running on the Edge browser
-final class SessionTypeEdge extends SessionType {
-  /// The session is running on the Edge browser
-  const SessionTypeEdge();
-
-  /// Parses a [SessionTypeEdge] from TDLib JSON.
-  factory SessionTypeEdge.fromJson(Map<String, dynamic> json) =>
-      const SessionTypeEdge();
-
-  @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SessionTypeEdge copyWith() => const SessionTypeEdge();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'sessionTypeEdge';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// The session is running on the Firefox browser
-final class SessionTypeFirefox extends SessionType {
-  /// The session is running on the Firefox browser
-  const SessionTypeFirefox();
-
-  /// Parses a [SessionTypeFirefox] from TDLib JSON.
-  factory SessionTypeFirefox.fromJson(Map<String, dynamic> json) =>
-      const SessionTypeFirefox();
-
-  @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SessionTypeFirefox copyWith() => const SessionTypeFirefox();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'sessionTypeFirefox';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// The session is running on an iPad device
-final class SessionTypeIpad extends SessionType {
-  /// The session is running on an iPad device
-  const SessionTypeIpad();
-
-  /// Parses a [SessionTypeIpad] from TDLib JSON.
-  factory SessionTypeIpad.fromJson(Map<String, dynamic> json) =>
-      const SessionTypeIpad();
-
-  @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SessionTypeIpad copyWith() => const SessionTypeIpad();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'sessionTypeIpad';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// The session is running on an iPhone device
-final class SessionTypeIphone extends SessionType {
-  /// The session is running on an iPhone device
-  const SessionTypeIphone();
-
-  /// Parses a [SessionTypeIphone] from TDLib JSON.
-  factory SessionTypeIphone.fromJson(Map<String, dynamic> json) =>
-      const SessionTypeIphone();
-
-  @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SessionTypeIphone copyWith() => const SessionTypeIphone();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'sessionTypeIphone';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// The session is running on a Linux device
-final class SessionTypeLinux extends SessionType {
-  /// The session is running on a Linux device
-  const SessionTypeLinux();
-
-  /// Parses a [SessionTypeLinux] from TDLib JSON.
-  factory SessionTypeLinux.fromJson(Map<String, dynamic> json) =>
-      const SessionTypeLinux();
-
-  @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SessionTypeLinux copyWith() => const SessionTypeLinux();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'sessionTypeLinux';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// The session is running on a Mac device
-final class SessionTypeMac extends SessionType {
-  /// The session is running on a Mac device
-  const SessionTypeMac();
-
-  /// Parses a [SessionTypeMac] from TDLib JSON.
-  factory SessionTypeMac.fromJson(Map<String, dynamic> json) =>
-      const SessionTypeMac();
-
-  @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SessionTypeMac copyWith() => const SessionTypeMac();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'sessionTypeMac';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// The session is running on the Opera browser
-final class SessionTypeOpera extends SessionType {
-  /// The session is running on the Opera browser
-  const SessionTypeOpera();
-
-  /// Parses a [SessionTypeOpera] from TDLib JSON.
-  factory SessionTypeOpera.fromJson(Map<String, dynamic> json) =>
-      const SessionTypeOpera();
-
-  @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SessionTypeOpera copyWith() => const SessionTypeOpera();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'sessionTypeOpera';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// The session is running on the Safari browser
-final class SessionTypeSafari extends SessionType {
-  /// The session is running on the Safari browser
-  const SessionTypeSafari();
-
-  /// Parses a [SessionTypeSafari] from TDLib JSON.
-  factory SessionTypeSafari.fromJson(Map<String, dynamic> json) =>
-      const SessionTypeSafari();
-
-  @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SessionTypeSafari copyWith() => const SessionTypeSafari();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'sessionTypeSafari';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// The session is running on an Ubuntu device
-final class SessionTypeUbuntu extends SessionType {
-  /// The session is running on an Ubuntu device
-  const SessionTypeUbuntu();
-
-  /// Parses a [SessionTypeUbuntu] from TDLib JSON.
-  factory SessionTypeUbuntu.fromJson(Map<String, dynamic> json) =>
-      const SessionTypeUbuntu();
-
-  @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SessionTypeUbuntu copyWith() => const SessionTypeUbuntu();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'sessionTypeUbuntu';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// The session is running on an unknown type of device
-final class SessionTypeUnknown extends SessionType {
-  /// The session is running on an unknown type of device
-  const SessionTypeUnknown();
-
-  /// Parses a [SessionTypeUnknown] from TDLib JSON.
-  factory SessionTypeUnknown.fromJson(Map<String, dynamic> json) =>
-      const SessionTypeUnknown();
-
-  @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SessionTypeUnknown copyWith() => const SessionTypeUnknown();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'sessionTypeUnknown';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// The session is running on the Vivaldi browser
-final class SessionTypeVivaldi extends SessionType {
-  /// The session is running on the Vivaldi browser
-  const SessionTypeVivaldi();
-
-  /// Parses a [SessionTypeVivaldi] from TDLib JSON.
-  factory SessionTypeVivaldi.fromJson(Map<String, dynamic> json) =>
-      const SessionTypeVivaldi();
-
-  @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SessionTypeVivaldi copyWith() => const SessionTypeVivaldi();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'sessionTypeVivaldi';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// The session is running on a Windows device
-final class SessionTypeWindows extends SessionType {
-  /// The session is running on a Windows device
-  const SessionTypeWindows();
-
-  /// Parses a [SessionTypeWindows] from TDLib JSON.
-  factory SessionTypeWindows.fromJson(Map<String, dynamic> json) =>
-      const SessionTypeWindows();
-
-  @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SessionTypeWindows copyWith() => const SessionTypeWindows();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'sessionTypeWindows';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// The session is running on an Xbox console
-final class SessionTypeXbox extends SessionType {
-  /// The session is running on an Xbox console
-  const SessionTypeXbox();
-
-  /// Parses a [SessionTypeXbox] from TDLib JSON.
-  factory SessionTypeXbox.fromJson(Map<String, dynamic> json) =>
-      const SessionTypeXbox();
-
-  @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SessionTypeXbox copyWith() => const SessionTypeXbox();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'sessionTypeXbox';
+  static const String CONSTRUCTOR = 'sessionTypeConnectedBot';
 
   @override
   String getConstructor() => CONSTRUCTOR;

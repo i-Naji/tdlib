@@ -13,6 +13,7 @@ final class Poll extends TdObject {
     required this.totalVoterCount,
     required this.recentVoterIds,
     required this.canGetVoters,
+    required this.canSeeResults,
     required this.isAnonymous,
     required this.allowsMultipleAnswers,
     required this.allowsRevoting,
@@ -43,6 +44,9 @@ final class Poll extends TdObject {
 
   /// True, if the current user can get voters in the poll using getPollVoters
   final bool canGetVoters;
+
+  /// True, if the current user can see results of the poll
+  final bool canSeeResults;
 
   /// True, if the poll is anonymous
   final bool isAnonymous;
@@ -91,6 +95,7 @@ final class Poll extends TdObject {
       (e) => _readObject(e, MessageSender.fromJson),
     ),
     canGetVoters: _readBool(json['can_get_voters']),
+    canSeeResults: _readBool(json['can_see_results']),
     isAnonymous: _readBool(json['is_anonymous']),
     allowsMultipleAnswers: _readBool(json['allows_multiple_answers']),
     allowsRevoting: _readBool(json['allows_revoting']),
@@ -116,6 +121,7 @@ final class Poll extends TdObject {
     'total_voter_count': totalVoterCount,
     'recent_voter_ids': [for (final e in recentVoterIds) e.toJson()],
     'can_get_voters': canGetVoters,
+    'can_see_results': canSeeResults,
     'is_anonymous': isAnonymous,
     'allows_multiple_answers': allowsMultipleAnswers,
     'allows_revoting': allowsRevoting,
@@ -138,6 +144,7 @@ final class Poll extends TdObject {
     int? totalVoterCount,
     List<MessageSender>? recentVoterIds,
     bool? canGetVoters,
+    bool? canSeeResults,
     bool? isAnonymous,
     bool? allowsMultipleAnswers,
     bool? allowsRevoting,
@@ -156,6 +163,7 @@ final class Poll extends TdObject {
     totalVoterCount: totalVoterCount ?? this.totalVoterCount,
     recentVoterIds: recentVoterIds ?? this.recentVoterIds,
     canGetVoters: canGetVoters ?? this.canGetVoters,
+    canSeeResults: canSeeResults ?? this.canSeeResults,
     isAnonymous: isAnonymous ?? this.isAnonymous,
     allowsMultipleAnswers: allowsMultipleAnswers ?? this.allowsMultipleAnswers,
     allowsRevoting: allowsRevoting ?? this.allowsRevoting,

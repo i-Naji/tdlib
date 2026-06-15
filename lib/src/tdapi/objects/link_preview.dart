@@ -30,7 +30,7 @@ final class LinkPreview extends TdObject {
   /// URL to display
   final String displayUrl;
 
-  /// Short name of the site (e.g., Google Docs, App Store)
+  /// Short name of the website (e.g., Google Docs, App Store)
   final String siteName;
 
   /// Title of the content

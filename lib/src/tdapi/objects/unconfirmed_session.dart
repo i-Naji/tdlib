@@ -7,17 +7,17 @@ part of '../tdapi.dart';
 final class UnconfirmedSession extends TdObject {
   /// Contains information about an unconfirmed session
   const UnconfirmedSession({
-    required this.id,
-    required this.logInDate,
+    required this.type,
+    required this.date,
     required this.deviceModel,
     required this.location,
   });
 
-  /// Session identifier
-  final int id;
+  /// Session type
+  final SessionType type;
 
-  /// Point in time (Unix timestamp) when the user has logged in
-  final int logInDate;
+  /// Point in time (Unix timestamp) when the user has logged in or the business bot was connected
+  final int date;
 
   /// Model of the device that was used for the session creation, as provided by the application
   final String deviceModel;
@@ -28,8 +28,8 @@ final class UnconfirmedSession extends TdObject {
   /// Parses a [UnconfirmedSession] from TDLib JSON.
   factory UnconfirmedSession.fromJson(Map<String, dynamic> json) =>
       UnconfirmedSession(
-        id: _readInt(json['id']),
-        logInDate: _readInt(json['log_in_date']),
+        type: _readObject(json['type'], SessionType.fromJson),
+        date: _readInt(json['date']),
         deviceModel: _readString(json['device_model']),
         location: _readString(json['location']),
       );
@@ -37,8 +37,8 @@ final class UnconfirmedSession extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'id': id.toString(),
-    'log_in_date': logInDate,
+    'type': type.toJson(),
+    'date': date,
     'device_model': deviceModel,
     'location': location,
   };
@@ -46,13 +46,13 @@ final class UnconfirmedSession extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   UnconfirmedSession copyWith({
-    int? id,
-    int? logInDate,
+    SessionType? type,
+    int? date,
     String? deviceModel,
     String? location,
   }) => UnconfirmedSession(
-    id: id ?? this.id,
-    logInDate: logInDate ?? this.logInDate,
+    type: type ?? this.type,
+    date: date ?? this.date,
     deviceModel: deviceModel ?? this.deviceModel,
     location: location ?? this.location,
   );

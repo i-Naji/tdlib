@@ -9,7 +9,7 @@ final class DraftMessage extends TdObject {
   const DraftMessage({
     this.replyTo,
     required this.date,
-    required this.inputMessageText,
+    required this.content,
     required this.effectId,
     this.suggestedPostInfo,
   });
@@ -20,8 +20,8 @@ final class DraftMessage extends TdObject {
   /// Point in time (Unix timestamp) when the draft was created
   final int date;
 
-  /// Content of the message draft; must be of the type inputMessageText, inputMessageVideoNote, or inputMessageVoiceNote
-  final InputMessageContent inputMessageText;
+  /// Content of the message draft
+  final DraftMessageContent content;
 
   /// Identifier of the effect to apply to the message when it is sent; 0 if none
   final int effectId;
@@ -33,10 +33,7 @@ final class DraftMessage extends TdObject {
   factory DraftMessage.fromJson(Map<String, dynamic> json) => DraftMessage(
     replyTo: _readOptional(json['reply_to'], InputMessageReplyTo.fromJson),
     date: _readInt(json['date']),
-    inputMessageText: _readObject(
-      json['input_message_text'],
-      InputMessageContent.fromJson,
-    ),
+    content: _readObject(json['content'], DraftMessageContent.fromJson),
     effectId: _readInt(json['effect_id']),
     suggestedPostInfo: _readOptional(
       json['suggested_post_info'],
@@ -49,7 +46,7 @@ final class DraftMessage extends TdObject {
     '@type': CONSTRUCTOR,
     'reply_to': replyTo?.toJson(),
     'date': date,
-    'input_message_text': inputMessageText.toJson(),
+    'content': content.toJson(),
     'effect_id': effectId.toString(),
     'suggested_post_info': suggestedPostInfo?.toJson(),
   };
@@ -59,13 +56,13 @@ final class DraftMessage extends TdObject {
   DraftMessage copyWith({
     InputMessageReplyTo? Function()? replyTo,
     int? date,
-    InputMessageContent? inputMessageText,
+    DraftMessageContent? content,
     int? effectId,
     InputSuggestedPostInfo? Function()? suggestedPostInfo,
   }) => DraftMessage(
     replyTo: replyTo != null ? replyTo() : this.replyTo,
     date: date ?? this.date,
-    inputMessageText: inputMessageText ?? this.inputMessageText,
+    content: content ?? this.content,
     effectId: effectId ?? this.effectId,
     suggestedPostInfo: suggestedPostInfo != null
         ? suggestedPostInfo()

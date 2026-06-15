@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Terminates all other sessions of the current user
+/// Terminates all other sessions of the current user. Additionally, the user must be suggested to delete the connected business bot using deleteBusinessConnectedBot if there is any
 ///
 /// Returns [Ok].
 final class TerminateAllOtherSessions extends TdFunction<Ok> {
-  /// Terminates all other sessions of the current user
+  /// Terminates all other sessions of the current user. Additionally, the user must be suggested to delete the connected business bot using deleteBusinessConnectedBot if there is any
   const TerminateAllOtherSessions();
 
   @override

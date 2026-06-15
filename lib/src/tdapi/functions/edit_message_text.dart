@@ -24,7 +24,7 @@ final class EditMessageText extends TdFunction<Message> {
   /// The new message reply markup; pass null if none; for bots only
   final ReplyMarkup? replyMarkup;
 
-  /// New text content of the message. Must be of type inputMessageText
+  /// New text content of the message. Must be of type inputMessageText or inputMessageRichMessage
   final InputMessageContent inputMessageContent;
 
   @override

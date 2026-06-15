@@ -104,6 +104,7 @@ final class UserTypeBot extends UserType {
     required this.isInline,
     required this.inlineQueryPlaceholder,
     required this.supportsGuestQueries,
+    required this.isGuard,
     required this.needLocation,
     required this.canConnectToBusiness,
     required this.canBeAddedToAttachmentMenu,
@@ -140,6 +141,9 @@ final class UserTypeBot extends UserType {
   /// True, if the bot can be queried by username from any non-secret chat
   final bool supportsGuestQueries;
 
+  /// True, if the bot can be set as a guard bot in supergroup chats
+  final bool isGuard;
+
   /// True, if the location of the user is expected to be sent with every inline query to this bot
   final bool needLocation;
 
@@ -164,6 +168,7 @@ final class UserTypeBot extends UserType {
     isInline: _readBool(json['is_inline']),
     inlineQueryPlaceholder: _readString(json['inline_query_placeholder']),
     supportsGuestQueries: _readBool(json['supports_guest_queries']),
+    isGuard: _readBool(json['is_guard']),
     needLocation: _readBool(json['need_location']),
     canConnectToBusiness: _readBool(json['can_connect_to_business']),
     canBeAddedToAttachmentMenu: _readBool(
@@ -185,6 +190,7 @@ final class UserTypeBot extends UserType {
     'is_inline': isInline,
     'inline_query_placeholder': inlineQueryPlaceholder,
     'supports_guest_queries': supportsGuestQueries,
+    'is_guard': isGuard,
     'need_location': needLocation,
     'can_connect_to_business': canConnectToBusiness,
     'can_be_added_to_attachment_menu': canBeAddedToAttachmentMenu,
@@ -205,6 +211,7 @@ final class UserTypeBot extends UserType {
     bool? isInline,
     String? inlineQueryPlaceholder,
     bool? supportsGuestQueries,
+    bool? isGuard,
     bool? needLocation,
     bool? canConnectToBusiness,
     bool? canBeAddedToAttachmentMenu,
@@ -223,6 +230,7 @@ final class UserTypeBot extends UserType {
     inlineQueryPlaceholder:
         inlineQueryPlaceholder ?? this.inlineQueryPlaceholder,
     supportsGuestQueries: supportsGuestQueries ?? this.supportsGuestQueries,
+    isGuard: isGuard ?? this.isGuard,
     needLocation: needLocation ?? this.needLocation,
     canConnectToBusiness: canConnectToBusiness ?? this.canConnectToBusiness,
     canBeAddedToAttachmentMenu:

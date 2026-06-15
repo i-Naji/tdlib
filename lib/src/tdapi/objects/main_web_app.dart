@@ -14,7 +14,7 @@ final class MainWebApp extends TdObject {
   });
 
   /// URL of the Web App to open
-  final String url;
+  final WebAppUrl url;
 
   /// The mode in which the Web App must be opened
   final WebAppOpenMode mode;
@@ -29,7 +29,7 @@ final class MainWebApp extends TdObject {
 
   /// Parses a [MainWebApp] from TDLib JSON.
   factory MainWebApp.fromJson(Map<String, dynamic> json) => MainWebApp(
-    url: _readString(json['url']),
+    url: _readObject(json['url'], WebAppUrl.fromJson),
     mode: _readObject(json['mode'], WebAppOpenMode.fromJson),
     extra: json['@extra'],
     clientId: _readClientId(json['@client_id']),
@@ -38,14 +38,14 @@ final class MainWebApp extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'url': url,
+    'url': url.toJson(),
     'mode': mode.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   MainWebApp copyWith({
-    String? url,
+    WebAppUrl? url,
     WebAppOpenMode? mode,
     dynamic extra,
     int? clientId,

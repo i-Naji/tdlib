@@ -16,8 +16,8 @@ final class WebAppInfo extends TdObject {
   /// Unique identifier for the Web App launch
   final int launchId;
 
-  /// A Web App URL to open in a web view
-  final String url;
+  /// The Web App URL to open in a web view
+  final WebAppUrl url;
 
   /// "@extra" of the request this object answers.
   @override
@@ -30,7 +30,7 @@ final class WebAppInfo extends TdObject {
   /// Parses a [WebAppInfo] from TDLib JSON.
   factory WebAppInfo.fromJson(Map<String, dynamic> json) => WebAppInfo(
     launchId: _readInt(json['launch_id']),
-    url: _readString(json['url']),
+    url: _readObject(json['url'], WebAppUrl.fromJson),
     extra: json['@extra'],
     clientId: _readClientId(json['@client_id']),
   );
@@ -39,14 +39,14 @@ final class WebAppInfo extends TdObject {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'launch_id': launchId.toString(),
-    'url': url,
+    'url': url.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   WebAppInfo copyWith({
     int? launchId,
-    String? url,
+    WebAppUrl? url,
     dynamic extra,
     int? clientId,
   }) => WebAppInfo(

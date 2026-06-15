@@ -3,11 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Returns the business bot that is connected to the current user account. Returns a 404 error if there is no connected bot
+/// Returns information about the business bot that is connected to the current user account. Returns a 404 error if there is no connected bot
 ///
-/// Returns [BusinessConnectedBot].
-final class GetBusinessConnectedBot extends TdFunction<BusinessConnectedBot> {
-  /// Returns the business bot that is connected to the current user account. Returns a 404 error if there is no connected bot
+/// Returns [BusinessConnectedBotInfo].
+final class GetBusinessConnectedBot
+    extends TdFunction<BusinessConnectedBotInfo> {
+  /// Returns information about the business bot that is connected to the current user account. Returns a 404 error if there is no connected bot
   const GetBusinessConnectedBot();
 
   @override

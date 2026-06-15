@@ -25,8 +25,8 @@ final class PollOption extends TdObject {
   /// Option text; 1-100 characters; may contain only custom emoji entities
   final FormattedText text;
 
-  /// Option media; may be null if none. If present, currently, can be only of the types messageAnimation, messageLocation, messagePhoto, messageSticker, messageVenue, or messageVideo without caption
-  final MessageContent? media;
+  /// Option media; may be null if none. If present, currently, can be only of the types pollMediaAnimation, pollMediaLink, pollMediaLocation, pollMediaPhoto, pollMediaSticker, pollMediaVenue, or pollMediaVideo
+  final PollMedia? media;
 
   /// Number of voters for this option, available only for closed or voted polls, or if the current user is the creator of the poll
   final int voterCount;
@@ -53,7 +53,7 @@ final class PollOption extends TdObject {
   factory PollOption.fromJson(Map<String, dynamic> json) => PollOption(
     id: _readString(json['id']),
     text: _readObject(json['text'], FormattedText.fromJson),
-    media: _readOptional(json['media'], MessageContent.fromJson),
+    media: _readOptional(json['media'], PollMedia.fromJson),
     voterCount: _readInt(json['voter_count']),
     votePercentage: _readInt(json['vote_percentage']),
     recentVoterIds: _readList<MessageSender>(
@@ -86,7 +86,7 @@ final class PollOption extends TdObject {
   PollOption copyWith({
     String? id,
     FormattedText? text,
-    MessageContent? Function()? media,
+    PollMedia? Function()? media,
     int? voterCount,
     int? votePercentage,
     List<MessageSender>? recentVoterIds,

@@ -12,6 +12,8 @@ final class CountryInfo extends TdObject {
     required this.englishName,
     required this.isHidden,
     required this.callingCodes,
+    this.extra,
+    this.clientId,
   });
 
   /// A two-letter ISO 3166-1 alpha-2 country code
@@ -29,6 +31,14 @@ final class CountryInfo extends TdObject {
   /// List of country calling codes
   final List<String> callingCodes;
 
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
   /// Parses a [CountryInfo] from TDLib JSON.
   factory CountryInfo.fromJson(Map<String, dynamic> json) => CountryInfo(
     countryCode: _readString(json['country_code']),
@@ -36,6 +46,8 @@ final class CountryInfo extends TdObject {
     englishName: _readString(json['english_name']),
     isHidden: _readBool(json['is_hidden']),
     callingCodes: _readList<String>(json['calling_codes'], _readString),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
   );
 
   @override
@@ -56,12 +68,16 @@ final class CountryInfo extends TdObject {
     String? englishName,
     bool? isHidden,
     List<String>? callingCodes,
+    dynamic extra,
+    int? clientId,
   }) => CountryInfo(
     countryCode: countryCode ?? this.countryCode,
     name: name ?? this.name,
     englishName: englishName ?? this.englishName,
     isHidden: isHidden ?? this.isHidden,
     callingCodes: callingCodes ?? this.callingCodes,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
   );
 
   /// TDLib type name.

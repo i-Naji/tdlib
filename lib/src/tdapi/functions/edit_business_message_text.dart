@@ -28,7 +28,7 @@ final class EditBusinessMessageText extends TdFunction<BusinessMessage> {
   /// The new message reply markup; pass null if none
   final ReplyMarkup? replyMarkup;
 
-  /// New text content of the message. Must be of type inputMessageText
+  /// New text content of the message. Must be of type inputMessageText or inputMessageRichMessage
   final InputMessageContent inputMessageContent;
 
   @override

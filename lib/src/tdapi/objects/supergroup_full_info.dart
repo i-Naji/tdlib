@@ -42,6 +42,7 @@ final class SupergroupFullInfo extends TdObject {
     required this.customEmojiStickerSetId,
     this.location,
     this.inviteLink,
+    required this.guardBotUserId,
     required this.botCommands,
     this.botVerification,
     this.mainProfileTab,
@@ -156,6 +157,9 @@ final class SupergroupFullInfo extends TdObject {
   /// Primary invite link for the chat; may be null. For chat administrators with can_invite_users right only
   final ChatInviteLink? inviteLink;
 
+  /// User identifier of the guard bot in the group; for chat administrators only
+  final int guardBotUserId;
+
   /// List of commands of bots in the group
   final List<BotCommands> botCommands;
 
@@ -226,6 +230,7 @@ final class SupergroupFullInfo extends TdObject {
     customEmojiStickerSetId: _readInt(json['custom_emoji_sticker_set_id']),
     location: _readOptional(json['location'], ChatLocation.fromJson),
     inviteLink: _readOptional(json['invite_link'], ChatInviteLink.fromJson),
+    guardBotUserId: _readInt(json['guard_bot_user_id']),
     botCommands: _readList<BotCommands>(
       json['bot_commands'],
       (e) => _readObject(e, BotCommands.fromJson),
@@ -282,6 +287,7 @@ final class SupergroupFullInfo extends TdObject {
     'custom_emoji_sticker_set_id': customEmojiStickerSetId.toString(),
     'location': location?.toJson(),
     'invite_link': inviteLink?.toJson(),
+    'guard_bot_user_id': guardBotUserId,
     'bot_commands': [for (final e in botCommands) e.toJson()],
     'bot_verification': botVerification?.toJson(),
     'main_profile_tab': mainProfileTab?.toJson(),
@@ -327,6 +333,7 @@ final class SupergroupFullInfo extends TdObject {
     int? customEmojiStickerSetId,
     ChatLocation? Function()? location,
     ChatInviteLink? Function()? inviteLink,
+    int? guardBotUserId,
     List<BotCommands>? botCommands,
     BotVerification? Function()? botVerification,
     ProfileTab? Function()? mainProfileTab,
@@ -378,6 +385,7 @@ final class SupergroupFullInfo extends TdObject {
         customEmojiStickerSetId ?? this.customEmojiStickerSetId,
     location: location != null ? location() : this.location,
     inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
+    guardBotUserId: guardBotUserId ?? this.guardBotUserId,
     botCommands: botCommands ?? this.botCommands,
     botVerification: botVerification != null
         ? botVerification()

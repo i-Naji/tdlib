@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessagePollOptionAdded], [MessagePollOptionDeleted], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatOwnerLeft], [MessageChatOwnerChanged], [MessageChatHasProtectedContentToggled], [MessageChatHasProtectedContentDisableRequested], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessageManagedBotCreated], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageRichMessage], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLiveLocation], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessagePollOptionAdded], [MessagePollOptionDeleted], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatOwnerLeft], [MessageChatOwnerChanged], [MessageChatHasProtectedContentToggled], [MessageChatHasProtectedContentDisableRequested], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessageManagedBotCreated], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -95,6 +95,39 @@ final class MessageText extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageText';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A rich message; the message can have multiple media of the same type, all of which must be shown in the corresponding profile tab
+final class MessageRichMessage extends MessageContent {
+  /// A rich message; the message can have multiple media of the same type, all of which must be shown in the corresponding profile tab
+  const MessageRichMessage({required this.message});
+
+  /// The rich message
+  final RichMessage message;
+
+  /// Parses a [MessageRichMessage] from TDLib JSON.
+  factory MessageRichMessage.fromJson(Map<String, dynamic> json) =>
+      MessageRichMessage(
+        message: _readObject(json['message'], RichMessage.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'message': message.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageRichMessage copyWith({RichMessage? message}) =>
+      MessageRichMessage(message: message ?? this.message);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageRichMessage';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -743,68 +776,72 @@ final class MessageExpiredVoiceNote extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A message with a location
-final class MessageLocation extends MessageContent {
-  /// A message with a location
-  const MessageLocation({
-    required this.location,
-    required this.livePeriod,
-    required this.expiresIn,
-    required this.heading,
-    required this.proximityAlertRadius,
-  });
+/// A message with a live location
+final class MessageLiveLocation extends MessageContent {
+  /// A message with a live location
+  const MessageLiveLocation({required this.location, required this.expiresIn});
 
-  /// The location description
-  final Location location;
-
-  /// Time relative to the message send date, for which the location can be updated, in seconds; if 0x7FFFFFFF, then location can be updated forever
-  final int livePeriod;
+  /// The current location
+  final LiveLocation location;
 
   /// Left time for which the location can be updated, in seconds. If 0, then the location can't be updated anymore. The update updateMessageContent is not sent when this field changes
   final int expiresIn;
 
-  /// For live locations, a direction in which the location moves, in degrees; 1-360. If 0 the direction is unknown
-  final int heading;
-
-  /// For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). 0 if the notification is disabled. Available only to the message sender
-  final int proximityAlertRadius;
-
-  /// Parses a [MessageLocation] from TDLib JSON.
-  factory MessageLocation.fromJson(Map<String, dynamic> json) =>
-      MessageLocation(
-        location: _readObject(json['location'], Location.fromJson),
-        livePeriod: _readInt(json['live_period']),
+  /// Parses a [MessageLiveLocation] from TDLib JSON.
+  factory MessageLiveLocation.fromJson(Map<String, dynamic> json) =>
+      MessageLiveLocation(
+        location: _readObject(json['location'], LiveLocation.fromJson),
         expiresIn: _readInt(json['expires_in']),
-        heading: _readInt(json['heading']),
-        proximityAlertRadius: _readInt(json['proximity_alert_radius']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'location': location.toJson(),
-    'live_period': livePeriod,
     'expires_in': expiresIn,
-    'heading': heading,
-    'proximity_alert_radius': proximityAlertRadius,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageLocation copyWith({
-    Location? location,
-    int? livePeriod,
-    int? expiresIn,
-    int? heading,
-    int? proximityAlertRadius,
-  }) => MessageLocation(
-    location: location ?? this.location,
-    livePeriod: livePeriod ?? this.livePeriod,
-    expiresIn: expiresIn ?? this.expiresIn,
-    heading: heading ?? this.heading,
-    proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
-  );
+  MessageLiveLocation copyWith({LiveLocation? location, int? expiresIn}) =>
+      MessageLiveLocation(
+        location: location ?? this.location,
+        expiresIn: expiresIn ?? this.expiresIn,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageLiveLocation';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A message with a location
+final class MessageLocation extends MessageContent {
+  /// A message with a location
+  const MessageLocation({required this.location});
+
+  /// The location
+  final Location location;
+
+  /// Parses a [MessageLocation] from TDLib JSON.
+  factory MessageLocation.fromJson(Map<String, dynamic> json) =>
+      MessageLocation(
+        location: _readObject(json['location'], Location.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'location': location.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageLocation copyWith({Location? location}) =>
+      MessageLocation(location: location ?? this.location);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageLocation';
@@ -1042,8 +1079,8 @@ final class MessagePoll extends MessageContent {
   /// Description of the poll
   final FormattedText description;
 
-  /// Media attached to the poll; may be null if none. If present, currently, can be only of the types messageAnimation, messageAudio, messageDocument, messageLocation, messagePhoto, messageVenue, or messageVideo without caption
-  final MessageContent? media;
+  /// Media attached to the poll; may be null if none. If present, currently, can be only of the types pollMediaAnimation, pollMediaAudio, pollMediaDocument, pollMediaLocation, pollMediaPhoto, pollMediaVenue, or pollMediaVideo
+  final PollMedia? media;
 
   /// True, if an option can be added to the poll using addPollOption
   final bool canAddOption;
@@ -1052,7 +1089,7 @@ final class MessagePoll extends MessageContent {
   factory MessagePoll.fromJson(Map<String, dynamic> json) => MessagePoll(
     poll: _readObject(json['poll'], Poll.fromJson),
     description: _readObject(json['description'], FormattedText.fromJson),
-    media: _readOptional(json['media'], MessageContent.fromJson),
+    media: _readOptional(json['media'], PollMedia.fromJson),
     canAddOption: _readBool(json['can_add_option']),
   );
 
@@ -1071,7 +1108,7 @@ final class MessagePoll extends MessageContent {
   MessagePoll copyWith({
     Poll? poll,
     FormattedText? description,
-    MessageContent? Function()? media,
+    PollMedia? Function()? media,
     bool? canAddOption,
   }) => MessagePoll(
     poll: poll ?? this.poll,

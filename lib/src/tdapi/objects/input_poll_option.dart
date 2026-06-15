@@ -11,14 +11,14 @@ final class InputPollOption extends TdObject {
   /// Option text; 1-100 characters. Only custom emoji entities are allowed to be added and only by Premium users
   final FormattedText text;
 
-  /// Option media; pass null if none; ignored in addPollOption. Must be one of the following types: inputMessageAnimation, non-live inputMessageLocation, inputMessagePhoto, inputMessageSticker, inputMessageVenue, or inputMessageVideo without caption
-  final InputMessageContent? media;
+  /// Option media; pass null if none; ignored in addPollOption. Must be one of the following types: inputPollMediaAnimation, inputPollMediaLink, inputPollMediaLocation, inputPollMediaPhoto, inputPollMediaSticker, inputPollMediaVenue, or inputPollMediaVideo without caption
+  final InputPollMedia? media;
 
   /// Parses a [InputPollOption] from TDLib JSON.
   factory InputPollOption.fromJson(Map<String, dynamic> json) =>
       InputPollOption(
         text: _readObject(json['text'], FormattedText.fromJson),
-        media: _readOptional(json['media'], InputMessageContent.fromJson),
+        media: _readOptional(json['media'], InputPollMedia.fromJson),
       );
 
   @override
@@ -32,7 +32,7 @@ final class InputPollOption extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   InputPollOption copyWith({
     FormattedText? text,
-    InputMessageContent? Function()? media,
+    InputPollMedia? Function()? media,
   }) => InputPollOption(
     text: text ?? this.text,
     media: media != null ? media() : this.media,

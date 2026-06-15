@@ -39,9 +39,11 @@ part 'functions/add_saved_notification_sound.dart';
 part 'functions/add_sticker_to_set.dart';
 part 'functions/add_story_album_stories.dart';
 part 'functions/add_text_composition_style.dart';
+part 'functions/add_web_browser_settings_exception.dart';
 part 'functions/allow_bot_to_send_messages.dart';
 part 'functions/allow_unpaid_messages_from_user.dart';
 part 'functions/answer_callback_query.dart';
+part 'functions/answer_chat_join_request_query.dart';
 part 'functions/answer_custom_query.dart';
 part 'functions/answer_guest_query.dart';
 part 'functions/answer_inline_query.dart';
@@ -68,6 +70,7 @@ part 'functions/cancel_preliminary_upload_file.dart';
 part 'functions/cancel_recovery_email_address_verification.dart';
 part 'functions/change_imported_contacts.dart';
 part 'functions/change_sticker_set.dart';
+part 'functions/change_web_browser_settings.dart';
 part 'functions/check_authentication_bot_token.dart';
 part 'functions/check_authentication_code.dart';
 part 'functions/check_authentication_email_code.dart';
@@ -75,6 +78,7 @@ part 'functions/check_authentication_passkey.dart';
 part 'functions/check_authentication_password.dart';
 part 'functions/check_authentication_password_recovery_code.dart';
 part 'functions/check_authentication_premium_purchase.dart';
+part 'functions/check_authentication_web_token.dart';
 part 'functions/check_bot_username.dart';
 part 'functions/check_chat_folder_invite_link.dart';
 part 'functions/check_chat_invite_link.dart';
@@ -112,6 +116,7 @@ part 'functions/close_web_app.dart';
 part 'functions/commit_pending_live_story_reactions.dart';
 part 'functions/commit_pending_paid_message_reactions.dart';
 part 'functions/compose_text_with_ai.dart';
+part 'functions/confirm_business_connected_bot.dart';
 part 'functions/confirm_qr_code_authentication.dart';
 part 'functions/confirm_session.dart';
 part 'functions/connect_affiliate_program.dart';
@@ -331,6 +336,7 @@ part 'functions/get_connected_affiliate_programs.dart';
 part 'functions/get_connected_websites.dart';
 part 'functions/get_contacts.dart';
 part 'functions/get_countries.dart';
+part 'functions/get_country.dart';
 part 'functions/get_country_code.dart';
 part 'functions/get_country_flag_emoji.dart';
 part 'functions/get_created_public_chats.dart';
@@ -366,6 +372,7 @@ part 'functions/get_forum_topic_default_icons.dart';
 part 'functions/get_forum_topic_history.dart';
 part 'functions/get_forum_topic_link.dart';
 part 'functions/get_forum_topics.dart';
+part 'functions/get_full_rich_message.dart';
 part 'functions/get_game_high_scores.dart';
 part 'functions/get_gift_auction_acquired_gifts.dart';
 part 'functions/get_gift_auction_state.dart';
@@ -396,6 +403,7 @@ part 'functions/get_language_pack_info.dart';
 part 'functions/get_language_pack_string.dart';
 part 'functions/get_language_pack_strings.dart';
 part 'functions/get_link_preview.dart';
+part 'functions/get_link_web_browser_type.dart';
 part 'functions/get_live_story_available_message_senders.dart';
 part 'functions/get_live_story_rtmp_url.dart';
 part 'functions/get_live_story_streamer.dart';
@@ -629,6 +637,7 @@ part 'functions/refund_star_payment.dart';
 part 'functions/register_device.dart';
 part 'functions/register_user.dart';
 part 'functions/remove_all_files_from_downloads.dart';
+part 'functions/remove_all_web_browser_settings_exceptions.dart';
 part 'functions/remove_business_connected_bot_from_chat.dart';
 part 'functions/remove_chat_action_bar.dart';
 part 'functions/remove_contacts.dart';
@@ -655,6 +664,7 @@ part 'functions/remove_sticker_from_set.dart';
 part 'functions/remove_story_album_stories.dart';
 part 'functions/remove_text_composition_style.dart';
 part 'functions/remove_top_chat.dart';
+part 'functions/remove_web_browser_settings_exception.dart';
 part 'functions/reorder_active_usernames.dart';
 part 'functions/reorder_bot_active_usernames.dart';
 part 'functions/reorder_bot_media_previews.dart';
@@ -762,6 +772,7 @@ part 'functions/send_phone_number_code.dart';
 part 'functions/send_phone_number_firebase_sms.dart';
 part 'functions/send_quick_reply_shortcut_messages.dart';
 part 'functions/send_resold_gift.dart';
+part 'functions/send_rich_message_draft.dart';
 part 'functions/send_text_message_draft.dart';
 part 'functions/send_web_app_custom_request.dart';
 part 'functions/send_web_app_data.dart';
@@ -1067,6 +1078,7 @@ part 'objects/business_chat_link.dart';
 part 'objects/business_chat_link_info.dart';
 part 'objects/business_chat_links.dart';
 part 'objects/business_connected_bot.dart';
+part 'objects/business_connected_bot_info.dart';
 part 'objects/business_connection.dart';
 part 'objects/business_feature.dart';
 part 'objects/business_feature_promotion_animation.dart';
@@ -1133,8 +1145,10 @@ part 'objects/chat_invite_link_members.dart';
 part 'objects/chat_invite_link_subscription_info.dart';
 part 'objects/chat_invite_links.dart';
 part 'objects/chat_join_request.dart';
+part 'objects/chat_join_request_result.dart';
 part 'objects/chat_join_requests.dart';
 part 'objects/chat_join_requests_info.dart';
+part 'objects/chat_join_result.dart';
 part 'objects/chat_list.dart';
 part 'objects/chat_lists.dart';
 part 'objects/chat_location.dart';
@@ -1205,6 +1219,7 @@ part 'objects/direct_messages_chat_topic.dart';
 part 'objects/document.dart';
 part 'objects/downloaded_file_counts.dart';
 part 'objects/draft_message.dart';
+part 'objects/draft_message_content.dart';
 part 'objects/email_address_authentication.dart';
 part 'objects/email_address_authentication_code_info.dart';
 part 'objects/email_address_reset_state.dart';
@@ -1308,6 +1323,8 @@ part 'objects/inline_query_result.dart';
 part 'objects/inline_query_results.dart';
 part 'objects/inline_query_results_button.dart';
 part 'objects/inline_query_results_button_type.dart';
+part 'objects/input_animation.dart';
+part 'objects/input_audio.dart';
 part 'objects/input_background.dart';
 part 'objects/input_business_chat_link.dart';
 part 'objects/input_business_start_page.dart';
@@ -1317,6 +1334,7 @@ part 'objects/input_chat_theme.dart';
 part 'objects/input_checklist.dart';
 part 'objects/input_checklist_task.dart';
 part 'objects/input_credentials.dart';
+part 'objects/input_document.dart';
 part 'objects/input_file.dart';
 part 'objects/input_group_call.dart';
 part 'objects/input_identity_document.dart';
@@ -1330,8 +1348,11 @@ part 'objects/input_passport_element.dart';
 part 'objects/input_passport_element_error.dart';
 part 'objects/input_passport_element_error_source.dart';
 part 'objects/input_personal_document.dart';
+part 'objects/input_photo.dart';
+part 'objects/input_poll_media.dart';
 part 'objects/input_poll_option.dart';
 part 'objects/input_poll_type.dart';
+part 'objects/input_rich_message.dart';
 part 'objects/input_sticker.dart';
 part 'objects/input_story_area.dart';
 part 'objects/input_story_area_type.dart';
@@ -1340,6 +1361,7 @@ part 'objects/input_story_content.dart';
 part 'objects/input_suggested_post_info.dart';
 part 'objects/input_text_quote.dart';
 part 'objects/input_thumbnail.dart';
+part 'objects/input_video.dart';
 part 'objects/internal_link_type.dart';
 part 'objects/invite_group_call_participant_result.dart';
 part 'objects/invite_link_chat_type.dart';
@@ -1358,6 +1380,7 @@ part 'objects/link_preview.dart';
 part 'objects/link_preview_album_media.dart';
 part 'objects/link_preview_options.dart';
 part 'objects/link_preview_type.dart';
+part 'objects/live_location.dart';
 part 'objects/live_story_donors.dart';
 part 'objects/local_file.dart';
 part 'objects/localization_target_info.dart';
@@ -1461,6 +1484,7 @@ part 'objects/photo.dart';
 part 'objects/photo_size.dart';
 part 'objects/point.dart';
 part 'objects/poll.dart';
+part 'objects/poll_media.dart';
 part 'objects/poll_option.dart';
 part 'objects/poll_option_properties.dart';
 part 'objects/poll_type.dart';
@@ -1523,6 +1547,8 @@ part 'objects/resend_code_reason.dart';
 part 'objects/reset_password_result.dart';
 part 'objects/restriction_info.dart';
 part 'objects/revenue_withdrawal_state.dart';
+part 'objects/rich_message.dart';
+part 'objects/rich_message_source.dart';
 part 'objects/rich_text.dart';
 part 'objects/rtmp_url.dart';
 part 'objects/saved_credentials.dart';
@@ -1532,6 +1558,7 @@ part 'objects/saved_messages_topic.dart';
 part 'objects/saved_messages_topic_type.dart';
 part 'objects/scope_autosave_settings.dart';
 part 'objects/scope_notification_settings.dart';
+part 'objects/search_chat_type_filter.dart';
 part 'objects/search_messages_chat_type_filter.dart';
 part 'objects/search_messages_filter.dart';
 part 'objects/seconds.dart';
@@ -1539,6 +1566,7 @@ part 'objects/secret_chat.dart';
 part 'objects/secret_chat_state.dart';
 part 'objects/sent_gift.dart';
 part 'objects/session.dart';
+part 'objects/session_device_type.dart';
 part 'objects/session_type.dart';
 part 'objects/sessions.dart';
 part 'objects/settings_section.dart';
@@ -1698,17 +1726,21 @@ part 'objects/web_app.dart';
 part 'objects/web_app_info.dart';
 part 'objects/web_app_open_mode.dart';
 part 'objects/web_app_open_parameters.dart';
+part 'objects/web_app_url.dart';
+part 'objects/web_browser_settings.dart';
+part 'objects/web_browser_type.dart';
+part 'objects/web_domain_exception.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.64';
+const String tdlibVersion = '1.8.65';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '49b3bcbb6bfebf2ed44dd9f25102d2e1a94a58c4';
+const String tdlibSchemaCommit = '062f26052623dbecedb42075cab78a759e9f9987';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '49b3bcbb6bfebf2ed44dd9f25102d2e1a94a58c4',
+  '062f26052623dbecedb42075cab78a759e9f9987',
 ];
 
 /// Base class of every TDLib object.
@@ -1795,6 +1827,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'textEntity': TextEntity.fromJson,
   'textEntities': TextEntities.fromJson,
   'formattedText': FormattedText.fromJson,
+  'richMessage': RichMessage.fromJson,
+  'richMessageSourceMarkdown': RichMessageSourceMarkdown.fromJson,
+  'richMessageSourceHtml': RichMessageSourceHtml.fromJson,
+  'inputRichMessage': InputRichMessage.fromJson,
   'diffEntity': DiffEntity.fromJson,
   'diffText': DiffText.fromJson,
   'fixedText': FixedText.fromJson,
@@ -1894,6 +1930,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'animatedEmoji': AnimatedEmoji.fromJson,
   'contact': Contact.fromJson,
   'location': Location.fromJson,
+  'liveLocation': LiveLocation.fromJson,
   'venue': Venue.fromJson,
   'game': Game.fromJson,
   'stakeDiceState': StakeDiceState.fromJson,
@@ -1940,6 +1977,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'businessGreetingMessageSettings': BusinessGreetingMessageSettings.fromJson,
   'businessBotRights': BusinessBotRights.fromJson,
   'businessConnectedBot': BusinessConnectedBot.fromJson,
+  'businessConnectedBotInfo': BusinessConnectedBotInfo.fromJson,
   'businessStartPage': BusinessStartPage.fromJson,
   'inputBusinessStartPage': InputBusinessStartPage.fromJson,
   'businessOpeningHoursInterval': BusinessOpeningHoursInterval.fromJson,
@@ -1962,6 +2000,15 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputChatPhotoSticker': InputChatPhotoSticker.fromJson,
   'chatPermissions': ChatPermissions.fromJson,
   'chatAdministratorRights': ChatAdministratorRights.fromJson,
+  'themeParameters': ThemeParameters.fromJson,
+  'webAppOpenModeCompact': WebAppOpenModeCompact.fromJson,
+  'webAppOpenModeFullSize': WebAppOpenModeFullSize.fromJson,
+  'webAppOpenModeFullScreen': WebAppOpenModeFullScreen.fromJson,
+  'foundWebApp': FoundWebApp.fromJson,
+  'webAppUrl': WebAppUrl.fromJson,
+  'webAppInfo': WebAppInfo.fromJson,
+  'mainWebApp': MainWebApp.fromJson,
+  'webAppOpenParameters': WebAppOpenParameters.fromJson,
   'giftResalePriceStar': GiftResalePriceStar.fromJson,
   'giftResalePriceTon': GiftResalePriceTon.fromJson,
   'giftPurchaseOfferStatePending': GiftPurchaseOfferStatePending.fromJson,
@@ -2208,6 +2255,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'giveawayInfoCompleted': GiveawayInfoCompleted.fromJson,
   'giveawayPrizePremium': GiveawayPrizePremium.fromJson,
   'giveawayPrizeStars': GiveawayPrizeStars.fromJson,
+  'linkPreviewOptions': LinkPreviewOptions.fromJson,
   'accentColor': AccentColor.fromJson,
   'profileAccentColors': ProfileAccentColors.fromJson,
   'profileAccentColor': ProfileAccentColor.fromJson,
@@ -2251,6 +2299,14 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'supergroupMembersFilterBanned': SupergroupMembersFilterBanned.fromJson,
   'supergroupMembersFilterMention': SupergroupMembersFilterMention.fromJson,
   'supergroupMembersFilterBots': SupergroupMembersFilterBots.fromJson,
+  'chatJoinResultSuccess': ChatJoinResultSuccess.fromJson,
+  'chatJoinResultRequestSent': ChatJoinResultRequestSent.fromJson,
+  'chatJoinResultGuardBotApprovalRequired':
+      ChatJoinResultGuardBotApprovalRequired.fromJson,
+  'chatJoinResultDeclined': ChatJoinResultDeclined.fromJson,
+  'chatJoinRequestResultApproved': ChatJoinRequestResultApproved.fromJson,
+  'chatJoinRequestResultDeclined': ChatJoinRequestResultDeclined.fromJson,
+  'chatJoinRequestResultQueued': ChatJoinRequestResultQueued.fromJson,
   'chatInviteLink': ChatInviteLink.fromJson,
   'chatInviteLinks': ChatInviteLinks.fromJson,
   'chatInviteLinkCount': ChatInviteLinkCount.fromJson,
@@ -2383,6 +2439,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       ReactionNotificationSourceContacts.fromJson,
   'reactionNotificationSourceAll': ReactionNotificationSourceAll.fromJson,
   'reactionNotificationSettings': ReactionNotificationSettings.fromJson,
+  'draftMessageContentText': DraftMessageContentText.fromJson,
+  'draftMessageContentRichMessage': DraftMessageContentRichMessage.fromJson,
+  'draftMessageContentVideoNote': DraftMessageContentVideoNote.fromJson,
+  'draftMessageContentVoiceNote': DraftMessageContentVoiceNote.fromJson,
   'draftMessage': DraftMessage.fromJson,
   'chatTypePrivate': ChatTypePrivate.fromJson,
   'chatTypeBasicGroup': ChatTypeBasicGroup.fromJson,
@@ -2465,14 +2525,6 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'loginUrlInfoOpen': LoginUrlInfoOpen.fromJson,
   'loginUrlInfoRequestConfirmation': LoginUrlInfoRequestConfirmation.fromJson,
   'oauthLinkInfo': OauthLinkInfo.fromJson,
-  'themeParameters': ThemeParameters.fromJson,
-  'webAppOpenModeCompact': WebAppOpenModeCompact.fromJson,
-  'webAppOpenModeFullSize': WebAppOpenModeFullSize.fromJson,
-  'webAppOpenModeFullScreen': WebAppOpenModeFullScreen.fromJson,
-  'foundWebApp': FoundWebApp.fromJson,
-  'webAppInfo': WebAppInfo.fromJson,
-  'mainWebApp': MainWebApp.fromJson,
-  'webAppOpenParameters': WebAppOpenParameters.fromJson,
   'messageThreadInfo': MessageThreadInfo.fromJson,
   'savedMessagesTopicTypeMyNotes': SavedMessagesTopicTypeMyNotes.fromJson,
   'savedMessagesTopicTypeAuthorHidden':
@@ -2485,7 +2537,6 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'forumTopicInfo': ForumTopicInfo.fromJson,
   'forumTopic': ForumTopic.fromJson,
   'forumTopics': ForumTopics.fromJson,
-  'linkPreviewOptions': LinkPreviewOptions.fromJson,
   'sharedUser': SharedUser.fromJson,
   'sharedChat': SharedChat.fromJson,
   'builtInThemeClassic': BuiltInThemeClassic.fromJson,
@@ -2499,15 +2550,26 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'richTextItalic': RichTextItalic.fromJson,
   'richTextUnderline': RichTextUnderline.fromJson,
   'richTextStrikethrough': RichTextStrikethrough.fromJson,
+  'richTextSpoiler': RichTextSpoiler.fromJson,
+  'richTextDateTime': RichTextDateTime.fromJson,
+  'richTextMention': RichTextMention.fromJson,
+  'richTextHashtag': RichTextHashtag.fromJson,
+  'richTextCashtag': RichTextCashtag.fromJson,
+  'richTextBotCommand': RichTextBotCommand.fromJson,
   'richTextFixed': RichTextFixed.fromJson,
+  'richTextMentionName': RichTextMentionName.fromJson,
   'richTextUrl': RichTextUrl.fromJson,
   'richTextEmailAddress': RichTextEmailAddress.fromJson,
+  'richTextBankCardNumber': RichTextBankCardNumber.fromJson,
   'richTextSubscript': RichTextSubscript.fromJson,
   'richTextSuperscript': RichTextSuperscript.fromJson,
   'richTextMarked': RichTextMarked.fromJson,
   'richTextPhoneNumber': RichTextPhoneNumber.fromJson,
+  'richTextCustomEmoji': RichTextCustomEmoji.fromJson,
   'richTextIcon': RichTextIcon.fromJson,
+  'richTextMathematicalExpression': RichTextMathematicalExpression.fromJson,
   'richTextReference': RichTextReference.fromJson,
+  'richTextReferenceLink': RichTextReferenceLink.fromJson,
   'richTextAnchor': RichTextAnchor.fromJson,
   'richTextAnchorLink': RichTextAnchorLink.fromJson,
   'richTexts': RichTexts.fromJson,
@@ -2528,11 +2590,14 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'pageBlockAuthorDate': PageBlockAuthorDate.fromJson,
   'pageBlockHeader': PageBlockHeader.fromJson,
   'pageBlockSubheader': PageBlockSubheader.fromJson,
+  'pageBlockSectionHeading': PageBlockSectionHeading.fromJson,
   'pageBlockKicker': PageBlockKicker.fromJson,
   'pageBlockParagraph': PageBlockParagraph.fromJson,
   'pageBlockPreformatted': PageBlockPreformatted.fromJson,
   'pageBlockFooter': PageBlockFooter.fromJson,
+  'pageBlockThinking': PageBlockThinking.fromJson,
   'pageBlockDivider': PageBlockDivider.fromJson,
+  'pageBlockMathematicalExpression': PageBlockMathematicalExpression.fromJson,
   'pageBlockAnchor': PageBlockAnchor.fromJson,
   'pageBlockList': PageBlockList.fromJson,
   'pageBlockBlockQuote': PageBlockBlockQuote.fromJson,
@@ -2744,7 +2809,17 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputPassportElementErrorSourceFiles':
       InputPassportElementErrorSourceFiles.fromJson,
   'inputPassportElementError': InputPassportElementError.fromJson,
+  'pollMediaAnimation': PollMediaAnimation.fromJson,
+  'pollMediaAudio': PollMediaAudio.fromJson,
+  'pollMediaDocument': PollMediaDocument.fromJson,
+  'pollMediaLink': PollMediaLink.fromJson,
+  'pollMediaLocation': PollMediaLocation.fromJson,
+  'pollMediaPhoto': PollMediaPhoto.fromJson,
+  'pollMediaSticker': PollMediaSticker.fromJson,
+  'pollMediaVenue': PollMediaVenue.fromJson,
+  'pollMediaVideo': PollMediaVideo.fromJson,
   'messageText': MessageText.fromJson,
+  'messageRichMessage': MessageRichMessage.fromJson,
   'messageAnimation': MessageAnimation.fromJson,
   'messageAudio': MessageAudio.fromJson,
   'messageDocument': MessageDocument.fromJson,
@@ -2758,6 +2833,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageExpiredVideo': MessageExpiredVideo.fromJson,
   'messageExpiredVideoNote': MessageExpiredVideoNote.fromJson,
   'messageExpiredVoiceNote': MessageExpiredVoiceNote.fromJson,
+  'messageLiveLocation': MessageLiveLocation.fromJson,
   'messageLocation': MessageLocation.fromJson,
   'messageVenue': MessageVenue.fromJson,
   'messageContact': MessageContact.fromJson,
@@ -2883,6 +2959,11 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'diffEntityTypeReplace': DiffEntityTypeReplace.fromJson,
   'diffEntityTypeDelete': DiffEntityTypeDelete.fromJson,
   'inputThumbnail': InputThumbnail.fromJson,
+  'inputAnimation': InputAnimation.fromJson,
+  'inputAudio': InputAudio.fromJson,
+  'inputDocument': InputDocument.fromJson,
+  'inputPhoto': InputPhoto.fromJson,
+  'inputVideo': InputVideo.fromJson,
   'inputPaidMediaTypePhoto': InputPaidMediaTypePhoto.fromJson,
   'inputPaidMediaTypeVideo': InputPaidMediaTypeVideo.fromJson,
   'inputPaidMedia': InputPaidMedia.fromJson,
@@ -2896,7 +2977,17 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       MessageSelfDestructTypeImmediately.fromJson,
   'messageSendOptions': MessageSendOptions.fromJson,
   'messageCopyOptions': MessageCopyOptions.fromJson,
+  'inputPollMediaAnimation': InputPollMediaAnimation.fromJson,
+  'inputPollMediaAudio': InputPollMediaAudio.fromJson,
+  'inputPollMediaDocument': InputPollMediaDocument.fromJson,
+  'inputPollMediaLink': InputPollMediaLink.fromJson,
+  'inputPollMediaLocation': InputPollMediaLocation.fromJson,
+  'inputPollMediaPhoto': InputPollMediaPhoto.fromJson,
+  'inputPollMediaSticker': InputPollMediaSticker.fromJson,
+  'inputPollMediaVenue': InputPollMediaVenue.fromJson,
+  'inputPollMediaVideo': InputPollMediaVideo.fromJson,
   'inputMessageText': InputMessageText.fromJson,
+  'inputMessageRichMessage': InputMessageRichMessage.fromJson,
   'inputMessageAnimation': InputMessageAnimation.fromJson,
   'inputMessageAudio': InputMessageAudio.fromJson,
   'inputMessageDocument': InputMessageDocument.fromJson,
@@ -2906,6 +2997,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputMessageVideo': InputMessageVideo.fromJson,
   'inputMessageVideoNote': InputMessageVideoNote.fromJson,
   'inputMessageVoiceNote': InputMessageVoiceNote.fromJson,
+  'inputMessageLiveLocation': InputMessageLiveLocation.fromJson,
   'inputMessageLocation': InputMessageLocation.fromJson,
   'inputMessageVenue': InputMessageVenue.fromJson,
   'inputMessageContact': InputMessageContact.fromJson,
@@ -2949,6 +3041,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       SearchMessagesChatTypeFilterGroup.fromJson,
   'searchMessagesChatTypeFilterChannel':
       SearchMessagesChatTypeFilterChannel.fromJson,
+  'searchChatTypeFilterBot': SearchChatTypeFilterBot.fromJson,
+  'searchChatTypeFilterChannel': SearchChatTypeFilterChannel.fromJson,
   'chatActionTyping': ChatActionTyping.fromJson,
   'chatActionRecordingVideo': ChatActionRecordingVideo.fromJson,
   'chatActionUploadingVideo': ChatActionUploadingVideo.fromJson,
@@ -3298,6 +3392,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       PremiumLimitTypePinnedArchivedChatCount.fromJson,
   'premiumLimitTypePinnedSavedMessagesTopicCount':
       PremiumLimitTypePinnedSavedMessagesTopicCount.fromJson,
+  'premiumLimitTypeMessageTextLength':
+      PremiumLimitTypeMessageTextLength.fromJson,
   'premiumLimitTypeCaptionLength': PremiumLimitTypeCaptionLength.fromJson,
   'premiumLimitTypeBioLength': PremiumLimitTypeBioLength.fromJson,
   'premiumLimitTypeChatFolderInviteLinkCount':
@@ -3633,23 +3729,25 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       CanSendMessageToUserResultUserRestrictsNewChats.fromJson,
   'accountTtl': AccountTtl.fromJson,
   'messageAutoDeleteTime': MessageAutoDeleteTime.fromJson,
-  'sessionTypeAndroid': SessionTypeAndroid.fromJson,
-  'sessionTypeApple': SessionTypeApple.fromJson,
-  'sessionTypeBrave': SessionTypeBrave.fromJson,
-  'sessionTypeChrome': SessionTypeChrome.fromJson,
-  'sessionTypeEdge': SessionTypeEdge.fromJson,
-  'sessionTypeFirefox': SessionTypeFirefox.fromJson,
-  'sessionTypeIpad': SessionTypeIpad.fromJson,
-  'sessionTypeIphone': SessionTypeIphone.fromJson,
-  'sessionTypeLinux': SessionTypeLinux.fromJson,
-  'sessionTypeMac': SessionTypeMac.fromJson,
-  'sessionTypeOpera': SessionTypeOpera.fromJson,
-  'sessionTypeSafari': SessionTypeSafari.fromJson,
-  'sessionTypeUbuntu': SessionTypeUbuntu.fromJson,
-  'sessionTypeUnknown': SessionTypeUnknown.fromJson,
-  'sessionTypeVivaldi': SessionTypeVivaldi.fromJson,
-  'sessionTypeWindows': SessionTypeWindows.fromJson,
-  'sessionTypeXbox': SessionTypeXbox.fromJson,
+  'sessionTypeDevice': SessionTypeDevice.fromJson,
+  'sessionTypeConnectedBot': SessionTypeConnectedBot.fromJson,
+  'sessionDeviceTypeAndroid': SessionDeviceTypeAndroid.fromJson,
+  'sessionDeviceTypeApple': SessionDeviceTypeApple.fromJson,
+  'sessionDeviceTypeBrave': SessionDeviceTypeBrave.fromJson,
+  'sessionDeviceTypeChrome': SessionDeviceTypeChrome.fromJson,
+  'sessionDeviceTypeEdge': SessionDeviceTypeEdge.fromJson,
+  'sessionDeviceTypeFirefox': SessionDeviceTypeFirefox.fromJson,
+  'sessionDeviceTypeIpad': SessionDeviceTypeIpad.fromJson,
+  'sessionDeviceTypeIphone': SessionDeviceTypeIphone.fromJson,
+  'sessionDeviceTypeLinux': SessionDeviceTypeLinux.fromJson,
+  'sessionDeviceTypeMac': SessionDeviceTypeMac.fromJson,
+  'sessionDeviceTypeOpera': SessionDeviceTypeOpera.fromJson,
+  'sessionDeviceTypeSafari': SessionDeviceTypeSafari.fromJson,
+  'sessionDeviceTypeUbuntu': SessionDeviceTypeUbuntu.fromJson,
+  'sessionDeviceTypeUnknown': SessionDeviceTypeUnknown.fromJson,
+  'sessionDeviceTypeVivaldi': SessionDeviceTypeVivaldi.fromJson,
+  'sessionDeviceTypeWindows': SessionDeviceTypeWindows.fromJson,
+  'sessionDeviceTypeXbox': SessionDeviceTypeXbox.fromJson,
   'session': Session.fromJson,
   'sessions': Sessions.fromJson,
   'unconfirmedSession': UnconfirmedSession.fromJson,
@@ -3818,6 +3916,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'scopeAutosaveSettings': ScopeAutosaveSettings.fromJson,
   'autosaveSettingsException': AutosaveSettingsException.fromJson,
   'autosaveSettings': AutosaveSettings.fromJson,
+  'webDomainException': WebDomainException.fromJson,
+  'webBrowserSettings': WebBrowserSettings.fromJson,
+  'webBrowserTypeExternal': WebBrowserTypeExternal.fromJson,
+  'webBrowserTypeInApp': WebBrowserTypeInApp.fromJson,
   'connectionStateWaitingForNetwork': ConnectionStateWaitingForNetwork.fromJson,
   'connectionStateConnectingToProxy': ConnectionStateConnectingToProxy.fromJson,
   'connectionStateConnecting': ConnectionStateConnecting.fromJson,
@@ -4008,7 +4110,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateHavePendingNotifications': UpdateHavePendingNotifications.fromJson,
   'updateDeleteMessages': UpdateDeleteMessages.fromJson,
   'updateChatAction': UpdateChatAction.fromJson,
-  'updatePendingTextMessage': UpdatePendingTextMessage.fromJson,
+  'updatePendingMessage': UpdatePendingMessage.fromJson,
   'updateUserStatus': UpdateUserStatus.fromJson,
   'updateUser': UpdateUser.fromJson,
   'updateBasicGroup': UpdateBasicGroup.fromJson,
@@ -4046,6 +4148,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateUserPrivacySettingRules': UpdateUserPrivacySettingRules.fromJson,
   'updateUnreadMessageCount': UpdateUnreadMessageCount.fromJson,
   'updateUnreadChatCount': UpdateUnreadChatCount.fromJson,
+  'updateChatJoinResult': UpdateChatJoinResult.fromJson,
   'updateStory': UpdateStory.fromJson,
   'updateStoryDeleted': UpdateStoryDeleted.fromJson,
   'updateStoryPostSucceeded': UpdateStoryPostSucceeded.fromJson,
@@ -4066,6 +4169,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateEmojiChatThemes': UpdateEmojiChatThemes.fromJson,
   'updateAccentColors': UpdateAccentColors.fromJson,
   'updateProfileAccentColors': UpdateProfileAccentColors.fromJson,
+  'updateWebBrowserSettings': UpdateWebBrowserSettings.fromJson,
   'updateLanguagePackStrings': UpdateLanguagePackStrings.fromJson,
   'updateConnectionState': UpdateConnectionState.fromJson,
   'updateFreezeState': UpdateFreezeState.fromJson,

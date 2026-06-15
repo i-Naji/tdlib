@@ -91,7 +91,7 @@ final class InputInlineQueryResultAnimation extends InputInlineQueryResult {
   /// The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
   final ReplyMarkup? replyMarkup;
 
-  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageAnimation, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
+  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageRichMessage, inputMessageAnimation, inputMessageInvoice, inputMessageLiveLocation, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
 
   /// Parses a [InputInlineQueryResultAnimation] from TDLib JSON.
@@ -204,7 +204,7 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
   /// The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
   final ReplyMarkup? replyMarkup;
 
-  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
+  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageRichMessage, inputMessageInvoice, inputMessageLiveLocation, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
 
   /// Parses a [InputInlineQueryResultArticle] from TDLib JSON.
@@ -301,7 +301,7 @@ final class InputInlineQueryResultAudio extends InputInlineQueryResult {
   /// The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
   final ReplyMarkup? replyMarkup;
 
-  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageAudio, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
+  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageRichMessage, inputMessageAudio, inputMessageInvoice, inputMessageLiveLocation, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
 
   /// Parses a [InputInlineQueryResultAudio] from TDLib JSON.
@@ -390,7 +390,7 @@ final class InputInlineQueryResultContact extends InputInlineQueryResult {
   /// The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
   final ReplyMarkup? replyMarkup;
 
-  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
+  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageRichMessage, inputMessageInvoice, inputMessageLiveLocation, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
 
   /// Parses a [InputInlineQueryResultContact] from TDLib JSON.
@@ -491,7 +491,7 @@ final class InputInlineQueryResultDocument extends InputInlineQueryResult {
   /// The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
   final ReplyMarkup? replyMarkup;
 
-  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageDocument, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
+  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageRichMessage, inputMessageDocument, inputMessageInvoice, inputMessageLiveLocation, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
 
   /// Parses a [InputInlineQueryResultDocument] from TDLib JSON.
@@ -654,7 +654,7 @@ final class InputInlineQueryResultLocation extends InputInlineQueryResult {
   /// The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
   final ReplyMarkup? replyMarkup;
 
-  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
+  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageRichMessage, inputMessageInvoice, inputMessageLiveLocation, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
 
   /// Parses a [InputInlineQueryResultLocation] from TDLib JSON.
@@ -759,7 +759,7 @@ final class InputInlineQueryResultPhoto extends InputInlineQueryResult {
   /// The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
   final ReplyMarkup? replyMarkup;
 
-  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessagePhoto, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
+  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageRichMessage, inputMessagePhoto, inputMessageInvoice, inputMessageLiveLocation, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
 
   /// Parses a [InputInlineQueryResultPhoto] from TDLib JSON.
@@ -856,7 +856,7 @@ final class InputInlineQueryResultSticker extends InputInlineQueryResult {
   /// The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
   final ReplyMarkup? replyMarkup;
 
-  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageSticker, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
+  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageRichMessage, inputMessageSticker, inputMessageInvoice, inputMessageLiveLocation, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
 
   /// Parses a [InputInlineQueryResultSticker] from TDLib JSON.
@@ -945,7 +945,7 @@ final class InputInlineQueryResultVenue extends InputInlineQueryResult {
   /// The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
   final ReplyMarkup? replyMarkup;
 
-  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
+  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageRichMessage, inputMessageInvoice, inputMessageLiveLocation, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
 
   /// Parses a [InputInlineQueryResultVenue] from TDLib JSON.
@@ -1050,7 +1050,7 @@ final class InputInlineQueryResultVideo extends InputInlineQueryResult {
   /// The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
   final ReplyMarkup? replyMarkup;
 
-  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageVideo, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
+  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageRichMessage, inputMessageVideo, inputMessageInvoice, inputMessageLiveLocation, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
 
   /// Parses a [InputInlineQueryResultVideo] from TDLib JSON.
@@ -1151,7 +1151,7 @@ final class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
   /// The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
   final ReplyMarkup? replyMarkup;
 
-  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageVoiceNote, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
+  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageRichMessage, inputMessageVoiceNote, inputMessageInvoice, inputMessageLiveLocation, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
 
   /// Parses a [InputInlineQueryResultVoiceNote] from TDLib JSON.

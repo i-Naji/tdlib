@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of limit, increased for Premium users
 ///
-/// One of: [PremiumLimitTypeSupergroupCount], [PremiumLimitTypePinnedChatCount], [PremiumLimitTypeCreatedPublicChatCount], [PremiumLimitTypeSavedAnimationCount], [PremiumLimitTypeFavoriteStickerCount], [PremiumLimitTypeChatFolderCount], [PremiumLimitTypeChatFolderChosenChatCount], [PremiumLimitTypePinnedArchivedChatCount], [PremiumLimitTypePinnedSavedMessagesTopicCount], [PremiumLimitTypeCaptionLength], [PremiumLimitTypeBioLength], [PremiumLimitTypeChatFolderInviteLinkCount], [PremiumLimitTypeShareableChatFolderCount], [PremiumLimitTypeActiveStoryCount], [PremiumLimitTypeWeeklyPostedStoryCount], [PremiumLimitTypeMonthlyPostedStoryCount], [PremiumLimitTypeStoryCaptionLength], [PremiumLimitTypeStorySuggestedReactionAreaCount], [PremiumLimitTypeSimilarChatCount], [PremiumLimitTypeOwnedBotCount], [PremiumLimitTypeCustomTextCompositionStyleCount]; or [UndecodedPremiumLimitType] for a type newer than this API.
+/// One of: [PremiumLimitTypeSupergroupCount], [PremiumLimitTypePinnedChatCount], [PremiumLimitTypeCreatedPublicChatCount], [PremiumLimitTypeSavedAnimationCount], [PremiumLimitTypeFavoriteStickerCount], [PremiumLimitTypeChatFolderCount], [PremiumLimitTypeChatFolderChosenChatCount], [PremiumLimitTypePinnedArchivedChatCount], [PremiumLimitTypePinnedSavedMessagesTopicCount], [PremiumLimitTypeMessageTextLength], [PremiumLimitTypeCaptionLength], [PremiumLimitTypeBioLength], [PremiumLimitTypeChatFolderInviteLinkCount], [PremiumLimitTypeShareableChatFolderCount], [PremiumLimitTypeActiveStoryCount], [PremiumLimitTypeWeeklyPostedStoryCount], [PremiumLimitTypeMonthlyPostedStoryCount], [PremiumLimitTypeStoryCaptionLength], [PremiumLimitTypeStorySuggestedReactionAreaCount], [PremiumLimitTypeSimilarChatCount], [PremiumLimitTypeOwnedBotCount], [PremiumLimitTypeCustomTextCompositionStyleCount]; or [UndecodedPremiumLimitType] for a type newer than this API.
 sealed class PremiumLimitType extends TdObject {
   const PremiumLimitType();
 
@@ -272,6 +272,32 @@ final class PremiumLimitTypePinnedSavedMessagesTopicCount
   /// TDLib type name.
   static const String CONSTRUCTOR =
       'premiumLimitTypePinnedSavedMessagesTopicCount';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The maximum length of text of sent messages
+final class PremiumLimitTypeMessageTextLength extends PremiumLimitType {
+  /// The maximum length of text of sent messages
+  const PremiumLimitTypeMessageTextLength();
+
+  /// Parses a [PremiumLimitTypeMessageTextLength] from TDLib JSON.
+  factory PremiumLimitTypeMessageTextLength.fromJson(
+    Map<String, dynamic> json,
+  ) => const PremiumLimitTypeMessageTextLength();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PremiumLimitTypeMessageTextLength copyWith() =>
+      const PremiumLimitTypeMessageTextLength();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'premiumLimitTypeMessageTextLength';
 
   @override
   String getConstructor() => CONSTRUCTOR;

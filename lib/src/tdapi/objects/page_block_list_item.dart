@@ -6,38 +6,75 @@ part of '../tdapi.dart';
 /// Describes an item of a list page block
 final class PageBlockListItem extends TdObject {
   /// Describes an item of a list page block
-  const PageBlockListItem({required this.label, required this.pageBlocks});
+  const PageBlockListItem({
+    required this.label,
+    required this.blocks,
+    required this.hasCheckbox,
+    required this.isChecked,
+    required this.value,
+    required this.type,
+  });
 
   /// Item label
   final String label;
 
   /// Item blocks
-  final List<PageBlock> pageBlocks;
+  final List<PageBlock> blocks;
+
+  /// True, if the item has a checkbox
+  final bool hasCheckbox;
+
+  /// True, if the item is checked
+  final bool isChecked;
+
+  /// Value of the item; 0 for unordered lists
+  final int value;
+
+  /// Type of the item numbering type; must be one of "a" for a lowercase letters, "A" for an uppercase letters, "i" for lowercase Roman numerals, "I" for uppercase Roman numerals, "1" for decimal numbers, or empty for unordered lists
+  final String type;
 
   /// Parses a [PageBlockListItem] from TDLib JSON.
   factory PageBlockListItem.fromJson(Map<String, dynamic> json) =>
       PageBlockListItem(
         label: _readString(json['label']),
-        pageBlocks: _readList<PageBlock>(
-          json['page_blocks'],
+        blocks: _readList<PageBlock>(
+          json['blocks'],
           (e) => _readObject(e, PageBlock.fromJson),
         ),
+        hasCheckbox: _readBool(json['has_checkbox']),
+        isChecked: _readBool(json['is_checked']),
+        value: _readInt(json['value']),
+        type: _readString(json['type']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'label': label,
-    'page_blocks': [for (final e in pageBlocks) e.toJson()],
+    'blocks': [for (final e in blocks) e.toJson()],
+    'has_checkbox': hasCheckbox,
+    'is_checked': isChecked,
+    'value': value,
+    'type': type,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  PageBlockListItem copyWith({String? label, List<PageBlock>? pageBlocks}) =>
-      PageBlockListItem(
-        label: label ?? this.label,
-        pageBlocks: pageBlocks ?? this.pageBlocks,
-      );
+  PageBlockListItem copyWith({
+    String? label,
+    List<PageBlock>? blocks,
+    bool? hasCheckbox,
+    bool? isChecked,
+    int? value,
+    String? type,
+  }) => PageBlockListItem(
+    label: label ?? this.label,
+    blocks: blocks ?? this.blocks,
+    hasCheckbox: hasCheckbox ?? this.hasCheckbox,
+    isChecked: isChecked ?? this.isChecked,
+    value: value ?? this.value,
+    type: type ?? this.type,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockListItem';

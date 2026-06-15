@@ -11,6 +11,8 @@ final class ToggleSupergroupJoinByRequest extends TdFunction<Ok> {
   const ToggleSupergroupJoinByRequest({
     required this.supergroupId,
     required this.joinByRequest,
+    required this.guardBotUserId,
+    required this.applyToInviteLinks,
   });
 
   /// Identifier of the supergroup that isn't a broadcast group and isn't a channel direct message group
@@ -19,11 +21,19 @@ final class ToggleSupergroupJoinByRequest extends TdFunction<Ok> {
   /// New value of join_by_request
   final bool joinByRequest;
 
+  /// Identifier of the bot which will be the guard bot in the group; pass 0 if none; ignored if join_by_request == false. The bot must have administrator privileges and can_invite_users right in the supergroup chat, and must have userTypeBot.is_guard == true
+  final int guardBotUserId;
+
+  /// Pass true to apply the change to the existing invite links, including primary links
+  final bool applyToInviteLinks;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
     'supergroup_id': supergroupId,
     'join_by_request': joinByRequest,
+    'guard_bot_user_id': guardBotUserId,
+    'apply_to_invite_links': applyToInviteLinks,
     '@extra': ?extra,
   };
 
@@ -32,9 +42,13 @@ final class ToggleSupergroupJoinByRequest extends TdFunction<Ok> {
   ToggleSupergroupJoinByRequest copyWith({
     int? supergroupId,
     bool? joinByRequest,
+    int? guardBotUserId,
+    bool? applyToInviteLinks,
   }) => ToggleSupergroupJoinByRequest(
     supergroupId: supergroupId ?? this.supergroupId,
     joinByRequest: joinByRequest ?? this.joinByRequest,
+    guardBotUserId: guardBotUserId ?? this.guardBotUserId,
+    applyToInviteLinks: applyToInviteLinks ?? this.applyToInviteLinks,
   );
 
   /// TDLib type name.

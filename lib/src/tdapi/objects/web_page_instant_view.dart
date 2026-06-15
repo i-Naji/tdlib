@@ -7,7 +7,7 @@ part of '../tdapi.dart';
 final class WebPageInstantView extends TdObject {
   /// Describes an instant view page for a web page
   const WebPageInstantView({
-    required this.pageBlocks,
+    required this.blocks,
     required this.viewCount,
     required this.version,
     required this.isRtl,
@@ -18,7 +18,7 @@ final class WebPageInstantView extends TdObject {
   });
 
   /// Content of the instant view page
-  final List<PageBlock> pageBlocks;
+  final List<PageBlock> blocks;
 
   /// Number of the instant view views; 0 if unknown
   final int viewCount;
@@ -46,8 +46,8 @@ final class WebPageInstantView extends TdObject {
   /// Parses a [WebPageInstantView] from TDLib JSON.
   factory WebPageInstantView.fromJson(Map<String, dynamic> json) =>
       WebPageInstantView(
-        pageBlocks: _readList<PageBlock>(
-          json['page_blocks'],
+        blocks: _readList<PageBlock>(
+          json['blocks'],
           (e) => _readObject(e, PageBlock.fromJson),
         ),
         viewCount: _readInt(json['view_count']),
@@ -65,7 +65,7 @@ final class WebPageInstantView extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'page_blocks': [for (final e in pageBlocks) e.toJson()],
+    'blocks': [for (final e in blocks) e.toJson()],
     'view_count': viewCount,
     'version': version,
     'is_rtl': isRtl,
@@ -76,7 +76,7 @@ final class WebPageInstantView extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   WebPageInstantView copyWith({
-    List<PageBlock>? pageBlocks,
+    List<PageBlock>? blocks,
     int? viewCount,
     int? version,
     bool? isRtl,
@@ -85,7 +85,7 @@ final class WebPageInstantView extends TdObject {
     dynamic extra,
     int? clientId,
   }) => WebPageInstantView(
-    pageBlocks: pageBlocks ?? this.pageBlocks,
+    blocks: blocks ?? this.blocks,
     viewCount: viewCount ?? this.viewCount,
     version: version ?? this.version,
     isRtl: isRtl ?? this.isRtl,

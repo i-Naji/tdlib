@@ -13,7 +13,7 @@ final class Session extends TdObject {
     required this.isUnconfirmed,
     required this.canAcceptSecretChats,
     required this.canAcceptCalls,
-    required this.type,
+    required this.deviceType,
     required this.apiId,
     required this.applicationName,
     required this.applicationVersion,
@@ -47,8 +47,8 @@ final class Session extends TdObject {
   /// True, if incoming calls can be accepted by the session
   final bool canAcceptCalls;
 
-  /// Session type based on the system and application version, which can be used to display a corresponding icon
-  final SessionType type;
+  /// Session device type based on the system and application version, which can be used to display a corresponding icon
+  final SessionDeviceType deviceType;
 
   /// Telegram API identifier, as provided by the application
   final int apiId;
@@ -99,7 +99,7 @@ final class Session extends TdObject {
     isUnconfirmed: _readBool(json['is_unconfirmed']),
     canAcceptSecretChats: _readBool(json['can_accept_secret_chats']),
     canAcceptCalls: _readBool(json['can_accept_calls']),
-    type: _readObject(json['type'], SessionType.fromJson),
+    deviceType: _readObject(json['device_type'], SessionDeviceType.fromJson),
     apiId: _readInt(json['api_id']),
     applicationName: _readString(json['application_name']),
     applicationVersion: _readString(json['application_version']),
@@ -124,7 +124,7 @@ final class Session extends TdObject {
     'is_unconfirmed': isUnconfirmed,
     'can_accept_secret_chats': canAcceptSecretChats,
     'can_accept_calls': canAcceptCalls,
-    'type': type.toJson(),
+    'device_type': deviceType.toJson(),
     'api_id': apiId,
     'application_name': applicationName,
     'application_version': applicationVersion,
@@ -147,7 +147,7 @@ final class Session extends TdObject {
     bool? isUnconfirmed,
     bool? canAcceptSecretChats,
     bool? canAcceptCalls,
-    SessionType? type,
+    SessionDeviceType? deviceType,
     int? apiId,
     String? applicationName,
     String? applicationVersion,
@@ -168,7 +168,7 @@ final class Session extends TdObject {
     isUnconfirmed: isUnconfirmed ?? this.isUnconfirmed,
     canAcceptSecretChats: canAcceptSecretChats ?? this.canAcceptSecretChats,
     canAcceptCalls: canAcceptCalls ?? this.canAcceptCalls,
-    type: type ?? this.type,
+    deviceType: deviceType ?? this.deviceType,
     apiId: apiId ?? this.apiId,
     applicationName: applicationName ?? this.applicationName,
     applicationVersion: applicationVersion ?? this.applicationVersion,

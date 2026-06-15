@@ -8,10 +8,17 @@ part of '../tdapi.dart';
 /// Returns [Chats].
 final class SearchRecentlyFoundChats extends TdFunction<Chats> {
   /// Searches for the specified query in the title and username of up to 50 recently found chats. This is an offline method
-  const SearchRecentlyFoundChats({required this.query, required this.limit});
+  const SearchRecentlyFoundChats({
+    required this.query,
+    this.typeFilter,
+    required this.limit,
+  });
 
   /// Query to search for
   final String query;
+
+  /// Additional filter for type of the chats to be returned; pass null to search for chats of all types
+  final SearchChatTypeFilter? typeFilter;
 
   /// The maximum number of chats to be returned
   final int limit;
@@ -20,17 +27,22 @@ final class SearchRecentlyFoundChats extends TdFunction<Chats> {
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
     'query': query,
+    'type_filter': typeFilter?.toJson(),
     'limit': limit,
     '@extra': ?extra,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchRecentlyFoundChats copyWith({String? query, int? limit}) =>
-      SearchRecentlyFoundChats(
-        query: query ?? this.query,
-        limit: limit ?? this.limit,
-      );
+  SearchRecentlyFoundChats copyWith({
+    String? query,
+    SearchChatTypeFilter? Function()? typeFilter,
+    int? limit,
+  }) => SearchRecentlyFoundChats(
+    query: query ?? this.query,
+    typeFilter: typeFilter != null ? typeFilter() : this.typeFilter,
+    limit: limit ?? this.limit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchRecentlyFoundChats';

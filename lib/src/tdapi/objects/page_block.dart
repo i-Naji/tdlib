@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a block of an instant view for a web page
 ///
-/// One of: [PageBlockTitle], [PageBlockSubtitle], [PageBlockAuthorDate], [PageBlockHeader], [PageBlockSubheader], [PageBlockKicker], [PageBlockParagraph], [PageBlockPreformatted], [PageBlockFooter], [PageBlockDivider], [PageBlockAnchor], [PageBlockList], [PageBlockBlockQuote], [PageBlockPullQuote], [PageBlockAnimation], [PageBlockAudio], [PageBlockPhoto], [PageBlockVideo], [PageBlockVoiceNote], [PageBlockCover], [PageBlockEmbedded], [PageBlockEmbeddedPost], [PageBlockCollage], [PageBlockSlideshow], [PageBlockChatLink], [PageBlockTable], [PageBlockDetails], [PageBlockRelatedArticles], [PageBlockMap]; or [UndecodedPageBlock] for a type newer than this API.
+/// One of: [PageBlockTitle], [PageBlockSubtitle], [PageBlockAuthorDate], [PageBlockHeader], [PageBlockSubheader], [PageBlockSectionHeading], [PageBlockKicker], [PageBlockParagraph], [PageBlockPreformatted], [PageBlockFooter], [PageBlockThinking], [PageBlockDivider], [PageBlockMathematicalExpression], [PageBlockAnchor], [PageBlockList], [PageBlockBlockQuote], [PageBlockPullQuote], [PageBlockAnimation], [PageBlockAudio], [PageBlockPhoto], [PageBlockVideo], [PageBlockVoiceNote], [PageBlockCover], [PageBlockEmbedded], [PageBlockEmbeddedPost], [PageBlockCollage], [PageBlockSlideshow], [PageBlockChatLink], [PageBlockTable], [PageBlockDetails], [PageBlockRelatedArticles], [PageBlockMap]; or [UndecodedPageBlock] for a type newer than this API.
 sealed class PageBlock extends TdObject {
   const PageBlock();
 
@@ -42,9 +42,9 @@ final class UndecodedPageBlock extends PageBlock {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// The title of a page
+/// The title of a page; instant view only
 final class PageBlockTitle extends PageBlock {
-  /// The title of a page
+  /// The title of a page; instant view only
   const PageBlockTitle({required this.title});
 
   /// Title
@@ -73,9 +73,9 @@ final class PageBlockTitle extends PageBlock {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The subtitle of a page
+/// The subtitle of a page; instant view only
 final class PageBlockSubtitle extends PageBlock {
-  /// The subtitle of a page
+  /// The subtitle of a page; instant view only
   const PageBlockSubtitle({required this.subtitle});
 
   /// Subtitle
@@ -106,9 +106,9 @@ final class PageBlockSubtitle extends PageBlock {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The author and publishing date of a page
+/// The author and publishing date of a page; instant view only
 final class PageBlockAuthorDate extends PageBlock {
-  /// The author and publishing date of a page
+  /// The author and publishing date of a page; instant view only
   const PageBlockAuthorDate({required this.author, required this.publishDate});
 
   /// Author
@@ -147,9 +147,9 @@ final class PageBlockAuthorDate extends PageBlock {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A header
+/// A header; instant view only
 final class PageBlockHeader extends PageBlock {
-  /// A header
+  /// A header; instant view only
   const PageBlockHeader({required this.header});
 
   /// Header
@@ -178,9 +178,9 @@ final class PageBlockHeader extends PageBlock {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A subheader
+/// A subheader; instant view only
 final class PageBlockSubheader extends PageBlock {
-  /// A subheader
+  /// A subheader; instant view only
   const PageBlockSubheader({required this.subheader});
 
   /// Subheader
@@ -211,9 +211,47 @@ final class PageBlockSubheader extends PageBlock {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A kicker
+/// A section heading
+final class PageBlockSectionHeading extends PageBlock {
+  /// A section heading
+  const PageBlockSectionHeading({required this.text, required this.size});
+
+  /// Text of the section heading
+  final RichText text;
+
+  /// Relative size of the text font; 1-6, 1 is the largest, 6 is the smallest
+  final int size;
+
+  /// Parses a [PageBlockSectionHeading] from TDLib JSON.
+  factory PageBlockSectionHeading.fromJson(Map<String, dynamic> json) =>
+      PageBlockSectionHeading(
+        text: _readObject(json['text'], RichText.fromJson),
+        size: _readInt(json['size']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'size': size,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PageBlockSectionHeading copyWith({RichText? text, int? size}) =>
+      PageBlockSectionHeading(text: text ?? this.text, size: size ?? this.size);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'pageBlockSectionHeading';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A kicker; instant view only
 final class PageBlockKicker extends PageBlock {
-  /// A kicker
+  /// A kicker; instant view only
   const PageBlockKicker({required this.kicker});
 
   /// Kicker
@@ -345,6 +383,37 @@ final class PageBlockFooter extends PageBlock {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// A "Thinking..." placeholder; for pending rich messages only
+final class PageBlockThinking extends PageBlock {
+  /// A "Thinking..." placeholder; for pending rich messages only
+  const PageBlockThinking({required this.text});
+
+  /// Text of the placeholder
+  final RichText text;
+
+  /// Parses a [PageBlockThinking] from TDLib JSON.
+  factory PageBlockThinking.fromJson(Map<String, dynamic> json) =>
+      PageBlockThinking(text: _readObject(json['text'], RichText.fromJson));
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PageBlockThinking copyWith({RichText? text}) =>
+      PageBlockThinking(text: text ?? this.text);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'pageBlockThinking';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// An empty block separating a page
 final class PageBlockDivider extends PageBlock {
   /// An empty block separating a page
@@ -364,6 +433,41 @@ final class PageBlockDivider extends PageBlock {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockDivider';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A mathematical expression
+final class PageBlockMathematicalExpression extends PageBlock {
+  /// A mathematical expression
+  const PageBlockMathematicalExpression({required this.expression});
+
+  /// The expression in LaTeX format
+  final String expression;
+
+  /// Parses a [PageBlockMathematicalExpression] from TDLib JSON.
+  factory PageBlockMathematicalExpression.fromJson(Map<String, dynamic> json) =>
+      PageBlockMathematicalExpression(
+        expression: _readString(json['expression']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'expression': expression,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PageBlockMathematicalExpression copyWith({String? expression}) =>
+      PageBlockMathematicalExpression(
+        expression: expression ?? this.expression,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'pageBlockMathematicalExpression';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -435,36 +539,41 @@ final class PageBlockList extends PageBlock {
 /// A block quote
 final class PageBlockBlockQuote extends PageBlock {
   /// A block quote
-  const PageBlockBlockQuote({required this.text, required this.credit});
+  const PageBlockBlockQuote({required this.blocks, this.credit});
 
-  /// Quote text
-  final RichText text;
+  /// Quote blocks
+  final List<PageBlock> blocks;
 
-  /// Quote credit
-  final RichText credit;
+  /// Quote credit; may be null if none
+  final RichText? credit;
 
   /// Parses a [PageBlockBlockQuote] from TDLib JSON.
   factory PageBlockBlockQuote.fromJson(Map<String, dynamic> json) =>
       PageBlockBlockQuote(
-        text: _readObject(json['text'], RichText.fromJson),
-        credit: _readObject(json['credit'], RichText.fromJson),
+        blocks: _readList<PageBlock>(
+          json['blocks'],
+          (e) => _readObject(e, PageBlock.fromJson),
+        ),
+        credit: _readOptional(json['credit'], RichText.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'text': text.toJson(),
-    'credit': credit.toJson(),
+    'blocks': [for (final e in blocks) e.toJson()],
+    'credit': credit?.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PageBlockBlockQuote copyWith({RichText? text, RichText? credit}) =>
-      PageBlockBlockQuote(
-        text: text ?? this.text,
-        credit: credit ?? this.credit,
-      );
+  PageBlockBlockQuote copyWith({
+    List<PageBlock>? blocks,
+    RichText? Function()? credit,
+  }) => PageBlockBlockQuote(
+    blocks: blocks ?? this.blocks,
+    credit: credit != null ? credit() : this.credit,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pageBlockBlockQuote';
@@ -476,35 +585,35 @@ final class PageBlockBlockQuote extends PageBlock {
 /// A pull quote
 final class PageBlockPullQuote extends PageBlock {
   /// A pull quote
-  const PageBlockPullQuote({required this.text, required this.credit});
+  const PageBlockPullQuote({required this.text, this.credit});
 
   /// Quote text
   final RichText text;
 
-  /// Quote credit
-  final RichText credit;
+  /// Quote credit; may be null if none
+  final RichText? credit;
 
   /// Parses a [PageBlockPullQuote] from TDLib JSON.
   factory PageBlockPullQuote.fromJson(Map<String, dynamic> json) =>
       PageBlockPullQuote(
         text: _readObject(json['text'], RichText.fromJson),
-        credit: _readObject(json['credit'], RichText.fromJson),
+        credit: _readOptional(json['credit'], RichText.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'text': text.toJson(),
-    'credit': credit.toJson(),
+    'credit': credit?.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PageBlockPullQuote copyWith({RichText? text, RichText? credit}) =>
+  PageBlockPullQuote copyWith({RichText? text, RichText? Function()? credit}) =>
       PageBlockPullQuote(
         text: text ?? this.text,
-        credit: credit ?? this.credit,
+        credit: credit != null ? credit() : this.credit,
       );
 
   /// TDLib type name.
@@ -519,33 +628,39 @@ final class PageBlockAnimation extends PageBlock {
   /// An animation
   const PageBlockAnimation({
     this.animation,
-    required this.caption,
+    this.caption,
     required this.needAutoplay,
+    required this.hasSpoiler,
   });
 
   /// Animation file; may be null
   final Animation? animation;
 
-  /// Animation caption
-  final PageBlockCaption caption;
+  /// Animation caption; may be null if none
+  final PageBlockCaption? caption;
 
   /// True, if the animation must be played automatically
   final bool needAutoplay;
+
+  /// True, if the animation preview must be covered by a spoiler animation
+  final bool hasSpoiler;
 
   /// Parses a [PageBlockAnimation] from TDLib JSON.
   factory PageBlockAnimation.fromJson(Map<String, dynamic> json) =>
       PageBlockAnimation(
         animation: _readOptional(json['animation'], Animation.fromJson),
-        caption: _readObject(json['caption'], PageBlockCaption.fromJson),
+        caption: _readOptional(json['caption'], PageBlockCaption.fromJson),
         needAutoplay: _readBool(json['need_autoplay']),
+        hasSpoiler: _readBool(json['has_spoiler']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'animation': animation?.toJson(),
-    'caption': caption.toJson(),
+    'caption': caption?.toJson(),
     'need_autoplay': needAutoplay,
+    'has_spoiler': hasSpoiler,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -553,12 +668,14 @@ final class PageBlockAnimation extends PageBlock {
   @override
   PageBlockAnimation copyWith({
     Animation? Function()? animation,
-    PageBlockCaption? caption,
+    PageBlockCaption? Function()? caption,
     bool? needAutoplay,
+    bool? hasSpoiler,
   }) => PageBlockAnimation(
     animation: animation != null ? animation() : this.animation,
-    caption: caption ?? this.caption,
+    caption: caption != null ? caption() : this.caption,
     needAutoplay: needAutoplay ?? this.needAutoplay,
+    hasSpoiler: hasSpoiler ?? this.hasSpoiler,
   );
 
   /// TDLib type name.
@@ -571,25 +688,25 @@ final class PageBlockAnimation extends PageBlock {
 /// An audio file
 final class PageBlockAudio extends PageBlock {
   /// An audio file
-  const PageBlockAudio({this.audio, required this.caption});
+  const PageBlockAudio({this.audio, this.caption});
 
   /// Audio file; may be null
   final Audio? audio;
 
-  /// Audio file caption
-  final PageBlockCaption caption;
+  /// Audio file caption; may be null if none
+  final PageBlockCaption? caption;
 
   /// Parses a [PageBlockAudio] from TDLib JSON.
   factory PageBlockAudio.fromJson(Map<String, dynamic> json) => PageBlockAudio(
     audio: _readOptional(json['audio'], Audio.fromJson),
-    caption: _readObject(json['caption'], PageBlockCaption.fromJson),
+    caption: _readOptional(json['caption'], PageBlockCaption.fromJson),
   );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'audio': audio?.toJson(),
-    'caption': caption.toJson(),
+    'caption': caption?.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -597,10 +714,10 @@ final class PageBlockAudio extends PageBlock {
   @override
   PageBlockAudio copyWith({
     Audio? Function()? audio,
-    PageBlockCaption? caption,
+    PageBlockCaption? Function()? caption,
   }) => PageBlockAudio(
     audio: audio != null ? audio() : this.audio,
-    caption: caption ?? this.caption,
+    caption: caption != null ? caption() : this.caption,
   );
 
   /// TDLib type name.
@@ -613,30 +730,40 @@ final class PageBlockAudio extends PageBlock {
 /// A photo
 final class PageBlockPhoto extends PageBlock {
   /// A photo
-  const PageBlockPhoto({this.photo, required this.caption, required this.url});
+  const PageBlockPhoto({
+    this.photo,
+    this.caption,
+    required this.url,
+    required this.hasSpoiler,
+  });
 
   /// Photo file; may be null
   final Photo? photo;
 
-  /// Photo caption
-  final PageBlockCaption caption;
+  /// Photo caption; may be null if none
+  final PageBlockCaption? caption;
 
-  /// URL that needs to be opened when the photo is clicked
+  /// URL that needs to be opened when the photo is clicked; instant view only
   final String url;
+
+  /// True, if the photo preview must be covered by a spoiler animation
+  final bool hasSpoiler;
 
   /// Parses a [PageBlockPhoto] from TDLib JSON.
   factory PageBlockPhoto.fromJson(Map<String, dynamic> json) => PageBlockPhoto(
     photo: _readOptional(json['photo'], Photo.fromJson),
-    caption: _readObject(json['caption'], PageBlockCaption.fromJson),
+    caption: _readOptional(json['caption'], PageBlockCaption.fromJson),
     url: _readString(json['url']),
+    hasSpoiler: _readBool(json['has_spoiler']),
   );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'photo': photo?.toJson(),
-    'caption': caption.toJson(),
+    'caption': caption?.toJson(),
     'url': url,
+    'has_spoiler': hasSpoiler,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -644,12 +771,14 @@ final class PageBlockPhoto extends PageBlock {
   @override
   PageBlockPhoto copyWith({
     Photo? Function()? photo,
-    PageBlockCaption? caption,
+    PageBlockCaption? Function()? caption,
     String? url,
+    bool? hasSpoiler,
   }) => PageBlockPhoto(
     photo: photo != null ? photo() : this.photo,
-    caption: caption ?? this.caption,
+    caption: caption != null ? caption() : this.caption,
     url: url ?? this.url,
+    hasSpoiler: hasSpoiler ?? this.hasSpoiler,
   );
 
   /// TDLib type name.
@@ -664,16 +793,17 @@ final class PageBlockVideo extends PageBlock {
   /// A video
   const PageBlockVideo({
     this.video,
-    required this.caption,
+    this.caption,
     required this.needAutoplay,
     required this.isLooped,
+    required this.hasSpoiler,
   });
 
   /// Video file; may be null
   final Video? video;
 
-  /// Video caption
-  final PageBlockCaption caption;
+  /// Video caption; may be null if none
+  final PageBlockCaption? caption;
 
   /// True, if the video must be played automatically
   final bool needAutoplay;
@@ -681,21 +811,26 @@ final class PageBlockVideo extends PageBlock {
   /// True, if the video must be looped
   final bool isLooped;
 
+  /// True, if the video preview must be covered by a spoiler animation
+  final bool hasSpoiler;
+
   /// Parses a [PageBlockVideo] from TDLib JSON.
   factory PageBlockVideo.fromJson(Map<String, dynamic> json) => PageBlockVideo(
     video: _readOptional(json['video'], Video.fromJson),
-    caption: _readObject(json['caption'], PageBlockCaption.fromJson),
+    caption: _readOptional(json['caption'], PageBlockCaption.fromJson),
     needAutoplay: _readBool(json['need_autoplay']),
     isLooped: _readBool(json['is_looped']),
+    hasSpoiler: _readBool(json['has_spoiler']),
   );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'video': video?.toJson(),
-    'caption': caption.toJson(),
+    'caption': caption?.toJson(),
     'need_autoplay': needAutoplay,
     'is_looped': isLooped,
+    'has_spoiler': hasSpoiler,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -703,14 +838,16 @@ final class PageBlockVideo extends PageBlock {
   @override
   PageBlockVideo copyWith({
     Video? Function()? video,
-    PageBlockCaption? caption,
+    PageBlockCaption? Function()? caption,
     bool? needAutoplay,
     bool? isLooped,
+    bool? hasSpoiler,
   }) => PageBlockVideo(
     video: video != null ? video() : this.video,
-    caption: caption ?? this.caption,
+    caption: caption != null ? caption() : this.caption,
     needAutoplay: needAutoplay ?? this.needAutoplay,
     isLooped: isLooped ?? this.isLooped,
+    hasSpoiler: hasSpoiler ?? this.hasSpoiler,
   );
 
   /// TDLib type name.
@@ -723,26 +860,26 @@ final class PageBlockVideo extends PageBlock {
 /// A voice note
 final class PageBlockVoiceNote extends PageBlock {
   /// A voice note
-  const PageBlockVoiceNote({this.voiceNote, required this.caption});
+  const PageBlockVoiceNote({this.voiceNote, this.caption});
 
   /// Voice note; may be null
   final VoiceNote? voiceNote;
 
-  /// Voice note caption
-  final PageBlockCaption caption;
+  /// Voice note caption; may be null if none
+  final PageBlockCaption? caption;
 
   /// Parses a [PageBlockVoiceNote] from TDLib JSON.
   factory PageBlockVoiceNote.fromJson(Map<String, dynamic> json) =>
       PageBlockVoiceNote(
         voiceNote: _readOptional(json['voice_note'], VoiceNote.fromJson),
-        caption: _readObject(json['caption'], PageBlockCaption.fromJson),
+        caption: _readOptional(json['caption'], PageBlockCaption.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'voice_note': voiceNote?.toJson(),
-    'caption': caption.toJson(),
+    'caption': caption?.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -750,10 +887,10 @@ final class PageBlockVoiceNote extends PageBlock {
   @override
   PageBlockVoiceNote copyWith({
     VoiceNote? Function()? voiceNote,
-    PageBlockCaption? caption,
+    PageBlockCaption? Function()? caption,
   }) => PageBlockVoiceNote(
     voiceNote: voiceNote != null ? voiceNote() : this.voiceNote,
-    caption: caption ?? this.caption,
+    caption: caption != null ? caption() : this.caption,
   );
 
   /// TDLib type name.
@@ -763,9 +900,9 @@ final class PageBlockVoiceNote extends PageBlock {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A page cover
+/// A page cover; instant view only
 final class PageBlockCover extends PageBlock {
-  /// A page cover
+  /// A page cover; instant view only
   const PageBlockCover({required this.cover});
 
   /// Cover
@@ -794,16 +931,16 @@ final class PageBlockCover extends PageBlock {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// An embedded web page
+/// An embedded web page; instant view only
 final class PageBlockEmbedded extends PageBlock {
-  /// An embedded web page
+  /// An embedded web page; instant view only
   const PageBlockEmbedded({
     required this.url,
     required this.html,
     this.posterPhoto,
     required this.width,
     required this.height,
-    required this.caption,
+    this.caption,
     required this.isFullWidth,
     required this.allowScrolling,
   });
@@ -823,8 +960,8 @@ final class PageBlockEmbedded extends PageBlock {
   /// Block height; 0 if unknown
   final int height;
 
-  /// Block caption
-  final PageBlockCaption caption;
+  /// Block caption; may be null if none
+  final PageBlockCaption? caption;
 
   /// True, if the block must be full width
   final bool isFullWidth;
@@ -840,7 +977,7 @@ final class PageBlockEmbedded extends PageBlock {
         posterPhoto: _readOptional(json['poster_photo'], Photo.fromJson),
         width: _readInt(json['width']),
         height: _readInt(json['height']),
-        caption: _readObject(json['caption'], PageBlockCaption.fromJson),
+        caption: _readOptional(json['caption'], PageBlockCaption.fromJson),
         isFullWidth: _readBool(json['is_full_width']),
         allowScrolling: _readBool(json['allow_scrolling']),
       );
@@ -853,7 +990,7 @@ final class PageBlockEmbedded extends PageBlock {
     'poster_photo': posterPhoto?.toJson(),
     'width': width,
     'height': height,
-    'caption': caption.toJson(),
+    'caption': caption?.toJson(),
     'is_full_width': isFullWidth,
     'allow_scrolling': allowScrolling,
   };
@@ -867,7 +1004,7 @@ final class PageBlockEmbedded extends PageBlock {
     Photo? Function()? posterPhoto,
     int? width,
     int? height,
-    PageBlockCaption? caption,
+    PageBlockCaption? Function()? caption,
     bool? isFullWidth,
     bool? allowScrolling,
   }) => PageBlockEmbedded(
@@ -876,7 +1013,7 @@ final class PageBlockEmbedded extends PageBlock {
     posterPhoto: posterPhoto != null ? posterPhoto() : this.posterPhoto,
     width: width ?? this.width,
     height: height ?? this.height,
-    caption: caption ?? this.caption,
+    caption: caption != null ? caption() : this.caption,
     isFullWidth: isFullWidth ?? this.isFullWidth,
     allowScrolling: allowScrolling ?? this.allowScrolling,
   );
@@ -888,16 +1025,16 @@ final class PageBlockEmbedded extends PageBlock {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// An embedded post
+/// An embedded post; instant view only
 final class PageBlockEmbeddedPost extends PageBlock {
-  /// An embedded post
+  /// An embedded post; instant view only
   const PageBlockEmbeddedPost({
     required this.url,
     required this.author,
     this.authorPhoto,
     required this.date,
-    required this.pageBlocks,
-    required this.caption,
+    required this.blocks,
+    this.caption,
   });
 
   /// URL of the embedded post
@@ -913,10 +1050,10 @@ final class PageBlockEmbeddedPost extends PageBlock {
   final int date;
 
   /// Post content
-  final List<PageBlock> pageBlocks;
+  final List<PageBlock> blocks;
 
-  /// Post caption
-  final PageBlockCaption caption;
+  /// Post caption; may be null if none
+  final PageBlockCaption? caption;
 
   /// Parses a [PageBlockEmbeddedPost] from TDLib JSON.
   factory PageBlockEmbeddedPost.fromJson(Map<String, dynamic> json) =>
@@ -925,11 +1062,11 @@ final class PageBlockEmbeddedPost extends PageBlock {
         author: _readString(json['author']),
         authorPhoto: _readOptional(json['author_photo'], Photo.fromJson),
         date: _readInt(json['date']),
-        pageBlocks: _readList<PageBlock>(
-          json['page_blocks'],
+        blocks: _readList<PageBlock>(
+          json['blocks'],
           (e) => _readObject(e, PageBlock.fromJson),
         ),
-        caption: _readObject(json['caption'], PageBlockCaption.fromJson),
+        caption: _readOptional(json['caption'], PageBlockCaption.fromJson),
       );
 
   @override
@@ -939,8 +1076,8 @@ final class PageBlockEmbeddedPost extends PageBlock {
     'author': author,
     'author_photo': authorPhoto?.toJson(),
     'date': date,
-    'page_blocks': [for (final e in pageBlocks) e.toJson()],
-    'caption': caption.toJson(),
+    'blocks': [for (final e in blocks) e.toJson()],
+    'caption': caption?.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -951,15 +1088,15 @@ final class PageBlockEmbeddedPost extends PageBlock {
     String? author,
     Photo? Function()? authorPhoto,
     int? date,
-    List<PageBlock>? pageBlocks,
-    PageBlockCaption? caption,
+    List<PageBlock>? blocks,
+    PageBlockCaption? Function()? caption,
   }) => PageBlockEmbeddedPost(
     url: url ?? this.url,
     author: author ?? this.author,
     authorPhoto: authorPhoto != null ? authorPhoto() : this.authorPhoto,
     date: date ?? this.date,
-    pageBlocks: pageBlocks ?? this.pageBlocks,
-    caption: caption ?? this.caption,
+    blocks: blocks ?? this.blocks,
+    caption: caption != null ? caption() : this.caption,
   );
 
   /// TDLib type name.
@@ -972,40 +1109,40 @@ final class PageBlockEmbeddedPost extends PageBlock {
 /// A collage
 final class PageBlockCollage extends PageBlock {
   /// A collage
-  const PageBlockCollage({required this.pageBlocks, required this.caption});
+  const PageBlockCollage({required this.blocks, this.caption});
 
   /// Collage item contents
-  final List<PageBlock> pageBlocks;
+  final List<PageBlock> blocks;
 
-  /// Block caption
-  final PageBlockCaption caption;
+  /// Block caption; may be null if none
+  final PageBlockCaption? caption;
 
   /// Parses a [PageBlockCollage] from TDLib JSON.
   factory PageBlockCollage.fromJson(Map<String, dynamic> json) =>
       PageBlockCollage(
-        pageBlocks: _readList<PageBlock>(
-          json['page_blocks'],
+        blocks: _readList<PageBlock>(
+          json['blocks'],
           (e) => _readObject(e, PageBlock.fromJson),
         ),
-        caption: _readObject(json['caption'], PageBlockCaption.fromJson),
+        caption: _readOptional(json['caption'], PageBlockCaption.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'page_blocks': [for (final e in pageBlocks) e.toJson()],
-    'caption': caption.toJson(),
+    'blocks': [for (final e in blocks) e.toJson()],
+    'caption': caption?.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockCollage copyWith({
-    List<PageBlock>? pageBlocks,
-    PageBlockCaption? caption,
+    List<PageBlock>? blocks,
+    PageBlockCaption? Function()? caption,
   }) => PageBlockCollage(
-    pageBlocks: pageBlocks ?? this.pageBlocks,
-    caption: caption ?? this.caption,
+    blocks: blocks ?? this.blocks,
+    caption: caption != null ? caption() : this.caption,
   );
 
   /// TDLib type name.
@@ -1018,40 +1155,40 @@ final class PageBlockCollage extends PageBlock {
 /// A slideshow
 final class PageBlockSlideshow extends PageBlock {
   /// A slideshow
-  const PageBlockSlideshow({required this.pageBlocks, required this.caption});
+  const PageBlockSlideshow({required this.blocks, this.caption});
 
   /// Slideshow item contents
-  final List<PageBlock> pageBlocks;
+  final List<PageBlock> blocks;
 
-  /// Block caption
-  final PageBlockCaption caption;
+  /// Block caption; may be null if none
+  final PageBlockCaption? caption;
 
   /// Parses a [PageBlockSlideshow] from TDLib JSON.
   factory PageBlockSlideshow.fromJson(Map<String, dynamic> json) =>
       PageBlockSlideshow(
-        pageBlocks: _readList<PageBlock>(
-          json['page_blocks'],
+        blocks: _readList<PageBlock>(
+          json['blocks'],
           (e) => _readObject(e, PageBlock.fromJson),
         ),
-        caption: _readObject(json['caption'], PageBlockCaption.fromJson),
+        caption: _readOptional(json['caption'], PageBlockCaption.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'page_blocks': [for (final e in pageBlocks) e.toJson()],
-    'caption': caption.toJson(),
+    'blocks': [for (final e in blocks) e.toJson()],
+    'caption': caption?.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockSlideshow copyWith({
-    List<PageBlock>? pageBlocks,
-    PageBlockCaption? caption,
+    List<PageBlock>? blocks,
+    PageBlockCaption? Function()? caption,
   }) => PageBlockSlideshow(
-    pageBlocks: pageBlocks ?? this.pageBlocks,
-    caption: caption ?? this.caption,
+    blocks: blocks ?? this.blocks,
+    caption: caption != null ? caption() : this.caption,
   );
 
   /// TDLib type name.
@@ -1061,9 +1198,9 @@ final class PageBlockSlideshow extends PageBlock {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A link to a chat
+/// A link to a chat; instant view only
 final class PageBlockChatLink extends PageBlock {
-  /// A link to a chat
+  /// A link to a chat; instant view only
   const PageBlockChatLink({
     required this.title,
     this.photo,
@@ -1127,14 +1264,14 @@ final class PageBlockChatLink extends PageBlock {
 final class PageBlockTable extends PageBlock {
   /// A table
   const PageBlockTable({
-    required this.caption,
+    this.caption,
     required this.cells,
     required this.isBordered,
     required this.isStriped,
   });
 
-  /// Table caption
-  final RichText caption;
+  /// Table caption; may be null if none
+  final RichText? caption;
 
   /// Table cells
   final List<List<PageBlockTableCell>> cells;
@@ -1147,7 +1284,7 @@ final class PageBlockTable extends PageBlock {
 
   /// Parses a [PageBlockTable] from TDLib JSON.
   factory PageBlockTable.fromJson(Map<String, dynamic> json) => PageBlockTable(
-    caption: _readObject(json['caption'], RichText.fromJson),
+    caption: _readOptional(json['caption'], RichText.fromJson),
     cells: _readList<List<PageBlockTableCell>>(
       json['cells'],
       (e) => _readList<PageBlockTableCell>(
@@ -1162,7 +1299,7 @@ final class PageBlockTable extends PageBlock {
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'caption': caption.toJson(),
+    'caption': caption?.toJson(),
     'cells': [
       for (final e in cells) [for (final e1 in e) e1.toJson()],
     ],
@@ -1174,12 +1311,12 @@ final class PageBlockTable extends PageBlock {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockTable copyWith({
-    RichText? caption,
+    RichText? Function()? caption,
     List<List<PageBlockTableCell>>? cells,
     bool? isBordered,
     bool? isStriped,
   }) => PageBlockTable(
-    caption: caption ?? this.caption,
+    caption: caption != null ? caption() : this.caption,
     cells: cells ?? this.cells,
     isBordered: isBordered ?? this.isBordered,
     isStriped: isStriped ?? this.isStriped,
@@ -1197,7 +1334,7 @@ final class PageBlockDetails extends PageBlock {
   /// A collapsible block
   const PageBlockDetails({
     required this.header,
-    required this.pageBlocks,
+    required this.blocks,
     required this.isOpen,
   });
 
@@ -1205,7 +1342,7 @@ final class PageBlockDetails extends PageBlock {
   final RichText header;
 
   /// Block contents
-  final List<PageBlock> pageBlocks;
+  final List<PageBlock> blocks;
 
   /// True, if the block is open by default
   final bool isOpen;
@@ -1214,8 +1351,8 @@ final class PageBlockDetails extends PageBlock {
   factory PageBlockDetails.fromJson(Map<String, dynamic> json) =>
       PageBlockDetails(
         header: _readObject(json['header'], RichText.fromJson),
-        pageBlocks: _readList<PageBlock>(
-          json['page_blocks'],
+        blocks: _readList<PageBlock>(
+          json['blocks'],
           (e) => _readObject(e, PageBlock.fromJson),
         ),
         isOpen: _readBool(json['is_open']),
@@ -1225,7 +1362,7 @@ final class PageBlockDetails extends PageBlock {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'header': header.toJson(),
-    'page_blocks': [for (final e in pageBlocks) e.toJson()],
+    'blocks': [for (final e in blocks) e.toJson()],
     'is_open': isOpen,
   };
 
@@ -1234,11 +1371,11 @@ final class PageBlockDetails extends PageBlock {
   @override
   PageBlockDetails copyWith({
     RichText? header,
-    List<PageBlock>? pageBlocks,
+    List<PageBlock>? blocks,
     bool? isOpen,
   }) => PageBlockDetails(
     header: header ?? this.header,
-    pageBlocks: pageBlocks ?? this.pageBlocks,
+    blocks: blocks ?? this.blocks,
     isOpen: isOpen ?? this.isOpen,
   );
 
@@ -1249,9 +1386,9 @@ final class PageBlockDetails extends PageBlock {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Related articles
+/// Related articles; instant view only
 final class PageBlockRelatedArticles extends PageBlock {
-  /// Related articles
+  /// Related articles; instant view only
   const PageBlockRelatedArticles({
     required this.header,
     required this.articles,
@@ -1306,7 +1443,7 @@ final class PageBlockMap extends PageBlock {
     required this.zoom,
     required this.width,
     required this.height,
-    required this.caption,
+    this.caption,
   });
 
   /// Location of the map center
@@ -1321,8 +1458,8 @@ final class PageBlockMap extends PageBlock {
   /// Map height
   final int height;
 
-  /// Block caption
-  final PageBlockCaption caption;
+  /// Block caption; may be null if none
+  final PageBlockCaption? caption;
 
   /// Parses a [PageBlockMap] from TDLib JSON.
   factory PageBlockMap.fromJson(Map<String, dynamic> json) => PageBlockMap(
@@ -1330,7 +1467,7 @@ final class PageBlockMap extends PageBlock {
     zoom: _readInt(json['zoom']),
     width: _readInt(json['width']),
     height: _readInt(json['height']),
-    caption: _readObject(json['caption'], PageBlockCaption.fromJson),
+    caption: _readOptional(json['caption'], PageBlockCaption.fromJson),
   );
 
   @override
@@ -1340,7 +1477,7 @@ final class PageBlockMap extends PageBlock {
     'zoom': zoom,
     'width': width,
     'height': height,
-    'caption': caption.toJson(),
+    'caption': caption?.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -1351,13 +1488,13 @@ final class PageBlockMap extends PageBlock {
     int? zoom,
     int? width,
     int? height,
-    PageBlockCaption? caption,
+    PageBlockCaption? Function()? caption,
   }) => PageBlockMap(
     location: location ?? this.location,
     zoom: zoom ?? this.zoom,
     width: width ?? this.width,
     height: height ?? this.height,
-    caption: caption ?? this.caption,
+    caption: caption != null ? caption() : this.caption,
   );
 
   /// TDLib type name.

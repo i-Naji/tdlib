@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a formatted text object
 ///
-/// One of: [RichTextPlain], [RichTextBold], [RichTextItalic], [RichTextUnderline], [RichTextStrikethrough], [RichTextFixed], [RichTextUrl], [RichTextEmailAddress], [RichTextSubscript], [RichTextSuperscript], [RichTextMarked], [RichTextPhoneNumber], [RichTextIcon], [RichTextReference], [RichTextAnchor], [RichTextAnchorLink], [RichTexts]; or [UndecodedRichText] for a type newer than this API.
+/// One of: [RichTextPlain], [RichTextBold], [RichTextItalic], [RichTextUnderline], [RichTextStrikethrough], [RichTextSpoiler], [RichTextDateTime], [RichTextMention], [RichTextHashtag], [RichTextCashtag], [RichTextBotCommand], [RichTextFixed], [RichTextMentionName], [RichTextUrl], [RichTextEmailAddress], [RichTextBankCardNumber], [RichTextSubscript], [RichTextSuperscript], [RichTextMarked], [RichTextPhoneNumber], [RichTextCustomEmoji], [RichTextIcon], [RichTextMathematicalExpression], [RichTextReference], [RichTextReferenceLink], [RichTextAnchor], [RichTextAnchorLink], [RichTexts]; or [UndecodedRichText] for a type newer than this API.
 sealed class RichText extends TdObject {
   const RichText();
 
@@ -194,6 +194,260 @@ final class RichTextStrikethrough extends RichText {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// A spoilered rich text
+final class RichTextSpoiler extends RichText {
+  /// A spoilered rich text
+  const RichTextSpoiler({required this.text});
+
+  /// Text
+  final RichText text;
+
+  /// Parses a [RichTextSpoiler] from TDLib JSON.
+  factory RichTextSpoiler.fromJson(Map<String, dynamic> json) =>
+      RichTextSpoiler(text: _readObject(json['text'], RichText.fromJson));
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextSpoiler copyWith({RichText? text}) =>
+      RichTextSpoiler(text: text ?? this.text);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextSpoiler';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A date and time
+final class RichTextDateTime extends RichText {
+  /// A date and time
+  const RichTextDateTime({
+    required this.text,
+    required this.unixTime,
+    this.formattingType,
+  });
+
+  /// Original text
+  final RichText text;
+
+  /// Point in time (Unix timestamp) representing the date and time
+  final int unixTime;
+
+  /// Date and time formatting type; may be null if none and the original text must not be changed
+  final DateTimeFormattingType? formattingType;
+
+  /// Parses a [RichTextDateTime] from TDLib JSON.
+  factory RichTextDateTime.fromJson(Map<String, dynamic> json) =>
+      RichTextDateTime(
+        text: _readObject(json['text'], RichText.fromJson),
+        unixTime: _readInt(json['unix_time']),
+        formattingType: _readOptional(
+          json['formatting_type'],
+          DateTimeFormattingType.fromJson,
+        ),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'unix_time': unixTime,
+    'formatting_type': formattingType?.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextDateTime copyWith({
+    RichText? text,
+    int? unixTime,
+    DateTimeFormattingType? Function()? formattingType,
+  }) => RichTextDateTime(
+    text: text ?? this.text,
+    unixTime: unixTime ?? this.unixTime,
+    formattingType: formattingType != null
+        ? formattingType()
+        : this.formattingType,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextDateTime';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A mention of a Telegram user or chat by a username
+final class RichTextMention extends RichText {
+  /// A mention of a Telegram user or chat by a username
+  const RichTextMention({required this.text, required this.username});
+
+  /// Text
+  final RichText text;
+
+  /// The username
+  final String username;
+
+  /// Parses a [RichTextMention] from TDLib JSON.
+  factory RichTextMention.fromJson(Map<String, dynamic> json) =>
+      RichTextMention(
+        text: _readObject(json['text'], RichText.fromJson),
+        username: _readString(json['username']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'username': username,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextMention copyWith({RichText? text, String? username}) =>
+      RichTextMention(
+        text: text ?? this.text,
+        username: username ?? this.username,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextMention';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A hashtag
+final class RichTextHashtag extends RichText {
+  /// A hashtag
+  const RichTextHashtag({required this.text, required this.hashtag});
+
+  /// Text
+  final RichText text;
+
+  /// The hashtag
+  final String hashtag;
+
+  /// Parses a [RichTextHashtag] from TDLib JSON.
+  factory RichTextHashtag.fromJson(Map<String, dynamic> json) =>
+      RichTextHashtag(
+        text: _readObject(json['text'], RichText.fromJson),
+        hashtag: _readString(json['hashtag']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'hashtag': hashtag,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextHashtag copyWith({RichText? text, String? hashtag}) =>
+      RichTextHashtag(
+        text: text ?? this.text,
+        hashtag: hashtag ?? this.hashtag,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextHashtag';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A cashtag
+final class RichTextCashtag extends RichText {
+  /// A cashtag
+  const RichTextCashtag({required this.text, required this.cashtag});
+
+  /// Text
+  final RichText text;
+
+  /// The cashtag
+  final String cashtag;
+
+  /// Parses a [RichTextCashtag] from TDLib JSON.
+  factory RichTextCashtag.fromJson(Map<String, dynamic> json) =>
+      RichTextCashtag(
+        text: _readObject(json['text'], RichText.fromJson),
+        cashtag: _readString(json['cashtag']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'cashtag': cashtag,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextCashtag copyWith({RichText? text, String? cashtag}) =>
+      RichTextCashtag(
+        text: text ?? this.text,
+        cashtag: cashtag ?? this.cashtag,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextCashtag';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A bot command
+final class RichTextBotCommand extends RichText {
+  /// A bot command
+  const RichTextBotCommand({required this.text, required this.botCommand});
+
+  /// Text
+  final RichText text;
+
+  /// The bot command
+  final String botCommand;
+
+  /// Parses a [RichTextBotCommand] from TDLib JSON.
+  factory RichTextBotCommand.fromJson(Map<String, dynamic> json) =>
+      RichTextBotCommand(
+        text: _readObject(json['text'], RichText.fromJson),
+        botCommand: _readString(json['bot_command']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'bot_command': botCommand,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextBotCommand copyWith({RichText? text, String? botCommand}) =>
+      RichTextBotCommand(
+        text: text ?? this.text,
+        botCommand: botCommand ?? this.botCommand,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextBotCommand';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// A fixed-width rich text
 final class RichTextFixed extends RichText {
   /// A fixed-width rich text
@@ -225,6 +479,47 @@ final class RichTextFixed extends RichText {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// A rich text that serves as a mention of a user
+final class RichTextMentionName extends RichText {
+  /// A rich text that serves as a mention of a user
+  const RichTextMentionName({required this.text, required this.userId});
+
+  /// Text
+  final RichText text;
+
+  /// Identifier of the mentioned user
+  final int userId;
+
+  /// Parses a [RichTextMentionName] from TDLib JSON.
+  factory RichTextMentionName.fromJson(Map<String, dynamic> json) =>
+      RichTextMentionName(
+        text: _readObject(json['text'], RichText.fromJson),
+        userId: _readInt(json['user_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'user_id': userId,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextMentionName copyWith({RichText? text, int? userId}) =>
+      RichTextMentionName(
+        text: text ?? this.text,
+        userId: userId ?? this.userId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextMentionName';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// A rich text URL link
 final class RichTextUrl extends RichText {
   /// A rich text URL link
@@ -240,7 +535,7 @@ final class RichTextUrl extends RichText {
   /// URL
   final String url;
 
-  /// True, if the URL has cached instant view server-side
+  /// True, if the URL has cached instant view server-side; instant view only
   final bool isCached;
 
   /// Parses a [RichTextUrl] from TDLib JSON.
@@ -275,9 +570,9 @@ final class RichTextUrl extends RichText {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A rich text email link
+/// A rich text email address
 final class RichTextEmailAddress extends RichText {
-  /// A rich text email link
+  /// A rich text email address
   const RichTextEmailAddress({required this.text, required this.emailAddress});
 
   /// Text
@@ -311,6 +606,50 @@ final class RichTextEmailAddress extends RichText {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'richTextEmailAddress';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A bank card number
+final class RichTextBankCardNumber extends RichText {
+  /// A bank card number
+  const RichTextBankCardNumber({
+    required this.text,
+    required this.bankCardNumber,
+  });
+
+  /// Text
+  final RichText text;
+
+  /// The number of the bank card
+  final String bankCardNumber;
+
+  /// Parses a [RichTextBankCardNumber] from TDLib JSON.
+  factory RichTextBankCardNumber.fromJson(Map<String, dynamic> json) =>
+      RichTextBankCardNumber(
+        text: _readObject(json['text'], RichText.fromJson),
+        bankCardNumber: _readString(json['bank_card_number']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'bank_card_number': bankCardNumber,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextBankCardNumber copyWith({RichText? text, String? bankCardNumber}) =>
+      RichTextBankCardNumber(
+        text: text ?? this.text,
+        bankCardNumber: bankCardNumber ?? this.bankCardNumber,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextBankCardNumber';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -450,9 +789,53 @@ final class RichTextPhoneNumber extends RichText {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A small image inside the text
+/// A custom emoji
+final class RichTextCustomEmoji extends RichText {
+  /// A custom emoji
+  const RichTextCustomEmoji({
+    required this.customEmojiId,
+    required this.alternativeText,
+  });
+
+  /// Unique identifier of the custom emoji
+  final int customEmojiId;
+
+  /// Alternative text for the custom emoji
+  final String alternativeText;
+
+  /// Parses a [RichTextCustomEmoji] from TDLib JSON.
+  factory RichTextCustomEmoji.fromJson(Map<String, dynamic> json) =>
+      RichTextCustomEmoji(
+        customEmojiId: _readInt(json['custom_emoji_id']),
+        alternativeText: _readString(json['alternative_text']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'custom_emoji_id': customEmojiId.toString(),
+    'alternative_text': alternativeText,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextCustomEmoji copyWith({int? customEmojiId, String? alternativeText}) =>
+      RichTextCustomEmoji(
+        customEmojiId: customEmojiId ?? this.customEmojiId,
+        alternativeText: alternativeText ?? this.alternativeText,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextCustomEmoji';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A small image inside the text; instant view only
 final class RichTextIcon extends RichText {
-  /// A small image inside the text
+  /// A small image inside the text; instant view only
   const RichTextIcon({
     required this.document,
     required this.width,
@@ -500,29 +883,100 @@ final class RichTextIcon extends RichText {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A reference to a richTexts object on the same page
+/// A mathematical expression
+final class RichTextMathematicalExpression extends RichText {
+  /// A mathematical expression
+  const RichTextMathematicalExpression({required this.expression});
+
+  /// The expression in LaTeX format
+  final String expression;
+
+  /// Parses a [RichTextMathematicalExpression] from TDLib JSON.
+  factory RichTextMathematicalExpression.fromJson(Map<String, dynamic> json) =>
+      RichTextMathematicalExpression(
+        expression: _readString(json['expression']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'expression': expression,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextMathematicalExpression copyWith({String? expression}) =>
+      RichTextMathematicalExpression(expression: expression ?? this.expression);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextMathematicalExpression';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A reference
 final class RichTextReference extends RichText {
-  /// A reference to a richTexts object on the same page
-  const RichTextReference({
-    required this.text,
-    required this.anchorName,
-    required this.url,
-  });
+  /// A reference
+  const RichTextReference({required this.name, required this.text});
 
-  /// The text
+  /// Reference name
+  final String name;
+
+  /// Text of the reference
   final RichText text;
-
-  /// The name of a richTextAnchor object, which is the first element of the target richTexts object
-  final String anchorName;
-
-  /// An HTTP URL, opening the reference
-  final String url;
 
   /// Parses a [RichTextReference] from TDLib JSON.
   factory RichTextReference.fromJson(Map<String, dynamic> json) =>
       RichTextReference(
+        name: _readString(json['name']),
         text: _readObject(json['text'], RichText.fromJson),
-        anchorName: _readString(json['anchor_name']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'name': name,
+    'text': text.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextReference copyWith({String? name, RichText? text}) =>
+      RichTextReference(name: name ?? this.name, text: text ?? this.text);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextReference';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A link to a reference on the same page
+final class RichTextReferenceLink extends RichText {
+  /// A link to a reference on the same page
+  const RichTextReferenceLink({
+    required this.text,
+    required this.referenceName,
+    required this.url,
+  });
+
+  /// The link text
+  final RichText text;
+
+  /// The reference name
+  final String referenceName;
+
+  /// An HTTP URL that opens the reference
+  final String url;
+
+  /// Parses a [RichTextReferenceLink] from TDLib JSON.
+  factory RichTextReferenceLink.fromJson(Map<String, dynamic> json) =>
+      RichTextReferenceLink(
+        text: _readObject(json['text'], RichText.fromJson),
+        referenceName: _readString(json['reference_name']),
         url: _readString(json['url']),
       );
 
@@ -530,25 +984,25 @@ final class RichTextReference extends RichText {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'text': text.toJson(),
-    'anchor_name': anchorName,
+    'reference_name': referenceName,
     'url': url,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  RichTextReference copyWith({
+  RichTextReferenceLink copyWith({
     RichText? text,
-    String? anchorName,
+    String? referenceName,
     String? url,
-  }) => RichTextReference(
+  }) => RichTextReferenceLink(
     text: text ?? this.text,
-    anchorName: anchorName ?? this.anchorName,
+    referenceName: referenceName ?? this.referenceName,
     url: url ?? this.url,
   );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'richTextReference';
+  static const String CONSTRUCTOR = 'richTextReferenceLink';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -597,7 +1051,7 @@ final class RichTextAnchorLink extends RichText {
   /// The anchor name. If the name is empty, the link must bring back to top
   final String anchorName;
 
-  /// An HTTP URL, opening the anchor
+  /// An HTTP URL that opens the anchor
   final String url;
 
   /// Parses a [RichTextAnchorLink] from TDLib JSON.
