@@ -92,7 +92,7 @@ final class Story extends TdObject {
   /// True, if interactions with the story can be received through getStoryInteractions
   final bool canGetInteractions;
 
-  /// True, if users viewed the story can't be received, because the story has expired more than getOption("story_viewers_expiration_delay") seconds ago
+  /// True, if users who viewed the story can't be received, because the story has expired more than getOption("story_viewers_expiration_delay") seconds ago
   final bool hasExpiredViewers;
 
   /// Information about the original story; may be null if the story wasn't reposted

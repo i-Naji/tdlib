@@ -86,7 +86,7 @@ final class MessageProperties extends TdObject {
   /// True, if the message can be pinned or unpinned in the chat using pinChatMessage or unpinChatMessage
   final bool canBePinned;
 
-  /// True, if the message can be replied in the same chat and forum topic using inputMessageReplyToMessage
+  /// True, if the message can be replied in the same chat and forum topic using inputMessageReplyToMessage. Ephemeral messages can be replied only by other ephemeral messages
   final bool canBeReplied;
 
   /// True, if the message can be replied in another chat or forum topic using inputMessageReplyToExternalMessage

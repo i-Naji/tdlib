@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Accepts Telegram terms of services
+/// Accepts Telegram terms of service
 ///
 /// Returns [Ok].
 final class AcceptTermsOfService extends TdFunction<Ok> {
-  /// Accepts Telegram terms of services
+  /// Accepts Telegram terms of service
   const AcceptTermsOfService({required this.termsOfServiceId});
 
   /// Terms of service identifier

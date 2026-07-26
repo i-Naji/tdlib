@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains information about the message or the story to be replied
 ///
-/// One of: [InputMessageReplyToMessage], [InputMessageReplyToExternalMessage], [InputMessageReplyToStory]; or [UndecodedInputMessageReplyTo] for a type newer than this API.
+/// One of: [InputMessageReplyToMessage], [InputMessageReplyToExternalMessage], [InputMessageReplyToStory], [InputMessageReplyToEphemeralMessage]; or [UndecodedInputMessageReplyTo] for a type newer than this API.
 sealed class InputMessageReplyTo extends TdObject {
   const InputMessageReplyTo();
 
@@ -216,6 +216,42 @@ final class InputMessageReplyToStory extends InputMessageReplyTo {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageReplyToStory';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Describes an ephemeral message to be replied; for bots only
+final class InputMessageReplyToEphemeralMessage extends InputMessageReplyTo {
+  /// Describes an ephemeral message to be replied; for bots only
+  const InputMessageReplyToEphemeralMessage({required this.ephemeralMessageId});
+
+  /// The identifier of the ephemeral message to be replied
+  final int ephemeralMessageId;
+
+  /// Parses a [InputMessageReplyToEphemeralMessage] from TDLib JSON.
+  factory InputMessageReplyToEphemeralMessage.fromJson(
+    Map<String, dynamic> json,
+  ) => InputMessageReplyToEphemeralMessage(
+    ephemeralMessageId: _readInt(json['ephemeral_message_id']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'ephemeral_message_id': ephemeralMessageId,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputMessageReplyToEphemeralMessage copyWith({int? ephemeralMessageId}) =>
+      InputMessageReplyToEphemeralMessage(
+        ephemeralMessageId: ephemeralMessageId ?? this.ephemeralMessageId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputMessageReplyToEphemeralMessage';
 
   @override
   String getConstructor() => CONSTRUCTOR;

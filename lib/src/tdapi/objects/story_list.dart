@@ -66,9 +66,9 @@ final class StoryListMain extends StoryList {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The list of stories, shown in the Arvhive chat list
+/// The list of stories, shown in the Archive chat list
 final class StoryListArchive extends StoryList {
-  /// The list of stories, shown in the Arvhive chat list
+  /// The list of stories, shown in the Archive chat list
   const StoryListArchive();
 
   /// Parses a [StoryListArchive] from TDLib JSON.

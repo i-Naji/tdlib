@@ -3,65 +3,57 @@
 
 part of '../tdapi.dart';
 
-/// A sticker to be added to a sticker set
+/// A sticker to be sent
 final class InputSticker extends TdObject {
-  /// A sticker to be added to a sticker set
+  /// A sticker to be sent
   const InputSticker({
     required this.sticker,
-    required this.format,
-    required this.emojis,
-    this.maskPosition,
-    required this.keywords,
+    this.thumbnail,
+    required this.width,
+    required this.height,
   });
 
-  /// File with the sticker; must fit in a 512x512 square. For WEBP stickers the file must be in WEBP or PNG format, which will be converted to WEBP server-side. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements
+  /// Sticker to be sent
   final InputFile sticker;
 
-  /// Format of the sticker
-  final StickerFormat format;
+  /// Sticker thumbnail; pass null to skip thumbnail uploading
+  final InputThumbnail? thumbnail;
 
-  /// String with 1-20 emoji corresponding to the sticker
-  final String emojis;
+  /// Sticker width
+  final int width;
 
-  /// Position where the mask is placed; pass null if not specified
-  final MaskPosition? maskPosition;
-
-  /// List of up to 20 keywords with total length up to 64 characters, which can be used to find the sticker
-  final List<String> keywords;
+  /// Sticker height
+  final int height;
 
   /// Parses a [InputSticker] from TDLib JSON.
   factory InputSticker.fromJson(Map<String, dynamic> json) => InputSticker(
     sticker: _readObject(json['sticker'], InputFile.fromJson),
-    format: _readObject(json['format'], StickerFormat.fromJson),
-    emojis: _readString(json['emojis']),
-    maskPosition: _readOptional(json['mask_position'], MaskPosition.fromJson),
-    keywords: _readList<String>(json['keywords'], _readString),
+    thumbnail: _readOptional(json['thumbnail'], InputThumbnail.fromJson),
+    width: _readInt(json['width']),
+    height: _readInt(json['height']),
   );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'sticker': sticker.toJson(),
-    'format': format.toJson(),
-    'emojis': emojis,
-    'mask_position': maskPosition?.toJson(),
-    'keywords': keywords,
+    'thumbnail': thumbnail?.toJson(),
+    'width': width,
+    'height': height,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   InputSticker copyWith({
     InputFile? sticker,
-    StickerFormat? format,
-    String? emojis,
-    MaskPosition? Function()? maskPosition,
-    List<String>? keywords,
+    InputThumbnail? Function()? thumbnail,
+    int? width,
+    int? height,
   }) => InputSticker(
     sticker: sticker ?? this.sticker,
-    format: format ?? this.format,
-    emojis: emojis ?? this.emojis,
-    maskPosition: maskPosition != null ? maskPosition() : this.maskPosition,
-    keywords: keywords ?? this.keywords,
+    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+    width: width ?? this.width,
+    height: height ?? this.height,
   );
 
   /// TDLib type name.

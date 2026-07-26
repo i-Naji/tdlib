@@ -134,7 +134,6 @@ final class ChatJoinResultGuardBotApprovalRequired extends ChatJoinResult {
   /// An approval from a guard bot through a Web App is required to join the chat
   const ChatJoinResultGuardBotApprovalRequired({
     required this.botUserId,
-    required this.url,
     required this.queryId,
     this.extra,
     this.clientId,
@@ -143,10 +142,7 @@ final class ChatJoinResultGuardBotApprovalRequired extends ChatJoinResult {
   /// Identifier of the guard bot
   final int botUserId;
 
-  /// The URL of the Web App to open
-  final WebAppUrl url;
-
-  /// Unique identifier of the join request, which will be used in updateChatJoinResult
+  /// Unique identifier of the join request, which will be used in getGuardBotWebAppUrl and updateChatJoinResult
   final int queryId;
 
   /// "@extra" of the request this object answers.
@@ -162,7 +158,6 @@ final class ChatJoinResultGuardBotApprovalRequired extends ChatJoinResult {
     Map<String, dynamic> json,
   ) => ChatJoinResultGuardBotApprovalRequired(
     botUserId: _readInt(json['bot_user_id']),
-    url: _readObject(json['url'], WebAppUrl.fromJson),
     queryId: _readInt(json['query_id']),
     extra: json['@extra'],
     clientId: _readClientId(json['@client_id']),
@@ -172,8 +167,7 @@ final class ChatJoinResultGuardBotApprovalRequired extends ChatJoinResult {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'bot_user_id': botUserId,
-    'url': url.toJson(),
-    'query_id': queryId,
+    'query_id': queryId.toString(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -181,13 +175,11 @@ final class ChatJoinResultGuardBotApprovalRequired extends ChatJoinResult {
   @override
   ChatJoinResultGuardBotApprovalRequired copyWith({
     int? botUserId,
-    WebAppUrl? url,
     int? queryId,
     dynamic extra,
     int? clientId,
   }) => ChatJoinResultGuardBotApprovalRequired(
     botUserId: botUserId ?? this.botUserId,
-    url: url ?? this.url,
     queryId: queryId ?? this.queryId,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,

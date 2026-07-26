@@ -8,45 +8,45 @@ final class GiftResaleParameters extends TdObject {
   /// Describes parameters of a unique gift available for resale
   const GiftResaleParameters({
     required this.starCount,
-    required this.toncoinCentCount,
-    required this.toncoinOnly,
+    required this.gramCentCount,
+    required this.gramOnly,
   });
 
   /// Resale price of the gift in Telegram Stars
   final int starCount;
 
-  /// Resale price of the gift in 1/100 of Toncoin
-  final int toncoinCentCount;
+  /// Resale price of the gift in 1/100 of TON Gram
+  final int gramCentCount;
 
-  /// True, if the gift can be bought only using Toncoins
-  final bool toncoinOnly;
+  /// True, if the gift can be bought only using Grams
+  final bool gramOnly;
 
   /// Parses a [GiftResaleParameters] from TDLib JSON.
   factory GiftResaleParameters.fromJson(Map<String, dynamic> json) =>
       GiftResaleParameters(
         starCount: _readInt(json['star_count']),
-        toncoinCentCount: _readInt(json['toncoin_cent_count']),
-        toncoinOnly: _readBool(json['toncoin_only']),
+        gramCentCount: _readInt(json['gram_cent_count']),
+        gramOnly: _readBool(json['gram_only']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'star_count': starCount,
-    'toncoin_cent_count': toncoinCentCount,
-    'toncoin_only': toncoinOnly,
+    'gram_cent_count': gramCentCount,
+    'gram_only': gramOnly,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GiftResaleParameters copyWith({
     int? starCount,
-    int? toncoinCentCount,
-    bool? toncoinOnly,
+    int? gramCentCount,
+    bool? gramOnly,
   }) => GiftResaleParameters(
     starCount: starCount ?? this.starCount,
-    toncoinCentCount: toncoinCentCount ?? this.toncoinCentCount,
-    toncoinOnly: toncoinOnly ?? this.toncoinOnly,
+    gramCentCount: gramCentCount ?? this.gramCentCount,
+    gramOnly: gramOnly ?? this.gramOnly,
   );
 
   /// TDLib type name.

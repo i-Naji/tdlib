@@ -115,6 +115,7 @@ part 'functions/close_story.dart';
 part 'functions/close_web_app.dart';
 part 'functions/commit_pending_live_story_reactions.dart';
 part 'functions/commit_pending_paid_message_reactions.dart';
+part 'functions/compose_rich_message_with_ai.dart';
 part 'functions/compose_text_with_ai.dart';
 part 'functions/confirm_business_connected_bot.dart';
 part 'functions/confirm_qr_code_authentication.dart';
@@ -138,6 +139,7 @@ part 'functions/create_new_secret_chat.dart';
 part 'functions/create_new_sticker_set.dart';
 part 'functions/create_new_supergroup_chat.dart';
 part 'functions/create_private_chat.dart';
+part 'functions/create_rich_message_with_ai.dart';
 part 'functions/create_secret_chat.dart';
 part 'functions/create_story_album.dart';
 part 'functions/create_supergroup_chat.dart';
@@ -169,6 +171,7 @@ part 'functions/delete_commands.dart';
 part 'functions/delete_default_background.dart';
 part 'functions/delete_direct_messages_chat_topic_history.dart';
 part 'functions/delete_direct_messages_chat_topic_messages_by_date.dart';
+part 'functions/delete_ephemeral_message.dart';
 part 'functions/delete_file.dart';
 part 'functions/delete_forum_topic.dart';
 part 'functions/delete_gift_collection.dart';
@@ -214,6 +217,7 @@ part 'functions/edit_chat_folder_invite_link.dart';
 part 'functions/edit_chat_invite_link.dart';
 part 'functions/edit_chat_subscription_invite_link.dart';
 part 'functions/edit_custom_language_pack_info.dart';
+part 'functions/edit_ephemeral_message.dart';
 part 'functions/edit_forum_topic.dart';
 part 'functions/edit_inline_message_caption.dart';
 part 'functions/edit_inline_message_live_location.dart';
@@ -240,6 +244,7 @@ part 'functions/end_group_call.dart';
 part 'functions/end_group_call_recording.dart';
 part 'functions/end_group_call_screen_sharing.dart';
 part 'functions/finish_file_generation.dart';
+part 'functions/fix_rich_message_with_ai.dart';
 part 'functions/fix_text_with_ai.dart';
 part 'functions/forward_messages.dart';
 part 'functions/get_account_ttl.dart';
@@ -381,6 +386,8 @@ part 'functions/get_gift_collections.dart';
 part 'functions/get_gift_upgrade_preview.dart';
 part 'functions/get_gifts_for_crafting.dart';
 part 'functions/get_giveaway_info.dart';
+part 'functions/get_gram_revenue_statistics.dart';
+part 'functions/get_gram_withdrawal_url.dart';
 part 'functions/get_greeting_stickers.dart';
 part 'functions/get_grossing_web_app_bots.dart';
 part 'functions/get_group_call.dart';
@@ -388,6 +395,7 @@ part 'functions/get_group_call_participants.dart';
 part 'functions/get_group_call_stream_segment.dart';
 part 'functions/get_group_call_streams.dart';
 part 'functions/get_groups_in_common.dart';
+part 'functions/get_guard_bot_web_app_url.dart';
 part 'functions/get_imported_contact_count.dart';
 part 'functions/get_inactive_supergroup_chats.dart';
 part 'functions/get_inline_game_high_scores.dart';
@@ -541,9 +549,7 @@ part 'functions/get_theme_parameters_json_string.dart';
 part 'functions/get_themed_chat_emoji_statuses.dart';
 part 'functions/get_themed_emoji_statuses.dart';
 part 'functions/get_time_zones.dart';
-part 'functions/get_ton_revenue_statistics.dart';
 part 'functions/get_ton_transactions.dart';
-part 'functions/get_ton_withdrawal_url.dart';
 part 'functions/get_top_chats.dart';
 part 'functions/get_trending_sticker_sets.dart';
 part 'functions/get_upgraded_gift.dart';
@@ -759,6 +765,7 @@ part 'functions/send_call_signaling_data.dart';
 part 'functions/send_chat_action.dart';
 part 'functions/send_custom_request.dart';
 part 'functions/send_email_address_verification_code.dart';
+part 'functions/send_ephemeral_message.dart';
 part 'functions/send_gift.dart';
 part 'functions/send_gift_purchase_offer.dart';
 part 'functions/send_group_call_message.dart';
@@ -988,7 +995,9 @@ part 'functions/toggle_video_chat_mute_new_participants.dart';
 part 'functions/transfer_business_account_stars.dart';
 part 'functions/transfer_chat_ownership.dart';
 part 'functions/transfer_gift.dart';
+part 'functions/translate_message_rich_message.dart';
 part 'functions/translate_message_text.dart';
+part 'functions/translate_rich_message.dart';
 part 'functions/translate_text.dart';
 part 'functions/unpin_all_chat_messages.dart';
 part 'functions/unpin_all_direct_messages_chat_topic_messages.dart';
@@ -1189,6 +1198,10 @@ part 'objects/close_birthday_user.dart';
 part 'objects/closed_vector_path.dart';
 part 'objects/collectible_item_info.dart';
 part 'objects/collectible_item_type.dart';
+part 'objects/community.dart';
+part 'objects/community_administrator_rights.dart';
+part 'objects/community_member_status.dart';
+part 'objects/community_permissions.dart';
 part 'objects/connected_affiliate_program.dart';
 part 'objects/connected_affiliate_programs.dart';
 part 'objects/connected_website.dart';
@@ -1296,6 +1309,8 @@ part 'objects/giveaway_info.dart';
 part 'objects/giveaway_parameters.dart';
 part 'objects/giveaway_participant_status.dart';
 part 'objects/giveaway_prize.dart';
+part 'objects/gram_revenue_statistics.dart';
+part 'objects/gram_revenue_status.dart';
 part 'objects/group_call.dart';
 part 'objects/group_call_data_channel.dart';
 part 'objects/group_call_id.dart';
@@ -1342,6 +1357,8 @@ part 'objects/input_inline_query_result.dart';
 part 'objects/input_invoice.dart';
 part 'objects/input_message_content.dart';
 part 'objects/input_message_reply_to.dart';
+part 'objects/input_page_block.dart';
+part 'objects/input_page_block_list_item.dart';
 part 'objects/input_paid_media.dart';
 part 'objects/input_paid_media_type.dart';
 part 'objects/input_passport_element.dart';
@@ -1353,6 +1370,7 @@ part 'objects/input_poll_media.dart';
 part 'objects/input_poll_option.dart';
 part 'objects/input_poll_type.dart';
 part 'objects/input_rich_message.dart';
+part 'objects/input_rich_message_media.dart';
 part 'objects/input_sticker.dart';
 part 'objects/input_story_area.dart';
 part 'objects/input_story_area_type.dart';
@@ -1362,6 +1380,8 @@ part 'objects/input_suggested_post_info.dart';
 part 'objects/input_text_quote.dart';
 part 'objects/input_thumbnail.dart';
 part 'objects/input_video.dart';
+part 'objects/input_video_note.dart';
+part 'objects/input_voice_note.dart';
 part 'objects/internal_link_type.dart';
 part 'objects/invite_group_call_participant_result.dart';
 part 'objects/invite_link_chat_type.dart';
@@ -1434,6 +1454,7 @@ part 'objects/network_statistics.dart';
 part 'objects/network_statistics_entry.dart';
 part 'objects/network_type.dart';
 part 'objects/new_chat_privacy_settings.dart';
+part 'objects/new_sticker.dart';
 part 'objects/notification.dart';
 part 'objects/notification_group.dart';
 part 'objects/notification_group_type.dart';
@@ -1671,8 +1692,6 @@ part 'objects/thumbnail.dart';
 part 'objects/thumbnail_format.dart';
 part 'objects/time_zone.dart';
 part 'objects/time_zones.dart';
-part 'objects/ton_revenue_statistics.dart';
-part 'objects/ton_revenue_status.dart';
 part 'objects/ton_transaction.dart';
 part 'objects/ton_transaction_type.dart';
 part 'objects/ton_transactions.dart';
@@ -1733,14 +1752,15 @@ part 'objects/web_domain_exception.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.65';
+const String tdlibVersion = '1.8.66';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '062f26052623dbecedb42075cab78a759e9f9987';
+const String tdlibSchemaCommit = '022d60202e446ad1287b9fb68e687c8a0760788b';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '062f26052623dbecedb42075cab78a759e9f9987',
+  '022d60202e446ad1287b9fb68e687c8a0760788b',
+  'd8d46dfab55f40e2fcf30fc5cc7cd5950abe99e2',
 ];
 
 /// Base class of every TDLib object.
@@ -1828,6 +1848,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'textEntities': TextEntities.fromJson,
   'formattedText': FormattedText.fromJson,
   'richMessage': RichMessage.fromJson,
+  'inputRichMessageMedia': InputRichMessageMedia.fromJson,
+  'richMessageSourceBlocks': RichMessageSourceBlocks.fromJson,
   'richMessageSourceMarkdown': RichMessageSourceMarkdown.fromJson,
   'richMessageSourceHtml': RichMessageSourceHtml.fromJson,
   'inputRichMessage': InputRichMessage.fromJson,
@@ -2010,12 +2032,12 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'mainWebApp': MainWebApp.fromJson,
   'webAppOpenParameters': WebAppOpenParameters.fromJson,
   'giftResalePriceStar': GiftResalePriceStar.fromJson,
-  'giftResalePriceTon': GiftResalePriceTon.fromJson,
+  'giftResalePriceGram': GiftResalePriceGram.fromJson,
   'giftPurchaseOfferStatePending': GiftPurchaseOfferStatePending.fromJson,
   'giftPurchaseOfferStateAccepted': GiftPurchaseOfferStateAccepted.fromJson,
   'giftPurchaseOfferStateRejected': GiftPurchaseOfferStateRejected.fromJson,
   'suggestedPostPriceStar': SuggestedPostPriceStar.fromJson,
-  'suggestedPostPriceTon': SuggestedPostPriceTon.fromJson,
+  'suggestedPostPriceGram': SuggestedPostPriceGram.fromJson,
   'suggestedPostStatePending': SuggestedPostStatePending.fromJson,
   'suggestedPostStateApproved': SuggestedPostStateApproved.fromJson,
   'suggestedPostStateDeclined': SuggestedPostStateDeclined.fromJson,
@@ -2259,6 +2281,15 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'accentColor': AccentColor.fromJson,
   'profileAccentColors': ProfileAccentColors.fromJson,
   'profileAccentColor': ProfileAccentColor.fromJson,
+  'communityPermissions': CommunityPermissions.fromJson,
+  'communityAdministratorRights': CommunityAdministratorRights.fromJson,
+  'communityMemberStatusCreator': CommunityMemberStatusCreator.fromJson,
+  'communityMemberStatusAdministrator':
+      CommunityMemberStatusAdministrator.fromJson,
+  'communityMemberStatusMember': CommunityMemberStatusMember.fromJson,
+  'communityMemberStatusLeft': CommunityMemberStatusLeft.fromJson,
+  'communityMemberStatusBanned': CommunityMemberStatusBanned.fromJson,
+  'community': Community.fromJson,
   'userRating': UserRating.fromJson,
   'restrictionInfo': RestrictionInfo.fromJson,
   'emojiStatusTypeCustomEmoji': EmojiStatusTypeCustomEmoji.fromJson,
@@ -2383,6 +2414,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputMessageReplyToExternalMessage':
       InputMessageReplyToExternalMessage.fromJson,
   'inputMessageReplyToStory': InputMessageReplyToStory.fromJson,
+  'inputMessageReplyToEphemeralMessage':
+      InputMessageReplyToEphemeralMessage.fromJson,
   'factCheck': FactCheck.fromJson,
   'message': Message.fromJson,
   'messages': Messages.fromJson,
@@ -2551,23 +2584,24 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'richTextUnderline': RichTextUnderline.fromJson,
   'richTextStrikethrough': RichTextStrikethrough.fromJson,
   'richTextSpoiler': RichTextSpoiler.fromJson,
+  'richTextSubscript': RichTextSubscript.fromJson,
+  'richTextSuperscript': RichTextSuperscript.fromJson,
+  'richTextMarked': RichTextMarked.fromJson,
   'richTextDateTime': RichTextDateTime.fromJson,
   'richTextMention': RichTextMention.fromJson,
   'richTextHashtag': RichTextHashtag.fromJson,
   'richTextCashtag': RichTextCashtag.fromJson,
+  'richTextBankCardNumber': RichTextBankCardNumber.fromJson,
   'richTextBotCommand': RichTextBotCommand.fromJson,
   'richTextFixed': RichTextFixed.fromJson,
   'richTextMentionName': RichTextMentionName.fromJson,
   'richTextUrl': RichTextUrl.fromJson,
   'richTextEmailAddress': RichTextEmailAddress.fromJson,
-  'richTextBankCardNumber': RichTextBankCardNumber.fromJson,
-  'richTextSubscript': RichTextSubscript.fromJson,
-  'richTextSuperscript': RichTextSuperscript.fromJson,
-  'richTextMarked': RichTextMarked.fromJson,
   'richTextPhoneNumber': RichTextPhoneNumber.fromJson,
   'richTextCustomEmoji': RichTextCustomEmoji.fromJson,
   'richTextIcon': RichTextIcon.fromJson,
   'richTextMathematicalExpression': RichTextMathematicalExpression.fromJson,
+  'richTextDiff': RichTextDiff.fromJson,
   'richTextReference': RichTextReference.fromJson,
   'richTextReferenceLink': RichTextReferenceLink.fromJson,
   'richTextAnchor': RichTextAnchor.fromJson,
@@ -2575,6 +2609,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'richTexts': RichTexts.fromJson,
   'pageBlockCaption': PageBlockCaption.fromJson,
   'pageBlockListItem': PageBlockListItem.fromJson,
+  'inputPageBlockListItem': InputPageBlockListItem.fromJson,
   'pageBlockHorizontalAlignmentLeft': PageBlockHorizontalAlignmentLeft.fromJson,
   'pageBlockHorizontalAlignmentCenter':
       PageBlockHorizontalAlignmentCenter.fromJson,
@@ -2869,6 +2904,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageChatJoinByLink': MessageChatJoinByLink.fromJson,
   'messageChatJoinByRequest': MessageChatJoinByRequest.fromJson,
   'messageChatDeleteMember': MessageChatDeleteMember.fromJson,
+  'messageChatAddedToCommunity': MessageChatAddedToCommunity.fromJson,
+  'messageChatRemovedFromCommunity': MessageChatRemovedFromCommunity.fromJson,
   'messageChatUpgradeTo': MessageChatUpgradeTo.fromJson,
   'messageChatUpgradeFrom': MessageChatUpgradeFrom.fromJson,
   'messagePinMessage': MessagePinMessage.fromJson,
@@ -2963,7 +3000,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputAudio': InputAudio.fromJson,
   'inputDocument': InputDocument.fromJson,
   'inputPhoto': InputPhoto.fromJson,
+  'inputSticker': InputSticker.fromJson,
   'inputVideo': InputVideo.fromJson,
+  'inputVideoNote': InputVideoNote.fromJson,
+  'inputVoiceNote': InputVoiceNote.fromJson,
   'inputPaidMediaTypePhoto': InputPaidMediaTypePhoto.fromJson,
   'inputPaidMediaTypeVideo': InputPaidMediaTypeVideo.fromJson,
   'inputPaidMedia': InputPaidMedia.fromJson,
@@ -2986,6 +3026,28 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputPollMediaSticker': InputPollMediaSticker.fromJson,
   'inputPollMediaVenue': InputPollMediaVenue.fromJson,
   'inputPollMediaVideo': InputPollMediaVideo.fromJson,
+  'inputPageBlockSectionHeading': InputPageBlockSectionHeading.fromJson,
+  'inputPageBlockParagraph': InputPageBlockParagraph.fromJson,
+  'inputPageBlockPreformatted': InputPageBlockPreformatted.fromJson,
+  'inputPageBlockFooter': InputPageBlockFooter.fromJson,
+  'inputPageBlockThinking': InputPageBlockThinking.fromJson,
+  'inputPageBlockDivider': InputPageBlockDivider.fromJson,
+  'inputPageBlockMathematicalExpression':
+      InputPageBlockMathematicalExpression.fromJson,
+  'inputPageBlockAnchor': InputPageBlockAnchor.fromJson,
+  'inputPageBlockList': InputPageBlockList.fromJson,
+  'inputPageBlockBlockQuote': InputPageBlockBlockQuote.fromJson,
+  'inputPageBlockPullQuote': InputPageBlockPullQuote.fromJson,
+  'inputPageBlockAnimation': InputPageBlockAnimation.fromJson,
+  'inputPageBlockAudio': InputPageBlockAudio.fromJson,
+  'inputPageBlockPhoto': InputPageBlockPhoto.fromJson,
+  'inputPageBlockVideo': InputPageBlockVideo.fromJson,
+  'inputPageBlockVoiceNote': InputPageBlockVoiceNote.fromJson,
+  'inputPageBlockCollage': InputPageBlockCollage.fromJson,
+  'inputPageBlockSlideshow': InputPageBlockSlideshow.fromJson,
+  'inputPageBlockTable': InputPageBlockTable.fromJson,
+  'inputPageBlockDetails': InputPageBlockDetails.fromJson,
+  'inputPageBlockMap': InputPageBlockMap.fromJson,
   'inputMessageText': InputMessageText.fromJson,
   'inputMessageRichMessage': InputMessageRichMessage.fromJson,
   'inputMessageAnimation': InputMessageAnimation.fromJson,
@@ -3447,6 +3509,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'premiumFeatureProtectPrivateChatContent':
       PremiumFeatureProtectPrivateChatContent.fromJson,
   'premiumFeatureTextComposition': PremiumFeatureTextComposition.fromJson,
+  'premiumFeatureRichMessages': PremiumFeatureRichMessages.fromJson,
   'businessFeatureLocation': BusinessFeatureLocation.fromJson,
   'businessFeatureOpeningHours': BusinessFeatureOpeningHours.fromJson,
   'businessFeatureQuickReplies': BusinessFeatureQuickReplies.fromJson,
@@ -3782,7 +3845,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'settingsSectionInAppBrowser': SettingsSectionInAppBrowser.fromJson,
   'settingsSectionLanguage': SettingsSectionLanguage.fromJson,
   'settingsSectionMyStars': SettingsSectionMyStars.fromJson,
-  'settingsSectionMyToncoins': SettingsSectionMyToncoins.fromJson,
+  'settingsSectionMyGrams': SettingsSectionMyGrams.fromJson,
   'settingsSectionNotifications': SettingsSectionNotifications.fromJson,
   'settingsSectionPowerSaving': SettingsSectionPowerSaving.fromJson,
   'settingsSectionPremium': SettingsSectionPremium.fromJson,
@@ -3980,7 +4043,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'proxyTypeMtproto': ProxyTypeMtproto.fromJson,
   'addedProxy': AddedProxy.fromJson,
   'addedProxies': AddedProxies.fromJson,
-  'inputSticker': InputSticker.fromJson,
+  'newSticker': NewSticker.fromJson,
   'dateRange': DateRange.fromJson,
   'statisticalValue': StatisticalValue.fromJson,
   'statisticalGraphData': StatisticalGraphData.fromJson,
@@ -4017,8 +4080,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'chatRevenueTransactions': ChatRevenueTransactions.fromJson,
   'starRevenueStatus': StarRevenueStatus.fromJson,
   'starRevenueStatistics': StarRevenueStatistics.fromJson,
-  'tonRevenueStatus': TonRevenueStatus.fromJson,
-  'tonRevenueStatistics': TonRevenueStatistics.fromJson,
+  'gramRevenueStatus': GramRevenueStatus.fromJson,
+  'gramRevenueStatistics': GramRevenueStatistics.fromJson,
   'point': Point.fromJson,
   'vectorPathCommandLine': VectorPathCommandLine.fromJson,
   'vectorPathCommandCubicBezierCurve':
@@ -4111,6 +4174,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateDeleteMessages': UpdateDeleteMessages.fromJson,
   'updateChatAction': UpdateChatAction.fromJson,
   'updatePendingMessage': UpdatePendingMessage.fromJson,
+  'updateCommunity': UpdateCommunity.fromJson,
   'updateUserStatus': UpdateUserStatus.fromJson,
   'updateUser': UpdateUser.fromJson,
   'updateBasicGroup': UpdateBasicGroup.fromJson,
@@ -4185,10 +4249,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateSavedMessagesTags': UpdateSavedMessagesTags.fromJson,
   'updateActiveLiveLocationMessages': UpdateActiveLiveLocationMessages.fromJson,
   'updateOwnedStarCount': UpdateOwnedStarCount.fromJson,
-  'updateOwnedTonCount': UpdateOwnedTonCount.fromJson,
+  'updateOwnedGramCount': UpdateOwnedGramCount.fromJson,
   'updateChatRevenueAmount': UpdateChatRevenueAmount.fromJson,
   'updateStarRevenueStatus': UpdateStarRevenueStatus.fromJson,
-  'updateTonRevenueStatus': UpdateTonRevenueStatus.fromJson,
+  'updateGramRevenueStatus': UpdateGramRevenueStatus.fromJson,
   'updateSpeechRecognitionTrial': UpdateSpeechRecognitionTrial.fromJson,
   'updateGroupCallMessageLevels': UpdateGroupCallMessageLevels.fromJson,
   'updateDiceEmojis': UpdateDiceEmojis.fromJson,
@@ -4215,6 +4279,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateNewPreCheckoutQuery': UpdateNewPreCheckoutQuery.fromJson,
   'updateNewCustomEvent': UpdateNewCustomEvent.fromJson,
   'updateNewCustomQuery': UpdateNewCustomQuery.fromJson,
+  'updateUserSubscription': UpdateUserSubscription.fromJson,
   'updatePoll': UpdatePoll.fromJson,
   'updatePollAnswer': UpdatePollAnswer.fromJson,
   'updateManagedBot': UpdateManagedBot.fromJson,

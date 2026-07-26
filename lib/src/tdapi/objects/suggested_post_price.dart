@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes price of a suggested post
 ///
-/// One of: [SuggestedPostPriceStar], [SuggestedPostPriceTon]; or [UndecodedSuggestedPostPrice] for a type newer than this API.
+/// One of: [SuggestedPostPriceStar], [SuggestedPostPriceGram]; or [UndecodedSuggestedPostPrice] for a type newer than this API.
 sealed class SuggestedPostPrice extends TdObject {
   const SuggestedPostPrice();
 
@@ -75,36 +75,34 @@ final class SuggestedPostPriceStar extends SuggestedPostPrice {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Describes price of a suggested post in Toncoins
-final class SuggestedPostPriceTon extends SuggestedPostPrice {
-  /// Describes price of a suggested post in Toncoins
-  const SuggestedPostPriceTon({required this.toncoinCentCount});
+/// Describes price of a suggested post in TON Grams
+final class SuggestedPostPriceGram extends SuggestedPostPrice {
+  /// Describes price of a suggested post in TON Grams
+  const SuggestedPostPriceGram({required this.gramCentCount});
 
-  /// The amount of 1/100 of Toncoin expected to be paid for the post; getOption("suggested_post_toncoin_cent_count_min")-getOption("suggested_post_toncoin_cent_count_max")
-  final int toncoinCentCount;
+  /// The amount of 1/100 of Gram expected to be paid for the post; getOption("suggested_post_gram_cent_count_min")-getOption("suggested_post_gram_cent_count_max")
+  final int gramCentCount;
 
-  /// Parses a [SuggestedPostPriceTon] from TDLib JSON.
-  factory SuggestedPostPriceTon.fromJson(Map<String, dynamic> json) =>
-      SuggestedPostPriceTon(
-        toncoinCentCount: _readInt(json['toncoin_cent_count']),
-      );
+  /// Parses a [SuggestedPostPriceGram] from TDLib JSON.
+  factory SuggestedPostPriceGram.fromJson(Map<String, dynamic> json) =>
+      SuggestedPostPriceGram(gramCentCount: _readInt(json['gram_cent_count']));
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'toncoin_cent_count': toncoinCentCount,
+    'gram_cent_count': gramCentCount,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  SuggestedPostPriceTon copyWith({int? toncoinCentCount}) =>
-      SuggestedPostPriceTon(
-        toncoinCentCount: toncoinCentCount ?? this.toncoinCentCount,
+  SuggestedPostPriceGram copyWith({int? gramCentCount}) =>
+      SuggestedPostPriceGram(
+        gramCentCount: gramCentCount ?? this.gramCentCount,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'suggestedPostPriceTon';
+  static const String CONSTRUCTOR = 'suggestedPostPriceGram';
 
   @override
   String getConstructor() => CONSTRUCTOR;

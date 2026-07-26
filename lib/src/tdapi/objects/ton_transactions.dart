@@ -3,21 +3,21 @@
 
 part of '../tdapi.dart';
 
-/// Represents a list of Toncoin transactions
+/// Represents a list of TON Gram transactions
 final class TonTransactions extends TdObject {
-  /// Represents a list of Toncoin transactions
+  /// Represents a list of TON Gram transactions
   const TonTransactions({
-    required this.tonAmount,
+    required this.gramAmount,
     required this.transactions,
     required this.nextOffset,
     this.extra,
     this.clientId,
   });
 
-  /// The total amount of owned Toncoins
-  final int tonAmount;
+  /// The total amount of owned Grams, in the smallest units of the cryptocurrency
+  final int gramAmount;
 
-  /// List of Toncoin transactions
+  /// List of Gram transactions
   final List<TonTransaction> transactions;
 
   /// The offset for the next request. If empty, then there are no more results
@@ -34,7 +34,7 @@ final class TonTransactions extends TdObject {
   /// Parses a [TonTransactions] from TDLib JSON.
   factory TonTransactions.fromJson(Map<String, dynamic> json) =>
       TonTransactions(
-        tonAmount: _readInt(json['ton_amount']),
+        gramAmount: _readInt(json['gram_amount']),
         transactions: _readList<TonTransaction>(
           json['transactions'],
           (e) => _readObject(e, TonTransaction.fromJson),
@@ -47,7 +47,7 @@ final class TonTransactions extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'ton_amount': tonAmount,
+    'gram_amount': gramAmount,
     'transactions': [for (final e in transactions) e.toJson()],
     'next_offset': nextOffset,
   };
@@ -55,13 +55,13 @@ final class TonTransactions extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   TonTransactions copyWith({
-    int? tonAmount,
+    int? gramAmount,
     List<TonTransaction>? transactions,
     String? nextOffset,
     dynamic extra,
     int? clientId,
   }) => TonTransactions(
-    tonAmount: tonAmount ?? this.tonAmount,
+    gramAmount: gramAmount ?? this.gramAmount,
     transactions: transactions ?? this.transactions,
     nextOffset: nextOffset ?? this.nextOffset,
     extra: extra ?? this.extra,

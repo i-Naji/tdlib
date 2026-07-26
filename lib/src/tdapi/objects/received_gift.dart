@@ -100,7 +100,7 @@ final class ReceivedGift extends TdObject {
   /// If non-empty, then the user can pay for an upgrade of the gift using buyGiftUpgrade
   final String prepaidUpgradeHash;
 
-  /// Point in time (Unix timestamp) when the gift can be used to craft another gift can be in the past; only for the receiver of the gift
+  /// Point in time (Unix timestamp) when the gift can be used to craft another gift; can be in the past; only for the receiver of the gift
   final int craftDate;
 
   /// "@extra" of the request this object answers.

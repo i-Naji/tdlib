@@ -21,7 +21,7 @@ final class AddStickerToSet extends TdFunction<Ok> {
   final String name;
 
   /// Sticker to add to the set
-  final InputSticker sticker;
+  final NewSticker sticker;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
@@ -34,15 +34,12 @@ final class AddStickerToSet extends TdFunction<Ok> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  AddStickerToSet copyWith({
-    int? userId,
-    String? name,
-    InputSticker? sticker,
-  }) => AddStickerToSet(
-    userId: userId ?? this.userId,
-    name: name ?? this.name,
-    sticker: sticker ?? this.sticker,
-  );
+  AddStickerToSet copyWith({int? userId, String? name, NewSticker? sticker}) =>
+      AddStickerToSet(
+        userId: userId ?? this.userId,
+        name: name ?? this.name,
+        sticker: sticker ?? this.sticker,
+      );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'addStickerToSet';

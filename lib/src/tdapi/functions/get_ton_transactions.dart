@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns the list of Toncoin transactions of the current user
+/// Returns the list of TON blockchain transactions of the current user
 ///
 /// Returns [TonTransactions].
 final class GetTonTransactions extends TdFunction<TonTransactions> {
-  /// Returns the list of Toncoin transactions of the current user
+  /// Returns the list of TON blockchain transactions of the current user
   const GetTonTransactions({
     this.direction,
     required this.offset,

@@ -8,6 +8,7 @@ final class SupergroupFullInfo extends TdObject {
   /// Contains full information about a supergroup or channel
   const SupergroupFullInfo({
     this.photo,
+    required this.communityId,
     required this.description,
     required this.memberCount,
     required this.administratorCount,
@@ -54,6 +55,9 @@ final class SupergroupFullInfo extends TdObject {
 
   /// Chat photo; may be null if empty or unknown. If non-null, then it is the same photo as in chat.photo
   final ChatPhoto? photo;
+
+  /// Identifier of the community to which the corresponding chat was added
+  final int communityId;
 
   /// Supergroup or channel description
   final String description;
@@ -188,6 +192,7 @@ final class SupergroupFullInfo extends TdObject {
     Map<String, dynamic> json,
   ) => SupergroupFullInfo(
     photo: _readOptional(json['photo'], ChatPhoto.fromJson),
+    communityId: _readInt(json['community_id']),
     description: _readString(json['description']),
     memberCount: _readInt(json['member_count']),
     administratorCount: _readInt(json['administrator_count']),
@@ -253,6 +258,7 @@ final class SupergroupFullInfo extends TdObject {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'photo': photo?.toJson(),
+    'community_id': communityId,
     'description': description,
     'member_count': memberCount,
     'administrator_count': administratorCount,
@@ -299,6 +305,7 @@ final class SupergroupFullInfo extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   SupergroupFullInfo copyWith({
     ChatPhoto? Function()? photo,
+    int? communityId,
     String? description,
     int? memberCount,
     int? administratorCount,
@@ -343,6 +350,7 @@ final class SupergroupFullInfo extends TdObject {
     int? clientId,
   }) => SupergroupFullInfo(
     photo: photo != null ? photo() : this.photo,
+    communityId: communityId ?? this.communityId,
     description: description ?? this.description,
     memberCount: memberCount ?? this.memberCount,
     administratorCount: administratorCount ?? this.administratorCount,

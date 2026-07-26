@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns an emoji for the given country. Returns an empty string on failure. Can be called synchronously
+/// Returns an emoji for the flag of the given country. Returns an empty string on failure. Can be called synchronously
 ///
 /// Returns [Text].
 final class GetCountryFlagEmoji extends TdFunction<Text> {
-  /// Returns an emoji for the given country. Returns an empty string on failure. Can be called synchronously
+  /// Returns an emoji for the flag of the given country. Returns an empty string on failure. Can be called synchronously
   const GetCountryFlagEmoji({required this.countryCode});
 
   /// A two-letter ISO 3166-1 alpha-2 country code as received from getCountries

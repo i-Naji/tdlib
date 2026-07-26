@@ -161,9 +161,9 @@ final class UpgradedGiftOriginBlockchain extends UpgradedGiftOrigin {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The sender or receiver of the message has paid for upgraid of the gift, which has been completed
+/// The sender or receiver of the message has paid for upgrade of the gift, which has been completed
 final class UpgradedGiftOriginPrepaidUpgrade extends UpgradedGiftOrigin {
-  /// The sender or receiver of the message has paid for upgraid of the gift, which has been completed
+  /// The sender or receiver of the message has paid for upgrade of the gift, which has been completed
   const UpgradedGiftOriginPrepaidUpgrade();
 
   /// Parses a [UpgradedGiftOriginPrepaidUpgrade] from TDLib JSON.

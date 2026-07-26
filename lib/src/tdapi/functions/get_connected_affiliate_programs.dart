@@ -15,7 +15,7 @@ final class GetConnectedAffiliatePrograms
     required this.limit,
   });
 
-  /// The affiliate to which the affiliate program were connected
+  /// The affiliate to which the affiliate programs were connected
   final AffiliateType affiliate;
 
   /// Offset of the first affiliate program to return as received from the previous request; use empty string to get the first chunk of results

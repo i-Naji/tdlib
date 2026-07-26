@@ -24,7 +24,7 @@ final class SendRichMessageDraft extends TdFunction<Ok> {
   /// Unique identifier of the draft
   final int draftId;
 
-  /// Draft of the message
+  /// Draft of the message; file upload isn't supported
   final InputRichMessage message;
 
   @override

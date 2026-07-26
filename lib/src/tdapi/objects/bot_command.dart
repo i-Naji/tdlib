@@ -6,7 +6,11 @@ part of '../tdapi.dart';
 /// Represents a command supported by a bot
 final class BotCommand extends TdObject {
   /// Represents a command supported by a bot
-  const BotCommand({required this.command, required this.description});
+  const BotCommand({
+    required this.command,
+    required this.description,
+    required this.isEphemeral,
+  });
 
   /// Text of the bot command
   final String command;
@@ -14,10 +18,14 @@ final class BotCommand extends TdObject {
   /// Description of the bot command
   final String description;
 
+  /// True, if the command must send an ephemeral message instead of a regular one
+  final bool isEphemeral;
+
   /// Parses a [BotCommand] from TDLib JSON.
   factory BotCommand.fromJson(Map<String, dynamic> json) => BotCommand(
     command: _readString(json['command']),
     description: _readString(json['description']),
+    isEphemeral: _readBool(json['is_ephemeral']),
   );
 
   @override
@@ -25,13 +33,19 @@ final class BotCommand extends TdObject {
     '@type': CONSTRUCTOR,
     'command': command,
     'description': description,
+    'is_ephemeral': isEphemeral,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  BotCommand copyWith({String? command, String? description}) => BotCommand(
+  BotCommand copyWith({
+    String? command,
+    String? description,
+    bool? isEphemeral,
+  }) => BotCommand(
     command: command ?? this.command,
     description: description ?? this.description,
+    isEphemeral: isEphemeral ?? this.isEphemeral,
   );
 
   /// TDLib type name.

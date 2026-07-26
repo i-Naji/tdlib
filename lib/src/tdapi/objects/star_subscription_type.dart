@@ -55,7 +55,7 @@ final class StarSubscriptionTypeChannel extends StarSubscriptionType {
   /// True, if the subscription is active and the user can use the method reuseStarSubscription to join the subscribed chat again
   final bool canReuse;
 
-  /// The invite link that can be used to renew the subscription if it has been expired; may be empty, if the link isn't available anymore
+  /// The invite link that can be used to renew the subscription if it has expired; may be empty if the link isn't available anymore
   final String inviteLink;
 
   /// Parses a [StarSubscriptionTypeChannel] from TDLib JSON.

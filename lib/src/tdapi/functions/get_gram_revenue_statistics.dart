@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Returns detailed Toncoin revenue statistics of the current user
+/// Returns detailed TON Gram revenue statistics of the current user
 ///
-/// Returns [TonRevenueStatistics].
-final class GetTonRevenueStatistics extends TdFunction<TonRevenueStatistics> {
-  /// Returns detailed Toncoin revenue statistics of the current user
-  const GetTonRevenueStatistics({required this.isDark});
+/// Returns [GramRevenueStatistics].
+final class GetGramRevenueStatistics extends TdFunction<GramRevenueStatistics> {
+  /// Returns detailed TON Gram revenue statistics of the current user
+  const GetGramRevenueStatistics({required this.isDark});
 
   /// Pass true if a dark theme is used by the application
   final bool isDark;
@@ -22,11 +22,11 @@ final class GetTonRevenueStatistics extends TdFunction<TonRevenueStatistics> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetTonRevenueStatistics copyWith({bool? isDark}) =>
-      GetTonRevenueStatistics(isDark: isDark ?? this.isDark);
+  GetGramRevenueStatistics copyWith({bool? isDark}) =>
+      GetGramRevenueStatistics(isDark: isDark ?? this.isDark);
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'getTonRevenueStatistics';
+  static const String CONSTRUCTOR = 'getGramRevenueStatistics';
 
   @override
   String getConstructor() => CONSTRUCTOR;

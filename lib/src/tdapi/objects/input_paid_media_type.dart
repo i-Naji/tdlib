@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes type of paid media to sent
+/// Describes type of paid media to send
 ///
 /// One of: [InputPaidMediaTypePhoto], [InputPaidMediaTypeVideo]; or [UndecodedInputPaidMediaType] for a type newer than this API.
 sealed class InputPaidMediaType extends TdObject {

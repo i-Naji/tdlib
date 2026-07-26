@@ -9,6 +9,7 @@ final class Message extends TdObject {
   const Message({
     required this.id,
     required this.senderId,
+    this.receiverId,
     required this.chatId,
     this.sendingState,
     this.schedulingState,
@@ -19,7 +20,7 @@ final class Message extends TdObject {
     required this.hasTimestampedMedia,
     required this.isChannelPost,
     required this.isPaidStarSuggestedPost,
-    required this.isPaidTonSuggestedPost,
+    required this.isPaidGramSuggestedPost,
     required this.containsUnreadMention,
     required this.containsUnreadPollVotes,
     required this.date,
@@ -48,6 +49,7 @@ final class Message extends TdObject {
     required this.summaryLanguageCode,
     required this.content,
     this.replyMarkup,
+    required this.ephemeralMessageId,
     this.extra,
     this.clientId,
   });
@@ -57,6 +59,9 @@ final class Message extends TdObject {
 
   /// Identifier of the sender of the message
   final MessageSender senderId;
+
+  /// Identifier of the user or the chat which received the ephemeral message; may be null. Always null for non-ephemeral messages
+  final MessageSender? receiverId;
 
   /// Chat identifier
   final int chatId;
@@ -88,8 +93,8 @@ final class Message extends TdObject {
   /// True, if the message is a suggested channel post which was paid in Telegram Stars; a warning must be shown if the message is deleted in less than getOption("suggested_post_lifetime_min") seconds after sending
   final bool isPaidStarSuggestedPost;
 
-  /// True, if the message is a suggested channel post which was paid in Toncoins; a warning must be shown if the message is deleted in less than getOption("suggested_post_lifetime_min") seconds after sending
-  final bool isPaidTonSuggestedPost;
+  /// True, if the message is a suggested channel post which was paid in TON Grams; a warning must be shown if the message is deleted in less than getOption("suggested_post_lifetime_min") seconds after sending
+  final bool isPaidGramSuggestedPost;
 
   /// True, if the message contains an unread mention for the current user
   final bool containsUnreadMention;
@@ -100,7 +105,7 @@ final class Message extends TdObject {
   /// Point in time (Unix timestamp) when the message was sent; 0 for scheduled messages
   final int date;
 
-  /// Point in time (Unix timestamp) when the message was last edited; 0 for scheduled messages
+  /// Point in time (Unix timestamp) when the message was last edited; 0 for scheduled messages. If getOption("show_message_edit_date_by_default") is true, then the date must be shown along with the message instead of the date when the message was sent
   final int editDate;
 
   /// Information about the initial message sender; may be null if none or unknown
@@ -175,6 +180,9 @@ final class Message extends TdObject {
   /// Reply markup for the message; may be null if none
   final ReplyMarkup? replyMarkup;
 
+  /// Unique identifier of the ephemeral message if the message is ephemeral; for bots only
+  final int ephemeralMessageId;
+
   /// "@extra" of the request this object answers.
   @override
   final dynamic extra;
@@ -187,6 +195,7 @@ final class Message extends TdObject {
   factory Message.fromJson(Map<String, dynamic> json) => Message(
     id: _readInt(json['id']),
     senderId: _readObject(json['sender_id'], MessageSender.fromJson),
+    receiverId: _readOptional(json['receiver_id'], MessageSender.fromJson),
     chatId: _readInt(json['chat_id']),
     sendingState: _readOptional(
       json['sending_state'],
@@ -203,7 +212,7 @@ final class Message extends TdObject {
     hasTimestampedMedia: _readBool(json['has_timestamped_media']),
     isChannelPost: _readBool(json['is_channel_post']),
     isPaidStarSuggestedPost: _readBool(json['is_paid_star_suggested_post']),
-    isPaidTonSuggestedPost: _readBool(json['is_paid_ton_suggested_post']),
+    isPaidGramSuggestedPost: _readBool(json['is_paid_gram_suggested_post']),
     containsUnreadMention: _readBool(json['contains_unread_mention']),
     containsUnreadPollVotes: _readBool(json['contains_unread_poll_votes']),
     date: _readInt(json['date']),
@@ -253,6 +262,7 @@ final class Message extends TdObject {
     summaryLanguageCode: _readString(json['summary_language_code']),
     content: _readObject(json['content'], MessageContent.fromJson),
     replyMarkup: _readOptional(json['reply_markup'], ReplyMarkup.fromJson),
+    ephemeralMessageId: _readInt(json['ephemeral_message_id']),
     extra: json['@extra'],
     clientId: _readClientId(json['@client_id']),
   );
@@ -262,6 +272,7 @@ final class Message extends TdObject {
     '@type': CONSTRUCTOR,
     'id': id,
     'sender_id': senderId.toJson(),
+    'receiver_id': receiverId?.toJson(),
     'chat_id': chatId,
     'sending_state': sendingState?.toJson(),
     'scheduling_state': schedulingState?.toJson(),
@@ -272,7 +283,7 @@ final class Message extends TdObject {
     'has_timestamped_media': hasTimestampedMedia,
     'is_channel_post': isChannelPost,
     'is_paid_star_suggested_post': isPaidStarSuggestedPost,
-    'is_paid_ton_suggested_post': isPaidTonSuggestedPost,
+    'is_paid_gram_suggested_post': isPaidGramSuggestedPost,
     'contains_unread_mention': containsUnreadMention,
     'contains_unread_poll_votes': containsUnreadPollVotes,
     'date': date,
@@ -301,6 +312,7 @@ final class Message extends TdObject {
     'summary_language_code': summaryLanguageCode,
     'content': content.toJson(),
     'reply_markup': replyMarkup?.toJson(),
+    'ephemeral_message_id': ephemeralMessageId,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -308,6 +320,7 @@ final class Message extends TdObject {
   Message copyWith({
     int? id,
     MessageSender? senderId,
+    MessageSender? Function()? receiverId,
     int? chatId,
     MessageSendingState? Function()? sendingState,
     MessageSchedulingState? Function()? schedulingState,
@@ -318,7 +331,7 @@ final class Message extends TdObject {
     bool? hasTimestampedMedia,
     bool? isChannelPost,
     bool? isPaidStarSuggestedPost,
-    bool? isPaidTonSuggestedPost,
+    bool? isPaidGramSuggestedPost,
     bool? containsUnreadMention,
     bool? containsUnreadPollVotes,
     int? date,
@@ -347,11 +360,13 @@ final class Message extends TdObject {
     String? summaryLanguageCode,
     MessageContent? content,
     ReplyMarkup? Function()? replyMarkup,
+    int? ephemeralMessageId,
     dynamic extra,
     int? clientId,
   }) => Message(
     id: id ?? this.id,
     senderId: senderId ?? this.senderId,
+    receiverId: receiverId != null ? receiverId() : this.receiverId,
     chatId: chatId ?? this.chatId,
     sendingState: sendingState != null ? sendingState() : this.sendingState,
     schedulingState: schedulingState != null
@@ -365,8 +380,8 @@ final class Message extends TdObject {
     isChannelPost: isChannelPost ?? this.isChannelPost,
     isPaidStarSuggestedPost:
         isPaidStarSuggestedPost ?? this.isPaidStarSuggestedPost,
-    isPaidTonSuggestedPost:
-        isPaidTonSuggestedPost ?? this.isPaidTonSuggestedPost,
+    isPaidGramSuggestedPost:
+        isPaidGramSuggestedPost ?? this.isPaidGramSuggestedPost,
     containsUnreadMention: containsUnreadMention ?? this.containsUnreadMention,
     containsUnreadPollVotes:
         containsUnreadPollVotes ?? this.containsUnreadPollVotes,
@@ -407,6 +422,7 @@ final class Message extends TdObject {
     summaryLanguageCode: summaryLanguageCode ?? this.summaryLanguageCode,
     content: content ?? this.content,
     replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+    ephemeralMessageId: ephemeralMessageId ?? this.ephemeralMessageId,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );

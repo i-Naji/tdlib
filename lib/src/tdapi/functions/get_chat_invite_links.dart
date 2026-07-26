@@ -23,7 +23,7 @@ final class GetChatInviteLinks extends TdFunction<ChatInviteLinks> {
   /// User identifier of a chat administrator. Must be an identifier of the current user for non-owner
   final int creatorUserId;
 
-  /// Pass true if revoked links needs to be returned instead of active or expired
+  /// Pass true if revoked links need to be returned instead of active or expired
   final bool isRevoked;
 
   /// Creation date of an invite link starting after which to return invite links; use 0 to get results from the beginning

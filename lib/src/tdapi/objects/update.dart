@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains notifications about data changes
 ///
-/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageContainsUnreadPollVotes], [UpdateMessageFactCheck], [UpdateMessageSuggestedPostInfo], [UpdateMessageLiveLocationViewed], [UpdateVideoPublished], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColors], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatAddedToList], [UpdateChatRemovedFromList], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatBusinessBotManageBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatEmojiStatus], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatUnreadPollVoteCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatViewAsTopics], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateSavedMessagesTopic], [UpdateSavedMessagesTopicCount], [UpdateDirectMessagesChatTopic], [UpdateTopicMessageCount], [UpdateQuickReplyShortcut], [UpdateQuickReplyShortcutDeleted], [UpdateQuickReplyShortcuts], [UpdateQuickReplyShortcutMessages], [UpdateForumTopicInfo], [UpdateForumTopic], [UpdateScopeNotificationSettings], [UpdateReactionNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdatePendingMessage], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateServiceNotification], [UpdateNewOauthRequest], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateApplicationVerificationRequired], [UpdateApplicationRecaptchaVerificationRequired], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateGroupCallParticipants], [UpdateGroupCallVerificationState], [UpdateNewGroupCallMessage], [UpdateNewGroupCallPaidReaction], [UpdateGroupCallMessageSendFailed], [UpdateGroupCallMessagesDeleted], [UpdateLiveStoryTopDonors], [UpdateNewCallSignalingData], [UpdateGiftAuctionState], [UpdateActiveGiftAuctions], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateChatJoinResult], [UpdateStory], [UpdateStoryDeleted], [UpdateStoryPostSucceeded], [UpdateStoryPostFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateTrustedMiniAppBots], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateDefaultBackground], [UpdateEmojiChatThemes], [UpdateAccentColors], [UpdateProfileAccentColors], [UpdateWebBrowserSettings], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateFreezeState], [UpdateAgeVerificationParameters], [UpdateTermsOfService], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateAvailableMessageEffects], [UpdateDefaultReactionType], [UpdateDefaultPaidReactionType], [UpdateSavedMessagesTags], [UpdateActiveLiveLocationMessages], [UpdateOwnedStarCount], [UpdateOwnedTonCount], [UpdateChatRevenueAmount], [UpdateStarRevenueStatus], [UpdateTonRevenueStatus], [UpdateSpeechRecognitionTrial], [UpdateGroupCallMessageLevels], [UpdateDiceEmojis], [UpdateStakeDiceState], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateTextCompositionStyles], [UpdateSuggestedActions], [UpdateSpeedLimitNotification], [UpdateContactCloseBirthdays], [UpdateAutosaveSettings], [UpdateBusinessConnection], [UpdateNewBusinessMessage], [UpdateBusinessMessageEdited], [UpdateBusinessMessagesDeleted], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewGuestQuery], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewBusinessCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdatePoll], [UpdatePollAnswer], [UpdateManagedBot], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost], [UpdateMessageReaction], [UpdateMessageReactions], [UpdatePaidMediaPurchased]; or [UndecodedUpdate] for a type newer than this API.
+/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageContainsUnreadPollVotes], [UpdateMessageFactCheck], [UpdateMessageSuggestedPostInfo], [UpdateMessageLiveLocationViewed], [UpdateVideoPublished], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColors], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatAddedToList], [UpdateChatRemovedFromList], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatBusinessBotManageBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatEmojiStatus], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatUnreadPollVoteCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatViewAsTopics], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateSavedMessagesTopic], [UpdateSavedMessagesTopicCount], [UpdateDirectMessagesChatTopic], [UpdateTopicMessageCount], [UpdateQuickReplyShortcut], [UpdateQuickReplyShortcutDeleted], [UpdateQuickReplyShortcuts], [UpdateQuickReplyShortcutMessages], [UpdateForumTopicInfo], [UpdateForumTopic], [UpdateScopeNotificationSettings], [UpdateReactionNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdatePendingMessage], [UpdateCommunity], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateServiceNotification], [UpdateNewOauthRequest], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateApplicationVerificationRequired], [UpdateApplicationRecaptchaVerificationRequired], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateGroupCallParticipants], [UpdateGroupCallVerificationState], [UpdateNewGroupCallMessage], [UpdateNewGroupCallPaidReaction], [UpdateGroupCallMessageSendFailed], [UpdateGroupCallMessagesDeleted], [UpdateLiveStoryTopDonors], [UpdateNewCallSignalingData], [UpdateGiftAuctionState], [UpdateActiveGiftAuctions], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateChatJoinResult], [UpdateStory], [UpdateStoryDeleted], [UpdateStoryPostSucceeded], [UpdateStoryPostFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateTrustedMiniAppBots], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateDefaultBackground], [UpdateEmojiChatThemes], [UpdateAccentColors], [UpdateProfileAccentColors], [UpdateWebBrowserSettings], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateFreezeState], [UpdateAgeVerificationParameters], [UpdateTermsOfService], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateAvailableMessageEffects], [UpdateDefaultReactionType], [UpdateDefaultPaidReactionType], [UpdateSavedMessagesTags], [UpdateActiveLiveLocationMessages], [UpdateOwnedStarCount], [UpdateOwnedGramCount], [UpdateChatRevenueAmount], [UpdateStarRevenueStatus], [UpdateGramRevenueStatus], [UpdateSpeechRecognitionTrial], [UpdateGroupCallMessageLevels], [UpdateDiceEmojis], [UpdateStakeDiceState], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateTextCompositionStyles], [UpdateSuggestedActions], [UpdateSpeedLimitNotification], [UpdateContactCloseBirthdays], [UpdateAutosaveSettings], [UpdateBusinessConnection], [UpdateNewBusinessMessage], [UpdateBusinessMessageEdited], [UpdateBusinessMessagesDeleted], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewGuestQuery], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewBusinessCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdateUserSubscription], [UpdatePoll], [UpdatePollAnswer], [UpdateManagedBot], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost], [UpdateMessageReaction], [UpdateMessageReactions], [UpdatePaidMediaPurchased]; or [UndecodedUpdate] for a type newer than this API.
 sealed class Update extends TdObject {
   const Update();
 
@@ -4831,6 +4831,56 @@ final class UpdatePendingMessage extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// Some data of a community has changed. This update is guaranteed to come before the community identifier is returned to the application
+final class UpdateCommunity extends Update {
+  /// Some data of a community has changed. This update is guaranteed to come before the community identifier is returned to the application
+  const UpdateCommunity({required this.community, this.extra, this.clientId});
+
+  /// New data about the community
+  final Community community;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateCommunity] from TDLib JSON.
+  factory UpdateCommunity.fromJson(Map<String, dynamic> json) =>
+      UpdateCommunity(
+        community: _readObject(json['community'], Community.fromJson),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'community': community.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateCommunity copyWith({
+    Community? community,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateCommunity(
+    community: community ?? this.community,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateCommunity';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// The user went online or offline
 final class UpdateUserStatus extends Update {
   /// The user went online or offline
@@ -6746,9 +6796,9 @@ final class UpdateGiftAuctionState extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The list of auctions in which participate the current user has changed
+/// The list of auctions in which the current user participates has changed
 final class UpdateActiveGiftAuctions extends Update {
-  /// The list of auctions in which participate the current user has changed
+  /// The list of auctions in which the current user participates has changed
   const UpdateActiveGiftAuctions({
     required this.states,
     this.extra,
@@ -7043,7 +7093,7 @@ final class UpdateChatJoinResult extends Update {
     this.clientId,
   });
 
-  /// Identifier of the join request query as received in chatJoinResultGuardBotApprovalRequired. If the corresponding Web App is stiil open, then it must be closed
+  /// Identifier of the join request query as received in chatJoinResultGuardBotApprovalRequired. If the corresponding Web App is still open, then it must be closed
   final int queryId;
 
   /// Identifier of the joined chat, or 0 if the request wasn't approved
@@ -8559,9 +8609,9 @@ final class UpdateFreezeState extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The parameters for age verification of the current user's account has changed
+/// The parameters for age verification of the current user's account have changed
 final class UpdateAgeVerificationParameters extends Update {
-  /// The parameters for age verification of the current user's account has changed
+  /// The parameters for age verification of the current user's account have changed
   const UpdateAgeVerificationParameters({
     this.parameters,
     this.extra,
@@ -9253,17 +9303,17 @@ final class UpdateOwnedStarCount extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The number of Toncoins owned by the current user has changed
-final class UpdateOwnedTonCount extends Update {
-  /// The number of Toncoins owned by the current user has changed
-  const UpdateOwnedTonCount({
-    required this.tonAmount,
+/// The number of TON Grams owned by the current user has changed
+final class UpdateOwnedGramCount extends Update {
+  /// The number of TON Grams owned by the current user has changed
+  const UpdateOwnedGramCount({
+    required this.gramAmount,
     this.extra,
     this.clientId,
   });
 
-  /// The new amount of owned Toncoins; in the smallest units of the cryptocurrency
-  final int tonAmount;
+  /// The new amount of owned Grams; in the smallest units of the cryptocurrency
+  final int gramAmount;
 
   /// "@extra" of the request this object answers.
   @override
@@ -9273,10 +9323,10 @@ final class UpdateOwnedTonCount extends Update {
   @override
   final int? clientId;
 
-  /// Parses a [UpdateOwnedTonCount] from TDLib JSON.
-  factory UpdateOwnedTonCount.fromJson(Map<String, dynamic> json) =>
-      UpdateOwnedTonCount(
-        tonAmount: _readInt(json['ton_amount']),
+  /// Parses a [UpdateOwnedGramCount] from TDLib JSON.
+  factory UpdateOwnedGramCount.fromJson(Map<String, dynamic> json) =>
+      UpdateOwnedGramCount(
+        gramAmount: _readInt(json['gram_amount']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -9284,24 +9334,24 @@ final class UpdateOwnedTonCount extends Update {
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'ton_amount': tonAmount,
+    'gram_amount': gramAmount,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UpdateOwnedTonCount copyWith({
-    int? tonAmount,
+  UpdateOwnedGramCount copyWith({
+    int? gramAmount,
     dynamic extra,
     int? clientId,
-  }) => UpdateOwnedTonCount(
-    tonAmount: tonAmount ?? this.tonAmount,
+  }) => UpdateOwnedGramCount(
+    gramAmount: gramAmount ?? this.gramAmount,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'updateOwnedTonCount';
+  static const String CONSTRUCTOR = 'updateOwnedGramCount';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -9434,17 +9484,17 @@ final class UpdateStarRevenueStatus extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The Toncoin revenue earned by the current user has changed. If Toncoin transaction screen of the chat is opened, then getTonTransactions may be called to fetch new transactions
-final class UpdateTonRevenueStatus extends Update {
-  /// The Toncoin revenue earned by the current user has changed. If Toncoin transaction screen of the chat is opened, then getTonTransactions may be called to fetch new transactions
-  const UpdateTonRevenueStatus({
+/// The TON Gram revenue earned by the current user has changed. If Gram transaction screen of the chat is opened, then getTonTransactions may be called to fetch new transactions
+final class UpdateGramRevenueStatus extends Update {
+  /// The TON Gram revenue earned by the current user has changed. If Gram transaction screen of the chat is opened, then getTonTransactions may be called to fetch new transactions
+  const UpdateGramRevenueStatus({
     required this.status,
     this.extra,
     this.clientId,
   });
 
-  /// New Toncoin revenue status
-  final TonRevenueStatus status;
+  /// New Gram revenue status
+  final GramRevenueStatus status;
 
   /// "@extra" of the request this object answers.
   @override
@@ -9454,10 +9504,10 @@ final class UpdateTonRevenueStatus extends Update {
   @override
   final int? clientId;
 
-  /// Parses a [UpdateTonRevenueStatus] from TDLib JSON.
-  factory UpdateTonRevenueStatus.fromJson(Map<String, dynamic> json) =>
-      UpdateTonRevenueStatus(
-        status: _readObject(json['status'], TonRevenueStatus.fromJson),
+  /// Parses a [UpdateGramRevenueStatus] from TDLib JSON.
+  factory UpdateGramRevenueStatus.fromJson(Map<String, dynamic> json) =>
+      UpdateGramRevenueStatus(
+        status: _readObject(json['status'], GramRevenueStatus.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -9471,26 +9521,26 @@ final class UpdateTonRevenueStatus extends Update {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UpdateTonRevenueStatus copyWith({
-    TonRevenueStatus? status,
+  UpdateGramRevenueStatus copyWith({
+    GramRevenueStatus? status,
     dynamic extra,
     int? clientId,
-  }) => UpdateTonRevenueStatus(
+  }) => UpdateGramRevenueStatus(
     status: status ?? this.status,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'updateTonRevenueStatus';
+  static const String CONSTRUCTOR = 'updateGramRevenueStatus';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The parameters of speech recognition without Telegram Premium subscription has changed
+/// The parameters of speech recognition without Telegram Premium subscription have changed
 final class UpdateSpeechRecognitionTrial extends Update {
-  /// The parameters of speech recognition without Telegram Premium subscription has changed
+  /// The parameters of speech recognition without Telegram Premium subscription have changed
   const UpdateSpeechRecognitionTrial({
     required this.maxMediaDuration,
     required this.weeklyCount,
@@ -9791,9 +9841,9 @@ final class UpdateAnimatedEmojiMessageClicked extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The parameters of animation search through getOption("animation_search_bot_username") bot has changed
+/// The parameters of animation search through getOption("animation_search_bot_username") bot have changed
 final class UpdateAnimationSearchParameters extends Update {
-  /// The parameters of animation search through getOption("animation_search_bot_username") bot has changed
+  /// The parameters of animation search through getOption("animation_search_bot_username") bot have changed
   const UpdateAnimationSearchParameters({
     required this.provider,
     required this.emojis,
@@ -9978,9 +10028,9 @@ final class UpdateSuggestedActions extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Download or upload file speed for the user was limited, but it can be restored by subscription to Telegram Premium. The notification can be postponed until a being downloaded or uploaded file is visible to the user. Use getOption("premium_download_speedup") or getOption("premium_upload_speedup") to get expected speedup after subscription to Telegram Premium
+/// Download or upload file speed for the user was limited, but it can be restored by subscription to Telegram Premium. The notification can be postponed until a file being downloaded or uploaded is visible to the user. Use getOption("premium_download_speedup") or getOption("premium_upload_speedup") to get expected speedup after subscription to Telegram Premium
 final class UpdateSpeedLimitNotification extends Update {
-  /// Download or upload file speed for the user was limited, but it can be restored by subscription to Telegram Premium. The notification can be postponed until a being downloaded or uploaded file is visible to the user. Use getOption("premium_download_speedup") or getOption("premium_upload_speedup") to get expected speedup after subscription to Telegram Premium
+  /// Download or upload file speed for the user was limited, but it can be restored by subscription to Telegram Premium. The notification can be postponed until a file being downloaded or uploaded is visible to the user. Use getOption("premium_download_speedup") or getOption("premium_upload_speedup") to get expected speedup after subscription to Telegram Premium
   const UpdateSpeedLimitNotification({
     required this.isUpload,
     this.extra,
@@ -11227,6 +11277,92 @@ final class UpdateNewCustomQuery extends Update {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateNewCustomQuery';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Subscription of a user to the bot was changed; for bots only
+final class UpdateUserSubscription extends Update {
+  /// Subscription of a user to the bot was changed; for bots only
+  const UpdateUserSubscription({
+    required this.userId,
+    required this.payload,
+    required this.isCanceled,
+    required this.isRestored,
+    required this.isPaymentFailed,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Identifier of the user
+  final int userId;
+
+  /// Bot-specified subscription invoice payload
+  final String payload;
+
+  /// True, if the subscription was canceled
+  final bool isCanceled;
+
+  /// True, if the subscription was restored
+  final bool isRestored;
+
+  /// True, if the payment for the subscription has failed
+  final bool isPaymentFailed;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateUserSubscription] from TDLib JSON.
+  factory UpdateUserSubscription.fromJson(Map<String, dynamic> json) =>
+      UpdateUserSubscription(
+        userId: _readInt(json['user_id']),
+        payload: _readString(json['payload']),
+        isCanceled: _readBool(json['is_canceled']),
+        isRestored: _readBool(json['is_restored']),
+        isPaymentFailed: _readBool(json['is_payment_failed']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'user_id': userId,
+    'payload': payload,
+    'is_canceled': isCanceled,
+    'is_restored': isRestored,
+    'is_payment_failed': isPaymentFailed,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateUserSubscription copyWith({
+    int? userId,
+    String? payload,
+    bool? isCanceled,
+    bool? isRestored,
+    bool? isPaymentFailed,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateUserSubscription(
+    userId: userId ?? this.userId,
+    payload: payload ?? this.payload,
+    isCanceled: isCanceled ?? this.isCanceled,
+    isRestored: isRestored ?? this.isRestored,
+    isPaymentFailed: isPaymentFailed ?? this.isPaymentFailed,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateUserSubscription';
 
   @override
   String getConstructor() => CONSTRUCTOR;

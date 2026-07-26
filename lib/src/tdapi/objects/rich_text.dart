@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a formatted text object
 ///
-/// One of: [RichTextPlain], [RichTextBold], [RichTextItalic], [RichTextUnderline], [RichTextStrikethrough], [RichTextSpoiler], [RichTextDateTime], [RichTextMention], [RichTextHashtag], [RichTextCashtag], [RichTextBotCommand], [RichTextFixed], [RichTextMentionName], [RichTextUrl], [RichTextEmailAddress], [RichTextBankCardNumber], [RichTextSubscript], [RichTextSuperscript], [RichTextMarked], [RichTextPhoneNumber], [RichTextCustomEmoji], [RichTextIcon], [RichTextMathematicalExpression], [RichTextReference], [RichTextReferenceLink], [RichTextAnchor], [RichTextAnchorLink], [RichTexts]; or [UndecodedRichText] for a type newer than this API.
+/// One of: [RichTextPlain], [RichTextBold], [RichTextItalic], [RichTextUnderline], [RichTextStrikethrough], [RichTextSpoiler], [RichTextSubscript], [RichTextSuperscript], [RichTextMarked], [RichTextDateTime], [RichTextMention], [RichTextHashtag], [RichTextCashtag], [RichTextBankCardNumber], [RichTextBotCommand], [RichTextFixed], [RichTextMentionName], [RichTextUrl], [RichTextEmailAddress], [RichTextPhoneNumber], [RichTextCustomEmoji], [RichTextIcon], [RichTextMathematicalExpression], [RichTextDiff], [RichTextReference], [RichTextReferenceLink], [RichTextAnchor], [RichTextAnchorLink], [RichTexts]; or [UndecodedRichText] for a type newer than this API.
 sealed class RichText extends TdObject {
   const RichText();
 
@@ -225,6 +225,99 @@ final class RichTextSpoiler extends RichText {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// A subscript rich text
+final class RichTextSubscript extends RichText {
+  /// A subscript rich text
+  const RichTextSubscript({required this.text});
+
+  /// Text
+  final RichText text;
+
+  /// Parses a [RichTextSubscript] from TDLib JSON.
+  factory RichTextSubscript.fromJson(Map<String, dynamic> json) =>
+      RichTextSubscript(text: _readObject(json['text'], RichText.fromJson));
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextSubscript copyWith({RichText? text}) =>
+      RichTextSubscript(text: text ?? this.text);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextSubscript';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A superscript rich text
+final class RichTextSuperscript extends RichText {
+  /// A superscript rich text
+  const RichTextSuperscript({required this.text});
+
+  /// Text
+  final RichText text;
+
+  /// Parses a [RichTextSuperscript] from TDLib JSON.
+  factory RichTextSuperscript.fromJson(Map<String, dynamic> json) =>
+      RichTextSuperscript(text: _readObject(json['text'], RichText.fromJson));
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextSuperscript copyWith({RichText? text}) =>
+      RichTextSuperscript(text: text ?? this.text);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextSuperscript';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A marked rich text
+final class RichTextMarked extends RichText {
+  /// A marked rich text
+  const RichTextMarked({required this.text});
+
+  /// Text
+  final RichText text;
+
+  /// Parses a [RichTextMarked] from TDLib JSON.
+  factory RichTextMarked.fromJson(Map<String, dynamic> json) =>
+      RichTextMarked(text: _readObject(json['text'], RichText.fromJson));
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextMarked copyWith({RichText? text}) =>
+      RichTextMarked(text: text ?? this.text);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextMarked';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// A date and time
 final class RichTextDateTime extends RichText {
   /// A date and time
@@ -402,6 +495,50 @@ final class RichTextCashtag extends RichText {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'richTextCashtag';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A bank card number
+final class RichTextBankCardNumber extends RichText {
+  /// A bank card number
+  const RichTextBankCardNumber({
+    required this.text,
+    required this.bankCardNumber,
+  });
+
+  /// Text
+  final RichText text;
+
+  /// The number of the bank card
+  final String bankCardNumber;
+
+  /// Parses a [RichTextBankCardNumber] from TDLib JSON.
+  factory RichTextBankCardNumber.fromJson(Map<String, dynamic> json) =>
+      RichTextBankCardNumber(
+        text: _readObject(json['text'], RichText.fromJson),
+        bankCardNumber: _readString(json['bank_card_number']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'bank_card_number': bankCardNumber,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextBankCardNumber copyWith({RichText? text, String? bankCardNumber}) =>
+      RichTextBankCardNumber(
+        text: text ?? this.text,
+        bankCardNumber: bankCardNumber ?? this.bankCardNumber,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextBankCardNumber';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -611,143 +748,6 @@ final class RichTextEmailAddress extends RichText {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A bank card number
-final class RichTextBankCardNumber extends RichText {
-  /// A bank card number
-  const RichTextBankCardNumber({
-    required this.text,
-    required this.bankCardNumber,
-  });
-
-  /// Text
-  final RichText text;
-
-  /// The number of the bank card
-  final String bankCardNumber;
-
-  /// Parses a [RichTextBankCardNumber] from TDLib JSON.
-  factory RichTextBankCardNumber.fromJson(Map<String, dynamic> json) =>
-      RichTextBankCardNumber(
-        text: _readObject(json['text'], RichText.fromJson),
-        bankCardNumber: _readString(json['bank_card_number']),
-      );
-
-  @override
-  Map<String, dynamic> toJson() => {
-    '@type': CONSTRUCTOR,
-    'text': text.toJson(),
-    'bank_card_number': bankCardNumber,
-  };
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  RichTextBankCardNumber copyWith({RichText? text, String? bankCardNumber}) =>
-      RichTextBankCardNumber(
-        text: text ?? this.text,
-        bankCardNumber: bankCardNumber ?? this.bankCardNumber,
-      );
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'richTextBankCardNumber';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// A subscript rich text
-final class RichTextSubscript extends RichText {
-  /// A subscript rich text
-  const RichTextSubscript({required this.text});
-
-  /// Text
-  final RichText text;
-
-  /// Parses a [RichTextSubscript] from TDLib JSON.
-  factory RichTextSubscript.fromJson(Map<String, dynamic> json) =>
-      RichTextSubscript(text: _readObject(json['text'], RichText.fromJson));
-
-  @override
-  Map<String, dynamic> toJson() => {
-    '@type': CONSTRUCTOR,
-    'text': text.toJson(),
-  };
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  RichTextSubscript copyWith({RichText? text}) =>
-      RichTextSubscript(text: text ?? this.text);
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'richTextSubscript';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// A superscript rich text
-final class RichTextSuperscript extends RichText {
-  /// A superscript rich text
-  const RichTextSuperscript({required this.text});
-
-  /// Text
-  final RichText text;
-
-  /// Parses a [RichTextSuperscript] from TDLib JSON.
-  factory RichTextSuperscript.fromJson(Map<String, dynamic> json) =>
-      RichTextSuperscript(text: _readObject(json['text'], RichText.fromJson));
-
-  @override
-  Map<String, dynamic> toJson() => {
-    '@type': CONSTRUCTOR,
-    'text': text.toJson(),
-  };
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  RichTextSuperscript copyWith({RichText? text}) =>
-      RichTextSuperscript(text: text ?? this.text);
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'richTextSuperscript';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// A marked rich text
-final class RichTextMarked extends RichText {
-  /// A marked rich text
-  const RichTextMarked({required this.text});
-
-  /// Text
-  final RichText text;
-
-  /// Parses a [RichTextMarked] from TDLib JSON.
-  factory RichTextMarked.fromJson(Map<String, dynamic> json) =>
-      RichTextMarked(text: _readObject(json['text'], RichText.fromJson));
-
-  @override
-  Map<String, dynamic> toJson() => {
-    '@type': CONSTRUCTOR,
-    'text': text.toJson(),
-  };
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  RichTextMarked copyWith({RichText? text}) =>
-      RichTextMarked(text: text ?? this.text);
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'richTextMarked';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
 /// A rich text phone number
 final class RichTextPhoneNumber extends RichText {
   /// A rich text phone number
@@ -911,6 +911,43 @@ final class RichTextMathematicalExpression extends RichText {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'richTextMathematicalExpression';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A rich text replacing another rich text; not supported in inputRichMessage
+final class RichTextDiff extends RichText {
+  /// A rich text replacing another rich text; not supported in inputRichMessage
+  const RichTextDiff({required this.text, required this.oldText});
+
+  /// Text
+  final RichText text;
+
+  /// The old text
+  final RichText oldText;
+
+  /// Parses a [RichTextDiff] from TDLib JSON.
+  factory RichTextDiff.fromJson(Map<String, dynamic> json) => RichTextDiff(
+    text: _readObject(json['text'], RichText.fromJson),
+    oldText: _readObject(json['old_text'], RichText.fromJson),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'old_text': oldText.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextDiff copyWith({RichText? text, RichText? oldText}) =>
+      RichTextDiff(text: text ?? this.text, oldText: oldText ?? this.oldText);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextDiff';
 
   @override
   String getConstructor() => CONSTRUCTOR;

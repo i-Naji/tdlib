@@ -8,8 +8,8 @@ final class StakeDiceState extends TdObject {
   /// Describes state of the stake dice
   const StakeDiceState({
     required this.stateHash,
-    required this.stakeToncoinAmount,
-    required this.suggestedStakeToncoinAmounts,
+    required this.stakeGramAmount,
+    required this.suggestedStakeGramAmounts,
     required this.currentStreak,
     required this.prizePerMille,
     required this.streakPrizePerMille,
@@ -20,19 +20,19 @@ final class StakeDiceState extends TdObject {
   /// Hash of the state to use for sending the next dice; may be empty if the stake dice can't be sent by the current user
   final String stateHash;
 
-  /// The Toncoin amount that was staked in the previous roll; in the smallest units of the currency
-  final int stakeToncoinAmount;
+  /// The amount of TON Grams staked in the previous roll; in the smallest units of the currency
+  final int stakeGramAmount;
 
-  /// The amounts of Toncoins that are suggested to be staked; in the smallest units of the currency
-  final List<int> suggestedStakeToncoinAmounts;
+  /// The amounts of Grams that are suggested to be staked; in the smallest units of the currency
+  final List<int> suggestedStakeGramAmounts;
 
   /// The number of rolled sixes towards the streak; 0-2
   final int currentStreak;
 
-  /// The number of Toncoins received by the user for each 1000 Toncoins staked if the dice outcome is 1-6 correspondingly; may be empty if the stake dice can't be sent by the current user
+  /// The number of Grams received by the user for each 1000 Grams staked if the dice outcome is 1-6 correspondingly; may be empty if the stake dice can't be sent by the current user
   final List<int> prizePerMille;
 
-  /// The number of Toncoins received by the user for each 1000 Toncoins staked if the dice outcome is 6 three times in a row with the same stake
+  /// The number of Grams received by the user for each 1000 Grams staked if the dice outcome is 6 three times in a row with the same stake
   final int streakPrizePerMille;
 
   /// "@extra" of the request this object answers.
@@ -46,9 +46,9 @@ final class StakeDiceState extends TdObject {
   /// Parses a [StakeDiceState] from TDLib JSON.
   factory StakeDiceState.fromJson(Map<String, dynamic> json) => StakeDiceState(
     stateHash: _readString(json['state_hash']),
-    stakeToncoinAmount: _readInt(json['stake_toncoin_amount']),
-    suggestedStakeToncoinAmounts: _readList<int>(
-      json['suggested_stake_toncoin_amounts'],
+    stakeGramAmount: _readInt(json['stake_gram_amount']),
+    suggestedStakeGramAmounts: _readList<int>(
+      json['suggested_stake_gram_amounts'],
       _readInt,
     ),
     currentStreak: _readInt(json['current_streak']),
@@ -62,8 +62,8 @@ final class StakeDiceState extends TdObject {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'state_hash': stateHash,
-    'stake_toncoin_amount': stakeToncoinAmount,
-    'suggested_stake_toncoin_amounts': suggestedStakeToncoinAmounts,
+    'stake_gram_amount': stakeGramAmount,
+    'suggested_stake_gram_amounts': suggestedStakeGramAmounts,
     'current_streak': currentStreak,
     'prize_per_mille': prizePerMille,
     'streak_prize_per_mille': streakPrizePerMille,
@@ -73,8 +73,8 @@ final class StakeDiceState extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   StakeDiceState copyWith({
     String? stateHash,
-    int? stakeToncoinAmount,
-    List<int>? suggestedStakeToncoinAmounts,
+    int? stakeGramAmount,
+    List<int>? suggestedStakeGramAmounts,
     int? currentStreak,
     List<int>? prizePerMille,
     int? streakPrizePerMille,
@@ -82,9 +82,9 @@ final class StakeDiceState extends TdObject {
     int? clientId,
   }) => StakeDiceState(
     stateHash: stateHash ?? this.stateHash,
-    stakeToncoinAmount: stakeToncoinAmount ?? this.stakeToncoinAmount,
-    suggestedStakeToncoinAmounts:
-        suggestedStakeToncoinAmounts ?? this.suggestedStakeToncoinAmounts,
+    stakeGramAmount: stakeGramAmount ?? this.stakeGramAmount,
+    suggestedStakeGramAmounts:
+        suggestedStakeGramAmounts ?? this.suggestedStakeGramAmounts,
     currentStreak: currentStreak ?? this.currentStreak,
     prizePerMille: prizePerMille ?? this.prizePerMille,
     streakPrizePerMille: streakPrizePerMille ?? this.streakPrizePerMille,

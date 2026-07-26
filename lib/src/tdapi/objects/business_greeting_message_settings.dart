@@ -18,7 +18,7 @@ final class BusinessGreetingMessageSettings extends TdObject {
   /// Chosen recipients of the greeting messages
   final BusinessRecipients recipients;
 
-  /// The number of days after which a chat will be considered as inactive; currently, must be on of 7, 14, 21, or 28
+  /// The number of days after which a chat will be considered as inactive; currently, must be one of 7, 14, 21, or 28
   final int inactivityDays;
 
   /// Parses a [BusinessGreetingMessageSettings] from TDLib JSON.

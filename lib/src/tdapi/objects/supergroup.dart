@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Represents a supergroup or channel with zero or more members (subscribers in the case of channels). From the point of view of the system, a channel is a special kind of a supergroup: only administrators can post and see the list of members, and posts from all administrators use the name and photo of the channel instead of individual names and profile photos. Unlike supergroups, channels can have an unlimited number of subscribers
+/// Represents a supergroup or channel with zero or more members (subscribers in the case of channels)
 final class Supergroup extends TdObject {
-  /// Represents a supergroup or channel with zero or more members (subscribers in the case of channels). From the point of view of the system, a channel is a special kind of a supergroup: only administrators can post and see the list of members, and posts from all administrators use the name and photo of the channel instead of individual names and profile photos. Unlike supergroups, channels can have an unlimited number of subscribers
+  /// Represents a supergroup or channel with zero or more members (subscribers in the case of channels)
   const Supergroup({
     required this.id,
     this.usernames,
@@ -78,7 +78,7 @@ final class Supergroup extends TdObject {
   /// True, if the slow mode is enabled in the supergroup
   final bool isSlowModeEnabled;
 
-  /// True, if the supergroup is a channel
+  /// True, if the supergroup is a channel, which can have an unlimited number of subscribers, but only administrators can post there and see the list of subscribers
   final bool isChannel;
 
   /// True, if the supergroup is a broadcast group, i.e. only administrators can send messages and there is no limit on the number of members

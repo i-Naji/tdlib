@@ -30,7 +30,7 @@ final class PageBlockListItem extends TdObject {
   /// Value of the item; 0 for unordered lists
   final int value;
 
-  /// Type of the item numbering type; must be one of "a" for a lowercase letters, "A" for an uppercase letters, "i" for lowercase Roman numerals, "I" for uppercase Roman numerals, "1" for decimal numbers, or empty for unordered lists
+  /// Type of the item numbering type; must be one of "a" for lowercase letters, "A" for uppercase letters, "i" for lowercase Roman numerals, "I" for uppercase Roman numerals, "1" for decimal numbers, or empty for unordered lists
   final String type;
 
   /// Parses a [PageBlockListItem] from TDLib JSON.

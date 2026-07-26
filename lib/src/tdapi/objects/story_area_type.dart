@@ -116,9 +116,9 @@ final class StoryAreaTypeVenue extends StoryAreaType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// An area pointing to a suggested reaction. App needs to show a clickable reaction on the area and call setStoryReaction when the are is clicked
+/// An area pointing to a suggested reaction. App needs to show a clickable reaction on the area and call setStoryReaction when the area is clicked
 final class StoryAreaTypeSuggestedReaction extends StoryAreaType {
-  /// An area pointing to a suggested reaction. App needs to show a clickable reaction on the area and call setStoryReaction when the are is clicked
+  /// An area pointing to a suggested reaction. App needs to show a clickable reaction on the area and call setStoryReaction when the area is clicked
   const StoryAreaTypeSuggestedReaction({
     required this.reactionType,
     required this.totalCount,

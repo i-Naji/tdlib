@@ -69,9 +69,9 @@ final class ChatJoinRequestResultApproved extends ChatJoinRequestResult {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The request was decline
+/// The request was declined
 final class ChatJoinRequestResultDeclined extends ChatJoinRequestResult {
-  /// The request was decline
+  /// The request was declined
   const ChatJoinRequestResultDeclined();
 
   /// Parses a [ChatJoinRequestResultDeclined] from TDLib JSON.

@@ -10,6 +10,7 @@ final class CountryInfo extends TdObject {
     required this.countryCode,
     required this.name,
     required this.englishName,
+    required this.flagEmoji,
     required this.isHidden,
     required this.callingCodes,
     this.extra,
@@ -24,6 +25,9 @@ final class CountryInfo extends TdObject {
 
   /// English name of the country
   final String englishName;
+
+  /// An emoji for the flag of the country; may be empty if unknown
+  final String flagEmoji;
 
   /// True, if the country must be hidden from the list of all countries
   final bool isHidden;
@@ -44,6 +48,7 @@ final class CountryInfo extends TdObject {
     countryCode: _readString(json['country_code']),
     name: _readString(json['name']),
     englishName: _readString(json['english_name']),
+    flagEmoji: _readString(json['flag_emoji']),
     isHidden: _readBool(json['is_hidden']),
     callingCodes: _readList<String>(json['calling_codes'], _readString),
     extra: json['@extra'],
@@ -56,6 +61,7 @@ final class CountryInfo extends TdObject {
     'country_code': countryCode,
     'name': name,
     'english_name': englishName,
+    'flag_emoji': flagEmoji,
     'is_hidden': isHidden,
     'calling_codes': callingCodes,
   };
@@ -66,6 +72,7 @@ final class CountryInfo extends TdObject {
     String? countryCode,
     String? name,
     String? englishName,
+    String? flagEmoji,
     bool? isHidden,
     List<String>? callingCodes,
     dynamic extra,
@@ -74,6 +81,7 @@ final class CountryInfo extends TdObject {
     countryCode: countryCode ?? this.countryCode,
     name: name ?? this.name,
     englishName: englishName ?? this.englishName,
+    flagEmoji: flagEmoji ?? this.flagEmoji,
     isHidden: isHidden ?? this.isHidden,
     callingCodes: callingCodes ?? this.callingCodes,
     extra: extra ?? this.extra,

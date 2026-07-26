@@ -3,31 +3,31 @@
 
 part of '../tdapi.dart';
 
-/// Contains information about Toncoins earned by the current user
-final class TonRevenueStatus extends TdObject {
-  /// Contains information about Toncoins earned by the current user
-  const TonRevenueStatus({
+/// Contains information about TON Grams earned by the current user
+final class GramRevenueStatus extends TdObject {
+  /// Contains information about TON Grams earned by the current user
+  const GramRevenueStatus({
     required this.totalAmount,
     required this.balanceAmount,
     required this.availableAmount,
     required this.withdrawalEnabled,
   });
 
-  /// Total Toncoin amount earned; in the smallest units of the cryptocurrency
+  /// Total Gram amount earned; in the smallest units of the cryptocurrency
   final int totalAmount;
 
-  /// The Toncoin amount that isn't withdrawn yet; in the smallest units of the cryptocurrency
+  /// The Gram amount that isn't withdrawn yet; in the smallest units of the cryptocurrency
   final int balanceAmount;
 
-  /// The Toncoin amount that is available for withdrawal; in the smallest units of the cryptocurrency
+  /// The Gram amount that is available for withdrawal; in the smallest units of the cryptocurrency
   final int availableAmount;
 
-  /// True, if Toncoins can be withdrawn
+  /// True, if Grams can be withdrawn
   final bool withdrawalEnabled;
 
-  /// Parses a [TonRevenueStatus] from TDLib JSON.
-  factory TonRevenueStatus.fromJson(Map<String, dynamic> json) =>
-      TonRevenueStatus(
+  /// Parses a [GramRevenueStatus] from TDLib JSON.
+  factory GramRevenueStatus.fromJson(Map<String, dynamic> json) =>
+      GramRevenueStatus(
         totalAmount: _readInt(json['total_amount']),
         balanceAmount: _readInt(json['balance_amount']),
         availableAmount: _readInt(json['available_amount']),
@@ -45,12 +45,12 @@ final class TonRevenueStatus extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TonRevenueStatus copyWith({
+  GramRevenueStatus copyWith({
     int? totalAmount,
     int? balanceAmount,
     int? availableAmount,
     bool? withdrawalEnabled,
-  }) => TonRevenueStatus(
+  }) => GramRevenueStatus(
     totalAmount: totalAmount ?? this.totalAmount,
     balanceAmount: balanceAmount ?? this.balanceAmount,
     availableAmount: availableAmount ?? this.availableAmount,
@@ -58,7 +58,7 @@ final class TonRevenueStatus extends TdObject {
   );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'tonRevenueStatus';
+  static const String CONSTRUCTOR = 'gramRevenueStatus';
 
   @override
   String getConstructor() => CONSTRUCTOR;

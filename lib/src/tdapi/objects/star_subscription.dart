@@ -28,7 +28,7 @@ final class StarSubscription extends TdObject {
   /// True, if the subscription was canceled
   final bool isCanceled;
 
-  /// True, if the subscription expires soon and there are no enough Telegram Stars on the user's balance to extend it
+  /// True, if the subscription expires soon and there aren't enough Telegram Stars on the user's balance to extend it
   final bool isExpiring;
 
   /// The subscription plan

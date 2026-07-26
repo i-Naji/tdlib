@@ -25,7 +25,7 @@ final class ReplaceStickerInSet extends TdFunction<Ok> {
   final InputFile oldSticker;
 
   /// Sticker to add to the set
-  final InputSticker newSticker;
+  final NewSticker newSticker;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
@@ -43,7 +43,7 @@ final class ReplaceStickerInSet extends TdFunction<Ok> {
     int? userId,
     String? name,
     InputFile? oldSticker,
-    InputSticker? newSticker,
+    NewSticker? newSticker,
   }) => ReplaceStickerInSet(
     userId: userId ?? this.userId,
     name: name ?? this.name,

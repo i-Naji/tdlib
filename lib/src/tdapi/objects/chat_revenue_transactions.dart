@@ -7,15 +7,15 @@ part of '../tdapi.dart';
 final class ChatRevenueTransactions extends TdObject {
   /// Contains a list of chat revenue transactions
   const ChatRevenueTransactions({
-    required this.tonAmount,
+    required this.gramAmount,
     required this.transactions,
     required this.nextOffset,
     this.extra,
     this.clientId,
   });
 
-  /// The amount of owned Toncoins; in the smallest units of the cryptocurrency
-  final int tonAmount;
+  /// The amount of owned TON Grams; in the smallest units of the cryptocurrency
+  final int gramAmount;
 
   /// List of transactions
   final List<ChatRevenueTransaction> transactions;
@@ -34,7 +34,7 @@ final class ChatRevenueTransactions extends TdObject {
   /// Parses a [ChatRevenueTransactions] from TDLib JSON.
   factory ChatRevenueTransactions.fromJson(Map<String, dynamic> json) =>
       ChatRevenueTransactions(
-        tonAmount: _readInt(json['ton_amount']),
+        gramAmount: _readInt(json['gram_amount']),
         transactions: _readList<ChatRevenueTransaction>(
           json['transactions'],
           (e) => _readObject(e, ChatRevenueTransaction.fromJson),
@@ -47,7 +47,7 @@ final class ChatRevenueTransactions extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'ton_amount': tonAmount,
+    'gram_amount': gramAmount,
     'transactions': [for (final e in transactions) e.toJson()],
     'next_offset': nextOffset,
   };
@@ -55,13 +55,13 @@ final class ChatRevenueTransactions extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ChatRevenueTransactions copyWith({
-    int? tonAmount,
+    int? gramAmount,
     List<ChatRevenueTransaction>? transactions,
     String? nextOffset,
     dynamic extra,
     int? clientId,
   }) => ChatRevenueTransactions(
-    tonAmount: tonAmount ?? this.tonAmount,
+    gramAmount: gramAmount ?? this.gramAmount,
     transactions: transactions ?? this.transactions,
     nextOffset: nextOffset ?? this.nextOffset,
     extra: extra ?? this.extra,

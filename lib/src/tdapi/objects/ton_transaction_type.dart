@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes type of transaction with Toncoins
+/// Describes type of transaction with TON Grams
 ///
 /// One of: [TonTransactionTypeFragmentDeposit], [TonTransactionTypeFragmentWithdrawal], [TonTransactionTypeSuggestedPostPayment], [TonTransactionTypeGiftPurchaseOffer], [TonTransactionTypeUpgradedGiftPurchase], [TonTransactionTypeUpgradedGiftSale], [TonTransactionTypeStakeDiceStake], [TonTransactionTypeStakeDicePayout], [TonTransactionTypeUnsupported]; or [UndecodedTonTransactionType] for a type newer than this API.
 sealed class TonTransactionType extends TdObject {
@@ -44,9 +44,9 @@ final class UndecodedTonTransactionType extends TonTransactionType {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// The transaction is a deposit of Toncoins from Fragment
+/// The transaction is a deposit of Grams from Fragment
 final class TonTransactionTypeFragmentDeposit extends TonTransactionType {
-  /// The transaction is a deposit of Toncoins from Fragment
+  /// The transaction is a deposit of Grams from Fragment
   const TonTransactionTypeFragmentDeposit({required this.isGift, this.sticker});
 
   /// True, if the transaction is a gift from another user
@@ -88,9 +88,9 @@ final class TonTransactionTypeFragmentDeposit extends TonTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a withdrawal of earned Toncoins to Fragment
+/// The transaction is a withdrawal of earned Grams to Fragment
 final class TonTransactionTypeFragmentWithdrawal extends TonTransactionType {
-  /// The transaction is a withdrawal of earned Toncoins to Fragment
+  /// The transaction is a withdrawal of earned Grams to Fragment
   const TonTransactionTypeFragmentWithdrawal({this.withdrawalState});
 
   /// State of the withdrawal; may be null for refunds from Fragment
@@ -248,7 +248,7 @@ final class TonTransactionTypeUpgradedGiftSale extends TonTransactionType {
     required this.userId,
     required this.gift,
     required this.commissionPerMille,
-    required this.commissionToncoinAmount,
+    required this.commissionGramAmount,
     required this.viaOffer,
   });
 
@@ -258,11 +258,11 @@ final class TonTransactionTypeUpgradedGiftSale extends TonTransactionType {
   /// The gift
   final UpgradedGift gift;
 
-  /// The number of Toncoins received by the Telegram for each 1000 Toncoins received by the seller of the gift
+  /// The number of Grams received by the Telegram for each 1000 Grams received by the seller of the gift
   final int commissionPerMille;
 
-  /// The Toncoin amount that was received by the Telegram; in the smallest units of the currency
-  final int commissionToncoinAmount;
+  /// The Gram amount that was received by the Telegram; in the smallest units of the currency
+  final int commissionGramAmount;
 
   /// True, if the gift was sold through a purchase offer
   final bool viaOffer;
@@ -274,7 +274,7 @@ final class TonTransactionTypeUpgradedGiftSale extends TonTransactionType {
     userId: _readInt(json['user_id']),
     gift: _readObject(json['gift'], UpgradedGift.fromJson),
     commissionPerMille: _readInt(json['commission_per_mille']),
-    commissionToncoinAmount: _readInt(json['commission_toncoin_amount']),
+    commissionGramAmount: _readInt(json['commission_gram_amount']),
     viaOffer: _readBool(json['via_offer']),
   );
 
@@ -284,7 +284,7 @@ final class TonTransactionTypeUpgradedGiftSale extends TonTransactionType {
     'user_id': userId,
     'gift': gift.toJson(),
     'commission_per_mille': commissionPerMille,
-    'commission_toncoin_amount': commissionToncoinAmount,
+    'commission_gram_amount': commissionGramAmount,
     'via_offer': viaOffer,
   };
 
@@ -295,14 +295,13 @@ final class TonTransactionTypeUpgradedGiftSale extends TonTransactionType {
     int? userId,
     UpgradedGift? gift,
     int? commissionPerMille,
-    int? commissionToncoinAmount,
+    int? commissionGramAmount,
     bool? viaOffer,
   }) => TonTransactionTypeUpgradedGiftSale(
     userId: userId ?? this.userId,
     gift: gift ?? this.gift,
     commissionPerMille: commissionPerMille ?? this.commissionPerMille,
-    commissionToncoinAmount:
-        commissionToncoinAmount ?? this.commissionToncoinAmount,
+    commissionGramAmount: commissionGramAmount ?? this.commissionGramAmount,
     viaOffer: viaOffer ?? this.viaOffer,
   );
 

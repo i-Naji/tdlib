@@ -88,9 +88,9 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The user is a member of the chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, ban unprivileged members, and manage video chats. In supergroups and channels, there are more detailed options for administrator privileges
+/// The user is a member of the chat and has some additional privileges. In basic groups, administrators have all applicable rights. In supergroups and channels, any subset of the rights can be chosen for an administrator
 final class ChatMemberStatusAdministrator extends ChatMemberStatus {
-  /// The user is a member of the chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, ban unprivileged members, and manage video chats. In supergroups and channels, there are more detailed options for administrator privileges
+  /// The user is a member of the chat and has some additional privileges. In basic groups, administrators have all applicable rights. In supergroups and channels, any subset of the rights can be chosen for an administrator
   const ChatMemberStatusAdministrator({
     required this.canBeEdited,
     required this.rights,

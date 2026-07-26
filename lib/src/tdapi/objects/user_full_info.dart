@@ -10,6 +10,7 @@ final class UserFullInfo extends TdObject {
     this.personalPhoto,
     this.photo,
     this.publicPhoto,
+    required this.communityId,
     this.blockList,
     required this.canBeCalled,
     required this.supportsVideoCalls,
@@ -50,6 +51,9 @@ final class UserFullInfo extends TdObject {
 
   /// User profile photo visible if the main photo is hidden by privacy settings; may be null. If null and user.profile_photo is null, then the photo is empty; otherwise, it is unknown. If non-null and both photo and personal_photo are null, then it is the same photo as in user.profile_photo and chat.photo. This photo isn't returned in the list of user photos
   final ChatPhoto? publicPhoto;
+
+  /// Identifier of the community to which chat with the bot was added; for bots only
+  final int communityId;
 
   /// Block list to which the user is added; may be null if none
   final BlockList? blockList;
@@ -148,6 +152,7 @@ final class UserFullInfo extends TdObject {
     personalPhoto: _readOptional(json['personal_photo'], ChatPhoto.fromJson),
     photo: _readOptional(json['photo'], ChatPhoto.fromJson),
     publicPhoto: _readOptional(json['public_photo'], ChatPhoto.fromJson),
+    communityId: _readInt(json['community_id']),
     blockList: _readOptional(json['block_list'], BlockList.fromJson),
     canBeCalled: _readBool(json['can_be_called']),
     supportsVideoCalls: _readBool(json['supports_video_calls']),
@@ -205,6 +210,7 @@ final class UserFullInfo extends TdObject {
     'personal_photo': personalPhoto?.toJson(),
     'photo': photo?.toJson(),
     'public_photo': publicPhoto?.toJson(),
+    'community_id': communityId,
     'block_list': blockList?.toJson(),
     'can_be_called': canBeCalled,
     'supports_video_calls': supportsVideoCalls,
@@ -242,6 +248,7 @@ final class UserFullInfo extends TdObject {
     ChatPhoto? Function()? personalPhoto,
     ChatPhoto? Function()? photo,
     ChatPhoto? Function()? publicPhoto,
+    int? communityId,
     BlockList? Function()? blockList,
     bool? canBeCalled,
     bool? supportsVideoCalls,
@@ -276,6 +283,7 @@ final class UserFullInfo extends TdObject {
     personalPhoto: personalPhoto != null ? personalPhoto() : this.personalPhoto,
     photo: photo != null ? photo() : this.photo,
     publicPhoto: publicPhoto != null ? publicPhoto() : this.publicPhoto,
+    communityId: communityId ?? this.communityId,
     blockList: blockList != null ? blockList() : this.blockList,
     canBeCalled: canBeCalled ?? this.canBeCalled,
     supportsVideoCalls: supportsVideoCalls ?? this.supportsVideoCalls,

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageRichMessage], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLiveLocation], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessagePollOptionAdded], [MessagePollOptionDeleted], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatOwnerLeft], [MessageChatOwnerChanged], [MessageChatHasProtectedContentToggled], [MessageChatHasProtectedContentDisableRequested], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessageManagedBotCreated], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageRichMessage], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLiveLocation], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessagePollOptionAdded], [MessagePollOptionDeleted], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatOwnerLeft], [MessageChatOwnerChanged], [MessageChatHasProtectedContentToggled], [MessageChatHasProtectedContentDisableRequested], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatAddedToCommunity], [MessageChatRemovedFromCommunity], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessageManagedBotCreated], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -1131,8 +1131,8 @@ final class MessageStakeDice extends MessageContent {
     this.initialState,
     this.finalState,
     required this.value,
-    required this.stakeToncoinAmount,
-    required this.prizeToncoinAmount,
+    required this.stakeGramAmount,
+    required this.prizeGramAmount,
   });
 
   /// The animated stickers with the initial dice animation; may be null if unknown. The update updateMessageContent will be sent when the sticker became known
@@ -1144,11 +1144,11 @@ final class MessageStakeDice extends MessageContent {
   /// The dice value. If the value is 0, then the dice don't have final state yet
   final int value;
 
-  /// The Toncoin amount that was staked; in the smallest units of the currency
-  final int stakeToncoinAmount;
+  /// The TON Gram amount that was staked; in the smallest units of the currency
+  final int stakeGramAmount;
 
-  /// The Toncoin amount that was gained from the roll; in the smallest units of the currency; -1 if the dice don't have final state yet
-  final int prizeToncoinAmount;
+  /// The TON Gram amount that was gained from the roll; in the smallest units of the currency; -1 if the dice don't have final state yet
+  final int prizeGramAmount;
 
   /// Parses a [MessageStakeDice] from TDLib JSON.
   factory MessageStakeDice.fromJson(Map<String, dynamic> json) =>
@@ -1159,8 +1159,8 @@ final class MessageStakeDice extends MessageContent {
         ),
         finalState: _readOptional(json['final_state'], DiceStickers.fromJson),
         value: _readInt(json['value']),
-        stakeToncoinAmount: _readInt(json['stake_toncoin_amount']),
-        prizeToncoinAmount: _readInt(json['prize_toncoin_amount']),
+        stakeGramAmount: _readInt(json['stake_gram_amount']),
+        prizeGramAmount: _readInt(json['prize_gram_amount']),
       );
 
   @override
@@ -1169,8 +1169,8 @@ final class MessageStakeDice extends MessageContent {
     'initial_state': initialState?.toJson(),
     'final_state': finalState?.toJson(),
     'value': value,
-    'stake_toncoin_amount': stakeToncoinAmount,
-    'prize_toncoin_amount': prizeToncoinAmount,
+    'stake_gram_amount': stakeGramAmount,
+    'prize_gram_amount': prizeGramAmount,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -1180,14 +1180,14 @@ final class MessageStakeDice extends MessageContent {
     DiceStickers? Function()? initialState,
     DiceStickers? Function()? finalState,
     int? value,
-    int? stakeToncoinAmount,
-    int? prizeToncoinAmount,
+    int? stakeGramAmount,
+    int? prizeGramAmount,
   }) => MessageStakeDice(
     initialState: initialState != null ? initialState() : this.initialState,
     finalState: finalState != null ? finalState() : this.finalState,
     value: value ?? this.value,
-    stakeToncoinAmount: stakeToncoinAmount ?? this.stakeToncoinAmount,
-    prizeToncoinAmount: prizeToncoinAmount ?? this.prizeToncoinAmount,
+    stakeGramAmount: stakeGramAmount ?? this.stakeGramAmount,
+    prizeGramAmount: prizeGramAmount ?? this.prizeGramAmount,
   );
 
   /// TDLib type name.
@@ -2217,6 +2217,62 @@ final class MessageChatDeleteMember extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageChatDeleteMember';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The chat was added to a community
+final class MessageChatAddedToCommunity extends MessageContent {
+  /// The chat was added to a community
+  const MessageChatAddedToCommunity({required this.communityId});
+
+  /// Identifier of the community to which the chat was added
+  final int communityId;
+
+  /// Parses a [MessageChatAddedToCommunity] from TDLib JSON.
+  factory MessageChatAddedToCommunity.fromJson(Map<String, dynamic> json) =>
+      MessageChatAddedToCommunity(communityId: _readInt(json['community_id']));
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'community_id': communityId,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageChatAddedToCommunity copyWith({int? communityId}) =>
+      MessageChatAddedToCommunity(communityId: communityId ?? this.communityId);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageChatAddedToCommunity';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The chat was removed from a community
+final class MessageChatRemovedFromCommunity extends MessageContent {
+  /// The chat was removed from a community
+  const MessageChatRemovedFromCommunity();
+
+  /// Parses a [MessageChatRemovedFromCommunity] from TDLib JSON.
+  factory MessageChatRemovedFromCommunity.fromJson(Map<String, dynamic> json) =>
+      const MessageChatRemovedFromCommunity();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageChatRemovedFromCommunity copyWith() =>
+      const MessageChatRemovedFromCommunity();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageChatRemovedFromCommunity';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -3771,27 +3827,27 @@ final class MessageGiftedStars extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Toncoins were gifted to a user
+/// TON Grams were gifted to a user
 final class MessageGiftedTon extends MessageContent {
-  /// Toncoins were gifted to a user
+  /// TON Grams were gifted to a user
   const MessageGiftedTon({
     required this.gifterUserId,
     required this.receiverUserId,
-    required this.tonAmount,
+    required this.gramAmount,
     required this.transactionId,
     this.sticker,
   });
 
-  /// The identifier of a user who gifted Toncoins; 0 if the gift was anonymous or is outgoing
+  /// The identifier of a user who gifted Grams; 0 if the gift was anonymous or is outgoing
   final int gifterUserId;
 
-  /// The identifier of a user who received Toncoins; 0 if the gift is incoming
+  /// The identifier of a user who received Grams; 0 if the gift is incoming
   final int receiverUserId;
 
-  /// The received Toncoin amount, in the smallest units of the cryptocurrency
-  final int tonAmount;
+  /// The received Gram amount, in the smallest units of the cryptocurrency
+  final int gramAmount;
 
-  /// Identifier of the transaction for Toncoin credit; for receiver only
+  /// Identifier of the transaction for Gram credit; for receiver only
   final String transactionId;
 
   /// A sticker to be shown in the message; may be null if unknown
@@ -3802,7 +3858,7 @@ final class MessageGiftedTon extends MessageContent {
       MessageGiftedTon(
         gifterUserId: _readInt(json['gifter_user_id']),
         receiverUserId: _readInt(json['receiver_user_id']),
-        tonAmount: _readInt(json['ton_amount']),
+        gramAmount: _readInt(json['gram_amount']),
         transactionId: _readString(json['transaction_id']),
         sticker: _readOptional(json['sticker'], Sticker.fromJson),
       );
@@ -3812,7 +3868,7 @@ final class MessageGiftedTon extends MessageContent {
     '@type': CONSTRUCTOR,
     'gifter_user_id': gifterUserId,
     'receiver_user_id': receiverUserId,
-    'ton_amount': tonAmount,
+    'gram_amount': gramAmount,
     'transaction_id': transactionId,
     'sticker': sticker?.toJson(),
   };
@@ -3823,13 +3879,13 @@ final class MessageGiftedTon extends MessageContent {
   MessageGiftedTon copyWith({
     int? gifterUserId,
     int? receiverUserId,
-    int? tonAmount,
+    int? gramAmount,
     String? transactionId,
     Sticker? Function()? sticker,
   }) => MessageGiftedTon(
     gifterUserId: gifterUserId ?? this.gifterUserId,
     receiverUserId: receiverUserId ?? this.receiverUserId,
-    tonAmount: tonAmount ?? this.tonAmount,
+    gramAmount: gramAmount ?? this.gramAmount,
     transactionId: transactionId ?? this.transactionId,
     sticker: sticker != null ? sticker() : this.sticker,
   );
@@ -3841,9 +3897,9 @@ final class MessageGiftedTon extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A Telegram Stars were received by the current user from a giveaway
+/// Telegram Stars were received by the current user from a giveaway
 final class MessageGiveawayPrizeStars extends MessageContent {
-  /// A Telegram Stars were received by the current user from a giveaway
+  /// Telegram Stars were received by the current user from a giveaway
   const MessageGiveawayPrizeStars({
     required this.starCount,
     required this.transactionId,
@@ -4161,7 +4217,7 @@ final class MessageUpgradedGift extends MessageContent {
   /// Point in time (Unix timestamp) when the gift can be transferred to the TON blockchain as an NFT; can be in the past; 0 if NFT export isn't possible; only for the receiver of the gift
   final int exportDate;
 
-  /// Point in time (Unix timestamp) when the gift can be used to craft another gift can be in the past; only for the receiver of the gift
+  /// Point in time (Unix timestamp) when the gift can be used to craft another gift; can be in the past; only for the receiver of the gift
   final int craftDate;
 
   /// Parses a [MessageUpgradedGift] from TDLib JSON.
@@ -4671,9 +4727,9 @@ final class MessageChecklistTasksAdded extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Approval of suggested post has failed, because the user which proposed the post had no enough funds
+/// Approval of suggested post has failed, because the user who proposed the post didn't have enough funds
 final class MessageSuggestedPostApprovalFailed extends MessageContent {
-  /// Approval of suggested post has failed, because the user which proposed the post had no enough funds
+  /// Approval of suggested post has failed, because the user who proposed the post didn't have enough funds
   const MessageSuggestedPostApprovalFailed({
     required this.suggestedPostMessageId,
     required this.price,
@@ -4827,7 +4883,7 @@ final class MessageSuggestedPostPaid extends MessageContent {
   const MessageSuggestedPostPaid({
     required this.suggestedPostMessageId,
     required this.starAmount,
-    required this.tonAmount,
+    required this.gramAmount,
   });
 
   /// Identifier of the message with the suggested post; may be 0 or an identifier of a deleted message
@@ -4836,15 +4892,15 @@ final class MessageSuggestedPostPaid extends MessageContent {
   /// The amount of received Telegram Stars
   final StarAmount starAmount;
 
-  /// The amount of received Toncoins; in the smallest units of the cryptocurrency
-  final int tonAmount;
+  /// The amount of received TON Grams; in the smallest units of the cryptocurrency
+  final int gramAmount;
 
   /// Parses a [MessageSuggestedPostPaid] from TDLib JSON.
   factory MessageSuggestedPostPaid.fromJson(Map<String, dynamic> json) =>
       MessageSuggestedPostPaid(
         suggestedPostMessageId: _readInt(json['suggested_post_message_id']),
         starAmount: _readObject(json['star_amount'], StarAmount.fromJson),
-        tonAmount: _readInt(json['ton_amount']),
+        gramAmount: _readInt(json['gram_amount']),
       );
 
   @override
@@ -4852,7 +4908,7 @@ final class MessageSuggestedPostPaid extends MessageContent {
     '@type': CONSTRUCTOR,
     'suggested_post_message_id': suggestedPostMessageId,
     'star_amount': starAmount.toJson(),
-    'ton_amount': tonAmount,
+    'gram_amount': gramAmount,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -4861,12 +4917,12 @@ final class MessageSuggestedPostPaid extends MessageContent {
   MessageSuggestedPostPaid copyWith({
     int? suggestedPostMessageId,
     StarAmount? starAmount,
-    int? tonAmount,
+    int? gramAmount,
   }) => MessageSuggestedPostPaid(
     suggestedPostMessageId:
         suggestedPostMessageId ?? this.suggestedPostMessageId,
     starAmount: starAmount ?? this.starAmount,
-    tonAmount: tonAmount ?? this.tonAmount,
+    gramAmount: gramAmount ?? this.gramAmount,
   );
 
   /// TDLib type name.

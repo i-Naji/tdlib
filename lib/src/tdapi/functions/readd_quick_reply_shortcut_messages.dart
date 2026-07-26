@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Readds quick reply messages which failed to add. Can be called only for messages for which messageSendingStateFailed.can_retry is true and after specified in messageSendingStateFailed.retry_after time passed. If a message is readded, the corresponding failed to send message is deleted. Returns the sent messages in the same order as the message identifiers passed in message_ids. If a message can't be readded, null will be returned instead of the message
+/// Re-adds quick reply messages which failed to add. Can be called only for messages for which messageSendingStateFailed.can_retry is true and after specified in messageSendingStateFailed.retry_after time passed. If a message is re-added, the corresponding failed to send message is deleted. Returns the sent messages in the same order as the message identifiers passed in message_ids. If a message can't be readded, null will be returned instead of the message
 ///
 /// Returns [QuickReplyMessages].
 final class ReaddQuickReplyShortcutMessages
     extends TdFunction<QuickReplyMessages> {
-  /// Readds quick reply messages which failed to add. Can be called only for messages for which messageSendingStateFailed.can_retry is true and after specified in messageSendingStateFailed.retry_after time passed. If a message is readded, the corresponding failed to send message is deleted. Returns the sent messages in the same order as the message identifiers passed in message_ids. If a message can't be readded, null will be returned instead of the message
+  /// Re-adds quick reply messages which failed to add. Can be called only for messages for which messageSendingStateFailed.can_retry is true and after specified in messageSendingStateFailed.retry_after time passed. If a message is re-added, the corresponding failed to send message is deleted. Returns the sent messages in the same order as the message identifiers passed in message_ids. If a message can't be readded, null will be returned instead of the message
   const ReaddQuickReplyShortcutMessages({
     required this.shortcutName,
     required this.messageIds,
@@ -17,7 +17,7 @@ final class ReaddQuickReplyShortcutMessages
   /// Name of the target shortcut
   final String shortcutName;
 
-  /// Identifiers of the quick reply messages to readd. Message identifiers must be in a strictly increasing order
+  /// Identifiers of the quick reply messages to re-add. Message identifiers must be in a strictly increasing order
   final List<int> messageIds;
 
   @override

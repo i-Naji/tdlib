@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes a block of an instant view for a web page
+/// Describes a block of an instant view for a web page or a block of a rich message
 ///
 /// One of: [PageBlockTitle], [PageBlockSubtitle], [PageBlockAuthorDate], [PageBlockHeader], [PageBlockSubheader], [PageBlockSectionHeading], [PageBlockKicker], [PageBlockParagraph], [PageBlockPreformatted], [PageBlockFooter], [PageBlockThinking], [PageBlockDivider], [PageBlockMathematicalExpression], [PageBlockAnchor], [PageBlockList], [PageBlockBlockQuote], [PageBlockPullQuote], [PageBlockAnimation], [PageBlockAudio], [PageBlockPhoto], [PageBlockVideo], [PageBlockVoiceNote], [PageBlockCover], [PageBlockEmbedded], [PageBlockEmbeddedPost], [PageBlockCollage], [PageBlockSlideshow], [PageBlockChatLink], [PageBlockTable], [PageBlockDetails], [PageBlockRelatedArticles], [PageBlockMap]; or [UndecodedPageBlock] for a type newer than this API.
 sealed class PageBlock extends TdObject {

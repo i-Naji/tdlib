@@ -238,57 +238,28 @@ final class InputPollMediaPhoto extends InputPollMedia {
 /// A sticker
 final class InputPollMediaSticker extends InputPollMedia {
   /// A sticker
-  const InputPollMediaSticker({
-    required this.sticker,
-    this.thumbnail,
-    required this.width,
-    required this.height,
-  });
+  const InputPollMediaSticker({required this.sticker});
 
   /// Sticker to be sent
-  final InputFile sticker;
-
-  /// Sticker thumbnail; pass null to skip thumbnail uploading
-  final InputThumbnail? thumbnail;
-
-  /// Sticker width
-  final int width;
-
-  /// Sticker height
-  final int height;
+  final InputSticker sticker;
 
   /// Parses a [InputPollMediaSticker] from TDLib JSON.
   factory InputPollMediaSticker.fromJson(Map<String, dynamic> json) =>
       InputPollMediaSticker(
-        sticker: _readObject(json['sticker'], InputFile.fromJson),
-        thumbnail: _readOptional(json['thumbnail'], InputThumbnail.fromJson),
-        width: _readInt(json['width']),
-        height: _readInt(json['height']),
+        sticker: _readObject(json['sticker'], InputSticker.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'sticker': sticker.toJson(),
-    'thumbnail': thumbnail?.toJson(),
-    'width': width,
-    'height': height,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputPollMediaSticker copyWith({
-    InputFile? sticker,
-    InputThumbnail? Function()? thumbnail,
-    int? width,
-    int? height,
-  }) => InputPollMediaSticker(
-    sticker: sticker ?? this.sticker,
-    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-    width: width ?? this.width,
-    height: height ?? this.height,
-  );
+  InputPollMediaSticker copyWith({InputSticker? sticker}) =>
+      InputPollMediaSticker(sticker: sticker ?? this.sticker);
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPollMediaSticker';

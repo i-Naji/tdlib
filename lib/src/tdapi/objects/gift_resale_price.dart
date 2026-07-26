@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes price of a resold gift
 ///
-/// One of: [GiftResalePriceStar], [GiftResalePriceTon]; or [UndecodedGiftResalePrice] for a type newer than this API.
+/// One of: [GiftResalePriceStar], [GiftResalePriceGram]; or [UndecodedGiftResalePrice] for a type newer than this API.
 sealed class GiftResalePrice extends TdObject {
   const GiftResalePrice();
 
@@ -73,35 +73,32 @@ final class GiftResalePriceStar extends GiftResalePrice {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Describes price of a resold gift in Toncoins
-final class GiftResalePriceTon extends GiftResalePrice {
-  /// Describes price of a resold gift in Toncoins
-  const GiftResalePriceTon({required this.toncoinCentCount});
+/// Describes price of a resold gift in TON Grams
+final class GiftResalePriceGram extends GiftResalePrice {
+  /// Describes price of a resold gift in TON Grams
+  const GiftResalePriceGram({required this.gramCentCount});
 
-  /// The amount of 1/100 of Toncoin expected to be paid for the gift. Must be in the range getOption("gift_resale_toncoin_cent_count_min")-getOption("gift_resale_toncoin_cent_count_max")
-  final int toncoinCentCount;
+  /// The amount of 1/100 of Gram expected to be paid for the gift. Must be in the range getOption("gift_resale_gram_cent_count_min")-getOption("gift_resale_gram_cent_count_max")
+  final int gramCentCount;
 
-  /// Parses a [GiftResalePriceTon] from TDLib JSON.
-  factory GiftResalePriceTon.fromJson(Map<String, dynamic> json) =>
-      GiftResalePriceTon(
-        toncoinCentCount: _readInt(json['toncoin_cent_count']),
-      );
+  /// Parses a [GiftResalePriceGram] from TDLib JSON.
+  factory GiftResalePriceGram.fromJson(Map<String, dynamic> json) =>
+      GiftResalePriceGram(gramCentCount: _readInt(json['gram_cent_count']));
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'toncoin_cent_count': toncoinCentCount,
+    'gram_cent_count': gramCentCount,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  GiftResalePriceTon copyWith({int? toncoinCentCount}) => GiftResalePriceTon(
-    toncoinCentCount: toncoinCentCount ?? this.toncoinCentCount,
-  );
+  GiftResalePriceGram copyWith({int? gramCentCount}) =>
+      GiftResalePriceGram(gramCentCount: gramCentCount ?? this.gramCentCount);
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'giftResalePriceTon';
+  static const String CONSTRUCTOR = 'giftResalePriceGram';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a feature available to Premium users
 ///
-/// One of: [PremiumFeatureIncreasedLimits], [PremiumFeatureIncreasedUploadFileSize], [PremiumFeatureImprovedDownloadSpeed], [PremiumFeatureVoiceRecognition], [PremiumFeatureDisabledAds], [PremiumFeatureUniqueReactions], [PremiumFeatureUniqueStickers], [PremiumFeatureCustomEmoji], [PremiumFeatureAdvancedChatManagement], [PremiumFeatureProfileBadge], [PremiumFeatureEmojiStatus], [PremiumFeatureAnimatedProfilePhoto], [PremiumFeatureForumTopicIcon], [PremiumFeatureAppIcons], [PremiumFeatureRealTimeChatTranslation], [PremiumFeatureUpgradedStories], [PremiumFeatureChatBoost], [PremiumFeatureAccentColor], [PremiumFeatureBackgroundForBoth], [PremiumFeatureSavedMessagesTags], [PremiumFeatureMessagePrivacy], [PremiumFeatureLastSeenTimes], [PremiumFeatureBusiness], [PremiumFeatureMessageEffects], [PremiumFeatureChecklists], [PremiumFeaturePaidMessages], [PremiumFeatureProtectPrivateChatContent], [PremiumFeatureTextComposition]; or [UndecodedPremiumFeature] for a type newer than this API.
+/// One of: [PremiumFeatureIncreasedLimits], [PremiumFeatureIncreasedUploadFileSize], [PremiumFeatureImprovedDownloadSpeed], [PremiumFeatureVoiceRecognition], [PremiumFeatureDisabledAds], [PremiumFeatureUniqueReactions], [PremiumFeatureUniqueStickers], [PremiumFeatureCustomEmoji], [PremiumFeatureAdvancedChatManagement], [PremiumFeatureProfileBadge], [PremiumFeatureEmojiStatus], [PremiumFeatureAnimatedProfilePhoto], [PremiumFeatureForumTopicIcon], [PremiumFeatureAppIcons], [PremiumFeatureRealTimeChatTranslation], [PremiumFeatureUpgradedStories], [PremiumFeatureChatBoost], [PremiumFeatureAccentColor], [PremiumFeatureBackgroundForBoth], [PremiumFeatureSavedMessagesTags], [PremiumFeatureMessagePrivacy], [PremiumFeatureLastSeenTimes], [PremiumFeatureBusiness], [PremiumFeatureMessageEffects], [PremiumFeatureChecklists], [PremiumFeaturePaidMessages], [PremiumFeatureProtectPrivateChatContent], [PremiumFeatureTextComposition], [PremiumFeatureRichMessages]; or [UndecodedPremiumFeature] for a type newer than this API.
 sealed class PremiumFeature extends TdObject {
   const PremiumFeature();
 
@@ -732,6 +732,30 @@ final class PremiumFeatureTextComposition extends PremiumFeature {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumFeatureTextComposition';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The ability to send rich messages
+final class PremiumFeatureRichMessages extends PremiumFeature {
+  /// The ability to send rich messages
+  const PremiumFeatureRichMessages();
+
+  /// Parses a [PremiumFeatureRichMessages] from TDLib JSON.
+  factory PremiumFeatureRichMessages.fromJson(Map<String, dynamic> json) =>
+      const PremiumFeatureRichMessages();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PremiumFeatureRichMessages copyWith() => const PremiumFeatureRichMessages();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'premiumFeatureRichMessages';
 
   @override
   String getConstructor() => CONSTRUCTOR;

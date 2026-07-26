@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes source of a rich message
 ///
-/// One of: [RichMessageSourceMarkdown], [RichMessageSourceHtml]; or [UndecodedRichMessageSource] for a type newer than this API.
+/// One of: [RichMessageSourceBlocks], [RichMessageSourceMarkdown], [RichMessageSourceHtml]; or [UndecodedRichMessageSource] for a type newer than this API.
 sealed class RichMessageSource extends TdObject {
   const RichMessageSource();
 
@@ -44,26 +44,80 @@ final class UndecodedRichMessageSource extends RichMessageSource {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// A Markdown-formatted rich message; for bots only
-final class RichMessageSourceMarkdown extends RichMessageSource {
-  /// A Markdown-formatted rich message; for bots only
-  const RichMessageSourceMarkdown({required this.text});
+/// A rich message defined by blocks
+final class RichMessageSourceBlocks extends RichMessageSource {
+  /// A rich message defined by blocks
+  const RichMessageSourceBlocks({required this.blocks});
 
-  /// Markdown-formatted text of the message
-  final String text;
+  /// Content of the message
+  final List<InputPageBlock> blocks;
 
-  /// Parses a [RichMessageSourceMarkdown] from TDLib JSON.
-  factory RichMessageSourceMarkdown.fromJson(Map<String, dynamic> json) =>
-      RichMessageSourceMarkdown(text: _readString(json['text']));
+  /// Parses a [RichMessageSourceBlocks] from TDLib JSON.
+  factory RichMessageSourceBlocks.fromJson(Map<String, dynamic> json) =>
+      RichMessageSourceBlocks(
+        blocks: _readList<InputPageBlock>(
+          json['blocks'],
+          (e) => _readObject(e, InputPageBlock.fromJson),
+        ),
+      );
 
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'text': text};
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'blocks': [for (final e in blocks) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  RichMessageSourceMarkdown copyWith({String? text}) =>
-      RichMessageSourceMarkdown(text: text ?? this.text);
+  RichMessageSourceBlocks copyWith({List<InputPageBlock>? blocks}) =>
+      RichMessageSourceBlocks(blocks: blocks ?? this.blocks);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richMessageSourceBlocks';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A Markdown-formatted rich message; for bots only
+final class RichMessageSourceMarkdown extends RichMessageSource {
+  /// A Markdown-formatted rich message; for bots only
+  const RichMessageSourceMarkdown({required this.text, required this.media});
+
+  /// Markdown-formatted text of the message
+  final String text;
+
+  /// Media used in the message
+  final List<InputRichMessageMedia> media;
+
+  /// Parses a [RichMessageSourceMarkdown] from TDLib JSON.
+  factory RichMessageSourceMarkdown.fromJson(Map<String, dynamic> json) =>
+      RichMessageSourceMarkdown(
+        text: _readString(json['text']),
+        media: _readList<InputRichMessageMedia>(
+          json['media'],
+          (e) => _readObject(e, InputRichMessageMedia.fromJson),
+        ),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text,
+    'media': [for (final e in media) e.toJson()],
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichMessageSourceMarkdown copyWith({
+    String? text,
+    List<InputRichMessageMedia>? media,
+  }) => RichMessageSourceMarkdown(
+    text: text ?? this.text,
+    media: media ?? this.media,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'richMessageSourceMarkdown';
@@ -75,23 +129,41 @@ final class RichMessageSourceMarkdown extends RichMessageSource {
 /// An HTML-formatted rich message; for bots only
 final class RichMessageSourceHtml extends RichMessageSource {
   /// An HTML-formatted rich message; for bots only
-  const RichMessageSourceHtml({required this.text});
+  const RichMessageSourceHtml({required this.text, required this.media});
 
   /// HTML-formatted text of the message
   final String text;
 
+  /// Media used in the message
+  final List<InputRichMessageMedia> media;
+
   /// Parses a [RichMessageSourceHtml] from TDLib JSON.
   factory RichMessageSourceHtml.fromJson(Map<String, dynamic> json) =>
-      RichMessageSourceHtml(text: _readString(json['text']));
+      RichMessageSourceHtml(
+        text: _readString(json['text']),
+        media: _readList<InputRichMessageMedia>(
+          json['media'],
+          (e) => _readObject(e, InputRichMessageMedia.fromJson),
+        ),
+      );
 
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'text': text};
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text,
+    'media': [for (final e in media) e.toJson()],
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  RichMessageSourceHtml copyWith({String? text}) =>
-      RichMessageSourceHtml(text: text ?? this.text);
+  RichMessageSourceHtml copyWith({
+    String? text,
+    List<InputRichMessageMedia>? media,
+  }) => RichMessageSourceHtml(
+    text: text ?? this.text,
+    media: media ?? this.media,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'richMessageSourceHtml';

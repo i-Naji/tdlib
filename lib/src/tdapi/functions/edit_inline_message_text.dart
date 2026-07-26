@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Edits the text of an inline text or game message sent via a bot; for bots only
+/// Edits the text of an inline text or game message sent via the bot; for bots only
 ///
 /// Returns [Ok].
 final class EditInlineMessageText extends TdFunction<Ok> {
-  /// Edits the text of an inline text or game message sent via a bot; for bots only
+  /// Edits the text of an inline text or game message sent via the bot; for bots only
   const EditInlineMessageText({
     required this.inlineMessageId,
     this.replyMarkup,
@@ -20,7 +20,7 @@ final class EditInlineMessageText extends TdFunction<Ok> {
   /// The new message reply markup; pass null if none
   final ReplyMarkup? replyMarkup;
 
-  /// New text content of the message. Must be of type inputMessageText or inputMessageRichMessage
+  /// New text content of the message. Must be of type inputMessageText or inputMessageRichMessage; file upload isn't supported
   final InputMessageContent inputMessageContent;
 
   @override

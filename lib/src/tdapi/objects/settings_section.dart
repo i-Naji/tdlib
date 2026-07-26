@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a section of the application settings
 ///
-/// One of: [SettingsSectionAppearance], [SettingsSectionAskQuestion], [SettingsSectionBusiness], [SettingsSectionChatFolders], [SettingsSectionDataAndStorage], [SettingsSectionDevices], [SettingsSectionEditProfile], [SettingsSectionFaq], [SettingsSectionFeatures], [SettingsSectionInAppBrowser], [SettingsSectionLanguage], [SettingsSectionMyStars], [SettingsSectionMyToncoins], [SettingsSectionNotifications], [SettingsSectionPowerSaving], [SettingsSectionPremium], [SettingsSectionPrivacyAndSecurity], [SettingsSectionPrivacyPolicy], [SettingsSectionQrCode], [SettingsSectionSearch], [SettingsSectionSendGift]; or [UndecodedSettingsSection] for a type newer than this API.
+/// One of: [SettingsSectionAppearance], [SettingsSectionAskQuestion], [SettingsSectionBusiness], [SettingsSectionChatFolders], [SettingsSectionDataAndStorage], [SettingsSectionDevices], [SettingsSectionEditProfile], [SettingsSectionFaq], [SettingsSectionFeatures], [SettingsSectionInAppBrowser], [SettingsSectionLanguage], [SettingsSectionMyStars], [SettingsSectionMyGrams], [SettingsSectionNotifications], [SettingsSectionPowerSaving], [SettingsSectionPremium], [SettingsSectionPrivacyAndSecurity], [SettingsSectionPrivacyPolicy], [SettingsSectionQrCode], [SettingsSectionSearch], [SettingsSectionSendGift]; or [UndecodedSettingsSection] for a type newer than this API.
 sealed class SettingsSection extends TdObject {
   const SettingsSection();
 
@@ -395,14 +395,14 @@ final class SettingsSectionMyStars extends SettingsSection {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The Toncoin balance and transaction section
-final class SettingsSectionMyToncoins extends SettingsSection {
-  /// The Toncoin balance and transaction section
-  const SettingsSectionMyToncoins();
+/// The TON Gram balance and transaction section
+final class SettingsSectionMyGrams extends SettingsSection {
+  /// The TON Gram balance and transaction section
+  const SettingsSectionMyGrams();
 
-  /// Parses a [SettingsSectionMyToncoins] from TDLib JSON.
-  factory SettingsSectionMyToncoins.fromJson(Map<String, dynamic> json) =>
-      const SettingsSectionMyToncoins();
+  /// Parses a [SettingsSectionMyGrams] from TDLib JSON.
+  factory SettingsSectionMyGrams.fromJson(Map<String, dynamic> json) =>
+      const SettingsSectionMyGrams();
 
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
@@ -410,10 +410,10 @@ final class SettingsSectionMyToncoins extends SettingsSection {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  SettingsSectionMyToncoins copyWith() => const SettingsSectionMyToncoins();
+  SettingsSectionMyGrams copyWith() => const SettingsSectionMyGrams();
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'settingsSectionMyToncoins';
+  static const String CONSTRUCTOR = 'settingsSectionMyGrams';
 
   @override
   String getConstructor() => CONSTRUCTOR;

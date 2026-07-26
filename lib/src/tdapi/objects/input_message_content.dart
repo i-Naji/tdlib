@@ -448,25 +448,10 @@ final class InputMessagePhoto extends InputMessageContent {
 /// A sticker message
 final class InputMessageSticker extends InputMessageContent {
   /// A sticker message
-  const InputMessageSticker({
-    required this.sticker,
-    this.thumbnail,
-    required this.width,
-    required this.height,
-    required this.emoji,
-  });
+  const InputMessageSticker({required this.sticker, required this.emoji});
 
   /// Sticker to be sent
-  final InputFile sticker;
-
-  /// Sticker thumbnail; pass null to skip thumbnail uploading
-  final InputThumbnail? thumbnail;
-
-  /// Sticker width
-  final int width;
-
-  /// Sticker height
-  final int height;
+  final InputSticker sticker;
 
   /// Emoji used to choose the sticker
   final String emoji;
@@ -474,10 +459,7 @@ final class InputMessageSticker extends InputMessageContent {
   /// Parses a [InputMessageSticker] from TDLib JSON.
   factory InputMessageSticker.fromJson(Map<String, dynamic> json) =>
       InputMessageSticker(
-        sticker: _readObject(json['sticker'], InputFile.fromJson),
-        thumbnail: _readOptional(json['thumbnail'], InputThumbnail.fromJson),
-        width: _readInt(json['width']),
-        height: _readInt(json['height']),
+        sticker: _readObject(json['sticker'], InputSticker.fromJson),
         emoji: _readString(json['emoji']),
       );
 
@@ -485,28 +467,17 @@ final class InputMessageSticker extends InputMessageContent {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'sticker': sticker.toJson(),
-    'thumbnail': thumbnail?.toJson(),
-    'width': width,
-    'height': height,
     'emoji': emoji,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputMessageSticker copyWith({
-    InputFile? sticker,
-    InputThumbnail? Function()? thumbnail,
-    int? width,
-    int? height,
-    String? emoji,
-  }) => InputMessageSticker(
-    sticker: sticker ?? this.sticker,
-    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-    width: width ?? this.width,
-    height: height ?? this.height,
-    emoji: emoji ?? this.emoji,
-  );
+  InputMessageSticker copyWith({InputSticker? sticker, String? emoji}) =>
+      InputMessageSticker(
+        sticker: sticker ?? this.sticker,
+        emoji: emoji ?? this.emoji,
+      );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageSticker';
@@ -593,25 +564,10 @@ final class InputMessageVideo extends InputMessageContent {
 /// A video note message
 final class InputMessageVideoNote extends InputMessageContent {
   /// A video note message
-  const InputMessageVideoNote({
-    required this.videoNote,
-    this.thumbnail,
-    required this.duration,
-    required this.length,
-    this.selfDestructType,
-  });
+  const InputMessageVideoNote({required this.videoNote, this.selfDestructType});
 
-  /// Video note to be sent. The video is expected to be encoded to MPEG4 format with H.264 codec and have no data outside of the visible circle
-  final InputFile videoNote;
-
-  /// Video thumbnail; may be null if empty; pass null to skip thumbnail uploading
-  final InputThumbnail? thumbnail;
-
-  /// Duration of the video, in seconds; 0-60
-  final int duration;
-
-  /// Video width and height; must be positive and not greater than 640
-  final int length;
+  /// Video note to be sent
+  final InputVideoNote videoNote;
 
   /// Video note self-destruct type; may be null if none; pass null if none; private chats only
   final MessageSelfDestructType? selfDestructType;
@@ -619,10 +575,7 @@ final class InputMessageVideoNote extends InputMessageContent {
   /// Parses a [InputMessageVideoNote] from TDLib JSON.
   factory InputMessageVideoNote.fromJson(Map<String, dynamic> json) =>
       InputMessageVideoNote(
-        videoNote: _readObject(json['video_note'], InputFile.fromJson),
-        thumbnail: _readOptional(json['thumbnail'], InputThumbnail.fromJson),
-        duration: _readInt(json['duration']),
-        length: _readInt(json['length']),
+        videoNote: _readObject(json['video_note'], InputVideoNote.fromJson),
         selfDestructType: _readOptional(
           json['self_destruct_type'],
           MessageSelfDestructType.fromJson,
@@ -633,9 +586,6 @@ final class InputMessageVideoNote extends InputMessageContent {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'video_note': videoNote.toJson(),
-    'thumbnail': thumbnail?.toJson(),
-    'duration': duration,
-    'length': length,
     'self_destruct_type': selfDestructType?.toJson(),
   };
 
@@ -643,16 +593,10 @@ final class InputMessageVideoNote extends InputMessageContent {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageVideoNote copyWith({
-    InputFile? videoNote,
-    InputThumbnail? Function()? thumbnail,
-    int? duration,
-    int? length,
+    InputVideoNote? videoNote,
     MessageSelfDestructType? Function()? selfDestructType,
   }) => InputMessageVideoNote(
     videoNote: videoNote ?? this.videoNote,
-    thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-    duration: duration ?? this.duration,
-    length: length ?? this.length,
     selfDestructType: selfDestructType != null
         ? selfDestructType()
         : this.selfDestructType,
@@ -670,20 +614,12 @@ final class InputMessageVoiceNote extends InputMessageContent {
   /// A voice note message
   const InputMessageVoiceNote({
     required this.voiceNote,
-    required this.duration,
-    required this.waveform,
     this.caption,
     this.selfDestructType,
   });
 
-  /// Voice note to be sent. The voice note must be encoded with the Opus codec and stored inside an OGG container with a single audio channel, or be in MP3 or M4A format as regular audio
-  final InputFile voiceNote;
-
-  /// Duration of the voice note, in seconds
-  final int duration;
-
-  /// Waveform representation of the voice note in 5-bit format
-  final String waveform;
+  /// Voice note to be sent
+  final InputVoiceNote voiceNote;
 
   /// Voice note caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
@@ -694,9 +630,7 @@ final class InputMessageVoiceNote extends InputMessageContent {
   /// Parses a [InputMessageVoiceNote] from TDLib JSON.
   factory InputMessageVoiceNote.fromJson(Map<String, dynamic> json) =>
       InputMessageVoiceNote(
-        voiceNote: _readObject(json['voice_note'], InputFile.fromJson),
-        duration: _readInt(json['duration']),
-        waveform: _readString(json['waveform']),
+        voiceNote: _readObject(json['voice_note'], InputVoiceNote.fromJson),
         caption: _readOptional(json['caption'], FormattedText.fromJson),
         selfDestructType: _readOptional(
           json['self_destruct_type'],
@@ -708,8 +642,6 @@ final class InputMessageVoiceNote extends InputMessageContent {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'voice_note': voiceNote.toJson(),
-    'duration': duration,
-    'waveform': waveform,
     'caption': caption?.toJson(),
     'self_destruct_type': selfDestructType?.toJson(),
   };
@@ -718,15 +650,11 @@ final class InputMessageVoiceNote extends InputMessageContent {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageVoiceNote copyWith({
-    InputFile? voiceNote,
-    int? duration,
-    String? waveform,
+    InputVoiceNote? voiceNote,
     FormattedText? Function()? caption,
     MessageSelfDestructType? Function()? selfDestructType,
   }) => InputMessageVoiceNote(
     voiceNote: voiceNote ?? this.voiceNote,
-    duration: duration ?? this.duration,
-    waveform: waveform ?? this.waveform,
     caption: caption != null ? caption() : this.caption,
     selfDestructType: selfDestructType != null
         ? selfDestructType()
@@ -1253,15 +1181,15 @@ final class InputMessageStakeDice extends InputMessageContent {
   /// A stake dice message
   const InputMessageStakeDice({
     required this.stateHash,
-    required this.stakeToncoinAmount,
+    required this.stakeGramAmount,
     required this.clearDraft,
   });
 
   /// Hash of the stake dice state. The state hash can be used only if it was received recently enough. Otherwise, a new state must be requested using getStakeDiceState
   final String stateHash;
 
-  /// The Toncoin amount that will be staked; in the smallest units of the currency. Must be in the range getOption("stake_dice_stake_amount_min")-getOption("stake_dice_stake_amount_max")
-  final int stakeToncoinAmount;
+  /// The TON Gram amount that will be staked; in the smallest units of the currency. Must be in the range getOption("stake_dice_stake_amount_min")-getOption("stake_dice_stake_amount_max")
+  final int stakeGramAmount;
 
   /// Pass true to delete message draft in the chat
   final bool clearDraft;
@@ -1270,7 +1198,7 @@ final class InputMessageStakeDice extends InputMessageContent {
   factory InputMessageStakeDice.fromJson(Map<String, dynamic> json) =>
       InputMessageStakeDice(
         stateHash: _readString(json['state_hash']),
-        stakeToncoinAmount: _readInt(json['stake_toncoin_amount']),
+        stakeGramAmount: _readInt(json['stake_gram_amount']),
         clearDraft: _readBool(json['clear_draft']),
       );
 
@@ -1278,7 +1206,7 @@ final class InputMessageStakeDice extends InputMessageContent {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'state_hash': stateHash,
-    'stake_toncoin_amount': stakeToncoinAmount,
+    'stake_gram_amount': stakeGramAmount,
     'clear_draft': clearDraft,
   };
 
@@ -1287,11 +1215,11 @@ final class InputMessageStakeDice extends InputMessageContent {
   @override
   InputMessageStakeDice copyWith({
     String? stateHash,
-    int? stakeToncoinAmount,
+    int? stakeGramAmount,
     bool? clearDraft,
   }) => InputMessageStakeDice(
     stateHash: stateHash ?? this.stateHash,
-    stakeToncoinAmount: stakeToncoinAmount ?? this.stakeToncoinAmount,
+    stakeGramAmount: stakeGramAmount ?? this.stakeGramAmount,
     clearDraft: clearDraft ?? this.clearDraft,
   );
 

@@ -67,7 +67,7 @@ final class UpgradedGift extends TdObject {
   /// True, if the gift was used to craft another gift
   final bool isBurned;
 
-  /// True, if the gift was craft from another gifts
+  /// True, if the gift was crafted from other gifts
   final bool isCrafted;
 
   /// True, if the original gift could have been bought only by Telegram Premium subscribers

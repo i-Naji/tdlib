@@ -65,16 +65,16 @@ final class Gift extends TdObject {
   /// Number of times the gift can be purchased by the current user; may be null if not limited
   final GiftPurchaseLimits? userLimits;
 
-  /// Number of times the gift can be purchased all users; may be null if not limited
+  /// Number of times the gift can be purchased by all users; may be null if not limited
   final GiftPurchaseLimits? overallLimits;
 
   /// Background of the gift
   final GiftBackground background;
 
-  /// Point in time (Unix timestamp) when the gift was send for the first time; for sold out gifts only
+  /// Point in time (Unix timestamp) when the gift was sent for the first time; for sold out gifts only
   final int firstSendDate;
 
-  /// Point in time (Unix timestamp) when the gift was send for the last time; for sold out gifts only
+  /// Point in time (Unix timestamp) when the gift was sent for the last time; for sold out gifts only
   final int lastSendDate;
 
   /// Parses a [Gift] from TDLib JSON.

@@ -53,7 +53,7 @@ final class ChatAdministratorRights extends TdObject {
   /// True, if the administrator can create, rename, close, reopen, hide, and unhide forum topics; applicable to forum supergroups only
   final bool canManageTopics;
 
-  /// True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them
+  /// True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them; applicable to supergroups and channels only
   final bool canPromoteMembers;
 
   /// True, if the administrator can manage video chats

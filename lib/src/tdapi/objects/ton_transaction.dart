@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Represents a transaction changing the amount of owned Toncoins
+/// Represents a transaction changing the amount of owned TON Grams
 final class TonTransaction extends TdObject {
-  /// Represents a transaction changing the amount of owned Toncoins
+  /// Represents a transaction changing the amount of owned TON Grams
   const TonTransaction({
     required this.id,
-    required this.tonAmount,
+    required this.gramAmount,
     required this.isRefund,
     required this.date,
     required this.type,
@@ -17,8 +17,8 @@ final class TonTransaction extends TdObject {
   /// Unique identifier of the transaction
   final String id;
 
-  /// The amount of added owned Toncoins; negative for outgoing transactions
-  final int tonAmount;
+  /// The amount of added owned Grams, in the smallest units of the cryptocurrency; negative for outgoing transactions
+  final int gramAmount;
 
   /// True, if the transaction is a refund of a previous transaction
   final bool isRefund;
@@ -32,7 +32,7 @@ final class TonTransaction extends TdObject {
   /// Parses a [TonTransaction] from TDLib JSON.
   factory TonTransaction.fromJson(Map<String, dynamic> json) => TonTransaction(
     id: _readString(json['id']),
-    tonAmount: _readInt(json['ton_amount']),
+    gramAmount: _readInt(json['gram_amount']),
     isRefund: _readBool(json['is_refund']),
     date: _readInt(json['date']),
     type: _readObject(json['type'], TonTransactionType.fromJson),
@@ -42,7 +42,7 @@ final class TonTransaction extends TdObject {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'id': id,
-    'ton_amount': tonAmount,
+    'gram_amount': gramAmount,
     'is_refund': isRefund,
     'date': date,
     'type': type.toJson(),
@@ -52,13 +52,13 @@ final class TonTransaction extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   TonTransaction copyWith({
     String? id,
-    int? tonAmount,
+    int? gramAmount,
     bool? isRefund,
     int? date,
     TonTransactionType? type,
   }) => TonTransaction(
     id: id ?? this.id,
-    tonAmount: tonAmount ?? this.tonAmount,
+    gramAmount: gramAmount ?? this.gramAmount,
     isRefund: isRefund ?? this.isRefund,
     date: date ?? this.date,
     type: type ?? this.type,

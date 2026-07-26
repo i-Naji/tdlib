@@ -3,10 +3,10 @@
 
 part of '../tdapi.dart';
 
-/// A detailed statistics about Toncoins earned by the current user
-final class TonRevenueStatistics extends TdObject {
-  /// A detailed statistics about Toncoins earned by the current user
-  const TonRevenueStatistics({
+/// A detailed statistics about TON Grams earned by the current user
+final class GramRevenueStatistics extends TdObject {
+  /// A detailed statistics about TON Grams earned by the current user
+  const GramRevenueStatistics({
     required this.revenueByDayGraph,
     required this.status,
     required this.usdRate,
@@ -18,9 +18,9 @@ final class TonRevenueStatistics extends TdObject {
   final StatisticalGraph revenueByDayGraph;
 
   /// Amount of earned revenue
-  final TonRevenueStatus status;
+  final GramRevenueStatus status;
 
-  /// Current conversion rate of nanotoncoin to USD cents
+  /// Current conversion rate of nanogram to USD cents
   final double usdRate;
 
   /// "@extra" of the request this object answers.
@@ -31,14 +31,14 @@ final class TonRevenueStatistics extends TdObject {
   @override
   final int? clientId;
 
-  /// Parses a [TonRevenueStatistics] from TDLib JSON.
-  factory TonRevenueStatistics.fromJson(Map<String, dynamic> json) =>
-      TonRevenueStatistics(
+  /// Parses a [GramRevenueStatistics] from TDLib JSON.
+  factory GramRevenueStatistics.fromJson(Map<String, dynamic> json) =>
+      GramRevenueStatistics(
         revenueByDayGraph: _readObject(
           json['revenue_by_day_graph'],
           StatisticalGraph.fromJson,
         ),
-        status: _readObject(json['status'], TonRevenueStatus.fromJson),
+        status: _readObject(json['status'], GramRevenueStatus.fromJson),
         usdRate: _readDouble(json['usd_rate']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -54,13 +54,13 @@ final class TonRevenueStatistics extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TonRevenueStatistics copyWith({
+  GramRevenueStatistics copyWith({
     StatisticalGraph? revenueByDayGraph,
-    TonRevenueStatus? status,
+    GramRevenueStatus? status,
     double? usdRate,
     dynamic extra,
     int? clientId,
-  }) => TonRevenueStatistics(
+  }) => GramRevenueStatistics(
     revenueByDayGraph: revenueByDayGraph ?? this.revenueByDayGraph,
     status: status ?? this.status,
     usdRate: usdRate ?? this.usdRate,
@@ -69,7 +69,7 @@ final class TonRevenueStatistics extends TdObject {
   );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'tonRevenueStatistics';
+  static const String CONSTRUCTOR = 'gramRevenueStatistics';
 
   @override
   String getConstructor() => CONSTRUCTOR;
