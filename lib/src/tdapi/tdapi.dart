@@ -12,6 +12,7 @@ part 'functions/add_chat_folder_by_invite_link.dart';
 part 'functions/add_chat_member.dart';
 part 'functions/add_chat_members.dart';
 part 'functions/add_chat_to_list.dart';
+part 'functions/add_chat_welcome_message.dart';
 part 'functions/add_checklist_tasks.dart';
 part 'functions/add_contact.dart';
 part 'functions/add_custom_server_language_pack.dart';
@@ -130,6 +131,7 @@ part 'functions/create_chat_folder.dart';
 part 'functions/create_chat_folder_invite_link.dart';
 part 'functions/create_chat_invite_link.dart';
 part 'functions/create_chat_subscription_invite_link.dart';
+part 'functions/create_community.dart';
 part 'functions/create_forum_topic.dart';
 part 'functions/create_gift_collection.dart';
 part 'functions/create_group_call.dart';
@@ -152,6 +154,7 @@ part 'functions/decline_suggested_post.dart';
 part 'functions/decrypt_group_call_data.dart';
 part 'functions/delete_account.dart';
 part 'functions/delete_all_call_messages.dart';
+part 'functions/delete_all_chat_welcome_messages.dart';
 part 'functions/delete_all_recent_message_reactions_from_sender.dart';
 part 'functions/delete_all_revoked_chat_invite_links.dart';
 part 'functions/delete_bot_media_previews.dart';
@@ -167,6 +170,7 @@ part 'functions/delete_chat_history.dart';
 part 'functions/delete_chat_messages_by_date.dart';
 part 'functions/delete_chat_messages_by_sender.dart';
 part 'functions/delete_chat_reply_markup.dart';
+part 'functions/delete_chat_welcome_message.dart';
 part 'functions/delete_commands.dart';
 part 'functions/delete_default_background.dart';
 part 'functions/delete_direct_messages_chat_topic_history.dart';
@@ -178,6 +182,7 @@ part 'functions/delete_gift_collection.dart';
 part 'functions/delete_group_call_messages.dart';
 part 'functions/delete_group_call_messages_by_sender.dart';
 part 'functions/delete_language_pack.dart';
+part 'functions/delete_message_ephemeral_content.dart';
 part 'functions/delete_message_reactions_from_sender.dart';
 part 'functions/delete_messages.dart';
 part 'functions/delete_passport_element.dart';
@@ -212,12 +217,15 @@ part 'functions/edit_business_message_media.dart';
 part 'functions/edit_business_message_reply_markup.dart';
 part 'functions/edit_business_message_text.dart';
 part 'functions/edit_business_story.dart';
+part 'functions/edit_callback_query_message.dart';
 part 'functions/edit_chat_folder.dart';
 part 'functions/edit_chat_folder_invite_link.dart';
 part 'functions/edit_chat_invite_link.dart';
 part 'functions/edit_chat_subscription_invite_link.dart';
+part 'functions/edit_chat_welcome_message.dart';
 part 'functions/edit_custom_language_pack_info.dart';
 part 'functions/edit_ephemeral_message.dart';
+part 'functions/edit_ephemeral_message_caption.dart';
 part 'functions/edit_forum_topic.dart';
 part 'functions/edit_inline_message_caption.dart';
 part 'functions/edit_inline_message_live_location.dart';
@@ -594,7 +602,9 @@ part 'functions/leave_chat.dart';
 part 'functions/leave_group_call.dart';
 part 'functions/listen_to_audio.dart';
 part 'functions/load_active_stories.dart';
+part 'functions/load_chat_welcome_messages.dart';
 part 'functions/load_chats.dart';
+part 'functions/load_community_full_info.dart';
 part 'functions/load_direct_messages_chat_topics.dart';
 part 'functions/load_group_call_participants.dart';
 part 'functions/load_quick_reply_shortcut_messages.dart';
@@ -839,6 +849,7 @@ part 'functions/set_chat_theme.dart';
 part 'functions/set_chat_title.dart';
 part 'functions/set_close_friends.dart';
 part 'functions/set_commands.dart';
+part 'functions/set_community_name.dart';
 part 'functions/set_custom_emoji_sticker_set_thumbnail.dart';
 part 'functions/set_custom_language_pack.dart';
 part 'functions/set_custom_language_pack_string.dart';
@@ -928,6 +939,7 @@ part 'functions/start_group_call_screen_sharing.dart';
 part 'functions/start_live_story.dart';
 part 'functions/start_scheduled_video_chat.dart';
 part 'functions/stop_business_poll.dart';
+part 'functions/stop_pending_message.dart';
 part 'functions/stop_poll.dart';
 part 'functions/suggest_user_birthdate.dart';
 part 'functions/suggest_user_profile_photo.dart';
@@ -1200,6 +1212,9 @@ part 'objects/collectible_item_info.dart';
 part 'objects/collectible_item_type.dart';
 part 'objects/community.dart';
 part 'objects/community_administrator_rights.dart';
+part 'objects/community_chat.dart';
+part 'objects/community_full_info.dart';
+part 'objects/community_id.dart';
 part 'objects/community_member_status.dart';
 part 'objects/community_permissions.dart';
 part 'objects/connected_affiliate_program.dart';
@@ -1251,6 +1266,7 @@ part 'objects/emoji_statuses.dart';
 part 'objects/emojis.dart';
 part 'objects/encrypted_credentials.dart';
 part 'objects/encrypted_passport_element.dart';
+part 'objects/ephemeral_message_content.dart';
 part 'objects/fact_check.dart';
 part 'objects/failed_to_add_member.dart';
 part 'objects/failed_to_add_members.dart';
@@ -1331,6 +1347,7 @@ part 'objects/http_url.dart';
 part 'objects/identity_document.dart';
 part 'objects/imported_contact.dart';
 part 'objects/imported_contacts.dart';
+part 'objects/inline_button.dart';
 part 'objects/inline_keyboard_button.dart';
 part 'objects/inline_keyboard_button_type.dart';
 part 'objects/inline_message_id.dart';
@@ -1750,17 +1767,17 @@ part 'objects/web_browser_settings.dart';
 part 'objects/web_browser_type.dart';
 part 'objects/web_domain_exception.dart';
 part 'objects/web_page_instant_view.dart';
+part 'objects/welcome_message.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.66';
+const String tdlibVersion = '1.8.67';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '022d60202e446ad1287b9fb68e687c8a0760788b';
+const String tdlibSchemaCommit = 'd1085f9cebc5a62379991ae1652673954f229c1f';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '022d60202e446ad1287b9fb68e687c8a0760788b',
-  'd8d46dfab55f40e2fcf30fc5cc7cd5950abe99e2',
+  'd1085f9cebc5a62379991ae1652673954f229c1f',
 ];
 
 /// Base class of every TDLib object.
@@ -2281,6 +2298,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'accentColor': AccentColor.fromJson,
   'profileAccentColors': ProfileAccentColors.fromJson,
   'profileAccentColor': ProfileAccentColor.fromJson,
+  'communityId': CommunityId.fromJson,
   'communityPermissions': CommunityPermissions.fromJson,
   'communityAdministratorRights': CommunityAdministratorRights.fromJson,
   'communityMemberStatusCreator': CommunityMemberStatusCreator.fromJson,
@@ -2290,6 +2308,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'communityMemberStatusLeft': CommunityMemberStatusLeft.fromJson,
   'communityMemberStatusBanned': CommunityMemberStatusBanned.fromJson,
   'community': Community.fromJson,
+  'communityChat': CommunityChat.fromJson,
+  'communityFullInfo': CommunityFullInfo.fromJson,
   'userRating': UserRating.fromJson,
   'restrictionInfo': RestrictionInfo.fromJson,
   'emojiStatusTypeCustomEmoji': EmojiStatusTypeCustomEmoji.fromJson,
@@ -2417,6 +2437,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputMessageReplyToEphemeralMessage':
       InputMessageReplyToEphemeralMessage.fromJson,
   'factCheck': FactCheck.fromJson,
+  'ephemeralMessageContent': EphemeralMessageContent.fromJson,
   'message': Message.fromJson,
   'messages': Messages.fromJson,
   'foundMessages': FoundMessages.fromJson,
@@ -2474,6 +2495,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'reactionNotificationSettings': ReactionNotificationSettings.fromJson,
   'draftMessageContentText': DraftMessageContentText.fromJson,
   'draftMessageContentRichMessage': DraftMessageContentRichMessage.fromJson,
+  'draftMessageContentInputRichMessage':
+      DraftMessageContentInputRichMessage.fromJson,
   'draftMessageContentVideoNote': DraftMessageContentVideoNote.fromJson,
   'draftMessageContentVoiceNote': DraftMessageContentVoiceNote.fromJson,
   'draftMessage': DraftMessage.fromJson,
@@ -2523,6 +2546,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'buttonStylePrimary': ButtonStylePrimary.fromJson,
   'buttonStyleDanger': ButtonStyleDanger.fromJson,
   'buttonStyleSuccess': ButtonStyleSuccess.fromJson,
+  'buttonStyleLink': ButtonStyleLink.fromJson,
   'keyboardButtonTypeText': KeyboardButtonTypeText.fromJson,
   'keyboardButtonTypeRequestPhoneNumber':
       KeyboardButtonTypeRequestPhoneNumber.fromJson,
@@ -2548,6 +2572,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inlineKeyboardButtonTypeBuy': InlineKeyboardButtonTypeBuy.fromJson,
   'inlineKeyboardButtonTypeUser': InlineKeyboardButtonTypeUser.fromJson,
   'inlineKeyboardButtonTypeCopyText': InlineKeyboardButtonTypeCopyText.fromJson,
+  'inlineKeyboardButtonTypeDisabled': InlineKeyboardButtonTypeDisabled.fromJson,
   'keyboardButtonSourceMessage': KeyboardButtonSourceMessage.fromJson,
   'keyboardButtonSourceWebApp': KeyboardButtonSourceWebApp.fromJson,
   'inlineKeyboardButton': InlineKeyboardButton.fromJson,
@@ -2578,6 +2603,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'builtInThemeTinted': BuiltInThemeTinted.fromJson,
   'builtInThemeArctic': BuiltInThemeArctic.fromJson,
   'themeSettings': ThemeSettings.fromJson,
+  'inlineButton': InlineButton.fromJson,
   'richTextPlain': RichTextPlain.fromJson,
   'richTextBold': RichTextBold.fromJson,
   'richTextItalic': RichTextItalic.fromJson,
@@ -2601,6 +2627,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'richTextCustomEmoji': RichTextCustomEmoji.fromJson,
   'richTextIcon': RichTextIcon.fromJson,
   'richTextMathematicalExpression': RichTextMathematicalExpression.fromJson,
+  'richTextButton': RichTextButton.fromJson,
   'richTextDiff': RichTextDiff.fromJson,
   'richTextReference': RichTextReference.fromJson,
   'richTextReferenceLink': RichTextReferenceLink.fromJson,
@@ -2636,9 +2663,11 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'pageBlockAnchor': PageBlockAnchor.fromJson,
   'pageBlockList': PageBlockList.fromJson,
   'pageBlockBlockQuote': PageBlockBlockQuote.fromJson,
+  'pageBlockExpandableBlockQuote': PageBlockExpandableBlockQuote.fromJson,
   'pageBlockPullQuote': PageBlockPullQuote.fromJson,
   'pageBlockAnimation': PageBlockAnimation.fromJson,
   'pageBlockAudio': PageBlockAudio.fromJson,
+  'pageBlockDocument': PageBlockDocument.fromJson,
   'pageBlockPhoto': PageBlockPhoto.fromJson,
   'pageBlockVideo': PageBlockVideo.fromJson,
   'pageBlockVoiceNote': PageBlockVoiceNote.fromJson,
@@ -2652,6 +2681,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'pageBlockDetails': PageBlockDetails.fromJson,
   'pageBlockRelatedArticles': PageBlockRelatedArticles.fromJson,
   'pageBlockMap': PageBlockMap.fromJson,
+  'pageBlockButtonRow': PageBlockButtonRow.fromJson,
+  'pageBlockUnsupported': PageBlockUnsupported.fromJson,
   'webPageInstantView': WebPageInstantView.fromJson,
   'linkPreviewAlbumMediaPhoto': LinkPreviewAlbumMediaPhoto.fromJson,
   'linkPreviewAlbumMediaVideo': LinkPreviewAlbumMediaVideo.fromJson,
@@ -2903,6 +2934,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageChatAddMembers': MessageChatAddMembers.fromJson,
   'messageChatJoinByLink': MessageChatJoinByLink.fromJson,
   'messageChatJoinByRequest': MessageChatJoinByRequest.fromJson,
+  'messageChatJoinFromCommunity': MessageChatJoinFromCommunity.fromJson,
   'messageChatDeleteMember': MessageChatDeleteMember.fromJson,
   'messageChatAddedToCommunity': MessageChatAddedToCommunity.fromJson,
   'messageChatRemovedFromCommunity': MessageChatRemovedFromCommunity.fromJson,
@@ -2934,7 +2966,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageGiveawayCompleted': MessageGiveawayCompleted.fromJson,
   'messageGiveawayWinners': MessageGiveawayWinners.fromJson,
   'messageGiftedStars': MessageGiftedStars.fromJson,
-  'messageGiftedTon': MessageGiftedTon.fromJson,
+  'messageGiftedGrams': MessageGiftedGrams.fromJson,
   'messageGiveawayPrizeStars': MessageGiveawayPrizeStars.fromJson,
   'messageGift': MessageGift.fromJson,
   'messageUpgradedGift': MessageUpgradedGift.fromJson,
@@ -3037,9 +3069,12 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputPageBlockAnchor': InputPageBlockAnchor.fromJson,
   'inputPageBlockList': InputPageBlockList.fromJson,
   'inputPageBlockBlockQuote': InputPageBlockBlockQuote.fromJson,
+  'inputPageBlockExpandableBlockQuote':
+      InputPageBlockExpandableBlockQuote.fromJson,
   'inputPageBlockPullQuote': InputPageBlockPullQuote.fromJson,
   'inputPageBlockAnimation': InputPageBlockAnimation.fromJson,
   'inputPageBlockAudio': InputPageBlockAudio.fromJson,
+  'inputPageBlockDocument': InputPageBlockDocument.fromJson,
   'inputPageBlockPhoto': InputPageBlockPhoto.fromJson,
   'inputPageBlockVideo': InputPageBlockVideo.fromJson,
   'inputPageBlockVoiceNote': InputPageBlockVoiceNote.fromJson,
@@ -3048,6 +3083,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputPageBlockTable': InputPageBlockTable.fromJson,
   'inputPageBlockDetails': InputPageBlockDetails.fromJson,
   'inputPageBlockMap': InputPageBlockMap.fromJson,
+  'inputPageBlockButtonRow': InputPageBlockButtonRow.fromJson,
   'inputMessageText': InputMessageText.fromJson,
   'inputMessageRichMessage': InputMessageRichMessage.fromJson,
   'inputMessageAnimation': InputMessageAnimation.fromJson,
@@ -3103,6 +3139,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       SearchMessagesChatTypeFilterGroup.fromJson,
   'searchMessagesChatTypeFilterChannel':
       SearchMessagesChatTypeFilterChannel.fromJson,
+  'searchMessagesChatTypeFilterCommunity':
+      SearchMessagesChatTypeFilterCommunity.fromJson,
   'searchChatTypeFilterBot': SearchChatTypeFilterBot.fromJson,
   'searchChatTypeFilterChannel': SearchChatTypeFilterChannel.fromJson,
   'chatActionTyping': ChatActionTyping.fromJson,
@@ -3196,6 +3234,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'quickReplyMessage': QuickReplyMessage.fromJson,
   'quickReplyMessages': QuickReplyMessages.fromJson,
   'quickReplyShortcut': QuickReplyShortcut.fromJson,
+  'welcomeMessage': WelcomeMessage.fromJson,
   'publicForwardMessage': PublicForwardMessage.fromJson,
   'publicForwardStory': PublicForwardStory.fromJson,
   'publicForwards': PublicForwards.fromJson,
@@ -4105,6 +4144,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateMessageSendSucceeded': UpdateMessageSendSucceeded.fromJson,
   'updateMessageSendFailed': UpdateMessageSendFailed.fromJson,
   'updateMessageContent': UpdateMessageContent.fromJson,
+  'updateMessageEphemeralContent': UpdateMessageEphemeralContent.fromJson,
   'updateMessageEdited': UpdateMessageEdited.fromJson,
   'updateMessageIsPinned': UpdateMessageIsPinned.fromJson,
   'updateMessageInteractionInfo': UpdateMessageInteractionInfo.fromJson,
@@ -4152,6 +4192,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateChatViewAsTopics': UpdateChatViewAsTopics.fromJson,
   'updateChatBlockList': UpdateChatBlockList.fromJson,
   'updateChatHasScheduledMessages': UpdateChatHasScheduledMessages.fromJson,
+  'updateChatHasWelcomeMessages': UpdateChatHasWelcomeMessages.fromJson,
   'updateChatFolders': UpdateChatFolders.fromJson,
   'updateChatOnlineMemberCount': UpdateChatOnlineMemberCount.fromJson,
   'updateSavedMessagesTopic': UpdateSavedMessagesTopic.fromJson,
@@ -4162,6 +4203,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateQuickReplyShortcutDeleted': UpdateQuickReplyShortcutDeleted.fromJson,
   'updateQuickReplyShortcuts': UpdateQuickReplyShortcuts.fromJson,
   'updateQuickReplyShortcutMessages': UpdateQuickReplyShortcutMessages.fromJson,
+  'updateChatWelcomeMessages': UpdateChatWelcomeMessages.fromJson,
   'updateForumTopicInfo': UpdateForumTopicInfo.fromJson,
   'updateForumTopic': UpdateForumTopic.fromJson,
   'updateScopeNotificationSettings': UpdateScopeNotificationSettings.fromJson,
@@ -4174,6 +4216,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateDeleteMessages': UpdateDeleteMessages.fromJson,
   'updateChatAction': UpdateChatAction.fromJson,
   'updatePendingMessage': UpdatePendingMessage.fromJson,
+  'updateStopMessageDraft': UpdateStopMessageDraft.fromJson,
   'updateCommunity': UpdateCommunity.fromJson,
   'updateUserStatus': UpdateUserStatus.fromJson,
   'updateUser': UpdateUser.fromJson,
@@ -4183,6 +4226,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateUserFullInfo': UpdateUserFullInfo.fromJson,
   'updateBasicGroupFullInfo': UpdateBasicGroupFullInfo.fromJson,
   'updateSupergroupFullInfo': UpdateSupergroupFullInfo.fromJson,
+  'updateCommunityFullInfo': UpdateCommunityFullInfo.fromJson,
   'updateServiceNotification': UpdateServiceNotification.fromJson,
   'updateNewOauthRequest': UpdateNewOauthRequest.fromJson,
   'updateFile': UpdateFile.fromJson,

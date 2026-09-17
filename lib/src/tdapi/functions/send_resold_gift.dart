@@ -12,6 +12,8 @@ final class SendResoldGift extends TdFunction<GiftResaleResult> {
     required this.giftName,
     required this.ownerId,
     required this.price,
+    required this.text,
+    required this.isPrivate,
   });
 
   /// Name of the upgraded gift to send
@@ -23,12 +25,20 @@ final class SendResoldGift extends TdFunction<GiftResaleResult> {
   /// The price that the user agreed to pay for the gift
   final GiftResalePrice price;
 
+  /// Text to show along with the gift; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed. Must be empty if the receiver enabled paid messages and the price of the gift is less than the price of a paid message to the user
+  final FormattedText text;
+
+  /// Pass true to show gift text and sender only to the gift receiver; otherwise, everyone will be able to see them
+  final bool isPrivate;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
     'gift_name': giftName,
     'owner_id': ownerId.toJson(),
     'price': price.toJson(),
+    'text': text.toJson(),
+    'is_private': isPrivate,
     '@extra': ?extra,
   };
 
@@ -38,10 +48,14 @@ final class SendResoldGift extends TdFunction<GiftResaleResult> {
     String? giftName,
     MessageSender? ownerId,
     GiftResalePrice? price,
+    FormattedText? text,
+    bool? isPrivate,
   }) => SendResoldGift(
     giftName: giftName ?? this.giftName,
     ownerId: ownerId ?? this.ownerId,
     price: price ?? this.price,
+    text: text ?? this.text,
+    isPrivate: isPrivate ?? this.isPrivate,
   );
 
   /// TDLib type name.

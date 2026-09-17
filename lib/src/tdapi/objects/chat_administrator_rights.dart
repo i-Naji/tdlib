@@ -23,6 +23,7 @@ final class ChatAdministratorRights extends TdObject {
     required this.canDeleteStories,
     required this.canManageDirectMessages,
     required this.canManageTags,
+    required this.canSendWelcomeMessages,
     required this.isAnonymous,
   });
 
@@ -74,6 +75,9 @@ final class ChatAdministratorRights extends TdObject {
   /// True, if the administrator can change tags of other users; applicable to basic groups and supergroups only
   final bool canManageTags;
 
+  /// True, if the administrator can manage and send welcome messages
+  final bool canSendWelcomeMessages;
+
   /// True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
   final bool isAnonymous;
 
@@ -96,6 +100,7 @@ final class ChatAdministratorRights extends TdObject {
         canDeleteStories: _readBool(json['can_delete_stories']),
         canManageDirectMessages: _readBool(json['can_manage_direct_messages']),
         canManageTags: _readBool(json['can_manage_tags']),
+        canSendWelcomeMessages: _readBool(json['can_send_welcome_messages']),
         isAnonymous: _readBool(json['is_anonymous']),
       );
 
@@ -118,6 +123,7 @@ final class ChatAdministratorRights extends TdObject {
     'can_delete_stories': canDeleteStories,
     'can_manage_direct_messages': canManageDirectMessages,
     'can_manage_tags': canManageTags,
+    'can_send_welcome_messages': canSendWelcomeMessages,
     'is_anonymous': isAnonymous,
   };
 
@@ -140,6 +146,7 @@ final class ChatAdministratorRights extends TdObject {
     bool? canDeleteStories,
     bool? canManageDirectMessages,
     bool? canManageTags,
+    bool? canSendWelcomeMessages,
     bool? isAnonymous,
   }) => ChatAdministratorRights(
     canManageChat: canManageChat ?? this.canManageChat,
@@ -159,6 +166,8 @@ final class ChatAdministratorRights extends TdObject {
     canManageDirectMessages:
         canManageDirectMessages ?? this.canManageDirectMessages,
     canManageTags: canManageTags ?? this.canManageTags,
+    canSendWelcomeMessages:
+        canSendWelcomeMessages ?? this.canSendWelcomeMessages,
     isAnonymous: isAnonymous ?? this.isAnonymous,
   );
 

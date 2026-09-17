@@ -12,6 +12,8 @@ final class SendRichMessageDraft extends TdFunction<Ok> {
     required this.chatId,
     required this.forumTopicId,
     required this.draftId,
+    required this.canStop,
+    required this.keepOnStop,
     required this.message,
   });
 
@@ -24,6 +26,12 @@ final class SendRichMessageDraft extends TdFunction<Ok> {
   /// Unique identifier of the draft
   final int draftId;
 
+  /// Pass true to show the user a button to stop further drafts
+  final bool canStop;
+
+  /// Pass true to keep the current draft when the user stops further generation
+  final bool keepOnStop;
+
   /// Draft of the message; file upload isn't supported
   final InputRichMessage message;
 
@@ -33,6 +41,8 @@ final class SendRichMessageDraft extends TdFunction<Ok> {
     'chat_id': chatId,
     'forum_topic_id': forumTopicId,
     'draft_id': draftId.toString(),
+    'can_stop': canStop,
+    'keep_on_stop': keepOnStop,
     'message': message.toJson(),
     '@extra': ?extra,
   };
@@ -43,11 +53,15 @@ final class SendRichMessageDraft extends TdFunction<Ok> {
     int? chatId,
     int? forumTopicId,
     int? draftId,
+    bool? canStop,
+    bool? keepOnStop,
     InputRichMessage? message,
   }) => SendRichMessageDraft(
     chatId: chatId ?? this.chatId,
     forumTopicId: forumTopicId ?? this.forumTopicId,
     draftId: draftId ?? this.draftId,
+    canStop: canStop ?? this.canStop,
+    keepOnStop: keepOnStop ?? this.keepOnStop,
     message: message ?? this.message,
   );
 

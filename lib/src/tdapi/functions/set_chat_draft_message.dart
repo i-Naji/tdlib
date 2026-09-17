@@ -20,7 +20,7 @@ final class SetChatDraftMessage extends TdFunction<Ok> {
   /// Topic in which the draft will be changed; pass null to change the draft for the chat itself
   final MessageTopic? topicId;
 
-  /// New draft message; pass null to remove the draft. All files in draft message content must be of the type inputFileLocal. Media thumbnails and captions are ignored
+  /// New draft message; pass null to remove the draft
   final DraftMessage? draftMessage;
 
   @override

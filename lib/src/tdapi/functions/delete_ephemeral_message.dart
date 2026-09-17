@@ -20,7 +20,7 @@ final class DeleteEphemeralMessage extends TdFunction<Ok> {
   /// Identifier of the user who received the message
   final int receiverUserId;
 
-  /// Identifiers of the message to be deleted
+  /// Identifier of the message to be deleted
   final int ephemeralMessageId;
 
   @override

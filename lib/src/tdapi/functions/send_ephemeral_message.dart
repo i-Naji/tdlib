@@ -13,7 +13,9 @@ final class SendEphemeralMessage extends TdFunction<Message> {
     this.topicId,
     required this.receiverUserId,
     required this.callbackQueryId,
+    required this.replaceCallbackQueryMessage,
     this.replyTo,
+    required this.protectContent,
     required this.sendingId,
     required this.onlyPreview,
     this.replyMarkup,
@@ -32,8 +34,14 @@ final class SendEphemeralMessage extends TdFunction<Message> {
   /// Identifier of the callback query which triggered the message; for bots only
   final int callbackQueryId;
 
+  /// Pass true if the ephemeral message must replace the message from which the callback query originated; for bots only
+  final bool replaceCallbackQueryMessage;
+
   /// Information about the message to be replied; pass null if none. The message can be an incoming ephemeral message
   final InputMessageReplyTo? replyTo;
+
+  /// Pass true if the content of the message must be protected from forwarding and saving; for bots only
+  final bool protectContent;
 
   /// Non-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates
   final int sendingId;
@@ -44,7 +52,7 @@ final class SendEphemeralMessage extends TdFunction<Message> {
   /// Markup for replying to the message; pass null if none; for bots only
   final ReplyMarkup? replyMarkup;
 
-  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto, inputMessageSticker, inputMessageVideo, inputMessageVideoNote, inputMessageVoiceNote, inputMessageLocation, inputMessageVenue, inputMessageContact
+  /// The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto, inputMessageRichMessage, inputMessageSticker, inputMessageVideo, inputMessageVideoNote, inputMessageVoiceNote, inputMessageLocation, inputMessageVenue, inputMessageContact
   final InputMessageContent inputMessageContent;
 
   @override
@@ -54,7 +62,9 @@ final class SendEphemeralMessage extends TdFunction<Message> {
     'topic_id': topicId?.toJson(),
     'receiver_user_id': receiverUserId,
     'callback_query_id': callbackQueryId.toString(),
+    'replace_callback_query_message': replaceCallbackQueryMessage,
     'reply_to': replyTo?.toJson(),
+    'protect_content': protectContent,
     'sending_id': sendingId,
     'only_preview': onlyPreview,
     'reply_markup': replyMarkup?.toJson(),
@@ -69,7 +79,9 @@ final class SendEphemeralMessage extends TdFunction<Message> {
     MessageTopic? Function()? topicId,
     int? receiverUserId,
     int? callbackQueryId,
+    bool? replaceCallbackQueryMessage,
     InputMessageReplyTo? Function()? replyTo,
+    bool? protectContent,
     int? sendingId,
     bool? onlyPreview,
     ReplyMarkup? Function()? replyMarkup,
@@ -79,7 +91,10 @@ final class SendEphemeralMessage extends TdFunction<Message> {
     topicId: topicId != null ? topicId() : this.topicId,
     receiverUserId: receiverUserId ?? this.receiverUserId,
     callbackQueryId: callbackQueryId ?? this.callbackQueryId,
+    replaceCallbackQueryMessage:
+        replaceCallbackQueryMessage ?? this.replaceCallbackQueryMessage,
     replyTo: replyTo != null ? replyTo() : this.replyTo,
+    protectContent: protectContent ?? this.protectContent,
     sendingId: sendingId ?? this.sendingId,
     onlyPreview: onlyPreview ?? this.onlyPreview,
     replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,

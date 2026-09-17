@@ -28,7 +28,7 @@ final class Passkey extends TdObject {
   /// Point in time (Unix timestamp) when the passkey was used last time; 0 if never
   final int lastUsageDate;
 
-  /// Identifier of the custom emoji that is used as the icon of the software, which created the passkey; 0 if unknown
+  /// Identifier of the custom emoji that is used as the icon of the software that created the passkey; 0 if unknown
   final int softwareIconCustomEmojiId;
 
   /// "@extra" of the request this object answers.

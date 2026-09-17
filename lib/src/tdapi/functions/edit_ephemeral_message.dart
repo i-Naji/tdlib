@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Edits the text, caption or reply markup of an ephemeral message sent by the bot; for bots only
+/// Edits the text, media, or reply markup of an ephemeral message sent by the bot; for bots only
 ///
 /// Returns [Ok].
 final class EditEphemeralMessage extends TdFunction<Ok> {
-  /// Edits the text, caption or reply markup of an ephemeral message sent by the bot; for bots only
+  /// Edits the text, media, or reply markup of an ephemeral message sent by the bot; for bots only
   const EditEphemeralMessage({
     required this.chatId,
     required this.receiverUserId,
@@ -28,7 +28,7 @@ final class EditEphemeralMessage extends TdFunction<Ok> {
   /// The new message reply markup; pass null if none
   final ReplyMarkup? replyMarkup;
 
-  /// New content of the message; pass null to edit only reply markup. Must be one of the following types: inputMessageText, inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto, inputMessageSticker, inputMessageVideo, inputMessageVideoNote, inputMessageVoiceNote
+  /// New content of the message; pass null to edit only reply markup. Must be one of the following types: inputMessageText, inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto, inputMessageRichMessage, inputMessageSticker, inputMessageVideo, inputMessageVideoNote, inputMessageVoiceNote
   final InputMessageContent? inputMessageContent;
 
   @override

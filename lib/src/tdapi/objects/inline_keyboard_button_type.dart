@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes the type of inline keyboard button
 ///
-/// One of: [InlineKeyboardButtonTypeUrl], [InlineKeyboardButtonTypeLoginUrl], [InlineKeyboardButtonTypeWebApp], [InlineKeyboardButtonTypeCallback], [InlineKeyboardButtonTypeCallbackWithPassword], [InlineKeyboardButtonTypeCallbackGame], [InlineKeyboardButtonTypeSwitchInline], [InlineKeyboardButtonTypeBuy], [InlineKeyboardButtonTypeUser], [InlineKeyboardButtonTypeCopyText]; or [UndecodedInlineKeyboardButtonType] for a type newer than this API.
+/// One of: [InlineKeyboardButtonTypeUrl], [InlineKeyboardButtonTypeLoginUrl], [InlineKeyboardButtonTypeWebApp], [InlineKeyboardButtonTypeCallback], [InlineKeyboardButtonTypeCallbackWithPassword], [InlineKeyboardButtonTypeCallbackGame], [InlineKeyboardButtonTypeSwitchInline], [InlineKeyboardButtonTypeBuy], [InlineKeyboardButtonTypeUser], [InlineKeyboardButtonTypeCopyText], [InlineKeyboardButtonTypeDisabled]; or [UndecodedInlineKeyboardButtonType] for a type newer than this API.
 sealed class InlineKeyboardButtonType extends TdObject {
   const InlineKeyboardButtonType();
 
@@ -72,9 +72,9 @@ final class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A button that opens a specified URL and automatically authorize the current user by calling getLoginUrlInfo
+/// A button that opens a specified URL and automatically authorize the current user by calling getLoginUrlInfo; not supported in ephemeral messages
 final class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
-  /// A button that opens a specified URL and automatically authorize the current user by calling getLoginUrlInfo
+  /// A button that opens a specified URL and automatically authorize the current user by calling getLoginUrlInfo; not supported in ephemeral messages
   const InlineKeyboardButtonTypeLoginUrl({
     required this.url,
     required this.id,
@@ -368,6 +368,32 @@ final class InlineKeyboardButtonTypeCopyText extends InlineKeyboardButtonType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeCopyText';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A disabled button
+final class InlineKeyboardButtonTypeDisabled extends InlineKeyboardButtonType {
+  /// A disabled button
+  const InlineKeyboardButtonTypeDisabled();
+
+  /// Parses a [InlineKeyboardButtonTypeDisabled] from TDLib JSON.
+  factory InlineKeyboardButtonTypeDisabled.fromJson(
+    Map<String, dynamic> json,
+  ) => const InlineKeyboardButtonTypeDisabled();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InlineKeyboardButtonTypeDisabled copyWith() =>
+      const InlineKeyboardButtonTypeDisabled();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeDisabled';
 
   @override
   String getConstructor() => CONSTRUCTOR;

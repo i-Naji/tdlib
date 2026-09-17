@@ -128,6 +128,7 @@ final class ReplyMarkupShowKeyboard extends ReplyMarkup {
     required this.resizeKeyboard,
     required this.oneTime,
     required this.isPersonal,
+    required this.forceReply,
     required this.inputFieldPlaceholder,
   });
 
@@ -146,6 +147,9 @@ final class ReplyMarkupShowKeyboard extends ReplyMarkup {
   /// True, if the keyboard must automatically be shown to the current user. For outgoing messages, specify true to show the keyboard only for the mentioned users and for the target user of a reply
   final bool isPersonal;
 
+  /// True, if the keyboard must force reply to the message with the keyboard
+  final bool forceReply;
+
   /// If non-empty, the placeholder to be shown in the input field when the keyboard is active; 0-64 characters
   final String inputFieldPlaceholder;
 
@@ -163,6 +167,7 @@ final class ReplyMarkupShowKeyboard extends ReplyMarkup {
         resizeKeyboard: _readBool(json['resize_keyboard']),
         oneTime: _readBool(json['one_time']),
         isPersonal: _readBool(json['is_personal']),
+        forceReply: _readBool(json['force_reply']),
         inputFieldPlaceholder: _readString(json['input_field_placeholder']),
       );
 
@@ -176,6 +181,7 @@ final class ReplyMarkupShowKeyboard extends ReplyMarkup {
     'resize_keyboard': resizeKeyboard,
     'one_time': oneTime,
     'is_personal': isPersonal,
+    'force_reply': forceReply,
     'input_field_placeholder': inputFieldPlaceholder,
   };
 
@@ -188,6 +194,7 @@ final class ReplyMarkupShowKeyboard extends ReplyMarkup {
     bool? resizeKeyboard,
     bool? oneTime,
     bool? isPersonal,
+    bool? forceReply,
     String? inputFieldPlaceholder,
   }) => ReplyMarkupShowKeyboard(
     rows: rows ?? this.rows,
@@ -195,6 +202,7 @@ final class ReplyMarkupShowKeyboard extends ReplyMarkup {
     resizeKeyboard: resizeKeyboard ?? this.resizeKeyboard,
     oneTime: oneTime ?? this.oneTime,
     isPersonal: isPersonal ?? this.isPersonal,
+    forceReply: forceReply ?? this.forceReply,
     inputFieldPlaceholder: inputFieldPlaceholder ?? this.inputFieldPlaceholder,
   );
 
@@ -208,10 +216,16 @@ final class ReplyMarkupShowKeyboard extends ReplyMarkup {
 /// Contains an inline keyboard layout
 final class ReplyMarkupInlineKeyboard extends ReplyMarkup {
   /// Contains an inline keyboard layout
-  const ReplyMarkupInlineKeyboard({required this.rows});
+  const ReplyMarkupInlineKeyboard({
+    required this.rows,
+    required this.forceReply,
+  });
 
   /// A list of rows of inline keyboard buttons
   final List<List<InlineKeyboardButton>> rows;
+
+  /// True, if a reply to the message must be forced when the message is received
+  final bool forceReply;
 
   /// Parses a [ReplyMarkupInlineKeyboard] from TDLib JSON.
   factory ReplyMarkupInlineKeyboard.fromJson(Map<String, dynamic> json) =>
@@ -223,6 +237,7 @@ final class ReplyMarkupInlineKeyboard extends ReplyMarkup {
             (e1) => _readObject(e1, InlineKeyboardButton.fromJson),
           ),
         ),
+        forceReply: _readBool(json['force_reply']),
       );
 
   @override
@@ -231,6 +246,7 @@ final class ReplyMarkupInlineKeyboard extends ReplyMarkup {
     'rows': [
       for (final e in rows) [for (final e1 in e) e1.toJson()],
     ],
+    'force_reply': forceReply,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -238,7 +254,11 @@ final class ReplyMarkupInlineKeyboard extends ReplyMarkup {
   @override
   ReplyMarkupInlineKeyboard copyWith({
     List<List<InlineKeyboardButton>>? rows,
-  }) => ReplyMarkupInlineKeyboard(rows: rows ?? this.rows);
+    bool? forceReply,
+  }) => ReplyMarkupInlineKeyboard(
+    rows: rows ?? this.rows,
+    forceReply: forceReply ?? this.forceReply,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'replyMarkupInlineKeyboard';

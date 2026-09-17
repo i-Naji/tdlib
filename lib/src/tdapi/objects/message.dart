@@ -48,8 +48,10 @@ final class Message extends TdObject {
     this.restrictionInfo,
     required this.summaryLanguageCode,
     required this.content,
+    this.ephemeralContent,
     this.replyMarkup,
     required this.ephemeralMessageId,
+    required this.chatInstance,
     this.extra,
     this.clientId,
   });
@@ -177,11 +179,17 @@ final class Message extends TdObject {
   /// Content of the message
   final MessageContent content;
 
+  /// Content of the message, which is visible only to the current user and must be shown instead of the regular content; may be null if none
+  final EphemeralMessageContent? ephemeralContent;
+
   /// Reply markup for the message; may be null if none
   final ReplyMarkup? replyMarkup;
 
   /// Unique identifier of the ephemeral message if the message is ephemeral; for bots only
   final int ephemeralMessageId;
+
+  /// Identifier that uniquely corresponds to the chat to which the message was sent; for bots only
+  final int chatInstance;
 
   /// "@extra" of the request this object answers.
   @override
@@ -261,8 +269,13 @@ final class Message extends TdObject {
     ),
     summaryLanguageCode: _readString(json['summary_language_code']),
     content: _readObject(json['content'], MessageContent.fromJson),
+    ephemeralContent: _readOptional(
+      json['ephemeral_content'],
+      EphemeralMessageContent.fromJson,
+    ),
     replyMarkup: _readOptional(json['reply_markup'], ReplyMarkup.fromJson),
     ephemeralMessageId: _readInt(json['ephemeral_message_id']),
+    chatInstance: _readInt(json['chat_instance']),
     extra: json['@extra'],
     clientId: _readClientId(json['@client_id']),
   );
@@ -311,8 +324,10 @@ final class Message extends TdObject {
     'restriction_info': restrictionInfo?.toJson(),
     'summary_language_code': summaryLanguageCode,
     'content': content.toJson(),
+    'ephemeral_content': ephemeralContent?.toJson(),
     'reply_markup': replyMarkup?.toJson(),
     'ephemeral_message_id': ephemeralMessageId,
+    'chat_instance': chatInstance.toString(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -359,8 +374,10 @@ final class Message extends TdObject {
     RestrictionInfo? Function()? restrictionInfo,
     String? summaryLanguageCode,
     MessageContent? content,
+    EphemeralMessageContent? Function()? ephemeralContent,
     ReplyMarkup? Function()? replyMarkup,
     int? ephemeralMessageId,
+    int? chatInstance,
     dynamic extra,
     int? clientId,
   }) => Message(
@@ -421,8 +438,12 @@ final class Message extends TdObject {
         : this.restrictionInfo,
     summaryLanguageCode: summaryLanguageCode ?? this.summaryLanguageCode,
     content: content ?? this.content,
+    ephemeralContent: ephemeralContent != null
+        ? ephemeralContent()
+        : this.ephemeralContent,
     replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
     ephemeralMessageId: ephemeralMessageId ?? this.ephemeralMessageId,
+    chatInstance: chatInstance ?? this.chatInstance,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );

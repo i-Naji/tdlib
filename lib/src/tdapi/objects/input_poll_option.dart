@@ -11,7 +11,7 @@ final class InputPollOption extends TdObject {
   /// Option text; 1-100 characters. Only custom emoji entities are allowed to be added and only by Premium users
   final FormattedText text;
 
-  /// Option media; pass null if none; ignored in addPollOption. Must be one of the following types: inputPollMediaAnimation, inputPollMediaLink, inputPollMediaLocation, inputPollMediaPhoto, inputPollMediaSticker, inputPollMediaVenue, or inputPollMediaVideo without caption
+  /// Option media; pass null if none. Must be one of the following types: inputPollMediaAnimation, inputPollMediaLink, inputPollMediaLocation, inputPollMediaPhoto, inputPollMediaSticker, inputPollMediaVenue, or inputPollMediaVideo without caption
   final InputPollMedia? media;
 
   /// Parses a [InputPollOption] from TDLib JSON.

@@ -17,7 +17,7 @@ final class SetChatMemberTag extends TdFunction<Ok> {
   /// Chat identifier
   final int chatId;
 
-  /// Identifier of the user, which tag is changed. Chats can't have member tags
+  /// Identifier of the user whose tag is changed. Chats can't have member tags
   final int userId;
 
   /// The new tag of the member in the chat; 0-16 characters without emoji

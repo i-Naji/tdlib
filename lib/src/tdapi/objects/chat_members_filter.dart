@@ -117,9 +117,9 @@ final class ChatMembersFilterMembers extends ChatMembersFilter {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Returns users which can be mentioned in the chat
+/// Returns users who can be mentioned in the chat
 final class ChatMembersFilterMention extends ChatMembersFilter {
-  /// Returns users which can be mentioned in the chat
+  /// Returns users who can be mentioned in the chat
   const ChatMembersFilterMention({this.topicId});
 
   /// Identifier of the topic in which the users will be mentioned; pass null if none

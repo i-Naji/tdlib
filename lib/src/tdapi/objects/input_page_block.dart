@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a block of a rich message to send
 ///
-/// One of: [InputPageBlockSectionHeading], [InputPageBlockParagraph], [InputPageBlockPreformatted], [InputPageBlockFooter], [InputPageBlockThinking], [InputPageBlockDivider], [InputPageBlockMathematicalExpression], [InputPageBlockAnchor], [InputPageBlockList], [InputPageBlockBlockQuote], [InputPageBlockPullQuote], [InputPageBlockAnimation], [InputPageBlockAudio], [InputPageBlockPhoto], [InputPageBlockVideo], [InputPageBlockVoiceNote], [InputPageBlockCollage], [InputPageBlockSlideshow], [InputPageBlockTable], [InputPageBlockDetails], [InputPageBlockMap]; or [UndecodedInputPageBlock] for a type newer than this API.
+/// One of: [InputPageBlockSectionHeading], [InputPageBlockParagraph], [InputPageBlockPreformatted], [InputPageBlockFooter], [InputPageBlockThinking], [InputPageBlockDivider], [InputPageBlockMathematicalExpression], [InputPageBlockAnchor], [InputPageBlockList], [InputPageBlockBlockQuote], [InputPageBlockExpandableBlockQuote], [InputPageBlockPullQuote], [InputPageBlockAnimation], [InputPageBlockAudio], [InputPageBlockDocument], [InputPageBlockPhoto], [InputPageBlockVideo], [InputPageBlockVoiceNote], [InputPageBlockCollage], [InputPageBlockSlideshow], [InputPageBlockTable], [InputPageBlockDetails], [InputPageBlockMap], [InputPageBlockButtonRow]; or [UndecodedInputPageBlock] for a type newer than this API.
 sealed class InputPageBlock extends TdObject {
   const InputPageBlock();
 
@@ -396,6 +396,50 @@ final class InputPageBlockBlockQuote extends InputPageBlock {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// An expandable block quote
+final class InputPageBlockExpandableBlockQuote extends InputPageBlock {
+  /// An expandable block quote
+  const InputPageBlockExpandableBlockQuote({required this.text, this.credit});
+
+  /// Quote text
+  final RichText text;
+
+  /// Quote credit; pass null if none
+  final RichText? credit;
+
+  /// Parses a [InputPageBlockExpandableBlockQuote] from TDLib JSON.
+  factory InputPageBlockExpandableBlockQuote.fromJson(
+    Map<String, dynamic> json,
+  ) => InputPageBlockExpandableBlockQuote(
+    text: _readObject(json['text'], RichText.fromJson),
+    credit: _readOptional(json['credit'], RichText.fromJson),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'credit': credit?.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputPageBlockExpandableBlockQuote copyWith({
+    RichText? text,
+    RichText? Function()? credit,
+  }) => InputPageBlockExpandableBlockQuote(
+    text: text ?? this.text,
+    credit: credit != null ? credit() : this.credit,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputPageBlockExpandableBlockQuote';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// A pull quote
 final class InputPageBlockPullQuote extends InputPageBlock {
   /// A pull quote
@@ -531,6 +575,49 @@ final class InputPageBlockAudio extends InputPageBlock {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPageBlockAudio';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A general file
+final class InputPageBlockDocument extends InputPageBlock {
+  /// A general file
+  const InputPageBlockDocument({required this.document, this.caption});
+
+  /// The file to be sent
+  final InputDocument document;
+
+  /// File caption; pass null if none
+  final PageBlockCaption? caption;
+
+  /// Parses a [InputPageBlockDocument] from TDLib JSON.
+  factory InputPageBlockDocument.fromJson(Map<String, dynamic> json) =>
+      InputPageBlockDocument(
+        document: _readObject(json['document'], InputDocument.fromJson),
+        caption: _readOptional(json['caption'], PageBlockCaption.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'document': document.toJson(),
+    'caption': caption?.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputPageBlockDocument copyWith({
+    InputDocument? document,
+    PageBlockCaption? Function()? caption,
+  }) => InputPageBlockDocument(
+    document: document ?? this.document,
+    caption: caption != null ? caption() : this.caption,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputPageBlockDocument';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -787,6 +874,7 @@ final class InputPageBlockTable extends InputPageBlock {
     required this.cells,
     required this.isBordered,
     required this.isStriped,
+    required this.isCompact,
   });
 
   /// Table caption
@@ -795,11 +883,14 @@ final class InputPageBlockTable extends InputPageBlock {
   /// Table cells
   final List<List<PageBlockTableCell>> cells;
 
-  /// True, if the table is bordered
+  /// Pass true if the table is bordered
   final bool isBordered;
 
-  /// True, if the table is striped
+  /// Pass true if the table is striped
   final bool isStriped;
+
+  /// Pass true if table cells must have smaller indents
+  final bool isCompact;
 
   /// Parses a [InputPageBlockTable] from TDLib JSON.
   factory InputPageBlockTable.fromJson(Map<String, dynamic> json) =>
@@ -814,6 +905,7 @@ final class InputPageBlockTable extends InputPageBlock {
         ),
         isBordered: _readBool(json['is_bordered']),
         isStriped: _readBool(json['is_striped']),
+        isCompact: _readBool(json['is_compact']),
       );
 
   @override
@@ -825,6 +917,7 @@ final class InputPageBlockTable extends InputPageBlock {
     ],
     'is_bordered': isBordered,
     'is_striped': isStriped,
+    'is_compact': isCompact,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -835,11 +928,13 @@ final class InputPageBlockTable extends InputPageBlock {
     List<List<PageBlockTableCell>>? cells,
     bool? isBordered,
     bool? isStriped,
+    bool? isCompact,
   }) => InputPageBlockTable(
     caption: caption ?? this.caption,
     cells: cells ?? this.cells,
     isBordered: isBordered ?? this.isBordered,
     isStriped: isStriped ?? this.isStriped,
+    isCompact: isCompact ?? this.isCompact,
   );
 
   /// TDLib type name.
@@ -971,6 +1066,55 @@ final class InputPageBlockMap extends InputPageBlock {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputPageBlockMap';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A list of buttons shown in a row
+final class InputPageBlockButtonRow extends InputPageBlock {
+  /// A list of buttons shown in a row
+  const InputPageBlockButtonRow({required this.buttons, this.align});
+
+  /// The buttons
+  final List<InlineButton> buttons;
+
+  /// Horizontal alignment of the buttons; pass null if the buttons must be shown full-width
+  final PageBlockHorizontalAlignment? align;
+
+  /// Parses a [InputPageBlockButtonRow] from TDLib JSON.
+  factory InputPageBlockButtonRow.fromJson(Map<String, dynamic> json) =>
+      InputPageBlockButtonRow(
+        buttons: _readList<InlineButton>(
+          json['buttons'],
+          (e) => _readObject(e, InlineButton.fromJson),
+        ),
+        align: _readOptional(
+          json['align'],
+          PageBlockHorizontalAlignment.fromJson,
+        ),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'buttons': [for (final e in buttons) e.toJson()],
+    'align': align?.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputPageBlockButtonRow copyWith({
+    List<InlineButton>? buttons,
+    PageBlockHorizontalAlignment? Function()? align,
+  }) => InputPageBlockButtonRow(
+    buttons: buttons ?? this.buttons,
+    align: align != null ? align() : this.align,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputPageBlockButtonRow';
 
   @override
   String getConstructor() => CONSTRUCTOR;

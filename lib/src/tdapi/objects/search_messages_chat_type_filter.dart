@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Represents a filter for type of the chats in which to search for messages
 ///
-/// One of: [SearchMessagesChatTypeFilterPrivate], [SearchMessagesChatTypeFilterGroup], [SearchMessagesChatTypeFilterChannel]; or [UndecodedSearchMessagesChatTypeFilter] for a type newer than this API.
+/// One of: [SearchMessagesChatTypeFilterPrivate], [SearchMessagesChatTypeFilterGroup], [SearchMessagesChatTypeFilterChannel], [SearchMessagesChatTypeFilterCommunity]; or [UndecodedSearchMessagesChatTypeFilter] for a type newer than this API.
 sealed class SearchMessagesChatTypeFilter extends TdObject {
   const SearchMessagesChatTypeFilter();
 
@@ -121,6 +121,43 @@ final class SearchMessagesChatTypeFilterChannel
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'searchMessagesChatTypeFilterChannel';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Returns only messages in the specified community
+final class SearchMessagesChatTypeFilterCommunity
+    extends SearchMessagesChatTypeFilter {
+  /// Returns only messages in the specified community
+  const SearchMessagesChatTypeFilterCommunity({required this.communityId});
+
+  /// Identifier of the community to search in
+  final int communityId;
+
+  /// Parses a [SearchMessagesChatTypeFilterCommunity] from TDLib JSON.
+  factory SearchMessagesChatTypeFilterCommunity.fromJson(
+    Map<String, dynamic> json,
+  ) => SearchMessagesChatTypeFilterCommunity(
+    communityId: _readInt(json['community_id']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'community_id': communityId,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  SearchMessagesChatTypeFilterCommunity copyWith({int? communityId}) =>
+      SearchMessagesChatTypeFilterCommunity(
+        communityId: communityId ?? this.communityId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'searchMessagesChatTypeFilterCommunity';
 
   @override
   String getConstructor() => CONSTRUCTOR;

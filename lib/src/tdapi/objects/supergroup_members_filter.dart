@@ -69,9 +69,9 @@ final class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Returns contacts of the user, which are members of the supergroup or channel
+/// Returns contacts of the current user who are members of the supergroup or channel
 final class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
-  /// Returns contacts of the user, which are members of the supergroup or channel
+  /// Returns contacts of the current user who are members of the supergroup or channel
   const SupergroupMembersFilterContacts({required this.query});
 
   /// Query to search for
@@ -209,9 +209,9 @@ final class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Returns users which can be mentioned in the supergroup
+/// Returns users who can be mentioned in the supergroup
 final class SupergroupMembersFilterMention extends SupergroupMembersFilter {
-  /// Returns users which can be mentioned in the supergroup
+  /// Returns users who can be mentioned in the supergroup
   const SupergroupMembersFilterMention({required this.query, this.topicId});
 
   /// Query to search for

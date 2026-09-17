@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageRichMessage], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLiveLocation], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessagePollOptionAdded], [MessagePollOptionDeleted], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatOwnerLeft], [MessageChatOwnerChanged], [MessageChatHasProtectedContentToggled], [MessageChatHasProtectedContentDisableRequested], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatAddedToCommunity], [MessageChatRemovedFromCommunity], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessageManagedBotCreated], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageRichMessage], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLiveLocation], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessagePollOptionAdded], [MessagePollOptionDeleted], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatOwnerLeft], [MessageChatOwnerChanged], [MessageChatHasProtectedContentToggled], [MessageChatHasProtectedContentDisableRequested], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatJoinFromCommunity], [MessageChatDeleteMember], [MessageChatAddedToCommunity], [MessageChatRemovedFromCommunity], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessageManagedBotCreated], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedGrams], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -2194,6 +2194,39 @@ final class MessageChatJoinByRequest extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// A new member joined the chat from a community
+final class MessageChatJoinFromCommunity extends MessageContent {
+  /// A new member joined the chat from a community
+  const MessageChatJoinFromCommunity({required this.communityId});
+
+  /// Identifier of the community from which the user joined the chat
+  final int communityId;
+
+  /// Parses a [MessageChatJoinFromCommunity] from TDLib JSON.
+  factory MessageChatJoinFromCommunity.fromJson(Map<String, dynamic> json) =>
+      MessageChatJoinFromCommunity(communityId: _readInt(json['community_id']));
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'community_id': communityId,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageChatJoinFromCommunity copyWith({int? communityId}) =>
+      MessageChatJoinFromCommunity(
+        communityId: communityId ?? this.communityId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageChatJoinFromCommunity';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// A chat member was deleted
 final class MessageChatDeleteMember extends MessageContent {
   /// A chat member was deleted
@@ -2894,26 +2927,39 @@ final class MessageGameScore extends MessageContent {
 /// A bot managed by another bot was created by the user
 final class MessageManagedBotCreated extends MessageContent {
   /// A bot managed by another bot was created by the user
-  const MessageManagedBotCreated({required this.botUserId});
+  const MessageManagedBotCreated({
+    required this.botUserId,
+    required this.managerBotUserId,
+  });
 
   /// User identifier of the created bot
   final int botUserId;
 
+  /// Identifier of the bot which will manage the new bot
+  final int managerBotUserId;
+
   /// Parses a [MessageManagedBotCreated] from TDLib JSON.
   factory MessageManagedBotCreated.fromJson(Map<String, dynamic> json) =>
-      MessageManagedBotCreated(botUserId: _readInt(json['bot_user_id']));
+      MessageManagedBotCreated(
+        botUserId: _readInt(json['bot_user_id']),
+        managerBotUserId: _readInt(json['manager_bot_user_id']),
+      );
 
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'bot_user_id': botUserId,
+    'manager_bot_user_id': managerBotUserId,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageManagedBotCreated copyWith({int? botUserId}) =>
-      MessageManagedBotCreated(botUserId: botUserId ?? this.botUserId);
+  MessageManagedBotCreated copyWith({int? botUserId, int? managerBotUserId}) =>
+      MessageManagedBotCreated(
+        botUserId: botUserId ?? this.botUserId,
+        managerBotUserId: managerBotUserId ?? this.managerBotUserId,
+      );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageManagedBotCreated';
@@ -3490,7 +3536,7 @@ final class MessageGiveaway extends MessageContent {
   /// Giveaway parameters
   final GiveawayParameters parameters;
 
-  /// Number of users which will receive Telegram Premium subscription gift codes
+  /// Number of users who will receive Telegram Premium subscription gift codes
   final int winnerCount;
 
   /// Prize of the giveaway
@@ -3828,9 +3874,9 @@ final class MessageGiftedStars extends MessageContent {
 }
 
 /// TON Grams were gifted to a user
-final class MessageGiftedTon extends MessageContent {
+final class MessageGiftedGrams extends MessageContent {
   /// TON Grams were gifted to a user
-  const MessageGiftedTon({
+  const MessageGiftedGrams({
     required this.gifterUserId,
     required this.receiverUserId,
     required this.gramAmount,
@@ -3853,9 +3899,9 @@ final class MessageGiftedTon extends MessageContent {
   /// A sticker to be shown in the message; may be null if unknown
   final Sticker? sticker;
 
-  /// Parses a [MessageGiftedTon] from TDLib JSON.
-  factory MessageGiftedTon.fromJson(Map<String, dynamic> json) =>
-      MessageGiftedTon(
+  /// Parses a [MessageGiftedGrams] from TDLib JSON.
+  factory MessageGiftedGrams.fromJson(Map<String, dynamic> json) =>
+      MessageGiftedGrams(
         gifterUserId: _readInt(json['gifter_user_id']),
         receiverUserId: _readInt(json['receiver_user_id']),
         gramAmount: _readInt(json['gram_amount']),
@@ -3876,13 +3922,13 @@ final class MessageGiftedTon extends MessageContent {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageGiftedTon copyWith({
+  MessageGiftedGrams copyWith({
     int? gifterUserId,
     int? receiverUserId,
     int? gramAmount,
     String? transactionId,
     Sticker? Function()? sticker,
-  }) => MessageGiftedTon(
+  }) => MessageGiftedGrams(
     gifterUserId: gifterUserId ?? this.gifterUserId,
     receiverUserId: receiverUserId ?? this.receiverUserId,
     gramAmount: gramAmount ?? this.gramAmount,
@@ -3891,7 +3937,7 @@ final class MessageGiftedTon extends MessageContent {
   );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'messageGiftedTon';
+  static const String CONSTRUCTOR = 'messageGiftedGrams';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -4167,6 +4213,8 @@ final class MessageUpgradedGift extends MessageContent {
     required this.receiverId,
     required this.origin,
     required this.receivedGiftId,
+    required this.text,
+    required this.isPrivate,
     required this.isSaved,
     required this.canBeTransferred,
     required this.wasTransferred,
@@ -4192,6 +4240,12 @@ final class MessageUpgradedGift extends MessageContent {
 
   /// Unique identifier of the received gift for the current user; only for the receiver of the gift
   final String receivedGiftId;
+
+  /// Message added to the gift
+  final FormattedText text;
+
+  /// True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them
+  final bool isPrivate;
 
   /// True, if the gift is displayed on the user's or the channel's profile page; only for the receiver of the gift
   final bool isSaved;
@@ -4228,6 +4282,8 @@ final class MessageUpgradedGift extends MessageContent {
         receiverId: _readObject(json['receiver_id'], MessageSender.fromJson),
         origin: _readObject(json['origin'], UpgradedGiftOrigin.fromJson),
         receivedGiftId: _readString(json['received_gift_id']),
+        text: _readObject(json['text'], FormattedText.fromJson),
+        isPrivate: _readBool(json['is_private']),
         isSaved: _readBool(json['is_saved']),
         canBeTransferred: _readBool(json['can_be_transferred']),
         wasTransferred: _readBool(json['was_transferred']),
@@ -4249,6 +4305,8 @@ final class MessageUpgradedGift extends MessageContent {
     'receiver_id': receiverId.toJson(),
     'origin': origin.toJson(),
     'received_gift_id': receivedGiftId,
+    'text': text.toJson(),
+    'is_private': isPrivate,
     'is_saved': isSaved,
     'can_be_transferred': canBeTransferred,
     'was_transferred': wasTransferred,
@@ -4269,6 +4327,8 @@ final class MessageUpgradedGift extends MessageContent {
     MessageSender? receiverId,
     UpgradedGiftOrigin? origin,
     String? receivedGiftId,
+    FormattedText? text,
+    bool? isPrivate,
     bool? isSaved,
     bool? canBeTransferred,
     bool? wasTransferred,
@@ -4284,6 +4344,8 @@ final class MessageUpgradedGift extends MessageContent {
     receiverId: receiverId ?? this.receiverId,
     origin: origin ?? this.origin,
     receivedGiftId: receivedGiftId ?? this.receivedGiftId,
+    text: text ?? this.text,
+    isPrivate: isPrivate ?? this.isPrivate,
     isSaved: isSaved ?? this.isSaved,
     canBeTransferred: canBeTransferred ?? this.canBeTransferred,
     wasTransferred: wasTransferred ?? this.wasTransferred,
@@ -5003,9 +5065,9 @@ final class MessageContactRegistered extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The current user shared users, which were requested by the bot
+/// The current user shared users who were requested by the bot
 final class MessageUsersShared extends MessageContent {
-  /// The current user shared users, which were requested by the bot
+  /// The current user shared users who were requested by the bot
   const MessageUsersShared({required this.users, required this.buttonId});
 
   /// The shared users

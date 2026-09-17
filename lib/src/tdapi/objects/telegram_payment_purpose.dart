@@ -61,7 +61,7 @@ final class TelegramPaymentPurposePremiumGift extends TelegramPaymentPurpose {
   /// Paid amount, in the smallest units of the currency
   final int amount;
 
-  /// Identifier of the user which will receive Telegram Premium
+  /// Identifier of the user who will receive Telegram Premium
   final int userId;
 
   /// Number of months the Telegram Premium subscription will be active for the user
@@ -137,7 +137,7 @@ final class TelegramPaymentPurposePremiumGiftCodes
   /// Paid amount, in the smallest units of the currency
   final int amount;
 
-  /// Identifiers of the users which can activate the gift codes
+  /// Identifiers of the users who can activate the gift codes
   final List<int> userIds;
 
   /// Number of months the Telegram Premium subscription will be active for the users
@@ -216,7 +216,7 @@ final class TelegramPaymentPurposePremiumGiveaway
   /// Paid amount, in the smallest units of the currency
   final int amount;
 
-  /// Number of users which will be able to activate the gift codes
+  /// Number of users who will be able to activate the gift codes
   final int winnerCount;
 
   /// Number of months the Telegram Premium subscription will be active for the users

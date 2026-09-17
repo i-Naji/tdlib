@@ -73,9 +73,9 @@ final class MessageOriginUser extends MessageOrigin {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The message was originally sent by a user, which is hidden by their privacy settings
+/// The message was originally sent by a user who is hidden by their privacy settings
 final class MessageOriginHiddenUser extends MessageOrigin {
-  /// The message was originally sent by a user, which is hidden by their privacy settings
+  /// The message was originally sent by a user who is hidden by their privacy settings
   const MessageOriginHiddenUser({required this.senderName});
 
   /// Name of the sender

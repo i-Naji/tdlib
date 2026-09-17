@@ -107,7 +107,7 @@ final class StorePaymentPurposePremiumGift extends StorePaymentPurpose {
   /// Paid amount, in the smallest units of the currency
   final int amount;
 
-  /// Identifiers of the user which will receive Telegram Premium
+  /// Identifier of the user who will receive Telegram Premium
   final int userId;
 
   /// Text to show along with the gift codes; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed
@@ -173,7 +173,7 @@ final class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
   /// Paid amount, in the smallest units of the currency
   final int amount;
 
-  /// Identifiers of the users which can activate the gift codes
+  /// Identifiers of the users who can activate the gift codes
   final List<int> userIds;
 
   /// Text to show along with the gift codes; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed

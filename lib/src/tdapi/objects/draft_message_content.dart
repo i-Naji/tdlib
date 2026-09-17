@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Content of the message draft
 ///
-/// One of: [DraftMessageContentText], [DraftMessageContentRichMessage], [DraftMessageContentVideoNote], [DraftMessageContentVoiceNote]; or [UndecodedDraftMessageContent] for a type newer than this API.
+/// One of: [DraftMessageContentText], [DraftMessageContentRichMessage], [DraftMessageContentInputRichMessage], [DraftMessageContentVideoNote], [DraftMessageContentVoiceNote]; or [UndecodedDraftMessageContent] for a type newer than this API.
 sealed class DraftMessageContent extends TdObject {
   const DraftMessageContent();
 
@@ -97,7 +97,7 @@ final class DraftMessageContentRichMessage extends DraftMessageContent {
   /// A rich message draft; not supported in setChatDraftMessage
   const DraftMessageContentRichMessage({required this.message});
 
-  /// The rich message; the message must not have not yet uploaded media
+  /// The rich message
   final RichMessage message;
 
   /// Parses a [DraftMessageContentRichMessage] from TDLib JSON.
@@ -120,6 +120,40 @@ final class DraftMessageContentRichMessage extends DraftMessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'draftMessageContentRichMessage';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A rich message draft; only for setChatDraftMessage
+final class DraftMessageContentInputRichMessage extends DraftMessageContent {
+  /// A rich message draft; only for setChatDraftMessage
+  const DraftMessageContentInputRichMessage({required this.message});
+
+  /// The rich message
+  final InputRichMessage message;
+
+  /// Parses a [DraftMessageContentInputRichMessage] from TDLib JSON.
+  factory DraftMessageContentInputRichMessage.fromJson(
+    Map<String, dynamic> json,
+  ) => DraftMessageContentInputRichMessage(
+    message: _readObject(json['message'], InputRichMessage.fromJson),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'message': message.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  DraftMessageContentInputRichMessage copyWith({InputRichMessage? message}) =>
+      DraftMessageContentInputRichMessage(message: message ?? this.message);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'draftMessageContentInputRichMessage';
 
   @override
   String getConstructor() => CONSTRUCTOR;

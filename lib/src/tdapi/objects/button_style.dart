@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes style of a button
 ///
-/// One of: [ButtonStyleDefault], [ButtonStylePrimary], [ButtonStyleDanger], [ButtonStyleSuccess]; or [UndecodedButtonStyle] for a type newer than this API.
+/// One of: [ButtonStyleDefault], [ButtonStylePrimary], [ButtonStyleDanger], [ButtonStyleSuccess], [ButtonStyleLink]; or [UndecodedButtonStyle] for a type newer than this API.
 sealed class ButtonStyle extends TdObject {
   const ButtonStyle();
 
@@ -133,6 +133,30 @@ final class ButtonStyleSuccess extends ButtonStyle {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'buttonStyleSuccess';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The button must be shown as a link. The style is allowed only for callback buttons in inlineButton
+final class ButtonStyleLink extends ButtonStyle {
+  /// The button must be shown as a link. The style is allowed only for callback buttons in inlineButton
+  const ButtonStyleLink();
+
+  /// Parses a [ButtonStyleLink] from TDLib JSON.
+  factory ButtonStyleLink.fromJson(Map<String, dynamic> json) =>
+      const ButtonStyleLink();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  ButtonStyleLink copyWith() => const ButtonStyleLink();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'buttonStyleLink';
 
   @override
   String getConstructor() => CONSTRUCTOR;

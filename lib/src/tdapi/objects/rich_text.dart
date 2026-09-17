@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a formatted text object
 ///
-/// One of: [RichTextPlain], [RichTextBold], [RichTextItalic], [RichTextUnderline], [RichTextStrikethrough], [RichTextSpoiler], [RichTextSubscript], [RichTextSuperscript], [RichTextMarked], [RichTextDateTime], [RichTextMention], [RichTextHashtag], [RichTextCashtag], [RichTextBankCardNumber], [RichTextBotCommand], [RichTextFixed], [RichTextMentionName], [RichTextUrl], [RichTextEmailAddress], [RichTextPhoneNumber], [RichTextCustomEmoji], [RichTextIcon], [RichTextMathematicalExpression], [RichTextDiff], [RichTextReference], [RichTextReferenceLink], [RichTextAnchor], [RichTextAnchorLink], [RichTexts]; or [UndecodedRichText] for a type newer than this API.
+/// One of: [RichTextPlain], [RichTextBold], [RichTextItalic], [RichTextUnderline], [RichTextStrikethrough], [RichTextSpoiler], [RichTextSubscript], [RichTextSuperscript], [RichTextMarked], [RichTextDateTime], [RichTextMention], [RichTextHashtag], [RichTextCashtag], [RichTextBankCardNumber], [RichTextBotCommand], [RichTextFixed], [RichTextMentionName], [RichTextUrl], [RichTextEmailAddress], [RichTextPhoneNumber], [RichTextCustomEmoji], [RichTextIcon], [RichTextMathematicalExpression], [RichTextButton], [RichTextDiff], [RichTextReference], [RichTextReferenceLink], [RichTextAnchor], [RichTextAnchorLink], [RichTexts]; or [UndecodedRichText] for a type newer than this API.
 sealed class RichText extends TdObject {
   const RichText();
 
@@ -911,6 +911,38 @@ final class RichTextMathematicalExpression extends RichText {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'richTextMathematicalExpression';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A button
+final class RichTextButton extends RichText {
+  /// A button
+  const RichTextButton({required this.button});
+
+  /// The button
+  final InlineButton button;
+
+  /// Parses a [RichTextButton] from TDLib JSON.
+  factory RichTextButton.fromJson(Map<String, dynamic> json) => RichTextButton(
+    button: _readObject(json['button'], InlineButton.fromJson),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'button': button.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextButton copyWith({InlineButton? button}) =>
+      RichTextButton(button: button ?? this.button);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextButton';
 
   @override
   String getConstructor() => CONSTRUCTOR;

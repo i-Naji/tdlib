@@ -680,7 +680,7 @@ final class PushMessageContentGiveaway extends PushMessageContent {
     required this.isPinned,
   });
 
-  /// Number of users which will receive giveaway prizes; 0 for pinned message
+  /// Number of users who will receive giveaway prizes; 0 for pinned message
   final int winnerCount;
 
   /// Prize of the giveaway; may be null for pinned message

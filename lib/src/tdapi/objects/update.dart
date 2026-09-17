@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains notifications about data changes
 ///
-/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageContainsUnreadPollVotes], [UpdateMessageFactCheck], [UpdateMessageSuggestedPostInfo], [UpdateMessageLiveLocationViewed], [UpdateVideoPublished], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColors], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatAddedToList], [UpdateChatRemovedFromList], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatBusinessBotManageBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatEmojiStatus], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatUnreadPollVoteCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatViewAsTopics], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateSavedMessagesTopic], [UpdateSavedMessagesTopicCount], [UpdateDirectMessagesChatTopic], [UpdateTopicMessageCount], [UpdateQuickReplyShortcut], [UpdateQuickReplyShortcutDeleted], [UpdateQuickReplyShortcuts], [UpdateQuickReplyShortcutMessages], [UpdateForumTopicInfo], [UpdateForumTopic], [UpdateScopeNotificationSettings], [UpdateReactionNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdatePendingMessage], [UpdateCommunity], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateServiceNotification], [UpdateNewOauthRequest], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateApplicationVerificationRequired], [UpdateApplicationRecaptchaVerificationRequired], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateGroupCallParticipants], [UpdateGroupCallVerificationState], [UpdateNewGroupCallMessage], [UpdateNewGroupCallPaidReaction], [UpdateGroupCallMessageSendFailed], [UpdateGroupCallMessagesDeleted], [UpdateLiveStoryTopDonors], [UpdateNewCallSignalingData], [UpdateGiftAuctionState], [UpdateActiveGiftAuctions], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateChatJoinResult], [UpdateStory], [UpdateStoryDeleted], [UpdateStoryPostSucceeded], [UpdateStoryPostFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateTrustedMiniAppBots], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateDefaultBackground], [UpdateEmojiChatThemes], [UpdateAccentColors], [UpdateProfileAccentColors], [UpdateWebBrowserSettings], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateFreezeState], [UpdateAgeVerificationParameters], [UpdateTermsOfService], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateAvailableMessageEffects], [UpdateDefaultReactionType], [UpdateDefaultPaidReactionType], [UpdateSavedMessagesTags], [UpdateActiveLiveLocationMessages], [UpdateOwnedStarCount], [UpdateOwnedGramCount], [UpdateChatRevenueAmount], [UpdateStarRevenueStatus], [UpdateGramRevenueStatus], [UpdateSpeechRecognitionTrial], [UpdateGroupCallMessageLevels], [UpdateDiceEmojis], [UpdateStakeDiceState], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateTextCompositionStyles], [UpdateSuggestedActions], [UpdateSpeedLimitNotification], [UpdateContactCloseBirthdays], [UpdateAutosaveSettings], [UpdateBusinessConnection], [UpdateNewBusinessMessage], [UpdateBusinessMessageEdited], [UpdateBusinessMessagesDeleted], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewGuestQuery], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewBusinessCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdateUserSubscription], [UpdatePoll], [UpdatePollAnswer], [UpdateManagedBot], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost], [UpdateMessageReaction], [UpdateMessageReactions], [UpdatePaidMediaPurchased]; or [UndecodedUpdate] for a type newer than this API.
+/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEphemeralContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageContainsUnreadPollVotes], [UpdateMessageFactCheck], [UpdateMessageSuggestedPostInfo], [UpdateMessageLiveLocationViewed], [UpdateVideoPublished], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColors], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatAddedToList], [UpdateChatRemovedFromList], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatBusinessBotManageBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatEmojiStatus], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatUnreadPollVoteCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatViewAsTopics], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatHasWelcomeMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateSavedMessagesTopic], [UpdateSavedMessagesTopicCount], [UpdateDirectMessagesChatTopic], [UpdateTopicMessageCount], [UpdateQuickReplyShortcut], [UpdateQuickReplyShortcutDeleted], [UpdateQuickReplyShortcuts], [UpdateQuickReplyShortcutMessages], [UpdateChatWelcomeMessages], [UpdateForumTopicInfo], [UpdateForumTopic], [UpdateScopeNotificationSettings], [UpdateReactionNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdatePendingMessage], [UpdateStopMessageDraft], [UpdateCommunity], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateCommunityFullInfo], [UpdateServiceNotification], [UpdateNewOauthRequest], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateApplicationVerificationRequired], [UpdateApplicationRecaptchaVerificationRequired], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateGroupCallParticipants], [UpdateGroupCallVerificationState], [UpdateNewGroupCallMessage], [UpdateNewGroupCallPaidReaction], [UpdateGroupCallMessageSendFailed], [UpdateGroupCallMessagesDeleted], [UpdateLiveStoryTopDonors], [UpdateNewCallSignalingData], [UpdateGiftAuctionState], [UpdateActiveGiftAuctions], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateChatJoinResult], [UpdateStory], [UpdateStoryDeleted], [UpdateStoryPostSucceeded], [UpdateStoryPostFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateTrustedMiniAppBots], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateDefaultBackground], [UpdateEmojiChatThemes], [UpdateAccentColors], [UpdateProfileAccentColors], [UpdateWebBrowserSettings], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateFreezeState], [UpdateAgeVerificationParameters], [UpdateTermsOfService], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateAvailableMessageEffects], [UpdateDefaultReactionType], [UpdateDefaultPaidReactionType], [UpdateSavedMessagesTags], [UpdateActiveLiveLocationMessages], [UpdateOwnedStarCount], [UpdateOwnedGramCount], [UpdateChatRevenueAmount], [UpdateStarRevenueStatus], [UpdateGramRevenueStatus], [UpdateSpeechRecognitionTrial], [UpdateGroupCallMessageLevels], [UpdateDiceEmojis], [UpdateStakeDiceState], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateTextCompositionStyles], [UpdateSuggestedActions], [UpdateSpeedLimitNotification], [UpdateContactCloseBirthdays], [UpdateAutosaveSettings], [UpdateBusinessConnection], [UpdateNewBusinessMessage], [UpdateBusinessMessageEdited], [UpdateBusinessMessagesDeleted], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewGuestQuery], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewBusinessCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdateUserSubscription], [UpdatePoll], [UpdatePollAnswer], [UpdateManagedBot], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost], [UpdateMessageReaction], [UpdateMessageReactions], [UpdatePaidMediaPurchased]; or [UndecodedUpdate] for a type newer than this API.
 sealed class Update extends TdObject {
   const Update();
 
@@ -405,6 +405,81 @@ final class UpdateMessageContent extends Update {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateMessageContent';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The message ephemeral content has changed
+final class UpdateMessageEphemeralContent extends Update {
+  /// The message ephemeral content has changed
+  const UpdateMessageEphemeralContent({
+    required this.chatId,
+    required this.messageId,
+    this.ephemeralContent,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Chat identifier
+  final int chatId;
+
+  /// Message identifier
+  final int messageId;
+
+  /// New ephemeral content of the message; may be null if none
+  final EphemeralMessageContent? ephemeralContent;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateMessageEphemeralContent] from TDLib JSON.
+  factory UpdateMessageEphemeralContent.fromJson(Map<String, dynamic> json) =>
+      UpdateMessageEphemeralContent(
+        chatId: _readInt(json['chat_id']),
+        messageId: _readInt(json['message_id']),
+        ephemeralContent: _readOptional(
+          json['ephemeral_content'],
+          EphemeralMessageContent.fromJson,
+        ),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'ephemeral_content': ephemeralContent?.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateMessageEphemeralContent copyWith({
+    int? chatId,
+    int? messageId,
+    EphemeralMessageContent? Function()? ephemeralContent,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateMessageEphemeralContent(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    ephemeralContent: ephemeralContent != null
+        ? ephemeralContent()
+        : this.ephemeralContent,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateMessageEphemeralContent';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -3390,6 +3465,68 @@ final class UpdateChatHasScheduledMessages extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// A chat's has_welcome_messages field has changed
+final class UpdateChatHasWelcomeMessages extends Update {
+  /// A chat's has_welcome_messages field has changed
+  const UpdateChatHasWelcomeMessages({
+    required this.chatId,
+    required this.hasWelcomeMessages,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Chat identifier
+  final int chatId;
+
+  /// New value of has_welcome_messages
+  final bool hasWelcomeMessages;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateChatHasWelcomeMessages] from TDLib JSON.
+  factory UpdateChatHasWelcomeMessages.fromJson(Map<String, dynamic> json) =>
+      UpdateChatHasWelcomeMessages(
+        chatId: _readInt(json['chat_id']),
+        hasWelcomeMessages: _readBool(json['has_welcome_messages']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'has_welcome_messages': hasWelcomeMessages,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateChatHasWelcomeMessages copyWith({
+    int? chatId,
+    bool? hasWelcomeMessages,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateChatHasWelcomeMessages(
+    chatId: chatId ?? this.chatId,
+    hasWelcomeMessages: hasWelcomeMessages ?? this.hasWelcomeMessages,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateChatHasWelcomeMessages';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// The list of chat folders or a chat folder has changed
 final class UpdateChatFolders extends Update {
   /// The list of chat folders or a chat folder has changed
@@ -3980,6 +4117,71 @@ final class UpdateQuickReplyShortcutMessages extends Update {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateQuickReplyShortcutMessages';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The list of welcome messages of a chat has changed
+final class UpdateChatWelcomeMessages extends Update {
+  /// The list of welcome messages of a chat has changed
+  const UpdateChatWelcomeMessages({
+    required this.chatId,
+    required this.messages,
+    this.extra,
+    this.clientId,
+  });
+
+  /// The identifier of the chat
+  final int chatId;
+
+  /// The new list of welcome messages of the chat in the order from the first to the last sent
+  final List<WelcomeMessage> messages;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateChatWelcomeMessages] from TDLib JSON.
+  factory UpdateChatWelcomeMessages.fromJson(Map<String, dynamic> json) =>
+      UpdateChatWelcomeMessages(
+        chatId: _readInt(json['chat_id']),
+        messages: _readList<WelcomeMessage>(
+          json['messages'],
+          (e) => _readObject(e, WelcomeMessage.fromJson),
+        ),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'messages': [for (final e in messages) e.toJson()],
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateChatWelcomeMessages copyWith({
+    int? chatId,
+    List<WelcomeMessage>? messages,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateChatWelcomeMessages(
+    chatId: chatId ?? this.chatId,
+    messages: messages ?? this.messages,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateChatWelcomeMessages';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -4753,13 +4955,15 @@ final class UpdateChatAction extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A new pending text or rich message was received in a chat with a bot. The message must be shown in the chat for at most getOption("pending_text_message_period") seconds, replace any other pending message with the same draft_id, and be deleted whenever any incoming message from the bot in the message thread is received
+/// A new pending text or rich message was received in a chat with a bot. The message must be shown in the chat for at most getOption("pending_text_message_period") seconds, replace any other pending message with the same draft_id with animation, and be deleted whenever any incoming message or a pending message with another draft_id is received in the message thread
 final class UpdatePendingMessage extends Update {
-  /// A new pending text or rich message was received in a chat with a bot. The message must be shown in the chat for at most getOption("pending_text_message_period") seconds, replace any other pending message with the same draft_id, and be deleted whenever any incoming message from the bot in the message thread is received
+  /// A new pending text or rich message was received in a chat with a bot. The message must be shown in the chat for at most getOption("pending_text_message_period") seconds, replace any other pending message with the same draft_id with animation, and be deleted whenever any incoming message or a pending message with another draft_id is received in the message thread
   const UpdatePendingMessage({
     required this.chatId,
     required this.forumTopicId,
     required this.draftId,
+    required this.canStop,
+    required this.keepOnStop,
     required this.content,
     this.extra,
     this.clientId,
@@ -4773,6 +4977,12 @@ final class UpdatePendingMessage extends Update {
 
   /// Unique identifier of the message draft within the message thread
   final int draftId;
+
+  /// True, if a button that calls stopPendingMessage to stop further message generation must be shown
+  final bool canStop;
+
+  /// True, if the pending message must not be automatically deleted when the user presses the Stop button
+  final bool keepOnStop;
 
   /// Content of the message; always of the type messageText or messageRichMessage
   final MessageContent content;
@@ -4791,6 +5001,8 @@ final class UpdatePendingMessage extends Update {
         chatId: _readInt(json['chat_id']),
         forumTopicId: _readInt(json['forum_topic_id']),
         draftId: _readInt(json['draft_id']),
+        canStop: _readBool(json['can_stop']),
+        keepOnStop: _readBool(json['keep_on_stop']),
         content: _readObject(json['content'], MessageContent.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -4802,6 +5014,8 @@ final class UpdatePendingMessage extends Update {
     'chat_id': chatId,
     'forum_topic_id': forumTopicId,
     'draft_id': draftId.toString(),
+    'can_stop': canStop,
+    'keep_on_stop': keepOnStop,
     'content': content.toJson(),
   };
 
@@ -4812,6 +5026,8 @@ final class UpdatePendingMessage extends Update {
     int? chatId,
     int? forumTopicId,
     int? draftId,
+    bool? canStop,
+    bool? keepOnStop,
     MessageContent? content,
     dynamic extra,
     int? clientId,
@@ -4819,6 +5035,8 @@ final class UpdatePendingMessage extends Update {
     chatId: chatId ?? this.chatId,
     forumTopicId: forumTopicId ?? this.forumTopicId,
     draftId: draftId ?? this.draftId,
+    canStop: canStop ?? this.canStop,
+    keepOnStop: keepOnStop ?? this.keepOnStop,
     content: content ?? this.content,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
@@ -4826,6 +5044,76 @@ final class UpdatePendingMessage extends Update {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updatePendingMessage';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A message draft generation was stopped by the user
+final class UpdateStopMessageDraft extends Update {
+  /// A message draft generation was stopped by the user
+  const UpdateStopMessageDraft({
+    required this.chatId,
+    required this.forumTopicId,
+    required this.draftId,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Chat identifier
+  final int chatId;
+
+  /// The forum topic identifier of the message draft
+  final int forumTopicId;
+
+  /// Identifier of the message draft within the message thread
+  final int draftId;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateStopMessageDraft] from TDLib JSON.
+  factory UpdateStopMessageDraft.fromJson(Map<String, dynamic> json) =>
+      UpdateStopMessageDraft(
+        chatId: _readInt(json['chat_id']),
+        forumTopicId: _readInt(json['forum_topic_id']),
+        draftId: _readInt(json['draft_id']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'chat_id': chatId,
+    'forum_topic_id': forumTopicId,
+    'draft_id': draftId.toString(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateStopMessageDraft copyWith({
+    int? chatId,
+    int? forumTopicId,
+    int? draftId,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateStopMessageDraft(
+    chatId: chatId ?? this.chatId,
+    forumTopicId: forumTopicId ?? this.forumTopicId,
+    draftId: draftId ?? this.draftId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateStopMessageDraft';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -5333,6 +5621,71 @@ final class UpdateSupergroupFullInfo extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// Some data in communityFullInfo has been changed
+final class UpdateCommunityFullInfo extends Update {
+  /// Some data in communityFullInfo has been changed
+  const UpdateCommunityFullInfo({
+    required this.communityId,
+    required this.communityFullInfo,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Identifier of the community
+  final int communityId;
+
+  /// New full information about the community
+  final CommunityFullInfo communityFullInfo;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateCommunityFullInfo] from TDLib JSON.
+  factory UpdateCommunityFullInfo.fromJson(Map<String, dynamic> json) =>
+      UpdateCommunityFullInfo(
+        communityId: _readInt(json['community_id']),
+        communityFullInfo: _readObject(
+          json['community_full_info'],
+          CommunityFullInfo.fromJson,
+        ),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'community_id': communityId,
+    'community_full_info': communityFullInfo.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateCommunityFullInfo copyWith({
+    int? communityId,
+    CommunityFullInfo? communityFullInfo,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateCommunityFullInfo(
+    communityId: communityId ?? this.communityId,
+    communityFullInfo: communityFullInfo ?? this.communityFullInfo,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateCommunityFullInfo';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// A service notification from the server was received. Upon receiving this the application must show a popup with the content of the notification
 final class UpdateServiceNotification extends Update {
   /// A service notification from the server was received. Upon receiving this the application must show a popup with the content of the notification
@@ -5531,7 +5884,7 @@ final class UpdateFileGenerationStart extends Update {
   /// The path to a file that must be created and where the new file must be generated by the application. If the application has no access to the path, it can use writeGeneratedFilePart to generate the file
   final String destinationPath;
 
-  /// If the conversion is "#url#" than original_path contains an HTTP/HTTPS URL of a file that must be downloaded by the application. Otherwise, this is the conversion specified by the application in inputFileGenerated
+  /// If the conversion is "#url#", then original_path contains an HTTP/HTTPS URL of a file that must be downloaded by the application. Otherwise, this is the conversion specified by the application in inputFileGenerated
   final String conversion;
 
   /// "@extra" of the request this object answers.

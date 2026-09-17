@@ -27,6 +27,7 @@ final class Chat extends TdObject {
     required this.isMarkedAsUnread,
     required this.viewAsTopics,
     required this.hasScheduledMessages,
+    required this.hasWelcomeMessages,
     required this.canBeDeletedOnlyForSelf,
     required this.canBeDeletedForAllUsers,
     required this.canBeReported,
@@ -113,6 +114,9 @@ final class Chat extends TdObject {
 
   /// True, if the chat has scheduled messages
   final bool hasScheduledMessages;
+
+  /// True, if the chat has welcome messages; for chat administrators with can_change_info administrator right only
+  final bool hasWelcomeMessages;
 
   /// True, if the chat messages can be deleted only for the current user while other users will continue to see the messages
   final bool canBeDeletedOnlyForSelf;
@@ -227,6 +231,7 @@ final class Chat extends TdObject {
     isMarkedAsUnread: _readBool(json['is_marked_as_unread']),
     viewAsTopics: _readBool(json['view_as_topics']),
     hasScheduledMessages: _readBool(json['has_scheduled_messages']),
+    hasWelcomeMessages: _readBool(json['has_welcome_messages']),
     canBeDeletedOnlyForSelf: _readBool(json['can_be_deleted_only_for_self']),
     canBeDeletedForAllUsers: _readBool(json['can_be_deleted_for_all_users']),
     canBeReported: _readBool(json['can_be_reported']),
@@ -290,6 +295,7 @@ final class Chat extends TdObject {
     'is_marked_as_unread': isMarkedAsUnread,
     'view_as_topics': viewAsTopics,
     'has_scheduled_messages': hasScheduledMessages,
+    'has_welcome_messages': hasWelcomeMessages,
     'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
     'can_be_deleted_for_all_users': canBeDeletedForAllUsers,
     'can_be_reported': canBeReported,
@@ -338,6 +344,7 @@ final class Chat extends TdObject {
     bool? isMarkedAsUnread,
     bool? viewAsTopics,
     bool? hasScheduledMessages,
+    bool? hasWelcomeMessages,
     bool? canBeDeletedOnlyForSelf,
     bool? canBeDeletedForAllUsers,
     bool? canBeReported,
@@ -390,6 +397,7 @@ final class Chat extends TdObject {
     isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
     viewAsTopics: viewAsTopics ?? this.viewAsTopics,
     hasScheduledMessages: hasScheduledMessages ?? this.hasScheduledMessages,
+    hasWelcomeMessages: hasWelcomeMessages ?? this.hasWelcomeMessages,
     canBeDeletedOnlyForSelf:
         canBeDeletedOnlyForSelf ?? this.canBeDeletedOnlyForSelf,
     canBeDeletedForAllUsers:
