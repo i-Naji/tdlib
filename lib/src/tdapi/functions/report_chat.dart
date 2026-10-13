@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, or if chat.can_be_reported
+/// Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, if chat.can_be_reported, or if messageProperties.can_report_chat
 ///
 /// Returns [ReportChatResult].
 final class ReportChat extends TdFunction<ReportChatResult> {
-  /// Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, or if chat.can_be_reported
+  /// Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, if chat.can_be_reported, or if messageProperties.can_report_chat
   const ReportChat({
     required this.chatId,
     required this.optionId,

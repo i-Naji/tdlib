@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains content of a push message notification
 ///
-/// One of: [PushMessageContentHidden], [PushMessageContentAnimation], [PushMessageContentAudio], [PushMessageContentContact], [PushMessageContentContactRegistered], [PushMessageContentDocument], [PushMessageContentGame], [PushMessageContentGameScore], [PushMessageContentInvoice], [PushMessageContentLocation], [PushMessageContentPaidMedia], [PushMessageContentPhoto], [PushMessageContentPoll], [PushMessageContentPremiumGiftCode], [PushMessageContentGiveaway], [PushMessageContentGift], [PushMessageContentUpgradedGift], [PushMessageContentScreenshotTaken], [PushMessageContentSticker], [PushMessageContentStory], [PushMessageContentText], [PushMessageContentChecklist], [PushMessageContentVideo], [PushMessageContentVideoNote], [PushMessageContentVoiceNote], [PushMessageContentBasicGroupChatCreate], [PushMessageContentVideoChatStarted], [PushMessageContentVideoChatEnded], [PushMessageContentInviteVideoChatParticipants], [PushMessageContentChatAddMembers], [PushMessageContentChatChangePhoto], [PushMessageContentChatChangeTitle], [PushMessageContentChatSetBackground], [PushMessageContentChatSetTheme], [PushMessageContentChatDeleteMember], [PushMessageContentChatJoinByLink], [PushMessageContentChatJoinByRequest], [PushMessageContentRecurringPayment], [PushMessageContentSuggestProfilePhoto], [PushMessageContentSuggestBirthdate], [PushMessageContentProximityAlertTriggered], [PushMessageContentChecklistTasksAdded], [PushMessageContentChecklistTasksDone], [PushMessageContentPollOptionAdded], [PushMessageContentMessageForwards], [PushMessageContentMediaAlbum]; or [UndecodedPushMessageContent] for a type newer than this API.
+/// One of: [PushMessageContentHidden], [PushMessageContentAnimation], [PushMessageContentAudio], [PushMessageContentContact], [PushMessageContentContactRegistered], [PushMessageContentDocument], [PushMessageContentGame], [PushMessageContentGameScore], [PushMessageContentInvoice], [PushMessageContentLocation], [PushMessageContentPaidMedia], [PushMessageContentPhoto], [PushMessageContentPoll], [PushMessageContentPremiumGiftCode], [PushMessageContentGiveaway], [PushMessageContentTonWalletTransfer], [PushMessageContentTonConnectRequest], [PushMessageContentGift], [PushMessageContentUpgradedGift], [PushMessageContentScreenshotTaken], [PushMessageContentSticker], [PushMessageContentStory], [PushMessageContentText], [PushMessageContentChecklist], [PushMessageContentVideo], [PushMessageContentVideoNote], [PushMessageContentVoiceNote], [PushMessageContentBasicGroupChatCreate], [PushMessageContentVideoChatStarted], [PushMessageContentVideoChatEnded], [PushMessageContentInviteVideoChatParticipants], [PushMessageContentChatAddMembers], [PushMessageContentChatChangePhoto], [PushMessageContentChatChangeTitle], [PushMessageContentChatSetBackground], [PushMessageContentChatSetTheme], [PushMessageContentChatDeleteMember], [PushMessageContentChatJoinByLink], [PushMessageContentChatJoinByRequest], [PushMessageContentRecurringPayment], [PushMessageContentSuggestProfilePhoto], [PushMessageContentSuggestBirthdate], [PushMessageContentProximityAlertTriggered], [PushMessageContentChecklistTasksAdded], [PushMessageContentChecklistTasksDone], [PushMessageContentPollOptionAdded], [PushMessageContentMessageForwards], [PushMessageContentMediaAlbum]; or [UndecodedPushMessageContent] for a type newer than this API.
 sealed class PushMessageContent extends TdObject {
   const PushMessageContent();
 
@@ -720,6 +720,95 @@ final class PushMessageContentGiveaway extends PushMessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentGiveaway';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A message with a TON wallet transfer
+final class PushMessageContentTonWalletTransfer extends PushMessageContent {
+  /// A message with a TON wallet transfer
+  const PushMessageContentTonWalletTransfer({
+    required this.senderUserId,
+    required this.amount,
+    required this.comment,
+  });
+
+  /// Sender of the transfer; 0 if unknown
+  final int senderUserId;
+
+  /// String representation of the received amount
+  final String amount;
+
+  /// Comment added to the transaction if it is public
+  final String comment;
+
+  /// Parses a [PushMessageContentTonWalletTransfer] from TDLib JSON.
+  factory PushMessageContentTonWalletTransfer.fromJson(
+    Map<String, dynamic> json,
+  ) => PushMessageContentTonWalletTransfer(
+    senderUserId: _readInt(json['sender_user_id']),
+    amount: _readString(json['amount']),
+    comment: _readString(json['comment']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'sender_user_id': senderUserId,
+    'amount': amount,
+    'comment': comment,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PushMessageContentTonWalletTransfer copyWith({
+    int? senderUserId,
+    String? amount,
+    String? comment,
+  }) => PushMessageContentTonWalletTransfer(
+    senderUserId: senderUserId ?? this.senderUserId,
+    amount: amount ?? this.amount,
+    comment: comment ?? this.comment,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'pushMessageContentTonWalletTransfer';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A message with a request from a dApp was received through TON Connect
+final class PushMessageContentTonConnectRequest extends PushMessageContent {
+  /// A message with a request from a dApp was received through TON Connect
+  const PushMessageContentTonConnectRequest({required this.dappName});
+
+  /// Name of the dApp; may be empty if unknown
+  final String dappName;
+
+  /// Parses a [PushMessageContentTonConnectRequest] from TDLib JSON.
+  factory PushMessageContentTonConnectRequest.fromJson(
+    Map<String, dynamic> json,
+  ) => PushMessageContentTonConnectRequest(
+    dappName: _readString(json['dapp_name']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'dapp_name': dappName,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PushMessageContentTonConnectRequest copyWith({String? dappName}) =>
+      PushMessageContentTonConnectRequest(dappName: dappName ?? this.dappName);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'pushMessageContentTonConnectRequest';
 
   @override
   String getConstructor() => CONSTRUCTOR;

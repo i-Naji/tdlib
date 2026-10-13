@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes an internal https://t.me or tg: link, which must be processed by the application in a special way
 ///
-/// One of: [InternalLinkTypeAttachmentMenuBot], [InternalLinkTypeAuthenticationCode], [InternalLinkTypeBackground], [InternalLinkTypeBotAddToChannel], [InternalLinkTypeBotStart], [InternalLinkTypeBotStartInGroup], [InternalLinkTypeBusinessChat], [InternalLinkTypeCallsPage], [InternalLinkTypeChatAffiliateProgram], [InternalLinkTypeChatBoost], [InternalLinkTypeChatFolderInvite], [InternalLinkTypeChatInvite], [InternalLinkTypeChatSelection], [InternalLinkTypeContactsPage], [InternalLinkTypeDirectMessagesChat], [InternalLinkTypeGame], [InternalLinkTypeGiftAuction], [InternalLinkTypeGiftCollection], [InternalLinkTypeGroupCall], [InternalLinkTypeInstantView], [InternalLinkTypeInvoice], [InternalLinkTypeLanguagePack], [InternalLinkTypeLiveStory], [InternalLinkTypeMainWebApp], [InternalLinkTypeMessage], [InternalLinkTypeMessageDraft], [InternalLinkTypeMyProfilePage], [InternalLinkTypeNewChannelChat], [InternalLinkTypeNewGroupChat], [InternalLinkTypeNewPrivateChat], [InternalLinkTypeNewStory], [InternalLinkTypeOauth], [InternalLinkTypePassportDataRequest], [InternalLinkTypePhoneNumberConfirmation], [InternalLinkTypePremiumFeaturesPage], [InternalLinkTypePremiumGiftCode], [InternalLinkTypePremiumGiftPurchase], [InternalLinkTypeProxy], [InternalLinkTypePublicChat], [InternalLinkTypeQrCodeAuthentication], [InternalLinkTypeRequestManagedBot], [InternalLinkTypeRestorePurchases], [InternalLinkTypeSavedMessages], [InternalLinkTypeSearch], [InternalLinkTypeSettings], [InternalLinkTypeStarPurchase], [InternalLinkTypeStickerSet], [InternalLinkTypeStory], [InternalLinkTypeStoryAlbum], [InternalLinkTypeTextCompositionStyle], [InternalLinkTypeTheme], [InternalLinkTypeUnknownDeepLink], [InternalLinkTypeUpgradedGift], [InternalLinkTypeUserPhoneNumber], [InternalLinkTypeUserToken], [InternalLinkTypeVideoChat], [InternalLinkTypeWebApp]; or [UndecodedInternalLinkType] for a type newer than this API.
+/// One of: [InternalLinkTypeAttachmentMenuBot], [InternalLinkTypeAuthenticationCode], [InternalLinkTypeBackground], [InternalLinkTypeBotAddToChannel], [InternalLinkTypeBotStart], [InternalLinkTypeBotStartInGroup], [InternalLinkTypeBusinessChat], [InternalLinkTypeCallsPage], [InternalLinkTypeChatAffiliateProgram], [InternalLinkTypeChatBoost], [InternalLinkTypeChatFolderInvite], [InternalLinkTypeChatInvite], [InternalLinkTypeChatSelection], [InternalLinkTypeContactsPage], [InternalLinkTypeDirectMessagesChat], [InternalLinkTypeGame], [InternalLinkTypeGiftAuction], [InternalLinkTypeGiftCollection], [InternalLinkTypeGroupCall], [InternalLinkTypeInstantView], [InternalLinkTypeInvoice], [InternalLinkTypeLanguagePack], [InternalLinkTypeLiveStory], [InternalLinkTypeMainWebApp], [InternalLinkTypeMessage], [InternalLinkTypeMessageDraft], [InternalLinkTypeMyProfilePage], [InternalLinkTypeNewChannelChat], [InternalLinkTypeNewGroupChat], [InternalLinkTypeNewPrivateChat], [InternalLinkTypeNewStory], [InternalLinkTypeOauth], [InternalLinkTypePassportDataRequest], [InternalLinkTypePhoneNumberConfirmation], [InternalLinkTypePremiumFeaturesPage], [InternalLinkTypePremiumGiftCode], [InternalLinkTypePremiumGiftPurchase], [InternalLinkTypeProxy], [InternalLinkTypePublicChat], [InternalLinkTypeQrCodeAuthentication], [InternalLinkTypeRequestManagedBot], [InternalLinkTypeRestorePurchases], [InternalLinkTypeSavedMessages], [InternalLinkTypeSearch], [InternalLinkTypeSettings], [InternalLinkTypeStarPurchase], [InternalLinkTypeStickerSet], [InternalLinkTypeStory], [InternalLinkTypeStoryAlbum], [InternalLinkTypeTextCompositionStyle], [InternalLinkTypeTheme], [InternalLinkTypeTonConnect], [InternalLinkTypeTonWalletTransfer], [InternalLinkTypeUnknownDeepLink], [InternalLinkTypeUpgradedGift], [InternalLinkTypeUserPhoneNumber], [InternalLinkTypeUserToken], [InternalLinkTypeVideoChat], [InternalLinkTypeWebApp]; or [UndecodedInternalLinkType] for a type newer than this API.
 sealed class InternalLinkType extends TdObject {
   const InternalLinkType();
 
@@ -2285,7 +2285,7 @@ final class InternalLinkTypeRequestManagedBot extends InternalLinkType {
   /// Username of the bot which will manage the new bot
   final String managerBotUsername;
 
-  /// Suggested username for the bot; always ends with "bot" case-insensitive
+  /// Suggested username for the bot; always ends with "bot" or a string from updateAllowedBotUsernamePremiumSuffixes case-insensitive
   final String suggestedBotUsername;
 
   /// Suggested name for the bot; may be empty if not specified
@@ -2865,6 +2865,169 @@ final class InternalLinkTypeTheme extends InternalLinkType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeTheme';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The link is a universal TON Connect link
+final class InternalLinkTypeTonConnect extends InternalLinkType {
+  /// The link is a universal TON Connect link
+  const InternalLinkTypeTonConnect({
+    required this.version,
+    required this.dappClientId,
+    required this.connectRequest,
+    required this.returnStrategy,
+    required this.rpcRequest,
+    required this.traceId,
+    this.extra,
+    this.clientId,
+  });
+
+  /// TON Connect version
+  final int version;
+
+  /// Hex-encoded public X25519 key of the dApp
+  final String dappClientId;
+
+  /// TON Connect connect request
+  final TonConnectConnectRequest connectRequest;
+
+  /// Request return strategy; one of "back", "none", or a URL to open
+  final String returnStrategy;
+
+  /// Embedded RPC request represented as base64url-encoded JSON
+  final String rpcRequest;
+
+  /// Identifier to trace the connection request
+  final String traceId;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [InternalLinkTypeTonConnect] from TDLib JSON.
+  factory InternalLinkTypeTonConnect.fromJson(Map<String, dynamic> json) =>
+      InternalLinkTypeTonConnect(
+        version: _readInt(json['version']),
+        dappClientId: _readString(json['dapp_client_id']),
+        connectRequest: _readObject(
+          json['connect_request'],
+          TonConnectConnectRequest.fromJson,
+        ),
+        returnStrategy: _readString(json['return_strategy']),
+        rpcRequest: _readString(json['rpc_request']),
+        traceId: _readString(json['trace_id']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'version': version,
+    'dapp_client_id': dappClientId,
+    'connect_request': connectRequest.toJson(),
+    'return_strategy': returnStrategy,
+    'rpc_request': rpcRequest,
+    'trace_id': traceId,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InternalLinkTypeTonConnect copyWith({
+    int? version,
+    String? dappClientId,
+    TonConnectConnectRequest? connectRequest,
+    String? returnStrategy,
+    String? rpcRequest,
+    String? traceId,
+    dynamic extra,
+    int? clientId,
+  }) => InternalLinkTypeTonConnect(
+    version: version ?? this.version,
+    dappClientId: dappClientId ?? this.dappClientId,
+    connectRequest: connectRequest ?? this.connectRequest,
+    returnStrategy: returnStrategy ?? this.returnStrategy,
+    rpcRequest: rpcRequest ?? this.rpcRequest,
+    traceId: traceId ?? this.traceId,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'internalLinkTypeTonConnect';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The link is a link for sending Grams from the user's TON wallet
+final class InternalLinkTypeTonWalletTransfer extends InternalLinkType {
+  /// The link is a link for sending Grams from the user's TON wallet
+  const InternalLinkTypeTonWalletTransfer({
+    this.receiver,
+    required this.gramAmount,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Chosen receiver of the transfer; may be null if none
+  final TonWalletTransferReceiver? receiver;
+
+  /// The pre-filled amount of TON Grams to send; in the smallest units of the cryptocurrency
+  final int gramAmount;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [InternalLinkTypeTonWalletTransfer] from TDLib JSON.
+  factory InternalLinkTypeTonWalletTransfer.fromJson(
+    Map<String, dynamic> json,
+  ) => InternalLinkTypeTonWalletTransfer(
+    receiver: _readOptional(
+      json['receiver'],
+      TonWalletTransferReceiver.fromJson,
+    ),
+    gramAmount: _readInt(json['gram_amount']),
+    extra: json['@extra'],
+    clientId: _readClientId(json['@client_id']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'receiver': receiver?.toJson(),
+    'gram_amount': gramAmount,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InternalLinkTypeTonWalletTransfer copyWith({
+    TonWalletTransferReceiver? Function()? receiver,
+    int? gramAmount,
+    dynamic extra,
+    int? clientId,
+  }) => InternalLinkTypeTonWalletTransfer(
+    receiver: receiver != null ? receiver() : this.receiver,
+    gramAmount: gramAmount ?? this.gramAmount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'internalLinkTypeTonWalletTransfer';
 
   @override
   String getConstructor() => CONSTRUCTOR;

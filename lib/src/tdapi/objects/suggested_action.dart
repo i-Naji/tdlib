@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes an action suggested to the current user
 ///
-/// One of: [SuggestedActionEnableArchiveAndMuteNewChats], [SuggestedActionCheckPassword], [SuggestedActionCheckPhoneNumber], [SuggestedActionViewChecksHint], [SuggestedActionConvertToBroadcastGroup], [SuggestedActionSetPassword], [SuggestedActionUpgradePremium], [SuggestedActionRestorePremium], [SuggestedActionSubscribeToAnnualPremium], [SuggestedActionGiftPremiumForChristmas], [SuggestedActionSetBirthdate], [SuggestedActionSetProfilePhoto], [SuggestedActionExtendPremium], [SuggestedActionExtendStarSubscriptions], [SuggestedActionCustom], [SuggestedActionSetLoginEmailAddress], [SuggestedActionAddLoginPasskey]; or [UndecodedSuggestedAction] for a type newer than this API.
+/// One of: [SuggestedActionEnableArchiveAndMuteNewChats], [SuggestedActionCheckPassword], [SuggestedActionCheckPhoneNumber], [SuggestedActionViewChecksHint], [SuggestedActionViewFirstTonWalletTransferHint], [SuggestedActionConvertToBroadcastGroup], [SuggestedActionSetPassword], [SuggestedActionUpgradePremium], [SuggestedActionRestorePremium], [SuggestedActionSubscribeToAnnualPremium], [SuggestedActionGiftPremiumForChristmas], [SuggestedActionSetBirthdate], [SuggestedActionSetProfilePhoto], [SuggestedActionExtendPremium], [SuggestedActionExtendStarSubscriptions], [SuggestedActionCustom], [SuggestedActionSetLoginEmailAddress], [SuggestedActionAddLoginPasskey]; or [UndecodedSuggestedAction] for a type newer than this API.
 sealed class SuggestedAction extends TdObject {
   const SuggestedAction();
 
@@ -140,6 +140,34 @@ final class SuggestedActionViewChecksHint extends SuggestedAction {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'suggestedActionViewChecksHint';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Suggests the user to view a hint about receiving of the first TON wallet transfer
+final class SuggestedActionViewFirstTonWalletTransferHint
+    extends SuggestedAction {
+  /// Suggests the user to view a hint about receiving of the first TON wallet transfer
+  const SuggestedActionViewFirstTonWalletTransferHint();
+
+  /// Parses a [SuggestedActionViewFirstTonWalletTransferHint] from TDLib JSON.
+  factory SuggestedActionViewFirstTonWalletTransferHint.fromJson(
+    Map<String, dynamic> json,
+  ) => const SuggestedActionViewFirstTonWalletTransferHint();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  SuggestedActionViewFirstTonWalletTransferHint copyWith() =>
+      const SuggestedActionViewFirstTonWalletTransferHint();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR =
+      'suggestedActionViewFirstTonWalletTransferHint';
 
   @override
   String getConstructor() => CONSTRUCTOR;

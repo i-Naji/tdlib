@@ -286,7 +286,7 @@ final class TelegramPaymentPurposeStars extends TelegramPaymentPurpose {
   /// Number of bought Telegram Stars
   final int starCount;
 
-  /// Identifier of the chat that is supposed to receive the Telegram Stars; pass 0 if none
+  /// Identifier of the chat that is supposed to receive the Telegram Stars; pass 0 if none. If non-zero and getOption("star_top_up_disabled"), then the payment isn't allowed and the user can't buy Telegram Stars in this place
   final int chatId;
 
   /// Parses a [TelegramPaymentPurposeStars] from TDLib JSON.

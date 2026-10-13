@@ -12,6 +12,7 @@ final class AnimatedEmoji extends TdObject {
     required this.stickerHeight,
     required this.fitzpatrickType,
     this.sound,
+    required this.isRegularEmoji,
     this.extra,
     this.clientId,
   });
@@ -31,6 +32,9 @@ final class AnimatedEmoji extends TdObject {
   /// File containing the sound to be played when the sticker is clicked; may be null. The sound is encoded with the Opus codec, and stored inside an OGG container
   final File? sound;
 
+  /// True, if the emoji is a regular emoji
+  final bool isRegularEmoji;
+
   /// "@extra" of the request this object answers.
   @override
   final dynamic extra;
@@ -46,6 +50,7 @@ final class AnimatedEmoji extends TdObject {
     stickerHeight: _readInt(json['sticker_height']),
     fitzpatrickType: _readInt(json['fitzpatrick_type']),
     sound: _readOptional(json['sound'], File.fromJson),
+    isRegularEmoji: _readBool(json['is_regular_emoji']),
     extra: json['@extra'],
     clientId: _readClientId(json['@client_id']),
   );
@@ -58,6 +63,7 @@ final class AnimatedEmoji extends TdObject {
     'sticker_height': stickerHeight,
     'fitzpatrick_type': fitzpatrickType,
     'sound': sound?.toJson(),
+    'is_regular_emoji': isRegularEmoji,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -68,6 +74,7 @@ final class AnimatedEmoji extends TdObject {
     int? stickerHeight,
     int? fitzpatrickType,
     File? Function()? sound,
+    bool? isRegularEmoji,
     dynamic extra,
     int? clientId,
   }) => AnimatedEmoji(
@@ -76,6 +83,7 @@ final class AnimatedEmoji extends TdObject {
     stickerHeight: stickerHeight ?? this.stickerHeight,
     fitzpatrickType: fitzpatrickType ?? this.fitzpatrickType,
     sound: sound != null ? sound() : this.sound,
+    isRegularEmoji: isRegularEmoji ?? this.isRegularEmoji,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );

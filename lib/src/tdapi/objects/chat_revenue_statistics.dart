@@ -24,7 +24,7 @@ final class ChatRevenueStatistics extends TdObject {
   /// Amount of earned revenue
   final ChatRevenueAmount revenueAmount;
 
-  /// Current conversion rate of the cryptocurrency in which revenue is calculated to USD
+  /// Current exchange rate of the cryptocurrency in which revenue is calculated to USD
   final double usdRate;
 
   /// "@extra" of the request this object answers.

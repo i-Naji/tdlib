@@ -11,6 +11,7 @@ final class Usernames extends TdObject {
     required this.disabledUsernames,
     required this.editableUsername,
     required this.collectibleUsernames,
+    required this.secondaryUsername,
   });
 
   /// List of active usernames; the first one must be shown as the primary username. The order of active usernames can be changed with reorderActiveUsernames, reorderBotActiveUsernames or reorderSupergroupActiveUsernames
@@ -25,6 +26,9 @@ final class Usernames extends TdObject {
   /// Collectible usernames that were purchased at https://fragment.com and can be passed to getCollectibleItemInfo for more details
   final List<String> collectibleUsernames;
 
+  /// Secondary non-collectible username; for bots only. Can't be used in toggleBotUsernameIsActive; use addBotSecondaryUsername or deleteBotSecondaryUsername to edit it. If the username is disabled, then Telegram Premium subscription is required to re-enable it
+  final String secondaryUsername;
+
   /// Parses a [Usernames] from TDLib JSON.
   factory Usernames.fromJson(Map<String, dynamic> json) => Usernames(
     activeUsernames: _readList<String>(json['active_usernames'], _readString),
@@ -37,6 +41,7 @@ final class Usernames extends TdObject {
       json['collectible_usernames'],
       _readString,
     ),
+    secondaryUsername: _readString(json['secondary_username']),
   );
 
   @override
@@ -46,6 +51,7 @@ final class Usernames extends TdObject {
     'disabled_usernames': disabledUsernames,
     'editable_username': editableUsername,
     'collectible_usernames': collectibleUsernames,
+    'secondary_username': secondaryUsername,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -55,11 +61,13 @@ final class Usernames extends TdObject {
     List<String>? disabledUsernames,
     String? editableUsername,
     List<String>? collectibleUsernames,
+    String? secondaryUsername,
   }) => Usernames(
     activeUsernames: activeUsernames ?? this.activeUsernames,
     disabledUsernames: disabledUsernames ?? this.disabledUsernames,
     editableUsername: editableUsername ?? this.editableUsername,
     collectibleUsernames: collectibleUsernames ?? this.collectibleUsernames,
+    secondaryUsername: secondaryUsername ?? this.secondaryUsername,
   );
 
   /// TDLib type name.

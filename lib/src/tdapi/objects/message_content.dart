@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageRichMessage], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLiveLocation], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessagePollOptionAdded], [MessagePollOptionDeleted], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatOwnerLeft], [MessageChatOwnerChanged], [MessageChatHasProtectedContentToggled], [MessageChatHasProtectedContentDisableRequested], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatJoinFromCommunity], [MessageChatDeleteMember], [MessageChatAddedToCommunity], [MessageChatRemovedFromCommunity], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessageManagedBotCreated], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedGrams], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageRichMessage], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLiveLocation], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessagePollOptionAdded], [MessagePollOptionDeleted], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatOwnerLeft], [MessageChatOwnerChanged], [MessageChatHasProtectedContentToggled], [MessageChatHasProtectedContentDisableRequested], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatJoinFromCommunity], [MessageChatDeleteMember], [MessageChatAddedToCommunity], [MessageChatRemovedFromCommunity], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessageManagedBotCreated], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedGrams], [MessageGiveawayPrizeStars], [MessageTonWalletTransfer], [MessageTonConnectRequest], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -4016,6 +4016,154 @@ final class MessageGiveawayPrizeStars extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageGiveawayPrizeStars';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Represents a transfer with the TON wallet of the current user
+final class MessageTonWalletTransfer extends MessageContent {
+  /// Represents a transfer with the TON wallet of the current user
+  const MessageTonWalletTransfer({
+    required this.senderUserId,
+    required this.transactionId,
+    required this.peerAddress,
+    required this.amount,
+    required this.comment,
+    required this.isCommentEncrypted,
+  });
+
+  /// Sender of the transfer; 0 if unknown
+  final int senderUserId;
+
+  /// Unique identifier of the transaction; may be empty if the transfer isn't send yet. Use getTonWalletTransaction to get additional information about the transaction
+  final String transactionId;
+
+  /// Address in the TON blockchain of the transaction peer
+  final String peerAddress;
+
+  /// The amount of received cryptocurrency, in the smallest units of the cryptocurrency; negative for outgoing transactions
+  final int amount;
+
+  /// Comment added to the transaction
+  final String comment;
+
+  /// True, if the comment is encrypted and must be decrypted using the receiver's or sender's private key
+  final bool isCommentEncrypted;
+
+  /// Parses a [MessageTonWalletTransfer] from TDLib JSON.
+  factory MessageTonWalletTransfer.fromJson(Map<String, dynamic> json) =>
+      MessageTonWalletTransfer(
+        senderUserId: _readInt(json['sender_user_id']),
+        transactionId: _readString(json['transaction_id']),
+        peerAddress: _readString(json['peer_address']),
+        amount: _readInt(json['amount']),
+        comment: _readString(json['comment']),
+        isCommentEncrypted: _readBool(json['is_comment_encrypted']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'sender_user_id': senderUserId,
+    'transaction_id': transactionId,
+    'peer_address': peerAddress,
+    'amount': amount,
+    'comment': comment,
+    'is_comment_encrypted': isCommentEncrypted,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageTonWalletTransfer copyWith({
+    int? senderUserId,
+    String? transactionId,
+    String? peerAddress,
+    int? amount,
+    String? comment,
+    bool? isCommentEncrypted,
+  }) => MessageTonWalletTransfer(
+    senderUserId: senderUserId ?? this.senderUserId,
+    transactionId: transactionId ?? this.transactionId,
+    peerAddress: peerAddress ?? this.peerAddress,
+    amount: amount ?? this.amount,
+    comment: comment ?? this.comment,
+    isCommentEncrypted: isCommentEncrypted ?? this.isCommentEncrypted,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageTonWalletTransfer';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A request from a dApp was received through TON Connect
+final class MessageTonConnectRequest extends MessageContent {
+  /// A request from a dApp was received through TON Connect
+  const MessageTonConnectRequest({
+    required this.sessionId,
+    required this.state,
+    required this.dappName,
+    required this.topic,
+    required this.traceId,
+  });
+
+  /// Unique identifier of the TON Connect session
+  final int sessionId;
+
+  /// State of the request
+  final TonConnectRequestState state;
+
+  /// Name of the dApp; may be empty if unknown
+  final String dappName;
+
+  /// Topic of the request; may be empty if none
+  final String topic;
+
+  /// Identifier to trace the request; may be empty if none
+  final String traceId;
+
+  /// Parses a [MessageTonConnectRequest] from TDLib JSON.
+  factory MessageTonConnectRequest.fromJson(Map<String, dynamic> json) =>
+      MessageTonConnectRequest(
+        sessionId: _readInt(json['session_id']),
+        state: _readObject(json['state'], TonConnectRequestState.fromJson),
+        dappName: _readString(json['dapp_name']),
+        topic: _readString(json['topic']),
+        traceId: _readString(json['trace_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'session_id': sessionId.toString(),
+    'state': state.toJson(),
+    'dapp_name': dappName,
+    'topic': topic,
+    'trace_id': traceId,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageTonConnectRequest copyWith({
+    int? sessionId,
+    TonConnectRequestState? state,
+    String? dappName,
+    String? topic,
+    String? traceId,
+  }) => MessageTonConnectRequest(
+    sessionId: sessionId ?? this.sessionId,
+    state: state ?? this.state,
+    dappName: dappName ?? this.dappName,
+    topic: topic ?? this.topic,
+    traceId: traceId ?? this.traceId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageTonConnectRequest';
 
   @override
   String getConstructor() => CONSTRUCTOR;

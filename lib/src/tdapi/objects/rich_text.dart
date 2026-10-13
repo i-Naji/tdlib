@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a formatted text object
 ///
-/// One of: [RichTextPlain], [RichTextBold], [RichTextItalic], [RichTextUnderline], [RichTextStrikethrough], [RichTextSpoiler], [RichTextSubscript], [RichTextSuperscript], [RichTextMarked], [RichTextDateTime], [RichTextMention], [RichTextHashtag], [RichTextCashtag], [RichTextBankCardNumber], [RichTextBotCommand], [RichTextFixed], [RichTextMentionName], [RichTextUrl], [RichTextEmailAddress], [RichTextPhoneNumber], [RichTextCustomEmoji], [RichTextIcon], [RichTextMathematicalExpression], [RichTextButton], [RichTextDiff], [RichTextReference], [RichTextReferenceLink], [RichTextAnchor], [RichTextAnchorLink], [RichTexts]; or [UndecodedRichText] for a type newer than this API.
+/// One of: [RichTextPlain], [RichTextBold], [RichTextItalic], [RichTextUnderline], [RichTextStrikethrough], [RichTextSpoiler], [RichTextSubscript], [RichTextSuperscript], [RichTextMarked], [RichTextDateTime], [RichTextMention], [RichTextHashtag], [RichTextCashtag], [RichTextBankCardNumber], [RichTextTonAddress], [RichTextBotCommand], [RichTextFixed], [RichTextMentionName], [RichTextUrl], [RichTextEmailAddress], [RichTextPhoneNumber], [RichTextCustomEmoji], [RichTextIcon], [RichTextMathematicalExpression], [RichTextButton], [RichTextDiff], [RichTextReference], [RichTextReferenceLink], [RichTextAnchor], [RichTextAnchorLink], [RichTexts]; or [UndecodedRichText] for a type newer than this API.
 sealed class RichText extends TdObject {
   const RichText();
 
@@ -539,6 +539,47 @@ final class RichTextBankCardNumber extends RichText {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'richTextBankCardNumber';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An address in the TON blockchain
+final class RichTextTonAddress extends RichText {
+  /// An address in the TON blockchain
+  const RichTextTonAddress({required this.text, required this.address});
+
+  /// Text
+  final RichText text;
+
+  /// The address
+  final String address;
+
+  /// Parses a [RichTextTonAddress] from TDLib JSON.
+  factory RichTextTonAddress.fromJson(Map<String, dynamic> json) =>
+      RichTextTonAddress(
+        text: _readObject(json['text'], RichText.fromJson),
+        address: _readString(json['address']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'text': text.toJson(),
+    'address': address,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  RichTextTonAddress copyWith({RichText? text, String? address}) =>
+      RichTextTonAddress(
+        text: text ?? this.text,
+        address: address ?? this.address,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'richTextTonAddress';
 
   @override
   String getConstructor() => CONSTRUCTOR;

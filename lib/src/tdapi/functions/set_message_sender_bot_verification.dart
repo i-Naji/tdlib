@@ -20,15 +20,15 @@ final class SetMessageSenderBotVerification extends TdFunction<Ok> {
   /// Identifier of the user or the supergroup or channel chat, which will be verified by the bot
   final MessageSender verifiedId;
 
-  /// Custom description of verification reason; 0-getOption("bot_verification_custom_description_length_max"). If empty, then "was verified by organization "organization_name"" will be used as description. Can be specified only if the bot is allowed to provide custom description
-  final String customDescription;
+  /// Custom description of verification reason; 0-getOption("bot_verification_custom_description_length_max") characters. Only TextUrl entities are supported. If empty, then "was verified by organization "organization_name"" will be used as description. Can be specified only if the bot is allowed to provide custom description
+  final FormattedText customDescription;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
     'bot_user_id': botUserId,
     'verified_id': verifiedId.toJson(),
-    'custom_description': customDescription,
+    'custom_description': customDescription.toJson(),
     '@extra': ?extra,
   };
 
@@ -37,7 +37,7 @@ final class SetMessageSenderBotVerification extends TdFunction<Ok> {
   SetMessageSenderBotVerification copyWith({
     int? botUserId,
     MessageSender? verifiedId,
-    String? customDescription,
+    FormattedText? customDescription,
   }) => SetMessageSenderBotVerification(
     botUserId: botUserId ?? this.botUserId,
     verifiedId: verifiedId ?? this.verifiedId,

@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Returns full information about a community. The data will be sent through update.
+/// Returns full information about a community
 ///
-/// Returns [Ok].
-final class LoadCommunityFullInfo extends TdFunction<Ok> {
-  /// Returns full information about a community. The data will be sent through update.
-  const LoadCommunityFullInfo({required this.communityId});
+/// Returns [CommunityFullInfo].
+final class GetCommunityFullInfo extends TdFunction<CommunityFullInfo> {
+  /// Returns full information about a community
+  const GetCommunityFullInfo({required this.communityId});
 
   /// Community identifier
   final int communityId;
@@ -22,11 +22,11 @@ final class LoadCommunityFullInfo extends TdFunction<Ok> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  LoadCommunityFullInfo copyWith({int? communityId}) =>
-      LoadCommunityFullInfo(communityId: communityId ?? this.communityId);
+  GetCommunityFullInfo copyWith({int? communityId}) =>
+      GetCommunityFullInfo(communityId: communityId ?? this.communityId);
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'loadCommunityFullInfo';
+  static const String CONSTRUCTOR = 'getCommunityFullInfo';
 
   @override
   String getConstructor() => CONSTRUCTOR;

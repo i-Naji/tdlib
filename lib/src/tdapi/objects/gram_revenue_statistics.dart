@@ -20,7 +20,7 @@ final class GramRevenueStatistics extends TdObject {
   /// Amount of earned revenue
   final GramRevenueStatus status;
 
-  /// Current conversion rate of nanogram to USD cents
+  /// Current exchange rate of nanogram to USD cents
   final double usdRate;
 
   /// "@extra" of the request this object answers.

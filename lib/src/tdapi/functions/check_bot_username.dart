@@ -3,27 +3,34 @@
 
 part of '../tdapi.dart';
 
-/// Checks whether a username can be set for a new bot. Use checkChatUsername to check username for other chat types
+/// Checks whether a username can be set for a new bot or assigned as a secondary username to an existing bot. Use checkChatUsername to check username for other chat types
 ///
 /// Returns [CheckChatUsernameResult].
 final class CheckBotUsername extends TdFunction<CheckChatUsernameResult> {
-  /// Checks whether a username can be set for a new bot. Use checkChatUsername to check username for other chat types
-  const CheckBotUsername({required this.username});
+  /// Checks whether a username can be set for a new bot or assigned as a secondary username to an existing bot. Use checkChatUsername to check username for other chat types
+  const CheckBotUsername({required this.username, required this.isSecondary});
 
   /// Username to be checked
   final String username;
+
+  /// Pass true to check whether the username is suitable as a secondary username for an existing bot; pass false to check whether the username is suitable for createBot
+  final bool isSecondary;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
     'username': username,
+    'is_secondary': isSecondary,
     '@extra': ?extra,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CheckBotUsername copyWith({String? username}) =>
-      CheckBotUsername(username: username ?? this.username);
+  CheckBotUsername copyWith({String? username, bool? isSecondary}) =>
+      CheckBotUsername(
+        username: username ?? this.username,
+        isSecondary: isSecondary ?? this.isSecondary,
+      );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'checkBotUsername';

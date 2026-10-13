@@ -61,7 +61,7 @@ final class ChatInviteLink extends TdObject {
   /// True, if the link only creates join request. If true, total number of joining members will be unlimited
   final bool createsJoinRequest;
 
-  /// True, if the link is primary. Primary invite link can't have name, expiration date, or usage limit. There is exactly one primary invite link for each administrator with can_invite_users right at a given time
+  /// True, if the link is primary. Primary invite link can't have name, expiration date, or usage limit. Primary link can create join requests only if this is set up using toggleSupergroupJoinByRequest. There is exactly one primary invite link for each administrator with can_invite_users right at a given time
   final bool isPrimary;
 
   /// True, if the link was revoked

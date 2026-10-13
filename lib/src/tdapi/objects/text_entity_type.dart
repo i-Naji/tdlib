@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Represents a part of the text which must be formatted differently
 ///
-/// One of: [TextEntityTypeMention], [TextEntityTypeHashtag], [TextEntityTypeCashtag], [TextEntityTypeBotCommand], [TextEntityTypeUrl], [TextEntityTypeEmailAddress], [TextEntityTypePhoneNumber], [TextEntityTypeBankCardNumber], [TextEntityTypeBold], [TextEntityTypeItalic], [TextEntityTypeUnderline], [TextEntityTypeStrikethrough], [TextEntityTypeSpoiler], [TextEntityTypeCode], [TextEntityTypePre], [TextEntityTypePreCode], [TextEntityTypeBlockQuote], [TextEntityTypeExpandableBlockQuote], [TextEntityTypeTextUrl], [TextEntityTypeMentionName], [TextEntityTypeCustomEmoji], [TextEntityTypeMediaTimestamp], [TextEntityTypeDateTime]; or [UndecodedTextEntityType] for a type newer than this API.
+/// One of: [TextEntityTypeMention], [TextEntityTypeHashtag], [TextEntityTypeCashtag], [TextEntityTypeBotCommand], [TextEntityTypeUrl], [TextEntityTypeEmailAddress], [TextEntityTypePhoneNumber], [TextEntityTypeBankCardNumber], [TextEntityTypeTonAddress], [TextEntityTypeBold], [TextEntityTypeItalic], [TextEntityTypeUnderline], [TextEntityTypeStrikethrough], [TextEntityTypeSpoiler], [TextEntityTypeCode], [TextEntityTypePre], [TextEntityTypePreCode], [TextEntityTypeBlockQuote], [TextEntityTypeExpandableBlockQuote], [TextEntityTypeTextUrl], [TextEntityTypeMentionName], [TextEntityTypeCustomEmoji], [TextEntityTypeMediaTimestamp], [TextEntityTypeDateTime]; or [UndecodedTextEntityType] for a type newer than this API.
 sealed class TextEntityType extends TdObject {
   const TextEntityType();
 
@@ -230,6 +230,30 @@ final class TextEntityTypeBankCardNumber extends TextEntityType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'textEntityTypeBankCardNumber';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An address in the TON blockchain
+final class TextEntityTypeTonAddress extends TextEntityType {
+  /// An address in the TON blockchain
+  const TextEntityTypeTonAddress();
+
+  /// Parses a [TextEntityTypeTonAddress] from TDLib JSON.
+  factory TextEntityTypeTonAddress.fromJson(Map<String, dynamic> json) =>
+      const TextEntityTypeTonAddress();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  TextEntityTypeTonAddress copyWith() => const TextEntityTypeTonAddress();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'textEntityTypeTonAddress';
 
   @override
   String getConstructor() => CONSTRUCTOR;

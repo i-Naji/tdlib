@@ -12,6 +12,7 @@ final class ThemeSettings extends TdObject {
     this.background,
     this.outgoingMessageFill,
     required this.animateOutgoingMessageFill,
+    required this.hasOutgoingMessageAccentColor,
     required this.outgoingMessageAccentColor,
   });
 
@@ -30,7 +31,10 @@ final class ThemeSettings extends TdObject {
   /// If true, the freeform gradient fill needs to be animated on every sent message
   final bool animateOutgoingMessageFill;
 
-  /// Accent color of outgoing messages in ARGB format
+  /// True, if there is chosen accent color for outgoing messages; otherwise, the color must be deduced from other theme settings
+  final bool hasOutgoingMessageAccentColor;
+
+  /// Accent color of outgoing messages in ARGB format; must be ignored if has_outgoing_message_accent_color is false
   final int outgoingMessageAccentColor;
 
   /// Parses a [ThemeSettings] from TDLib JSON.
@@ -45,6 +49,9 @@ final class ThemeSettings extends TdObject {
     animateOutgoingMessageFill: _readBool(
       json['animate_outgoing_message_fill'],
     ),
+    hasOutgoingMessageAccentColor: _readBool(
+      json['has_outgoing_message_accent_color'],
+    ),
     outgoingMessageAccentColor: _readInt(json['outgoing_message_accent_color']),
   );
 
@@ -56,6 +63,7 @@ final class ThemeSettings extends TdObject {
     'background': background?.toJson(),
     'outgoing_message_fill': outgoingMessageFill?.toJson(),
     'animate_outgoing_message_fill': animateOutgoingMessageFill,
+    'has_outgoing_message_accent_color': hasOutgoingMessageAccentColor,
     'outgoing_message_accent_color': outgoingMessageAccentColor,
   };
 
@@ -67,6 +75,7 @@ final class ThemeSettings extends TdObject {
     Background? Function()? background,
     BackgroundFill? Function()? outgoingMessageFill,
     bool? animateOutgoingMessageFill,
+    bool? hasOutgoingMessageAccentColor,
     int? outgoingMessageAccentColor,
   }) => ThemeSettings(
     baseTheme: baseTheme ?? this.baseTheme,
@@ -77,6 +86,8 @@ final class ThemeSettings extends TdObject {
         : this.outgoingMessageFill,
     animateOutgoingMessageFill:
         animateOutgoingMessageFill ?? this.animateOutgoingMessageFill,
+    hasOutgoingMessageAccentColor:
+        hasOutgoingMessageAccentColor ?? this.hasOutgoingMessageAccentColor,
     outgoingMessageAccentColor:
         outgoingMessageAccentColor ?? this.outgoingMessageAccentColor,
   );

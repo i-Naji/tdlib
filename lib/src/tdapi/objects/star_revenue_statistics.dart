@@ -20,7 +20,7 @@ final class StarRevenueStatistics extends TdObject {
   /// Telegram Star revenue status
   final StarRevenueStatus status;
 
-  /// Current conversion rate of a Telegram Star to USD
+  /// Current exchange rate of a Telegram Star to USD
   final double usdRate;
 
   /// "@extra" of the request this object answers.

@@ -1483,9 +1483,9 @@ final class ChatEventProfileAccentColorChanged extends ChatEventAction {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The has_protected_content setting of a channel was toggled
+/// The has_protected_content setting of a chat was toggled
 final class ChatEventHasProtectedContentToggled extends ChatEventAction {
-  /// The has_protected_content setting of a channel was toggled
+  /// The has_protected_content setting of a chat was toggled
   const ChatEventHasProtectedContentToggled({
     required this.hasProtectedContent,
   });
@@ -2069,9 +2069,9 @@ final class ChatEventVideoChatParticipantVolumeLevelChanged
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The is_forum setting of a channel was toggled
+/// The is_forum setting of a supergroup was toggled
 final class ChatEventIsForumToggled extends ChatEventAction {
-  /// The is_forum setting of a channel was toggled
+  /// The is_forum setting of a supergroup was toggled
   const ChatEventIsForumToggled({required this.isForum});
 
   /// New value of is_forum

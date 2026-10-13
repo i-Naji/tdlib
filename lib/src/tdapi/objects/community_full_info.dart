@@ -12,6 +12,8 @@ final class CommunityFullInfo extends TdObject {
     required this.administratorCount,
     required this.bannedCount,
     required this.addChatRequestCount,
+    this.extra,
+    this.clientId,
   });
 
   /// Photo of the community
@@ -29,6 +31,14 @@ final class CommunityFullInfo extends TdObject {
   /// Number of pending requests for addition of chats to the community; 0 if the current user isn't an administrator of the community
   final int addChatRequestCount;
 
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
   /// Parses a [CommunityFullInfo] from TDLib JSON.
   factory CommunityFullInfo.fromJson(Map<String, dynamic> json) =>
       CommunityFullInfo(
@@ -40,6 +50,8 @@ final class CommunityFullInfo extends TdObject {
         administratorCount: _readInt(json['administrator_count']),
         bannedCount: _readInt(json['banned_count']),
         addChatRequestCount: _readInt(json['add_chat_request_count']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
       );
 
   @override
@@ -60,12 +72,16 @@ final class CommunityFullInfo extends TdObject {
     int? administratorCount,
     int? bannedCount,
     int? addChatRequestCount,
+    dynamic extra,
+    int? clientId,
   }) => CommunityFullInfo(
     photo: photo ?? this.photo,
     chats: chats ?? this.chats,
     administratorCount: administratorCount ?? this.administratorCount,
     bannedCount: bannedCount ?? this.bannedCount,
     addChatRequestCount: addChatRequestCount ?? this.addChatRequestCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
   );
 
   /// TDLib type name.

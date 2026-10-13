@@ -43,6 +43,7 @@ final class MessageProperties extends TdObject {
     required this.canReportReactions,
     required this.canReportSupergroupSpam,
     required this.canSetFactCheck,
+    required this.customEmojiIds,
     required this.hasProtectedContentByCurrentUser,
     required this.hasProtectedContentByOtherUser,
     required this.needShowStatistics,
@@ -158,6 +159,9 @@ final class MessageProperties extends TdObject {
   /// True, if fact check for the message can be changed through setMessageFactCheck
   final bool canSetFactCheck;
 
+  /// Identifiers of custom emoji used in the message
+  final List<int> customEmojiIds;
+
   /// True, if content of the message can't be saved locally, because it is protected by the current user; if true, then can_be_saved is false
   final bool hasProtectedContentByCurrentUser;
 
@@ -217,6 +221,7 @@ final class MessageProperties extends TdObject {
     canReportReactions: _readBool(json['can_report_reactions']),
     canReportSupergroupSpam: _readBool(json['can_report_supergroup_spam']),
     canSetFactCheck: _readBool(json['can_set_fact_check']),
+    customEmojiIds: _readList<int>(json['custom_emoji_ids'], _readInt),
     hasProtectedContentByCurrentUser: _readBool(
       json['has_protected_content_by_current_user'],
     ),
@@ -267,6 +272,7 @@ final class MessageProperties extends TdObject {
     'can_report_reactions': canReportReactions,
     'can_report_supergroup_spam': canReportSupergroupSpam,
     'can_set_fact_check': canSetFactCheck,
+    'custom_emoji_ids': [for (final e in customEmojiIds) e.toString()],
     'has_protected_content_by_current_user': hasProtectedContentByCurrentUser,
     'has_protected_content_by_other_user': hasProtectedContentByOtherUser,
     'need_show_statistics': needShowStatistics,
@@ -311,6 +317,7 @@ final class MessageProperties extends TdObject {
     bool? canReportReactions,
     bool? canReportSupergroupSpam,
     bool? canSetFactCheck,
+    List<int>? customEmojiIds,
     bool? hasProtectedContentByCurrentUser,
     bool? hasProtectedContentByOtherUser,
     bool? needShowStatistics,
@@ -363,6 +370,7 @@ final class MessageProperties extends TdObject {
     canReportSupergroupSpam:
         canReportSupergroupSpam ?? this.canReportSupergroupSpam,
     canSetFactCheck: canSetFactCheck ?? this.canSetFactCheck,
+    customEmojiIds: customEmojiIds ?? this.customEmojiIds,
     hasProtectedContentByCurrentUser:
         hasProtectedContentByCurrentUser ??
         this.hasProtectedContentByCurrentUser,

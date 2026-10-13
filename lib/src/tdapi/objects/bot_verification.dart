@@ -18,7 +18,7 @@ final class BotVerification extends TdObject {
   /// Identifier of the custom emoji that is used as the verification sign
   final int iconCustomEmojiId;
 
-  /// Custom description of verification reason set by the bot. Can contain only Mention, Hashtag, Cashtag, PhoneNumber, BankCardNumber, Url, and EmailAddress entities
+  /// Custom description of verification reason set by the bot. Can contain only Mention, Hashtag, Cashtag, PhoneNumber, BankCardNumber, TonAddress, Url, and EmailAddress entities
   final FormattedText customDescription;
 
   /// Parses a [BotVerification] from TDLib JSON.

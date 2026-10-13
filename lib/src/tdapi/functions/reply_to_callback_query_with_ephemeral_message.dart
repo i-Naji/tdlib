@@ -3,13 +3,14 @@
 
 part of '../tdapi.dart';
 
-/// Edits the message from which a callback query has originated with an ephemeral message; for bots only
+/// Replies to a callback query with an ephemeral message; for bots only
 ///
 /// Returns [Ok].
-final class EditCallbackQueryMessage extends TdFunction<Ok> {
-  /// Edits the message from which a callback query has originated with an ephemeral message; for bots only
-  const EditCallbackQueryMessage({
+final class ReplyToCallbackQueryWithEphemeralMessage extends TdFunction<Ok> {
+  /// Replies to a callback query with an ephemeral message; for bots only
+  const ReplyToCallbackQueryWithEphemeralMessage({
     required this.callbackQueryId,
+    required this.replaceCallbackQueryMessage,
     required this.protectContent,
     this.replyMarkup,
     required this.inputMessageContent,
@@ -17,6 +18,9 @@ final class EditCallbackQueryMessage extends TdFunction<Ok> {
 
   /// Identifier of the callback query
   final int callbackQueryId;
+
+  /// Pass true if the ephemeral message must replace the message from which the callback query originated
+  final bool replaceCallbackQueryMessage;
 
   /// Pass true if the content of the message must be protected from forwarding and saving
   final bool protectContent;
@@ -31,6 +35,7 @@ final class EditCallbackQueryMessage extends TdFunction<Ok> {
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
     'callback_query_id': callbackQueryId.toString(),
+    'replace_callback_query_message': replaceCallbackQueryMessage,
     'protect_content': protectContent,
     'reply_markup': replyMarkup?.toJson(),
     'input_message_content': inputMessageContent.toJson(),
@@ -39,20 +44,23 @@ final class EditCallbackQueryMessage extends TdFunction<Ok> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  EditCallbackQueryMessage copyWith({
+  ReplyToCallbackQueryWithEphemeralMessage copyWith({
     int? callbackQueryId,
+    bool? replaceCallbackQueryMessage,
     bool? protectContent,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => EditCallbackQueryMessage(
+  }) => ReplyToCallbackQueryWithEphemeralMessage(
     callbackQueryId: callbackQueryId ?? this.callbackQueryId,
+    replaceCallbackQueryMessage:
+        replaceCallbackQueryMessage ?? this.replaceCallbackQueryMessage,
     protectContent: protectContent ?? this.protectContent,
     replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
     inputMessageContent: inputMessageContent ?? this.inputMessageContent,
   );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'editCallbackQueryMessage';
+  static const String CONSTRUCTOR = 'replyToCallbackQueryWithEphemeralMessage';
 
   @override
   String getConstructor() => CONSTRUCTOR;

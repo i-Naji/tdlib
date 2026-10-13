@@ -8,6 +8,7 @@ part 'functions/accept_oauth_request.dart';
 part 'functions/accept_terms_of_service.dart';
 part 'functions/activate_story_stealth_mode.dart';
 part 'functions/add_bot_media_preview.dart';
+part 'functions/add_bot_secondary_username.dart';
 part 'functions/add_chat_folder_by_invite_link.dart';
 part 'functions/add_chat_member.dart';
 part 'functions/add_chat_members.dart';
@@ -50,6 +51,7 @@ part 'functions/answer_guest_query.dart';
 part 'functions/answer_inline_query.dart';
 part 'functions/answer_pre_checkout_query.dart';
 part 'functions/answer_shipping_query.dart';
+part 'functions/answer_ton_connect_request.dart';
 part 'functions/answer_web_app_query.dart';
 part 'functions/apply_premium_gift_code.dart';
 part 'functions/approve_suggested_post.dart';
@@ -94,7 +96,9 @@ part 'functions/check_premium_gift_code.dart';
 part 'functions/check_quick_reply_shortcut_name.dart';
 part 'functions/check_recovery_email_address_code.dart';
 part 'functions/check_sticker_set_name.dart';
+part 'functions/check_wallet_bot_balance.dart';
 part 'functions/check_web_app_file_download.dart';
+part 'functions/claim_ton_connect_request.dart';
 part 'functions/clean_file_name.dart';
 part 'functions/clear_all_draft_messages.dart';
 part 'functions/clear_autosave_settings_exceptions.dart';
@@ -140,6 +144,7 @@ part 'functions/create_new_basic_group_chat.dart';
 part 'functions/create_new_secret_chat.dart';
 part 'functions/create_new_sticker_set.dart';
 part 'functions/create_new_supergroup_chat.dart';
+part 'functions/create_on_ramp_payment_session.dart';
 part 'functions/create_private_chat.dart';
 part 'functions/create_rich_message_with_ai.dart';
 part 'functions/create_secret_chat.dart';
@@ -147,6 +152,8 @@ part 'functions/create_story_album.dart';
 part 'functions/create_supergroup_chat.dart';
 part 'functions/create_temporary_password.dart';
 part 'functions/create_text_composition_style.dart';
+part 'functions/create_ton_connect_session.dart';
+part 'functions/create_user_ton_wallet.dart';
 part 'functions/create_video_chat.dart';
 part 'functions/decline_group_call_invitation.dart';
 part 'functions/decline_oauth_request.dart';
@@ -158,6 +165,7 @@ part 'functions/delete_all_chat_welcome_messages.dart';
 part 'functions/delete_all_recent_message_reactions_from_sender.dart';
 part 'functions/delete_all_revoked_chat_invite_links.dart';
 part 'functions/delete_bot_media_previews.dart';
+part 'functions/delete_bot_secondary_username.dart';
 part 'functions/delete_business_chat_link.dart';
 part 'functions/delete_business_connected_bot.dart';
 part 'functions/delete_business_messages.dart';
@@ -172,6 +180,7 @@ part 'functions/delete_chat_messages_by_sender.dart';
 part 'functions/delete_chat_reply_markup.dart';
 part 'functions/delete_chat_welcome_message.dart';
 part 'functions/delete_commands.dart';
+part 'functions/delete_community.dart';
 part 'functions/delete_default_background.dart';
 part 'functions/delete_direct_messages_chat_topic_history.dart';
 part 'functions/delete_direct_messages_chat_topic_messages_by_date.dart';
@@ -199,13 +208,18 @@ part 'functions/delete_sticker_set.dart';
 part 'functions/delete_story.dart';
 part 'functions/delete_story_album.dart';
 part 'functions/delete_text_composition_style.dart';
+part 'functions/delete_ton_wallet.dart';
 part 'functions/destroy.dart';
 part 'functions/disable_all_supergroup_usernames.dart';
 part 'functions/disable_proxy.dart';
+part 'functions/disable_ton_wallet_backup.dart';
+part 'functions/disable_ton_wallet_backup_with_proof.dart';
 part 'functions/discard_call.dart';
 part 'functions/disconnect_affiliate_program.dart';
 part 'functions/disconnect_all_websites.dart';
+part 'functions/disconnect_ton_connect_session.dart';
 part 'functions/disconnect_website.dart';
+part 'functions/dismiss_web_token.dart';
 part 'functions/download_file.dart';
 part 'functions/drop_gift_original_details.dart';
 part 'functions/edit_bot_media_preview.dart';
@@ -217,7 +231,6 @@ part 'functions/edit_business_message_media.dart';
 part 'functions/edit_business_message_reply_markup.dart';
 part 'functions/edit_business_message_text.dart';
 part 'functions/edit_business_story.dart';
-part 'functions/edit_callback_query_message.dart';
 part 'functions/edit_chat_folder.dart';
 part 'functions/edit_chat_folder_invite_link.dart';
 part 'functions/edit_chat_invite_link.dart';
@@ -247,6 +260,7 @@ part 'functions/edit_story_cover.dart';
 part 'functions/edit_text_composition_style.dart';
 part 'functions/edit_user_star_subscription.dart';
 part 'functions/enable_proxy.dart';
+part 'functions/enable_ton_wallet_backup.dart';
 part 'functions/encrypt_group_call_data.dart';
 part 'functions/end_group_call.dart';
 part 'functions/end_group_call_recording.dart';
@@ -257,6 +271,7 @@ part 'functions/fix_text_with_ai.dart';
 part 'functions/forward_messages.dart';
 part 'functions/get_account_ttl.dart';
 part 'functions/get_active_sessions.dart';
+part 'functions/get_address_ton_wallet.dart';
 part 'functions/get_all_passport_elements.dart';
 part 'functions/get_all_sticker_emojis.dart';
 part 'functions/get_animated_emoji.dart';
@@ -344,6 +359,7 @@ part 'functions/get_chats_to_post_stories.dart';
 part 'functions/get_close_friends.dart';
 part 'functions/get_collectible_item_info.dart';
 part 'functions/get_commands.dart';
+part 'functions/get_community_full_info.dart';
 part 'functions/get_connected_affiliate_program.dart';
 part 'functions/get_connected_affiliate_programs.dart';
 part 'functions/get_connected_websites.dart';
@@ -353,6 +369,7 @@ part 'functions/get_country.dart';
 part 'functions/get_country_code.dart';
 part 'functions/get_country_flag_emoji.dart';
 part 'functions/get_created_public_chats.dart';
+part 'functions/get_currency_exchange_rates.dart';
 part 'functions/get_current_state.dart';
 part 'functions/get_current_weather.dart';
 part 'functions/get_custom_emoji_reaction_animations.dart';
@@ -461,6 +478,11 @@ part 'functions/get_messages.dart';
 part 'functions/get_network_statistics.dart';
 part 'functions/get_new_chat_privacy_settings.dart';
 part 'functions/get_oauth_link_info.dart';
+part 'functions/get_on_ramp_payment_availability.dart';
+part 'functions/get_on_ramp_payment_limits.dart';
+part 'functions/get_on_ramp_payment_quote.dart';
+part 'functions/get_on_ramp_provider_base_currencies.dart';
+part 'functions/get_on_ramp_providers.dart';
 part 'functions/get_option.dart';
 part 'functions/get_owned_bots.dart';
 part 'functions/get_owned_sticker_sets.dart';
@@ -557,7 +579,18 @@ part 'functions/get_theme_parameters_json_string.dart';
 part 'functions/get_themed_chat_emoji_statuses.dart';
 part 'functions/get_themed_emoji_statuses.dart';
 part 'functions/get_time_zones.dart';
+part 'functions/get_ton_center_streaming_api_url.dart';
+part 'functions/get_ton_connect_d_app_pending_requests.dart';
+part 'functions/get_ton_connect_session_next_event_id.dart';
+part 'functions/get_ton_connect_session_pending_requests.dart';
+part 'functions/get_ton_connect_sessions.dart';
 part 'functions/get_ton_transactions.dart';
+part 'functions/get_ton_wallet_nfts.dart';
+part 'functions/get_ton_wallet_ownership_proof_challenge.dart';
+part 'functions/get_ton_wallet_secret_phrase.dart';
+part 'functions/get_ton_wallet_transaction.dart';
+part 'functions/get_ton_wallet_transaction_by_msg_hash.dart';
+part 'functions/get_ton_wallet_transactions.dart';
 part 'functions/get_top_chats.dart';
 part 'functions/get_trending_sticker_sets.dart';
 part 'functions/get_upgraded_gift.dart';
@@ -574,6 +607,7 @@ part 'functions/get_user_privacy_setting_rules.dart';
 part 'functions/get_user_profile_audios.dart';
 part 'functions/get_user_profile_photos.dart';
 part 'functions/get_user_support_info.dart';
+part 'functions/get_user_ton_wallet_addresses.dart';
 part 'functions/get_video_chat_available_participants.dart';
 part 'functions/get_video_chat_invite_link.dart';
 part 'functions/get_video_chat_rtmp_url.dart';
@@ -604,12 +638,13 @@ part 'functions/listen_to_audio.dart';
 part 'functions/load_active_stories.dart';
 part 'functions/load_chat_welcome_messages.dart';
 part 'functions/load_chats.dart';
-part 'functions/load_community_full_info.dart';
 part 'functions/load_direct_messages_chat_topics.dart';
 part 'functions/load_group_call_participants.dart';
 part 'functions/load_quick_reply_shortcut_messages.dart';
 part 'functions/load_quick_reply_shortcuts.dart';
 part 'functions/load_saved_messages_topics.dart';
+part 'functions/load_ton_wallet_gasless_transfers_info.dart';
+part 'functions/load_ton_wallet_state.dart';
 part 'functions/log_out.dart';
 part 'functions/mark_checklist_tasks_as_done.dart';
 part 'functions/open_bot_similar_bot.dart';
@@ -695,7 +730,9 @@ part 'functions/reorder_supergroup_active_usernames.dart';
 part 'functions/replace_live_story_rtmp_url.dart';
 part 'functions/replace_primary_chat_invite_link.dart';
 part 'functions/replace_sticker_in_set.dart';
+part 'functions/replace_ton_wallet.dart';
 part 'functions/replace_video_chat_rtmp_url.dart';
+part 'functions/reply_to_callback_query_with_ephemeral_message.dart';
 part 'functions/report_authentication_code_missing.dart';
 part 'functions/report_chat.dart';
 part 'functions/report_chat_photo.dart';
@@ -791,6 +828,9 @@ part 'functions/send_quick_reply_shortcut_messages.dart';
 part 'functions/send_resold_gift.dart';
 part 'functions/send_rich_message_draft.dart';
 part 'functions/send_text_message_draft.dart';
+part 'functions/send_ton_center_api_request.dart';
+part 'functions/send_ton_connect_session_connect_result.dart';
+part 'functions/send_ton_wallet_transfer.dart';
 part 'functions/send_web_app_custom_request.dart';
 part 'functions/send_web_app_data.dart';
 part 'functions/set_accent_color.dart';
@@ -850,6 +890,8 @@ part 'functions/set_chat_title.dart';
 part 'functions/set_close_friends.dart';
 part 'functions/set_commands.dart';
 part 'functions/set_community_name.dart';
+part 'functions/set_community_permissions.dart';
+part 'functions/set_community_photo.dart';
 part 'functions/set_custom_emoji_sticker_set_thumbnail.dart';
 part 'functions/set_custom_language_pack.dart';
 part 'functions/set_custom_language_pack_string.dart';
@@ -922,6 +964,7 @@ part 'functions/set_supergroup_sticker_set.dart';
 part 'functions/set_supergroup_unrestrict_boost_count.dart';
 part 'functions/set_supergroup_username.dart';
 part 'functions/set_tdlib_parameters.dart';
+part 'functions/set_ton_connect_session_wallet_client_id.dart';
 part 'functions/set_upgraded_gift_colors.dart';
 part 'functions/set_user_emoji_status.dart';
 part 'functions/set_user_note.dart';
@@ -1228,6 +1271,9 @@ part 'objects/countries.dart';
 part 'objects/country_info.dart';
 part 'objects/craft_gift_result.dart';
 part 'objects/created_basic_group_chat.dart';
+part 'objects/currencies.dart';
+part 'objects/currency_exchange_rate.dart';
+part 'objects/currency_exchange_rates.dart';
 part 'objects/current_weather.dart';
 part 'objects/custom_request_result.dart';
 part 'objects/data.dart';
@@ -1481,6 +1527,13 @@ part 'objects/notification_sounds.dart';
 part 'objects/notification_type.dart';
 part 'objects/oauth_link_info.dart';
 part 'objects/ok.dart';
+part 'objects/on_ramp_payment_availability.dart';
+part 'objects/on_ramp_payment_limits.dart';
+part 'objects/on_ramp_payment_method.dart';
+part 'objects/on_ramp_payment_quote.dart';
+part 'objects/on_ramp_payment_session.dart';
+part 'objects/on_ramp_provider.dart';
+part 'objects/on_ramp_providers.dart';
 part 'objects/option_value.dart';
 part 'objects/order_info.dart';
 part 'objects/outline.dart';
@@ -1709,9 +1762,35 @@ part 'objects/thumbnail.dart';
 part 'objects/thumbnail_format.dart';
 part 'objects/time_zone.dart';
 part 'objects/time_zones.dart';
+part 'objects/ton_center_api_request_type.dart';
+part 'objects/ton_center_streaming_api_url.dart';
+part 'objects/ton_connect_challenge.dart';
+part 'objects/ton_connect_connect_item.dart';
+part 'objects/ton_connect_connect_request.dart';
+part 'objects/ton_connect_manifest.dart';
+part 'objects/ton_connect_request.dart';
+part 'objects/ton_connect_request_state.dart';
+part 'objects/ton_connect_requests.dart';
+part 'objects/ton_connect_session.dart';
+part 'objects/ton_connect_session_event_id.dart';
+part 'objects/ton_connect_session_state.dart';
+part 'objects/ton_connect_sessions.dart';
+part 'objects/ton_nft.dart';
+part 'objects/ton_nft_attribute.dart';
+part 'objects/ton_nfts.dart';
 part 'objects/ton_transaction.dart';
 part 'objects/ton_transaction_type.dart';
 part 'objects/ton_transactions.dart';
+part 'objects/ton_wallet_gasless_transfers_info.dart';
+part 'objects/ton_wallet_ownership_proof.dart';
+part 'objects/ton_wallet_ownership_proof_challenge.dart';
+part 'objects/ton_wallet_state.dart';
+part 'objects/ton_wallet_transaction.dart';
+part 'objects/ton_wallet_transaction_state.dart';
+part 'objects/ton_wallet_transaction_type.dart';
+part 'objects/ton_wallet_transactions.dart';
+part 'objects/ton_wallet_transfer_receiver.dart';
+part 'objects/ton_wallet_transfer_result.dart';
 part 'objects/top_chat_category.dart';
 part 'objects/transaction_direction.dart';
 part 'objects/trending_sticker_sets.dart';
@@ -1744,6 +1823,8 @@ part 'objects/user_privacy_setting_rules.dart';
 part 'objects/user_rating.dart';
 part 'objects/user_status.dart';
 part 'objects/user_support_info.dart';
+part 'objects/user_ton_wallet_address.dart';
+part 'objects/user_ton_wallet_addresses.dart';
 part 'objects/user_type.dart';
 part 'objects/usernames.dart';
 part 'objects/users.dart';
@@ -1758,6 +1839,7 @@ part 'objects/video_message_advertisements.dart';
 part 'objects/video_note.dart';
 part 'objects/video_storyboard.dart';
 part 'objects/voice_note.dart';
+part 'objects/wallet_bot_balance.dart';
 part 'objects/web_app.dart';
 part 'objects/web_app_info.dart';
 part 'objects/web_app_open_mode.dart';
@@ -1770,14 +1852,14 @@ part 'objects/web_page_instant_view.dart';
 part 'objects/welcome_message.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.67';
+const String tdlibVersion = '1.8.68';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = 'd1085f9cebc5a62379991ae1652673954f229c1f';
+const String tdlibSchemaCommit = 'c15d3f5a5de6e3ba5839822c451152e5e18bb700';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  'd1085f9cebc5a62379991ae1652673954f229c1f',
+  'c15d3f5a5de6e3ba5839822c451152e5e18bb700',
 ];
 
 /// Base class of every TDLib object.
@@ -2277,6 +2359,64 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'tonTransactionTypeUnsupported': TonTransactionTypeUnsupported.fromJson,
   'tonTransaction': TonTransaction.fromJson,
   'tonTransactions': TonTransactions.fromJson,
+  'tonCenterApiRequestTypeGet': TonCenterApiRequestTypeGet.fromJson,
+  'tonCenterApiRequestTypePost': TonCenterApiRequestTypePost.fromJson,
+  'tonWalletTransferReceiverUser': TonWalletTransferReceiverUser.fromJson,
+  'tonWalletTransferReceiverAddress': TonWalletTransferReceiverAddress.fromJson,
+  'tonCenterStreamingApiUrl': TonCenterStreamingApiUrl.fromJson,
+  'walletBotBalance': WalletBotBalance.fromJson,
+  'userTonWalletAddress': UserTonWalletAddress.fromJson,
+  'userTonWalletAddresses': UserTonWalletAddresses.fromJson,
+  'tonWalletOwnershipProofChallenge': TonWalletOwnershipProofChallenge.fromJson,
+  'tonWalletOwnershipProof': TonWalletOwnershipProof.fromJson,
+  'tonWalletGaslessTransfersInfo': TonWalletGaslessTransfersInfo.fromJson,
+  'currencyExchangeRate': CurrencyExchangeRate.fromJson,
+  'currencyExchangeRates': CurrencyExchangeRates.fromJson,
+  'onRampProvider': OnRampProvider.fromJson,
+  'onRampProviders': OnRampProviders.fromJson,
+  'currencies': Currencies.fromJson,
+  'onRampPaymentMethod': OnRampPaymentMethod.fromJson,
+  'onRampPaymentAvailability': OnRampPaymentAvailability.fromJson,
+  'onRampPaymentLimits': OnRampPaymentLimits.fromJson,
+  'onRampPaymentQuote': OnRampPaymentQuote.fromJson,
+  'onRampPaymentSession': OnRampPaymentSession.fromJson,
+  'tonWalletState': TonWalletState.fromJson,
+  'tonNftAttribute': TonNftAttribute.fromJson,
+  'tonNft': TonNft.fromJson,
+  'tonNfts': TonNfts.fromJson,
+  'tonWalletTransactionStateSucceeded':
+      TonWalletTransactionStateSucceeded.fromJson,
+  'tonWalletTransactionStateFailed': TonWalletTransactionStateFailed.fromJson,
+  'tonWalletTransactionTypeOnRampDeposit':
+      TonWalletTransactionTypeOnRampDeposit.fromJson,
+  'tonWalletTransactionTypeTransfer': TonWalletTransactionTypeTransfer.fromJson,
+  'tonWalletTransactionTypeNftTransfer':
+      TonWalletTransactionTypeNftTransfer.fromJson,
+  'tonWalletTransactionTypeKeyChange':
+      TonWalletTransactionTypeKeyChange.fromJson,
+  'tonWalletTransaction': TonWalletTransaction.fromJson,
+  'tonWalletTransactions': TonWalletTransactions.fromJson,
+  'tonConnectRequestStatePending': TonConnectRequestStatePending.fromJson,
+  'tonConnectRequestStateAccepted': TonConnectRequestStateAccepted.fromJson,
+  'tonConnectRequestStateRejected': TonConnectRequestStateRejected.fromJson,
+  'tonConnectManifestPending': TonConnectManifestPending.fromJson,
+  'tonConnectManifestInfo': TonConnectManifestInfo.fromJson,
+  'tonConnectManifestFailed': TonConnectManifestFailed.fromJson,
+  'tonConnectManifestInvalid': TonConnectManifestInvalid.fromJson,
+  'tonConnectSessionStatePending': TonConnectSessionStatePending.fromJson,
+  'tonConnectSessionStateReady': TonConnectSessionStateReady.fromJson,
+  'tonConnectSessionStateClosing': TonConnectSessionStateClosing.fromJson,
+  'tonConnectSessionStateClosed': TonConnectSessionStateClosed.fromJson,
+  'tonConnectConnectItemAddress': TonConnectConnectItemAddress.fromJson,
+  'tonConnectConnectItemProof': TonConnectConnectItemProof.fromJson,
+  'tonConnectConnectRequest': TonConnectConnectRequest.fromJson,
+  'tonConnectSession': TonConnectSession.fromJson,
+  'tonConnectSessions': TonConnectSessions.fromJson,
+  'tonConnectRequest': TonConnectRequest.fromJson,
+  'tonConnectRequests': TonConnectRequests.fromJson,
+  'tonConnectChallenge': TonConnectChallenge.fromJson,
+  'tonConnectSessionEventId': TonConnectSessionEventId.fromJson,
+  'tonWalletTransferResult': TonWalletTransferResult.fromJson,
   'activeStoryStateLive': ActiveStoryStateLive.fromJson,
   'activeStoryStateUnread': ActiveStoryStateUnread.fromJson,
   'activeStoryStateRead': ActiveStoryStateRead.fromJson,
@@ -2618,6 +2758,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'richTextHashtag': RichTextHashtag.fromJson,
   'richTextCashtag': RichTextCashtag.fromJson,
   'richTextBankCardNumber': RichTextBankCardNumber.fromJson,
+  'richTextTonAddress': RichTextTonAddress.fromJson,
   'richTextBotCommand': RichTextBotCommand.fromJson,
   'richTextFixed': RichTextFixed.fromJson,
   'richTextMentionName': RichTextMentionName.fromJson,
@@ -2968,6 +3109,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageGiftedStars': MessageGiftedStars.fromJson,
   'messageGiftedGrams': MessageGiftedGrams.fromJson,
   'messageGiveawayPrizeStars': MessageGiveawayPrizeStars.fromJson,
+  'messageTonWalletTransfer': MessageTonWalletTransfer.fromJson,
+  'messageTonConnectRequest': MessageTonConnectRequest.fromJson,
   'messageGift': MessageGift.fromJson,
   'messageUpgradedGift': MessageUpgradedGift.fromJson,
   'messageRefundedUpgradedGift': MessageRefundedUpgradedGift.fromJson,
@@ -3008,6 +3151,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'textEntityTypeEmailAddress': TextEntityTypeEmailAddress.fromJson,
   'textEntityTypePhoneNumber': TextEntityTypePhoneNumber.fromJson,
   'textEntityTypeBankCardNumber': TextEntityTypeBankCardNumber.fromJson,
+  'textEntityTypeTonAddress': TextEntityTypeTonAddress.fromJson,
   'textEntityTypeBold': TextEntityTypeBold.fromJson,
   'textEntityTypeItalic': TextEntityTypeItalic.fromJson,
   'textEntityTypeUnderline': TextEntityTypeUnderline.fromJson,
@@ -3700,6 +3844,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'pushMessageContentPremiumGiftCode':
       PushMessageContentPremiumGiftCode.fromJson,
   'pushMessageContentGiveaway': PushMessageContentGiveaway.fromJson,
+  'pushMessageContentTonWalletTransfer':
+      PushMessageContentTonWalletTransfer.fromJson,
+  'pushMessageContentTonConnectRequest':
+      PushMessageContentTonConnectRequest.fromJson,
   'pushMessageContentGift': PushMessageContentGift.fromJson,
   'pushMessageContentUpgradedGift': PushMessageContentUpgradedGift.fromJson,
   'pushMessageContentScreenshotTaken':
@@ -3956,6 +4104,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'internalLinkTypeTextCompositionStyle':
       InternalLinkTypeTextCompositionStyle.fromJson,
   'internalLinkTypeTheme': InternalLinkTypeTheme.fromJson,
+  'internalLinkTypeTonConnect': InternalLinkTypeTonConnect.fromJson,
+  'internalLinkTypeTonWalletTransfer':
+      InternalLinkTypeTonWalletTransfer.fromJson,
   'internalLinkTypeUnknownDeepLink': InternalLinkTypeUnknownDeepLink.fromJson,
   'internalLinkTypeUpgradedGift': InternalLinkTypeUpgradedGift.fromJson,
   'internalLinkTypeUserPhoneNumber': InternalLinkTypeUserPhoneNumber.fromJson,
@@ -4050,6 +4201,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'suggestedActionCheckPassword': SuggestedActionCheckPassword.fromJson,
   'suggestedActionCheckPhoneNumber': SuggestedActionCheckPhoneNumber.fromJson,
   'suggestedActionViewChecksHint': SuggestedActionViewChecksHint.fromJson,
+  'suggestedActionViewFirstTonWalletTransferHint':
+      SuggestedActionViewFirstTonWalletTransferHint.fromJson,
   'suggestedActionConvertToBroadcastGroup':
       SuggestedActionConvertToBroadcastGroup.fromJson,
   'suggestedActionSetPassword': SuggestedActionSetPassword.fromJson,
@@ -4264,6 +4417,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateChatActiveStories': UpdateChatActiveStories.fromJson,
   'updateStoryListChatCount': UpdateStoryListChatCount.fromJson,
   'updateStoryStealthMode': UpdateStoryStealthMode.fromJson,
+  'updateAllowedBotUsernamePremiumSuffixes':
+      UpdateAllowedBotUsernamePremiumSuffixes.fromJson,
   'updateTrustedMiniAppBots': UpdateTrustedMiniAppBots.fromJson,
   'updateOption': UpdateOption.fromJson,
   'updateStickerSet': UpdateStickerSet.fromJson,
@@ -4294,6 +4449,12 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateActiveLiveLocationMessages': UpdateActiveLiveLocationMessages.fromJson,
   'updateOwnedStarCount': UpdateOwnedStarCount.fromJson,
   'updateOwnedGramCount': UpdateOwnedGramCount.fromJson,
+  'updateTonWalletState': UpdateTonWalletState.fromJson,
+  'updateTonWalletGaslessTransfersInfo':
+      UpdateTonWalletGaslessTransfersInfo.fromJson,
+  'updateTonWalletTonConnectSession': UpdateTonWalletTonConnectSession.fromJson,
+  'updateTonWalletTonConnectSessionDisconnectRequired':
+      UpdateTonWalletTonConnectSessionDisconnectRequired.fromJson,
   'updateChatRevenueAmount': UpdateChatRevenueAmount.fromJson,
   'updateStarRevenueStatus': UpdateStarRevenueStatus.fromJson,
   'updateGramRevenueStatus': UpdateGramRevenueStatus.fromJson,
