@@ -25,7 +25,7 @@ final class ChatPhoto extends TdObject {
   /// Photo minithumbnail; may be null
   final Minithumbnail? minithumbnail;
 
-  /// Available variants of the photo in JPEG format, in different size
+  /// Available variants of the photo in JPEG format, in different sizes
   final List<PhotoSize> sizes;
 
   /// A big (up to 1280x1280) animated variant of the photo in MPEG4 format; may be null

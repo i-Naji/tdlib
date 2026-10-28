@@ -9,6 +9,7 @@ final class UserLink extends TdObject {
   const UserLink({
     required this.url,
     required this.expiresIn,
+    required this.canGetPermanentLink,
     this.extra,
     this.clientId,
   });
@@ -16,8 +17,11 @@ final class UserLink extends TdObject {
   /// The URL
   final String url;
 
-  /// Left time for which the link is valid, in seconds; 0 if the link is a public username link
+  /// Left time for which the link is valid, in seconds; 0 if the link is permanent
   final int expiresIn;
+
+  /// True, if a permanent link to the current user can be received; false if all links to the current user expire
+  final bool canGetPermanentLink;
 
   /// "@extra" of the request this object answers.
   @override
@@ -31,6 +35,7 @@ final class UserLink extends TdObject {
   factory UserLink.fromJson(Map<String, dynamic> json) => UserLink(
     url: _readString(json['url']),
     expiresIn: _readInt(json['expires_in']),
+    canGetPermanentLink: _readBool(json['can_get_permanent_link']),
     extra: json['@extra'],
     clientId: _readClientId(json['@client_id']),
   );
@@ -40,6 +45,7 @@ final class UserLink extends TdObject {
     '@type': CONSTRUCTOR,
     'url': url,
     'expires_in': expiresIn,
+    'can_get_permanent_link': canGetPermanentLink,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -47,11 +53,13 @@ final class UserLink extends TdObject {
   UserLink copyWith({
     String? url,
     int? expiresIn,
+    bool? canGetPermanentLink,
     dynamic extra,
     int? clientId,
   }) => UserLink(
     url: url ?? this.url,
     expiresIn: expiresIn ?? this.expiresIn,
+    canGetPermanentLink: canGetPermanentLink ?? this.canGetPermanentLink,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );

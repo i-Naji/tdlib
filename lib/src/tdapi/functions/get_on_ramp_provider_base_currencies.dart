@@ -13,7 +13,7 @@ final class GetOnRampProviderBaseCurrencies extends TdFunction<Currencies> {
     required this.cryptocurrency,
   });
 
-  /// Unique identifier of the on-ramp provider; only for providers that supports base currencies
+  /// Unique identifier of the on-ramp provider; only for providers that support base currencies
   final String providerId;
 
   /// The cryptocurrency that will be bought

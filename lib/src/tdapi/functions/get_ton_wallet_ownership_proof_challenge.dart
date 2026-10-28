@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Returns a challenge which may be used to proof ownership of a TON wallet; can be used only if getOption("can_use_ton_wallet")
+/// Returns a challenge which may be used to prove ownership of a TON wallet; can be used only if getOption("can_use_ton_wallet")
 ///
 /// Returns [TonWalletOwnershipProofChallenge].
 final class GetTonWalletOwnershipProofChallenge
     extends TdFunction<TonWalletOwnershipProofChallenge> {
-  /// Returns a challenge which may be used to proof ownership of a TON wallet; can be used only if getOption("can_use_ton_wallet")
+  /// Returns a challenge which may be used to prove ownership of a TON wallet; can be used only if getOption("can_use_ton_wallet")
   const GetTonWalletOwnershipProofChallenge();
 
   @override

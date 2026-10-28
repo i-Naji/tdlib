@@ -18,7 +18,7 @@ final class TonWalletOwnershipProof extends TdObject {
   /// The current UNIX timestamp which was used to create the proof
   final int timestamp;
 
-  /// The signature prooving the ownership
+  /// The signature proving the ownership
   final String signature;
 
   /// Parses a [TonWalletOwnershipProof] from TDLib JSON.

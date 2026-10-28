@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Sets wallet_client_id for a pending TON Connect session. Then, sendTonConnectSessionConnectResult must be used to accept or reject the session
+/// Sets wallet_client_id for a pending TON Connect session. Then, sendTonConnectSessionConnectResult must be used to accept or reject the session. If the session was created for an OAuth request, then acceptOauthRequest must be used instead
 ///
 /// Returns [TonConnectChallenge].
 final class SetTonConnectSessionWalletClientId
     extends TdFunction<TonConnectChallenge> {
-  /// Sets wallet_client_id for a pending TON Connect session. Then, sendTonConnectSessionConnectResult must be used to accept or reject the session
+  /// Sets wallet_client_id for a pending TON Connect session. Then, sendTonConnectSessionConnectResult must be used to accept or reject the session. If the session was created for an OAuth request, then acceptOauthRequest must be used instead
   const SetTonConnectSessionWalletClientId({
     required this.sessionId,
     required this.walletClientId,

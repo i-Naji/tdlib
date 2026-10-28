@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes the type of proxy server
 ///
-/// One of: [ProxyTypeSocks5], [ProxyTypeHttp], [ProxyTypeMtproto]; or [UndecodedProxyType] for a type newer than this API.
+/// One of: [ProxyTypeSocks5], [ProxyTypeHttp], [ProxyTypeMtproto], [ProxyTypeWeb]; or [UndecodedProxyType] for a type newer than this API.
 sealed class ProxyType extends TdObject {
   const ProxyType();
 
@@ -159,6 +159,43 @@ final class ProxyTypeMtproto extends ProxyType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'proxyTypeMtproto';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A web proxy server. MTProto traffic goes through an HTTPS relay page hosted by the application in a hidden web view; see updateWebProxyCarrierOpened. The proxy server must be a domain name and the port must be 443
+final class ProxyTypeWeb extends ProxyType {
+  /// A web proxy server. MTProto traffic goes through an HTTPS relay page hosted by the application in a hidden web view; see updateWebProxyCarrierOpened. The proxy server must be a domain name and the port must be 443
+  const ProxyTypeWeb({required this.path, required this.secret});
+
+  /// Base path of the relay on the server, without leading and trailing slashes; may be empty. Consists of 0-128 characters; each "/"-separated segment must match [A-Za-z0-9][A-Za-z0-9_-]*
+  final String path;
+
+  /// The MTProto proxy secret in hexadecimal encoding; must be 16 bytes long, optionally prefixed with the byte 0xdd
+  final String secret;
+
+  /// Parses a [ProxyTypeWeb] from TDLib JSON.
+  factory ProxyTypeWeb.fromJson(Map<String, dynamic> json) => ProxyTypeWeb(
+    path: _readString(json['path']),
+    secret: _readString(json['secret']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'path': path,
+    'secret': secret,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  ProxyTypeWeb copyWith({String? path, String? secret}) =>
+      ProxyTypeWeb(path: path ?? this.path, secret: secret ?? this.secret);
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'proxyTypeWeb';
 
   @override
   String getConstructor() => CONSTRUCTOR;

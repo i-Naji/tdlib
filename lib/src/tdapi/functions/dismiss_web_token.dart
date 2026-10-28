@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Dismissess a received web token without consumption; for official Telegram apps only
+/// Dismisses a received web token without consumption; for official Telegram apps only
 ///
 /// Returns [Ok].
 final class DismissWebToken extends TdFunction<Ok> {
-  /// Dismissess a received web token without consumption; for official Telegram apps only
+  /// Dismisses a received web token without consumption; for official Telegram apps only
   const DismissWebToken({required this.token});
 
   /// The token to dismiss

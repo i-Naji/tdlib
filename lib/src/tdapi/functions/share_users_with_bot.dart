@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Shares users after pressing a keyboardButtonTypeRequestUsers button with the bot
+/// Shares users after pressing a keyboardButtonTypeRequestUsers or keyboardButtonTypeRequestManagedBot button with the bot
 ///
 /// Returns [Ok].
 final class ShareUsersWithBot extends TdFunction<Ok> {
-  /// Shares users after pressing a keyboardButtonTypeRequestUsers button with the bot
+  /// Shares users after pressing a keyboardButtonTypeRequestUsers or keyboardButtonTypeRequestManagedBot button with the bot
   const ShareUsersWithBot({
     required this.source,
     required this.buttonId,

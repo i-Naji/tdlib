@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Returns information about the availability of a temporary password, which can be used for payments
+/// Contains information about the availability of a temporary password, which can be used for payments and withdrawal of upgraded gifts
 final class TemporaryPasswordState extends TdObject {
-  /// Returns information about the availability of a temporary password, which can be used for payments
+  /// Contains information about the availability of a temporary password, which can be used for payments and withdrawal of upgraded gifts
   const TemporaryPasswordState({
     required this.hasPassword,
     required this.validFor,

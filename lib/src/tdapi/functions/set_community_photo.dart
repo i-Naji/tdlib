@@ -13,7 +13,7 @@ final class SetCommunityPhoto extends TdFunction<Ok> {
   /// Identifier of the community
   final int communityId;
 
-  /// New chat photo; pass null to delete the chat photo
+  /// New community photo; pass null to delete the community photo
   final InputChatPhoto? photo;
 
   @override

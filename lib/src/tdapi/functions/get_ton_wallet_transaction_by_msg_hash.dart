@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Returns a TON wallet transaction by their msg_hash; return an error if the transaction isn't finalized yet
+/// Returns a TON wallet transaction by its msg_hash; returns an error if the transaction isn't finalized yet
 ///
 /// Returns [TonWalletTransaction].
 final class GetTonWalletTransactionByMsgHash
     extends TdFunction<TonWalletTransaction> {
-  /// Returns a TON wallet transaction by their msg_hash; return an error if the transaction isn't finalized yet
+  /// Returns a TON wallet transaction by its msg_hash; returns an error if the transaction isn't finalized yet
   const GetTonWalletTransactionByMsgHash({required this.msgHash});
 
   /// Value of msg_hash of the transaction

@@ -70,9 +70,9 @@ final class PremiumStoryFeaturePriorityOrder extends PremiumStoryFeature {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The ability to hide the fact that the user viewed other's stories
+/// The ability to hide the fact that the user viewed others' stories
 final class PremiumStoryFeatureStealthMode extends PremiumStoryFeature {
-  /// The ability to hide the fact that the user viewed other's stories
+  /// The ability to hide the fact that the user viewed others' stories
   const PremiumStoryFeatureStealthMode();
 
   /// Parses a [PremiumStoryFeatureStealthMode] from TDLib JSON.
@@ -150,9 +150,9 @@ final class PremiumStoryFeatureCustomExpirationDuration
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The ability to save other's unprotected stories
+/// The ability to save others' unprotected stories
 final class PremiumStoryFeatureSaveStories extends PremiumStoryFeature {
-  /// The ability to save other's unprotected stories
+  /// The ability to save others' unprotected stories
   const PremiumStoryFeatureSaveStories();
 
   /// Parses a [PremiumStoryFeatureSaveStories] from TDLib JSON.

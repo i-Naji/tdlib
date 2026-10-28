@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns a quote for an on-ramp payment; only for providers that supports quote retrieval
+/// Returns a quote for an on-ramp payment; only for providers that support quote retrieval
 ///
 /// Returns [OnRampPaymentQuote].
 final class GetOnRampPaymentQuote extends TdFunction<OnRampPaymentQuote> {
-  /// Returns a quote for an on-ramp payment; only for providers that supports quote retrieval
+  /// Returns a quote for an on-ramp payment; only for providers that support quote retrieval
   const GetOnRampPaymentQuote({
     required this.providerId,
     required this.cryptocurrency,

@@ -178,10 +178,10 @@ final class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A rule to allow all members of certain specified basic groups and supergroups to doing something
+/// A rule to allow all members of certain specified basic groups and supergroups to do something
 final class UserPrivacySettingRuleAllowChatMembers
     extends UserPrivacySettingRule {
-  /// A rule to allow all members of certain specified basic groups and supergroups to doing something
+  /// A rule to allow all members of certain specified basic groups and supergroups to do something
   const UserPrivacySettingRuleAllowChatMembers({required this.chatIds});
 
   /// The chat identifiers, total number of chats in all rules must not exceed 20

@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Adds tasks of a checklist in a message as done or not done
+/// Marks tasks of a checklist in a message as done or not done
 ///
 /// Returns [Ok].
 final class MarkChecklistTasksAsDone extends TdFunction<Ok> {
-  /// Adds tasks of a checklist in a message as done or not done
+  /// Marks tasks of a checklist in a message as done or not done
   const MarkChecklistTasksAsDone({
     required this.chatId,
     required this.messageId,

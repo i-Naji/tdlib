@@ -13,6 +13,7 @@ final class AcceptOauthRequest extends TdFunction<HttpUrl> {
     required this.matchCode,
     required this.allowWriteAccess,
     required this.allowPhoneNumberAccess,
+    this.tonConnectConnectData,
   });
 
   /// URL of the OAuth deep link
@@ -27,6 +28,9 @@ final class AcceptOauthRequest extends TdFunction<HttpUrl> {
   /// Pass true if the current user allowed the bot that was returned in getOauthLinkInfo, to access their phone number
   final bool allowPhoneNumberAccess;
 
+  /// Pass data required to access the user's TON wallet via TON Connect if the current user allowed this; pass null if the access wasn't requested or the user declined access
+  final TonConnectConnectData? tonConnectConnectData;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
@@ -34,6 +38,7 @@ final class AcceptOauthRequest extends TdFunction<HttpUrl> {
     'match_code': matchCode,
     'allow_write_access': allowWriteAccess,
     'allow_phone_number_access': allowPhoneNumberAccess,
+    'ton_connect_connect_data': tonConnectConnectData?.toJson(),
     '@extra': ?extra,
   };
 
@@ -44,12 +49,16 @@ final class AcceptOauthRequest extends TdFunction<HttpUrl> {
     String? matchCode,
     bool? allowWriteAccess,
     bool? allowPhoneNumberAccess,
+    TonConnectConnectData? Function()? tonConnectConnectData,
   }) => AcceptOauthRequest(
     url: url ?? this.url,
     matchCode: matchCode ?? this.matchCode,
     allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
     allowPhoneNumberAccess:
         allowPhoneNumberAccess ?? this.allowPhoneNumberAccess,
+    tonConnectConnectData: tonConnectConnectData != null
+        ? tonConnectConnectData()
+        : this.tonConnectConnectData,
   );
 
   /// TDLib type name.

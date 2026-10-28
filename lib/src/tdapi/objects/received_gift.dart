@@ -16,6 +16,7 @@ final class ReceivedGift extends TdObject {
     required this.isPinned,
     required this.canBeUpgraded,
     required this.canBeTransferred,
+    required this.canBeDeleted,
     required this.wasRefunded,
     required this.date,
     required this.gift,
@@ -46,7 +47,7 @@ final class ReceivedGift extends TdObject {
   /// Unique number of the gift among gifts upgraded from the same gift after upgrade; 0 if yet unassigned
   final int uniqueGiftNumber;
 
-  /// True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone are able to see them
+  /// True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone is able to see them
   final bool isPrivate;
 
   /// True, if the gift is displayed on the chat's profile page; only for the receiver of the gift
@@ -60,6 +61,9 @@ final class ReceivedGift extends TdObject {
 
   /// True, if the gift is an upgraded gift that can be transferred to another owner; only for the receiver of the gift
   final bool canBeTransferred;
+
+  /// True, if the gift is a regular gift that can be deleted using deleteGift; only for the receiver of the gift
+  final bool canBeDeleted;
 
   /// True, if the gift was refunded and isn't available anymore
   final bool wasRefunded;
@@ -122,6 +126,7 @@ final class ReceivedGift extends TdObject {
     isPinned: _readBool(json['is_pinned']),
     canBeUpgraded: _readBool(json['can_be_upgraded']),
     canBeTransferred: _readBool(json['can_be_transferred']),
+    canBeDeleted: _readBool(json['can_be_deleted']),
     wasRefunded: _readBool(json['was_refunded']),
     date: _readInt(json['date']),
     gift: _readObject(json['gift'], SentGift.fromJson),
@@ -154,6 +159,7 @@ final class ReceivedGift extends TdObject {
     'is_pinned': isPinned,
     'can_be_upgraded': canBeUpgraded,
     'can_be_transferred': canBeTransferred,
+    'can_be_deleted': canBeDeleted,
     'was_refunded': wasRefunded,
     'date': date,
     'gift': gift.toJson(),
@@ -182,6 +188,7 @@ final class ReceivedGift extends TdObject {
     bool? isPinned,
     bool? canBeUpgraded,
     bool? canBeTransferred,
+    bool? canBeDeleted,
     bool? wasRefunded,
     int? date,
     SentGift? gift,
@@ -208,6 +215,7 @@ final class ReceivedGift extends TdObject {
     isPinned: isPinned ?? this.isPinned,
     canBeUpgraded: canBeUpgraded ?? this.canBeUpgraded,
     canBeTransferred: canBeTransferred ?? this.canBeTransferred,
+    canBeDeleted: canBeDeleted ?? this.canBeDeleted,
     wasRefunded: wasRefunded ?? this.wasRefunded,
     date: date ?? this.date,
     gift: gift ?? this.gift,

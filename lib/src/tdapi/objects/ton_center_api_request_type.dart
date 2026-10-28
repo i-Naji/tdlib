@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes state of active stories posted by a chat
+/// Describes a type of request to the TON Center API
 ///
 /// One of: [TonCenterApiRequestTypeGet], [TonCenterApiRequestTypePost]; or [UndecodedTonCenterApiRequestType] for a type newer than this API.
 sealed class TonCenterApiRequestType extends TdObject {

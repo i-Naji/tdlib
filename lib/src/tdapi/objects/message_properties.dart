@@ -75,7 +75,7 @@ final class MessageProperties extends TdObject {
   /// True, if the message can be deleted for all users using the method deleteMessages with revoke == true
   final bool canBeDeletedForAllUsers;
 
-  /// True, if the message can be edited using the methods editMessageText, editMessageCaption, or editMessageReplyMarkup. For live location, poll, and checklist messages this fields shows whether editMessageLiveLocation, stopPoll, or editMessageChecklist respectively can be used with this message
+  /// True, if the message can be edited using the methods editMessageText, editMessageCaption, or editMessageReplyMarkup. For live location, poll, and checklist messages this field shows whether editMessageLiveLocation, stopPoll, or editMessageChecklist respectively can be used with this message
   final bool canBeEdited;
 
   /// True, if the message can be forwarded using inputMessageForwarded or forwardMessages without copy options
@@ -120,7 +120,7 @@ final class MessageProperties extends TdObject {
   /// True, if a link can be generated for the message using getMessageLink
   final bool canGetLink;
 
-  /// True, if media timestamp links can be generated for media timestamp entities in the message text, caption or link preview description using getMessageLink
+  /// True, if media timestamp links can be generated for media timestamp entities in the message text, caption, or link preview description using getMessageLink
   final bool canGetMediaTimestampLinks;
 
   /// True, if information about the message thread is available through getMessageThread and getMessageThreadHistory

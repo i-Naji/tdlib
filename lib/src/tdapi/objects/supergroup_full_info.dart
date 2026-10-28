@@ -47,6 +47,7 @@ final class SupergroupFullInfo extends TdObject {
     required this.botCommands,
     this.botVerification,
     this.mainProfileTab,
+    this.shareTheme,
     required this.upgradedFromBasicGroupId,
     required this.upgradedFromMaxMessageId,
     this.extra,
@@ -122,7 +123,7 @@ final class SupergroupFullInfo extends TdObject {
   /// True, if aggressive anti-spam checks can be enabled or disabled in the supergroup
   final bool canToggleAggressiveAntiSpam;
 
-  /// True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available, so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators
+  /// True, if new chat members will have access to old messages. In public, discussion, or forum groups and all channels, old messages are always available, so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators
   final bool isAllHistoryAvailable;
 
   /// True, if the chat can have sponsored messages. The value of this field is only available to the owner of the chat
@@ -172,6 +173,9 @@ final class SupergroupFullInfo extends TdObject {
 
   /// The main tab chosen by the administrators of the channel; may be null if not chosen manually
   final ProfileTab? mainProfileTab;
+
+  /// Theme of the screen for sharing a link to the supergroup or the channel; may be null if the default theme is used
+  final ProfileShareTheme? shareTheme;
 
   /// Identifier of the basic group from which supergroup was upgraded; 0 if none
   final int upgradedFromBasicGroupId;
@@ -248,6 +252,7 @@ final class SupergroupFullInfo extends TdObject {
       json['main_profile_tab'],
       ProfileTab.fromJson,
     ),
+    shareTheme: _readOptional(json['share_theme'], ProfileShareTheme.fromJson),
     upgradedFromBasicGroupId: _readInt(json['upgraded_from_basic_group_id']),
     upgradedFromMaxMessageId: _readInt(json['upgraded_from_max_message_id']),
     extra: json['@extra'],
@@ -297,6 +302,7 @@ final class SupergroupFullInfo extends TdObject {
     'bot_commands': [for (final e in botCommands) e.toJson()],
     'bot_verification': botVerification?.toJson(),
     'main_profile_tab': mainProfileTab?.toJson(),
+    'share_theme': shareTheme?.toJson(),
     'upgraded_from_basic_group_id': upgradedFromBasicGroupId,
     'upgraded_from_max_message_id': upgradedFromMaxMessageId,
   };
@@ -344,6 +350,7 @@ final class SupergroupFullInfo extends TdObject {
     List<BotCommands>? botCommands,
     BotVerification? Function()? botVerification,
     ProfileTab? Function()? mainProfileTab,
+    ProfileShareTheme? Function()? shareTheme,
     int? upgradedFromBasicGroupId,
     int? upgradedFromMaxMessageId,
     dynamic extra,
@@ -401,6 +408,7 @@ final class SupergroupFullInfo extends TdObject {
     mainProfileTab: mainProfileTab != null
         ? mainProfileTab()
         : this.mainProfileTab,
+    shareTheme: shareTheme != null ? shareTheme() : this.shareTheme,
     upgradedFromBasicGroupId:
         upgradedFromBasicGroupId ?? this.upgradedFromBasicGroupId,
     upgradedFromMaxMessageId:

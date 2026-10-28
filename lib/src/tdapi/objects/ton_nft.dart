@@ -19,6 +19,7 @@ final class TonNft extends TdObject {
     this.sticker,
     required this.attributes,
     this.extraValue,
+    this.gift,
   });
 
   /// Address of the collection to which the NFT belongs; may be empty if unknown
@@ -57,6 +58,9 @@ final class TonNft extends TdObject {
   /// Additional data about the NFT; may be null if none
   final JsonValue? extraValue;
 
+  /// The upgraded gift corresponding to the NFT; may be null if none. Information about the owner of the gift isn't available. Original details of the gift are available only to the sender and the receiver of the original gift
+  final UpgradedGift? gift;
+
   /// Parses a [TonNft] from TDLib JSON.
   factory TonNft.fromJson(Map<String, dynamic> json) => TonNft(
     collectionAddress: _readString(json['collection_address']),
@@ -74,6 +78,7 @@ final class TonNft extends TdObject {
       (e) => _readObject(e, TonNftAttribute.fromJson),
     ),
     extraValue: _readOptional(json['extra'], JsonValue.fromJson),
+    gift: _readOptional(json['gift'], UpgradedGift.fromJson),
   );
 
   @override
@@ -91,6 +96,7 @@ final class TonNft extends TdObject {
     'sticker': sticker?.toJson(),
     'attributes': [for (final e in attributes) e.toJson()],
     'extra': extraValue?.toJson(),
+    'gift': gift?.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -108,6 +114,7 @@ final class TonNft extends TdObject {
     Sticker? Function()? sticker,
     List<TonNftAttribute>? attributes,
     JsonValue? Function()? extraValue,
+    UpgradedGift? Function()? gift,
   }) => TonNft(
     collectionAddress: collectionAddress ?? this.collectionAddress,
     address: address ?? this.address,
@@ -121,6 +128,7 @@ final class TonNft extends TdObject {
     sticker: sticker != null ? sticker() : this.sticker,
     attributes: attributes ?? this.attributes,
     extraValue: extraValue != null ? extraValue() : this.extraValue,
+    gift: gift != null ? gift() : this.gift,
   );
 
   /// TDLib type name.

@@ -9,7 +9,7 @@ final class EncryptedPassportElement extends TdObject {
   const EncryptedPassportElement({
     required this.type,
     required this.data,
-    required this.frontSide,
+    this.frontSide,
     this.reverseSide,
     this.selfie,
     required this.translation,
@@ -24,8 +24,8 @@ final class EncryptedPassportElement extends TdObject {
   /// Encrypted JSON-encoded data about the user
   final String data;
 
-  /// The front side of an identity document
-  final DatedFile frontSide;
+  /// The front side of an identity document; may be null if the element isn't an identity document
+  final DatedFile? frontSide;
 
   /// The reverse side of an identity document; may be null
   final DatedFile? reverseSide;
@@ -50,7 +50,7 @@ final class EncryptedPassportElement extends TdObject {
       EncryptedPassportElement(
         type: _readObject(json['type'], PassportElementType.fromJson),
         data: _readString(json['data']),
-        frontSide: _readObject(json['front_side'], DatedFile.fromJson),
+        frontSide: _readOptional(json['front_side'], DatedFile.fromJson),
         reverseSide: _readOptional(json['reverse_side'], DatedFile.fromJson),
         selfie: _readOptional(json['selfie'], DatedFile.fromJson),
         translation: _readList<DatedFile>(
@@ -70,7 +70,7 @@ final class EncryptedPassportElement extends TdObject {
     '@type': CONSTRUCTOR,
     'type': type.toJson(),
     'data': data,
-    'front_side': frontSide.toJson(),
+    'front_side': frontSide?.toJson(),
     'reverse_side': reverseSide?.toJson(),
     'selfie': selfie?.toJson(),
     'translation': [for (final e in translation) e.toJson()],
@@ -84,7 +84,7 @@ final class EncryptedPassportElement extends TdObject {
   EncryptedPassportElement copyWith({
     PassportElementType? type,
     String? data,
-    DatedFile? frontSide,
+    DatedFile? Function()? frontSide,
     DatedFile? Function()? reverseSide,
     DatedFile? Function()? selfie,
     List<DatedFile>? translation,
@@ -94,7 +94,7 @@ final class EncryptedPassportElement extends TdObject {
   }) => EncryptedPassportElement(
     type: type ?? this.type,
     data: data ?? this.data,
-    frontSide: frontSide ?? this.frontSide,
+    frontSide: frontSide != null ? frontSide() : this.frontSide,
     reverseSide: reverseSide != null ? reverseSide() : this.reverseSide,
     selfie: selfie != null ? selfie() : this.selfie,
     translation: translation ?? this.translation,

@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns upgraded gifts of the current user who can be used to craft another gifts
+/// Returns upgraded gifts of the current user, which can be used to craft other gifts
 ///
 /// Returns [GiftsForCrafting].
 final class GetGiftsForCrafting extends TdFunction<GiftsForCrafting> {
-  /// Returns upgraded gifts of the current user who can be used to craft another gifts
+  /// Returns upgraded gifts of the current user, which can be used to craft other gifts
   const GetGiftsForCrafting({
     required this.regularGiftId,
     required this.offset,

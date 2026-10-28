@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns information about a newest pinned message in the chat. Returns a 404 error if the message doesn't exist
+/// Returns information about the newest pinned message in the chat. Returns a 404 error if the message doesn't exist
 ///
 /// Returns [Message].
 final class GetChatPinnedMessage extends TdFunction<Message> {
-  /// Returns information about a newest pinned message in the chat. Returns a 404 error if the message doesn't exist
+  /// Returns information about the newest pinned message in the chat. Returns a 404 error if the message doesn't exist
   const GetChatPinnedMessage({required this.chatId});
 
   /// Identifier of the chat the message belongs to

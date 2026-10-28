@@ -14,7 +14,7 @@ final class Usernames extends TdObject {
     required this.secondaryUsername,
   });
 
-  /// List of active usernames; the first one must be shown as the primary username. The order of active usernames can be changed with reorderActiveUsernames, reorderBotActiveUsernames or reorderSupergroupActiveUsernames
+  /// List of active usernames; the first one must be shown as the primary username. The order of active usernames can be changed with reorderActiveUsernames, reorderBotActiveUsernames, or reorderSupergroupActiveUsernames
   final List<String> activeUsernames;
 
   /// List of currently disabled usernames; the username can be activated with toggleUsernameIsActive, toggleBotUsernameIsActive, or toggleSupergroupUsernameIsActive
@@ -26,7 +26,7 @@ final class Usernames extends TdObject {
   /// Collectible usernames that were purchased at https://fragment.com and can be passed to getCollectibleItemInfo for more details
   final List<String> collectibleUsernames;
 
-  /// Secondary non-collectible username; for bots only. Can't be used in toggleBotUsernameIsActive; use addBotSecondaryUsername or deleteBotSecondaryUsername to edit it. If the username is disabled, then Telegram Premium subscription is required to re-enable it
+  /// Secondary non-collectible username. Currently, must be non-empty only for bot accounts. Can't be used in toggleBotUsernameIsActive; use addBotSecondaryUsername or deleteBotSecondaryUsername to edit it. If the username is disabled, then Telegram Premium subscription is required to re-enable it
   final String secondaryUsername;
 
   /// Parses a [Usernames] from TDLib JSON.

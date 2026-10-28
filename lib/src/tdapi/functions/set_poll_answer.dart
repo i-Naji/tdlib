@@ -20,7 +20,7 @@ final class SetPollAnswer extends TdFunction<Ok> {
   /// Identifier of the message containing the poll
   final int messageId;
 
-  /// 0-based identifiers of answer options, chosen by the user. User can choose more than 1 answer option only is the poll allows multiple answers
+  /// 0-based identifiers of answer options, chosen by the user. User can choose more than 1 answer option only if the poll allows multiple answers
   final List<int> optionIds;
 
   @override

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageRichMessage], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLiveLocation], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessagePollOptionAdded], [MessagePollOptionDeleted], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatOwnerLeft], [MessageChatOwnerChanged], [MessageChatHasProtectedContentToggled], [MessageChatHasProtectedContentDisableRequested], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatJoinFromCommunity], [MessageChatDeleteMember], [MessageChatAddedToCommunity], [MessageChatRemovedFromCommunity], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessageManagedBotCreated], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedGrams], [MessageGiveawayPrizeStars], [MessageTonWalletTransfer], [MessageTonConnectRequest], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageRichMessage], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLiveLocation], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessagePollOptionAdded], [MessagePollOptionDeleted], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatOwnerLeft], [MessageChatOwnerChanged], [MessageChatHasProtectedContentToggled], [MessageChatHasProtectedContentDisableRequested], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatJoinFromCommunity], [MessageChatDeleteMember], [MessageChatAddedToCommunity], [MessageChatRemovedFromCommunity], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessageManagedBotCreated], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedGrams], [MessageGiveawayPrizeStars], [MessageTonWalletTransfer], [MessageTonConnectRequest], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageUnpaidMessagesAllowedByLink], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -1451,9 +1451,9 @@ final class MessageCall extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A message with information about a group call not bound to a chat. If the message is incoming, the call isn't active, isn't missed, and has no duration, and getOption("can_accept_calls") is true, then incoming call screen must be shown to the user. Use getGroupCallParticipants to show current group call participants on the screen. Use joinGroupCall to accept the call or declineGroupCallInvitation to decline it. If the call become active or missed, then the call screen must be hidden
+/// A message with information about a group call not bound to a chat. If the message is incoming, the call isn't active, isn't missed, and has no duration, and getOption("can_accept_calls") is true, then incoming call screen must be shown to the user. Use getGroupCallParticipants to show current group call participants on the screen. Use joinGroupCall to accept the call or declineGroupCallInvitation to decline it. If the call becomes active or missed, then the call screen must be hidden
 final class MessageGroupCall extends MessageContent {
-  /// A message with information about a group call not bound to a chat. If the message is incoming, the call isn't active, isn't missed, and has no duration, and getOption("can_accept_calls") is true, then incoming call screen must be shown to the user. Use getGroupCallParticipants to show current group call participants on the screen. Use joinGroupCall to accept the call or declineGroupCallInvitation to decline it. If the call become active or missed, then the call screen must be hidden
+  /// A message with information about a group call not bound to a chat. If the message is incoming, the call isn't active, isn't missed, and has no duration, and getOption("can_accept_calls") is true, then incoming call screen must be shown to the user. Use getGroupCallParticipants to show current group call participants on the screen. Use joinGroupCall to accept the call or declineGroupCallInvitation to decline it. If the call becomes active or missed, then the call screen must be hidden
   const MessageGroupCall({
     required this.uniqueId,
     required this.isActive,
@@ -1954,7 +1954,7 @@ final class MessageChatOwnerLeft extends MessageContent {
   /// The owner of the chat has left
   const MessageChatOwnerLeft({required this.newOwnerUserId});
 
-  /// Identifier of the user who will become the new owner of the chat if the previous owner isn't return; 0 if none
+  /// Identifier of the user who will become the new owner of the chat if the previous owner doesn't return; 0 if none
   final int newOwnerUserId;
 
   /// Parses a [MessageChatOwnerLeft] from TDLib JSON.
@@ -4036,7 +4036,7 @@ final class MessageTonWalletTransfer extends MessageContent {
   /// Sender of the transfer; 0 if unknown
   final int senderUserId;
 
-  /// Unique identifier of the transaction; may be empty if the transfer isn't send yet. Use getTonWalletTransaction to get additional information about the transaction
+  /// Unique identifier of the transaction; may be empty if the transfer isn't sent yet. Use getTonWalletTransaction to get additional information about the transaction
   final String transactionId;
 
   /// Address in the TON blockchain of the transaction peer
@@ -4187,6 +4187,7 @@ final class MessageGift extends MessageContent {
     required this.isSaved,
     required this.isPrepaidUpgrade,
     required this.canBeUpgraded,
+    required this.canBeDeleted,
     required this.wasConverted,
     required this.wasUpgraded,
     required this.wasRefunded,
@@ -4236,6 +4237,9 @@ final class MessageGift extends MessageContent {
   /// True, if the gift can be upgraded to a unique gift; only for the receiver of the gift
   final bool canBeUpgraded;
 
+  /// True, if the gift can be deleted using deleteGift; only for the receiver of the gift
+  final bool canBeDeleted;
+
   /// True, if the gift was converted to Telegram Stars; only for the receiver of the gift
   final bool wasConverted;
 
@@ -4267,6 +4271,7 @@ final class MessageGift extends MessageContent {
     isSaved: _readBool(json['is_saved']),
     isPrepaidUpgrade: _readBool(json['is_prepaid_upgrade']),
     canBeUpgraded: _readBool(json['can_be_upgraded']),
+    canBeDeleted: _readBool(json['can_be_deleted']),
     wasConverted: _readBool(json['was_converted']),
     wasUpgraded: _readBool(json['was_upgraded']),
     wasRefunded: _readBool(json['was_refunded']),
@@ -4291,6 +4296,7 @@ final class MessageGift extends MessageContent {
     'is_saved': isSaved,
     'is_prepaid_upgrade': isPrepaidUpgrade,
     'can_be_upgraded': canBeUpgraded,
+    'can_be_deleted': canBeDeleted,
     'was_converted': wasConverted,
     'was_upgraded': wasUpgraded,
     'was_refunded': wasRefunded,
@@ -4316,6 +4322,7 @@ final class MessageGift extends MessageContent {
     bool? isSaved,
     bool? isPrepaidUpgrade,
     bool? canBeUpgraded,
+    bool? canBeDeleted,
     bool? wasConverted,
     bool? wasUpgraded,
     bool? wasRefunded,
@@ -4337,6 +4344,7 @@ final class MessageGift extends MessageContent {
     isSaved: isSaved ?? this.isSaved,
     isPrepaidUpgrade: isPrepaidUpgrade ?? this.isPrepaidUpgrade,
     canBeUpgraded: canBeUpgraded ?? this.canBeUpgraded,
+    canBeDeleted: canBeDeleted ?? this.canBeDeleted,
     wasConverted: wasConverted ?? this.wasConverted,
     wasUpgraded: wasUpgraded ?? this.wasUpgraded,
     wasRefunded: wasRefunded ?? this.wasRefunded,
@@ -4513,9 +4521,9 @@ final class MessageUpgradedGift extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A gift which purchase, upgrade or transfer were refunded
+/// A gift which purchase, upgrade, or transfer were refunded
 final class MessageRefundedUpgradedGift extends MessageContent {
-  /// A gift which purchase, upgrade or transfer were refunded
+  /// A gift which purchase, upgrade, or transfer were refunded
   const MessageRefundedUpgradedGift({
     required this.gift,
     required this.senderId,
@@ -4822,6 +4830,32 @@ final class MessageDirectMessagePriceChanged extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageDirectMessagePriceChanged';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The sender of the message used a link of the other user, which allows sending unpaid messages to the user
+final class MessageUnpaidMessagesAllowedByLink extends MessageContent {
+  /// The sender of the message used a link of the other user, which allows sending unpaid messages to the user
+  const MessageUnpaidMessagesAllowedByLink();
+
+  /// Parses a [MessageUnpaidMessagesAllowedByLink] from TDLib JSON.
+  factory MessageUnpaidMessagesAllowedByLink.fromJson(
+    Map<String, dynamic> json,
+  ) => const MessageUnpaidMessagesAllowedByLink();
+
+  @override
+  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageUnpaidMessagesAllowedByLink copyWith() =>
+      const MessageUnpaidMessagesAllowedByLink();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageUnpaidMessagesAllowedByLink';
 
   @override
   String getConstructor() => CONSTRUCTOR;

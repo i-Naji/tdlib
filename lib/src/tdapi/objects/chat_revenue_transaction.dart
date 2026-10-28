@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Contains a chat revenue transactions
+/// Contains a chat revenue transaction
 final class ChatRevenueTransaction extends TdObject {
-  /// Contains a chat revenue transactions
+  /// Contains a chat revenue transaction
   const ChatRevenueTransaction({
     required this.cryptocurrency,
     required this.cryptocurrencyAmount,

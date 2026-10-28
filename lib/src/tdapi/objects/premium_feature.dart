@@ -367,9 +367,9 @@ final class PremiumFeatureForumTopicIcon extends PremiumFeature {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Allowed to set a premium application icons
+/// Allowed to set premium application icons
 final class PremiumFeatureAppIcons extends PremiumFeature {
-  /// Allowed to set a premium application icons
+  /// Allowed to set premium application icons
   const PremiumFeatureAppIcons();
 
   /// Parses a [PremiumFeatureAppIcons] from TDLib JSON.

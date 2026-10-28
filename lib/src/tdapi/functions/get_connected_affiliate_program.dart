@@ -14,7 +14,7 @@ final class GetConnectedAffiliateProgram
     required this.botUserId,
   });
 
-  /// The affiliate to which the affiliate program will be connected
+  /// The affiliate to which the affiliate program is connected
   final AffiliateType affiliate;
 
   /// Identifier of the bot that created the program

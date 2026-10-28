@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns the limits for an on-ramp payment; only for providers that supports limits retrieval
+/// Returns the limits for an on-ramp payment; only for providers that support limits retrieval
 ///
 /// Returns [OnRampPaymentLimits].
 final class GetOnRampPaymentLimits extends TdFunction<OnRampPaymentLimits> {
-  /// Returns the limits for an on-ramp payment; only for providers that supports limits retrieval
+  /// Returns the limits for an on-ramp payment; only for providers that support limits retrieval
   const GetOnRampPaymentLimits({
     required this.providerId,
     required this.cryptocurrency,

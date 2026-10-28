@@ -25,6 +25,7 @@ final class UpgradedGift extends TdObject {
     required this.ownerAddress,
     required this.ownerName,
     required this.giftAddress,
+    required this.canBeTonWalletCardBackground,
     required this.model,
     required this.symbol,
     required this.backdrop,
@@ -94,6 +95,9 @@ final class UpgradedGift extends TdObject {
   /// Address of the gift NFT in TON blockchain; may be empty if none. Append the address to getOption("ton_blockchain_explorer_url") to get a link with information about the address
   final String giftAddress;
 
+  /// True, if the gift NFT can be used as background_nft_address in setTonWalletCardStickers
+  final bool canBeTonWalletCardBackground;
+
   /// Model of the upgraded gift
   final UpgradedGiftModel model;
 
@@ -155,6 +159,9 @@ final class UpgradedGift extends TdObject {
     ownerAddress: _readString(json['owner_address']),
     ownerName: _readString(json['owner_name']),
     giftAddress: _readString(json['gift_address']),
+    canBeTonWalletCardBackground: _readBool(
+      json['can_be_ton_wallet_card_background'],
+    ),
     model: _readObject(json['model'], UpgradedGiftModel.fromJson),
     symbol: _readObject(json['symbol'], UpgradedGiftSymbol.fromJson),
     backdrop: _readObject(json['backdrop'], UpgradedGiftBackdrop.fromJson),
@@ -197,6 +204,7 @@ final class UpgradedGift extends TdObject {
     'owner_address': ownerAddress,
     'owner_name': ownerName,
     'gift_address': giftAddress,
+    'can_be_ton_wallet_card_background': canBeTonWalletCardBackground,
     'model': model.toJson(),
     'symbol': symbol.toJson(),
     'backdrop': backdrop.toJson(),
@@ -231,6 +239,7 @@ final class UpgradedGift extends TdObject {
     String? ownerAddress,
     String? ownerName,
     String? giftAddress,
+    bool? canBeTonWalletCardBackground,
     UpgradedGiftModel? model,
     UpgradedGiftSymbol? symbol,
     UpgradedGiftBackdrop? backdrop,
@@ -263,6 +272,8 @@ final class UpgradedGift extends TdObject {
     ownerAddress: ownerAddress ?? this.ownerAddress,
     ownerName: ownerName ?? this.ownerName,
     giftAddress: giftAddress ?? this.giftAddress,
+    canBeTonWalletCardBackground:
+        canBeTonWalletCardBackground ?? this.canBeTonWalletCardBackground,
     model: model ?? this.model,
     symbol: symbol ?? this.symbol,
     backdrop: backdrop ?? this.backdrop,

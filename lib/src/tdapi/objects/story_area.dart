@@ -9,14 +9,14 @@ final class StoryArea extends TdObject {
   const StoryArea({required this.position, required this.type});
 
   /// Position of the area
-  final StoryAreaPosition position;
+  final AreaPosition position;
 
   /// Type of the area
   final StoryAreaType type;
 
   /// Parses a [StoryArea] from TDLib JSON.
   factory StoryArea.fromJson(Map<String, dynamic> json) => StoryArea(
-    position: _readObject(json['position'], StoryAreaPosition.fromJson),
+    position: _readObject(json['position'], AreaPosition.fromJson),
     type: _readObject(json['type'], StoryAreaType.fromJson),
   );
 
@@ -29,7 +29,7 @@ final class StoryArea extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  StoryArea copyWith({StoryAreaPosition? position, StoryAreaType? type}) =>
+  StoryArea copyWith({AreaPosition? position, StoryAreaType? type}) =>
       StoryArea(position: position ?? this.position, type: type ?? this.type);
 
   /// TDLib type name.

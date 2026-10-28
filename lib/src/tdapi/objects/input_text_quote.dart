@@ -6,17 +6,28 @@ part of '../tdapi.dart';
 /// Describes manually chosen quote from another message
 final class InputTextQuote extends TdObject {
   /// Describes manually chosen quote from another message
-  const InputTextQuote({required this.text, required this.position});
+  const InputTextQuote({
+    required this.text,
+    required this.richTexts,
+    required this.position,
+  });
 
-  /// Text of the quote; 0-getOption("message_reply_quote_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed to be kept and must be kept in the quote
+  /// Text of the quote; 0-getOption("message_reply_quote_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities are allowed to be kept and must be kept in the quote. Ignored if rich_texts are non-empty
   final FormattedText text;
 
-  /// Quote position in the original message in UTF-16 code units
+  /// Quote from a rich message; pass an empty array if the quote isn't chosen from a rich message. Must contain one element for each quoted text of the message in the order of their appearance. The first and the last elements can contain only a part of the corresponding text; all other elements must contain the whole text. Formatting of the quoted parts must be kept. Mathematical expressions must be quoted entirely. Buttons in pageBlockButtonRow, anchors and dividers can't be quoted. There can be up to 32 quoted texts with total length up to getOption("message_reply_quote_length_max") characters
+  final List<RichText> richTexts;
+
+  /// Quote position in the original message in UTF-16 code units. For quotes from rich messages, it is the position in the text formed by joining plain texts of all quotable texts of the message, separated by line feeds
   final int position;
 
   /// Parses a [InputTextQuote] from TDLib JSON.
   factory InputTextQuote.fromJson(Map<String, dynamic> json) => InputTextQuote(
     text: _readObject(json['text'], FormattedText.fromJson),
+    richTexts: _readList<RichText>(
+      json['rich_texts'],
+      (e) => _readObject(e, RichText.fromJson),
+    ),
     position: _readInt(json['position']),
   );
 
@@ -24,16 +35,21 @@ final class InputTextQuote extends TdObject {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'text': text.toJson(),
+    'rich_texts': [for (final e in richTexts) e.toJson()],
     'position': position,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  InputTextQuote copyWith({FormattedText? text, int? position}) =>
-      InputTextQuote(
-        text: text ?? this.text,
-        position: position ?? this.position,
-      );
+  InputTextQuote copyWith({
+    FormattedText? text,
+    List<RichText>? richTexts,
+    int? position,
+  }) => InputTextQuote(
+    text: text ?? this.text,
+    richTexts: richTexts ?? this.richTexts,
+    position: position ?? this.position,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputTextQuote';

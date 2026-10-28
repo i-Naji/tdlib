@@ -14,7 +14,7 @@ final class UpgradedGiftBackdropCount extends TdObject {
   /// The backdrop
   final UpgradedGiftBackdrop backdrop;
 
-  /// Total number of gifts with the symbol
+  /// Total number of gifts with the backdrop
   final int totalCount;
 
   /// Parses a [UpgradedGiftBackdropCount] from TDLib JSON.

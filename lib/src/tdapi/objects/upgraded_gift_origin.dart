@@ -136,9 +136,9 @@ final class UpgradedGiftOriginResale extends UpgradedGiftOrigin {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The gift was assigned from blockchain and isn't owned by the current user. The gift can't be transferred, resold or withdrawn to blockchain
+/// The gift was assigned from blockchain and isn't owned by the current user. The gift can't be transferred, resold, or withdrawn to blockchain
 final class UpgradedGiftOriginBlockchain extends UpgradedGiftOrigin {
-  /// The gift was assigned from blockchain and isn't owned by the current user. The gift can't be transferred, resold or withdrawn to blockchain
+  /// The gift was assigned from blockchain and isn't owned by the current user. The gift can't be transferred, resold, or withdrawn to blockchain
   const UpgradedGiftOriginBlockchain();
 
   /// Parses a [UpgradedGiftOriginBlockchain] from TDLib JSON.

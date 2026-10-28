@@ -1870,9 +1870,9 @@ final class PushMessageContentPollOptionAdded extends PushMessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A forwarded messages
+/// Forwarded messages
 final class PushMessageContentMessageForwards extends PushMessageContent {
-  /// A forwarded messages
+  /// Forwarded messages
   const PushMessageContentMessageForwards({required this.totalCount});
 
   /// Number of forwarded messages

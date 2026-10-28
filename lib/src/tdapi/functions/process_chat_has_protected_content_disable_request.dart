@@ -18,7 +18,7 @@ final class ProcessChatHasProtectedContentDisableRequest
   /// Chat identifier
   final int chatId;
 
-  /// Identifier of the message with the request. The message must be incoming and has content of the type messageChatHasProtectedContentDisableRequested
+  /// Identifier of the message with the request. The message must be incoming and have content of the type messageChatHasProtectedContentDisableRequested
   final int requestMessageId;
 
   /// Pass true to approve the request; pass false to reject the request

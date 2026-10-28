@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns information about an OAuth deep link. Use checkOauthRequestMatchCode, acceptOauthRequest or declineOauthRequest to process the link
+/// Returns information about an OAuth deep link. Use checkOauthRequestMatchCode, acceptOauthRequest, or declineOauthRequest to process the link
 ///
 /// Returns [OauthLinkInfo].
 final class GetOauthLinkInfo extends TdFunction<OauthLinkInfo> {
-  /// Returns information about an OAuth deep link. Use checkOauthRequestMatchCode, acceptOauthRequest or declineOauthRequest to process the link
+  /// Returns information about an OAuth deep link. Use checkOauthRequestMatchCode, acceptOauthRequest, or declineOauthRequest to process the link
   const GetOauthLinkInfo({required this.url, required this.inAppOrigin});
 
   /// URL of the link

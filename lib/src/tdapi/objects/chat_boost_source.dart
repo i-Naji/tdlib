@@ -97,7 +97,7 @@ final class ChatBoostSourceGiveaway extends ChatBoostSource {
   /// Identifier of a user who won in the giveaway; 0 if none
   final int userId;
 
-  /// The created Telegram Premium gift code if it was used by the user or can be claimed by the current user; an empty string otherwise; for Telegram Premium giveways only
+  /// The created Telegram Premium gift code if it was used by the user or can be claimed by the current user; an empty string otherwise; for Telegram Premium giveaways only
   final String giftCode;
 
   /// Number of Telegram Stars distributed among winners of the giveaway

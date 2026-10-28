@@ -9,14 +9,14 @@ final class InputStoryArea extends TdObject {
   const InputStoryArea({required this.position, required this.type});
 
   /// Position of the area
-  final StoryAreaPosition position;
+  final AreaPosition position;
 
   /// Type of the area
   final InputStoryAreaType type;
 
   /// Parses a [InputStoryArea] from TDLib JSON.
   factory InputStoryArea.fromJson(Map<String, dynamic> json) => InputStoryArea(
-    position: _readObject(json['position'], StoryAreaPosition.fromJson),
+    position: _readObject(json['position'], AreaPosition.fromJson),
     type: _readObject(json['type'], InputStoryAreaType.fromJson),
   );
 
@@ -29,13 +29,11 @@ final class InputStoryArea extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  InputStoryArea copyWith({
-    StoryAreaPosition? position,
-    InputStoryAreaType? type,
-  }) => InputStoryArea(
-    position: position ?? this.position,
-    type: type ?? this.type,
-  );
+  InputStoryArea copyWith({AreaPosition? position, InputStoryAreaType? type}) =>
+      InputStoryArea(
+        position: position ?? this.position,
+        type: type ?? this.type,
+      );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputStoryArea';

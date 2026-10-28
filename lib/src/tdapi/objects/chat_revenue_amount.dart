@@ -26,7 +26,7 @@ final class ChatRevenueAmount extends TdObject {
   /// Amount of the cryptocurrency available for withdrawal, in the smallest units of the cryptocurrency
   final int availableAmount;
 
-  /// True, if Telegram Stars can be withdrawn now or later
+  /// True, if the cryptocurrency can be withdrawn now or later
   final bool withdrawalEnabled;
 
   /// Parses a [ChatRevenueAmount] from TDLib JSON.

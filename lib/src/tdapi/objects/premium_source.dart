@@ -113,7 +113,7 @@ final class PremiumSourceBusinessFeature extends PremiumSource {
   /// A user tried to use a Business feature
   const PremiumSourceBusinessFeature({this.feature});
 
-  /// The used feature; pass null if none specific feature was used
+  /// The used feature; pass null if no specific feature was used
   final BusinessFeature? feature;
 
   /// Parses a [PremiumSourceBusinessFeature] from TDLib JSON.

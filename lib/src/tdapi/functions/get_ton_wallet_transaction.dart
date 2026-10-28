@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns a TON wallet transaction by their identifier
+/// Returns a TON wallet transaction by its identifier
 ///
 /// Returns [TonWalletTransaction].
 final class GetTonWalletTransaction extends TdFunction<TonWalletTransaction> {
-  /// Returns a TON wallet transaction by their identifier
+  /// Returns a TON wallet transaction by its identifier
   const GetTonWalletTransaction({required this.transactionId});
 
   /// Identifier of the transaction

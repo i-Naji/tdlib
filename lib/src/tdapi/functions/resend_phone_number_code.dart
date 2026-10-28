@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Resends the authentication code sent to a phone number. Works only if the previously received authenticationCodeInfo next_code_type was not null and the server-specified timeout has passed
+/// Resends the authentication code sent to a phone number. Works only if the previously received authenticationCodeInfo.next_type was not null and the server-specified timeout has passed
 ///
 /// Returns [AuthenticationCodeInfo].
 final class ResendPhoneNumberCode extends TdFunction<AuthenticationCodeInfo> {
-  /// Resends the authentication code sent to a phone number. Works only if the previously received authenticationCodeInfo next_code_type was not null and the server-specified timeout has passed
+  /// Resends the authentication code sent to a phone number. Works only if the previously received authenticationCodeInfo.next_type was not null and the server-specified timeout has passed
   const ResendPhoneNumberCode({this.reason});
 
   /// Reason of code resending; pass null if unknown

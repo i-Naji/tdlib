@@ -10,7 +10,7 @@ final class AttributeCraftPersistenceProbability extends TdObject {
     required this.persistenceChancePerMille,
   });
 
-  /// The 4 numbers that describe probability of the craft result to have the same attribute as one of the original gifts if 1, 2, 3, or 4 gifts with the attribute are used in the craft. Each number represents the number of crafted gifts with the original attribute per 1000 successful craftings
+  /// The 4 numbers that describe probability of the craft result to have the same attribute as one of the original gifts if 1, 2, 3, or 4 gifts with the attribute are used in the craft. Each number represents the number of crafted gifts with the original attribute per 1000 successful crafts
   final List<int> persistenceChancePerMille;
 
   /// Parses a [AttributeCraftPersistenceProbability] from TDLib JSON.

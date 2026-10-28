@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes a Vertical alignment of a table cell content
+/// Describes a vertical alignment of a table cell content
 ///
 /// One of: [PageBlockVerticalAlignmentTop], [PageBlockVerticalAlignmentMiddle], [PageBlockVerticalAlignmentBottom]; or [UndecodedPageBlockVerticalAlignment] for a type newer than this API.
 sealed class PageBlockVerticalAlignment extends TdObject {

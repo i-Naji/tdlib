@@ -75,7 +75,7 @@ final class InputChatThemeGift extends InputChatTheme {
   /// A theme based on an upgraded gift
   const InputChatThemeGift({required this.name});
 
-  /// Name of the upgraded gift. A gift can be used only in one chat in a time. When the same gift is used in another chat, theme in the previous chat is reset to default
+  /// Name of the upgraded gift. A gift can be used only in one chat at a time. When the same gift is used in another chat, theme in the previous chat is reset to default
   final String name;
 
   /// Parses a [InputChatThemeGift] from TDLib JSON.

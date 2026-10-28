@@ -8,7 +8,7 @@ final class FoundAffiliateProgram extends TdObject {
   /// Describes a found affiliate program
   const FoundAffiliateProgram({required this.botUserId, required this.info});
 
-  /// User identifier of the bot created the program
+  /// User identifier of the bot that created the program
   final int botUserId;
 
   /// Information about the affiliate program

@@ -8,14 +8,18 @@ final class TextQuote extends TdObject {
   /// Describes manually or automatically chosen quote from another message
   const TextQuote({
     required this.text,
+    required this.richTexts,
     required this.position,
     required this.isManual,
   });
 
-  /// Text of the quote. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities can be present in the text
+  /// Text of the quote. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, and DateTime entities can be present in the text. May be empty if the quote was chosen from a rich message
   final FormattedText text;
 
-  /// Approximate quote position in the original message in UTF-16 code units as specified by the message sender
+  /// Rich text of the quote if it was chosen from a rich message; empty if the quote wasn't chosen from a rich message. Only richTextPlain, richTextBold, richTextItalic, richTextUnderline, richTextStrikethrough, richTextSpoiler, richTextSubscript, richTextSuperscript, richTextDateTime, richTextCustomEmoji, richTextMathematicalExpression, and richTexts can be present in the texts
+  final List<RichText> richTexts;
+
+  /// Approximate quote position in the original message in UTF-16 code units as specified by the message sender. For quotes from rich messages, it is the position in the text formed by joining plain texts of all quotable texts of the message, separated by line feeds
   final int position;
 
   /// True, if the quote was manually chosen by the message sender
@@ -24,6 +28,10 @@ final class TextQuote extends TdObject {
   /// Parses a [TextQuote] from TDLib JSON.
   factory TextQuote.fromJson(Map<String, dynamic> json) => TextQuote(
     text: _readObject(json['text'], FormattedText.fromJson),
+    richTexts: _readList<RichText>(
+      json['rich_texts'],
+      (e) => _readObject(e, RichText.fromJson),
+    ),
     position: _readInt(json['position']),
     isManual: _readBool(json['is_manual']),
   );
@@ -32,18 +40,24 @@ final class TextQuote extends TdObject {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'text': text.toJson(),
+    'rich_texts': [for (final e in richTexts) e.toJson()],
     'position': position,
     'is_manual': isManual,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TextQuote copyWith({FormattedText? text, int? position, bool? isManual}) =>
-      TextQuote(
-        text: text ?? this.text,
-        position: position ?? this.position,
-        isManual: isManual ?? this.isManual,
-      );
+  TextQuote copyWith({
+    FormattedText? text,
+    List<RichText>? richTexts,
+    int? position,
+    bool? isManual,
+  }) => TextQuote(
+    text: text ?? this.text,
+    richTexts: richTexts ?? this.richTexts,
+    position: position ?? this.position,
+    isManual: isManual ?? this.isManual,
+  );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'textQuote';

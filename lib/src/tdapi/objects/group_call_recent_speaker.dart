@@ -14,7 +14,7 @@ final class GroupCallRecentSpeaker extends TdObject {
   /// Group call participant identifier
   final MessageSender participantId;
 
-  /// True, is the user has spoken recently
+  /// True, if the user has spoken recently
   final bool isSpeaking;
 
   /// Parses a [GroupCallRecentSpeaker] from TDLib JSON.

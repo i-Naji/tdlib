@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Represent auction state of a gift
+/// Represents auction state of a gift
 final class GiftAuctionState extends TdObject {
-  /// Represent auction state of a gift
+  /// Represents auction state of a gift
   const GiftAuctionState({
     required this.gift,
     required this.state,

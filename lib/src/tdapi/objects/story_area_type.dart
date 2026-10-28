@@ -219,9 +219,9 @@ final class StoryAreaTypeMessage extends StoryAreaType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// An area pointing to a HTTP or tg:// link
+/// An area pointing to an HTTP or tg:// link
 final class StoryAreaTypeLink extends StoryAreaType {
-  /// An area pointing to a HTTP or tg:// link
+  /// An area pointing to an HTTP or tg:// link
   const StoryAreaTypeLink({required this.url});
 
   /// HTTP or tg:// URL to be opened when the area is clicked

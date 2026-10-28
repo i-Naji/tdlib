@@ -533,9 +533,9 @@ final class TextEntityTypeTextUrl extends TextEntityType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A text shows instead of a raw mention of the user (e.g., when the user has no username)
+/// A text shown instead of a raw mention of the user (e.g., when the user has no username)
 final class TextEntityTypeMentionName extends TextEntityType {
-  /// A text shows instead of a raw mention of the user (e.g., when the user has no username)
+  /// A text shown instead of a raw mention of the user (e.g., when the user has no username)
   const TextEntityTypeMentionName({required this.userId});
 
   /// Identifier of the mentioned user

@@ -1,3 +1,7 @@
+## 1.8.69
+* Update tdlib to **1.8.69** (`027780b87`), objects +30/−1/~15, functions +11/−0/~4.
+* Update the web package to TDLib 1.8.69.
+
 ## 1.8.68
 * Update tdlib to **1.8.68** (`c15d3f5a5`), objects +68/−0/~4, functions +45/−2/~2.
 * Desktop builds from i-Naji/libtdjson.

@@ -883,7 +883,7 @@ final class RichTextIcon extends RichText {
     required this.height,
   });
 
-  /// The image represented as a document. The image can be in GIF, JPEG or PNG format
+  /// The image represented as a document. The image can be in GIF, JPEG, or PNG format
   final Document document;
 
   /// Width of a bounding box in which the image must be shown; 0 if unknown

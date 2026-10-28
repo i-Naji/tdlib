@@ -34,7 +34,7 @@ final class GroupCallMessageLevel extends TdObject {
   /// The second color used to show the message text in the RGB format
   final int secondColor;
 
-  /// Background color for the message the RGB format
+  /// Background color for the message in the RGB format
   final int backgroundColor;
 
   /// Parses a [GroupCallMessageLevel] from TDLib JSON.

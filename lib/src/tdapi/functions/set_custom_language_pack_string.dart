@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Adds, edits or deletes a string in a custom local language pack. Can be called before authorization
+/// Adds, edits, or deletes a string in a custom local language pack. Can be called before authorization
 ///
 /// Returns [Ok].
 final class SetCustomLanguagePackString extends TdFunction<Ok> {
-  /// Adds, edits or deletes a string in a custom local language pack. Can be called before authorization
+  /// Adds, edits, or deletes a string in a custom local language pack. Can be called before authorization
   const SetCustomLanguagePackString({
     required this.languagePackId,
     required this.newString,

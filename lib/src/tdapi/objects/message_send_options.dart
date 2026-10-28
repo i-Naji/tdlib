@@ -38,7 +38,7 @@ final class MessageSendOptions extends TdObject {
   /// The number of Telegram Stars the user agreed to pay to send the messages
   final int paidMessageStarCount;
 
-  /// Pass true if the user explicitly chosen a sticker or a custom emoji from an installed sticker set; applicable only to sendMessage and sendMessageAlbum
+  /// Pass true if the user has explicitly chosen a sticker or a custom emoji from an installed sticker set; applicable only to sendMessage and sendMessageAlbum
   final bool updateOrderOfInstalledStickerSets;
 
   /// Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, to a chat with paid messages, to a channel direct messages chat, live location messages and self-destructing messages can't be scheduled

@@ -17,10 +17,10 @@ final class AnswerChatJoinRequestQuery extends TdFunction<Ok> {
   /// Identifier of the query
   final int queryId;
 
-  /// The result
+  /// The result; must be null if a URL is passed
   final ChatJoinRequestResult result;
 
-  /// URL of the Web App to open
+  /// URL of the Web App to open; must be empty if a result is passed
   final String url;
 
   @override

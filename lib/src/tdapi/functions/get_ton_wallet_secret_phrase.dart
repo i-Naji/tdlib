@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns the secret phrase of the user's TON wallet as a space separated list of words. Works only if tonWalletState.can_export_phrase is true
+/// Returns the secret phrase of the user's TON wallet. Works only if tonWalletState.can_export_phrase is true
 ///
-/// Returns [Text].
-final class GetTonWalletSecretPhrase extends TdFunction<Text> {
-  /// Returns the secret phrase of the user's TON wallet as a space separated list of words. Works only if tonWalletState.can_export_phrase is true
+/// Returns [TonWalletSecretPhrase].
+final class GetTonWalletSecretPhrase extends TdFunction<TonWalletSecretPhrase> {
+  /// Returns the secret phrase of the user's TON wallet. Works only if tonWalletState.can_export_phrase is true
   const GetTonWalletSecretPhrase({required this.password});
 
   /// Password of the current user; pass an empty string unless receive an error with a message "PASSWORD_MISSING" for a passwordless request

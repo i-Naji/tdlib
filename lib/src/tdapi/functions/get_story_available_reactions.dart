@@ -10,7 +10,7 @@ final class GetStoryAvailableReactions extends TdFunction<AvailableReactions> {
   /// Returns reactions, which can be chosen for a story
   const GetStoryAvailableReactions({required this.rowSize});
 
-  /// Number of reaction per row, 5-25
+  /// Number of reactions per row, 5-25
   final int rowSize;
 
   @override

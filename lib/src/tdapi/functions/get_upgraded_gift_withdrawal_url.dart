@@ -3,39 +3,29 @@
 
 part of '../tdapi.dart';
 
-/// Returns a URL for upgraded gift withdrawal in the TON blockchain as an NFT; requires owner privileges for gifts owned by a chat
+/// Returns a URL for upgraded gift withdrawal in the TON blockchain as an NFT; requires owner privileges for gifts owned by a chat. The user must have a valid temporary password; see createTemporaryPassword
 ///
 /// Returns [HttpUrl].
 final class GetUpgradedGiftWithdrawalUrl extends TdFunction<HttpUrl> {
-  /// Returns a URL for upgraded gift withdrawal in the TON blockchain as an NFT; requires owner privileges for gifts owned by a chat
-  const GetUpgradedGiftWithdrawalUrl({
-    required this.receivedGiftId,
-    required this.password,
-  });
+  /// Returns a URL for upgraded gift withdrawal in the TON blockchain as an NFT; requires owner privileges for gifts owned by a chat. The user must have a valid temporary password; see createTemporaryPassword
+  const GetUpgradedGiftWithdrawalUrl({required this.receivedGiftId});
 
   /// Identifier of the gift
   final String receivedGiftId;
-
-  /// The 2-step verification password of the current user
-  final String password;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
     'received_gift_id': receivedGiftId,
-    'password': password,
     '@extra': ?extra,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetUpgradedGiftWithdrawalUrl copyWith({
-    String? receivedGiftId,
-    String? password,
-  }) => GetUpgradedGiftWithdrawalUrl(
-    receivedGiftId: receivedGiftId ?? this.receivedGiftId,
-    password: password ?? this.password,
-  );
+  GetUpgradedGiftWithdrawalUrl copyWith({String? receivedGiftId}) =>
+      GetUpgradedGiftWithdrawalUrl(
+        receivedGiftId: receivedGiftId ?? this.receivedGiftId,
+      );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'getUpgradedGiftWithdrawalUrl';

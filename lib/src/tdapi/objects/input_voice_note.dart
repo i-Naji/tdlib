@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// A video note to be sent
+/// A voice note to be sent
 final class InputVoiceNote extends TdObject {
-  /// A video note to be sent
+  /// A voice note to be sent
   const InputVoiceNote({
     required this.voiceNote,
     required this.duration,

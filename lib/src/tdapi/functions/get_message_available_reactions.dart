@@ -21,7 +21,7 @@ final class GetMessageAvailableReactions
   /// Identifier of the message
   final int messageId;
 
-  /// Number of reaction per row, 5-25
+  /// Number of reactions per row, 5-25
   final int rowSize;
 
   @override

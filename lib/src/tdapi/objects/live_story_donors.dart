@@ -13,7 +13,7 @@ final class LiveStoryDonors extends TdObject {
     this.clientId,
   });
 
-  /// Total amount of spend Telegram Stars
+  /// Total amount of spent Telegram Stars
   final int totalStarCount;
 
   /// List of top donors in the live story

@@ -44,9 +44,9 @@ final class UndecodedInternalLinkType extends InternalLinkType {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat. Then, call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to attachment menu, then show a disclaimer about Mini Apps being third-party applications, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL
+/// The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat. Then, call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to attachment menu, then show a disclaimer about Mini Apps being third-party applications, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accepts the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL
 final class InternalLinkTypeAttachmentMenuBot extends InternalLinkType {
-  /// The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat. Then, call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to attachment menu, then show a disclaimer about Mini Apps being third-party applications, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL
+  /// The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat. Then, call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to attachment menu, then show a disclaimer about Mini Apps being third-party applications, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accepts the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL
   const InternalLinkTypeAttachmentMenuBot({
     required this.targetChat,
     required this.botUsername,
@@ -1760,9 +1760,9 @@ final class InternalLinkTypeNewStory extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is an OAuth link. Call getOauthLinkInfo with the given URL to process the link if the link was received from outside of the application; otherwise, ignore it. After getOauthLinkInfo, show the user confirmation dialog and process it with checkOauthRequestMatchCode, acceptOauthRequest or declineOauthRequest
+/// The link is an OAuth link. Call getOauthLinkInfo with the given URL to process the link if the link was received from outside of the application; otherwise, ignore it. After getOauthLinkInfo, show the user confirmation dialog and process it with checkOauthRequestMatchCode, acceptOauthRequest, or declineOauthRequest
 final class InternalLinkTypeOauth extends InternalLinkType {
-  /// The link is an OAuth link. Call getOauthLinkInfo with the given URL to process the link if the link was received from outside of the application; otherwise, ignore it. After getOauthLinkInfo, show the user confirmation dialog and process it with checkOauthRequestMatchCode, acceptOauthRequest or declineOauthRequest
+  /// The link is an OAuth link. Call getOauthLinkInfo with the given URL to process the link if the link was received from outside of the application; otherwise, ignore it. After getOauthLinkInfo, show the user confirmation dialog and process it with checkOauthRequestMatchCode, acceptOauthRequest, or declineOauthRequest
   const InternalLinkTypeOauth({required this.url, this.extra, this.clientId});
 
   /// URL to be passed to getOauthLinkInfo
@@ -2166,6 +2166,7 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
     required this.chatUsername,
     required this.draftText,
     required this.openProfile,
+    required this.unpaidMessagesToken,
     this.extra,
     this.clientId,
   });
@@ -2178,6 +2179,9 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
 
   /// True, if chat profile information screen must be opened; otherwise, the chat itself must be opened
   final bool openProfile;
+
+  /// Token, which allows the current user to send unpaid messages; may be empty if none. If the token isn't empty and the chat is a private chat with a regular user, then call applyUnpaidMessagesToken with the user and the token
+  final String unpaidMessagesToken;
 
   /// "@extra" of the request this object answers.
   @override
@@ -2193,6 +2197,7 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
         chatUsername: _readString(json['chat_username']),
         draftText: _readString(json['draft_text']),
         openProfile: _readBool(json['open_profile']),
+        unpaidMessagesToken: _readString(json['unpaid_messages_token']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -2203,6 +2208,7 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
     'chat_username': chatUsername,
     'draft_text': draftText,
     'open_profile': openProfile,
+    'unpaid_messages_token': unpaidMessagesToken,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -2212,12 +2218,14 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
     String? chatUsername,
     String? draftText,
     bool? openProfile,
+    String? unpaidMessagesToken,
     dynamic extra,
     int? clientId,
   }) => InternalLinkTypePublicChat(
     chatUsername: chatUsername ?? this.chatUsername,
     draftText: draftText ?? this.draftText,
     openProfile: openProfile ?? this.openProfile,
+    unpaidMessagesToken: unpaidMessagesToken ?? this.unpaidMessagesToken,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );
@@ -3142,6 +3150,7 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
     required this.phoneNumber,
     required this.draftText,
     required this.openProfile,
+    required this.unpaidMessagesToken,
     this.extra,
     this.clientId,
   });
@@ -3154,6 +3163,9 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
 
   /// True, if user's profile information screen must be opened; otherwise, the chat itself must be opened
   final bool openProfile;
+
+  /// Token, which allows the current user to send unpaid messages to the user; may be empty if none. If the token isn't empty and the user is found, then call applyUnpaidMessagesToken with the user and the token
+  final String unpaidMessagesToken;
 
   /// "@extra" of the request this object answers.
   @override
@@ -3169,6 +3181,7 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
         phoneNumber: _readString(json['phone_number']),
         draftText: _readString(json['draft_text']),
         openProfile: _readBool(json['open_profile']),
+        unpaidMessagesToken: _readString(json['unpaid_messages_token']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -3179,6 +3192,7 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
     'phone_number': phoneNumber,
     'draft_text': draftText,
     'open_profile': openProfile,
+    'unpaid_messages_token': unpaidMessagesToken,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -3188,12 +3202,14 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
     String? phoneNumber,
     String? draftText,
     bool? openProfile,
+    String? unpaidMessagesToken,
     dynamic extra,
     int? clientId,
   }) => InternalLinkTypeUserPhoneNumber(
     phoneNumber: phoneNumber ?? this.phoneNumber,
     draftText: draftText ?? this.draftText,
     openProfile: openProfile ?? this.openProfile,
+    unpaidMessagesToken: unpaidMessagesToken ?? this.unpaidMessagesToken,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );
@@ -3210,12 +3226,16 @@ final class InternalLinkTypeUserToken extends InternalLinkType {
   /// The link is a link to a user by a temporary token. Call searchUserByToken with the given token to process the link. If the user is found, then call createPrivateChat and open the chat
   const InternalLinkTypeUserToken({
     required this.token,
+    required this.unpaidMessagesToken,
     this.extra,
     this.clientId,
   });
 
   /// The token
   final String token;
+
+  /// Token, which allows the current user to send unpaid messages to the user; may be empty if none. If the token isn't empty and the user is found, then call applyUnpaidMessagesToken with the user and the token
+  final String unpaidMessagesToken;
 
   /// "@extra" of the request this object answers.
   @override
@@ -3229,22 +3249,29 @@ final class InternalLinkTypeUserToken extends InternalLinkType {
   factory InternalLinkTypeUserToken.fromJson(Map<String, dynamic> json) =>
       InternalLinkTypeUserToken(
         token: _readString(json['token']),
+        unpaidMessagesToken: _readString(json['unpaid_messages_token']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
 
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR, 'token': token};
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'token': token,
+    'unpaid_messages_token': unpaidMessagesToken,
+  };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeUserToken copyWith({
     String? token,
+    String? unpaidMessagesToken,
     dynamic extra,
     int? clientId,
   }) => InternalLinkTypeUserToken(
     token: token ?? this.token,
+    unpaidMessagesToken: unpaidMessagesToken ?? this.unpaidMessagesToken,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );
@@ -3326,9 +3353,9 @@ final class InternalLinkTypeVideoChat extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot. If the bot is restricted for the current user, then show an error message. Otherwise, call searchWebApp with the received bot and the given web_app_short_name. Process received foundWebApp by showing a confirmation dialog if needed. If the bot can be added to attachment or side menu, but isn't added yet, then show a disclaimer about Mini Apps being third-party applications instead of the dialog and ask the user to accept their Terms of service. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. Then, call getWebAppLinkUrl and open the returned URL as a Web App
+/// The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot. If the bot is restricted for the current user, then show an error message. Otherwise, call searchWebApp with the received bot and the given web_app_short_name. Process received foundWebApp by showing a confirmation dialog if needed. If the bot can be added to attachment or side menu, but isn't added yet, then show a disclaimer about Mini Apps being third-party applications instead of the dialog and ask the user to accept their Terms of service. If the user accepts the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. Then, call getWebAppLinkUrl and open the returned URL as a Web App
 final class InternalLinkTypeWebApp extends InternalLinkType {
-  /// The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot. If the bot is restricted for the current user, then show an error message. Otherwise, call searchWebApp with the received bot and the given web_app_short_name. Process received foundWebApp by showing a confirmation dialog if needed. If the bot can be added to attachment or side menu, but isn't added yet, then show a disclaimer about Mini Apps being third-party applications instead of the dialog and ask the user to accept their Terms of service. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. Then, call getWebAppLinkUrl and open the returned URL as a Web App
+  /// The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot. If the bot is restricted for the current user, then show an error message. Otherwise, call searchWebApp with the received bot and the given web_app_short_name. Process received foundWebApp by showing a confirmation dialog if needed. If the bot can be added to attachment or side menu, but isn't added yet, then show a disclaimer about Mini Apps being third-party applications instead of the dialog and ask the user to accept their Terms of service. If the user accepts the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. Then, call getWebAppLinkUrl and open the returned URL as a Web App
   const InternalLinkTypeWebApp({
     required this.botUsername,
     required this.webAppShortName,

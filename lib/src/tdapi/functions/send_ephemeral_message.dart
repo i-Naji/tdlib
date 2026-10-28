@@ -46,7 +46,7 @@ final class SendEphemeralMessage extends TdFunction<Message> {
   /// Non-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates
   final int sendingId;
 
-  /// Pass true to get a fake message instead of actually sending them
+  /// Pass true to get a fake message instead of actually sending it
   final bool onlyPreview;
 
   /// Markup for replying to the message; pass null if none; for bots only

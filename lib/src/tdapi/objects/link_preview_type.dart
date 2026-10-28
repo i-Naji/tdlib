@@ -1033,9 +1033,9 @@ final class LinkPreviewTypePremiumGiftCode extends LinkPreviewType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a dialog for creating of a managed bot
+/// The link is a link to a dialog for creating a managed bot
 final class LinkPreviewTypeRequestManagedBot extends LinkPreviewType {
-  /// The link is a link to a dialog for creating of a managed bot
+  /// The link is a link to a dialog for creating a managed bot
   const LinkPreviewTypeRequestManagedBot();
 
   /// Parses a [LinkPreviewTypeRequestManagedBot] from TDLib JSON.

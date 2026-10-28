@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of transaction with a TON wallet
 ///
-/// One of: [TonWalletTransactionTypeOnRampDeposit], [TonWalletTransactionTypeTransfer], [TonWalletTransactionTypeNftTransfer], [TonWalletTransactionTypeKeyChange]; or [UndecodedTonWalletTransactionType] for a type newer than this API.
+/// One of: [TonWalletTransactionTypeOnRampDeposit], [TonWalletTransactionTypeTransfer], [TonWalletTransactionTypeNftTransfer], [TonWalletTransactionTypeTelegramGiftTransfer], [TonWalletTransactionTypeKeyChange]; or [UndecodedTonWalletTransactionType] for a type newer than this API.
 sealed class TonWalletTransactionType extends TdObject {
   const TonWalletTransactionType();
 
@@ -214,6 +214,63 @@ final class TonWalletTransactionTypeNftTransfer
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'tonWalletTransactionTypeNftTransfer';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A Telegram gift was minted as a TON NFT or was transferred from Telegram to the wallet or back; peer details aren't available for the transaction
+final class TonWalletTransactionTypeTelegramGiftTransfer
+    extends TonWalletTransactionType {
+  /// A Telegram gift was minted as a TON NFT or was transferred from Telegram to the wallet or back; peer details aren't available for the transaction
+  const TonWalletTransactionTypeTelegramGiftTransfer({
+    required this.nft,
+    required this.isOutgoing,
+    required this.isSaved,
+  });
+
+  /// The minted or transferred NFT
+  final TonNft nft;
+
+  /// True, if the transfer is from the wallet to Telegram
+  final bool isOutgoing;
+
+  /// True, if the gift was displayed on the current user's profile page before or after the transfer
+  final bool isSaved;
+
+  /// Parses a [TonWalletTransactionTypeTelegramGiftTransfer] from TDLib JSON.
+  factory TonWalletTransactionTypeTelegramGiftTransfer.fromJson(
+    Map<String, dynamic> json,
+  ) => TonWalletTransactionTypeTelegramGiftTransfer(
+    nft: _readObject(json['nft'], TonNft.fromJson),
+    isOutgoing: _readBool(json['is_outgoing']),
+    isSaved: _readBool(json['is_saved']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'nft': nft.toJson(),
+    'is_outgoing': isOutgoing,
+    'is_saved': isSaved,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  TonWalletTransactionTypeTelegramGiftTransfer copyWith({
+    TonNft? nft,
+    bool? isOutgoing,
+    bool? isSaved,
+  }) => TonWalletTransactionTypeTelegramGiftTransfer(
+    nft: nft ?? this.nft,
+    isOutgoing: isOutgoing ?? this.isOutgoing,
+    isSaved: isSaved ?? this.isSaved,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR =
+      'tonWalletTransactionTypeTelegramGiftTransfer';
 
   @override
   String getConstructor() => CONSTRUCTOR;

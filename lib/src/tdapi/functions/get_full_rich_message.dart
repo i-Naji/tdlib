@@ -10,7 +10,7 @@ final class GetFullRichMessage extends TdFunction<RichMessage> {
   /// Returns the full version of a rich message
   const GetFullRichMessage({required this.chatId, required this.messageId});
 
-  /// Identifier of the chat the messages belong to
+  /// Identifier of the chat the message belongs to
   final int chatId;
 
   /// Identifier of the message

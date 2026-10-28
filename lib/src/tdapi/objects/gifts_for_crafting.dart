@@ -21,7 +21,7 @@ final class GiftsForCrafting extends TdObject {
   /// The list of gifts
   final List<ReceivedGift> gifts;
 
-  /// The 4 objects that describe probabilities of the crafted gift to have the backdrop or symbol of one of the original gifts for the cases when 1, 2, 3 or 4 gifts are used in the craft correspondingly
+  /// The 4 objects that describe probabilities of the crafted gift to have the backdrop or symbol of one of the original gifts for the cases when 1-4 gifts are used in the craft correspondingly
   final List<AttributeCraftPersistenceProbability>
   attributePersistenceProbabilities;
 

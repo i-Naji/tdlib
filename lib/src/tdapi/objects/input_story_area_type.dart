@@ -95,7 +95,7 @@ final class InputStoryAreaTypeFoundVenue extends InputStoryAreaType {
     required this.resultId,
   });
 
-  /// Identifier of the inline query, used to found the venue
+  /// Identifier of the inline query, used to find the venue
   final int queryId;
 
   /// Identifier of the inline query result
@@ -276,9 +276,9 @@ final class InputStoryAreaTypeMessage extends InputStoryAreaType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// An area pointing to a HTTP or tg:// link
+/// An area pointing to an HTTP or tg:// link
 final class InputStoryAreaTypeLink extends InputStoryAreaType {
-  /// An area pointing to a HTTP or tg:// link
+  /// An area pointing to an HTTP or tg:// link
   const InputStoryAreaTypeLink({required this.url});
 
   /// HTTP or tg:// URL to be opened when the area is clicked

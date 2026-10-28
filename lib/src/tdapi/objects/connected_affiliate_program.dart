@@ -21,7 +21,7 @@ final class ConnectedAffiliateProgram extends TdObject {
   /// The link that can be used to refer users if the program is still active
   final String url;
 
-  /// User identifier of the bot created the program
+  /// User identifier of the bot that created the program
   final int botUserId;
 
   /// The parameters of the affiliate program

@@ -90,9 +90,9 @@ final class ChatJoinResultSuccess extends ChatJoinResult {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The join request was sent and have to be approved by administrators of the chat
+/// The join request was sent and has to be approved by administrators of the chat
 final class ChatJoinResultRequestSent extends ChatJoinResult {
-  /// The join request was sent and have to be approved by administrators of the chat
+  /// The join request was sent and has to be approved by administrators of the chat
   const ChatJoinResultRequestSent({this.extra, this.clientId});
 
   /// "@extra" of the request this object answers.

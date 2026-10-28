@@ -20,7 +20,7 @@ final class EditInlineMessageMedia extends TdFunction<Ok> {
   /// The new message reply markup; pass null if none; for bots only
   final ReplyMarkup? replyMarkup;
 
-  /// New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo
+  /// New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto, or inputMessageVideo
   final InputMessageContent inputMessageContent;
 
   @override

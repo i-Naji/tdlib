@@ -3,10 +3,10 @@
 
 part of '../tdapi.dart';
 
-/// Describes position of a clickable rectangle area on a story media
-final class StoryAreaPosition extends TdObject {
-  /// Describes position of a clickable rectangle area on a story media
-  const StoryAreaPosition({
+/// Describes position of a rectangle area on a story media or a TON wallet card
+final class AreaPosition extends TdObject {
+  /// Describes position of a rectangle area on a story media or a TON wallet card
+  const AreaPosition({
     required this.xPercentage,
     required this.yPercentage,
     required this.widthPercentage,
@@ -15,34 +15,33 @@ final class StoryAreaPosition extends TdObject {
     required this.cornerRadiusPercentage,
   });
 
-  /// The abscissa of the rectangle's center, as a percentage of the media width
+  /// The abscissa of the rectangle's center, as a percentage of the media or the card width
   final double xPercentage;
 
-  /// The ordinate of the rectangle's center, as a percentage of the media height
+  /// The ordinate of the rectangle's center, as a percentage of the media or the card height
   final double yPercentage;
 
-  /// The width of the rectangle, as a percentage of the media width
+  /// The width of the rectangle, as a percentage of the media or the card width
   final double widthPercentage;
 
-  /// The height of the rectangle, as a percentage of the media height
+  /// The height of the rectangle, as a percentage of the media or the card height
   final double heightPercentage;
 
   /// Clockwise rotation angle of the rectangle, in degrees; 0-360
   final double rotationAngle;
 
-  /// The radius of the rectangle corner rounding, as a percentage of the media width
+  /// The radius of the rectangle corner rounding, as a percentage of the media or the card width
   final double cornerRadiusPercentage;
 
-  /// Parses a [StoryAreaPosition] from TDLib JSON.
-  factory StoryAreaPosition.fromJson(Map<String, dynamic> json) =>
-      StoryAreaPosition(
-        xPercentage: _readDouble(json['x_percentage']),
-        yPercentage: _readDouble(json['y_percentage']),
-        widthPercentage: _readDouble(json['width_percentage']),
-        heightPercentage: _readDouble(json['height_percentage']),
-        rotationAngle: _readDouble(json['rotation_angle']),
-        cornerRadiusPercentage: _readDouble(json['corner_radius_percentage']),
-      );
+  /// Parses a [AreaPosition] from TDLib JSON.
+  factory AreaPosition.fromJson(Map<String, dynamic> json) => AreaPosition(
+    xPercentage: _readDouble(json['x_percentage']),
+    yPercentage: _readDouble(json['y_percentage']),
+    widthPercentage: _readDouble(json['width_percentage']),
+    heightPercentage: _readDouble(json['height_percentage']),
+    rotationAngle: _readDouble(json['rotation_angle']),
+    cornerRadiusPercentage: _readDouble(json['corner_radius_percentage']),
+  );
 
   @override
   Map<String, dynamic> toJson() => {
@@ -57,14 +56,14 @@ final class StoryAreaPosition extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  StoryAreaPosition copyWith({
+  AreaPosition copyWith({
     double? xPercentage,
     double? yPercentage,
     double? widthPercentage,
     double? heightPercentage,
     double? rotationAngle,
     double? cornerRadiusPercentage,
-  }) => StoryAreaPosition(
+  }) => AreaPosition(
     xPercentage: xPercentage ?? this.xPercentage,
     yPercentage: yPercentage ?? this.yPercentage,
     widthPercentage: widthPercentage ?? this.widthPercentage,
@@ -75,7 +74,7 @@ final class StoryAreaPosition extends TdObject {
   );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'storyAreaPosition';
+  static const String CONSTRUCTOR = 'areaPosition';
 
   @override
   String getConstructor() => CONSTRUCTOR;

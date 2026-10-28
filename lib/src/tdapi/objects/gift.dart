@@ -21,7 +21,7 @@ final class Gift extends TdObject {
     required this.nextSendDate,
     this.userLimits,
     this.overallLimits,
-    required this.background,
+    this.background,
     required this.firstSendDate,
     required this.lastSendDate,
   });
@@ -68,8 +68,8 @@ final class Gift extends TdObject {
   /// Number of times the gift can be purchased by all users; may be null if not limited
   final GiftPurchaseLimits? overallLimits;
 
-  /// Background of the gift
-  final GiftBackground background;
+  /// Background of the gift; may be null if the gift has no background
+  final GiftBackground? background;
 
   /// Point in time (Unix timestamp) when the gift was sent for the first time; for sold out gifts only
   final int firstSendDate;
@@ -96,7 +96,7 @@ final class Gift extends TdObject {
       json['overall_limits'],
       GiftPurchaseLimits.fromJson,
     ),
-    background: _readObject(json['background'], GiftBackground.fromJson),
+    background: _readOptional(json['background'], GiftBackground.fromJson),
     firstSendDate: _readInt(json['first_send_date']),
     lastSendDate: _readInt(json['last_send_date']),
   );
@@ -118,7 +118,7 @@ final class Gift extends TdObject {
     'next_send_date': nextSendDate,
     'user_limits': userLimits?.toJson(),
     'overall_limits': overallLimits?.toJson(),
-    'background': background.toJson(),
+    'background': background?.toJson(),
     'first_send_date': firstSendDate,
     'last_send_date': lastSendDate,
   };
@@ -140,7 +140,7 @@ final class Gift extends TdObject {
     int? nextSendDate,
     GiftPurchaseLimits? Function()? userLimits,
     GiftPurchaseLimits? Function()? overallLimits,
-    GiftBackground? background,
+    GiftBackground? Function()? background,
     int? firstSendDate,
     int? lastSendDate,
   }) => Gift(
@@ -158,7 +158,7 @@ final class Gift extends TdObject {
     nextSendDate: nextSendDate ?? this.nextSendDate,
     userLimits: userLimits != null ? userLimits() : this.userLimits,
     overallLimits: overallLimits != null ? overallLimits() : this.overallLimits,
-    background: background ?? this.background,
+    background: background != null ? background() : this.background,
     firstSendDate: firstSendDate ?? this.firstSendDate,
     lastSendDate: lastSendDate ?? this.lastSendDate,
   );

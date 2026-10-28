@@ -15,6 +15,10 @@ final class OauthLinkInfo extends TdObject {
     required this.botUserId,
     required this.requestWriteAccess,
     required this.requestPhoneNumberAccess,
+    required this.requestTonWalletAccess,
+    required this.dappClientId,
+    required this.tonConnectManifestUrl,
+    required this.tonProofPayload,
     required this.browser,
     required this.platform,
     required this.ipAddress,
@@ -48,6 +52,18 @@ final class OauthLinkInfo extends TdObject {
 
   /// True, if the user must be asked for the permission to share their phone number
   final bool requestPhoneNumberAccess;
+
+  /// True, if access to the user's TON wallet is requested by the app. If true and the user agrees to give access, then use createTonConnectSession with dapp_client_id and ton_connect_manifest_url to create the TON Connect session, then setTonConnectSessionWalletClientId, then create a tonWalletOwnershipProof for the given domain with the payload ton_proof_payload, and then pass all data to acceptOauthRequest in the parameter ton_connect_connect_data
+  final bool requestTonWalletAccess;
+
+  /// Hex-encoded public X25519 key of the dApp; may be empty if TON wallet access wasn't requested
+  final String dappClientId;
+
+  /// URL of the TON Connect manifest of the dApp; may be empty if TON wallet access wasn't requested
+  final String tonConnectManifestUrl;
+
+  /// Payload for TON wallet ownership proof; may be empty if TON wallet access wasn't requested
+  final String tonProofPayload;
 
   /// The version of a browser used for the authorization
   final String browser;
@@ -85,6 +101,10 @@ final class OauthLinkInfo extends TdObject {
     botUserId: _readInt(json['bot_user_id']),
     requestWriteAccess: _readBool(json['request_write_access']),
     requestPhoneNumberAccess: _readBool(json['request_phone_number_access']),
+    requestTonWalletAccess: _readBool(json['request_ton_wallet_access']),
+    dappClientId: _readString(json['dapp_client_id']),
+    tonConnectManifestUrl: _readString(json['ton_connect_manifest_url']),
+    tonProofPayload: _readString(json['ton_proof_payload']),
     browser: _readString(json['browser']),
     platform: _readString(json['platform']),
     ipAddress: _readString(json['ip_address']),
@@ -106,6 +126,10 @@ final class OauthLinkInfo extends TdObject {
     'bot_user_id': botUserId,
     'request_write_access': requestWriteAccess,
     'request_phone_number_access': requestPhoneNumberAccess,
+    'request_ton_wallet_access': requestTonWalletAccess,
+    'dapp_client_id': dappClientId,
+    'ton_connect_manifest_url': tonConnectManifestUrl,
+    'ton_proof_payload': tonProofPayload,
     'browser': browser,
     'platform': platform,
     'ip_address': ipAddress,
@@ -125,6 +149,10 @@ final class OauthLinkInfo extends TdObject {
     int? botUserId,
     bool? requestWriteAccess,
     bool? requestPhoneNumberAccess,
+    bool? requestTonWalletAccess,
+    String? dappClientId,
+    String? tonConnectManifestUrl,
+    String? tonProofPayload,
     String? browser,
     String? platform,
     String? ipAddress,
@@ -143,6 +171,11 @@ final class OauthLinkInfo extends TdObject {
     requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
     requestPhoneNumberAccess:
         requestPhoneNumberAccess ?? this.requestPhoneNumberAccess,
+    requestTonWalletAccess:
+        requestTonWalletAccess ?? this.requestTonWalletAccess,
+    dappClientId: dappClientId ?? this.dappClientId,
+    tonConnectManifestUrl: tonConnectManifestUrl ?? this.tonConnectManifestUrl,
+    tonProofPayload: tonProofPayload ?? this.tonProofPayload,
     browser: browser ?? this.browser,
     platform: platform ?? this.platform,
     ipAddress: ipAddress ?? this.ipAddress,

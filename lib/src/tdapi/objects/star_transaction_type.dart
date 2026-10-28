@@ -696,7 +696,7 @@ final class StarTransactionTypeBotSubscriptionPurchase
   const StarTransactionTypeBotSubscriptionPurchase({
     required this.userId,
     required this.subscriptionPeriod,
-    required this.productInfo,
+    this.productInfo,
   });
 
   /// Identifier of the bot or the business account user who created the subscription link
@@ -705,8 +705,8 @@ final class StarTransactionTypeBotSubscriptionPurchase
   /// The number of seconds between consecutive Telegram Star debitings
   final int subscriptionPeriod;
 
-  /// Information about the bought subscription
-  final ProductInfo productInfo;
+  /// Information about the bought subscription; may be null if no information about the subscription is available
+  final ProductInfo? productInfo;
 
   /// Parses a [StarTransactionTypeBotSubscriptionPurchase] from TDLib JSON.
   factory StarTransactionTypeBotSubscriptionPurchase.fromJson(
@@ -714,7 +714,7 @@ final class StarTransactionTypeBotSubscriptionPurchase
   ) => StarTransactionTypeBotSubscriptionPurchase(
     userId: _readInt(json['user_id']),
     subscriptionPeriod: _readInt(json['subscription_period']),
-    productInfo: _readObject(json['product_info'], ProductInfo.fromJson),
+    productInfo: _readOptional(json['product_info'], ProductInfo.fromJson),
   );
 
   @override
@@ -722,7 +722,7 @@ final class StarTransactionTypeBotSubscriptionPurchase
     '@type': CONSTRUCTOR,
     'user_id': userId,
     'subscription_period': subscriptionPeriod,
-    'product_info': productInfo.toJson(),
+    'product_info': productInfo?.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -731,11 +731,11 @@ final class StarTransactionTypeBotSubscriptionPurchase
   StarTransactionTypeBotSubscriptionPurchase copyWith({
     int? userId,
     int? subscriptionPeriod,
-    ProductInfo? productInfo,
+    ProductInfo? Function()? productInfo,
   }) => StarTransactionTypeBotSubscriptionPurchase(
     userId: userId ?? this.userId,
     subscriptionPeriod: subscriptionPeriod ?? this.subscriptionPeriod,
-    productInfo: productInfo ?? this.productInfo,
+    productInfo: productInfo != null ? productInfo() : this.productInfo,
   );
 
   /// TDLib type name.
@@ -752,7 +752,7 @@ final class StarTransactionTypeBotSubscriptionSale extends StarTransactionType {
   const StarTransactionTypeBotSubscriptionSale({
     required this.userId,
     required this.subscriptionPeriod,
-    required this.productInfo,
+    this.productInfo,
     required this.invoicePayload,
     this.affiliate,
   });
@@ -763,8 +763,8 @@ final class StarTransactionTypeBotSubscriptionSale extends StarTransactionType {
   /// The number of seconds between consecutive Telegram Star debitings
   final int subscriptionPeriod;
 
-  /// Information about the bought subscription
-  final ProductInfo productInfo;
+  /// Information about the bought subscription; may be null if no information about the subscription is available
+  final ProductInfo? productInfo;
 
   /// Invoice payload
   final String invoicePayload;
@@ -778,7 +778,7 @@ final class StarTransactionTypeBotSubscriptionSale extends StarTransactionType {
   ) => StarTransactionTypeBotSubscriptionSale(
     userId: _readInt(json['user_id']),
     subscriptionPeriod: _readInt(json['subscription_period']),
-    productInfo: _readObject(json['product_info'], ProductInfo.fromJson),
+    productInfo: _readOptional(json['product_info'], ProductInfo.fromJson),
     invoicePayload: _readString(json['invoice_payload']),
     affiliate: _readOptional(json['affiliate'], AffiliateInfo.fromJson),
   );
@@ -788,7 +788,7 @@ final class StarTransactionTypeBotSubscriptionSale extends StarTransactionType {
     '@type': CONSTRUCTOR,
     'user_id': userId,
     'subscription_period': subscriptionPeriod,
-    'product_info': productInfo.toJson(),
+    'product_info': productInfo?.toJson(),
     'invoice_payload': invoicePayload,
     'affiliate': affiliate?.toJson(),
   };
@@ -799,13 +799,13 @@ final class StarTransactionTypeBotSubscriptionSale extends StarTransactionType {
   StarTransactionTypeBotSubscriptionSale copyWith({
     int? userId,
     int? subscriptionPeriod,
-    ProductInfo? productInfo,
+    ProductInfo? Function()? productInfo,
     String? invoicePayload,
     AffiliateInfo? Function()? affiliate,
   }) => StarTransactionTypeBotSubscriptionSale(
     userId: userId ?? this.userId,
     subscriptionPeriod: subscriptionPeriod ?? this.subscriptionPeriod,
-    productInfo: productInfo ?? this.productInfo,
+    productInfo: productInfo != null ? productInfo() : this.productInfo,
     invoicePayload: invoicePayload ?? this.invoicePayload,
     affiliate: affiliate != null ? affiliate() : this.affiliate,
   );
@@ -1746,10 +1746,10 @@ final class StarTransactionTypePaidGroupCallMessageReceive
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a sending of a paid group reaction; relevant for regular users only
+/// The transaction is a sending of a paid group call reaction; relevant for regular users only
 final class StarTransactionTypePaidGroupCallReactionSend
     extends StarTransactionType {
-  /// The transaction is a sending of a paid group reaction; relevant for regular users only
+  /// The transaction is a sending of a paid group call reaction; relevant for regular users only
   const StarTransactionTypePaidGroupCallReactionSend({required this.chatId});
 
   /// Identifier of the chat that received the payment

@@ -21,7 +21,7 @@ final class ComposeTextWithAi extends TdFunction<FormattedText> {
   /// Pass a language code to which the text will be translated; pass an empty string if translation isn't needed. See translateText.to_language_code for the list of supported values
   final String translateToLanguageCode;
 
-  /// Name of the style of the resulted text; handle updateTextCompositionStyles to get the list of supported styles; pass an empty string to keep the current style of the text
+  /// Name of the style of the resulting text; handle updateTextCompositionStyles to get the list of supported styles; pass an empty string to keep the current style of the text
   final String styleName;
 
   /// Pass true to add emoji to the text

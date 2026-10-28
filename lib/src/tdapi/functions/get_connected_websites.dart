@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns all website where the current user used Telegram to log in
+/// Returns all websites where the current user used Telegram to log in
 ///
 /// Returns [ConnectedWebsites].
 final class GetConnectedWebsites extends TdFunction<ConnectedWebsites> {
-  /// Returns all website where the current user used Telegram to log in
+  /// Returns all websites where the current user used Telegram to log in
   const GetConnectedWebsites();
 
   @override

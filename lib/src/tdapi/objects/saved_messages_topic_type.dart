@@ -44,9 +44,9 @@ final class UndecodedSavedMessagesTopicType extends SavedMessagesTopicType {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// Topic containing messages sent by the current user of forwarded from an unknown chat
+/// Topic containing messages sent by the current user or forwarded from an unknown chat
 final class SavedMessagesTopicTypeMyNotes extends SavedMessagesTopicType {
-  /// Topic containing messages sent by the current user of forwarded from an unknown chat
+  /// Topic containing messages sent by the current user or forwarded from an unknown chat
   const SavedMessagesTopicTypeMyNotes();
 
   /// Parses a [SavedMessagesTopicTypeMyNotes] from TDLib JSON.

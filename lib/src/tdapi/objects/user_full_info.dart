@@ -37,6 +37,8 @@ final class UserFullInfo extends TdObject {
     this.pendingRating,
     required this.pendingRatingDate,
     this.note,
+    this.tonWalletCard,
+    this.shareTheme,
     this.businessInfo,
     this.botInfo,
     this.extra,
@@ -133,6 +135,12 @@ final class UserFullInfo extends TdObject {
   /// Note added to the user's contact; may be null if none
   final FormattedText? note;
 
+  /// TON wallet card of the user; may be null if none
+  final TonWalletCard? tonWalletCard;
+
+  /// Theme of the screen for sharing a link to the user; may be null if the default theme is used
+  final ProfileShareTheme? shareTheme;
+
   /// Information about business settings for Telegram Business accounts; may be null if none
   final BusinessInfo? businessInfo;
 
@@ -198,6 +206,11 @@ final class UserFullInfo extends TdObject {
     pendingRating: _readOptional(json['pending_rating'], UserRating.fromJson),
     pendingRatingDate: _readInt(json['pending_rating_date']),
     note: _readOptional(json['note'], FormattedText.fromJson),
+    tonWalletCard: _readOptional(
+      json['ton_wallet_card'],
+      TonWalletCard.fromJson,
+    ),
+    shareTheme: _readOptional(json['share_theme'], ProfileShareTheme.fromJson),
     businessInfo: _readOptional(json['business_info'], BusinessInfo.fromJson),
     botInfo: _readOptional(json['bot_info'], BotInfo.fromJson),
     extra: json['@extra'],
@@ -238,6 +251,8 @@ final class UserFullInfo extends TdObject {
     'pending_rating': pendingRating?.toJson(),
     'pending_rating_date': pendingRatingDate,
     'note': note?.toJson(),
+    'ton_wallet_card': tonWalletCard?.toJson(),
+    'share_theme': shareTheme?.toJson(),
     'business_info': businessInfo?.toJson(),
     'bot_info': botInfo?.toJson(),
   };
@@ -275,6 +290,8 @@ final class UserFullInfo extends TdObject {
     UserRating? Function()? pendingRating,
     int? pendingRatingDate,
     FormattedText? Function()? note,
+    TonWalletCard? Function()? tonWalletCard,
+    ProfileShareTheme? Function()? shareTheme,
     BusinessInfo? Function()? businessInfo,
     BotInfo? Function()? botInfo,
     dynamic extra,
@@ -323,6 +340,8 @@ final class UserFullInfo extends TdObject {
     pendingRating: pendingRating != null ? pendingRating() : this.pendingRating,
     pendingRatingDate: pendingRatingDate ?? this.pendingRatingDate,
     note: note != null ? note() : this.note,
+    tonWalletCard: tonWalletCard != null ? tonWalletCard() : this.tonWalletCard,
+    shareTheme: shareTheme != null ? shareTheme() : this.shareTheme,
     businessInfo: businessInfo != null ? businessInfo() : this.businessInfo,
     botInfo: botInfo != null ? botInfo() : this.botInfo,
     extra: extra ?? this.extra,

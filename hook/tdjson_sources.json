@@ -1,115 +1,112 @@
 {
   "tdlib": {
-    "version": "1.8.68",
-    "schemaCommit": "c15d3f5a5de6e3ba5839822c451152e5e18bb700",
+    "version": "1.8.69",
+    "schemaCommit": "027780b87a66a2a0e69db644e812362bb300f1e1",
     "compatibleCommits": [
-      "c15d3f5a5de6e3ba5839822c451152e5e18bb700"
-    ],
-    "notes": [
-      "no upstream macOS, Linux and Windows build yet; the manifest points to i-Naji/libtdjson"
+      "027780b87a66a2a0e69db644e812362bb300f1e1",
+      "ea3f69ce11aef458bfbb09869b809ede4447486f",
+      "0e88653dcbf4e44c73cb655a05b58cd749a91169"
     ]
   },
   "targets": {
     "android-arm": {
-      "source": "FaiBah/TDLibAndroidPrebuilt v1.8.68-c15d3f5-JSON",
-      "commit": "c15d3f5a5de6e3ba5839822c451152e5e18bb700",
-      "url": "https://github.com/FaiBah/TDLibAndroidPrebuilt/releases/download/v1.8.68-c15d3f5-JSON/tdlib-JSON-armeabi-v7a.zip",
+      "source": "FaiBah/TDLibAndroidPrebuilt v1.8.69-ea3f69c-JSON",
+      "commit": "ea3f69ce11aef458bfbb09869b809ede4447486f",
+      "url": "https://github.com/FaiBah/TDLibAndroidPrebuilt/releases/download/v1.8.69-ea3f69c-JSON/tdlib-JSON-armeabi-v7a.zip",
       "format": "zip",
       "member": "libs/armeabi-v7a/libtdjson.so",
-      "sha256": "7175caeb51930691bbf03fd62c1dd79fb929281b6668a26e1137e81029d590e0"
+      "sha256": "5b0b94a339979bd37ad055112e0f9bf976e1f4ce2cfa44d377065f6a49a187c1"
     },
     "android-arm64": {
-      "source": "FaiBah/TDLibAndroidPrebuilt v1.8.68-c15d3f5-JSON",
-      "commit": "c15d3f5a5de6e3ba5839822c451152e5e18bb700",
-      "url": "https://github.com/FaiBah/TDLibAndroidPrebuilt/releases/download/v1.8.68-c15d3f5-JSON/tdlib-JSON-arm64-v8a.zip",
+      "source": "FaiBah/TDLibAndroidPrebuilt v1.8.69-ea3f69c-JSON",
+      "commit": "ea3f69ce11aef458bfbb09869b809ede4447486f",
+      "url": "https://github.com/FaiBah/TDLibAndroidPrebuilt/releases/download/v1.8.69-ea3f69c-JSON/tdlib-JSON-arm64-v8a.zip",
       "format": "zip",
       "member": "libs/arm64-v8a/libtdjson.so",
-      "sha256": "d5d2253421b2950f3b42d6d701355ba8796caeeec6b3b917528d3e8f3af98dae"
+      "sha256": "204eba3236fb40475a7d64bc512b5cc7fa580e1cbcfb9695aaf7b0d2690f5b19"
     },
     "android-ia32": {
-      "source": "FaiBah/TDLibAndroidPrebuilt v1.8.68-c15d3f5-JSON",
-      "commit": "c15d3f5a5de6e3ba5839822c451152e5e18bb700",
-      "url": "https://github.com/FaiBah/TDLibAndroidPrebuilt/releases/download/v1.8.68-c15d3f5-JSON/tdlib-JSON-x86.zip",
+      "source": "FaiBah/TDLibAndroidPrebuilt v1.8.69-ea3f69c-JSON",
+      "commit": "ea3f69ce11aef458bfbb09869b809ede4447486f",
+      "url": "https://github.com/FaiBah/TDLibAndroidPrebuilt/releases/download/v1.8.69-ea3f69c-JSON/tdlib-JSON-x86.zip",
       "format": "zip",
       "member": "libs/x86/libtdjson.so",
-      "sha256": "6953a759b6429faf8629ac6c2912197ddde0ddefd3a7c6f396702c198e22ff85"
+      "sha256": "adcabef7e4eb96be19cfc157dff3a6847b2ca0fb2651e5c39b48f3d5afbeff2f"
     },
     "android-x64": {
-      "source": "FaiBah/TDLibAndroidPrebuilt v1.8.68-c15d3f5-JSON",
-      "commit": "c15d3f5a5de6e3ba5839822c451152e5e18bb700",
-      "url": "https://github.com/FaiBah/TDLibAndroidPrebuilt/releases/download/v1.8.68-c15d3f5-JSON/tdlib-JSON-x86_64.zip",
+      "source": "FaiBah/TDLibAndroidPrebuilt v1.8.69-ea3f69c-JSON",
+      "commit": "ea3f69ce11aef458bfbb09869b809ede4447486f",
+      "url": "https://github.com/FaiBah/TDLibAndroidPrebuilt/releases/download/v1.8.69-ea3f69c-JSON/tdlib-JSON-x86_64.zip",
       "format": "zip",
       "member": "libs/x86_64/libtdjson.so",
-      "sha256": "5a365cf49641d5f59cfe8452472cd5447175123402874aa9f078cf79a09ea5d7"
+      "sha256": "854fa752740ce612261662053222def441f20f6403b79439d91e8bdb8833a28e"
     },
     "ios-arm64": {
-      "source": "Swiftgram/TDLibFramework 1.8.68-c15d3f5a",
-      "commit": "c15d3f5a5de6e3ba5839822c451152e5e18bb700",
-      "url": "https://github.com/Swiftgram/TDLibFramework/releases/download/1.8.68-c15d3f5a/TDLibFramework.zip",
+      "source": "Swiftgram/TDLibFramework 1.8.69-0e88653d",
+      "commit": "0e88653dcbf4e44c73cb655a05b58cd749a91169",
+      "url": "https://github.com/Swiftgram/TDLibFramework/releases/download/1.8.69-0e88653d/TDLibFramework.zip",
       "format": "zip",
       "member": "TDLibFramework.xcframework/ios-arm64/TDLibFramework.framework/TDLibFramework",
       "kind": "static",
-      "sha256": "c75ec69f44c4c5fc66f102d887d70ba64f3d4ed802dcb4deba995caef8054bdd"
+      "sha256": "937351471038fce19c84deb744943f614d068c37dee23f3ac18accfb3dbe6c06"
     },
     "iossimulator-arm64": {
-      "source": "Swiftgram/TDLibFramework 1.8.68-c15d3f5a",
-      "commit": "c15d3f5a5de6e3ba5839822c451152e5e18bb700",
-      "url": "https://github.com/Swiftgram/TDLibFramework/releases/download/1.8.68-c15d3f5a/TDLibFramework.zip",
+      "source": "Swiftgram/TDLibFramework 1.8.69-0e88653d",
+      "commit": "0e88653dcbf4e44c73cb655a05b58cd749a91169",
+      "url": "https://github.com/Swiftgram/TDLibFramework/releases/download/1.8.69-0e88653d/TDLibFramework.zip",
       "format": "zip",
       "member": "TDLibFramework.xcframework/ios-arm64_x86_64-simulator/TDLibFramework.framework/TDLibFramework",
       "kind": "static",
-      "sha256": "c75ec69f44c4c5fc66f102d887d70ba64f3d4ed802dcb4deba995caef8054bdd"
+      "sha256": "937351471038fce19c84deb744943f614d068c37dee23f3ac18accfb3dbe6c06"
     },
     "iossimulator-x64": {
-      "source": "Swiftgram/TDLibFramework 1.8.68-c15d3f5a",
-      "commit": "c15d3f5a5de6e3ba5839822c451152e5e18bb700",
-      "url": "https://github.com/Swiftgram/TDLibFramework/releases/download/1.8.68-c15d3f5a/TDLibFramework.zip",
+      "source": "Swiftgram/TDLibFramework 1.8.69-0e88653d",
+      "commit": "0e88653dcbf4e44c73cb655a05b58cd749a91169",
+      "url": "https://github.com/Swiftgram/TDLibFramework/releases/download/1.8.69-0e88653d/TDLibFramework.zip",
       "format": "zip",
       "member": "TDLibFramework.xcframework/ios-arm64_x86_64-simulator/TDLibFramework.framework/TDLibFramework",
       "kind": "static",
-      "sha256": "c75ec69f44c4c5fc66f102d887d70ba64f3d4ed802dcb4deba995caef8054bdd"
+      "sha256": "937351471038fce19c84deb744943f614d068c37dee23f3ac18accfb3dbe6c06"
     },
     "linux-arm64": {
-      "source": "i-Naji/libtdjson v1.8.68",
-      "commit": "c15d3f5a5de6e3ba5839822c451152e5e18bb700",
-      "url": "https://github.com/i-Naji/libtdjson/releases/download/v1.8.68/libtdjson-linux-arm64.tar.gz",
+      "source": "prebuilt-tdlib 0.1008069.0",
+      "commit": "027780b87a66a2a0e69db644e812362bb300f1e1",
+      "url": "https://registry.npmjs.org/@prebuilt-tdlib/linux-arm64-glibc/-/linux-arm64-glibc-0.1008069.0.tgz",
       "format": "tgz",
-      "member": "libtdjson.so",
-      "sha256": "87a68156cbe6403c03607e26a4a2d0a1b8490529449e97780065aaaa4392dabc"
+      "member": "package/libtdjson.so",
+      "integrity": "sha512-7F3/igQZgKjDshqwDRPI9GBFEtmoRqrmZyRdrnMcY21+a80pxLOp+DpB9hzycJg0sW3SqSdjeLRVdaCXdBF7Zw=="
     },
     "linux-x64": {
-      "source": "i-Naji/libtdjson v1.8.68",
-      "commit": "c15d3f5a5de6e3ba5839822c451152e5e18bb700",
-      "url": "https://github.com/i-Naji/libtdjson/releases/download/v1.8.68/libtdjson-linux-x64.tar.gz",
+      "source": "prebuilt-tdlib 0.1008069.0",
+      "commit": "027780b87a66a2a0e69db644e812362bb300f1e1",
+      "url": "https://registry.npmjs.org/@prebuilt-tdlib/linux-x64-glibc/-/linux-x64-glibc-0.1008069.0.tgz",
       "format": "tgz",
-      "member": "libtdjson.so",
-      "sha256": "eab14c253b54e769fb887aa67b2a84409fe8d033efb90ac46123afce4628ebc5"
+      "member": "package/libtdjson.so",
+      "integrity": "sha512-xVXNbduO/bS+zIvjy/x5RimmEuaf46DWBrxBDbVHCQ/jo/ovEwlLyILKX/1B55XHOk1743TFGh6dXreC6PmyQA=="
     },
     "macos-arm64": {
-      "source": "i-Naji/libtdjson v1.8.68",
-      "commit": "c15d3f5a5de6e3ba5839822c451152e5e18bb700",
-      "url": "https://github.com/i-Naji/libtdjson/releases/download/v1.8.68/libtdjson-macos-universal.tar.gz",
+      "source": "prebuilt-tdlib 0.1008069.0",
+      "commit": "027780b87a66a2a0e69db644e812362bb300f1e1",
+      "url": "https://registry.npmjs.org/@prebuilt-tdlib/darwin-arm64/-/darwin-arm64-0.1008069.0.tgz",
       "format": "tgz",
-      "member": "libtdjson.dylib",
-      "sha256": "09ccd3935a4eeb1ea1c7b177bec5917617fc58fb2954074e60be00a59a6cb90c",
-      "kind": "fat"
+      "member": "package/libtdjson.dylib",
+      "integrity": "sha512-PYOdN/ySXep3my+UhJ6ZCw3HNU6hl4fBbtQklv+Jsnl1U/ry+eQCS4/LJVvysIdTUa4DhvSUPSf+lQBPt5tJZg=="
     },
     "macos-x64": {
-      "source": "i-Naji/libtdjson v1.8.68",
-      "commit": "c15d3f5a5de6e3ba5839822c451152e5e18bb700",
-      "url": "https://github.com/i-Naji/libtdjson/releases/download/v1.8.68/libtdjson-macos-universal.tar.gz",
+      "source": "prebuilt-tdlib 0.1008069.0",
+      "commit": "027780b87a66a2a0e69db644e812362bb300f1e1",
+      "url": "https://registry.npmjs.org/@prebuilt-tdlib/darwin-x64/-/darwin-x64-0.1008069.0.tgz",
       "format": "tgz",
-      "member": "libtdjson.dylib",
-      "sha256": "09ccd3935a4eeb1ea1c7b177bec5917617fc58fb2954074e60be00a59a6cb90c",
-      "kind": "fat"
+      "member": "package/libtdjson.dylib",
+      "integrity": "sha512-8LIjz4n7/Ss2QdS1zvs2hFJN3pTbnXR0egh1ZgM3fw0F6lEUnRyJhd5SM+04v7mqcHS17lPvPC63s1g81Iv+Cg=="
     },
     "windows-x64": {
-      "source": "i-Naji/libtdjson v1.8.68",
-      "commit": "c15d3f5a5de6e3ba5839822c451152e5e18bb700",
-      "url": "https://github.com/i-Naji/libtdjson/releases/download/v1.8.68/libtdjson-windows-x64.tar.gz",
+      "source": "prebuilt-tdlib 0.1008069.0",
+      "commit": "027780b87a66a2a0e69db644e812362bb300f1e1",
+      "url": "https://registry.npmjs.org/@prebuilt-tdlib/win32-x64/-/win32-x64-0.1008069.0.tgz",
       "format": "tgz",
-      "member": "tdjson.dll",
-      "sha256": "bb0c75ab4ab7b95aa2dea21fdfe0834756024b4fc1ee37549d9cd199e12fae22"
+      "member": "package/tdjson.dll",
+      "integrity": "sha512-qXyUiDS3e1dQkYNHtTS1alv4m3iBJwQGxcoYGEnrPLq7fjGMc4e3fj1+YlxMDVQBsF+eGbseh2j+1P/FCmkaBg=="
     }
   }
 }
