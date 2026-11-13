@@ -8,8 +8,8 @@ linter:
     always_declare_return_types: true
 
 analyzer:
-  # exclude:
-  #  - generator/generate.dart
+  exclude:
+    - build/**
   errors:
     dead_code: info
     todo: info

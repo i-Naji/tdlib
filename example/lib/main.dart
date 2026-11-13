@@ -6,7 +6,7 @@
 
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tdlib/td_lifecycle.dart';
 import 'package:tdlib/td_runtime.dart' as td;
