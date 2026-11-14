@@ -168,14 +168,17 @@ Future<File> _download(
       client.findProxy = (_) => 'PROXY $proxy';
     }
     try {
-      final response = await (await client.getUrl(url)).close();
-      if (response.statusCode != HttpStatus.ok) {
-        throw HttpException(
-          'tdlib: download failed (${response.statusCode})',
-          uri: url,
-        );
+      // Slow or flaky connections drop large downloads (the iOS build is
+      // ~370 MB): retry, continuing from what is already on disk.
+      for (var attempt = 1; ; attempt++) {
+        try {
+          await _fetch(client, url, partial);
+          break;
+        } on IOException {
+          if (attempt == 5) rethrow;
+          await Future<void>.delayed(Duration(seconds: 2 * attempt));
+        }
       }
-      await response.pipe(partial.openWrite());
     } finally {
       client.close(force: true);
     }
@@ -189,6 +192,30 @@ Future<File> _download(
     );
   }
   return partial.rename(file.path);
+}
+
+/// Downloads [url] into [partial], resuming it if it already has data.
+Future<void> _fetch(HttpClient client, Uri url, File partial) async {
+  final have = await partial.exists() ? await partial.length() : 0;
+  final request = await client.getUrl(url);
+  if (have > 0) request.headers.set(HttpHeaders.rangeHeader, 'bytes=$have-');
+  final response = await request.close();
+  final resumed = response.statusCode == HttpStatus.partialContent;
+  if (!resumed && response.statusCode != HttpStatus.ok) {
+    await response.drain<void>();
+    throw HttpException(
+      'tdlib: download failed (${response.statusCode})',
+      uri: url,
+    );
+  }
+  final sink = partial.openWrite(
+    mode: resumed ? FileMode.append : FileMode.write,
+  );
+  try {
+    await response.pipe(sink);
+  } finally {
+    await sink.close().catchError((_) {});
+  }
 }
 
 /// Extracts [member] from a zip or tgz [archive] to [out] (once).
