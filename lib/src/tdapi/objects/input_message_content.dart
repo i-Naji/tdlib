@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// The content of a message to send
 ///
-/// One of: [InputMessageText], [InputMessageRichMessage], [InputMessageAnimation], [InputMessageAudio], [InputMessageDocument], [InputMessagePaidMedia], [InputMessagePhoto], [InputMessageSticker], [InputMessageVideo], [InputMessageVideoNote], [InputMessageVoiceNote], [InputMessageLiveLocation], [InputMessageLocation], [InputMessageVenue], [InputMessageContact], [InputMessageDice], [InputMessageGame], [InputMessageInvoice], [InputMessagePoll], [InputMessageStakeDice], [InputMessageStory], [InputMessageChecklist], [InputMessageForwarded]; or [UndecodedInputMessageContent] for a type newer than this API.
+/// One of: [InputMessageText], [InputMessageRichMessage], [InputMessageAnimation], [InputMessageAudio], [InputMessageDocument], [InputMessagePaidMedia], [InputMessagePhoto], [InputMessageSticker], [InputMessageVideo], [InputMessageVideoNote], [InputMessageVoiceNote], [InputMessageLiveLocation], [InputMessageLocation], [InputMessageVenue], [InputMessageContact], [InputMessageDice], [InputMessageGame], [InputMessageInvoice], [InputMessagePoll], [InputMessageStakeDice], [InputMessageStory], [InputMessageChecklist], [InputMessageWidget], [InputMessageSharedWidget], [InputMessageForwarded]; or [UndecodedInputMessageContent] for a type newer than this API.
 sealed class InputMessageContent extends TdObject {
   const InputMessageContent();
 
@@ -1302,6 +1302,170 @@ final class InputMessageChecklist extends InputMessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageChecklist';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A message with an HTML widget; for bots only
+final class InputMessageWidget extends InputMessageContent {
+  /// A message with an HTML widget; for bots only
+  const InputMessageWidget({
+    required this.width,
+    required this.height,
+    required this.html,
+    required this.publicData,
+    required this.chatData,
+    this.caption,
+    required this.showCaptionAboveMedia,
+    required this.allowQueries,
+    required this.isShared,
+  });
+
+  /// Width of the widget; 0 if the widget must occupy the whole width of the message bubble
+  final int width;
+
+  /// Height of the widget; 0 if the height of the widget isn't fixed
+  final int height;
+
+  /// HTML code of the widget; 1-32768 bytes; must not exceed 4096 bytes when compressed by zlib with the maximal compression level
+  final String html;
+
+  /// Public data of the widget, which will be available in copies and forwards of the message
+  final String publicData;
+
+  /// Data of the widget, which is specific to the chat
+  final String chatData;
+
+  /// Widget caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  final FormattedText? caption;
+
+  /// True, if the caption must be shown above the widget; otherwise, the caption must be shown below the widget
+  final bool showCaptionAboveMedia;
+
+  /// Pass true to allow the widget to send queries to the bot
+  final bool allowQueries;
+
+  /// Pass true to create a shared widget, which can be sent again by its identifier
+  final bool isShared;
+
+  /// Parses a [InputMessageWidget] from TDLib JSON.
+  factory InputMessageWidget.fromJson(Map<String, dynamic> json) =>
+      InputMessageWidget(
+        width: _readInt(json['width']),
+        height: _readInt(json['height']),
+        html: _readString(json['html']),
+        publicData: _readString(json['public_data']),
+        chatData: _readString(json['chat_data']),
+        caption: _readOptional(json['caption'], FormattedText.fromJson),
+        showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
+        allowQueries: _readBool(json['allow_queries']),
+        isShared: _readBool(json['is_shared']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'width': width,
+    'height': height,
+    'html': html,
+    'public_data': publicData,
+    'chat_data': chatData,
+    'caption': caption?.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    'allow_queries': allowQueries,
+    'is_shared': isShared,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputMessageWidget copyWith({
+    int? width,
+    int? height,
+    String? html,
+    String? publicData,
+    String? chatData,
+    FormattedText? Function()? caption,
+    bool? showCaptionAboveMedia,
+    bool? allowQueries,
+    bool? isShared,
+  }) => InputMessageWidget(
+    width: width ?? this.width,
+    height: height ?? this.height,
+    html: html ?? this.html,
+    publicData: publicData ?? this.publicData,
+    chatData: chatData ?? this.chatData,
+    caption: caption != null ? caption() : this.caption,
+    showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+    allowQueries: allowQueries ?? this.allowQueries,
+    isShared: isShared ?? this.isShared,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputMessageWidget';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A message with an existing shared widget; for bots only
+final class InputMessageSharedWidget extends InputMessageContent {
+  /// A message with an existing shared widget; for bots only
+  const InputMessageSharedWidget({
+    required this.widgetId,
+    required this.chatData,
+    this.caption,
+    required this.showCaptionAboveMedia,
+  });
+
+  /// Identifier of the shared widget
+  final int widgetId;
+
+  /// Data of the widget, which is specific to the chat
+  final String chatData;
+
+  /// Widget caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  final FormattedText? caption;
+
+  /// True, if the caption must be shown above the widget; otherwise, the caption must be shown below the widget
+  final bool showCaptionAboveMedia;
+
+  /// Parses a [InputMessageSharedWidget] from TDLib JSON.
+  factory InputMessageSharedWidget.fromJson(Map<String, dynamic> json) =>
+      InputMessageSharedWidget(
+        widgetId: _readInt(json['widget_id']),
+        chatData: _readString(json['chat_data']),
+        caption: _readOptional(json['caption'], FormattedText.fromJson),
+        showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'widget_id': widgetId.toString(),
+    'chat_data': chatData,
+    'caption': caption?.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputMessageSharedWidget copyWith({
+    int? widgetId,
+    String? chatData,
+    FormattedText? Function()? caption,
+    bool? showCaptionAboveMedia,
+  }) => InputMessageSharedWidget(
+    widgetId: widgetId ?? this.widgetId,
+    chatData: chatData ?? this.chatData,
+    caption: caption != null ? caption() : this.caption,
+    showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputMessageSharedWidget';
 
   @override
   String getConstructor() => CONSTRUCTOR;

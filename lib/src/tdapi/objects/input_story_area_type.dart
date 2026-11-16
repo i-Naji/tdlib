@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of clickable area on a story media to be added
 ///
-/// One of: [InputStoryAreaTypeLocation], [InputStoryAreaTypeFoundVenue], [InputStoryAreaTypePreviousVenue], [InputStoryAreaTypeSuggestedReaction], [InputStoryAreaTypeMessage], [InputStoryAreaTypeLink], [InputStoryAreaTypeWeather], [InputStoryAreaTypeUpgradedGift]; or [UndecodedInputStoryAreaType] for a type newer than this API.
+/// One of: [InputStoryAreaTypeLocation], [InputStoryAreaTypePreviousVenue], [InputStoryAreaTypeSuggestedReaction], [InputStoryAreaTypeMessage], [InputStoryAreaTypeLink], [InputStoryAreaTypeWeather], [InputStoryAreaTypeUpgradedGift]; or [UndecodedInputStoryAreaType] for a type newer than this API.
 sealed class InputStoryAreaType extends TdObject {
   const InputStoryAreaType();
 
@@ -82,50 +82,6 @@ final class InputStoryAreaTypeLocation extends InputStoryAreaType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputStoryAreaTypeLocation';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// An area pointing to a venue found by the bot getOption("venue_search_bot_username")
-final class InputStoryAreaTypeFoundVenue extends InputStoryAreaType {
-  /// An area pointing to a venue found by the bot getOption("venue_search_bot_username")
-  const InputStoryAreaTypeFoundVenue({
-    required this.queryId,
-    required this.resultId,
-  });
-
-  /// Identifier of the inline query, used to find the venue
-  final int queryId;
-
-  /// Identifier of the inline query result
-  final String resultId;
-
-  /// Parses a [InputStoryAreaTypeFoundVenue] from TDLib JSON.
-  factory InputStoryAreaTypeFoundVenue.fromJson(Map<String, dynamic> json) =>
-      InputStoryAreaTypeFoundVenue(
-        queryId: _readInt(json['query_id']),
-        resultId: _readString(json['result_id']),
-      );
-
-  @override
-  Map<String, dynamic> toJson() => {
-    '@type': CONSTRUCTOR,
-    'query_id': queryId.toString(),
-    'result_id': resultId,
-  };
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  InputStoryAreaTypeFoundVenue copyWith({int? queryId, String? resultId}) =>
-      InputStoryAreaTypeFoundVenue(
-        queryId: queryId ?? this.queryId,
-        resultId: resultId ?? this.resultId,
-      );
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'inputStoryAreaTypeFoundVenue';
 
   @override
   String getConstructor() => CONSTRUCTOR;

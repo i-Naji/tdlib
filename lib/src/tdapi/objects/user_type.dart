@@ -99,6 +99,7 @@ final class UserTypeBot extends UserType {
     required this.canReadAllGroupMessages,
     required this.hasMainWebApp,
     required this.hasTopics,
+    required this.hasTopicSidebar,
     required this.allowsUsersToCreateTopics,
     required this.canManageBots,
     required this.isInline,
@@ -125,6 +126,9 @@ final class UserTypeBot extends UserType {
 
   /// True, if the bot has topics
   final bool hasTopics;
+
+  /// True, if the bot has topics, which are shown in a sidebar
+  final bool hasTopicSidebar;
 
   /// True, if users can create and delete topics in the chat with the bot
   final bool allowsUsersToCreateTopics;
@@ -163,6 +167,7 @@ final class UserTypeBot extends UserType {
     canReadAllGroupMessages: _readBool(json['can_read_all_group_messages']),
     hasMainWebApp: _readBool(json['has_main_web_app']),
     hasTopics: _readBool(json['has_topics']),
+    hasTopicSidebar: _readBool(json['has_topic_sidebar']),
     allowsUsersToCreateTopics: _readBool(json['allows_users_to_create_topics']),
     canManageBots: _readBool(json['can_manage_bots']),
     isInline: _readBool(json['is_inline']),
@@ -185,6 +190,7 @@ final class UserTypeBot extends UserType {
     'can_read_all_group_messages': canReadAllGroupMessages,
     'has_main_web_app': hasMainWebApp,
     'has_topics': hasTopics,
+    'has_topic_sidebar': hasTopicSidebar,
     'allows_users_to_create_topics': allowsUsersToCreateTopics,
     'can_manage_bots': canManageBots,
     'is_inline': isInline,
@@ -206,6 +212,7 @@ final class UserTypeBot extends UserType {
     bool? canReadAllGroupMessages,
     bool? hasMainWebApp,
     bool? hasTopics,
+    bool? hasTopicSidebar,
     bool? allowsUsersToCreateTopics,
     bool? canManageBots,
     bool? isInline,
@@ -223,6 +230,7 @@ final class UserTypeBot extends UserType {
         canReadAllGroupMessages ?? this.canReadAllGroupMessages,
     hasMainWebApp: hasMainWebApp ?? this.hasMainWebApp,
     hasTopics: hasTopics ?? this.hasTopics,
+    hasTopicSidebar: hasTopicSidebar ?? this.hasTopicSidebar,
     allowsUsersToCreateTopics:
         allowsUsersToCreateTopics ?? this.allowsUsersToCreateTopics,
     canManageBots: canManageBots ?? this.canManageBots,

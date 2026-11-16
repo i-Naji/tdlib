@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns an HTTPS link to a topic in a forum supergroup chat. This is an offline method
+/// Returns an HTTPS link to a topic in a forum supergroup chat or a chat with a bot. This is an offline method
 ///
 /// Returns [MessageLink].
 final class GetForumTopicLink extends TdFunction<MessageLink> {
-  /// Returns an HTTPS link to a topic in a forum supergroup chat. This is an offline method
+  /// Returns an HTTPS link to a topic in a forum supergroup chat or a chat with a bot. This is an offline method
   const GetForumTopicLink({required this.chatId, required this.forumTopicId});
 
   /// Identifier of the chat

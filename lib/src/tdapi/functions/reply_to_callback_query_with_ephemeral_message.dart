@@ -3,11 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Replies to a callback query with an ephemeral message; for bots only
+/// Replies to a callback query with an ephemeral message; for bots only. Returns the sent message
 ///
-/// Returns [Ok].
-final class ReplyToCallbackQueryWithEphemeralMessage extends TdFunction<Ok> {
-  /// Replies to a callback query with an ephemeral message; for bots only
+/// Returns [Message].
+final class ReplyToCallbackQueryWithEphemeralMessage
+    extends TdFunction<Message> {
+  /// Replies to a callback query with an ephemeral message; for bots only. Returns the sent message
   const ReplyToCallbackQueryWithEphemeralMessage({
     required this.callbackQueryId,
     required this.replaceCallbackQueryMessage,
@@ -28,7 +29,7 @@ final class ReplyToCallbackQueryWithEphemeralMessage extends TdFunction<Ok> {
   /// The new message reply markup; pass null if none
   final ReplyMarkup? replyMarkup;
 
-  /// New content of the message. Must be one of the following types: inputMessageText, inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto, inputMessageRichMessage, inputMessageSticker, inputMessageVideo, inputMessageVideoNote, inputMessageVoiceNote
+  /// New content of the message. Must be one of the following types: inputMessageText, inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto, inputMessageRichMessage, inputMessageSticker, inputMessageVideo, inputMessageVideoNote, inputMessageVoiceNote, inputMessageLocation, inputMessageVenue, inputMessageContact
   final InputMessageContent inputMessageContent;
 
   @override

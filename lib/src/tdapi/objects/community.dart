@@ -14,6 +14,7 @@ final class Community extends TdObject {
     required this.date,
     required this.status,
     required this.permissions,
+    required this.areChatsCollapsed,
   });
 
   /// Community identifier
@@ -37,6 +38,9 @@ final class Community extends TdObject {
   /// Actions that non-administrator community members are allowed to take in the community
   final CommunityPermissions permissions;
 
+  /// True, if all chats of the community are collapsed into one entry in the chat list
+  final bool areChatsCollapsed;
+
   /// Parses a [Community] from TDLib JSON.
   factory Community.fromJson(Map<String, dynamic> json) => Community(
     id: _readInt(json['id']),
@@ -49,6 +53,7 @@ final class Community extends TdObject {
       json['permissions'],
       CommunityPermissions.fromJson,
     ),
+    areChatsCollapsed: _readBool(json['are_chats_collapsed']),
   );
 
   @override
@@ -61,6 +66,7 @@ final class Community extends TdObject {
     'date': date,
     'status': status.toJson(),
     'permissions': permissions.toJson(),
+    'are_chats_collapsed': areChatsCollapsed,
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -73,6 +79,7 @@ final class Community extends TdObject {
     int? date,
     CommunityMemberStatus? status,
     CommunityPermissions? permissions,
+    bool? areChatsCollapsed,
   }) => Community(
     id: id ?? this.id,
     haveAccess: haveAccess ?? this.haveAccess,
@@ -81,6 +88,7 @@ final class Community extends TdObject {
     date: date ?? this.date,
     status: status ?? this.status,
     permissions: permissions ?? this.permissions,
+    areChatsCollapsed: areChatsCollapsed ?? this.areChatsCollapsed,
   );
 
   /// TDLib type name.

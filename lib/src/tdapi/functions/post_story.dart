@@ -13,6 +13,7 @@ final class PostStory extends TdFunction<Story> {
     required this.content,
     this.areas,
     this.caption,
+    this.music,
     required this.privacySettings,
     required this.albumIds,
     required this.activePeriod,
@@ -32,6 +33,9 @@ final class PostStory extends TdFunction<Story> {
 
   /// Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters; can have entities only if getOption("can_use_text_entities_in_story_caption")
   final FormattedText? caption;
+
+  /// Music to be attached to the story; pass null if none. The music can be up to 60 seconds long. The bot getOption("audio_search_bot_username") can be used to find the music files
+  final InputAudio? music;
 
   /// The privacy settings for the story; ignored for stories posted on behalf of supergroup and channel chats
   final StoryPrivacySettings privacySettings;
@@ -58,6 +62,7 @@ final class PostStory extends TdFunction<Story> {
     'content': content.toJson(),
     'areas': areas?.toJson(),
     'caption': caption?.toJson(),
+    'music': music?.toJson(),
     'privacy_settings': privacySettings.toJson(),
     'album_ids': albumIds,
     'active_period': activePeriod,
@@ -74,6 +79,7 @@ final class PostStory extends TdFunction<Story> {
     InputStoryContent? content,
     InputStoryAreas? Function()? areas,
     FormattedText? Function()? caption,
+    InputAudio? Function()? music,
     StoryPrivacySettings? privacySettings,
     List<int>? albumIds,
     int? activePeriod,
@@ -85,6 +91,7 @@ final class PostStory extends TdFunction<Story> {
     content: content ?? this.content,
     areas: areas != null ? areas() : this.areas,
     caption: caption != null ? caption() : this.caption,
+    music: music != null ? music() : this.music,
     privacySettings: privacySettings ?? this.privacySettings,
     albumIds: albumIds ?? this.albumIds,
     activePeriod: activePeriod ?? this.activePeriod,

@@ -21,7 +21,7 @@ final class ReportChat extends TdFunction<ReportChatResult> {
   /// Option identifier chosen by the user; leave empty for the initial request
   final String optionId;
 
-  /// Identifiers of reported messages. Use messageProperties.can_report_chat to check whether the message can be reported
+  /// Identifiers of reported messages. Use messageProperties.can_report_chat to check whether the message can be reported. Ephemeral messages must be reported separately
   final List<int> messageIds;
 
   /// Additional report details if asked by the server; 0-1024 characters; leave empty for the initial request

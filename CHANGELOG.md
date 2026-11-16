@@ -1,3 +1,9 @@
+## 1.8.70
+* Update tdlib to **1.8.70** (`c8828d50f`), objects +20/−1/~14, functions +23/−0/~4.
+* iOS build is from `23383aef2`, `replyToCallbackQueryWithEphemeralMessage` returns `Ok` there.
+* Retry and resume tdjson downloads.
+* Update the web package to TDLib 1.8.70.
+
 ## 1.8.69
 * Update tdlib to **1.8.69** (`027780b87`), objects +30/−1/~15, functions +11/−0/~4.
 * Update the web package to TDLib 1.8.69.

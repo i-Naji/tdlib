@@ -47,7 +47,7 @@ final class TonWalletTransactions extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'gram_amount': gramAmount,
+    'gram_amount': gramAmount.toString(),
     'transactions': [for (final e in transactions) e.toJson()],
     'next_offset': nextOffset,
   };

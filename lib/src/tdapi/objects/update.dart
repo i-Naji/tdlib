@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains notifications about data changes
 ///
-/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEphemeralContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageContainsUnreadPollVotes], [UpdateMessageFactCheck], [UpdateMessageSuggestedPostInfo], [UpdateMessageLiveLocationViewed], [UpdateVideoPublished], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColors], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatAddedToList], [UpdateChatRemovedFromList], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatBusinessBotManageBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatEmojiStatus], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatUnreadPollVoteCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatViewAsTopics], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatHasWelcomeMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateSavedMessagesTopic], [UpdateSavedMessagesTopicCount], [UpdateDirectMessagesChatTopic], [UpdateTopicMessageCount], [UpdateQuickReplyShortcut], [UpdateQuickReplyShortcutDeleted], [UpdateQuickReplyShortcuts], [UpdateQuickReplyShortcutMessages], [UpdateChatWelcomeMessages], [UpdateForumTopicInfo], [UpdateForumTopic], [UpdateScopeNotificationSettings], [UpdateReactionNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdatePendingMessage], [UpdateStopMessageDraft], [UpdateCommunity], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateCommunityFullInfo], [UpdateServiceNotification], [UpdateNewOauthRequest], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateApplicationVerificationRequired], [UpdateApplicationRecaptchaVerificationRequired], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateGroupCallParticipants], [UpdateGroupCallVerificationState], [UpdateNewGroupCallMessage], [UpdateNewGroupCallPaidReaction], [UpdateGroupCallMessageSendFailed], [UpdateGroupCallMessagesDeleted], [UpdateLiveStoryTopDonors], [UpdateNewCallSignalingData], [UpdateGiftAuctionState], [UpdateActiveGiftAuctions], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateChatJoinResult], [UpdateStory], [UpdateStoryDeleted], [UpdateStoryPostSucceeded], [UpdateStoryPostFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateAllowedBotUsernamePremiumSuffixes], [UpdateTrustedMiniAppBots], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateDefaultBackground], [UpdateEmojiChatThemes], [UpdateAccentColors], [UpdateProfileAccentColors], [UpdateWebBrowserSettings], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateWebProxyCarrierOpened], [UpdateWebProxyCarrierData], [UpdateWebProxyCarrierClosed], [UpdateFreezeState], [UpdateAgeVerificationParameters], [UpdateTermsOfService], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateAvailableMessageEffects], [UpdateDefaultReactionType], [UpdateDefaultPaidReactionType], [UpdateSavedMessagesTags], [UpdateActiveLiveLocationMessages], [UpdateOwnedStarCount], [UpdateOwnedGramCount], [UpdateTonWalletState], [UpdateTonWalletGaslessTransfersInfo], [UpdateTonWalletTonConnectSession], [UpdateTonWalletTonConnectSessionDisconnectRequired], [UpdateChatRevenueAmount], [UpdateStarRevenueStatus], [UpdateGramRevenueStatus], [UpdateSpeechRecognitionTrial], [UpdateGroupCallMessageLevels], [UpdateDiceEmojis], [UpdateStakeDiceState], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateTextCompositionStyles], [UpdateSuggestedActions], [UpdateSpeedLimitNotification], [UpdateContactCloseBirthdays], [UpdateAutosaveSettings], [UpdateBusinessConnection], [UpdateNewBusinessMessage], [UpdateBusinessMessageEdited], [UpdateBusinessMessagesDeleted], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewGuestQuery], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewBusinessCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdateUserSubscription], [UpdatePoll], [UpdatePollAnswer], [UpdateManagedBot], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost], [UpdateMessageReaction], [UpdateMessageReactions], [UpdatePaidMediaPurchased]; or [UndecodedUpdate] for a type newer than this API.
+/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEphemeralContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageContainsUnreadPollVotes], [UpdateMessageFactCheck], [UpdateMessageSuggestedPostInfo], [UpdateMessageLiveLocationViewed], [UpdateVideoPublished], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColors], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatAddedToList], [UpdateChatRemovedFromList], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatBusinessBotManageBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatEmojiStatus], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatUnreadPollVoteCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatViewAsTopics], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatHasWelcomeMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateSavedMessagesTopic], [UpdateSavedMessagesTopicCount], [UpdateDirectMessagesChatTopic], [UpdateTopicMessageCount], [UpdateQuickReplyShortcut], [UpdateQuickReplyShortcutDeleted], [UpdateQuickReplyShortcuts], [UpdateQuickReplyShortcutMessages], [UpdateChatWelcomeMessages], [UpdateForumTopicInfo], [UpdateForumTopic], [UpdateScopeNotificationSettings], [UpdateReactionNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdatePendingMessage], [UpdateStopMessageDraft], [UpdateCommunity], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateCommunityFullInfo], [UpdateServiceNotification], [UpdateNewOauthRequest], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateApplicationVerificationRequired], [UpdateApplicationRecaptchaVerificationRequired], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateGroupCallParticipants], [UpdateGroupCallVerificationState], [UpdateNewGroupCallMessage], [UpdateNewGroupCallPaidReaction], [UpdateGroupCallMessageSendFailed], [UpdateGroupCallMessagesDeleted], [UpdateLiveStoryTopDonors], [UpdateNewCallSignalingData], [UpdateGiftAuctionState], [UpdateActiveGiftAuctions], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateChatJoinResult], [UpdateStory], [UpdateStoryDeleted], [UpdateStoryPostSucceeded], [UpdateStoryPostFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateAllowedBotUsernamePremiumSuffixes], [UpdateTrustedMiniAppBots], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateDefaultBackground], [UpdateEmojiChatThemes], [UpdateAccentColors], [UpdateProfileAccentColors], [UpdateWebBrowserSettings], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateWebProxyCarrierOpened], [UpdateWebProxyCarrierData], [UpdateWebProxyCarrierClosed], [UpdateFreezeState], [UpdateAgeVerificationParameters], [UpdateTermsOfService], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateAvailableMessageEffects], [UpdateDefaultReactionType], [UpdateDefaultPaidReactionType], [UpdateSavedMessagesTags], [UpdateActiveLiveLocationMessages], [UpdateOwnedStarCount], [UpdateOwnedGramCount], [UpdateTonWalletState], [UpdateTonWalletGaslessTransfersInfo], [UpdateTonWalletTonConnectSession], [UpdateTonWalletTonConnectSessionDisconnectRequired], [UpdateChatRevenueAmount], [UpdateStarRevenueStatus], [UpdateGramRevenueStatus], [UpdateSpeechRecognitionTrial], [UpdateSpeechRecognitionInFile], [UpdateGroupCallMessageLevels], [UpdateDiceEmojis], [UpdateStakeDiceState], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateTextCompositionStyles], [UpdateSuggestedActions], [UpdateSpeedLimitNotification], [UpdateContactCloseBirthdays], [UpdateAutosaveSettings], [UpdateBusinessConnection], [UpdateNewBusinessMessage], [UpdateBusinessMessageEdited], [UpdateBusinessMessagesDeleted], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewGuestQuery], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewBusinessCallbackQuery], [UpdateNewWidgetQuery], [UpdateNewInlineWidgetQuery], [UpdateNewWidgetCopyQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdateUserSubscription], [UpdatePoll], [UpdatePollAnswer], [UpdateManagedBot], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost], [UpdateMessageReaction], [UpdateMessageReactions], [UpdatePaidMediaPurchased]; or [UndecodedUpdate] for a type newer than this API.
 sealed class Update extends TdObject {
   const Update();
 
@@ -10407,6 +10407,68 @@ final class UpdateSpeechRecognitionTrial extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// Speech in an audio file was partially recognized. The final result will be returned by the corresponding recognizeSpeechInFile request
+final class UpdateSpeechRecognitionInFile extends Update {
+  /// Speech in an audio file was partially recognized. The final result will be returned by the corresponding recognizeSpeechInFile request
+  const UpdateSpeechRecognitionInFile({
+    required this.recognitionId,
+    required this.partialText,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Identifier of the speech recognition as specified in recognizeSpeechInFile
+  final int recognitionId;
+
+  /// Partially recognized text
+  final String partialText;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateSpeechRecognitionInFile] from TDLib JSON.
+  factory UpdateSpeechRecognitionInFile.fromJson(Map<String, dynamic> json) =>
+      UpdateSpeechRecognitionInFile(
+        recognitionId: _readInt(json['recognition_id']),
+        partialText: _readString(json['partial_text']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'recognition_id': recognitionId.toString(),
+    'partial_text': partialText,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateSpeechRecognitionInFile copyWith({
+    int? recognitionId,
+    String? partialText,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateSpeechRecognitionInFile(
+    recognitionId: recognitionId ?? this.recognitionId,
+    partialText: partialText ?? this.partialText,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateSpeechRecognitionInFile';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// The levels of live story group call messages have changed
 final class UpdateGroupCallMessageLevels extends Update {
   /// The levels of live story group call messages have changed
@@ -11768,6 +11830,344 @@ final class UpdateNewBusinessCallbackQuery extends Update {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateNewBusinessCallbackQuery';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A new incoming widget query; for bots only
+final class UpdateNewWidgetQuery extends Update {
+  /// A new incoming widget query; for bots only
+  const UpdateNewWidgetQuery({
+    required this.id,
+    required this.senderUserId,
+    required this.chatId,
+    required this.messageId,
+    required this.chatInstance,
+    required this.chatType,
+    required this.queryType,
+    required this.data,
+    required this.widgetId,
+    this.walletCard,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Unique query identifier
+  final int id;
+
+  /// Identifier of the user who sent the query
+  final int senderUserId;
+
+  /// Identifier of the chat where the query was sent
+  final int chatId;
+
+  /// Identifier of the message from which the query originated
+  final int messageId;
+
+  /// Identifier that uniquely corresponds to the chat to which the message was sent
+  final int chatInstance;
+
+  /// Type of the chat to which the message was sent
+  final String chatType;
+
+  /// Type of the query
+  final WidgetQueryType queryType;
+
+  /// Data of the query
+  final String data;
+
+  /// Identifier of the shared widget from which the query originated; 0 if the widget isn't shared
+  final int widgetId;
+
+  /// TON wallet card of the user who sent the query; may be null if none
+  final TonWalletCard? walletCard;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateNewWidgetQuery] from TDLib JSON.
+  factory UpdateNewWidgetQuery.fromJson(Map<String, dynamic> json) =>
+      UpdateNewWidgetQuery(
+        id: _readInt(json['id']),
+        senderUserId: _readInt(json['sender_user_id']),
+        chatId: _readInt(json['chat_id']),
+        messageId: _readInt(json['message_id']),
+        chatInstance: _readInt(json['chat_instance']),
+        chatType: _readString(json['chat_type']),
+        queryType: _readObject(json['query_type'], WidgetQueryType.fromJson),
+        data: _readString(json['data']),
+        widgetId: _readInt(json['widget_id']),
+        walletCard: _readOptional(json['wallet_card'], TonWalletCard.fromJson),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'sender_user_id': senderUserId,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'chat_instance': chatInstance.toString(),
+    'chat_type': chatType,
+    'query_type': queryType.toJson(),
+    'data': data,
+    'widget_id': widgetId.toString(),
+    'wallet_card': walletCard?.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateNewWidgetQuery copyWith({
+    int? id,
+    int? senderUserId,
+    int? chatId,
+    int? messageId,
+    int? chatInstance,
+    String? chatType,
+    WidgetQueryType? queryType,
+    String? data,
+    int? widgetId,
+    TonWalletCard? Function()? walletCard,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateNewWidgetQuery(
+    id: id ?? this.id,
+    senderUserId: senderUserId ?? this.senderUserId,
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    chatInstance: chatInstance ?? this.chatInstance,
+    chatType: chatType ?? this.chatType,
+    queryType: queryType ?? this.queryType,
+    data: data ?? this.data,
+    widgetId: widgetId ?? this.widgetId,
+    walletCard: walletCard != null ? walletCard() : this.walletCard,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateNewWidgetQuery';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A new incoming widget query from a message sent via a bot; for bots only
+final class UpdateNewInlineWidgetQuery extends Update {
+  /// A new incoming widget query from a message sent via a bot; for bots only
+  const UpdateNewInlineWidgetQuery({
+    required this.id,
+    required this.senderUserId,
+    required this.inlineMessageId,
+    required this.chatInstance,
+    required this.chatType,
+    required this.queryType,
+    required this.data,
+    required this.widgetId,
+    this.walletCard,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Unique query identifier
+  final int id;
+
+  /// Identifier of the user who sent the query
+  final int senderUserId;
+
+  /// Identifier of the inline message from which the query originated
+  final String inlineMessageId;
+
+  /// Identifier that uniquely corresponds to the chat to which the message was sent
+  final int chatInstance;
+
+  /// Type of the chat to which the message was sent
+  final String chatType;
+
+  /// Type of the query
+  final WidgetQueryType queryType;
+
+  /// Data of the query
+  final String data;
+
+  /// Identifier of the shared widget from which the query originated; 0 if the widget isn't shared
+  final int widgetId;
+
+  /// TON wallet card of the user who sent the query; may be null if none
+  final TonWalletCard? walletCard;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateNewInlineWidgetQuery] from TDLib JSON.
+  factory UpdateNewInlineWidgetQuery.fromJson(Map<String, dynamic> json) =>
+      UpdateNewInlineWidgetQuery(
+        id: _readInt(json['id']),
+        senderUserId: _readInt(json['sender_user_id']),
+        inlineMessageId: _readString(json['inline_message_id']),
+        chatInstance: _readInt(json['chat_instance']),
+        chatType: _readString(json['chat_type']),
+        queryType: _readObject(json['query_type'], WidgetQueryType.fromJson),
+        data: _readString(json['data']),
+        widgetId: _readInt(json['widget_id']),
+        walletCard: _readOptional(json['wallet_card'], TonWalletCard.fromJson),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'sender_user_id': senderUserId,
+    'inline_message_id': inlineMessageId,
+    'chat_instance': chatInstance.toString(),
+    'chat_type': chatType,
+    'query_type': queryType.toJson(),
+    'data': data,
+    'widget_id': widgetId.toString(),
+    'wallet_card': walletCard?.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateNewInlineWidgetQuery copyWith({
+    int? id,
+    int? senderUserId,
+    String? inlineMessageId,
+    int? chatInstance,
+    String? chatType,
+    WidgetQueryType? queryType,
+    String? data,
+    int? widgetId,
+    TonWalletCard? Function()? walletCard,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateNewInlineWidgetQuery(
+    id: id ?? this.id,
+    senderUserId: senderUserId ?? this.senderUserId,
+    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+    chatInstance: chatInstance ?? this.chatInstance,
+    chatType: chatType ?? this.chatType,
+    queryType: queryType ?? this.queryType,
+    data: data ?? this.data,
+    widgetId: widgetId ?? this.widgetId,
+    walletCard: walletCard != null ? walletCard() : this.walletCard,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateNewInlineWidgetQuery';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A new incoming widget query from a copy of a shared widget; for bots only
+final class UpdateNewWidgetCopyQuery extends Update {
+  /// A new incoming widget query from a copy of a shared widget; for bots only
+  const UpdateNewWidgetCopyQuery({
+    required this.id,
+    required this.senderUserId,
+    required this.queryType,
+    required this.data,
+    required this.widgetId,
+    this.walletCard,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Unique query identifier
+  final int id;
+
+  /// Identifier of the user who sent the query
+  final int senderUserId;
+
+  /// Type of the query
+  final WidgetQueryType queryType;
+
+  /// Data of the query
+  final String data;
+
+  /// Identifier of the shared widget from which the query originated
+  final int widgetId;
+
+  /// TON wallet card of the user who sent the query; may be null if none
+  final TonWalletCard? walletCard;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateNewWidgetCopyQuery] from TDLib JSON.
+  factory UpdateNewWidgetCopyQuery.fromJson(Map<String, dynamic> json) =>
+      UpdateNewWidgetCopyQuery(
+        id: _readInt(json['id']),
+        senderUserId: _readInt(json['sender_user_id']),
+        queryType: _readObject(json['query_type'], WidgetQueryType.fromJson),
+        data: _readString(json['data']),
+        widgetId: _readInt(json['widget_id']),
+        walletCard: _readOptional(json['wallet_card'], TonWalletCard.fromJson),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'id': id.toString(),
+    'sender_user_id': senderUserId,
+    'query_type': queryType.toJson(),
+    'data': data,
+    'widget_id': widgetId.toString(),
+    'wallet_card': walletCard?.toJson(),
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateNewWidgetCopyQuery copyWith({
+    int? id,
+    int? senderUserId,
+    WidgetQueryType? queryType,
+    String? data,
+    int? widgetId,
+    TonWalletCard? Function()? walletCard,
+    dynamic extra,
+    int? clientId,
+  }) => UpdateNewWidgetCopyQuery(
+    id: id ?? this.id,
+    senderUserId: senderUserId ?? this.senderUserId,
+    queryType: queryType ?? this.queryType,
+    data: data ?? this.data,
+    widgetId: widgetId ?? this.widgetId,
+    walletCard: walletCard != null ? walletCard() : this.walletCard,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateNewWidgetCopyQuery';
 
   @override
   String getConstructor() => CONSTRUCTOR;

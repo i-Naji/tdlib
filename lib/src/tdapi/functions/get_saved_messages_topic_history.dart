@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns messages in a Saved Messages topic. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id)
+/// Returns messages in a Saved Messages topic. The messages are returned in reverse chronological order (i.e., in order of decreasing message.id)
 ///
 /// Returns [Messages].
 final class GetSavedMessagesTopicHistory extends TdFunction<Messages> {
-  /// Returns messages in a Saved Messages topic. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id)
+  /// Returns messages in a Saved Messages topic. The messages are returned in reverse chronological order (i.e., in order of decreasing message.id)
   const GetSavedMessagesTopicHistory({
     required this.savedMessagesTopicId,
     required this.fromMessageId,

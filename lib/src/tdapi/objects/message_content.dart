@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageRichMessage], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLiveLocation], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessagePollOptionAdded], [MessagePollOptionDeleted], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatOwnerLeft], [MessageChatOwnerChanged], [MessageChatHasProtectedContentToggled], [MessageChatHasProtectedContentDisableRequested], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatJoinFromCommunity], [MessageChatDeleteMember], [MessageChatAddedToCommunity], [MessageChatRemovedFromCommunity], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessageManagedBotCreated], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedGrams], [MessageGiveawayPrizeStars], [MessageTonWalletTransfer], [MessageTonConnectRequest], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageUnpaidMessagesAllowedByLink], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageRichMessage], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLiveLocation], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStakeDice], [MessageStory], [MessageWidget], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessagePollOptionAdded], [MessagePollOptionDeleted], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatOwnerLeft], [MessageChatOwnerChanged], [MessageChatHasProtectedContentToggled], [MessageChatHasProtectedContentDisableRequested], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatJoinFromCommunity], [MessageChatDeleteMember], [MessageChatAddedToCommunity], [MessageChatRemovedFromCommunity], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessageManagedBotCreated], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedGrams], [MessageGiveawayPrizeStars], [MessageTonWalletTransfer], [MessageTonConnectRequest], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageUpgradedGiftPurchaseOffer], [MessageUpgradedGiftPurchaseOfferRejected], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageUnpaidMessagesAllowedByLink], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -1245,6 +1245,124 @@ final class MessageStory extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageStory';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A message with an HTML widget
+final class MessageWidget extends MessageContent {
+  /// A message with an HTML widget
+  const MessageWidget({
+    required this.width,
+    required this.height,
+    required this.html,
+    required this.publicData,
+    required this.chatData,
+    required this.widgetId,
+    required this.caption,
+    required this.showCaptionAboveMedia,
+    required this.isCopy,
+    required this.canSendQueries,
+    required this.canSendBackgroundQueries,
+  });
+
+  /// Width of the widget; 0 if the widget must occupy the whole width of the message bubble
+  final int width;
+
+  /// Height of the widget; 0 if the height of the widget isn't fixed
+  final int height;
+
+  /// HTML code of the widget
+  final String html;
+
+  /// Public data of the widget
+  final String publicData;
+
+  /// Data of the widget, which is specific to the chat
+  final String chatData;
+
+  /// Identifier of the shared widget; 0 if the widget isn't shared
+  final int widgetId;
+
+  /// Widget caption
+  final FormattedText caption;
+
+  /// True, if the caption must be shown above the widget; otherwise, the caption must be shown below the widget
+  final bool showCaptionAboveMedia;
+
+  /// True, if the message is a copy of the widget
+  final bool isCopy;
+
+  /// True, if the widget can send queries to the bot
+  final bool canSendQueries;
+
+  /// True, if the widget can send queries to the bot in the background
+  final bool canSendBackgroundQueries;
+
+  /// Parses a [MessageWidget] from TDLib JSON.
+  factory MessageWidget.fromJson(Map<String, dynamic> json) => MessageWidget(
+    width: _readInt(json['width']),
+    height: _readInt(json['height']),
+    html: _readString(json['html']),
+    publicData: _readString(json['public_data']),
+    chatData: _readString(json['chat_data']),
+    widgetId: _readInt(json['widget_id']),
+    caption: _readObject(json['caption'], FormattedText.fromJson),
+    showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
+    isCopy: _readBool(json['is_copy']),
+    canSendQueries: _readBool(json['can_send_queries']),
+    canSendBackgroundQueries: _readBool(json['can_send_background_queries']),
+  );
+
+  @override
+  Map<String, dynamic> toJson() => {
+    '@type': CONSTRUCTOR,
+    'width': width,
+    'height': height,
+    'html': html,
+    'public_data': publicData,
+    'chat_data': chatData,
+    'widget_id': widgetId.toString(),
+    'caption': caption.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    'is_copy': isCopy,
+    'can_send_queries': canSendQueries,
+    'can_send_background_queries': canSendBackgroundQueries,
+  };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageWidget copyWith({
+    int? width,
+    int? height,
+    String? html,
+    String? publicData,
+    String? chatData,
+    int? widgetId,
+    FormattedText? caption,
+    bool? showCaptionAboveMedia,
+    bool? isCopy,
+    bool? canSendQueries,
+    bool? canSendBackgroundQueries,
+  }) => MessageWidget(
+    width: width ?? this.width,
+    height: height ?? this.height,
+    html: html ?? this.html,
+    publicData: publicData ?? this.publicData,
+    chatData: chatData ?? this.chatData,
+    widgetId: widgetId ?? this.widgetId,
+    caption: caption ?? this.caption,
+    showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+    isCopy: isCopy ?? this.isCopy,
+    canSendQueries: canSendQueries ?? this.canSendQueries,
+    canSendBackgroundQueries:
+        canSendBackgroundQueries ?? this.canSendBackgroundQueries,
+  );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageWidget';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -4068,7 +4186,7 @@ final class MessageTonWalletTransfer extends MessageContent {
     'sender_user_id': senderUserId,
     'transaction_id': transactionId,
     'peer_address': peerAddress,
-    'amount': amount,
+    'amount': amount.toString(),
     'comment': comment,
     'is_comment_encrypted': isCommentEncrypted,
   };

@@ -29,6 +29,7 @@ final class Supergroup extends TdObject {
     this.verificationStatus,
     required this.hasDirectMessagesGroup,
     required this.hasForumTabs,
+    required this.hasForumSidebar,
     this.restrictionInfo,
     required this.paidMessageStarCount,
     this.activeStoryState,
@@ -102,6 +103,9 @@ final class Supergroup extends TdObject {
   /// True, if the supergroup is a forum, which topics are shown in the same way as in channel direct messages groups
   final bool hasForumTabs;
 
+  /// True, if the supergroup is a forum, which topics are shown in a sidebar. If true, then has_forum_tabs is false
+  final bool hasForumSidebar;
+
   /// Information about the restrictions that must be applied to the corresponding supergroup or channel chat; may be null if none
   final RestrictionInfo? restrictionInfo;
 
@@ -148,6 +152,7 @@ final class Supergroup extends TdObject {
     ),
     hasDirectMessagesGroup: _readBool(json['has_direct_messages_group']),
     hasForumTabs: _readBool(json['has_forum_tabs']),
+    hasForumSidebar: _readBool(json['has_forum_sidebar']),
     restrictionInfo: _readOptional(
       json['restriction_info'],
       RestrictionInfo.fromJson,
@@ -186,6 +191,7 @@ final class Supergroup extends TdObject {
     'verification_status': verificationStatus?.toJson(),
     'has_direct_messages_group': hasDirectMessagesGroup,
     'has_forum_tabs': hasForumTabs,
+    'has_forum_sidebar': hasForumSidebar,
     'restriction_info': restrictionInfo?.toJson(),
     'paid_message_star_count': paidMessageStarCount,
     'active_story_state': activeStoryState?.toJson(),
@@ -216,6 +222,7 @@ final class Supergroup extends TdObject {
     VerificationStatus? Function()? verificationStatus,
     bool? hasDirectMessagesGroup,
     bool? hasForumTabs,
+    bool? hasForumSidebar,
     RestrictionInfo? Function()? restrictionInfo,
     int? paidMessageStarCount,
     ActiveStoryState? Function()? activeStoryState,
@@ -250,6 +257,7 @@ final class Supergroup extends TdObject {
     hasDirectMessagesGroup:
         hasDirectMessagesGroup ?? this.hasDirectMessagesGroup,
     hasForumTabs: hasForumTabs ?? this.hasForumTabs,
+    hasForumSidebar: hasForumSidebar ?? this.hasForumSidebar,
     restrictionInfo: restrictionInfo != null
         ? restrictionInfo()
         : this.restrictionInfo,

@@ -33,6 +33,7 @@ final class Story extends TdObject {
     required this.content,
     required this.areas,
     required this.caption,
+    this.music,
     required this.albumIds,
     this.extra,
     this.clientId,
@@ -116,6 +117,9 @@ final class Story extends TdObject {
   /// Caption of the story
   final FormattedText caption;
 
+  /// Music attached to the story; may be null if none
+  final Audio? music;
+
   /// Identifiers of story albums to which the story is added; only for manageable stories
   final List<int> albumIds;
 
@@ -169,6 +173,7 @@ final class Story extends TdObject {
       (e) => _readObject(e, StoryArea.fromJson),
     ),
     caption: _readObject(json['caption'], FormattedText.fromJson),
+    music: _readOptional(json['music'], Audio.fromJson),
     albumIds: _readList<int>(json['album_ids'], _readInt),
     extra: json['@extra'],
     clientId: _readClientId(json['@client_id']),
@@ -203,6 +208,7 @@ final class Story extends TdObject {
     'content': content.toJson(),
     'areas': [for (final e in areas) e.toJson()],
     'caption': caption.toJson(),
+    'music': music?.toJson(),
     'album_ids': albumIds,
   };
 
@@ -235,6 +241,7 @@ final class Story extends TdObject {
     StoryContent? content,
     List<StoryArea>? areas,
     FormattedText? caption,
+    Audio? Function()? music,
     List<int>? albumIds,
     dynamic extra,
     int? clientId,
@@ -270,6 +277,7 @@ final class Story extends TdObject {
     content: content ?? this.content,
     areas: areas ?? this.areas,
     caption: caption ?? this.caption,
+    music: music != null ? music() : this.music,
     albumIds: albumIds ?? this.albumIds,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,

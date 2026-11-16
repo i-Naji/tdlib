@@ -12,6 +12,7 @@ final class CommunityFullInfo extends TdObject {
     required this.administratorCount,
     required this.bannedCount,
     required this.addChatRequestCount,
+    required this.notificationSettings,
     this.extra,
     this.clientId,
   });
@@ -30,6 +31,9 @@ final class CommunityFullInfo extends TdObject {
 
   /// Number of pending requests for addition of chats to the community; 0 if the current user isn't an administrator of the community
   final int addChatRequestCount;
+
+  /// Notification settings for the community. Default notification settings are chosen based on the type of a chat in the community
+  final ChatNotificationSettings notificationSettings;
 
   /// "@extra" of the request this object answers.
   @override
@@ -50,6 +54,10 @@ final class CommunityFullInfo extends TdObject {
         administratorCount: _readInt(json['administrator_count']),
         bannedCount: _readInt(json['banned_count']),
         addChatRequestCount: _readInt(json['add_chat_request_count']),
+        notificationSettings: _readObject(
+          json['notification_settings'],
+          ChatNotificationSettings.fromJson,
+        ),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -62,6 +70,7 @@ final class CommunityFullInfo extends TdObject {
     'administrator_count': administratorCount,
     'banned_count': bannedCount,
     'add_chat_request_count': addChatRequestCount,
+    'notification_settings': notificationSettings.toJson(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -72,6 +81,7 @@ final class CommunityFullInfo extends TdObject {
     int? administratorCount,
     int? bannedCount,
     int? addChatRequestCount,
+    ChatNotificationSettings? notificationSettings,
     dynamic extra,
     int? clientId,
   }) => CommunityFullInfo(
@@ -80,6 +90,7 @@ final class CommunityFullInfo extends TdObject {
     administratorCount: administratorCount ?? this.administratorCount,
     bannedCount: bannedCount ?? this.bannedCount,
     addChatRequestCount: addChatRequestCount ?? this.addChatRequestCount,
+    notificationSettings: notificationSettings ?? this.notificationSettings,
     extra: extra ?? this.extra,
     clientId: clientId ?? this.clientId,
   );

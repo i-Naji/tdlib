@@ -25,49 +25,49 @@ final class ChatNotificationSettings extends TdObject {
     required this.disableMentionNotifications,
   });
 
-  /// If true, the value for the relevant type of chat or the forum chat is used instead of mute_for
+  /// If true, the value for the topic's chat, the chat's community, or the relevant type of chat is used instead of mute_for
   final bool useDefaultMuteFor;
 
   /// Time left before notifications will be unmuted, in seconds
   final int muteFor;
 
-  /// If true, the value for the relevant type of chat or the forum chat is used instead of sound_id
+  /// If true, the value for the topic's chat, the chat's community, or the relevant type of chat is used instead of sound_id
   final bool useDefaultSound;
 
   /// Identifier of the notification sound to be played for messages; 0 if sound is disabled
   final int soundId;
 
-  /// If true, the value for the relevant type of chat or the forum chat is used instead of show_preview
+  /// If true, the value for the topic's chat, the chat's community, or the relevant type of chat is used instead of show_preview
   final bool useDefaultShowPreview;
 
   /// True, if message content must be displayed in notifications
   final bool showPreview;
 
-  /// If true, the value for the relevant type of chat is used instead of mute_stories
+  /// If true, the value for the chat's community or the relevant type of chat is used instead of mute_stories
   final bool useDefaultMuteStories;
 
   /// True, if story notifications are disabled for the chat
   final bool muteStories;
 
-  /// If true, the value for the relevant type of chat is used instead of story_sound_id
+  /// If true, the value for the chat's community or the relevant type of chat is used instead of story_sound_id
   final bool useDefaultStorySound;
 
   /// Identifier of the notification sound to be played for stories; 0 if sound is disabled
   final int storySoundId;
 
-  /// If true, the value for the relevant type of chat is used instead of show_story_poster
+  /// If true, the value for the chat's community or the relevant type of chat is used instead of show_story_poster
   final bool useDefaultShowStoryPoster;
 
   /// True, if the chat that posted a story must be displayed in notifications
   final bool showStoryPoster;
 
-  /// If true, the value for the relevant type of chat or the forum chat is used instead of disable_pinned_message_notifications
+  /// If true, the value for the topic's chat, the chat's community, or the relevant type of chat is used instead of disable_pinned_message_notifications
   final bool useDefaultDisablePinnedMessageNotifications;
 
   /// If true, notifications for incoming pinned messages will be created as for an ordinary unread message
   final bool disablePinnedMessageNotifications;
 
-  /// If true, the value for the relevant type of chat or the forum chat is used instead of disable_mention_notifications
+  /// If true, the value for the topic's chat, the chat's community, or the relevant type of chat is used instead of disable_mention_notifications
   final bool useDefaultDisableMentionNotifications;
 
   /// If true, notifications for messages with mentions will be created as for an ordinary unread message

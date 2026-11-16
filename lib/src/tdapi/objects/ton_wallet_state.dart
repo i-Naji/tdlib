@@ -53,7 +53,7 @@ final class TonWalletState extends TdObject {
     '@type': CONSTRUCTOR,
     'address': address,
     'public_key': publicKey,
-    'gram_amount': gramAmount,
+    'gram_amount': gramAmount.toString(),
     'is_being_created': isBeingCreated,
     'is_backup_enabled': isBackupEnabled,
     'can_enable_backup': canEnableBackup,

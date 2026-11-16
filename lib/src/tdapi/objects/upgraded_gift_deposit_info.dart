@@ -46,7 +46,7 @@ final class UpgradedGiftDepositInfo extends TdObject {
     '@type': CONSTRUCTOR,
     'nft_address': nftAddress,
     'payload': payload,
-    'gram_amount': gramAmount,
+    'gram_amount': gramAmount.toString(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable

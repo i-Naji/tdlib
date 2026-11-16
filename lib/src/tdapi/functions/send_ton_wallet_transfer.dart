@@ -48,7 +48,7 @@ final class SendTonWalletTransfer extends TdFunction<TonWalletTransferResult> {
     '@type': CONSTRUCTOR,
     'user_id': userId,
     'address': address,
-    'amount': amount,
+    'amount': amount.toString(),
     'comment': comment,
     'is_comment_encrypted': isCommentEncrypted,
     'sending_id': sendingId,

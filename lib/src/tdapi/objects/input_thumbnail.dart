@@ -12,7 +12,7 @@ final class InputThumbnail extends TdObject {
     required this.height,
   });
 
-  /// Thumbnail file to send. Sending thumbnails by file_id is currently not supported
+  /// Thumbnail file to send. Sending thumbnails by inputFileId or inputFileRemote is currently not supported
   final InputFile thumbnail;
 
   /// Thumbnail width, usually shouldn't exceed 320. Use 0 if unknown

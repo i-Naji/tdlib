@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns messages in the topic in a channel direct messages chat administered by the current user. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id)
+/// Returns messages in the topic in a channel direct messages chat administered by the current user. The messages are returned in reverse chronological order (i.e., in order of decreasing message.id)
 ///
 /// Returns [Messages].
 final class GetDirectMessagesChatTopicHistory extends TdFunction<Messages> {
-  /// Returns messages in the topic in a channel direct messages chat administered by the current user. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id)
+  /// Returns messages in the topic in a channel direct messages chat administered by the current user. The messages are returned in reverse chronological order (i.e., in order of decreasing message.id)
   const GetDirectMessagesChatTopicHistory({
     required this.chatId,
     required this.topicId,

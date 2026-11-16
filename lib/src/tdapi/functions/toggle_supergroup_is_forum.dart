@@ -12,6 +12,7 @@ final class ToggleSupergroupIsForum extends TdFunction<Ok> {
     required this.supergroupId,
     required this.isForum,
     required this.hasForumTabs,
+    required this.hasForumSidebar,
   });
 
   /// Identifier of the supergroup
@@ -23,12 +24,16 @@ final class ToggleSupergroupIsForum extends TdFunction<Ok> {
   /// New value of has_forum_tabs; ignored if is_forum is false
   final bool hasForumTabs;
 
+  /// New value of has_forum_sidebar; ignored if is_forum is false. Must be false if has_forum_tabs is true
+  final bool hasForumSidebar;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
     '@type': CONSTRUCTOR,
     'supergroup_id': supergroupId,
     'is_forum': isForum,
     'has_forum_tabs': hasForumTabs,
+    'has_forum_sidebar': hasForumSidebar,
     '@extra': ?extra,
   };
 
@@ -38,10 +43,12 @@ final class ToggleSupergroupIsForum extends TdFunction<Ok> {
     int? supergroupId,
     bool? isForum,
     bool? hasForumTabs,
+    bool? hasForumSidebar,
   }) => ToggleSupergroupIsForum(
     supergroupId: supergroupId ?? this.supergroupId,
     isForum: isForum ?? this.isForum,
     hasForumTabs: hasForumTabs ?? this.hasForumTabs,
+    hasForumSidebar: hasForumSidebar ?? this.hasForumSidebar,
   );
 
   /// TDLib type name.

@@ -3016,7 +3016,7 @@ final class InternalLinkTypeTonWalletTransfer extends InternalLinkType {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'receiver': receiver?.toJson(),
-    'gram_amount': gramAmount,
+    'gram_amount': gramAmount.toString(),
   };
 
   /// Returns a copy with the given fields replaced. For a nullable

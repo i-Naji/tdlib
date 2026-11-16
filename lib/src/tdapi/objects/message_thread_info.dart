@@ -29,7 +29,7 @@ final class MessageThreadInfo extends TdObject {
   /// Approximate number of unread messages in the message thread
   final int unreadMessageCount;
 
-  /// The messages from which the thread starts. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id)
+  /// The messages from which the thread starts. The messages are returned in reverse chronological order (i.e., in order of decreasing message.id)
   final List<Message> messages;
 
   /// A draft of a message in the message thread; may be null if none

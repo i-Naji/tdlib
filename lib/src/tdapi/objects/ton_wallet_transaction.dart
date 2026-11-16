@@ -74,7 +74,7 @@ final class TonWalletTransaction extends TdObject {
     'peer_user_id': peerUserId,
     'peer_domain': peerDomain,
     'date': date,
-    'fee_amount': feeAmount,
+    'fee_amount': feeAmount.toString(),
     'state': state.toJson(),
     'type': type.toJson(),
   };

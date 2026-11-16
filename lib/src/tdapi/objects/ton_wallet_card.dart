@@ -52,7 +52,7 @@ final class TonWalletCard extends TdObject {
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
     'address': address,
-    'gram_amount': gramAmount,
+    'gram_amount': gramAmount.toString(),
     'stickers': [for (final e in stickers) e.toJson()],
     'background_nft_address': backgroundNftAddress,
   };

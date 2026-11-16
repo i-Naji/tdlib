@@ -1,1 +1,1 @@
-tdweb for package:tdlib: TDLib 1.8.69, commit 027780b87a66a2a0e69db644e812362bb300f1e1, built by tool/build_tdweb.sh.
+tdweb for package:tdlib: TDLib 1.8.70, commit c8828d50f5eac2fc7089ce1089d7ce9095c61b5e, built by tool/build_tdweb.sh.

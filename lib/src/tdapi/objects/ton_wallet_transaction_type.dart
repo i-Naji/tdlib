@@ -70,7 +70,7 @@ final class TonWalletTransactionTypeOnRampDeposit
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'amount': amount,
+    'amount': amount.toString(),
     'provider_name': providerName,
   };
 
@@ -127,7 +127,7 @@ final class TonWalletTransactionTypeTransfer extends TonWalletTransactionType {
   @override
   Map<String, dynamic> toJson() => {
     '@type': CONSTRUCTOR,
-    'amount': amount,
+    'amount': amount.toString(),
     'is_gasless': isGasless,
     'comment': comment,
     'is_comment_encrypted': isCommentEncrypted,
