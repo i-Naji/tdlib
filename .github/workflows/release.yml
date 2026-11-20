@@ -1,0 +1,23 @@
+name: Release
+
+# A GitHub release for every version tag, with that version's CHANGELOG
+# section as its notes.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          version="${TAG#v}"
+          awk -v v="## $version" '$0==v{on=1;next} on&&/^## /{exit} on{print}' CHANGELOG.md > notes.md
+          gh release create "$TAG" --title "$version" --notes-file notes.md
